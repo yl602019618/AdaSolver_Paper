@@ -1,0 +1,175 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alkin et~al.(2024)Alkin, Furst, Schmid, Gruber, Holzleitner, and
+  Brandstetter]{alkin2024upt}
+Benedikt Alkin, Andreas Furst, Simon Schmid, Lukas Gruber, Markus Holzleitner,
+  and Johannes Brandstetter.
+\newblock Universal physics transformers: A framework for efficiently scaling
+  neural operators.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37, 2024.
+
+\bibitem[Berner et~al.(2026)Berner, Liu-Schiaffini, Kossaifi, Duruisseaux,
+  Bonev, Azizzadenesheli, and Anandkumar]{berner2026functionspaces}
+Julius Berner, Miguel Liu-Schiaffini, Jean Kossaifi, Valentin Duruisseaux,
+  Boris Bonev, Kamyar Azizzadenesheli, and Anima Anandkumar.
+\newblock Principled approaches for extending neural architectures to function
+  spaces for operator learning.
+\newblock \emph{Nature Machine Intelligence}, 8:\penalty0 1173--1181, 2026.
+
+\bibitem[Doherty et~al.(2024)Doherty, Simpson, Becker, and
+  Doostan]{doherty2024quadconv}
+Kevin Doherty, Colin Simpson, Stephen Becker, and Alireza Doostan.
+\newblock Quadconv: Quadrature-based convolutions with applications to
+  non-uniform pde data compression.
+\newblock \emph{Journal of Computational Physics}, 498:\penalty0 112636, 2024.
+
+\bibitem[Gao et~al.(2025)Gao, Xu, Deng, and Liu]{gao2025discretization}
+Wenbo Gao, Rui Xu, Yuxin Deng, and Yang Liu.
+\newblock Discretization-invariance? on the discretization mismatch errors in
+  neural operators.
+\newblock In \emph{International Conference on Learning Representations}, 2025.
+
+\bibitem[Hao et~al.(2023)Hao, Wang, Su, Ying, Dong, Liu, Cheng, Song, and
+  Zhu]{hao2023gnot}
+Zhongkai Hao, Zhengyi Wang, Hang Su, Chengyang Ying, Yinpeng Dong, Sifan Liu,
+  Zhijie Cheng, Jun Song, and Jun Zhu.
+\newblock Gnot: A general neural operator transformer for operator learning.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}, 2023.
+
+\bibitem[Hermosilla et~al.(2018)Hermosilla, Ritschel, V{\'a}zquez, Vinacua, and
+  Ropinski]{hermosilla2018montecarlo}
+Pedro Hermosilla, Tobias Ritschel, Pere-Pau V{\'a}zquez, {\`A}lvar Vinacua, and
+  Timo Ropinski.
+\newblock Monte carlo convolution for learning on non-uniformly sampled point
+  clouds.
+\newblock \emph{ACM Transactions on Graphics}, 37\penalty0 (6), 2018.
+
+\bibitem[Huang et~al.(2021)Huang, Krugener, Brown, Menhorn, Bungartz, and
+  Hartmann]{huang2021meshgeneration}
+Kai Huang, Martin Krugener, Adam Brown, Felix Menhorn, Hans-Joachim Bungartz,
+  and Dirk Hartmann.
+\newblock Machine learning-based optimal mesh generation in computational fluid
+  dynamics.
+\newblock \emph{arXiv preprint arXiv:2102.12923}, 2021.
+
+\bibitem[Kim et~al.(2026)Kim, Kawano, Iwasawa, and Matsuo]{kim2026quadnorm}
+Byeong~Joo Kim, Masaki Kawano, Yusuke Iwasawa, and Yutaka Matsuo.
+\newblock Quadnorm: Resolution-robust normalization for neural operators.
+\newblock \emph{arXiv preprint arXiv:2605.07375}, 2026.
+
+\bibitem[Li et~al.(2021)Li, Kovachki, Azizzadenesheli, Liu, Bhattacharya,
+  Stuart, and Anandkumar]{li2021fno}
+Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik
+  Bhattacharya, Andrew Stuart, and Anima Anandkumar.
+\newblock Fourier neural operator for parametric partial differential
+  equations.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+
+\bibitem[Li et~al.(2023{\natexlab{a}})Li, Huang, Liu, and
+  Anandkumar]{li2023geofno}
+Zongyi Li, Daniel~Zhengyu Huang, Burigede Liu, and Anima Anandkumar.
+\newblock Fourier neural operator with learned deformations for pdes on general
+  geometries.
+\newblock \emph{Journal of Machine Learning Research}, 24\penalty0
+  (388):\penalty0 1--26, 2023{\natexlab{a}}.
+
+\bibitem[Li et~al.(2023{\natexlab{b}})Li, Kovachki, Choy, Li, Kossaifi, Otta,
+  Nabian, Stadler, Hundt, Azizzadenesheli, and Anandkumar]{li2023gino}
+Zongyi Li, Nikola Kovachki, Christopher Choy, Boyi Li, Jean Kossaifi, Shourya
+  Otta, Mohammad~Amin Nabian, Markus Stadler, Christian Hundt, Kamyar
+  Azizzadenesheli, and Anima Anandkumar.
+\newblock Geometry-informed neural operator for large-scale 3d pdes.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2023{\natexlab{b}}.
+
+\bibitem[Lippe et~al.(2023)Lippe, Veeling, Perdikaris, Turner, and
+  Brandstetter]{lippe2023pderefiner}
+Phillip Lippe, Bastiaan~S. Veeling, Paris Perdikaris, Richard~E. Turner, and
+  Johannes Brandstetter.
+\newblock Pde-refiner: Achieving accurate long rollouts with neural pde
+  solvers.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2023.
+
+\bibitem[Liu et~al.(2023)Liu, Hao, Ying, Su, Cheng, and Zhu]{liu2023nuno}
+Sifan Liu, Zhongkai Hao, Chengyang Ying, Hang Su, Zhijie Cheng, and Jun Zhu.
+\newblock Nuno: A general framework for learning parametric pdes with
+  non-uniform data.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}, 2023.
+
+\bibitem[Luo et~al.(2025)Luo, Wu, Zhou, Xing, Di, Wang, and
+  Long]{luo2025transolverpp}
+Huakun Luo, Haixu Wu, Hang Zhou, Lei Xing, Yide Di, Jianmin Wang, and Mingsheng
+  Long.
+\newblock Transolver++: An accurate neural solver for pdes on million-scale
+  geometries.
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine
+  Learning}, 2025.
+
+\bibitem[Obiols-Sales et~al.(2023)Obiols-Sales, Vishnu, Malaya, and
+  Chandramowlishwaran]{obiols2023adarnet}
+Oriol Obiols-Sales, Abhinav Vishnu, Nicholas Malaya, and Aparna
+  Chandramowlishwaran.
+\newblock Adarnet: Deep learning predicts adaptive mesh refinement.
+\newblock In \emph{International Conference on Parallel Processing}, pp.\
+  524--534, 2023.
+
+\bibitem[Pfaff et~al.(2021)Pfaff, Fortunato, Sanchez-Gonzalez, and
+  Battaglia]{pfaff2021meshgraphnets}
+Tobias Pfaff, Meire Fortunato, Alvaro Sanchez-Gonzalez, and Peter~W. Battaglia.
+\newblock Learning mesh-based simulation with graph networks.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+
+\bibitem[Rowbottom et~al.(2024)Rowbottom, Maierhofer, Deveney, Mueller,
+  Paganini, Schratz, Lio, Schonlieb, and Budd]{rowbottom2024gadaptivity}
+Jack Rowbottom, Georg Maierhofer, Thomas Deveney, Eike Mueller, Alberto
+  Paganini, Katharina Schratz, Pietro Lio, Carola-Bibiane Schonlieb, and Chris
+  Budd.
+\newblock G-adaptivity: Optimised graph-based mesh relocation for finite
+  element methods.
+\newblock \emph{arXiv preprint arXiv:2407.04516}, 2024.
+
+\bibitem[Serrano et~al.(2026)Serrano, Han, Oyallon, Ho, and
+  Morel]{serrano2026splitting}
+Louis Serrano, Jiachen Han, Edouard Oyallon, Samuel Ho, and Romain Morel.
+\newblock Test-time generalization for physics through neural operator
+  splitting.
+\newblock \emph{arXiv preprint arXiv:2602.00884}, 2026.
+
+\bibitem[Wang \& Golland(2022)Wang and Golland]{wang2022din}
+Clinton~J. Wang and Polina Golland.
+\newblock Discretization invariant networks for learning maps between neural
+  fields.
+\newblock \emph{arXiv preprint arXiv:2206.01178}, 2022.
+
+\bibitem[Wen et~al.(2025)Wen, Kumbhat, Lingsch, Mousavi, Zhao, Chandrashekar,
+  and Mishra]{wen2025gaot}
+Shixu Wen, Akshay Kumbhat, Lars Lingsch, Seyed Mousavi, Yuhang Zhao, Praveen
+  Chandrashekar, and Siddhartha Mishra.
+\newblock Geometry aware operator transformer as an efficient and accurate
+  neural surrogate for pdes on arbitrary domains.
+\newblock \emph{arXiv preprint arXiv:2505.18781}, 2025.
+
+\bibitem[Wu et~al.(2024)Wu, Luo, Wang, Wang, and Long]{wu2024transolver}
+Haixu Wu, Huakun Luo, Haowen Wang, Jianmin Wang, and Mingsheng Long.
+\newblock Transolver: A fast transformer solver for pdes on general geometries.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, 2024.
+
+\bibitem[Zhou et~al.(2026)Zhou, Wu, Shangguan, Ma, Weng, Wang, and
+  Long]{zhou2026transolver3}
+Hang Zhou, Haixu Wu, Haonan Shangguan, Yuezhou Ma, Huikun Weng, Jianmin Wang,
+  and Mingsheng Long.
+\newblock Transolver-3: Scaling up transformer solvers to industrial-scale
+  geometries.
+\newblock \emph{arXiv preprint arXiv:2602.04940}, 2026.
+
+\end{thebibliography}
