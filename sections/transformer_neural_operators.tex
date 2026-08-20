@@ -1,0 +1,74 @@
+\paragraph{Transformer neural operators.}
+Transformer neural operators use attention to discretize nonlocal integral operators over a physical domain~$\Omega$. Let $\rho$ denote the prescribed sampling measure on $\Omega$, which encodes whether points lie on a surface or in a volume as well as the density induced by a meshing or numerical refinement policy. Given $N$ discretization points $\{\xi_n\}_{n=1}^{N}$ sampled from $\rho$, an unweighted average over the points approximates an integral with respect to $\rho$.
+
+OFormer~\citep{li2023oformer} performs this approximation directly in the point space. Omitting attention-head indices, its Galerkin attention can be written as
+\begin{equation}
+    y_c(\xi_i)
+    = \sum_{\ell=1}^{d} q_\ell(\xi_i)
+      \left(\frac{1}{N}\sum_{n=1}^{N}
+      \widehat{k}_\ell(\xi_n)\widehat{v}_c(\xi_n)\right)
+    \xrightarrow[N\to\infty]{}
+    \sum_{\ell=1}^{d} q_\ell(\xi_i)
+      \int_{\Omega}\widehat{k}_\ell(\xi)\widehat{v}_c(\xi)
+      \mathrm{d}\rho(\xi),
+    \label{eq:oformer_galerkin}
+\end{equation}
+where $d$ is the attention width, $q_\ell$ and $k_\ell$ are learned basis functions, $v_c$ is a value channel, and the hats denote the column-wise normalization used by OFormer. Thus, $\widehat{K}^{\top}\widehat{V}/N$ estimates basis inner products by quadrature, while $Q$ reconstructs the output at each query point.
+
+Transolver~\citep{wu2024transolver} replaces point-to-point attention with Physics-Attention, which first groups point features into a small number of learned physical states. Let $h_n=h(\xi_n)\in\mathbb{R}^{C}$ denote the feature at point $\xi_n$. A point-wise projection $p:\mathbb{R}^{C}\rightarrow\mathbb{R}^{M}$ produces the slice weights
+\begin{equation}
+    a_{nj}
+    = \left[\operatorname{softmax}\!\left(\frac{p(h_n)}{\tau_0}\right)\right]_j,
+    \qquad
+    \sum_{j=1}^{M}a_{nj}=1,
+    \label{eq:transolver_weights}
+\end{equation}
+where $M$ is the number of slices and $\tau_0$ is a temperature. The weights are computed from features rather than spatial coordinates, so points that share a physical state can be assigned to the same slice even when they are far apart in $\Omega$. For each slice, Physics-Attention forms a normalized physical state by weighted aggregation:
+\begin{equation}
+    s_j^{(N)}
+    = \frac{\sum_{n=1}^{N}a_{nj}h_n}
+           {\sum_{n=1}^{N}a_{nj}}
+    \xrightarrow[N\to\infty]{}
+    s_j^{\rho}
+    = \frac{\int_{\Omega}a_j(\xi)h(\xi)\,\mathrm{d}\rho(\xi)}
+           {\int_{\Omega}a_j(\xi)\,\mathrm{d}\rho(\xi)}.
+    \label{eq:transolver_slice}
+\end{equation}
+Thus, the physical state is a conditional average under the sampling measure $\rho$, rather than a value associated with a fixed spatial cell. This normalization is also the point at which the empirical sampling distribution enters the point-to-state aggregation.
+
+Let $S=[s_1^{(N)},\ldots,s_M^{(N)}]^{\top}$. Transolver applies canonical attention to these $M$ states. With $Q_s=S W_Q$, $K_s=S W_K$, and $V_s=S W_V$, where the query and key width is $d$, the discrete update is
+\begin{equation}
+    \widetilde{S}
+    = \operatorname{softmax}\!\left(\frac{Q_sK_s^{\top}}{\sqrt{d}}\right)V_s,
+    \qquad
+    \widetilde{s}_j
+    = \sum_{\ell=1}^{M}
+      \frac{\exp\!\left(q_j^{\top}k_\ell/\sqrt{d}\right)}
+           {\sum_{r=1}^{M}\exp\!\left(q_j^{\top}k_r/\sqrt{d}\right)}v_\ell,
+    \label{eq:transolver_attention}
+\end{equation}
+where $q_j$, $k_j$, and $v_j$ are the rows of $Q_s$, $K_s$, and $V_s$, respectively. In the continuous operator view, the learned slices form an induced latent domain $\Omega_s$ with measure $\rho_s$. Writing $z(\zeta)$ for the state field on this latent domain, the corresponding normalized integral attention at a latent query $\zeta_*$ is
+\begin{equation}
+    \mathcal{A}[z](\zeta_*)
+    = \int_{\Omega_s}
+      \frac{\exp\!\left(q(z(\zeta_*))^{\top}k(z(\zeta))/\sqrt{d}\right)}
+           {\int_{\Omega_s}\exp\!\left(q(z(\zeta_*))^{\top}k(z(\zeta'))/\sqrt{d}\right)\,\mathrm{d}\rho_s(\zeta')}
+      v(z(\zeta))\,\mathrm{d}\rho_s(\zeta).
+    \label{eq:transolver_integral_attention}
+\end{equation}
+If the latent states are regarded as quadrature representatives of $\rho_s$, the Monte Carlo discretization of Eq.~\eqref{eq:transolver_integral_attention} is
+\begin{equation}
+    \mathcal{A}[z](\zeta_j)
+    \approx \frac{1}{M}\sum_{\ell=1}^{M}
+      \frac{\exp\!\left(q_j^{\top}k_\ell/\sqrt{d}\right)}
+           {\frac{1}{M}\sum_{r=1}^{M}\exp\!\left(q_j^{\top}k_r/\sqrt{d}\right)}v_\ell
+    = \widetilde{s}_j,
+    \label{eq:transolver_mc_attention}
+\end{equation}
+which is the normalized attention update in Eq.~\eqref{eq:transolver_attention}. Finally, the updated state is mapped back to the point space through the same slice weights:
+\begin{equation}
+    \widetilde{h}_n
+    = \sum_{j=1}^{M}a_{nj}\widetilde{s}_j.
+    \label{eq:transolver_deslice}
+\end{equation}
+The point-to-state aggregation, latent integral attention, and state-to-point deslicing together define a learnable nonlocal operator while reducing the quadratic interaction over $N$ points to interactions over $M\ll N$ states. In practice, the training discretizations repeatedly follow a characteristic measure $\rho$, and the learned operator is normally evaluated on point sets drawn from the same or a compatible sampling measure. Changing the point density at inference changes the empirical measure entering Eq.~\eqref{eq:transolver_slice}, and therefore changes the physical states presented to the subsequent attention layers.
