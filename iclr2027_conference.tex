@@ -3,6 +3,11 @@
 \input{math_commands.tex}
 \usepackage{hyperref}
 \usepackage{url}
+\usepackage{amsthm}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{theorem}[proposition]{Theorem}
 
 \title{AdaTransolver: Measure-Aware Spatial Test-Time Scaling for Neural Operators}
 \author{Anonymous Authors}
@@ -19,4 +24,7 @@ Neural operators can accept irregular point sets, but changing the sampling dens
 
 \bibliography{iclr2027_conference}
 \bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/measure_shift_theory.tex}
 \end{document}

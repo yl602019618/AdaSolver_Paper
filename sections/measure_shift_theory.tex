@@ -1,0 +1,390 @@
+\numberwithin{equation}{section}
+\section{Sampling-Measure Bias in Physics-Attention}
+\label{app:measure_shift_bias}
+
+We analyze the effect of evaluating a frozen Physics-Attention layer under a sampling measure different from the one used during training. Let $(\Omega,\rho)$ be the physical domain equipped with the reference probability measure, let $h:\Omega\to\mathbb{R}^{C}$ be the point-feature field, and let $\Omega_s$ be a continuous slice domain of finite measure. A bounded measurable slice-weight function $w:\Omega\times\Omega_s\to[0,\infty)$ satisfies
+\begin{equation}
+    \int_{\Omega_s}w(x,\xi_s)\,\mathrm{d}\xi_s=1,
+    \qquad
+    \int_{\Omega}w(x,\xi_s)\,\mathrm{d}\rho(x)>0.
+    \label{eq:app_continuous_slice_weights}
+\end{equation}
+For each $\xi_s\in\Omega_s$, define the slice-weighted probability measure
+\begin{equation}
+    \mathrm{d}\pi_{\xi_s}(x)
+    :=\frac{w(x,\xi_s)}
+    {\int_{\Omega}w(y,\xi_s)\,\mathrm{d}\rho(y)}
+    \,\mathrm{d}\rho(x).
+    \label{eq:app_slice_measure}
+\end{equation}
+
+Let $\widetilde{\rho}$ be the inference-time sampling measure. We assume $\widetilde{\rho}\ll\rho$ and write
+\begin{equation}
+    \lambda:=\frac{\mathrm{d}\widetilde{\rho}}{\mathrm{d}\rho}>0
+    \quad \rho\text{-a.e.}
+    \label{eq:app_density_ratio}
+\end{equation}
+The reference and shifted physics-token fields are
+\begin{equation}
+    z(\xi_s)
+    :=\mathbb{E}_{\pi_{\xi_s}}[h],
+    \qquad
+    \widetilde{z}(\xi_s)
+    :=\frac{\mathbb{E}_{\pi_{\xi_s}}[\lambda h]}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}.
+    \label{eq:app_reference_shifted_states}
+\end{equation}
+Since $\lambda>0$ holds $\rho$-almost everywhere and $w$ is bounded with positive $\rho$-mass,
+\[
+    \mathbb{E}_{\pi_{\xi_s}}[\lambda]
+    =\frac{\int_{\Omega}w(x,\xi_s)\,\mathrm{d}\widetilde{\rho}(x)}
+    {\int_{\Omega}w(x,\xi_s)\,\mathrm{d}\rho(x)}
+    \in(0,\infty).
+\]
+Hence, $\widetilde{z}$ is well defined, and its discrepancy from $z$ reflects a change in the limiting tokenization operator rather than finite-sample quadrature error.
+
+\begin{proposition}[Exact bias of a physics token]
+\label{prop:physics_state_bias}
+Fix $\xi_s\in\Omega_s$. Assume $h\in L^2(\pi_{\xi_s};\mathbb{R}^{C})$ and $\lambda h\in L^1(\pi_{\xi_s};\mathbb{R}^{C})$. Then
+\begin{equation}
+    \widetilde{z}(\xi_s)-z(\xi_s)
+    =\frac{\operatorname{Cov}_{\pi_{\xi_s}}(\lambda,h)}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}
+    =\mathbb{E}_{\pi_{\xi_s}}\!\left[\left(
+    \frac{\lambda}{\mathbb{E}_{\pi_{\xi_s}}[\lambda]}-1\right)h\right],
+    \label{eq:app_exact_state_bias}
+\end{equation}
+where
+\begin{equation}
+    \operatorname{Cov}_{\pi_{\xi_s}}(\lambda,h)
+    :=\mathbb{E}_{\pi_{\xi_s}}\!\left[
+    (\lambda-\mathbb{E}_{\pi_{\xi_s}}[\lambda])
+    \left(h-\mathbb{E}_{\pi_{\xi_s}}[h]\right)\right]\in\mathbb{R}^{C}.
+    \label{eq:app_vector_covariance}
+\end{equation}
+Furthermore, if $\lambda\in L^2(\pi_{\xi_s})$, define the bounded linear operators from $L^2(\pi_{\xi_s};\mathbb{R}^{C})$ to $\mathbb{R}^{C}$ by
+\begin{equation}
+    \mathcal{P}_{\xi_s}^{\rho}f
+    :=\mathbb{E}_{\pi_{\xi_s}}[f],
+    \qquad
+    \mathcal{P}_{\xi_s}^{\widetilde{\rho}}f
+    :=\frac{\mathbb{E}_{\pi_{\xi_s}}[\lambda f]}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}.
+    \label{eq:app_state_operators}
+\end{equation}
+Their operator-norm discrepancy is exactly
+\begin{equation}
+    \left\|\mathcal{P}_{\xi_s}^{\widetilde{\rho}}
+    -\mathcal{P}_{\xi_s}^{\rho}\right\|_{\mathrm{op}}
+    =\left\|\frac{\lambda}{\mathbb{E}_{\pi_{\xi_s}}[\lambda]}-1\right\|_{L^2(\pi_{\xi_s})}
+    =\frac{\sqrt{\operatorname{Var}_{\pi_{\xi_s}}(\lambda)}}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}.
+    \label{eq:app_exact_state_operator_norm}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By \Eqref{eq:app_reference_shifted_states},
+\begin{align}
+    \widetilde{z}(\xi_s)-z(\xi_s)
+    &=\frac{\mathbb{E}_{\pi_{\xi_s}}[\lambda h]
+    -\mathbb{E}_{\pi_{\xi_s}}[\lambda]
+    \mathbb{E}_{\pi_{\xi_s}}[h]}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}
+    =\frac{\operatorname{Cov}_{\pi_{\xi_s}}(\lambda,h)}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]},
+    \label{eq:app_state_bias_proof_cov}
+\end{align}
+which also equals the second expression in \Eqref{eq:app_exact_state_bias}.
+
+For the operator statement, set
+\begin{equation}
+    r_{\xi_s}:=\frac{\lambda}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}-1.
+    \label{eq:app_centered_density_ratio}
+\end{equation}
+Then, for every $f\in L^2(\pi_{\xi_s};\mathbb{R}^{C})$,
+\begin{equation}
+    \left(\mathcal{P}_{\xi_s}^{\widetilde{\rho}}
+    -\mathcal{P}_{\xi_s}^{\rho}\right)f
+    =\mathbb{E}_{\pi_{\xi_s}}[r_{\xi_s}f].
+    \label{eq:app_state_operator_difference}
+\end{equation}
+Cauchy--Schwarz gives
+\begin{equation}
+    \left\|\mathbb{E}_{\pi_{\xi_s}}[r_{\xi_s}f]\right\|_2
+    \leq \|r_{\xi_s}\|_{L^2(\pi_{\xi_s})}
+    \|f\|_{L^2(\pi_{\xi_s};\mathbb{R}^{C})},
+    \label{eq:app_state_operator_upper}
+\end{equation}
+so the operator norm is at most $\|r_{\xi_s}\|_{L^2(\pi_{\xi_s})}$. If $r_{\xi_s}\neq0$, choose a unit vector $e\in\mathbb{R}^{C}$ and
+\begin{equation}
+    f^{\star}(x)
+    :=\frac{r_{\xi_s}(x)}
+    {\|r_{\xi_s}\|_{L^2(\pi_{\xi_s})}}e.
+    \label{eq:app_state_operator_extremizer}
+\end{equation}
+Then $\|f^{\star}\|_{L^2(\pi_{\xi_s};\mathbb{R}^{C})}=1$ and
+\begin{equation}
+    \left(\mathcal{P}_{\xi_s}^{\widetilde{\rho}}
+    -\mathcal{P}_{\xi_s}^{\rho}\right)f^{\star}
+    =\|r_{\xi_s}\|_{L^2(\pi_{\xi_s})}e,
+    \label{eq:app_state_operator_attainment}
+\end{equation}
+which attains the upper bound. The case $r_{\xi_s}=0$ is immediate. Finally,
+\begin{equation}
+    \|r_{\xi_s}\|_{L^2(\pi_{\xi_s})}^2
+    =\frac{\mathbb{E}_{\pi_{\xi_s}}\!\left[
+    (\lambda-\mathbb{E}_{\pi_{\xi_s}}[\lambda])^2\right]}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]^2}
+    =\frac{\operatorname{Var}_{\pi_{\xi_s}}(\lambda)}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]^2},
+    \label{eq:app_state_operator_variance}
+\end{equation}
+which proves \Eqref{eq:app_exact_state_operator_norm}.
+\end{proof}
+
+\subsection{Propagation through Continuous Physics-Attention}
+\label{app:attention_bias}
+
+Proposition~\ref{prop:physics_state_bias} quantifies the bias introduced during tokenization. We now propagate this perturbation through the continuous Physics-Attention operator. Following the continuous construction of Transolver~\citep{wu2024transolver}, let $g:\Omega\to\Omega_s$ be a diffeomorphism and retain the change-of-variables factor
+\begin{equation}
+    J_g(\xi_s)
+    :=\left|\det\!\left(\nabla_{\xi_s}g^{-1}(\xi_s)\right)\right|.
+    \label{eq:app_slice_jacobian}
+\end{equation}
+For a bounded token field $z:\Omega_s\to\mathbb{R}^{C}$, define
+\begin{align}
+    \ell_z(\xi_s',\xi_s)
+    &:=\frac{(W_qz(\xi_s'))^{\top}W_kz(\xi_s)}{\tau},
+    \nonumber\\
+    \alpha_z(\xi_s',\xi_s)
+    &:=\frac{\exp(\ell_z(\xi_s',\xi_s))}
+    {\int_{\Omega_s}\exp(\ell_z(\xi_s',\zeta_s))\,\mathrm{d}\zeta_s},
+    \label{eq:app_continuous_attention_kernel}\\
+    \mathcal{A}_J[z](\xi_s')
+    &:=\int_{\Omega_s}\alpha_z(\xi_s',\xi_s)
+    W_vz(\xi_s)J_g(\xi_s)\,\mathrm{d}\xi_s,
+    \label{eq:app_continuous_attention_operator}
+\end{align}
+where $W_q,W_k\in\mathbb{R}^{d\times C}$, $W_v\in\mathbb{R}^{C\times C}$, and $\tau>0$ are fixed. The softmax kernel is normalized on the slice domain, while $J_g$ remains in the transformed integral. The deslicing operator and the complete continuous Physics-Attention map are
+\begin{equation}
+    \mathcal{D}[f](x)
+    :=\int_{\Omega_s}w(x,\xi_s')f(\xi_s')\,\mathrm{d}\xi_s',
+    \qquad
+    \mathcal{T}_J:=\mathcal{D}\circ\mathcal{A}_J.
+    \label{eq:app_continuous_deslice}
+\end{equation}
+For the token fields in \Eqref{eq:app_reference_shifted_states}, define $\mathcal{G}_{\rho}(h):=\mathcal{T}_J[z]$ and $\mathcal{G}_{\widetilde{\rho}}(h):=\mathcal{T}_J[\widetilde{z}]$. We hold $g$, $w$, and the projection matrices fixed when changing the sampling measure.
+
+\begin{lemma}[Exact bias of continuous Physics-Attention]
+\label{lem:app_exact_continuous_attention_bias}
+Let the token fields $z,\widetilde{z}\in L^{\infty}(\Omega_s;\mathbb{R}^{C})$ be defined by \Eqref{eq:app_reference_shifted_states}, and set $\delta:=\widetilde{z}-z$. The logit perturbation is
+\begin{align}
+    \Delta\ell_{\delta}(\xi_s',\xi_s)
+    &:=\ell_{\widetilde{z}}(\xi_s',\xi_s)-\ell_z(\xi_s',\xi_s)
+    \nonumber\\
+    &=\frac{(W_q\delta(\xi_s'))^{\top}W_kz(\xi_s)
+    +(W_qz(\xi_s'))^{\top}W_k\delta(\xi_s)
+    +(W_q\delta(\xi_s'))^{\top}W_k\delta(\xi_s)}{\tau}.
+    \label{eq:app_continuous_logit_shift}
+\end{align}
+For each query $\xi_s'$, define
+\begin{equation}
+    R_{\delta}(\xi_s',\xi_s)
+    :=\frac{\exp(\Delta\ell_{\delta}(\xi_s',\xi_s))}
+    {\int_{\Omega_s}\alpha_z(\xi_s',\zeta_s)
+    \exp(\Delta\ell_{\delta}(\xi_s',\zeta_s))\,\mathrm{d}\zeta_s}.
+    \label{eq:app_continuous_attention_ratio}
+\end{equation}
+Then $\alpha_{\widetilde{z}}=\alpha_zR_{\delta}$, and the output bias is exactly
+\begin{align}
+    \mathcal{T}_J[\widetilde{z}](x)-\mathcal{T}_J[z](x)
+    ={}&\int_{\Omega_s}w(x,\xi_s')
+    \int_{\Omega_s}\alpha_z(\xi_s',\xi_s)
+    \Big[(R_{\delta}(\xi_s',\xi_s)-1)W_vz(\xi_s)
+    \nonumber\\
+    &\hspace{39mm}
+    +R_{\delta}(\xi_s',\xi_s)W_v\delta(\xi_s)\Big]
+    J_g(\xi_s)\,\mathrm{d}\xi_s\,\mathrm{d}\xi_s'.
+    \label{eq:app_exact_continuous_attention_bias}
+\end{align}
+The two terms are respectively the attention-redistribution bias and the value-token bias.
+\end{lemma}
+
+\begin{proof}
+Expanding the bilinear query-key product gives \Eqref{eq:app_continuous_logit_shift}. Moreover,
+\begin{align}
+    \alpha_{\widetilde{z}}(\xi_s',\xi_s)
+    &=\frac{\exp(\ell_z(\xi_s',\xi_s))
+    \exp(\Delta\ell_{\delta}(\xi_s',\xi_s))}
+    {\int_{\Omega_s}\exp(\ell_z(\xi_s',\zeta_s))
+    \exp(\Delta\ell_{\delta}(\xi_s',\zeta_s))\,\mathrm{d}\zeta_s}
+    \nonumber\\
+    &=\alpha_z(\xi_s',\xi_s)R_{\delta}(\xi_s',\xi_s).
+    \label{eq:app_continuous_shifted_kernel}
+\end{align}
+Substituting $\widetilde{z}=z+\delta$ and \Eqref{eq:app_continuous_shifted_kernel} into \Eqref{eq:app_continuous_attention_operator} yields
+\begin{align}
+    \mathcal{A}_J[\widetilde{z}](\xi_s')-\mathcal{A}_J[z](\xi_s')
+    =\int_{\Omega_s}\alpha_z
+    \left[(R_{\delta}-1)W_vz+R_{\delta}W_v\delta\right]
+    J_g\,\mathrm{d}\xi_s,
+    \label{eq:app_continuous_attention_difference}
+\end{align}
+where all integrands are evaluated at $(\xi_s',\xi_s)$. Applying \Eqref{eq:app_continuous_deslice} proves \Eqref{eq:app_exact_continuous_attention_bias}.
+\end{proof}
+
+We next specialize the exact identity to a small change of sampling measure,
+\begin{equation}
+    \mathrm{d}\rho_{\varepsilon}(x)
+    =(1+\varepsilon\eta(x))\,\mathrm{d}\rho(x),
+    \qquad
+    \mathbb{E}_{\rho}[\eta]=0,
+    \label{eq:app_continuous_measure_path}
+\end{equation}
+where $\eta\in L^{\infty}(\rho)$ and $|\varepsilon|$ is small enough that $1+\varepsilon\eta>0$. Let $z_{\varepsilon}$ be the token field under $\rho_{\varepsilon}$ and define $\mathcal{G}_{\rho_{\varepsilon}}(h):=\mathcal{T}_J[z_{\varepsilon}]$. The induced token direction is
+\begin{equation}
+    b(\xi_s):=\operatorname{Cov}_{\pi_{\xi_s}}(\eta,h).
+    \label{eq:app_continuous_token_direction}
+\end{equation}
+For an arbitrary direction $\varphi\in L^{\infty}(\Omega_s;\mathbb{R}^{C})$, define
+\begin{align}
+    \dot{\ell}_z[\varphi](\xi_s',\xi_s)
+    &:=\frac{(W_q\varphi(\xi_s'))^{\top}W_kz(\xi_s)
+    +(W_qz(\xi_s'))^{\top}W_k\varphi(\xi_s)}{\tau},
+    \nonumber\\
+    \overline{\dot{\ell}}_z[\varphi](\xi_s')
+    &:=\int_{\Omega_s}\alpha_z(\xi_s',\zeta_s)
+    \dot{\ell}_z[\varphi](\xi_s',\zeta_s)\,\mathrm{d}\zeta_s.
+    \label{eq:app_continuous_logit_derivative}
+\end{align}
+
+\begin{theorem}[First-order bias of continuous Physics-Attention]
+\label{thm:app_continuous_attention_bias}
+Let
+\begin{equation}
+    X:=L^{\infty}(\Omega_s;\mathbb{R}^{C}),
+    \qquad
+    Y:=L^{\infty}(\Omega;\mathbb{R}^{C}).
+    \label{eq:app_attention_function_spaces}
+\end{equation}
+Assume $h\in L^{\infty}(\rho;\mathbb{R}^{C})$, $J_g\in L^{\infty}(\Omega_s)$, and the preceding conditions on $w$ and $\eta$. Then the field $b$ in \Eqref{eq:app_continuous_token_direction} belongs to $X$, and $\mathcal{T}_J:X\to Y$ is Fr\'echet differentiable at the reference token field $z$. For every $\varphi\in X$,
+\begin{align}
+    D\mathcal{T}_J[z][\varphi](x)
+    ={}&\int_{\Omega_s}w(x,\xi_s')
+    \int_{\Omega_s}\alpha_z(\xi_s',\xi_s)
+    \Big[W_v\varphi(\xi_s)
+    \nonumber\\
+    &\quad+
+    \left(\dot{\ell}_z[\varphi](\xi_s',\xi_s)
+    -\overline{\dot{\ell}}_z[\varphi](\xi_s')\right)
+    W_vz(\xi_s)\Big]
+    J_g(\xi_s)\,\mathrm{d}\xi_s\,\mathrm{d}\xi_s'.
+    \label{eq:app_continuous_attention_derivative}
+\end{align}
+For the measure path \Eqref{eq:app_continuous_measure_path},
+\begin{equation}
+    \mathcal{G}_{\rho_{\varepsilon}}(h)-\mathcal{G}_{\rho}(h)
+    =\varepsilon\,\mathcal{S}_{\rho,h}[\eta]+r_{\varepsilon},
+    \qquad
+    \|r_{\varepsilon}\|_{Y}=\mathcal{O}(\varepsilon^2),
+    \label{eq:app_continuous_first_order_bias}
+\end{equation}
+where
+\begin{equation}
+    \mathcal{S}_{\rho,h}[\eta]
+    :=D\mathcal{T}_J[z][b].
+    \label{eq:app_continuous_measure_sensitivity}
+\end{equation}
+Consequently,
+\begin{equation}
+    \lim_{\varepsilon\to0}
+    \frac{\|\mathcal{G}_{\rho_{\varepsilon}}(h)
+    -\mathcal{G}_{\rho}(h)\|_{Y}}{|\varepsilon|}
+    =\|\mathcal{S}_{\rho,h}[\eta]\|_{Y}.
+    \label{eq:app_continuous_bias_limit}
+\end{equation}
+If $\mathcal{S}_{\rho,h}[\eta]\neq0$, then the output bias is $\Theta(|\varepsilon|)$.
+\end{theorem}
+
+\begin{proof}
+We first linearize $\mathcal{T}_J$ in the token space. For $e\in X$, \Eqref{eq:app_continuous_logit_shift} gives
+\begin{equation}
+    \Delta\ell_e
+    =\dot{\ell}_z[e]
+    +\frac{(W_qe(\xi_s'))^{\top}W_ke(\xi_s)}{\tau}.
+    \label{eq:app_logit_frechet_expansion}
+\end{equation}
+Thus, uniformly on $\Omega_s\times\Omega_s$,
+\begin{equation}
+    \exp(\Delta\ell_e)
+    =1+\dot{\ell}_z[e]+\mathcal{O}(\|e\|_X^2).
+    \label{eq:app_exponential_frechet_expansion}
+\end{equation}
+Since $\alpha_z(\xi_s',\cdot)$ integrates to one,
+\begin{equation}
+    \int_{\Omega_s}\alpha_z(\xi_s',\zeta_s)
+    \exp(\Delta\ell_e(\xi_s',\zeta_s))\,\mathrm{d}\zeta_s
+    =1+\overline{\dot{\ell}}_z[e](\xi_s')
+    +\mathcal{O}(\|e\|_X^2).
+    \label{eq:app_normalizer_frechet_expansion}
+\end{equation}
+Combining \Eqref{eq:app_continuous_attention_ratio}--\Eqref{eq:app_normalizer_frechet_expansion} yields
+\begin{equation}
+    R_e
+    =1+\dot{\ell}_z[e]-\overline{\dot{\ell}}_z[e]
+    +\mathcal{O}(\|e\|_X^2),
+    \label{eq:app_ratio_frechet_expansion}
+\end{equation}
+uniformly on $\Omega_s\times\Omega_s$. Substitution into the exact decomposition \Eqref{eq:app_exact_continuous_attention_bias} gives
+\begin{equation}
+    \|\mathcal{T}_J[z+e]-\mathcal{T}_J[z]
+    -D\mathcal{T}_J[z][e]\|_{Y}
+    \leq C_z\|e\|_X^2
+    \label{eq:app_attention_frechet_remainder}
+\end{equation}
+for all sufficiently small $\|e\|_X$. Here boundedness of $J_g$ and $\int_{\Omega_s}w(x,\xi_s')\,\mathrm{d}\xi_s'=1$ control the two integrals. This proves the derivative formula \Eqref{eq:app_continuous_attention_derivative}.
+
+Applying Proposition~\ref{prop:physics_state_bias} to each $\xi_s$ gives
+\begin{equation}
+    z_{\varepsilon}(\xi_s)-z(\xi_s)
+    =\frac{\varepsilon b(\xi_s)}
+    {1+\varepsilon\mathbb{E}_{\pi_{\xi_s}}[\eta]}.
+    \label{eq:app_continuous_exact_token_shift}
+\end{equation}
+Because $|\mathbb{E}_{\pi_{\xi_s}}[\eta]|\leq\|\eta\|_{L^{\infty}(\rho)}$, the denominator is uniformly bounded away from zero for sufficiently small $|\varepsilon|$. Therefore,
+\begin{equation}
+    \|z_{\varepsilon}-z-\varepsilon b\|_X
+    =\mathcal{O}(\varepsilon^2).
+    \label{eq:app_continuous_token_expansion}
+\end{equation}
+Using \Eqref{eq:app_attention_frechet_remainder}, the linearity of $D\mathcal{T}_J[z]$, and \Eqref{eq:app_continuous_token_expansion}, we obtain
+\begin{align}
+    \mathcal{G}_{\rho_{\varepsilon}}(h)-\mathcal{G}_{\rho}(h)
+    &=\mathcal{T}_J[z_{\varepsilon}]-\mathcal{T}_J[z]
+    \nonumber\\
+    &=D\mathcal{T}_J[z][z_{\varepsilon}-z]
+    +\mathcal{O}_{Y}(\|z_{\varepsilon}-z\|_X^2)
+    \nonumber\\
+    &=\varepsilon D\mathcal{T}_J[z][b]
+    +\mathcal{O}_{Y}(\varepsilon^2),
+    \label{eq:app_continuous_bias_proof}
+\end{align}
+which proves \Eqref{eq:app_continuous_first_order_bias}.
+
+Finally, the reverse triangle inequality gives
+\begin{equation}
+    \left|
+    \frac{\|\mathcal{G}_{\rho_{\varepsilon}}(h)-\mathcal{G}_{\rho}(h)\|_Y}
+    {|\varepsilon|}
+    -\|\mathcal{S}_{\rho,h}[\eta]\|_Y
+    \right|
+    \leq\frac{\|r_{\varepsilon}\|_Y}{|\varepsilon|}
+    \longrightarrow0.
+    \label{eq:app_continuous_bias_limit_proof}
+\end{equation}
+This proves \Eqref{eq:app_continuous_bias_limit}; the $\Theta(|\varepsilon|)$ conclusion follows whenever the sensitivity is nonzero.
+\end{proof}
+
+The Jacobian $J_g$ appears in both terms of \Eqref{eq:app_continuous_attention_derivative}. Setting $J_g\equiv1$ recovers the simplifying assumption used to obtain the discrete Physics-Attention update in Transolver.
