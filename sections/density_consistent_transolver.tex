@@ -1,0 +1,92 @@
+\section{Sampling-Density-Consistent Transolver}
+\label{sec:density_consistent_transolver}
+
+A decoder-only transformer neural operator is typically trained and evaluated on point sets generated according to a prescribed sampling measure $\rho$, which is determined by the discretization used for data generation, such as a uniform grid or a geometry-dependent mesh-refinement policy. At inference time, we may instead sample from a different measure $\widetilde{\rho}$ to obtain a different spatial description of the same physical domain. For example, aerodynamic geometries can be sampled more densely near surfaces or flow-sensitive structures and more sparsely in smooth exterior regions. However, because transformer neural operators approximate continuous operators through Monte Carlo integration, changing the sampling measure generally changes the limiting operator represented by the frozen model.
+
+Let $\lambda=\mathrm{d}\widetilde{\rho}/\mathrm{d}\rho>0$ denote the density ratio. For a slice location $\xi_s\in\Omega_s$, define the slice-weighted probability measure
+\begin{equation}
+    \mathrm{d}\pi_{\xi_s}(x)
+    :=\frac{w(x,\xi_s)}
+    {\int_{\Omega}w(y,\xi_s)\,\mathrm{d}\rho(y)}\,\mathrm{d}\rho(x).
+    \label{eq:main_slice_measure}
+\end{equation}
+
+\begin{proposition}[Physics-token bias under a sampling-density shift]
+\label{prop:main_physics_token_bias}
+For each $\xi_s\in\Omega_s$, the reference and shifted physics tokens satisfy
+\begin{equation}
+    u_s^{\widetilde{\rho}}(\xi_s)-u_s^{\rho}(\xi_s)
+    =\frac{\operatorname{Cov}_{\pi_{\xi_s}}(\lambda,h)}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}.
+    \label{eq:main_physics_token_bias}
+\end{equation}
+Moreover, if $\mathcal{P}_{\xi_s}^{\mu}h:=u_s^{\mu}(\xi_s)$ denotes the tokenization map under a sampling measure $\mu$, then
+\begin{equation}
+    \left\|\mathcal{P}_{\xi_s}^{\widetilde{\rho}}
+    -\mathcal{P}_{\xi_s}^{\rho}\right\|_{\mathrm{op}}
+    =\frac{\sqrt{\operatorname{Var}_{\pi_{\xi_s}}(\lambda)}}
+    {\mathbb{E}_{\pi_{\xi_s}}[\lambda]}.
+    \label{eq:main_token_operator_bias}
+\end{equation}
+\end{proposition}
+
+Let $\mathcal{T}$ denote the continuous Physics-Attention operator and define $\mathcal{G}_{\mu}(h):=\mathcal{T}[u_s^{\mu}]$. Write $\delta_s:=u_s^{\widetilde{\rho}}-u_s^{\rho}$ and let $R_{\delta_s}:=\alpha_{u_s^{\widetilde{\rho}}}/\alpha_{u_s^{\rho}}$ be the ratio between the shifted and reference attention kernels.
+
+\begin{theorem}[Propagation through continuous Physics-Attention]
+\label{thm:main_physics_attention_bias}
+The sampling-density bias propagates to the Physics-Attention output as
+\begin{align}
+    \mathcal{G}_{\widetilde{\rho}}(h)(x)-\mathcal{G}_{\rho}(h)(x)
+    ={}&\int_{\Omega_s}w(x,\xi_s')
+    \int_{\Omega_s}\alpha_{u_s^{\rho}}(\xi_s',\xi_s)
+    \Big[(R_{\delta_s}(\xi_s',\xi_s)-1)W_vu_s^{\rho}(\xi_s)
+    \nonumber\\
+    &\hspace{19mm}+R_{\delta_s}(\xi_s',\xi_s)W_v\delta_s(\xi_s)\Big]
+    J_g(\xi_s)\,\mathrm{d}\xi_s\,\mathrm{d}\xi_s'.
+    \label{eq:main_physics_attention_bias}
+\end{align}
+Here $\alpha_{u_s^{\rho}}$ is the reference attention kernel, $W_v$ is the value projection, and $J_g$ is the physical-to-slice Jacobian. The two terms respectively describe the redistribution of attention weights and the propagation of shifted value tokens.
+\end{theorem}
+
+The complete conditions and proofs of Proposition~\ref{prop:main_physics_token_bias} and Theorem~\ref{thm:main_physics_attention_bias} are given in Appendix~\ref{app:measure_shift_bias}.
+
+These results identify the point-to-slice aggregation as the source of the sampling-density bias. The slice assignment $w_{i,j}$ is computed independently at each point, attention is subsequently applied among a fixed number of physics tokens, and deslicing maps the updated tokens back to each point. Only the physics-token construction aggregates over the sampled points. Consequently, for $x_i\sim\widetilde{\rho}$, the original aggregation converges to
+\begin{equation}
+    \frac{\sum_{i=1}^{N}w_{i,j}h_i}
+    {\sum_{i=1}^{N}w_{i,j}}
+    \xrightarrow[N\to\infty]{}
+    \frac{\int_{\Omega}w_j(x)h(x)\,\mathrm{d}\widetilde{\rho}(x)}
+    {\int_{\Omega}w_j(x)\,\mathrm{d}\widetilde{\rho}(x)}
+    =u_{s,j}^{\widetilde{\rho}},
+    \label{eq:uncorrected_shifted_physics_token}
+\end{equation}
+rather than the reference token $u_{s,j}^{\rho}$ learned under $\rho$.
+
+We therefore correct the measure only when forming the physics tokens. For each inference point, let
+\begin{equation}
+    c_i:=\frac{\mathrm{d}\rho}{\mathrm{d}\widetilde{\rho}}(x_i)
+    =\lambda(x_i)^{-1},
+    \label{eq:main_importance_weight}
+\end{equation}
+be its importance weight, or the corresponding inverse relative inclusion density for discrete sampling. The corrected aggregation is
+\begin{equation}
+    \widehat{u}_{s,j}^{(N)}
+    :=\frac{\sum_{i=1}^{N}c_iw_{i,j}h_i}
+    {\sum_{i=1}^{N}c_iw_{i,j}}
+    \xrightarrow[N\to\infty]{}
+    \frac{\int_{\Omega}w_j(x)h(x)\,\mathrm{d}\rho(x)}
+    {\int_{\Omega}w_j(x)\,\mathrm{d}\rho(x)}
+    =u_{s,j}^{\rho}.
+    \label{eq:density_consistent_physics_token}
+\end{equation}
+Because the estimator is self-normalized, only the relative density ratios are required. For finite samples, the implementation may replace $c_i$ with $c_i^{\beta}$, where $\beta=0$ recovers the original Transolver and $\beta=1$ gives the measure-consistent correction above.
+
+After the corrected physics tokens are obtained, we apply the original attention among physics tokens and the original deslice operation without further modification. For a Transolver with $L$ layers, the same correction is applied whenever layer $\ell$ forms new physics tokens from its current point features $h_i^{(\ell)}$:
+\begin{equation}
+    \widehat{u}_{s,j}^{(\ell)}
+    =\frac{\sum_{i=1}^{N}c_iw_{i,j}^{(\ell)}h_i^{(\ell)}}
+    {\sum_{i=1}^{N}c_iw_{i,j}^{(\ell)}},
+    \qquad \ell=1,\ldots,L.
+    \label{eq:layerwise_density_correction}
+\end{equation}
+Each layer then continues with its unchanged Physics-Attention and deslice operations. Thus, the correction follows the point-to-slice aggregation throughout the frozen network while preserving all learned projections and attention parameters.

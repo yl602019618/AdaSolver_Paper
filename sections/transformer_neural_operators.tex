@@ -24,37 +24,37 @@ Transolver~\citep{wu2024transolver} replaces point-to-point attention with Physi
     \sum_{j=1}^{M}w_{i,j}=1,
     \label{eq:transolver_slice_weights}
 \end{equation}
-where $\tau_0$ is the temperature. The corresponding physical state is the normalized weighted aggregation
+where $\tau_0$ is the temperature. The corresponding physics token is the normalized weighted aggregation
 \begin{equation}
-    s_j^{(N)}
+    u_{s,j}^{(N)}
     = \frac{\frac{1}{N}\sum_{i=1}^{N}w_{i,j}h_i}
            {\frac{1}{N}\sum_{i=1}^{N}w_{i,j}}
     \xrightarrow[N\to\infty]{}
-    s_j^{\rho}
+    u_{s,j}^{\rho}
     = \frac{\int_{\Omega}w_j(x)h(x)\,\mathrm{d}\rho(x)}
            {\int_{\Omega}w_j(x)\,\mathrm{d}\rho(x)}.
     \label{eq:transolver_physics_state}
 \end{equation}
 
-Writing $s=[s_1^{(N)},\ldots,s_M^{(N)}]^{\top}\in\mathbb{R}^{M\times C}$ and $q,k,v=\operatorname{Linear}(s)$, the discrete state attention and its continuous integral counterpart can be written together as
+Writing $u_s^{(N)}=[u_{s,1}^{(N)},\ldots,u_{s,M}^{(N)}]^{\top}\in\mathbb{R}^{M\times C}$ and $q,k,v=\operatorname{Linear}(u_s^{(N)})$, the discrete state attention and its continuous integral counterpart can be written together as
 \begin{equation}
     \begin{aligned}
-    s_j'
+    u_{s,j}'
     &= \sum_{t=1}^{M}
-      \frac{\exp\!\left(q_j^{\top}k_t/\sqrt{C}\right)}
-           {\sum_{p=1}^{M}\exp\!\left(q_j^{\top}k_p/\sqrt{C}\right)}v_t \\
+      \frac{\exp\!\left(q_j^{\top}k_t/\tau\right)}
+           {\sum_{p=1}^{M}\exp\!\left(q_j^{\top}k_p/\tau\right)}v_t \\
     &\xrightarrow[M\to\infty]{}
-    \mathcal{A}[s^{\rho}](\xi_*^s) \\
+    \mathcal{A}[u_s^{\rho}](\xi_s') \\
     &:= \int_{\Omega_s}
-      \frac{\exp\!\left(q(s^{\rho}(\xi_*^s))^{\top}k(s^{\rho}(\xi_s))/\sqrt{C}\right)}
-           {\int_{\Omega_s}\exp\!\left(q(s^{\rho}(\xi_*^s))^{\top}k(s^{\rho}(\eta_s))/\sqrt{C}\right)\,\mathrm{d}\rho_s(\eta_s)}
-      v(s^{\rho}(\xi_s))\,\mathrm{d}\rho_s(\xi_s).
+      \frac{\exp\!\left(q(u_s^{\rho}(\xi_s'))^{\top}k(u_s^{\rho}(\xi_s))/\tau\right)}
+           {\int_{\Omega_s}\exp\!\left(q(u_s^{\rho}(\xi_s'))^{\top}k(u_s^{\rho}(\eta_s))/\tau\right)\,\mathrm{d}\eta_s}
+      v(u_s^{\rho}(\xi_s))\,\mathrm{d}\xi_s.
     \end{aligned}
     \label{eq:transolver_state_attention}
 \end{equation}
-where $s^{\rho}(\xi_s)$ is the continuous state field on the induced slice domain $\Omega_s$ with measure $\rho_s$, and $\xi_*^s$ denotes a latent query location. Finally, the updated states are mapped back to the point space through the slice weights,
+where $u_s^{\rho}(\xi_s)$ is the continuous physics-token field on the slice domain $\Omega_s$, $\xi_s'$ is a query location, and $\tau$ is the attention temperature. Finally, the updated tokens are mapped back to the point space through the slice weights,
 \begin{equation}
-    h_i' = \sum_{j=1}^{M}w_{i,j}s_j',
+    h_i' = \sum_{j=1}^{M}w_{i,j}u_{s,j}',
     \qquad i=1,\ldots,N.
     \label{eq:transolver_deslice}
 \end{equation}
