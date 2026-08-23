@@ -1,0 +1,90 @@
+\subsection{Adaptive Test-Time Sampling for Transolver}
+\label{sec:adaptive_test_time_sampling}
+
+We next construct the inference-time sampling measure from geometry, a draft prediction, or intermediate backbone features.
+
+Let $r_{\psi}:\Omega\to[0,\infty)$ be a nonnegative refinement score, where $\psi$ denotes the information used to construct it, and define
+\begin{equation}
+    \nu_{\psi}(x)
+    :=\frac{r_{\psi}(x)}{\int_{\Omega}r_{\psi}(y)\,\mathrm{d}\rho(y)},
+    \qquad
+    \widetilde{\rho}_{\gamma,\psi}
+    :=(1-\gamma)\rho+\gamma(\nu_{\psi}*\rho),
+    \qquad \gamma\in[0,1].
+    \label{eq:unified_refinement_measure}
+\end{equation}
+Here $\nu_{\psi}*\rho$ denotes the reweighted empirical measure induced by the refinement score. The correction used in the point-to-slice aggregation is
+\begin{equation}
+    c_{\gamma,\psi}(x)
+    :=\frac{\mathrm{d}\rho}{\mathrm{d}\widetilde{\rho}_{\gamma,\psi}}(x)
+    =\frac{1}{(1-\gamma)+\gamma\nu_{\psi}(x)}.
+    \label{eq:unified_refinement_correction}
+\end{equation}
+
+\subsubsection{Physics-Informed Density Refinement}
+\label{sec:physics_informed_refinement}
+
+The first policy constructs $r_{\psi}$ from prior information about the geometry or the governing physical problem. Let $s_{\mathrm{prior}}(x)\geq0$ be a problem-dependent indicator whose large values identify regions that are expected to require finer spatial resolution. This indicator can be obtained from a known geometric feature, a numerical refinement rule, or a physical quantity available before inference. We set
+\begin{equation}
+    \nu_{\mathrm{prior}}(x)
+    :=\frac{s_{\mathrm{prior}}(x)}
+    {\int_{\Omega}s_{\mathrm{prior}}(y)\,\mathrm{d}\rho(y)}
+    \label{eq:prior_refinement_kernel}
+\end{equation}
+and use it in Eq.~\eqref{eq:unified_refinement_measure} to sample the final point set.
+
+This policy does not require a preliminary network evaluation; once the prior indicator is available, points are sampled from $\widetilde{\rho}_{\gamma,\mathrm{prior}}$ and inferred with the correction in Eq.~\eqref{eq:unified_refinement_correction}.
+
+\subsubsection{Coarse-Prediction-Guided Density Refinement}
+\label{sec:coarse_prediction_refinement}
+
+This strategy follows the test-time refinement perspective of PDE-Refiner~\citep{lippe2023pderefiner} and the initial-prediction--difficulty-estimation pipeline of ATCA~\citep{jenkins2026atca}. When no reliable prior is available, we draw a small coarse set $S_0$ from $\rho$ and evaluate the frozen operator on this set:
+\begin{equation}
+    \widehat{u}^{(0)}
+    :=\mathcal{G}_{\theta}\!\left(a\big|_{S_0}\right),
+    \qquad |S_0|\ll N,
+    \label{eq:coarse_draft_prediction}
+\end{equation}
+where $a\big|_{S_0}$ denotes the input field restricted to the coarse points. From $\widehat{u}^{(0)}$, we compute a nonnegative local-variation score, for example by combining discrete estimates of the gradient and Laplacian:
+\begin{equation}
+    s_{\mathrm{coarse}}(x)
+    :=\Phi\!\left(
+        \left\|\nabla\widehat{u}^{(0)}(x)\right\|_2,
+        \left\|\Delta\widehat{u}^{(0)}(x)\right\|_2
+    \right),
+    \qquad \Phi\geq0,
+    \label{eq:coarse_refinement_score}
+\end{equation}
+where $\Phi$ is a fixed nonnegative combination and the derivatives are evaluated with the available mesh or point-cloud neighborhood. The score is transferred to candidate points, normalized as in Eq.~\eqref{eq:unified_refinement_measure}, and used to sample $\widetilde{\rho}_{\gamma,\mathrm{coarse}}$.
+
+The method works because the draft variation score directs the final spatial resolution toward regions where the field is changing rapidly.
+
+\subsubsection{Cache-Aware Learned Refinement}
+\label{sec:cache_aware_refinement}
+
+The coarse prediction provides features correlated with local physical or geometric variation, but the subsequent computation of the first pass is otherwise discarded. We reuse it as follows. Let $S_1=S_0\cup B$ be the final point set, where $B$ contains the newly allocated points. For the first Physics-Attention layer, let $h_i^{\mathrm{in}}$ be its pointwise input feature and $w_{i,j}^{(1)}$ its slice weight. Define
+\begin{equation}
+    A_j(S):=\sum_{i\in S}c_iw_{i,j}^{(1)}h_i^{\mathrm{in}},
+    \qquad
+    D_j(S):=\sum_{i\in S}c_iw_{i,j}^{(1)}.
+    \label{eq:cache_additive_statistics}
+\end{equation}
+Because the summands are pointwise, their values on $S_0$ are unchanged after adding $B$, and
+\begin{equation}
+    A_j(S_1)=A_j(S_0)+A_j(B),
+    \qquad
+    D_j(S_1)=D_j(S_0)+D_j(B).
+    \label{eq:cache_statistics_additivity}
+\end{equation}
+so the coarse values can be cached and only the contributions from $B$ need to be computed. We train a lightweight head $H_{\phi}$ with the frozen backbone, attach it to the first-block feature $h_i^{(1)}$, and define
+\begin{equation}
+    \widehat{u}^{\mathrm{head}}_i=H_{\phi}\!\left(h_i^{(1)}\right),
+    \qquad
+    s_{\mathrm{head}}(x_i)
+    :=\Phi\!\left(
+        \left\|\nabla\widehat{u}^{\mathrm{head}}(x_i)\right\|_2,
+        \left\|\Delta\widehat{u}^{\mathrm{head}}(x_i)\right\|_2
+    \right),
+    \label{eq:learned_refinement_score}
+\end{equation}
+and use this score in Eq.~\eqref{eq:unified_refinement_measure}. Token attention, deslicing, and later blocks still run on $S_1$, because $B$ changes the global token states.

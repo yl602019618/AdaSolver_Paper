@@ -19,10 +19,17 @@
 Neural operators can accept irregular point sets, but changing the sampling density can alter the empirical measure used by point aggregation. We study spatial resolution as a test-time compute resource and develop a measure-aware framework for adaptive point allocation with a frozen transformer neural operator.
 \end{abstract}
 
-\section{Background}
+\input{sections/introduction.tex}
+
+\input{sections/related_work.tex}
+
+\section{Method}
 \input{sections/transformer_neural_operators.tex}
 
 \input{sections/density_consistent_transolver.tex}
+
+\input{sections/adaptive_test_time_sampling.tex}
+\input{sections/density_augmented_training.tex}
 
 \bibliography{iclr2027_conference}
 \bibliographystyle{iclr2027_conference}

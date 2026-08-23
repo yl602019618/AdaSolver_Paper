@@ -1,4 +1,4 @@
-\section{Sampling-Density-Consistent Transolver}
+\subsection{Sampling-Density-Consistent Transolver}
 \label{sec:density_consistent_transolver}
 
 A decoder-only transformer neural operator is typically trained and evaluated on point sets generated according to a prescribed sampling measure $\rho$, which is determined by the discretization used for data generation, such as a uniform grid or a geometry-dependent mesh-refinement policy. At inference time, we may instead sample from a different measure $\widetilde{\rho}$ to obtain a different spatial description of the same physical domain. For example, aerodynamic geometries can be sampled more densely near surfaces or flow-sensitive structures and more sparsely in smooth exterior regions. However, because transformer neural operators approximate continuous operators through Monte Carlo integration, changing the sampling measure generally changes the limiting operator represented by the frozen model.

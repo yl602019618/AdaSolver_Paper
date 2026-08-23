@@ -1,0 +1,48 @@
+\section{Related Work}
+
+\paragraph{Neural operators on irregular geometries.}
+Fourier neural operators learn resolution-transferable spectral mappings on
+regular grids, while Geo-FNO extends them to general geometries through learned
+coordinate deformations \citep{li2021fno,li2023geofno}. GINO couples integral
+operators with a latent regular grid, and NUNO partitions non-uniform
+observations to reduce interpolation and computational costs
+\citep{li2023gino,liu2023nuno}. Transformer-based operators instead compress
+large point sets into latent representations before global interaction, as in
+GNOT, UPT, and Transolver \citep{hao2023gnot,alkin2024upt,wu2024transolver}.
+Transolver++ and Transolver-3 further scale this design to million-scale and
+industrial-scale geometries \citep{luo2025transolverpp,zhou2026transolver3}.
+These methods establish strong compatibility with irregular inputs and changing
+point counts. Our focus is complementary: we actively change the \emph{local}
+sampling density at inference and ask whether the frozen model still represents
+the same continuous operator.
+
+\paragraph{Discretization-consistent operator learning.}
+Extending finite neural architectures to function spaces requires discrete
+reductions to converge to fixed continuous integrals as the discretization
+changes \citep{berner2026functionspaces}. Monte Carlo convolution corrects
+non-uniform point-cloud sampling with inverse-density weights, while QuadConv
+evaluates continuous kernels using quadrature on irregular PDE data
+\citep{hermosilla2018montecarlo,doherty2024quadconv}. Related formulations
+construct discretization-invariant maps between neural fields and
+quadrature-aware normalization statistics \citep{wang2022din,kim2026quadnorm}.
+Nevertheless, resolution-independent parameters alone do not prevent errors
+under a mismatch between training and evaluation discretizations
+\citep{gao2025discretization}. We adopt the same function-space principle for
+latent point aggregation, but use it to support a deliberate inference-time
+change of sampling density rather than only passive resolution transfer.
+
+\paragraph{Adaptive meshes and test-time refinement.}
+Adaptive discretization concentrates resolution where numerical error is
+expected to be large. Learned approaches predict mesh density, refinement, or
+node relocation for numerical solvers
+\citep{huang2021meshgeneration,obiols2023adarnet,rowbottom2024gadaptivity},
+while MeshGraphNets integrates learned dynamics with mesh-based simulation
+\citep{pfaff2021meshgraphnets}. Test-time computation has also been increased
+through iterative denoising in PDE-Refiner, adaptive allocation or tokenization,
+and neural-operator composition
+\citep{lippe2023pderefiner,jenkins2026atca,
+wang2026adaptivetokenization,serrano2026splitting}. These directions determine
+where or how additional inference computation should be used. AdaTransolver
+addresses the complementary operator-level requirement: changing the spatial
+sampling density of a frozen point-based neural operator while keeping its
+reference continuous measure fixed.
