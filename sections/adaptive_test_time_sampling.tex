@@ -31,9 +31,9 @@ The first policy constructs $r_{\psi}$ from prior information about the geometry
     {\int_{\Omega}s_{\mathrm{prior}}(y)\,\mathrm{d}\rho(y)}
     \label{eq:prior_refinement_kernel}
 \end{equation}
-and use it in Eq.~\eqref{eq:unified_refinement_measure} to sample the final point set.
+and use it in \eqref{eq:unified_refinement_measure} to sample the final point set.
 
-This policy does not require a preliminary network evaluation; once the prior indicator is available, points are sampled from $\widetilde{\rho}_{\gamma,\mathrm{prior}}$ and inferred with the correction in Eq.~\eqref{eq:unified_refinement_correction}.
+This policy does not require a preliminary network evaluation; once the prior indicator is available, points are sampled from $\widetilde{\rho}_{\gamma,\mathrm{prior}}$ and inferred with the correction in \eqref{eq:unified_refinement_correction}.
 
 \subsubsection{Coarse-Prediction-Guided Density Refinement}
 \label{sec:coarse_prediction_refinement}
@@ -55,7 +55,7 @@ where $a\big|_{S_0}$ denotes the input field restricted to the coarse points. Fr
     \qquad \Phi\geq0,
     \label{eq:coarse_refinement_score}
 \end{equation}
-where $\Phi$ is a fixed nonnegative combination and the derivatives are evaluated with the available mesh or point-cloud neighborhood. The score is transferred to candidate points, normalized as in Eq.~\eqref{eq:unified_refinement_measure}, and used to sample $\widetilde{\rho}_{\gamma,\mathrm{coarse}}$.
+where $\Phi$ is a fixed nonnegative combination and the derivatives are evaluated with the available mesh or point-cloud neighborhood. The score is transferred to candidate points, normalized as in \eqref{eq:unified_refinement_measure}, and used to sample $\widetilde{\rho}_{\gamma,\mathrm{coarse}}$.
 
 The method works because the draft variation score directs the final spatial resolution toward regions where the field is changing rapidly.
 
@@ -87,4 +87,4 @@ so the coarse values can be cached and only the contributions from $B$ need to b
     \right),
     \label{eq:learned_refinement_score}
 \end{equation}
-and use this score in Eq.~\eqref{eq:unified_refinement_measure}. Token attention, deslicing, and later blocks still run on $S_1$, because $B$ changes the global token states.
+and use this score in \eqref{eq:unified_refinement_measure}. Token attention, deslicing, and later blocks still run on $S_1$, because $B$ changes the global token states.

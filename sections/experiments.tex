@@ -1,0 +1,34 @@
+\section{Experiments}
+\label{sec:experiments}
+
+We evaluate AdaSolver on five standard PDE benchmarks and three industrial design prediction tasks, covering both surface and volumetric fields on three-dimensional geometries. We further assess its efficiency in two CFD-based geometry optimization tasks involving two-dimensional airfoils and three-dimensional wings.
+
+\subsection{Benchmarks}
+\label{sec:experiment_benchmarks}
+
+Our evaluation spans canonical PDE problems and representative industrial applications. The standard PDE suite comprises Elasticity, Plasticity, Airfoil, Pipe~\citep{li2023geofno} and Darcy flow~\citep{li2021fno}. These public datasets are widely used to benchmark neural operators~\citep{hao2023gnot,wu2024transolver}.
+
+For industrial applications, we consider ShapeNet-Car~\citep{umetani2018learning} and DrivAerML~\citep{ashton2024drivaerml} for automotive aerodynamics, and SuperWing~\citep{yang2025superwing} for three-dimensional wing design. In addition to physical-field prediction errors, we evaluate the accuracy of design-relevant aerodynamic quantities, including the drag coefficient $C_D$, lift coefficient $C_L$, and drag-to-lift ratio $C_D/C_L$. We also use the learned PDE surrogates to guide shape optimization of a two-dimensional airfoil and a three-dimensional wing, assessing computational efficiency and aerodynamic prediction accuracy during optimization.
+
+\subsection{Implementation and Evaluation}
+\label{sec:experiment_implementation}
+
+As described in \eqref{eq:transolver_physics_state} and~\eqref{eq:transolver_state_attention}, Transolver approximates a continuous integral operator through point aggregation and attention over latent physical states. With the number of physical states fixed, varying the spatial sampling budget changes the number of point samples used to estimate the aggregation integrals. To train a single backbone across point budgets, we adopt geometry-amortized training from Transolver-3~\citep{zhou2026transolver3} for all tasks. Given a full mesh of $N$ points, we draw a point count $N_t$ uniformly from $\{\lceil 0.4N\rceil,\ldots,N\}$ for each minibatch, then sample $N_t$ mesh points uniformly without replacement. The trained backbone is frozen when evaluating different sampling policies and inference budgets.
+
+For a consistent comparison, we treat all input discretizations as unstructured meshes and evaluate sampling budgets of $37.5\%$, $50\%$, and $75\%$ of the full-mesh point count. Uniform subsampling of mesh points serves as the common baseline. We report relative $L_2$ errors for physical-field predictions and summarize performance across budgets using the relative area under the error--budget curve (rAUEC). Let $b_k$ denote the retained fraction of mesh points, with $(b_1,b_2,b_3)=(0.375,0.50,0.75)$, and let $E_{\mathrm{method}}(b)$ and $E_{\mathrm{uniform}}(b)$ denote errors averaged over test samples and random seeds. Using trapezoidal integration, we compute
+\begin{equation}
+    \mathrm{rAUEC}
+    :=
+    \frac{\sum_{k=1}^{2}(b_{k+1}-b_k)
+          \bigl[E_{\mathrm{method}}(b_k)+E_{\mathrm{method}}(b_{k+1})\bigr]}
+         {\sum_{k=1}^{2}(b_{k+1}-b_k)
+          \bigl[E_{\mathrm{uniform}}(b_k)+E_{\mathrm{uniform}}(b_{k+1})\bigr]}.
+    \label{eq:rauec}
+\end{equation}
+Lower rAUEC is better, with uniform sampling normalized to $1$. We also report end-to-end runtime for geometry optimization.
+
+\subsection{Main Results}
+\label{sec:main_results}
+
+\paragraph{Standard Benchmarks.}
+Table~1 compares physics-informed density refinement (PI), coarse-prediction-guided density refinement (CPG), and cache-aware learned refinement (CA) with uniform subsampling across five standard PDE benchmarks. Overall, adaptive sampling reduces rAUEC, showing that point density is a design variable for improving neural operator predictions under a fixed spatial budget. CPG generally improves upon PI, indicating that features of the predicted solution can guide point allocation more effectively than geometry and prescribed heuristics alone. CA achieves performance close to CPG on several benchmarks, supporting the learnability of the field-dependent signals used for density refinement. The differences are particularly clear on Darcy: PI provides little improvement over uniform sampling, whereas CPG and CA achieve similar, substantially lower rAUEC. Thus, even on a regular Cartesian grid, solution-informed density allocation can improve prediction accuracy. These results suggest that the benefit of adaptive sampling depends on how well its allocation signal reflects the solution field, beyond the geometric complexity of the domain.

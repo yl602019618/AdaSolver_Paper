@@ -84,7 +84,7 @@ Their operator-norm discrepancy is exactly
 \end{proposition}
 
 \begin{proof}
-By \Eqref{eq:app_reference_shifted_states},
+By \eqref{eq:app_reference_shifted_states},
 \begin{align}
     u_s^{\widetilde{\rho}}(\xi_s)-u_s^{\rho}(\xi_s)
     &=\frac{\mathbb{E}_{\pi_{\xi_s}}[\lambda h]
@@ -95,7 +95,7 @@ By \Eqref{eq:app_reference_shifted_states},
     {\mathbb{E}_{\pi_{\xi_s}}[\lambda]},
     \label{eq:app_state_bias_proof_cov}
 \end{align}
-which also equals the second expression in \Eqref{eq:app_exact_state_bias}.
+which also equals the second expression in \eqref{eq:app_exact_state_bias}.
 
 For the operator statement, set
 \begin{equation}
@@ -141,13 +141,13 @@ which attains the upper bound. The case $r_{\xi_s}=0$ is immediate. Finally,
     {\mathbb{E}_{\pi_{\xi_s}}[\lambda]^2},
     \label{eq:app_state_operator_variance}
 \end{equation}
-which proves \Eqref{eq:app_exact_state_operator_norm}.
+which proves \eqref{eq:app_exact_state_operator_norm}.
 \end{proof}
 
 \subsection{Propagation through Continuous Physics-Attention}
 \label{app:attention_bias}
 
-We first recall the continuous formulation leading to Eq.~(13) of Transolver~\citep{wu2024transolver}. Let $g:\Omega\to\Omega_s$ be a diffeomorphism from the physical domain to the slice domain, with
+We first recall the continuous formulation leading to equation~13 of Transolver~\citep{wu2024transolver}. Let $g:\Omega\to\Omega_s$ be a diffeomorphism from the physical domain to the slice domain, with
 \begin{equation}
     J_g(\xi_s)
     :=\left|\det\!\left(\nabla_{\xi_s}g^{-1}(\xi_s)\right)\right|.
@@ -190,7 +190,7 @@ This is the deslice--attention--token factorization in the continuous derivation
     \qquad i=1,\ldots,N,
     \label{eq:app_transolver_discrete_attention}
 \end{equation}
-which is Eq.~(13) of Transolver under the simplifying choice $J_g\equiv1$. For the token fields in \Eqref{eq:app_reference_shifted_states}, we write $\mathcal{G}_{\rho}(h):=\mathcal{T}[u_s^{\rho}]$ and $\mathcal{G}_{\widetilde{\rho}}(h):=\mathcal{T}[u_s^{\widetilde{\rho}}]$. The map $g$, the slice weight $w$, and the projection matrices are held fixed when the sampling measure changes.
+which is equation~13 of Transolver under the simplifying choice $J_g\equiv1$. For the token fields in \eqref{eq:app_reference_shifted_states}, we write $\mathcal{G}_{\rho}(h):=\mathcal{T}[u_s^{\rho}]$ and $\mathcal{G}_{\widetilde{\rho}}(h):=\mathcal{T}[u_s^{\widetilde{\rho}}]$. The map $g$, the slice weight $w$, and the projection matrices are held fixed when the sampling measure changes.
 
 \begin{lemma}[Exact output perturbation for a token shift]
 \label{lem:app_exact_continuous_attention_bias}
@@ -228,7 +228,7 @@ The two terms are the attention-redistribution bias and the value-token bias, re
 \end{lemma}
 
 \begin{proof}
-By \Eqref{eq:app_continuous_logit_shift},
+By \eqref{eq:app_continuous_logit_shift},
 \begin{align}
     \alpha_{u_s+\delta_s}(\xi_s',\xi_s)
     &=\frac{\exp(\ell_{u_s}(\xi_s',\xi_s))
@@ -239,7 +239,7 @@ By \Eqref{eq:app_continuous_logit_shift},
     &=\alpha_{u_s}(\xi_s',\xi_s)R_{\delta_s}(\xi_s',\xi_s).
     \label{eq:app_continuous_shifted_kernel}
 \end{align}
-Substituting this identity and $u_s+\delta_s$ into \Eqref{eq:app_continuous_physics_attention}, then subtracting $\mathcal{T}[u_s]$, gives \Eqref{eq:app_exact_continuous_attention_bias}.
+Substituting this identity and $u_s+\delta_s$ into \eqref{eq:app_continuous_physics_attention}, then subtracting $\mathcal{T}[u_s]$, gives \eqref{eq:app_exact_continuous_attention_bias}.
 \end{proof}
 
 \begin{theorem}[Exact propagation of sampling-measure bias]
@@ -265,11 +265,11 @@ If $u_s^{\rho},\delta_s^{\widetilde{\rho}}\in L^{\infty}(\Omega_s;\mathbb{R}^{C}
     J_g(\xi_s)\,\mathrm{d}\xi_s\,\mathrm{d}\xi_s',
     \label{eq:app_exact_measure_shift_bias}
 \end{align}
-where $R_{\delta_s^{\widetilde{\rho}}}$ is given by \Eqref{eq:app_continuous_attention_ratio} with base field $u_s=u_s^{\rho}$. Thus, the exact output bias is the sum of the change in attention weights and the direct propagation of the biased value tokens.
+where $R_{\delta_s^{\widetilde{\rho}}}$ is given by \eqref{eq:app_continuous_attention_ratio} with base field $u_s=u_s^{\rho}$. Thus, the exact output bias is the sum of the change in attention weights and the direct propagation of the biased value tokens.
 \end{theorem}
 
 \begin{proof}
-\Eqref{eq:app_measure_induced_token_shift} follows from Proposition~\ref{prop:physics_state_bias}. Applying Lemma~\ref{lem:app_exact_continuous_attention_bias} with $u_s=u_s^{\rho}$ and $\delta_s=\delta_s^{\widetilde{\rho}}$ gives \Eqref{eq:app_exact_measure_shift_bias}.
+\Eqref{eq:app_measure_induced_token_shift} follows from Proposition~\ref{prop:physics_state_bias}. Applying Lemma~\ref{lem:app_exact_continuous_attention_bias} with $u_s=u_s^{\rho}$ and $\delta_s=\delta_s^{\widetilde{\rho}}$ gives \eqref{eq:app_exact_measure_shift_bias}.
 \end{proof}
 
 We next consider a small change of sampling measure,
@@ -336,14 +336,14 @@ If $\mathcal{S}_{\rho,h}[\eta]\neq0$, then the output bias is $\Theta(|\varepsil
 \end{theorem}
 
 \begin{proof}
-The boundedness assumptions make the remainder in \Eqref{eq:app_continuous_exact_token_shift} uniform over $\Omega_s$. By bilinearity of the query-key logit, \Eqref{eq:app_continuous_logit_shift} therefore gives
+The boundedness assumptions make the remainder in \eqref{eq:app_continuous_exact_token_shift} uniform over $\Omega_s$. By bilinearity of the query-key logit, \eqref{eq:app_continuous_logit_shift} therefore gives
 \begin{equation}
     \Delta\ell_{u_s^{\rho_{\varepsilon}}-u_s^{\rho}}(\xi_s',\xi_s)
     =\varepsilon\ell_{\eta}^{(1)}(\xi_s',\xi_s)
     +\mathcal{O}(\varepsilon^2)
     \label{eq:app_first_order_logit_expansion}
 \end{equation}
-uniformly on $\Omega_s\times\Omega_s$. Expanding the numerator and denominator of \Eqref{eq:app_continuous_attention_ratio} yields
+uniformly on $\Omega_s\times\Omega_s$. Expanding the numerator and denominator of \eqref{eq:app_continuous_attention_ratio} yields
 \begin{align}
     R_{u_s^{\rho_{\varepsilon}}-u_s^{\rho}}(\xi_s',\xi_s)
     =1+\varepsilon\Bigg[&\ell_{\eta}^{(1)}(\xi_s',\xi_s)
@@ -353,14 +353,14 @@ uniformly on $\Omega_s\times\Omega_s$. Expanding the numerator and denominator o
     +\mathcal{O}(\varepsilon^2),
     \label{eq:app_first_order_attention_ratio}
 \end{align}
-also uniformly. Moreover, \Eqref{eq:app_continuous_exact_token_shift} implies
+also uniformly. Moreover, \eqref{eq:app_continuous_exact_token_shift} implies
 \begin{equation}
     W_v(u_s^{\rho_{\varepsilon}}(\xi_s)-u_s^{\rho}(\xi_s))
     =\varepsilon W_v\operatorname{Cov}_{\pi_{\xi_s}}(\eta,h)
     +\mathcal{O}(\varepsilon^2).
     \label{eq:app_first_order_value_shift}
 \end{equation}
-Substituting \Eqref{eq:app_first_order_attention_ratio} and \Eqref{eq:app_first_order_value_shift} into Lemma~\ref{lem:app_exact_continuous_attention_bias} and collecting the coefficient of $\varepsilon$ gives \Eqref{eq:app_continuous_measure_sensitivity}. Since $J_g$ is bounded and $\int_{\Omega_s}w(x,\xi_s')\,\mathrm{d}\xi_s'=1$, the integrated remainder is $\mathcal{O}(\varepsilon^2)$ in $L^{\infty}(\Omega)$, proving \Eqref{eq:app_continuous_first_order_bias}.
+Substituting \eqref{eq:app_first_order_attention_ratio} and \eqref{eq:app_first_order_value_shift} into Lemma~\ref{lem:app_exact_continuous_attention_bias} and collecting the coefficient of $\varepsilon$ gives \eqref{eq:app_continuous_measure_sensitivity}. Since $J_g$ is bounded and $\int_{\Omega_s}w(x,\xi_s')\,\mathrm{d}\xi_s'=1$, the integrated remainder is $\mathcal{O}(\varepsilon^2)$ in $L^{\infty}(\Omega)$, proving \eqref{eq:app_continuous_first_order_bias}.
 
 Finally, the reverse triangle inequality gives
 \begin{equation}
@@ -372,7 +372,7 @@ Finally, the reverse triangle inequality gives
     =\mathcal{O}(|\varepsilon|),
     \label{eq:app_continuous_bias_limit_proof}
 \end{equation}
-which proves \Eqref{eq:app_continuous_bias_limit} and the stated $\Theta(|\varepsilon|)$ order.
+which proves \eqref{eq:app_continuous_bias_limit} and the stated $\Theta(|\varepsilon|)$ order.
 \end{proof}
 
 The Jacobian $J_g$ remains in every bias term. Setting $J_g\equiv1$ recovers the simplifying assumption used by Transolver when deriving its discrete Physics-Attention update.
