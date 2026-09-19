@@ -40,7 +40,9 @@ Table~\ref{tab:standard_benchmarks} compares physics-informed density refinement
 \input{tables/standard_benchmarks.tex}
 
 \paragraph{Industrial Applications.}
-Wind-tunnel testing informs vehicle and aircraft design by assessing aerodynamic performance through quantities such as drag and lift coefficients. Table~2 reports both full-field prediction errors and errors in aerodynamic quantities on ShapeNet-Car, DrivAerML, and SuperWing. The results show that all three methods substantially improve neural operator accuracy across sampling budgets. For aerodynamic quantities, concentrating samples in influential regions can match or even surpass full-mesh accuracy with only $37.5\%$ of the points. This agrees with the physical intuition that some flow regions contribute more strongly to aerodynamic forces than others. Accurate predictions with fewer points can accelerate geometry optimization.
+Wind-tunnel testing informs vehicle and aircraft design by assessing aerodynamic performance through quantities such as drag and lift coefficients. Table~\ref{tab:industrial_benchmarks} reports both full-field prediction errors and errors in aerodynamic quantities on ShapeNet-Car, DrivAerML, and SuperWing. The results show that all three methods substantially improve neural operator accuracy across sampling budgets. For aerodynamic quantities, concentrating samples in influential regions can match or even surpass full-mesh accuracy with only $37.5\%$ of the points. This agrees with the physical intuition that some flow regions contribute more strongly to aerodynamic forces than others. Accurate predictions with fewer points can accelerate geometry optimization.
+
+\input{tables/industrial_benchmarks.tex}
 
 \subsection{Inverse Design}
 \label{sec:inverse_design}

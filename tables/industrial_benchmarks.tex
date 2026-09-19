@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+    \centering
+    \small
+    \caption{rAUEC ($\downarrow$) on industrial benchmarks over three seeds. Means appear above standard deviations. Best and second-best means are \textbf{bold} and \underline{underlined}, respectively.}
+    \label{tab:industrial_benchmarks}
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.12}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+        \toprule
+        & \multicolumn{2}{c}{ShapeNet-Car} & \multicolumn{2}{c}{DrivAerML} & \multicolumn{2}{c}{SuperWing} \\
+        \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+        Method & Field & $C_D$ & Field & $C_D$ & Field & $C_D/C_L$ \\
+        \midrule
+        PI & $\begin{gathered}0.58952\\[-2pt]\pm 0.00180\end{gathered}$ & $\begin{gathered}0.65606\\[-2pt]\pm 0.00168\end{gathered}$ & $\begin{gathered}0.88342\\[-2pt]\pm 0.00011\end{gathered}$ & $\begin{gathered}0.92455\\[-2pt]\pm 0.00149\end{gathered}$ & $\begin{gathered}0.75640\\[-2pt]\pm 0.00079\end{gathered}$ & $\begin{gathered}0.82456\\[-2pt]\pm 0.00539\end{gathered}$ \\
+        \addlinespace[3pt]
+        CPG & $\begin{gathered}\mathbf{0.55770}\\[-2pt]\pm 0.00219\end{gathered}$ & $\begin{gathered}\mathbf{0.64743}\\[-2pt]\pm 0.00454\end{gathered}$ & $\begin{gathered}\mathbf{0.82458}\\[-2pt]\pm 0.00005\end{gathered}$ & $\begin{gathered}\mathbf{0.92093}\\[-2pt]\pm 0.00148\end{gathered}$ & $\begin{gathered}\mathbf{0.67059}\\[-2pt]\pm 0.00212\end{gathered}$ & $\begin{gathered}\mathbf{0.80259}\\[-2pt]\pm 0.00761\end{gathered}$ \\
+        \addlinespace[3pt]
+        CA & $\begin{gathered}\underline{0.55774}\\[-2pt]\pm 0.00222\end{gathered}$ & $\begin{gathered}\underline{0.64786}\\[-2pt]\pm 0.00404\end{gathered}$ & $\begin{gathered}\underline{0.82635}\\[-2pt]\pm 0.00019\end{gathered}$ & $\begin{gathered}\underline{0.92438}\\[-2pt]\pm 0.00153\end{gathered}$ & $\begin{gathered}\underline{0.71927}\\[-2pt]\pm 0.00211\end{gathered}$ & $\begin{gathered}\underline{0.81675}\\[-2pt]\pm 0.00700\end{gathered}$ \\
+        \bottomrule
+    \end{tabular*}
+\end{table}
