@@ -4,6 +4,8 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{placeins}
 
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{lemma}[proposition]{Lemma}
@@ -15,8 +17,8 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}     
-Neural operators can accept irregular point sets, but changing the sampling density can alter the empirical measure used by point aggregation. We study spatial resolution as a test-time compute resource and develop a measure-aware framework for adaptive point allocation with a frozen transformer neural operator.
+\begin{abstract}
+Neural operators provide efficient surrogates for partial differential equations (PDEs), but their inference cost is typically tied to a fixed spatial discretization or uniform subsampling. Such discretizations can waste computation when fine resolution is needed only in localized regions. However, changing the sampling density shifts the empirical measure in latent aggregation and can alter the continuous operator represented by a frozen point-based model. We introduce \textbf{AdaSolver}, a measure-aware framework for adaptive spatial computation at test time. We characterize sampling-induced bias and its propagation through Physics-Attention, then derive a sampling-density-consistent Transolver using self-normalized importance weighting. The corrected aggregation remains consistent with the reference measure, enabling adaptive point allocation guided by geometry and physics priors, coarse predictions, or a cache-aware learned refinement policy. We further extend variable-resolution learning to distribution-amortized training over both point counts and sampling densities. Experiments on five standard PDE benchmarks and three industrial aerodynamic prediction tasks show improved accuracy at matched point budgets, with solution-informed policies providing the strongest gains on the standard benchmarks. Airfoil and wing optimization further demonstrate the value of adaptive sampling for accelerating surrogate-based design. These results establish spatial sampling as a principled axis of test-time scaling for neural operators.
 \end{abstract}
 
 \input{sections/introduction.tex}
@@ -32,6 +34,9 @@ Neural operators can accept irregular point sets, but changing the sampling dens
 \input{sections/density_augmented_training.tex}
 
 \input{sections/experiments.tex}
+
+\FloatBarrier
+\input{sections/conclusion.tex}
 
 \bibliography{iclr2027_conference}
 \bibliographystyle{iclr2027_conference}
