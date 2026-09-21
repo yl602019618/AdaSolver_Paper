@@ -1,0 +1,29 @@
+\begin{table}[!htbp]
+    \centering
+    \footnotesize
+    \caption{Backbone configurations for the eight benchmarks. Batch sizes are global numbers of cases per optimization step. Learning rates are the initial rate for cosine decay and the peak rate for OneCycle. Sampling bounds are inclusive point counts.}
+    \label{tab:training_details}
+    \setlength{\tabcolsep}{2.3pt}
+    \renewcommand{\arraystretch}{1.18}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccccc@{}}
+        \toprule
+        & \multicolumn{5}{c}{Standard PDE benchmarks} & \multicolumn{3}{c}{Industrial applications} \\
+        \cmidrule(lr){2-6}\cmidrule(lr){7-9}
+        Parameter & Elasticity & Plasticity & Airfoil & Pipe & Darcy
+        & \shortstack{ShapeNet-\\Car} & DrivAerML & SuperWing \\
+        \midrule
+        Hidden width & 128 & 128 & 128 & 128 & 128 & 256 & 256 & 128 \\
+        Physics states & 64 & 64 & 64 & 64 & 64 & 32 & 32 & 64 \\
+        MLP ratio & 2 & 1 & 2 & 2 & 2 & 2 & 2 & 2 \\
+        \midrule
+        Learning rate & $10^{-3}$ & $10^{-3}$ & $10^{-3}$ & $10^{-3}$ & $10^{-3}$ & $10^{-3}$ & $2\!\times\!10^{-3}$ & $10^{-3}$ \\
+        Epochs & 500 & 1,000 & 1,000 & 1,000 & 1,000 & 400 & 1,000 & 1,000 \\
+        Batch size & 1 & 8 & 8 & 4 & 4 & 2 & 4 & 16 \\
+        Scheduler & Cosine & OneCycle & OneCycle & OneCycle & OneCycle & OneCycle & OneCycle & OneCycle \\
+        Loss & Rel.\ $L_2$ & Rel.\ $L_2$ & Rel.\ $L_2$ & Rel.\ $L_2$ & Rel.\ $L_2$ & Dual MSE & Rel.\ $L_2$ & Rel.\ $L_2$ \\
+        \midrule
+        Min. points & 389 & 1,252 & 4,508 & 6,656 & 7,225 & 12,874 & 85,900 & 9,830 \\
+        Max. points & 972 & 3,131 & 11,271 & 16,641 & 7,225 & 32,186 & 859,000 & 32,768 \\
+        \bottomrule
+    \end{tabular*}
+\end{table}

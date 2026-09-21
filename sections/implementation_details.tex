@@ -1,0 +1,185 @@
+\section{Implementation Details}
+\label{app:implementation_details}
+
+We describe the governing equations, data splits, and forward operators for the benchmarks used in our experiments. All sampling budgets are measured relative to the reference point sets specified below.
+
+\subsection{Standard Benchmarks}
+\label{app:standard_benchmarks}
+
+Elasticity and Plasticity follow the solid-mechanics benchmarks in Geo-FNO~\citep{li2023geofno}. Both satisfy momentum balance,
+\begin{equation}
+    \rho_s\frac{\partial^2\mathbf{u}}{\partial t^2}
+    =\nabla\!\cdot\boldsymbol{\sigma},
+    \label{eq:app_solid_balance}
+\end{equation}
+where $\rho_s$ is material density, $\mathbf{u}$ is displacement, and $\boldsymbol{\sigma}$ is stress. The two tasks use different constitutive laws to describe the material response.
+
+\paragraph{Elasticity.}
+This task predicts the equilibrium stress in a unit square containing an irregular central hole. The bottom edge is fixed, and the top edge is pulled upward. The material follows the incompressible Rivlin--Saunders model, with strain energy
+\begin{equation}
+    W=C_1(I_1-3)+C_2(I_2-3),
+    \label{eq:app_elasticity}
+\end{equation}
+where $I_1$ and $I_2$ are deformation invariants, $C_1=1.863\times10^5$, and $C_2=9.79\times10^3$. The hole radius varies between $0.2$ and $0.4$, and each geometry contains 972 unstructured points. The operator maps the geometry to the von Mises stress field, $\mathcal{G}_{\mathrm{elas}}:\Omega\mapsto\sigma_{\mathrm{vM}}(\cdot)$. We use 1,000 training, 800 validation, and 200 test geometries.
+
+\paragraph{Plasticity.}
+This task models a metal block compressed by a rigid, frictionless die with profile $S_d$. It follows \eqref{eq:app_solid_balance} with an elastoplastic stress law,
+\begin{equation}
+    \boldsymbol{\sigma}=\mathbb{C}:(\boldsymbol{\varepsilon}-\boldsymbol{\varepsilon}^{p}),
+    \label{eq:app_plasticity}
+\end{equation}
+where $\mathbb{C}$ is the elastic stiffness tensor, and $\boldsymbol{\varepsilon}$ and $\boldsymbol{\varepsilon}^{p}$ are total and plastic strain. The material obeys the von Mises yield criterion, with Young's modulus $200\,\mathrm{GPa}$, Poisson's ratio $0.3$, yield strength $70\,\mathrm{MPa}$, and density $7850\,\mathrm{kg\,m^{-3}}$. The $50\,\mathrm{mm}\times15\,\mathrm{mm}$ block is fixed at the bottom and compressed at $3\,\mathrm{m\,s^{-1}}$. We use 800 training, 107 validation, and 80 test cases. Each case contains a $101\times31$ mesh and 20 time steps. The operator maps the die profile to the displacement sequence, $\mathcal{G}_{\mathrm{plas}}:S_d\mapsto\{\mathbf{u}(\cdot,t_j)\}_{j=1}^{20}$, predicting both displacement components at all time steps in one pass.
+
+\paragraph{Airfoil.}
+The Airfoil benchmark~\citep{li2023geofno} describes transonic flow around deformations of a NACA-0012 airfoil. The steady inviscid flow satisfies the compressible Euler equations,
+\begin{equation}
+    \begin{aligned}
+        \nabla\!\cdot(\rho_f\mathbf{v})&=0,
+        &\nabla\!\cdot(\rho_f\mathbf{v}\otimes\mathbf{v}+p\mathbf{I})&=0,\\
+        \nabla\!\cdot[(\mathcal{E}+p)\mathbf{v}]&=0,
+        &p&=(\gamma-1)\left(\mathcal{E}-\tfrac12\rho_f\|\mathbf{v}\|^2\right),
+    \end{aligned}
+    \label{eq:app_airfoil}
+\end{equation}
+where $\rho_f$, $\mathbf{v}$, $p$, and $\mathcal{E}$ denote fluid density, velocity, pressure, and total energy per unit volume. The freestream conditions are $\rho_\infty=p_\infty=1$, $M_\infty=0.8$, and zero angle of attack, with $\gamma=1.4$ and no penetration at the airfoil surface. Each case uses a $221\times51$ body-fitted mesh with 11,271 points. The dataset split contains 1,000 training and 200 test cases. Our operator maps mesh coordinates to pressure, $\mathcal{G}_{\mathrm{airfoil}}:\Omega\mapsto p(\cdot)$, from which surface integration provides $C_D/C_L$.
+
+\paragraph{Pipe.}
+The Pipe benchmark~\citep{li2023geofno} considers incompressible viscous flow through two-dimensional pipes with varying centerlines. The governing Navier--Stokes equations are
+\begin{equation}
+    \frac{\partial\mathbf{v}}{\partial t}
+    +(\mathbf{v}\!\cdot\nabla)\mathbf{v}
+    =-\nabla p+\nu\Delta\mathbf{v},
+    \qquad
+    \nabla\!\cdot\mathbf{v}=0,
+    \label{eq:app_pipe}
+\end{equation}
+where $p$ is pressure divided by the constant density and $\nu=0.005$. The inlet has a parabolic velocity profile with unit peak speed; the walls satisfy no-slip conditions, and the outlet has a free boundary condition. Pipes have length 10 and width 1, with centerlines parameterized by piecewise cubic polynomials. The dataset contains 1,000 training and 200 test geometries, each discretized on a $129\times129$ mesh with 16,641 points. The forward operator $\mathcal{G}_{\mathrm{pipe}}:\Omega\mapsto v_x(\cdot)$ maps the two-dimensional mesh coordinates to the steady horizontal velocity field.
+
+\paragraph{Darcy.}
+The Darcy benchmark~\citep{li2021fno} models steady flow through a heterogeneous porous medium on $\Omega=(0,1)^2$,
+\begin{equation}
+    -\nabla\!\cdot\bigl(a(x)\nabla p(x)\bigr)=1
+    \quad\text{in }\Omega,
+    \qquad
+    p=0\quad\text{on }\partial\Omega,
+    \label{eq:app_darcy}
+\end{equation}
+where $a$ is the permeability coefficient and $p$ is pressure. The coefficient takes values 3 and 12 according to the sign of a Gaussian random field. Solutions are generated on a $421\times421$ grid and subsampled to an $85\times85$ reference grid of 7,225 points. We use 1,000 training and 200 test cases. The operator $\mathcal{G}_{\mathrm{Darcy}}:a(\cdot)\mapsto p(\cdot)$ maps the permeability field to pressure.
+
+\subsection{Industrial Applications}
+\label{app:industrial_benchmarks}
+
+The industrial tasks predict aerodynamic fields on three-dimensional vehicle and wing geometries. Drag and lift are obtained by integrating the predicted surface forces.
+
+\paragraph{ShapeNet-Car.}
+ShapeNet-Car~\citep{umetani2018learning,wu2024transolver} contains 889 car geometries simulated at a driving speed of $72\,\mathrm{km\,h^{-1}}$. The underlying three-dimensional flow is governed by the incompressible Navier--Stokes equations,
+\begin{equation}
+    \nabla\!\cdot\mathbf{v}=0,
+    \qquad
+    \rho_f\left(\frac{\partial\mathbf{v}}{\partial t}
+    +(\mathbf{v}\!\cdot\nabla)\mathbf{v}\right)
+    =-\nabla p+\mu\Delta\mathbf{v},
+    \label{eq:app_shapenet_car}
+\end{equation}
+where $\mu$ is dynamic viscosity. Each case contains 32,186 points covering the vehicle surface and surrounding volume. We use 710 training, 79 validation, and 100 test geometries. The operator maps coordinates, signed distance, and surface normals to velocity and pressure, $\mathcal{G}_{\mathrm{car}}:(\mathbf{x},\mathrm{SDF},\mathbf{n})\mapsto(\mathbf{v},p)$. Velocity is predicted over the full point cloud and pressure on the surface; both fields contribute to drag estimation.
+
+\paragraph{DrivAerML.}
+DrivAerML~\citep{ashton2024drivaerml} provides high-fidelity automotive aerodynamics for 500 deformations of the DrivAer vehicle. Its hybrid Reynolds-averaged Navier--Stokes/large-eddy simulations (RANS--LES) solve incompressible flow with modeled turbulent stresses. The resolved equations can be written as
+\begin{equation}
+    \nabla\!\cdot\overline{\mathbf{v}}=0,
+    \qquad
+    \rho_f\left(\frac{\partial\overline{\mathbf{v}}}{\partial t}
+    +(\overline{\mathbf{v}}\!\cdot\nabla)\overline{\mathbf{v}}\right)
+    =-\nabla\overline{p}
+    +\nabla\!\cdot\left(2\mu\overline{\mathbf{S}}-\rho_f\boldsymbol{\tau}_t\right),
+    \label{eq:app_drivaerml}
+\end{equation}
+where $\overline{\mathbf{S}}$ is the resolved strain-rate tensor and $\boldsymbol{\tau}_t$ represents unresolved turbulent stresses. We use the surface data at $U_\infty=38.889\,\mathrm{m\,s^{-1}}$, with about 8.8 million points per test geometry. Following the available split used with Transolver-3~\citep{zhou2026transolver3}, we use 400 training, 34 validation, and 50 test cases. Separate operators map coordinates and surface normals to pressure and wall shear stress, $\mathcal{G}_{\mathrm{DrivAer}}:(\mathbf{x},\mathbf{n})\mapsto(p,\boldsymbol{\tau}_w)$, which are integrated to estimate $C_D$.
+
+\paragraph{SuperWing.}
+SuperWing~\citep{yang2025superwing} contains 28,856 flow conditions over 4,239 transonic swept-wing geometries with variations in planform, twist, dihedral, and airfoil shape. The flow is governed by the steady compressible RANS equations,
+\begin{equation}
+    \begin{aligned}
+        \nabla\!\cdot(\rho_f\mathbf{v})&=0,\\
+        \nabla\!\cdot(\rho_f\mathbf{v}\otimes\mathbf{v}+p\mathbf{I})
+        &=\nabla\!\cdot\boldsymbol{\tau}_{\mathrm{eff}},\\
+        \nabla\!\cdot[(\mathcal{E}+p)\mathbf{v}]
+        &=\nabla\!\cdot(\boldsymbol{\tau}_{\mathrm{eff}}\mathbf{v}-\mathbf{q}_{\mathrm{eff}}),
+    \end{aligned}
+    \label{eq:app_superwing}
+\end{equation}
+where the variables denote mean-flow quantities, and $\boldsymbol{\tau}_{\mathrm{eff}}$ and $\mathbf{q}_{\mathrm{eff}}$ include molecular and modeled turbulent transport. ADflow generates the solutions at Mach numbers in $[0.75,0.90]$ and angles of attack in $[2^{\circ},12^{\circ}]$, with Reynolds number $2\times10^7$ and freestream temperature $300\,\mathrm{K}$.
+
+Each wing is represented by $128\times256=32{,}768$ surface points. We use 23,366 training, 2,619 validation, and 2,871 test cases, with no wing geometry shared across splits. The operator maps wing geometry, Mach number, and angle of attack to surface pressure and skin-friction coefficients, $\mathcal{G}_{\mathrm{wing}}:(\Gamma,M_\infty,\alpha)\mapsto(C_p,C_{f,\tau},C_{f,z})$, where $\tau$ and $z$ denote the streamwise and spanwise friction directions. These predicted fields determine the drag-to-lift ratio $C_D/C_L$.
+
+\subsection{Metrics}
+\label{app:metrics}
+
+\paragraph{Drag and lift coefficients.}
+Given the aerodynamic force $\mathbf{F}$, drag and lift coefficients are
+\begin{equation}
+    C_D=\frac{\mathbf{F}\!\cdot\mathbf{e}_D}{q_\infty A_{\mathrm{ref}}},
+    \qquad
+    C_L=\frac{\mathbf{F}\!\cdot\mathbf{e}_L}{q_\infty A_{\mathrm{ref}}},
+    \qquad
+    q_\infty=\tfrac12\rho_\infty U_\infty^2,
+    \label{eq:app_aerodynamic_coefficients}
+\end{equation}
+where $\mathbf{e}_D$ and $\mathbf{e}_L$ are the drag and lift directions, and $A_{\mathrm{ref}}$ is the reference area. We reconstruct sampled predictions on the full reference surface before force integration. For density design based on the drag-to-lift ratio $C_D/C_L$, we exclude cases with near-zero reference lift to avoid unstable ratios. All sampling methods use the same retained cases.
+
+\paragraph{DrivAerML and ShapeNet-Car.}
+Both car benchmarks include pressure and viscous contributions to drag. DrivAerML predicts pressure $p$ and wall shear stress $\boldsymbol{\tau}_w$ directly, while ShapeNet-Car estimates the viscous contribution from predicted velocity. Following their respective normal and traction conventions, the implemented coefficients are
+\begin{equation}
+    \begin{aligned}
+        C_D^{\mathrm{DrivAerML}}
+        &=\frac{\sum_i A_i\bigl(p_i n_{i,x}-\tau_{w,i,x}\bigr)}
+                {q_\infty A_{\mathrm{ref}}},\\
+        C_D^{\mathrm{ShapeNet\text{-}Car}}
+        &=-\frac{\sum_i A_i n_{i,z}\bigl(\bar p_i+\mu g_{i,z}\bigr)}
+                 {q_\infty A_{\mathrm{ref}}}.
+    \end{aligned}
+    \label{eq:app_car_drag}
+\end{equation}
+Here $A_i$ and $\mathbf{n}_i$ are surface-cell areas and normals. For ShapeNet-Car, $\bar p_i$ averages the four vertex pressures, and $g_{i,z}$ is the discrete gradient estimate of the streamwise velocity from the benchmark's quadrilateral surface stencil. DrivAerML uses its supplied reference area, whereas ShapeNet-Car uses the area of the surface's convex-hull projection onto the $x$--$y$ plane. The normalization uses $(\rho_\infty,U_\infty)=(1,38.889)$ for DrivAerML and $(0.3,20)$ for ShapeNet-Car, with $\mu=1.8\times10^{-5}$ for the latter.
+
+\paragraph{Airfoil.}
+The inviscid Airfoil benchmark~\citep{li2023geofno} uses pressure forces alone. For ordered surface nodes $(x_i,y_i)$, define $\Delta x_i=x_{i+1}-x_i$, $\Delta y_i=y_{i+1}-y_i$, and $\bar p_i=(p_i+p_{i+1})/2$. Trapezoidal integration along the surface gives
+\begin{equation}
+    C_D=-\frac{\sum_{i=1}^{n_s-1}\bar p_i\Delta y_i}{q_\infty c},
+    \qquad
+    C_L=\frac{\sum_{i=1}^{n_s-1}\bar p_i\Delta x_i}{q_\infty c},
+    \label{eq:app_airfoil_coefficients}
+\end{equation}
+where $n_s=121$, the reference chord is $c=1$, and $q_\infty=0.448$. The drag and lift directions coincide with the $x$ and $y$ axes because the angle of attack is zero.
+
+\paragraph{SuperWing.}
+SuperWing~\citep{yang2025superwing} integrates pressure and skin-friction coefficients on the wing surface. We first undo the stored friction-channel scaling factors of 150 and 300. Using the dataset's surface-normal convention, the dimensionless force vector is
+\begin{equation}
+    \mathbf{C}_F
+    =\frac{1}{A_{\mathrm{ref}}}\sum_i A_i
+    \left[
+        C_{p,i}\mathbf{n}_i
+        +(\mathbf{I}-\mathbf{n}_i\mathbf{n}_i^{\top})
+        \bigl(C_{f,\tau,i}\mathbf{t}_i+C_{f,z,i}\mathbf{e}_z\bigr)
+    \right],
+    \label{eq:app_superwing_force}
+\end{equation}
+where $\mathbf{t}_i$ is the local chordwise direction in the $x$--$y$ plane, and $A_{\mathrm{ref}}$ is the half-wing reference area. The tangential projection converts the stored friction components into surface traction. Rotating by the angle of attack $\alpha$ gives
+\begin{equation}
+    C_D=C_{F,x}\cos\alpha+C_{F,y}\sin\alpha,
+    \qquad
+    C_L=-C_{F,x}\sin\alpha+C_{F,y}\cos\alpha.
+    \label{eq:app_superwing_coefficients}
+\end{equation}
+
+\clearpage
+\subsection{Training Details}
+\label{app:training_details}
+
+All backbones follow the Transolver architecture~\citep{wu2024transolver}, with eight Physics-Attention blocks and eight attention heads per block. Table~\ref{tab:training_details} summarizes the task-specific model and training parameters. We use AdamW with weight decay $10^{-5}$ and gradient-norm clipping at $0.1$. Experiments run on a server equipped with eight NVIDIA H20 GPUs and two Intel Xeon Platinum 8457C processors, providing 96 physical CPU cores and 192 hardware threads.
+
+\input{tables/training_details.tex}
+
+We adopt geometry-amortized training~\citep{zhou2026transolver3} by resampling a uniform subset of mesh points at each optimization step. The subset size is drawn uniformly from the integer interval specified in Table~\ref{tab:training_details}, and points are sampled without replacement. The lower bound is $\operatorname{round}(0.4N)$ for Elasticity, Plasticity, Airfoil, Pipe, and ShapeNet-Car, and $\operatorname{round}(0.3N)$ for SuperWing, where $N$ is the full-mesh point count. DrivAerML uses the absolute range $[85{,}900,859{,}000]$ for both its pressure and wall-shear-stress models. Darcy is trained on the full mesh. Each backbone remains frozen during sampling-policy evaluation.
+
+DrivAerML uses four workers with one case per worker, giving a global batch size of four and a peak learning rate of $10^{-3}\sqrt{4}=2\times10^{-3}$. Training minimizes relative $L_2$ error except on ShapeNet-Car, which uses velocity MSE plus $0.5$ times surface-pressure MSE in normalized output space.
