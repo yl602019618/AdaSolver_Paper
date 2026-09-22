@@ -1,5 +1,5 @@
 {
-  "source": "总图.pptx",
+  "source": "总图1.pptx",
   "renderer": "LibreOffice Impress; native Office equations restored as LaTeX vectors during PDF export",
   "raster_dpi": 600,
   "figures": [
@@ -7,60 +7,57 @@
       "name": "fig1_overview",
       "source_slide": 1,
       "crop_box_points": [
-        345.96732065099457,
+        346.9672278119349,
         26.47345061199001,
-        1042.9037258951175,
-        509.5882802597835
+        1040.4039579927667,
+        482.610336674438
       ],
-      "paper_scale": 0.5682010539559762,
-      "width_px": 5808,
-      "height_px": 4026
+      "paper_scale": 0.5710686826420813,
+      "width_px": 5779,
+      "height_px": 3802
     },
     {
       "name": "fig2_field_comparison",
       "source_slide": 2,
       "crop_box_points": [
-        49.49484743218807,
-        38.963239308909245,
-        1347.3754564014466,
-        565.0429420741049
+        65.49336200723327,
+        51.95261955370525,
+        1330.8769882459312,
+        457.6307592805995
       ],
-      "paper_scale": 0.30511281027188814,
-      "width_px": 10816,
-      "height_px": 4384
+      "paper_scale": 0.31294857289808165,
+      "width_px": 10545,
+      "height_px": 3381
     },
     {
       "name": "fig3_airfoil_optimization",
       "source_slide": 3,
       "crop_box_points": [
-        180.48268551537072,
-        100.91259124562865,
-        1252.3842761121157,
-        463.12626630724395
+        195.98124650994575,
+        102.91095743713572,
+        1237.385668698011,
+        461.12790011573685
       ],
-      "paper_scale": 0.3694368993141809,
-      "width_px": 8933,
-      "height_px": 3019
+      "paper_scale": 0.380255731167317,
+      "width_px": 8679,
+      "height_px": 2986
     },
     {
       "name": "fig4_superwing_optimization",
       "source_slide": 4,
       "crop_box_points": [
-        177.98291761301988,
-        106.90768982014987,
-        1202.8888716455697,
-        468.6217733338884
+        178.98282477396023,
+        107.9068729159034,
+        1157.3930958227847,
+        459.1295339242298
       ],
-      "paper_scale": 0.38637691433239885,
-      "width_px": 8541,
-      "height_px": 3015
+      "paper_scale": 0.4047381877701475,
+      "width_px": 8154,
+      "height_px": 2927
     }
   ],
-  "typography_revision": "One font step smaller than the preceding enlarged export",
-  "text_scale_vs_large": 0.9,
-  "geometry_unchanged": true,
-  "scientific_values_unchanged": true,
-  "source_image_content_unchanged": true,
-  "curve_paths_unchanged": true,
-  "office_equations_preserved": true
+  "source_presentation_edited_by_user": true,
+  "source_presentation_modified_by_export": false,
+  "original_equations_verified": true,
+  "upstream_manuscript_commit": "3b69746dedb66b3c907471bf66e345b994a2c08e"
 }

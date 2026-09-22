@@ -87,4 +87,4 @@ so the coarse values can be cached and only the contributions from $B$ need to b
     \right),
     \label{eq:learned_refinement_score}
 \end{equation}
-and use this score in \eqref{eq:unified_refinement_measure}. Token attention, deslicing, and later blocks still run on $S_1$, because $B$ changes the global token states.
+and use this score in \eqref{eq:unified_refinement_measure}. The head can alternatively learn $s_{\mathrm{head}}$ directly. Token attention, deslicing, and later blocks still run on $S_1$, because $B$ changes the global token states. Appendix~\ref{app:density_policy_design} gives the task-specific features and density constructions for all three policies.
