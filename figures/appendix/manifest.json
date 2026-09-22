@@ -1,0 +1,1308 @@
+{
+  "cases": [
+    {
+      "case": "airfoil2d",
+      "sample_id": 1103,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "pressure",
+          "label": "Pressure",
+          "unit": "",
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              0.4438939392566681,
+              1.2825816822051992
+            ],
+            "cmap": "coolwarm",
+            "label": "Pressure",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.30000000000000004,
+              0.30000000000000004
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.038328453553367045,
+              "pi": 8.872327211427557e-05,
+              "cpg": 0.001242125809599858,
+              "ca": 0.000621062904799929
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 9.907656437715056,
+              "MAE": 0.03591005087693971,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 1.3274361040398457,
+              "MAE": 0.002752295555624407,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 1.7280393132835037,
+              "MAE": 0.003159811995275124,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 1.6124344287453232,
+              "MAE": 0.003059225405526317,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    },
+    {
+      "case": "pipe",
+      "sample_id": 1156,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "velocity_x",
+          "label": "Velocity x",
+          "unit": "",
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -0.00027707695960998535,
+              0.2906037386258443
+            ],
+            "cmap": "coolwarm",
+            "label": "Velocity x",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.005,
+              0.005
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.04230514993089358,
+              "pi": 0.006970734931794964,
+              "cpg": 6.009254251547383e-05,
+              "ca": 0.0009614806802475813
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 1.3114494013210707,
+              "MAE": 0.0011244843811543895,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 0.6186031820864137,
+              "MAE": 0.0006370229236068966,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 0.23515204017221514,
+              "MAE": 0.0002801012055545779,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 0.2989006883908753,
+              "MAE": 0.0003067408436678182,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    },
+    {
+      "case": "darcy",
+      "sample_id": 1056,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "solution",
+          "label": "Solution",
+          "unit": "",
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              8.838534162519027e-06,
+              0.015226470870697333
+            ],
+            "cmap": "coolwarm",
+            "label": "Solution",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.0005,
+              0.0005
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.03847750865051903,
+              "pi": 0.0,
+              "cpg": 0.0,
+              "ca": 0.0
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 3.2134396645043526,
+              "MAE": 0.0001952474517050957,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 1.0402519202260045,
+              "MAE": 5.763432055765201e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 0.684567568278392,
+              "MAE": 3.259229029326134e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 0.7304977976505033,
+              "MAE": 3.343606716020931e-05,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    },
+    {
+      "case": "elasticity",
+      "sample_id": 1701,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "stress",
+          "label": "Stress",
+          "unit": "",
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              10.470197677612305,
+              736.0357521972657
+            ],
+            "cmap": "coolwarm",
+            "label": "Stress",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -100,
+              100
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.03806584362139918,
+              "pi": 0.0,
+              "cpg": 0.00205761316872428,
+              "ca": 0.00102880658436214
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 21.0037913363624,
+              "MAE": 22.628575777163707,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 5.519244488444432,
+              "MAE": 6.044974112861038,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 4.852123990073995,
+              "MAE": 4.398159064105112,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 5.079025324720008,
+              "MAE": 4.5853153719574395,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    },
+    {
+      "case": "plasticity2d",
+      "sample_id": 956,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "ux",
+          "label": "Mean displacement x",
+          "channel": 0,
+          "vector": false,
+          "unit": "",
+          "temporal": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -0.5600240243385097,
+              0.5242131369813771
+            ],
+            "cmap": "coolwarm",
+            "label": "Mean displacement x",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              0,
+              0.08
+            ],
+            "cmap": "RdBu_r_positive",
+            "label": "Time-mean error",
+            "unit": "",
+            "definition": "Time-weighted mean per-step absolute component error",
+            "extend": "max",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.017885659533695305,
+              "pi": 0.0,
+              "cpg": 0.0,
+              "ca": 0.0006387735547748323
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 8.069064216713844,
+              "MAE": 0.032625984947791085,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "pi": {
+              "relative_L2_percent": 4.6413535111024204,
+              "MAE": 0.016561753391175917,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "cpg": {
+              "relative_L2_percent": 4.44937876359906,
+              "MAE": 0.015435985070147963,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "ca": {
+              "relative_L2_percent": 4.637689715154178,
+              "MAE": 0.01678449189461543,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            }
+          }
+        },
+        {
+          "key": "uy",
+          "label": "Mean displacement y",
+          "channel": 1,
+          "vector": false,
+          "unit": "",
+          "temporal": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -2.7043727185912423,
+              0.15321188888326034
+            ],
+            "cmap": "coolwarm",
+            "label": "Mean displacement y",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              0,
+              0.08
+            ],
+            "cmap": "RdBu_r_positive",
+            "label": "Time-mean error",
+            "unit": "",
+            "definition": "Time-weighted mean per-step absolute component error",
+            "extend": "max",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.05014372404982434,
+              "pi": 0.0012775471095496647,
+              "cpg": 0.00031938677738741617,
+              "ca": 0.0025550942190993293
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 8.279908625766755,
+              "MAE": 0.02345306144499807,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "pi": {
+              "relative_L2_percent": 4.195507906882682,
+              "MAE": 0.014312482603987185,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "cpg": {
+              "relative_L2_percent": 4.247831090654522,
+              "MAE": 0.01424097956322222,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "ca": {
+              "relative_L2_percent": 4.224030121197369,
+              "MAE": 0.014374291661516103,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            }
+          }
+        },
+        {
+          "key": "umag",
+          "label": "Mean displacement magnitude",
+          "channel": null,
+          "vector": true,
+          "unit": "",
+          "temporal": true,
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              0.14335820212533176,
+              2.70557698274124
+            ],
+            "cmap": "viridis",
+            "label": "Mean displacement magnitude",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              0,
+              0.15000000000000002
+            ],
+            "cmap": "RdBu_r_positive",
+            "label": "Time-mean error",
+            "unit": "",
+            "definition": "Time-weighted mean per-step vector error norm",
+            "extend": "max",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.021398914084956883,
+              "pi": 0.0,
+              "cpg": 0.0,
+              "ca": 0.0006387735547748323
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 8.190111509194523,
+              "MAE": 0.046302733019380975,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "pi": {
+              "relative_L2_percent": 4.392342763920644,
+              "MAE": 0.024601830441377846,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "cpg": {
+              "relative_L2_percent": 4.3354521008006515,
+              "MAE": 0.023556484922286125,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            },
+            "ca": {
+              "relative_L2_percent": 4.406268257690794,
+              "MAE": 0.024890922967935124,
+              "definition": "Weighted full space-time relative L2; image is weighted mean of per-step absolute/vector errors"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Time-weighted mean per-step absolute/component or vector error"
+    },
+    {
+      "case": "shapenet_car",
+      "sample_id": "param0/1137cd58d6a45c6659a47b1880958de9",
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "pressure",
+          "label": "Pressure",
+          "unit": "Pa",
+          "channel": 3,
+          "surface": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -151.57882690429688,
+              193.44927978515625
+            ],
+            "cmap": "coolwarm",
+            "label": "Pressure",
+            "unit": "Pa"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -15.0,
+              15.0
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "Pa",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.042368278109722976,
+              "pi": 0.0076045627376425855,
+              "cpg": 0.009234111895708854,
+              "ca": 0.009505703422053232
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 26.585963669887814,
+              "MAE": 3.611628915980005,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 4.6510198468968404,
+              "MAE": 1.1333936780260139,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 5.048325728770388,
+              "MAE": 1.1351710758599443,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 5.0534606878408415,
+              "MAE": 1.145702169997651,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "vx",
+          "label": "Velocity x",
+          "unit": "m/s",
+          "channel": 0,
+          "vector": false,
+          "velocity": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -6.260064125061035,
+              6.310821056365967
+            ],
+            "cmap": "coolwarm",
+            "label": "Velocity x",
+            "unit": "m/s"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.30000000000000004,
+              0.30000000000000004
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "m/s",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.038339650779842166,
+              "pi": 0.03414528055676381,
+              "cpg": 0.02637792829180389,
+              "ca": 0.026440067109923568
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 23.497236183652635,
+              "MAE": 0.08058373940085478,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 12.227464960401383,
+              "MAE": 0.07116216384626829,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 10.335018148984759,
+              "MAE": 0.06412492975017961,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 10.35315969520777,
+              "MAE": 0.06427965371247837,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "vy",
+          "label": "Velocity y",
+          "unit": "m/s",
+          "channel": 1,
+          "vector": false,
+          "velocity": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -7.450355052947998,
+              6.1771721839904785
+            ],
+            "cmap": "coolwarm",
+            "label": "Velocity y",
+            "unit": "m/s"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.30000000000000004,
+              0.30000000000000004
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "m/s",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.0474429876343752,
+              "pi": 0.04293792332069844,
+              "cpg": 0.036289069781892745,
+              "ca": 0.036289069781892745
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 31.08713053193489,
+              "MAE": 0.09350276290153246,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 15.561167798795701,
+              "MAE": 0.07810810234216545,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 12.811698573395828,
+              "MAE": 0.06912038704135602,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 12.716431444206057,
+              "MAE": 0.0695145639806771,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "vz",
+          "label": "Velocity z",
+          "unit": "m/s",
+          "channel": 2,
+          "vector": false,
+          "velocity": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -2.779777765274048,
+              22.451332092285156
+            ],
+            "cmap": "coolwarm",
+            "label": "Velocity z",
+            "unit": "m/s"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -3,
+              3
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "m/s",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.03855713664326105,
+              "pi": 0.03517057105573852,
+              "cpg": 0.022090349841546012,
+              "ca": 0.023022432113341203
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 7.549624883758308,
+              "MAE": 0.5115618499209417,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 6.245702213605781,
+              "MAE": 0.49612343935811715,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 4.922848482090007,
+              "MAE": 0.3976099501485842,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 4.979379536816621,
+              "MAE": 0.40125255137778926,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "speed",
+          "label": "Speed",
+          "unit": "m/s",
+          "channel": null,
+          "vector": true,
+          "velocity": true,
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              0.0,
+              22.76689910888672
+            ],
+            "cmap": "viridis",
+            "label": "Speed",
+            "unit": "m/s"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              0,
+              3
+            ],
+            "cmap": "RdBu_r_positive",
+            "label": "Vector error norm",
+            "unit": "m/s",
+            "definition": "Euclidean vector error norm",
+            "extend": "max",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.04104268936804822,
+              "pi": 0.03607158391847387,
+              "cpg": 0.022711738022742806,
+              "ca": 0.023581681476418318
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 7.94730290876346,
+              "MAE": 0.5595042339624103,
+              "definition": "Euclidean vector relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 6.35491652570457,
+              "MAE": 0.5383621502386108,
+              "definition": "Euclidean vector relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 5.0212045187724925,
+              "MAE": 0.4384522867411044,
+              "definition": "Euclidean vector relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 5.075308738480341,
+              "MAE": 0.44225723837292863,
+              "definition": "Euclidean vector relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    },
+    {
+      "case": "driverml",
+      "sample_id": 337,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "pressure",
+          "label": "Pressure",
+          "unit": "Pa",
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -1463.0072021484375,
+              708.92236328125
+            ],
+            "cmap": "coolwarm",
+            "label": "Pressure",
+            "unit": "Pa"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -80.0,
+              80.0
+            ],
+            "cmap": "coolwarm",
+            "label": "Prediction − GT",
+            "unit": "Pa",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.01170390310797703,
+              "pi": 0.009816649308499042,
+              "cpg": 0.006645467788200367,
+              "ca": 0.0068489216598791045
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 7.485047494403114,
+              "MAE": 9.890403100733423,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 6.592174751635894,
+              "MAE": 9.530045508549673,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 5.85343928122328,
+              "MAE": 8.760656433808578,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 5.894123207418558,
+              "MAE": 8.756955891146154,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "wss_x",
+          "label": "Wall shear x",
+          "unit": "Pa",
+          "channel": 0,
+          "vector": false,
+          "wss": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -11.821572303771973,
+              2.556283473968506
+            ],
+            "cmap": "coolwarm",
+            "label": "Wall shear x",
+            "unit": "Pa"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.5,
+              0.5
+            ],
+            "cmap": "coolwarm",
+            "label": "Prediction − GT",
+            "unit": "Pa",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.028640861241922107,
+              "pi": 0.026674025145699037,
+              "cpg": 0.023071945856357415,
+              "ca": 0.02278521891475121
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 9.263483823981668,
+              "MAE": 0.10367845350911448,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 8.647618288563587,
+              "MAE": 0.10097774430798542,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 8.15062173379633,
+              "MAE": 0.09682681971684587,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 8.206640117967877,
+              "MAE": 0.09668094071807501,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "wss_y",
+          "label": "Wall shear y",
+          "unit": "Pa",
+          "channel": 1,
+          "vector": false,
+          "wss": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -8.086784362792969,
+              8.203216552734375
+            ],
+            "cmap": "coolwarm",
+            "label": "Wall shear y",
+            "unit": "Pa"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.30000000000000004,
+              0.30000000000000004
+            ],
+            "cmap": "coolwarm",
+            "label": "Prediction − GT",
+            "unit": "Pa",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.04379125448227102,
+              "pi": 0.0413085174971483,
+              "cpg": 0.03614005100187191,
+              "ca": 0.036587557250235575
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 14.708375220357258,
+              "MAE": 0.07717112121235888,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 13.190820124038904,
+              "MAE": 0.074312393739734,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 11.912883504690598,
+              "MAE": 0.06987463239465046,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 12.37300023034227,
+              "MAE": 0.07070046405145983,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "wss_z",
+          "label": "Wall shear z",
+          "unit": "Pa",
+          "channel": 2,
+          "vector": false,
+          "wss": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -5.895689487457275,
+              6.3065104484558105
+            ],
+            "cmap": "coolwarm",
+            "label": "Wall shear z",
+            "unit": "Pa"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.30000000000000004,
+              0.30000000000000004
+            ],
+            "cmap": "coolwarm",
+            "label": "Prediction − GT",
+            "unit": "Pa",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.038936849717482847,
+              "pi": 0.0368598671090981,
+              "cpg": 0.031832457351385825,
+              "ca": 0.03203025972662905
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 15.229218507347104,
+              "MAE": 0.07117130874671712,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 14.26956008150641,
+              "MAE": 0.06950792086704023,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 13.078887362968445,
+              "MAE": 0.06563188145709133,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 13.36429862711786,
+              "MAE": 0.06606805341465462,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "wss_mag",
+          "label": "Wall shear magnitude",
+          "unit": "Pa",
+          "channel": null,
+          "vector": true,
+          "wss": true,
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              0.013340572826564312,
+              14.15816593170166
+            ],
+            "cmap": "viridis",
+            "label": "Wall shear magnitude",
+            "unit": "Pa"
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              0,
+              0.8
+            ],
+            "cmap": "coolwarm_positive",
+            "label": "Vector error norm",
+            "unit": "Pa",
+            "definition": "Euclidean vector error norm",
+            "extend": "max",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.025428619869969447,
+              "pi": 0.022653158436819153,
+              "cpg": 0.018214542338358553,
+              "ca": 0.018770580385616596
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 11.506547908656705,
+              "MAE": 0.17258216173957516,
+              "definition": "Euclidean vector relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 10.610538896948885,
+              "MAE": 0.1675785801388887,
+              "definition": "Euclidean vector relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 9.80203096574795,
+              "MAE": 0.15918440589261884,
+              "definition": "Euclidean vector relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 10.000278029203953,
+              "MAE": 0.15997517788872714,
+              "definition": "Euclidean vector relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual scalar sampling guidance, normalized for display; original selected points overlaid.",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    },
+    {
+      "case": "superwing",
+      "sample_id": 2048,
+      "budget": 0.375,
+      "seed": 0,
+      "fields": [
+        {
+          "key": "cp",
+          "label": "Pressure coefficient",
+          "unit": "",
+          "channel": 0,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -1.2712863683700562,
+              0.723706485271454
+            ],
+            "cmap": "coolwarm",
+            "label": "Pressure coefficient",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.04,
+              0.04
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.016571044921875,
+              "pi": 0.002899169921875,
+              "cpg": 0.0020751953125,
+              "ca": 0.00146484375
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 8.466733846622944,
+              "MAE": 0.005928974883970159,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 2.0310111466659038,
+              "MAE": 0.0031543669703245772,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 1.5153847670651348,
+              "MAE": 0.0029639232706982774,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 1.986226314257172,
+              "MAE": 0.0029421551409865004,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "cf_tau",
+          "label": "Friction coefficient, tangent",
+          "unit": "",
+          "channel": 0,
+          "vector": false,
+          "friction": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -0.005526144129435221,
+              0.007829507985115055
+            ],
+            "cmap": "coolwarm",
+            "label": "Friction coefficient, tangent",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -0.00015000000000000001,
+              0.00015000000000000001
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.035675048828125,
+              "pi": 0.019256591796875,
+              "cpg": 0.019195556640625,
+              "ca": 0.019805908203125
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 6.3310275547468,
+              "MAE": 3.978029629160869e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 1.9391298989510044,
+              "MAE": 2.3046707709324045e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 2.0487961780994084,
+              "MAE": 2.3514263307265496e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 2.1598649658521833,
+              "MAE": 2.333546311465418e-05,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "cf_z",
+          "label": "Friction coefficient, span",
+          "unit": "",
+          "channel": 1,
+          "vector": false,
+          "friction": true,
+          "field_style": {
+            "kind": "two_slope",
+            "limits": [
+              -0.004146370222568511,
+              0.0010690916113058734
+            ],
+            "cmap": "coolwarm",
+            "label": "Friction coefficient, span",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              -5e-05,
+              5e-05
+            ],
+            "cmap": "RdBu_r",
+            "label": "Prediction − GT",
+            "unit": "",
+            "definition": "Signed prediction minus ground truth",
+            "extend": "both",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.045806884765625,
+              "pi": 0.029815673828125,
+              "cpg": 0.026123046875,
+              "ca": 0.028167724609375
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 20.303356301896642,
+              "MAE": 2.335678353095051e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 5.473481844483802,
+              "MAE": 1.1924614218843118e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 3.180256608052594,
+              "MAE": 1.070861570954719e-05,
+              "definition": "Full-support scalar relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 4.57909027322026,
+              "MAE": 1.1188069947536826e-05,
+              "definition": "Full-support scalar relative L2"
+            }
+          }
+        },
+        {
+          "key": "cf_mag",
+          "label": "Friction magnitude",
+          "unit": "",
+          "channel": null,
+          "vector": true,
+          "friction": true,
+          "field_style": {
+            "kind": "linear",
+            "limits": [
+              0.0004961538835804904,
+              0.007983191230853176
+            ],
+            "cmap": "viridis",
+            "label": "Friction magnitude",
+            "unit": ""
+          },
+          "error_style": {
+            "kind": "linear",
+            "limits": [
+              0,
+              0.00015000000000000001
+            ],
+            "cmap": "RdBu_r_positive",
+            "label": "Vector error norm",
+            "unit": "",
+            "definition": "Euclidean vector error norm",
+            "extend": "max",
+            "range_rule": "Shared across all four methods; rounded maximum method P95 absolute residual, with reference limits for DrivAerML pressure and SuperWing Cp",
+            "out_of_range_fraction": {
+              "uniform": 0.042755126953125,
+              "pi": 0.02301025390625,
+              "cpg": 0.02313232421875,
+              "ca": 0.02337646484375
+            }
+          },
+          "metrics": {
+            "uniform": {
+              "relative_L2_percent": 7.486377229428211,
+              "MAE": 5.0758864675869335e-05,
+              "definition": "Euclidean vector relative L2"
+            },
+            "pi": {
+              "relative_L2_percent": 2.209994978149262,
+              "MAE": 2.8003779909066852e-05,
+              "definition": "Euclidean vector relative L2"
+            },
+            "cpg": {
+              "relative_L2_percent": 2.109825903779878,
+              "MAE": 2.778741276113629e-05,
+              "definition": "Euclidean vector relative L2"
+            },
+            "ca": {
+              "relative_L2_percent": 2.3161112144991414,
+              "MAE": 2.7898012757848498e-05,
+              "definition": "Euclidean vector relative L2"
+            }
+          }
+        }
+      ],
+      "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
+    }
+  ],
+  "curve_source": "normalized_curve_points.csv",
+  "curve_points": 144,
+  "curve_reference": "Full mesh = 1"
+}

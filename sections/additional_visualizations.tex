@@ -1,0 +1,211 @@
+\section{Accuracy Across Point Budgets}
+\label{app:budget_curves}
+
+The rAUEC tables summarize performance over a range of point budgets.
+Figure~\ref{fig:appendix_budget_curves} shows the corresponding error profiles
+at $37.5\%$, $50\%$, and $75\%$ of the reference point count. For each task and
+metric, we divide the error by the full-mesh mean error of the same frozen
+backbone on the same test cases. The horizontal line at one therefore marks
+full-mesh accuracy. The curves show means over three sampling seeds, with
+shaded bands indicating one sample standard deviation. This normalization
+compares each budget with the full mesh. The rAUEC metric in \eqref{eq:rauec} uses
+the area under the Uniform error curve as its denominator.
+
+Increasing the budget generally brings field errors closer to the full-mesh
+reference. The relative ordering of the policies depends on the task and
+output quantity. On Darcy, CPG and CA already approach the full-mesh field
+error at the smallest budget, while PI remains close to Uniform. Aerodynamic
+quantities on the car and wing benchmarks often approach the reference with
+fewer points than their field metrics. The Airfoil coefficient panel also
+shows appreciable seed variation, which is visible on its logarithmic axis.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figures/appendix/budget_error_curves.pdf}
+    \caption{\textbf{Error relative to the full mesh across point budgets.}
+    Panels (a)--(h) show field metrics and (i)--(l) show aerodynamic quantities.
+    Error definitions follow Section~\ref{sec:experiment_implementation}.
+    The Airfoil $C_D/C_L$ metric is an absolute coefficient-ratio error before
+    normalization, and panel (i) uses a logarithmic vertical axis. The dotted
+    reference line is one in every panel.}
+    \label{fig:appendix_budget_curves}
+\end{figure}
+
+\clearpage
+\section{Additional Field Visualizations}
+\label{app:field_visualizations}
+
+The following pages connect the aggregate error profiles to spatial sampling
+and reconstruction. Each page shows one held-out geometry at a $37.5\%$ point
+budget with sampling seed zero. These examples were selected for visible
+differences between sampling policies. Their annotations report errors for
+the displayed case. The preceding curves summarize the test populations.
+
+The first two rows show sampling locations and the policy's refinement
+feature. Features are rescaled from each policy's minimum to its 99th
+percentile for display, with larger values clipped at the upper end of the
+colour scale. Uniform has no refinement feature. Each physical quantity then
+has a ground-truth view and matched prediction and error rows. Field and
+error ranges are shared across methods within that quantity. Colour-bar
+arrows indicate values outside the displayed range. Component errors are
+signed prediction-minus-ground-truth residuals. Magnitude rows show
+nonnegative vector error norms, and Plasticity uses the temporal aggregation
+specified below.
+
+\subsection{Airfoil}
+\label{app:vis_airfoil}
+
+The pressure jump in this example makes errors in its location visible as
+a narrow residual band. All three adaptive policies reduce the field error
+relative to Uniform. PI gives the lowest error for this particular geometry,
+illustrating the task-dependent policy ordering seen in the budget curves.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/airfoil2d_fields.pdf}
+    \caption{\textbf{Airfoil pressure, case 1103.} Sampling, refinement
+    features, pressure predictions, and signed residuals share a common view.
+    Relative $L_2$ errors are $9.91\%$ for Uniform, $1.33\%$ for PI,
+    $1.73\%$ for CPG, and $1.61\%$ for CA.}
+    \label{fig:appendix_airfoil}
+\end{figure}
+
+\clearpage
+\subsection{Pipe}
+\label{app:vis_pipe}
+
+The predicted horizontal-velocity fields have similar overall structure,
+while the shared residual scale exposes differences along the curved pipe.
+CPG and CA reduce the error to $0.24\%$ and $0.30\%$, respectively,
+compared with $1.31\%$ under Uniform sampling.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/pipe_fields.pdf}
+    \caption{\textbf{Pipe velocity, case 1156.} The physical-field rows show
+    horizontal velocity and its signed residual. The four methods use the
+    same geometry, point budget, and colour limits. Error annotations are
+    computed on the full reference point set.}
+    \label{fig:appendix_pipe}
+\end{figure}
+
+\clearpage
+\subsection{Darcy}
+\label{app:vis_darcy}
+
+The refinement policies assign different importance to regions of the
+heterogeneous medium. The CPG and CA allocations produce similar solution
+fields and smaller residuals than Uniform in this example, consistent with
+their aggregate advantage on Darcy in Figure~\ref{fig:appendix_budget_curves}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/darcy_fields.pdf}
+    \caption{\textbf{Darcy solution, case 1056.} The solution and signed
+    residual are displayed below the sampling and refinement-feature rows.
+    Relative $L_2$ error decreases from $3.21\%$ for Uniform to $1.04\%$,
+    $0.68\%$, and $0.73\%$ for PI, CPG, and CA, respectively.}
+    \label{fig:appendix_darcy}
+\end{figure}
+
+\clearpage
+\subsection{Elasticity}
+\label{app:vis_elasticity}
+
+The irregular hole creates localized stress structure. The residual views
+show the reduction in reconstruction error around this region under adaptive
+sampling. CPG and CA attain similar errors, with PI also improving
+substantially upon the uniform allocation.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/elasticity_fields.pdf}
+    \caption{\textbf{Elasticity stress, case 1701.} Stress predictions and
+    signed residuals use shared ranges across methods. The relative $L_2$
+    errors are $21.00\%$, $5.52\%$, $4.85\%$, and $5.08\%$ for Uniform,
+    PI, CPG, and CA, respectively.}
+    \label{fig:appendix_elasticity}
+\end{figure}
+
+\clearpage
+\subsection{Plasticity}
+\label{app:vis_plasticity}
+
+Plasticity predicts a sequence of 20 displacement fields. We summarize all
+recorded steps with equal weights, $w_t=1/20$, because the time grid is
+uniform. The field rows show time-averaged components and displacement
+magnitude. Component-error rows average the absolute residual at each step.
+The magnitude-error row averages the vector residual norm. The annotated
+$L_2$ errors use the weighted space--time fields over all 20 steps.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/plasticity2d_fields.pdf}
+    \caption{\textbf{Plasticity displacement, case 956.} Both displacement
+    components and their magnitude are retained. Error colour scales are
+    nonnegative because errors are aggregated after taking per-step absolute
+    values or vector norms. All methods use the same temporal weights.}
+    \label{fig:appendix_plasticity}
+\end{figure}
+
+\clearpage
+\subsection{ShapeNet-Car}
+\label{app:vis_shapenet}
+
+The automotive examples contain both surface and volumetric outputs.
+For ShapeNet-Car, pressure is shown on the surface, and a fixed geometric
+slice exposes the three velocity components and speed in the surrounding
+volume. Error annotations use each field's full native support. This view
+connects changes in point allocation to both pressure and velocity accuracy.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/shapenet_car_fields.pdf}
+    \caption{\textbf{ShapeNet-Car surface and volume fields.} Pressure,
+    three velocity components, and speed are shown for the selected geometry.
+    Component rows use signed residuals; the speed row displays the Euclidean
+    velocity-error norm. The displayed volume slice is fixed across methods.}
+    \label{fig:appendix_shapenet}
+\end{figure}
+
+\clearpage
+\subsection{DrivAerML}
+\label{app:vis_drivaer}
+
+DrivAerML provides pressure and wall-shear-stress predictions on the same
+vehicle surface. We reuse each pressure sampler's point indices for the
+frozen wall-shear-stress operator. The figure therefore shows how these
+allocations affect pressure, all three shear components, and their vector
+magnitude on a shared geometry.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/driverml_fields.pdf}
+    \caption{\textbf{DrivAerML pressure and wall shear, Run 337.} The
+    pressure and shear predictions use matched sampling locations for each
+    method. The shear-magnitude error is the vector residual norm; other
+    physical-field rows show signed component residuals. All error labels
+    are computed on the full surface.}
+    \label{fig:appendix_drivaer}
+\end{figure}
+
+\clearpage
+\subsection{SuperWing}
+\label{app:vis_superwing}
+
+The SuperWing page retains pressure and both friction components, together
+with friction magnitude. The stored friction-channel scaling factors are
+undone before visualization. Policy ordering varies across these outputs:
+CPG gives the smallest pressure error for this wing, while PI gives the
+smallest tangent-friction error. The individual rows expose this variation
+beyond the joint field metric.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth,height=.69\textheight,keepaspectratio]{figures/appendix/superwing_fields.pdf}
+    \caption{\textbf{SuperWing surface fields, case 2048.} The pressure
+    coefficient, tangent and spanwise friction coefficients, and friction
+    magnitude share a fixed view across methods. Friction-magnitude error
+    uses the vector residual norm, with nonnegative colour limits.}
+    \label{fig:appendix_superwing}
+\end{figure}

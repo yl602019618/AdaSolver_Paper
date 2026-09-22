@@ -56,7 +56,9 @@
       "height_px": 3015
     }
   ],
-  "typography_revision": "Enlarged editable PPT labels and reflowed local text boxes",
+  "typography_revision": "One font step smaller than the preceding enlarged export",
+  "text_scale_vs_large": 0.9,
+  "geometry_unchanged": true,
   "scientific_values_unchanged": true,
   "source_image_content_unchanged": true,
   "curve_paths_unchanged": true,
