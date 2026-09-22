@@ -1,0 +1,37 @@
+\begin{table}[!htbp]
+    \centering
+    \small
+    \caption{CPG features and density designs. $s$ denotes the score in the middle column. $\mathcal{P}_{K,\kappa}$ is the regional density in \eqref{eq:app_density_patch_allocation}; $\lambda_{\mathrm{car}}^A$ and $\mathcal{B}_\omega$ are defined in \eqref{eq:app_density_car} and~\eqref{eq:app_density_wing_blend}. Compensation uses $\lambda_V$ with $\beta=1$, except for ShapeNet-Car, which uses $\lambda_P$ with the indicated exponent.}
+    \label{tab:cpg_density_policies}
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.18}
+    \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.43\textwidth}@{}}
+        \toprule
+        Task / metric & Draft-derived score $s$ & Density and allocation \\
+        \midrule
+        Elasticity & $\mathcal{I}_8 D_8[\widehat\sigma_{\mathrm{vM}}^{(0)}]$ & $0.375+0.625\mathcal{N}[\min(s,Q_{0.9}(s))]$; 32 bounded-quota regions, $\kappa=4$ \\
+        \addlinespace[3pt]
+        Plasticity & $\mathcal{I}_0[0.5G/\overline G_0+0.5L/\overline L_0]$; averages over $S_0$ & $\mathcal{P}_{24,4}[0.2+0.8\mathcal{N}[s]]$ \\
+        \addlinespace[3pt]
+        Airfoil / field & $\mathcal{I}_0 G_{16}[\widehat p^{(0)}]$ & $\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s])^{1/2}]$; weighted sampling \\
+        \addlinespace[3pt]
+        Airfoil / $C_D/C_L$ & $s_{DL}$ from \eqref{eq:app_density_airfoil_ratio} & $\mathcal{N}[s_{DL}^{1/2}]$; weighted sampling \\
+        \addlinespace[3pt]
+        Pipe & $D_8[\widehat v_x^{(0)}]$ & $\mathcal{P}_{24,4}[s]$ \\
+        \addlinespace[3pt]
+        Darcy & $D_8[\widehat p^{(0)}]+|\Delta_I\mathcal{I}_0\widehat p^{(0)}|_{S_0}$ & $\mathcal{P}_{32,2}[s]$ \\
+        \midrule
+        ShapeNet-Car / field & $\mathcal{E}_{0.1}[D_4[\widehat p^{(0)}]]$ & $\lambda_{\mathrm{car}}^{64}[s]$; surface retention and volume quotas, $\beta=1$ \\
+        \addlinespace[3pt]
+        ShapeNet-Car / $C_D$ & $\mathcal{E}_{0.1}[(b_D(\widehat p_\Gamma^{(0)}-\overline p_0))_+]$ & $\lambda_{\mathrm{car}}^{32}[s]$; surface retention and volume quotas, $\beta=0.75$ \\
+        \addlinespace[3pt]
+        DrivAerML / field & $\mathcal{I}_0 L_{16}[\widehat p^{(0)}]$ & $\mathcal{N}[1+40\mathcal{T}_{0,0.99}[s]]$; weighted sampling \\
+        \addlinespace[3pt]
+        DrivAerML / $C_D$ & $A|n_x|\,\mathcal{I}_0 L_{16}[\widehat p^{(0)}]$ & $\mathcal{N}[1+40\mathcal{T}_{0,0.99}[s]]$; weighted sampling \\
+        \addlinespace[3pt]
+        SuperWing / field & $s_{\mathrm{wing}}$ (joint pressure/friction variation) & $\mathcal{P}_{64,4}[s]$ \\
+        \addlinespace[3pt]
+        SuperWing / $C_D/C_L$ & $s_{\mathrm{wing}}$ & $\mathcal{B}_{0.75}[s]$; residual allocation and weighted sampling \\
+        \bottomrule
+    \end{tabular}
+\end{table}

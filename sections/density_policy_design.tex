@@ -1,0 +1,185 @@
+\section{Density Policy Design}
+\label{app:density_policy_design}
+
+We specify the sampling policies used for the eight benchmarks in Tables~\ref{tab:standard_benchmarks} and~\ref{tab:industrial_benchmarks}, including separate policies for field and aerodynamic metrics. Throughout this section, $N$ is the reference point count, $n=|S_1|$ is the final budget, and $\rho=N^{-1}\sum_{i=1}^{N}\delta_{x_i}$. We write $\langle f\rangle_\rho=N^{-1}\sum_i f(x_i)$ and $\mathcal{N}[f]=f/\langle f\rangle_\rho$. Thus, a positive allocation weight $t_\psi$ defines the target density ratio $\lambda_{\mathrm{tar}}=\mathcal{N}[t_\psi]$ and the measure $\mathrm{d}\widetilde\rho_{\mathrm{tar}}=\lambda_{\mathrm{tar}}\,\mathrm{d}\rho$. In particular, an additive weight is equivalent to the mixture in \eqref{eq:unified_refinement_measure}:
+\begin{equation}
+    t_\psi=b_0+a_0 r_\psi
+    \quad\Longrightarrow\quad
+    \lambda_{\mathrm{tar}}=(1-\gamma)+\gamma\nu_\psi,
+    \qquad
+    \nu_\psi=\mathcal{N}[r_\psi],
+    \quad
+    \gamma=\frac{a_0\langle r_\psi\rangle_\rho}{b_0+a_0\langle r_\psi\rangle_\rho}.
+    \label{eq:app_density_additive}
+\end{equation}
+Here $a_0\geq0$ and $b_0>0$. A general positive weight corresponds to $r_\psi=t_\psi$ and $\gamma=1$. Density normalization always uses the reference point measure, rather than physical area or volume.
+
+\paragraph{Equivalent density from compensation.}
+The target weight guides allocation, while several implementations estimate the density of the resulting point set from its spatial coverage. Assign each reference point to its nearest selected point, forming cells $V_i$ with $m_i=|V_i|$. Spreading one selected point over its represented reference mass gives
+\begin{equation}
+    \lambda_V(x)=\frac{1}{n\rho(V_i)}=\frac{N}{n m_i}
+    \quad(x\in V_i),
+    \qquad
+    c_i^\beta=\lambda_V(x_i)^{-\beta}
+    =\left(\frac{n m_i}{N}\right)^\beta.
+    \label{eq:app_density_voronoi}
+\end{equation}
+This is exactly the implemented compensation $(m_i/\overline m)^\beta$, since $\overline m=N/n$. At $\beta=1$, the corrected aggregation weights each selected point by the reference mass it represents. For a partition into regions $P_k$, let $N_k=|P_k|$, $\mu_k=N_k/N$, and $n_k=|S_1\cap P_k|$. The corresponding regional density is
+\begin{equation}
+    \lambda_P(x)=\frac{n_k}{n\mu_k}=\frac{N n_k}{nN_k}
+    \quad(x\in P_k),
+    \qquad
+    \left(\frac{N_k}{n_k}\right)^\beta
+    \propto\lambda_P(x)^{-\beta}.
+    \label{eq:app_density_partition}
+\end{equation}
+The global proportionality factor cancels in \eqref{eq:density_consistent_physics_token}. These are equivalent densities under the stated cell representations. A weight used for sampling without replacement is generally a proposal, rather than the exact marginal inclusion probability. We distinguish this target density from the coverage-based density used for compensation, and retain the exponent $\beta$ from Section~\ref{sec:density_consistent_transolver}.
+
+For compact notation, let $Q_q(f)$ be the empirical $q$-quantile on the indicated point set. We use $\mathcal{Q}_q[f]=f/Q_q(f)$ and
+\begin{equation}
+    \mathcal{T}_{a,b}[f]
+    =\operatorname{clip}_{[0,1]}\!\left(\frac{f-Q_a(f)}{Q_b(f)-Q_a(f)}\right).
+    \label{eq:app_density_quantile}
+\end{equation}
+Small numerical denominators are regularized in the implementation.
+
+\subsection{Physics-Informed Density Refinement}
+\label{app:pi_density_design}
+
+PI constructs its density from geometry or input coefficients. Two tasks use a uniform base followed by near-wall sampling. Let $H_d$ contain reference points within distance $d$ of the wall, and let $\gamma=n_{\mathrm{add}}/n$ be the refinement fraction. When the available points in $H_d$ are exhausted, the remaining refinement points are the nearest available points outside it. Writing $H_d^+$ for $H_d$ together with these supplementary points, their implemented correction corresponds to
+\begin{equation}
+    \lambda_{\mathrm{shell}}
+    =\mathcal{N}\!\left[1+
+      \frac{\gamma}{(1-\gamma)\rho(H_d)}\mathbf{1}_{H_d^+}\right],
+    \qquad c_i^\beta\propto\lambda_{\mathrm{shell}}(x_i)^{-\beta}.
+    \label{eq:app_density_shell}
+\end{equation}
+Without supplementation, this reduces to $(1-\gamma)+\gamma\mathbf{1}_{H_d}/\rho(H_d)$, directly matching \eqref{eq:unified_refinement_measure}. The fractions below are rounded to integer point counts.
+
+\paragraph{Elasticity.}
+Stress concentrates around the internal hole. We estimate the cavity distance $d_{\mathrm{cav}}$ from empty regions of a $64\times64$ auxiliary grid and use $\lambda_{\mathrm{tar}}=\mathcal{N}[1+64\exp(-d_{\mathrm{cav}}/0.012)]$. Points are sampled without replacement, with proposal-based compensation $c_i^{0.5}\propto\lambda_{\mathrm{tar}}(x_i)^{-0.5}$.
+
+\paragraph{Plasticity.}
+We concentrate points near die contact and beneath changes in the die profile. Let $z\in[0,1]$ denote normalized depth from the contact row and $k_d=|\partial_{xx}S_d|$ the second-difference magnitude of the die profile. The score and density are $r_{\mathrm{prior}}=\exp(-z/0.1)(1+0.5 k_d/\overline{k_d})$ and $\lambda_{\mathrm{tar}}=0.2+0.8\mathcal{N}[r_{\mathrm{prior}}]$, where $\overline{k_d}$ averages over the profile. Final-set compensation uses $\lambda_V$ with $\beta=1$.
+
+\paragraph{Airfoil.}
+The prior favors points near the airfoil surface, with $d_\Gamma$ denoting physical distance to the surface. All 121 surface nodes are retained. Field prediction uses $\lambda_{\mathrm{tar}}=\mathcal{N}[1+20\exp(-d_\Gamma/0.3)]$ and $\lambda_V$ compensation with $\beta=1$. The $C_D/C_L$ policy uses $\lambda_{\mathrm{tar}}=\mathcal{N}[1+8\exp(-d_\Gamma/0.35)]$ and proposal-based compensation with $\beta=0.5$.
+
+\paragraph{Pipe.}
+The no-slip walls motivate additional resolution in the near-wall region. We use \eqref{eq:app_density_shell} with wall distance threshold $d=0.05$, refinement fraction $\gamma=0.25$, and compensation exponent $\beta=0.75$.
+
+\paragraph{Darcy.}
+Permeability jumps identify interfaces at which the pressure gradient changes. Let $\mathcal{I}_a$ contain nodes adjacent to a coefficient jump. The implementation uses the distance proxy $d_a(x_i)=\min_{j\in\mathcal{I}_a}|i-j|/84$ along the flattened reference-grid ordering. Its density is $\lambda_{\mathrm{tar}}=\mathcal{N}[1+0.25\exp(-d_a/(2/84))]$, with proposal-based compensation and $\beta=0.5$.
+
+\paragraph{ShapeNet-Car.}
+The vehicle surface and nearby fluid dominate the pressure and viscous forces. Both policies use \eqref{eq:app_density_shell} with $d=0.1$ and $\beta=0.5$. The refinement fraction is $\gamma=0.5$ for the combined velocity--pressure field metric and $\gamma=0.375$ for $C_D$.
+
+\paragraph{DrivAerML.}
+For pressure reconstruction, the prior is the mean squared normal variation $s_n(x_i)=16^{-1}\sum_{j\in\mathcal{N}_{16}(i)}\|\mathbf{n}_i-\mathbf{n}_j\|_2^2$. For drag, it is the pressure-force sensitivity $s_D(x_i)=A_i|n_{i,x}|$. Each gives $\lambda_{\mathrm{tar}}=\mathcal{N}[1+40\mathcal{T}_{0,0.99}[s]]$, followed by $\lambda_V$ compensation with $\beta=1$.
+
+\paragraph{SuperWing.}
+We use normal variation $s_n=(\|\partial_I\mathbf{n}\|_2^2+\|\partial_J\mathbf{n}\|_2^2)^{1/2}$ on the surface lattice. With $\overline s_n=\mathcal{T}_{0.01,0.99}[s_n]$, the field and $C_D/C_L$ densities are $\mathcal{N}[1+16\overline s_n^2]$ and $\mathcal{N}[1+8\overline s_n^{1/2}]$, respectively. Both use $\lambda_V$ compensation with $\beta=1$.
+
+\subsection{Coarse-Prediction-Guided and Cache-Aware Refinement}
+\label{app:cpg_ca_density_design}
+
+CPG evaluates the frozen operator on $S_0$ and constructs a density from the draft field $\widehat u^{(0)}$. CA obtains its acquisition signal from $H_\phi(h^{(1)})$, using first-block features computed on the actual coarse set. The coarse budget is approximately $10\%$ of $N$, except for Airfoil CA on $C_D/C_L$, which uses $5\%$. Airfoil always includes its 121 surface nodes. The final set retains $S_0$ for all CA policies and for CPG except on Airfoil, where the interior points are resampled. Tables~\ref{tab:cpg_density_policies} and~\ref{tab:ca_density_policies} summarize the features and density constructions.
+
+\paragraph{Local variation features.}
+For a $k$-nearest-neighbor set $\mathcal{N}_k(i)$, we distinguish gradient energy from a graph-Laplacian proxy:
+\begin{equation}
+    D_k[f]_i=\frac{1}{k}\sum_{j\in\mathcal{N}_k(i)}
+      \frac{\|f_i-f_j\|_2^2}{\|z_i-z_j\|_2^2+\epsilon},
+    \qquad
+    L_k[f]_i=\left|f_i-\frac{1}{k}\sum_{j\in\mathcal{N}_k(i)}f_j\right|.
+    \label{eq:app_density_local_features}
+\end{equation}
+Here $z_i$ is the coordinate used to construct the neighborhood. Pipe uses reference-lattice coordinates. Elasticity, Airfoil, and the car tasks use physical coordinates. We write $G_k[f]=\|\nabla_{\mathrm{LSQ}}f\|_2$ for a local least-squares gradient magnitude, $\mathcal{I}_0$ for nearest-neighbor transfer, and $\mathcal{I}_8$ for inverse-squared-distance transfer from eight neighbors. On Plasticity, a local quadratic fit over 16 neighbors yields $G=(\sum_{t,c}\|\nabla u_{t,c}\|_2^2)^{1/2}$ and $L=(\sum_{t,c}|\Delta u_{t,c}|^2)^{1/2}$ across all 20 frames and both displacement components, using physical lattice spacing $0.5$. Darcy combines $D_8$ of the normalized pressure prediction with the absolute lattice Laplacian of its nearest-neighbor extension, computed by applying first differences twice along each index direction. SuperWing uses $s_{\mathrm{wing}}=\mathcal{T}_{0.01,0.99}[\|\Delta_I\mathcal{I}\widehat{\mathbf u}^{(0)}\|_2]$, where $\mathbf u=(C_p,150C_{f,\tau},300C_{f,z})$, $\mathcal{I}$ is linear interpolation with nearest-neighbor extrapolation, and $\Delta_I$ is the five-point lattice Laplacian.
+
+\paragraph{Allocation through spatial regions.}
+We denote the patch allocation used by Pipe, Darcy, Plasticity CPG, and SuperWing field prediction by $\mathcal{P}_{K,\kappa}[s]$. Coordinates are clustered into $K$ regions. Given their scores $\overline s_k$ and coarse counts $n_{0,k}$, the allocator prioritizes regions according to
+\begin{equation}
+    \eta_k=\frac{\mu_k\overline s_k}{N_k-n_{0,k}},
+    \qquad
+    \mathcal{P}_{K,\kappa}[s](x)
+    =\frac{n_k}{n\mu_k}\quad(x\in P_k).
+    \label{eq:app_density_patch_allocation}
+\end{equation}
+Integer additions follow decreasing $\eta_k$, using $\kappa$ to limit the contrast between regional point densities and respecting the available point counts. New points are placed by farthest-point sampling. Pipe and Darcy average scores over $S_0\cap P_k$; Plasticity and SuperWing average the transferred score over all reference points in $P_k$. The final correction uses $\lambda_V$, computed in physical coordinates for Elasticity and DrivAerML and in reference-lattice coordinates for Airfoil, Plasticity, Pipe, Darcy, and SuperWing.
+
+Elasticity instead assigns bounded proportional quotas. For CPG, let $s=\mathcal{I}_8D_8[\widehat\sigma_{\mathrm{vM}}^{(0)}]$ and clip it at its $0.9$-quantile; the target density is $0.375+0.625\mathcal{N}[\min(s,Q_{0.9}(s))]$. CA takes the maximum transferred score in each region, $v_k=\max_{x\in P_k}s(x)$, and uses
+\begin{equation}
+    \mathcal{E}_{\mathrm{CA}}[s](x)
+    =0.75+0.25\frac{\min(v_k,Q_{0.99}(v))^2}
+    {\sum_j\mu_j\min(v_j,Q_{0.99}(v))^2}
+    \quad(x\in P_k).
+    \label{eq:app_density_elasticity_ca}
+\end{equation}
+Both use 32 regions, retain the coarse points, and respect integer capacities. The density-contrast bounds are $\kappa=4$ for CPG and $\kappa=2$ for CA.
+
+\input{tables/cpg_density_policies.tex}
+
+\paragraph{Airfoil drag-to-lift density.}
+Write the pressure forces in \eqref{eq:app_airfoil_coefficients} as $\widehat D=\sum_{i\in\Gamma}b_{D,i}\widehat p_i^{(0)}$ and $\widehat L=\sum_{i\in\Gamma}b_{L,i}\widehat p_i^{(0)}$, before their common $q_\infty c$ normalization. The surface signals are the ratio sensitivity $v_R$, lift support $v_L$, and balanced positive/negative lift contributions $v_B$:
+\begin{equation}
+    \begin{aligned}
+    v_{R,i}&=\frac{|\widehat L b_{D,i}-\widehat D b_{L,i}|}
+                         {\max(|\widehat L|,0.02)^2},
+    &v_{L,i}&=|b_{L,i}|,\\
+    v_{B,i}&=\mathcal{Q}_{0.95}[(b_L\widehat p^{(0)})_+]_i
+             +\mathcal{Q}_{0.95}[(-b_L\widehat p^{(0)})_+]_i,
+    &\chi&=\min(1,|\widehat L|/0.02).
+    \end{aligned}
+    \label{eq:app_density_airfoil_signals}
+\end{equation}
+Here $(\cdot)_+$ denotes the positive part, and these quantiles are evaluated on the surface. With $\mathcal{K}_\ell[v](x)=\max_{i\in\Gamma}\{e^{-\|x-x_i\|/\ell}\mathcal{Q}_{0.95}[v]_i\}$, the CPG ratio policy uses
+\begin{equation}
+    s_{DL}(x)=0.1+\chi\mathcal{K}_{0.1}[v_R](x)
+       +\mathcal{K}_{0.1}[v_L](x)+2\mathcal{K}_{0.1}[v_B](x)
+       +0.5e^{-d_\Gamma(x)/0.1},
+    \quad
+    \lambda_{\mathrm{tar}}=\mathcal{N}[s_{DL}^{1/2}].
+    \label{eq:app_density_airfoil_ratio}
+\end{equation}
+Airfoil CA uses the pressure-gradient density for both metrics, with a smaller coarse set for the ratio objective.
+
+\paragraph{ShapeNet-Car surface and volume allocation.}
+The pressure signal is computed only at coarse surface points. For field prediction, we transfer $D_4[\widehat p^{(0)}]$ to the full surface by nearest neighbors. For $C_D$, we instead use $[b_D(\widehat p_\Gamma^{(0)}-\overline p_0)]_+$, where $\widehat p_\Gamma^{(0)}$ is the pressure transferred to the full surface and $\overline p_0$ is the mean coarse surface pressure. The nodal force coefficient $b_{D,i}=-\sum_{f\ni i}A_f n_{f,z}/4$ follows the quadrilateral pressure integration in \eqref{eq:app_car_drag}. Thus, the score measures positive pressure-drag contributions. Let $\mathcal{E}_{0.1}$ extend the surface signal to the cloud by nearest-surface assignment and multiply it by $e^{-d_\Gamma/0.1}$. For the resulting full-cloud score $s$, define
+\begin{equation}
+    \begin{gathered}
+    s'=\max(\mathcal{Q}_{0.95}[s],0.1),
+    \qquad z_s=\operatorname{clip}_{[0,1]}\!\left(\frac{s'}{Q_{0.95}(s'|_\Gamma)}\right),\\
+    \lambda_{\mathrm{car}}^{A}[s]
+    =\mathcal{N}[(1+A e^{-d_\Gamma/0.1})(1+2z_s)].
+    \end{gathered}
+    \label{eq:app_density_car}
+\end{equation}
+The entire surface is retained. Volume points are grouped into distance bands with edges $0.1\times(0.25,0.5,1,2,4,8,16)$ and four quantile groups of $s'$ per band. For each region, its target mass is the sum of the allocation weights. Final quotas are proportional to these masses, clipped between the retained coarse count and the region capacity, then rounded to total $n$. Farthest-point sampling fills each quota. Field prediction uses $A=64$ and $\beta=1$; $C_D$ uses $A=32$ and $\beta=0.75$. Compensation uses $\lambda_P$, treating the surface as a separate region.
+
+\paragraph{SuperWing mixed density for $C_D/C_L$.}
+The ratio policies combine the geometric prior with a predicted field-variation signal. Let $g=\mathcal{T}_{0.01,0.99}[s_n]$ and let $s\in[0,1]$ be the normalized prediction signal. Their target density is
+\begin{equation}
+    d_\omega=(1-\omega)\mathcal{N}[1+8g^{1/2}]
+              +\omega\mathcal{N}[1+8s^{1/2}],
+    \qquad
+    \mathcal{B}_\omega[s]
+    =\mathcal{N}\!\left[\max\!\left(d_\omega,\frac{\max_x d_\omega(x)}{8}\right)\right].
+    \label{eq:app_density_wing_blend}
+\end{equation}
+CPG uses $\omega=0.75$ and CA uses $\omega=0.5$. To account for the retained coarse points, define $\operatorname{Cap}_m(t)_i=\min(1,\zeta t_i)$, with $\zeta$ chosen so the entries sum to $m$. With $f_0=|S_0|/N$, the conditional allocation on $R=\{1,\ldots,N\}\setminus S_0$ is
+\begin{equation}
+    q=\operatorname{Cap}_{n}(\mathcal{B}_\omega[s]),
+    \qquad
+    \pi_R=\operatorname{Cap}_{n-|S_0|}
+      \!\left(\max\!\left(\frac{q_R-f_0}{1-f_0},\epsilon\right)\right).
+    \label{eq:app_density_wing_residual}
+\end{equation}
+CPG samples without replacement using weights $-\log(1-\min(\pi_i,1-\epsilon))$, whereas CA uses systematic sampling in Morton order with conditional inclusion probabilities $\pi_i$. Both retain $S_0$ and use final-set $\lambda_V$ compensation with $\beta=1$.
+
+\clearpage
+\paragraph{Learning the acquisition signal.}
+Table~\ref{tab:ca_density_policies} distinguishes heads that predict a physical scalar from heads that predict a variation score directly. All heads take frozen first-block features; each produces one scalar per coarse point. Physical targets are standardized using training statistics. Nonnegative score targets are standardized after a $\log(1+s)$ transform and decoded before density construction. Plasticity and SuperWing learn variation computed from training solution fields, while Darcy and DrivAerML learn the corresponding frozen CPG teacher scores. Pipe learns the velocity-gradient magnitude and squares the decoded value for allocation. ShapeNet-Car and Airfoil share one pressure head across their two metric-specific policies.
+
+\input{tables/ca_density_policies.tex}
+
+Retaining $S_0$ permits the cache reuse in Section~\ref{sec:cache_aware_refinement}. Cached pointwise terms are reweighted using the final-set $c_i$ before forming the physics tokens. Token attention, deslicing, and subsequent blocks are evaluated on $S_1$.
