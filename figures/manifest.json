@@ -20,14 +20,18 @@
       "name": "fig2_field_comparison",
       "source_slide": 2,
       "crop_box_points": [
-        65.49336200723327,
-        51.95261955370525,
-        1330.8769882459312,
-        457.6307592805995
+        65.49336219048583,
+        52.95180263166525,
+        1330.8769916418703,
+        457.63075914428293
       ],
-      "paper_scale": 0.31294857289808165,
+      "paper_scale": 0.3129485721035355,
       "width_px": 10545,
-      "height_px": 3381
+      "height_px": 3373,
+      "source": "总图1.pptx",
+      "export_scope": "slide 2 only",
+      "renderer": "LibreOffice Impress",
+      "raster_dpi": 600
     },
     {
       "name": "fig3_airfoil_optimization",
@@ -59,5 +63,6 @@
   "source_presentation_edited_by_user": true,
   "source_presentation_modified_by_export": false,
   "original_equations_verified": true,
-  "upstream_manuscript_commit": "3b69746dedb66b3c907471bf66e345b994a2c08e"
+  "upstream_manuscript_commit": "3b69746dedb66b3c907471bf66e345b994a2c08e",
+  "last_refresh_scope": "Fig2 / source slide 2 only"
 }

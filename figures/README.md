@@ -5,7 +5,7 @@ Exported from the author-updated `总图1.pptx`, slides 1–4. The presentation 
 | Figure | PNG | PDF | Pixels |
 | --- | --- | --- | --- |
 | 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5779 × 3802 |
-| 2 | [PNG](fig2_field_comparison.png) | [PDF](fig2_field_comparison.pdf) | 10545 × 3381 |
+| 2 | [PNG](fig2_field_comparison.png) | [PDF](fig2_field_comparison.pdf) | 10545 × 3373 |
 | 3 | [PNG](fig3_airfoil_optimization.png) | [PDF](fig3_airfoil_optimization.pdf) | 8679 × 2986 |
 | 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 8154 × 2927 |
 
