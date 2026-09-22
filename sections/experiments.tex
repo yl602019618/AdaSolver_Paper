@@ -8,8 +8,6 @@ We evaluate AdaSolver on five standard PDE benchmarks and three industrial desig
 
 Our evaluation spans canonical PDE problems and representative industrial applications. The standard PDE suite comprises Elasticity, Plasticity, Airfoil, Pipe~\citep{li2023geofno} and Darcy flow~\citep{li2021fno}. These public datasets are widely used to benchmark neural operators~\citep{hao2023gnot,wu2024transolver}.
 
-Governing equations, data splits, and input--output mappings are detailed in Appendix~\ref{app:implementation_details}.
-
 For industrial applications, we consider ShapeNet-Car~\citep{umetani2018learning} and DrivAerML~\citep{ashton2024drivaerml} for automotive aerodynamics, and SuperWing~\citep{yang2025superwing} for three-dimensional wing design. In addition to physical-field prediction errors, we evaluate the accuracy of design-relevant aerodynamic quantities, including the drag coefficient $C_D$, lift coefficient $C_L$, and drag-to-lift ratio $C_D/C_L$. We also use the learned PDE surrogates to guide shape optimization of a two-dimensional airfoil and a three-dimensional wing, assessing computational efficiency and aerodynamic prediction accuracy during optimization.
 
 \subsection{Implementation and Evaluation}

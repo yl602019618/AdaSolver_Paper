@@ -1,8 +1,21 @@
-\subsection{Transolver as an Integral Operator}
-Transolver~\citep{wu2024transolver} approximates continuous integral operators through Physics-Attention. Let $\Omega$ denote the physical domain, and let $\rho$ denote the sampling measure induced by the chosen grid or mesh discretization policy. A discretized example consists of pointwise samples
+\subsection{Transformer Neural Operators}
+Transformer neural operators use attention to approximate nonlocal integral operators. Let $\Omega$ denote the physical domain, and let $\rho$ denote the sampling measure induced by the chosen grid or mesh discretization policy. A discretized example consists of pointwise samples
 $\{(x_i,a_i)\}_{i=1}^{N}\mapsto\{u_i\}_{i=1}^{N}$, where $x_i\sim\rho$, $a_i=a(x_i)$ is the input field, and $u_i=u(x_i)$ is the output field. A neural operator learns an operator $\mathcal{G}:a\mapsto u$ with a parameterized network $\mathcal{G}_{\theta}$.
 
-Physics-Attention projects point features into $M$ slice weights, applies attention to the resulting latent physical states, and broadcasts the updated states back to the points. Let $h_i\in\mathbb{R}^{C}$ denote the $C$-dimensional feature embedding of $(x_i,a_i)$. The slice weights are
+OFormer~\citep{li2023oformer} uses Galerkin attention, a softmax-free linear-attention factorization that reduces the quadratic point-to-point interaction to linear dependence on $N$ for fixed channel width. After pointwise projections, let $Q,K\in\mathbb{R}^{N\times d}$ and $V\in\mathbb{R}^{N\times C}$, where $d$ is the attention width and $C$ is the number of value channels. Denote the $\ell$-th query and key basis functions by $q_\ell$ and $k_\ell$, and the $c$-th value basis function by $v_c$; their pointwise evaluations are obtained from the embedded samples $(x_i,a_i)$. With column-wise normalized quantities denoted by a hat, Galerkin attention is
+\begin{equation}
+    y_{i,c}^{(N)}
+    = \sum_{\ell=1}^{d} \widehat{q}_{\ell}(x_i)
+      \left(\frac{1}{N}\sum_{n=1}^{N}
+      \widehat{k}_{\ell}(x_n)\widehat{v}_{c}(x_n)\right)
+    \xrightarrow[N\to\infty]{}
+    \sum_{\ell=1}^{d} q_{\ell}(x_i)
+      \int_{\Omega} k_{\ell}(x)v_{c}(x)\,\mathrm{d}\rho(x).
+    \label{eq:oformer_galerkin}
+\end{equation}
+Here $q_\ell$ and $k_\ell$ span the learned query and key bases, while $v_c$ denotes a value channel. Equivalently, the update is $Y=\widehat{Q}(\widehat{K}^{\top}\widehat{V})/N$, which directly approximates the corresponding integral operator.
+
+Transolver~\citep{wu2024transolver} replaces point-to-point attention with Physics-Attention: point features are projected into $M$ slice weights, attention is applied to the resulting latent physical states, and the updated states are broadcast back to the points. To avoid overloading the sample locations $x_i$, let $h_i\in\mathbb{R}^{C}$ denote the embedded point feature obtained from $(x_i,a_i)$. The slice weights are
 \begin{equation}
     w_i
     = \operatorname{Softmax}\!\left(\frac{\operatorname{Linear}(h_i)}{\tau_0}\right)
