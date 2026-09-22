@@ -1,0 +1,68 @@
+{
+  "source": "总图1.pptx",
+  "renderer": "LibreOffice Impress; native Office equations restored as LaTeX vectors during PDF export",
+  "raster_dpi": 600,
+  "figures": [
+    {
+      "name": "fig1_overview",
+      "source_slide": 1,
+      "crop_box_points": [
+        346.9672278119349,
+        26.47345061199001,
+        1040.4039579927667,
+        482.610336674438
+      ],
+      "paper_scale": 0.5710686826420813,
+      "width_px": 5779,
+      "height_px": 3802
+    },
+    {
+      "name": "fig2_field_comparison",
+      "source_slide": 2,
+      "crop_box_points": [
+        65.49336219048583,
+        52.95180263166525,
+        1330.8769916418703,
+        457.63075914428293
+      ],
+      "paper_scale": 0.3129485721035355,
+      "width_px": 10545,
+      "height_px": 3373,
+      "source": "总图1.pptx",
+      "export_scope": "slide 2 only",
+      "renderer": "LibreOffice Impress",
+      "raster_dpi": 600
+    },
+    {
+      "name": "fig3_airfoil_optimization",
+      "source_slide": 3,
+      "crop_box_points": [
+        195.98124650994575,
+        102.91095743713572,
+        1237.385668698011,
+        461.12790011573685
+      ],
+      "paper_scale": 0.380255731167317,
+      "width_px": 8679,
+      "height_px": 2986
+    },
+    {
+      "name": "fig4_superwing_optimization",
+      "source_slide": 4,
+      "crop_box_points": [
+        178.98282477396023,
+        107.9068729159034,
+        1157.3930958227847,
+        459.1295339242298
+      ],
+      "paper_scale": 0.4047381877701475,
+      "width_px": 8154,
+      "height_px": 2927
+    }
+  ],
+  "source_presentation_edited_by_user": true,
+  "source_presentation_modified_by_export": false,
+  "original_equations_verified": true,
+  "upstream_manuscript_commit": "3b69746dedb66b3c907471bf66e345b994a2c08e",
+  "last_refresh_scope": "Fig2 / source slide 2 only"
+}
