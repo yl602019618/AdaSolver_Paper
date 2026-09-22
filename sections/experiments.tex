@@ -74,14 +74,15 @@ are $0.05879$ for the full mesh and $0.05897$ for AdaSolver, while relative
 $C_D/C_L$ prediction error decreases from $3.26\%$ to $0.46\%$.
 \input{figures/fig3_airfoil_optimization.tex}
 
-\paragraph{3D Wing.}
-Figure~\ref{fig:superwing_design} compares 150 generations of CMA-ES on SuperWing
-case 2319 with seed 1, starting from the same geometry and flow condition.
-AdaSolver uses $37.5\%$ of
-the full-mesh points, with sampling refreshed every 20 generations. The measured
-median completion times are $26.45$~s for the full mesh and $14.18$~s for AdaSolver,
-a $1.86\times$ speedup. Final CFD $C_D/C_L$ decreases from $0.04283$ to $0.04275$,
-and the corresponding relative prediction error decreases from $3.82\%$ to
-$3.30\%$. These results illustrate how reducing the cost of repeated surrogate
-evaluations can accelerate design while retaining comparable performance in CFD.
+\paragraph{3D SuperWing.}
+Figure~\ref{fig:superwing_design} compares CMA-ES optimization on SuperWing
+case 2319, with both methods starting from the same geometry and flow condition
+and running 150 generations of 12 candidates each (seed 1).
+AdaSolver evaluates $37.5\%$ of the point set. Its sampling density is refreshed
+every 20 generations to follow shape changes.
+Three repeated timing runs give median online optimization times of $26.45$~s
+for the full mesh and $14.18$~s for AdaSolver, a $1.86\times$ speedup.
+Independent ADflow RANS validation shows a slightly lower final CFD $C_D/C_L$
+for AdaSolver ($0.04275$ versus $0.04283$), with relative prediction error
+decreasing from $3.82\%$ to $3.30\%$.
 \input{figures/fig4_superwing_optimization.tex}
