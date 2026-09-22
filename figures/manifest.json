@@ -1,0 +1,77 @@
+{
+  "source": "总图.pptx",
+  "source_sha256": "a38233c093787fd1b0422e34c56488d00b84d1caef4164542cc147b0d0a6255b",
+  "renderer": "Microsoft PowerPoint for macOS, PDF export (Best for printing)",
+  "raster_dpi": 600,
+  "crop_margin_points": 6,
+  "figures": [
+    {
+      "name": "fig1_overview",
+      "title": "Method overview",
+      "source_slide": 1,
+      "crop_box_points": [
+        348.5,
+        26.0,
+        1037.0,
+        467.5
+      ],
+      "width_px": 5738,
+      "height_px": 3680,
+      "png_bytes": 3582712,
+      "pdf_bytes": 985870,
+      "png_sha256": "7274b7b17985939fad044c32373ed9dc0e84828cf66082552370f3831dfd320f",
+      "pdf_sha256": "ddb38f5a78e861c267dad9908560ae5d524042b70a5534133b07d9bb0bcc48ad"
+    },
+    {
+      "name": "fig2_field_comparison",
+      "title": "Physical-field comparison",
+      "source_slide": 2,
+      "crop_box_points": [
+        68.5,
+        52.0,
+        1328.5,
+        497.5
+      ],
+      "width_px": 10500,
+      "height_px": 3713,
+      "png_bytes": 7971842,
+      "pdf_bytes": 1556414,
+      "png_sha256": "6cc9af0f2d1c24c21dd61fbca6bf996b3969428ade954f2cf2f018a570a64a9d",
+      "pdf_sha256": "76124e2dede70dc716e7748c0476d0181641df204743f75db92255c8c84f3f16"
+    },
+    {
+      "name": "fig3_airfoil_optimization",
+      "title": "Airfoil optimization",
+      "source_slide": 3,
+      "crop_box_points": [
+        192.0,
+        106.5,
+        1183.5,
+        428.5
+      ],
+      "width_px": 8263,
+      "height_px": 2684,
+      "png_bytes": 1843912,
+      "pdf_bytes": 353998,
+      "png_sha256": "25cc46d0bfbe95c18d54281dcc67c0d932e4b1dac16778679d362f28b04abb21",
+      "pdf_sha256": "6d24f9bcb716836b1cadb7678aa4595984f2f4cd579ef4d6ca5db10396d02743"
+    },
+    {
+      "name": "fig4_superwing_optimization",
+      "title": "SuperWing optimization",
+      "source_slide": 4,
+      "crop_box_points": [
+        190.0,
+        112.5,
+        1141.5,
+        434.5
+      ],
+      "width_px": 7930,
+      "height_px": 2684,
+      "png_bytes": 1890470,
+      "pdf_bytes": 358964,
+      "png_sha256": "a67d3c7a6c2a0967f84142706eded0e3ed375ba91d5c6e6dff1728f20e714085",
+      "pdf_sha256": "10eb5740529d83b1378ac69ee3c623882fed4895d37e1fd72cfc7b4cbd081d55"
+    }
+  ]
+}

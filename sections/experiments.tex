@@ -1,7 +1,7 @@
 \section{Experiments}
 \label{sec:experiments}
 
-We evaluate AdaSolver on five standard PDE benchmarks and three industrial design prediction tasks, covering both surface and volumetric fields on three-dimensional geometries. We further assess its efficiency in two CFD-based geometry optimization tasks involving two-dimensional airfoils and three-dimensional wings.
+We evaluate AdaSolver on five standard PDE benchmarks and three industrial design prediction tasks, covering both surface and volumetric fields on three-dimensional geometries. We further assess its efficiency in two CFD-validated geometry optimization tasks involving two-dimensional airfoils and three-dimensional wings.
 
 \subsection{Benchmarks}
 \label{sec:experiment_benchmarks}
@@ -44,10 +44,39 @@ Wind-tunnel testing informs vehicle and aircraft design by assessing aerodynamic
 
 \input{tables/industrial_benchmarks.tex}
 
+Figure~\ref{fig:field_comparison} visualizes sampling locations, refinement
+features, and prediction errors for four test cases. Adaptive policies allocate
+points near localized field structure and reduce field error relative to uniform
+sampling in these examples.
+\input{figures/fig2_field_comparison.tex}
+
 \subsection{Inverse Design}
 \label{sec:inverse_design}
 
-We use the trained AdaSolver surrogate with the sampling policies tailored to $C_D/C_L$ described above to optimize airfoil and wing geometries. The design objective is to minimize the drag-to-lift ratio.
+We use the frozen surrogate to optimize airfoil and wing geometries. The airfoil
+objective minimizes $(C_D/C_L)^2$, while the wing objective minimizes drag subject
+to predicted-lift and geometry constraints. We assess both tasks using independent
+CFD $C_D/C_L$. Timing covers online surrogate-based optimization; CFD validation
+is performed offline.
 
 \paragraph{2D Airfoil.}
-We adopt the airfoil design case from Geo-FNO~\citep{li2023geofno}. Figure~3 compares optimization using AdaSolver with CA sampling against optimization using the same surrogate on the full mesh. AdaSolver substantially accelerates the optimization process while maintaining comparable final aerodynamic performance, as verified by CFD, and reaches better designs within the same time budget. The speedup comes from reducing the cost of repeated objective and gradient evaluations through adaptive point allocation.
+Figure~\ref{fig:airfoil_design} uses the Geo-FNO airfoil design case~\citep{li2023geofno},
+with the same frozen operator, SLSQP optimizer, and geometry constraints for both
+methods. AdaSolver retains $18.75\%$ of the points using CA sampling with seed 29
+and fixes the indices after initialization. Five paired timing runs yield a
+$2.18\times$ speedup. The final CFD $C_D/C_L$ values
+are $0.05879$ for the full mesh and $0.05897$ for AdaSolver, while relative
+$C_D/C_L$ prediction error decreases from $3.26\%$ to $0.46\%$.
+\input{figures/fig3_airfoil_optimization.tex}
+
+\paragraph{3D Wing.}
+Figure~\ref{fig:superwing_design} compares 150 generations of CMA-ES on SuperWing
+case 2319 with seed 1, starting from the same geometry and flow condition.
+AdaSolver uses $37.5\%$ of
+the full-mesh points, with sampling refreshed every 20 generations. The measured
+median completion times are $26.45$~s for the full mesh and $14.18$~s for AdaSolver,
+a $1.86\times$ speedup. Final CFD $C_D/C_L$ decreases from $0.04283$ to $0.04275$,
+and the corresponding relative prediction error decreases from $3.82\%$ to
+$3.30\%$. These results illustrate how reducing the cost of repeated surrogate
+evaluations can accelerate design while retaining comparable performance in CFD.
+\input{figures/fig4_superwing_optimization.tex}
