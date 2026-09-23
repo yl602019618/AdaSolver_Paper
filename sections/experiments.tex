@@ -75,13 +75,15 @@ $C_D/C_L$ prediction error decreases from $3.26\%$ to $0.46\%$.
 \input{figures/fig3_airfoil_optimization.tex}
 
 \paragraph{3D SuperWing.}
-Figure~\ref{fig:superwing_design} compares CMA-ES optimization on SuperWing, with both methods starting from the same geometry and flow condition
+Figure~\ref{fig:superwing_design} compares CMA-ES~\citep{hansen2001completely}
+optimization on SuperWing~\citep{yang2025superwing}, with both methods starting
+from the same geometry and flow condition
 and running 150 generations of 12 candidates each.
 AdaSolver evaluates $37.5\%$ of the point set. Its sampling density is refreshed
 every 20 generations to follow shape changes.
 Three repeated timing runs give median online optimization times of $26.45$~s
 for the full mesh and $14.18$~s for AdaSolver, a $1.86\times$ speedup.
-Independent ADflow RANS validation shows a slightly lower final CFD $C_D/C_L$
+Independent RANS validation with ADflow~\citep{mader2020adflow} shows a slightly lower final CFD $C_D/C_L$
 for AdaSolver ($0.04275$ versus $0.04283$), with relative prediction error
 decreasing from $3.82\%$ to $3.30\%$.
 \input{figures/fig4_superwing_optimization.tex}
