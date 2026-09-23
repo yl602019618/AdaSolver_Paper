@@ -16,7 +16,7 @@
   ],
   "targets_identical": false,
   "consequence": "Airfoil stock-reference field errors and force-ratio integration are not comparable to the pressure-task curves.",
-  "handling": "Excluded from both Airfoil appendix panels: no matched full-mesh-trained pressure checkpoint is available.",
+  "handling": "Original Mach reference excluded; a newly trained full-mesh pressure Transolver3 supplies the two Airfoil reference curves.",
   "mach_identity_check": [
     {
       "sample_id": 1001,
@@ -30,5 +30,6 @@
       "sample_id": 1139,
       "mach_identity_max_abs_diff": 0.0
     }
-  ]
+  ],
+  "matched_pressure_reference": "data/airfoil_fullmesh_reference"
 }

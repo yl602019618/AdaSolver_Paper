@@ -16,10 +16,11 @@ and Transolver3 for the remaining tasks. Point-cloud models reuse Uniform's
 samples and reconstruction; Pipe uses Cartesian subgrids at the plotted
 retained fractions. Darcy's full-mesh-trained backbone makes its two curves
 coincide. DrivAerML changes the pressure checkpoint while retaining Uniform's
-wall-shear-stress predictions. The available original Airfoil checkpoint
-predicts Mach rather than pressure, so its curve is omitted. Both Airfoil
-panels use the shared pressure backbone's full-mesh error on the same 110
-test cases. Airfoil $C_D/C_L$ uses absolute ratio error before normalization.
+wall-shear-stress predictions. The Airfoil reference is trained on pressure
+using all 11,271 points per training step, with the same architecture,
+1,000 epochs, and global batch of eight as the variable-point backbone.
+Both Airfoil panels use the same 110 cases and the shared pressure backbone's
+full-mesh error for normalization. Airfoil $C_D/C_L$ uses absolute ratio error.
 Its axis is linear through five and logarithmic above five, with the
 transition marked. Elasticity uses a logarithmic axis.
 
@@ -27,8 +28,8 @@ On Plasticity, CPG at
 $37.5\%$ achieves $5.02\%$ relative $L_2$ error, compared with $6.40\%$ for
 Transolver at $100\%$: $62.5\%$ fewer points and $21.6\%$ lower error.
 On DrivAerML, the corresponding $C_D$ errors are $0.948\%$ and $1.05\%$.
-On Airfoil, CA at a $75\%$ budget reaches a normalized pressure error of
-$1.026$, using $25\%$ fewer points than the shared backbone's full mesh.
+On Airfoil, CPG at $37.5\%$ gives $0.0186$ absolute $C_D/C_L$ error,
+compared with $0.0281$ for the full-mesh-trained reference at $100\%$.
 The benefit depends on the task and output quantity: in Darcy, CPG and CA
 approach full-mesh field accuracy at small budgets, while PI stays close to
 Uniform.
@@ -40,7 +41,7 @@ Uniform.
     Panels (a)--(h) show field metrics and (i)--(l) show aerodynamic quantities.
     Transolver is the full-mesh-trained reference; the horizontal line marks
     full-mesh accuracy of AdaSolver's backbone. Airfoil uses 110 cases with
-    reference $C_L>0.02$ and has no matched Transolver curve. Its $C_D/C_L$
+    reference $C_L>0.02$ and a pressure-trained Transolver reference. Its $C_D/C_L$
     axis is linear through five, then logarithmic. Insets enlarge mean curves.}
     \label{fig:appendix_budget_curves}
 \end{figure}

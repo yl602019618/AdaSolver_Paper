@@ -18,3 +18,5 @@ The CPG and CA field policies are unchanged from their earlier selection under C
 The available original full-mesh-trained Airfoil checkpoint predicts Mach (Q channel 4), whereas this task predicts pressure (Q channel 3). Its field errors and pressure-force integration are not comparable. Those eight old plotted points are retained in `history/invalid_mach_reference.csv` and excluded from the current figure. `reference_target_audit.json` records the target check. The horizontal full-mesh reference uses the matching pressure model and the current 110 cases.
 
 Timing measurements in `timing_raw.jsonl` use the field policies, which are unchanged by this update. Timing remains table-only in the manuscript. Inverse-design settings and CFD results are a separate experiment.
+
+The appendix now includes a completed full-mesh-trained pressure Transolver3 reference for Airfoil at all four budgets. See `../airfoil_fullmesh_reference/` for its training metadata and 1,100 evaluation records. The historical Mach checkpoint remains excluded.

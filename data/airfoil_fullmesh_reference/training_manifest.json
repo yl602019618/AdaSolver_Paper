@@ -1,0 +1,58 @@
+{
+  "benchmark": "airfoil2d",
+  "status": "official",
+  "architecture": "Transolver3",
+  "target_name": "pressure",
+  "target_channel": 3,
+  "epochs": 1000,
+  "nmin_fraction": 1.0,
+  "nmin_count": 11271,
+  "nfull": 11271,
+  "seed": 0,
+  "batch_size": 8,
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.001,
+    "weight_decay": 1e-05
+  },
+  "scheduler": {
+    "name": "OneCycleLR",
+    "pct_start": 0.3
+  },
+  "max_grad_norm": 0.1,
+  "train_samples": 1000,
+  "validation_samples": 200,
+  "data_split": {
+    "train": [
+      0,
+      1000
+    ],
+    "test": [
+      1000,
+      1200
+    ]
+  },
+  "shape": [
+    221,
+    51
+  ],
+  "mandatory_surface": {
+    "i_start": 50,
+    "i_stop": 171,
+    "j": 0
+  },
+  "best_validation_relative_l2": 0.0040288709936430675,
+  "checkpoint_sha256": "8fefee3e61ee8d14668185ed78407d0512373c17e805cba92c9a42eb1ac7b39c",
+  "environment": {
+    "python": "3.10.12",
+    "torch": "2.11.0+cu126",
+    "cuda": "12.6",
+    "visible_devices": "0,1,2,3,4,5,6,7"
+  },
+  "distributed_world_size": 8,
+  "global_batch_size": 8,
+  "per_rank_batch_size": 1,
+  "gradient_reduction": "DDP mean multiplied by world size to match summed global-batch loss",
+  "precision": "float32, original PyTorch defaults",
+  "data_source": "NACA_Cylinder_X.npy, NACA_Cylinder_Y.npy, NACA_Cylinder_Q.npy (pressure channel 3)"
+}

@@ -78,9 +78,13 @@ def main():
                     check(value, b[name])
             checked[f'{metric}/{method}'] = [stats.mean(ratios), stats.stdev(ratios)]
     references = list(csv.DictReader((PAPER / 'figures/appendix/fullmesh_training_curve_points.csv').open()))
-    assert len(references) == 40 and not any(r['benchmark'] == 'airfoil2d' for r in references)
+    airfoil = [r for r in references if r['benchmark'] == 'airfoil2d']
+    assert len(references) == (48 if airfoil else 40)
+    if airfoil:
+        manifest = json.loads((PAPER / 'data/airfoil_fullmesh_reference/training_manifest.json').read_text())
+        assert len(airfoil) == 8 and manifest['target_channel'] == 3 and manifest['nmin_fraction'] == 1.
     print(json.dumps(dict(status='pass', cases=110, compact_records=7920, verified_curve_points=24,
-        matched_reference_points=40, rauec=checked), indent=2))
+        matched_reference_points=len(references), rauec=checked), indent=2))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "cases": 110,
+  "inclusion": "true pressure-force Cl > 0.02",
+  "budgets": [
+    0.375,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "fullmesh_seed": 0,
+  "records": 1100,
+  "metric_definitions": {
+    "field": "pressure relative L2",
+    "cdcl": "absolute Cd/Cl error"
+  },
+  "matched_uniform_indices": true,
+  "normalization": "Shared variable-point pressure backbone at full mesh, same 110 cases.",
+  "mean_errors_at_100_percent": {
+    "field": 0.0038703154342022996,
+    "cdcl": 0.02813393989171838
+  }
+}
