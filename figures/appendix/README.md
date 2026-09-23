@@ -23,4 +23,4 @@ The Transolver curve includes its measured 100% endpoint. Labels are shortened t
 
 Curve visibility update: distinct line patterns, nested open markers, lighter uncertainty bands, and seven zoom insets distinguish overlapping traces. Insets show means; original values and main-axis limits are unchanged.
 
-Typography update: all curve labels, axis ticks, legends, and inset ticks are enlarged by 1 pt for readability in the paper.
+Typography update: all curve labels, axis ticks, legends, and inset ticks are enlarged by 2 pt in total for readability in the paper. Two inset boxes are repositioned slightly to leave room for the larger tick labels.

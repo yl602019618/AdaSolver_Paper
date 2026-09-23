@@ -1336,13 +1336,14 @@
     "main_axes_unchanged": true,
     "insets_show": "mean curves",
     "font_sizes_pt": {
-      "inset_tick": 7.3,
-      "tick": 9.3,
-      "title": 11.5,
-      "legend": 10,
-      "axis": 12,
-      "panel_axis": 9
+      "inset_tick": 8.3,
+      "tick": 10.3,
+      "title": 12.5,
+      "legend": 11,
+      "axis": 13,
+      "panel_axis": 10
     },
-    "font_increment_pt": 1
+    "font_increment_pt": 1,
+    "cumulative_font_increment_pt": 2
   }
 }
