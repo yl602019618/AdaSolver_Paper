@@ -1,0 +1,270 @@
+{
+  "rows": 8,
+  "columns": 4,
+  "panels": 32,
+  "statistic": "selected/native point count within a spatial bin",
+  "color_scale": [
+    0,
+    1
+  ],
+  "palette": [
+    "#F3F8F8",
+    "#D1E8E6",
+    "#9DD0CE",
+    "#65B0B9",
+    "#398C9F"
+  ],
+  "source_pixels_preserved": true,
+  "cases": [
+    {
+      "case": "airfoil2d",
+      "sample_id": 1103,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          24,
+          8
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.37503327122704283,
+          "pi": 0.37503327122704283,
+          "cpg": 0.37503327122704283,
+          "ca": 0.37503327122704283
+        }
+      },
+      "crop_box_pixels": [
+        0,
+        124,
+        1400,
+        926
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/airfoil2d/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/airfoil2d/panels/pi_density.png",
+        "appendix_figures/more_visualizations/airfoil2d/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/airfoil2d/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "pipe",
+      "sample_id": 1156,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          13,
+          13
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.3749774652965567,
+          "pi": 0.3749774652965567,
+          "cpg": 0.3749774652965567,
+          "ca": 0.3749774652965567
+        }
+      },
+      "crop_box_pixels": [
+        0,
+        323,
+        1400,
+        727
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/pipe/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/pipe/panels/pi_density.png",
+        "appendix_figures/more_visualizations/pipe/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/pipe/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "darcy",
+      "sample_id": 1056,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          10,
+          10
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.37494809688581315,
+          "pi": 0.37494809688581315,
+          "cpg": 0.37494809688581315,
+          "ca": 0.37494809688581315
+        }
+      },
+      "crop_box_pixels": [
+        175,
+        0,
+        1225,
+        1050
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/darcy/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/darcy/panels/pi_density.png",
+        "appendix_figures/more_visualizations/darcy/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/darcy/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "elasticity",
+      "sample_id": 1701,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          6,
+          6
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.37448559670781895,
+          "pi": 0.37448559670781895,
+          "cpg": 0.37448559670781895,
+          "ca": 0.37448559670781895
+        }
+      },
+      "crop_box_pixels": [
+        222,
+        47,
+        1178,
+        1003
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/elasticity/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/elasticity/panels/pi_density.png",
+        "appendix_figures/more_visualizations/elasticity/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/elasticity/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "plasticity2d",
+      "sample_id": 956,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          16,
+          5
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.37496007665282655,
+          "pi": 0.37496007665282655,
+          "cpg": 0.37496007665282655,
+          "ca": 0.37496007665282655
+        }
+      },
+      "crop_box_pixels": [
+        0,
+        315,
+        1400,
+        735
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/plasticity2d/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/plasticity2d/panels/pi_density.png",
+        "appendix_figures/more_visualizations/plasticity2d/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/plasticity2d/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "shapenet_car",
+      "sample_id": "param0/1137cd58d6a45c6659a47b1880958de9",
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          12,
+          8,
+          16
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.375007767352265,
+          "pi": 0.375007767352265,
+          "cpg": 0.375007767352265,
+          "ca": 0.375007767352265
+        }
+      },
+      "crop_box_pixels": [
+        57,
+        319,
+        1343,
+        731
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/shapenet_car/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/shapenet_car/panels/pi_density.png",
+        "appendix_figures/more_visualizations/shapenet_car/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/shapenet_car/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "driverml",
+      "sample_id": 337,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          24,
+          12,
+          8
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.3749999711658345,
+          "pi": 0.3749999711658345,
+          "cpg": 0.3749999711658345,
+          "ca": 0.3749999711658345
+        }
+      },
+      "crop_box_pixels": [
+        24,
+        158,
+        1573,
+        999
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/driverml/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/driverml/panels/pi_density.png",
+        "appendix_figures/more_visualizations/driverml/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/driverml/panels/ca_density.png"
+      ]
+    },
+    {
+      "case": "superwing",
+      "sample_id": 2048,
+      "budget": 0.375,
+      "seed": 0,
+      "density": {
+        "bins": [
+          16,
+          32
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.375,
+          "pi": 0.375,
+          "cpg": 0.375,
+          "ca": 0.375
+        }
+      },
+      "crop_box_pixels": [
+        46,
+        20,
+        1554,
+        1211
+      ],
+      "source_files": [
+        "appendix_figures/more_visualizations/superwing/panels/uniform_density.png",
+        "appendix_figures/more_visualizations/superwing/panels/pi_density.png",
+        "appendix_figures/more_visualizations/superwing/panels/cpg_density.png",
+        "appendix_figures/more_visualizations/superwing/panels/ca_density.png"
+      ]
+    }
+  ]
+}

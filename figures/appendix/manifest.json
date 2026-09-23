@@ -1303,6 +1303,30 @@
     }
   ],
   "curve_source": "normalized_curve_points.csv",
-  "curve_points": 144,
-  "curve_reference": "Full mesh = 1"
+  "curve_points": 192,
+  "curve_reference": "Shared backbone full-mesh error = 1",
+  "density_visualization": {
+    "figure": "density_visualization.pdf",
+    "rows": 8,
+    "methods": [
+      "Uniform",
+      "PI",
+      "CPG",
+      "CA"
+    ],
+    "budget": 0.375,
+    "seed": 0,
+    "quantity": "Local selected/native point fraction",
+    "color_scale": [
+      0,
+      1
+    ]
+  },
+  "adaptive_curve_points": 144,
+  "fullmesh_training_curve_points": 48,
+  "curve_sources": {
+    "adaptive": "normalized_curve_points.csv",
+    "fullmesh_training": "fullmesh_training_curve_points.csv"
+  },
+  "fullmesh_training_endpoint_budget": 100
 }

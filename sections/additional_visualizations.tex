@@ -1,42 +1,59 @@
-\section{More Result}
+\section{Additional Results}
 \label{app:more_results}
 
-\subsection{Accuracy Visualization}
+\subsection{More Result}
 \label{app:budget_curves}
 
-Figure~\ref{fig:appendix_budget_curves} compares the density policies in
-Appendix~\ref{app:density_policy_design} at $37.5\%$, $50\%$, and $75\%$ point
-budgets. We report errors normalized by the corresponding full-mesh
-inference error.
+Figure~\ref{fig:appendix_budget_curves} compares Uniform and the three
+AdaSolver policies with a Transolver reference trained on full meshes and
+evaluated with uniform sampling. The policies use nominal point budgets of
+$37.5\%$, $50\%$, and $75\%$; the Transolver curve also includes its $100\%$
+endpoint. All errors are normalized by the full-mesh error of the backbone
+shared by Uniform and AdaSolver. The horizontal line at one marks this
+reference. Shaded bands show one sample standard deviation across three
+sampling seeds; the full-mesh endpoint uses all points.
 
-Increasing the budget generally brings field errors closer to the full-mesh
-reference. The relative ordering of the policies depends on the task and
-output quantity. On Darcy, CPG and CA approach full-mesh field accuracy at
-the smallest budget, while PI remains close to Uniform. This suggests that
-effective density design on regular grids should be driven by variation in
-the solution field. Aerodynamic
-quantities on the car and wing benchmarks often approach the reference with
-fewer points than their field metrics.
+The reference uses original Transolver checkpoints for Airfoil, Pipe, and
+Elasticity, and Transolver3 checkpoints for the other tasks. Point-cloud
+models reuse Uniform's sampled points and reconstruction.
+The original Airfoil and Pipe models require structured grids, so they use
+uniform Cartesian subgrids with the actual retained fractions plotted.
+Darcy already uses a full-mesh-trained backbone, making its Transolver and
+Uniform curves coincide. On DrivAerML, the reference changes the pressure
+checkpoint and uses Uniform's wall-shear-stress operator and predictions at
+the matching budget.
+Error definitions follow Section~\ref{sec:experiment_implementation}; Airfoil
+$C_D/C_L$ uses absolute ratio error before normalization. Airfoil field and
+coefficient errors, and Elasticity errors, use logarithmic vertical axes.
+
+The $100\%$ endpoint shows where adaptive sampling matches or improves upon
+the full-mesh-trained reference with fewer points. On Plasticity, CPG at
+$37.5\%$ achieves $5.02\%$ relative $L_2$ error, compared with $6.40\%$ for
+Transolver at $100\%$: $62.5\%$ fewer points and $21.6\%$ lower error.
+On DrivAerML, the corresponding $C_D$ errors are $0.948\%$ and $1.05\%$.
+The benefit depends on the task and output quantity. In Darcy, CPG and CA
+approach full-mesh field accuracy at small budgets, while PI stays close to
+Uniform, supporting density designs guided by solution-field variation.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{figures/appendix/budget_error_curves.pdf}
-    \caption{\textbf{Error relative to the full mesh across point budgets.}
+    \caption{\textbf{Accuracy across point budgets.}
     Panels (a)--(h) show field metrics and (i)--(l) show aerodynamic quantities.
-    Error definitions follow Section~\ref{sec:experiment_implementation}.
-    Curves show means over three sampling seeds, with shaded bands indicating
-    one sample standard deviation.
-    The Airfoil $C_D/C_L$ metric is an absolute coefficient-ratio error before
-    normalization, and panel (i) uses a logarithmic vertical axis. The dotted
-    line at one marks full-mesh inference accuracy in every panel.}
+    Transolver denotes the full-mesh-trained reference, including its $100\%$
+    endpoint. The horizontal line marks full-mesh accuracy of the backbone
+    used by AdaSolver.}
     \label{fig:appendix_budget_curves}
 \end{figure}
+
+\clearpage
+\input{sections/density_visualization.tex}
 
 \clearpage
 \input{sections/computational_cost.tex}
 
 \clearpage
-\subsection{Additional Field Visualization}
+\subsection{More Showcases}
 \label{app:field_visualizations}
 
 The following pages connect the aggregate error profiles to spatial sampling
