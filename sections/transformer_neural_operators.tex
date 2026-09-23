@@ -31,13 +31,14 @@ Writing $u_s^{(N)}=[u_{s,1}^{(N)},\ldots,u_{s,M}^{(N)}]^{\top}\in\mathbb{R}^{M\t
     u_{s,j}'
     &= \sum_{t=1}^{M}
       \frac{\exp\!\left(q_j^{\top}k_t/\tau\right)}
-           {\sum_{p=1}^{M}\exp\!\left(q_j^{\top}k_p/\tau\right)}v_t \\
-    &\xrightarrow[M\to\infty]{}
-    \mathcal{A}[u_s^{\rho}](\xi_s') \\
+           {\sum_{p=1}^{M}\exp\!\left(q_j^{\top}k_p/\tau\right)}v_t
+      \xrightarrow[M\to\infty]{}
+      \mathcal{A}[u_s^{\rho}](\xi_s'), \\
+    \mathcal{A}[u_s^{\rho}](\xi_s')
     &:= \int_{\Omega_s}
       \frac{\exp\!\left(q(u_s^{\rho}(\xi_s'))^{\top}k(u_s^{\rho}(\xi_s))/\tau\right)}
            {\int_{\Omega_s}\exp\!\left(q(u_s^{\rho}(\xi_s'))^{\top}k(u_s^{\rho}(\eta_s))/\tau\right)\,\mathrm{d}\eta_s}
-      v(u_s^{\rho}(\xi_s))\,\mathrm{d}\xi_s.
+      v(u_s^{\rho}(\xi_s))\,\mathrm{d}\xi_s .
     \end{aligned}
     \label{eq:transolver_state_attention}
 \end{equation}
@@ -47,4 +48,4 @@ where $u_s^{\rho}(\xi_s)$ is the continuous physics-token field on the slice dom
     \qquad i=1,\ldots,N.
     \label{eq:transolver_deslice}
 \end{equation}
-Thus, Physics-Attention replaces the $N\times N$ point interaction with operations of complexity $\mathcal{O}(NMC+M^2C)$ for $M\ll N$. During training, the point sets used by $\mathcal{G}_{\theta}$ are typically generated according to the prescribed measure $\rho$.
+Thus, Physics-Attention replaces the $N\times N$ point interaction with operations of complexity $\mathcal{O}(NMC+M^2C)$ for $M\ll N$. During training, the input samples used by $\mathcal{G}_{\theta}$ are typically generated according to the prescribed measure $\rho$.

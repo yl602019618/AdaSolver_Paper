@@ -29,9 +29,9 @@ For a consistent comparison, we treat all input discretizations as unstructured 
 \end{equation}
 Lower rAUEC is better, with uniform sampling normalized to $1$. We report mean rAUEC and its sample standard deviation over three independent sampling runs with matched Uniform baselines. We also report end-to-end runtime for geometry optimization.
 
-Airfoil uses the same 112 cases with reference $C_L>0.01$ for field and $C_D/C_L$ evaluation, with metric-specific sampling policies and absolute error for $C_D/C_L$. Elasticity uses 200 independent holdout cases.
+% Airfoil uses the same 112 cases with reference $C_L>0.01$ for field and $C_D/C_L$ evaluation, with metric-specific sampling policies and absolute error for $C_D/C_L$. Elasticity uses 200 independent holdout cases.
 
-For industrial benchmarks, ShapeNet-Car combines full-cloud velocity relative $L_2$ with half the surface-pressure relative $L_2$ error. DrivAerML uses surface-pressure relative $L_2$, and SuperWing uses joint relative $L_2$ on the dataset-scaled pressure and skin-friction channels. The aerodynamic metrics are relative errors in $C_D$ for the car datasets and $C_D/C_L$ for SuperWing, with sampling policies selected separately for each metric. ShapeNet-Car and DrivAerML use 100 and 50 test geometries, respectively. SuperWing uses 2,871 cases for field evaluation and a fixed 2,563-case subset for $C_D/C_L$, selected by a calibration-derived lift-magnitude cutoff of approximately $0.071$.
+% For industrial benchmarks, ShapeNet-Car combines full-cloud velocity relative $L_2$ with half the surface-pressure relative $L_2$ error. DrivAerML uses surface-pressure relative $L_2$, and SuperWing uses joint relative $L_2$ on the dataset-scaled pressure and skin-friction channels. The aerodynamic metrics are relative errors in $C_D$ for the car datasets and $C_D/C_L$ for SuperWing, with sampling policies selected separately for each metric. ShapeNet-Car and DrivAerML use 100 and 50 test geometries, respectively. SuperWing uses 2,871 cases for field evaluation and a fixed 2,563-case subset for $C_D/C_L$, selected by a calibration-derived lift-magnitude cutoff of approximately $0.071$.
 
 \subsection{Main Results}
 \label{sec:main_results}
@@ -76,14 +76,13 @@ $C_D/C_L$ prediction error decreases from $3.26\%$ to $0.46\%$.
 
 \paragraph{3D SuperWing.}
 Figure~\ref{fig:superwing_design} compares CMA-ES~\citep{hansen2001completely}
-optimization on SuperWing~\citep{yang2025superwing}, with both methods starting
-from the same geometry and flow condition
-and running 150 generations of 12 candidates each.
-AdaSolver evaluates $37.5\%$ of the point set. Its sampling density is refreshed
-every 20 generations to follow shape changes.
-Three repeated timing runs give median online optimization times of $26.45$~s
-for the full mesh and $14.18$~s for AdaSolver, a $1.86\times$ speedup.
-Independent RANS validation with ADflow~\citep{mader2020adflow} shows a slightly lower final CFD $C_D/C_L$
-for AdaSolver ($0.04275$ versus $0.04283$), with relative prediction error
-decreasing from $3.82\%$ to $3.30\%$.
+optimization on SuperWing~\citep{yang2025superwing}, with both methods initialized
+from the same geometry and flow condition. AdaSolver evaluates only $37.5\%$ of
+the surface points and periodically refreshes the sampling density as the geometry
+evolves. Since nearby optimization iterates typically exhibit similar geometries,
+the same density can be reused across multiple steps, avoiding unnecessary
+resampling overhead. AdaSolver achieves a $1.86\times$ speedup while attaining a
+slightly lower CFD-validated $C_D/C_L$ than full-mesh optimization. As shown in
+Figure~\ref{fig:superwing_design}, the relative prediction error also decreases
+from $3.82\%$ to $3.30\%$.
 \input{figures/fig4_superwing_optimization.tex}

@@ -1,5 +1,4 @@
 \section{Related Work}
-\vspace{-1em}
 \paragraph{Neural operators on irregular geometries.}
 Fourier neural operators learn resolution-transferable spectral mappings on
 regular grids, while Geo-FNO extends them to general geometries through learned
@@ -27,6 +26,6 @@ under a mismatch between training and evaluation discretizations
 \citep{gao2025discretization}. We adopt the same function-space principle for
 latent point aggregation, but use it to support a deliberate inference-time
 change of sampling density rather than only passive resolution transfer.
-\vspace{-1.5em}
+\vspace{-1em}
 \paragraph{Adaptive meshes and test-time refinement.}
 Adaptive discretization concentrates resolution where numerical error is expected to be large, and learned methods predict mesh refinement or node relocation for numerical solvers \citep{huang2021meshgeneration,obiols2023adarnet,rowbottom2024gadaptivity}. Test-time compute has also been increased through iterative refinement, adaptive tokenization, and neural-operator composition \citep{lippe2023pderefiner,jenkins2026atca,wang2026adaptivetokenization,serrano2026splitting}. These methods determine where or how inference computation is allocated. AdaSolver instead addresses the operator-level challenge of changing spatial sampling density while preserving the reference operator.

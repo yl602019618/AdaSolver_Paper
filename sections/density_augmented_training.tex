@@ -1,24 +1,24 @@
-\subsection{Distribution-Amortized Training}
-\label{sec:distribution_amortized_training}
+% \subsection{Distribution-Amortized Training}
+% \label{sec:distribution_amortized_training}
 
-Using the measure-consistency property above, we extend the geometry-amortized training strategy of Transolver-3~\citep{zhou2026transolver3}, which trains on random subsets of a high-resolution mesh, to distribution-amortized training. At step $t$, we draw a point count $N_t$ from a prescribed range and choose a refinement configuration $(\gamma_t,\psi_t)$, giving
-\begin{equation}
-    \rho_t:=\widetilde{\rho}_{\gamma_t,\psi_t},
-    \qquad
-    x_i^{(t)}\sim\rho_t,\quad i=1,\ldots,N_t,
-    \qquad
-    S_t:=\{x_i^{(t)}\}_{i=1}^{N_t}.
-    \label{eq:distribution_amortized_sampling}
-\end{equation}
-The configuration $(\gamma_t,\psi_t)$ may be random or generated from a geometry- or physics-based refinement rule. We use the point-to-slice correction from \eqref{eq:unified_refinement_correction} during the forward pass and optimize
-\begin{equation}
-    \min_{\theta}\,\mathbb{E}_{t}
-    \left[
-    \ell\!\left(
-    \mathcal{G}_{\theta}\!\left(a\big|_{S_t}\right),
-    u\big|_{S_t}
-    \right)
-    \right].
-    \label{eq:distribution_amortized_objective}
-\end{equation}
-Because each corrected point-to-slice aggregation remains an estimator of the same $\rho$-based operator, changing $N_t$ and $\rho_t$ across training steps provides distributional augmentation without changing the operator target. Uniform variable-cardinality training is recovered when $\gamma_t=0$.
+% Using the measure-consistency property above, we extend the geometry-amortized training strategy of Transolver-3~\citep{zhou2026transolver3}, which trains on random subsets of a high-resolution mesh, to distribution-amortized training. At step $t$, we draw a point count $N_t$ from a prescribed range and choose a refinement configuration $(\gamma_t,\psi_t)$, giving
+% \begin{equation}
+%     \rho_t:=\widetilde{\rho}_{\gamma_t,\psi_t},
+%     \qquad
+%     x_i^{(t)}\sim\rho_t,\quad i=1,\ldots,N_t,
+%     \qquad
+%     S_t:=\{x_i^{(t)}\}_{i=1}^{N_t}.
+%     \label{eq:distribution_amortized_sampling}
+% \end{equation}
+% The configuration $(\gamma_t,\psi_t)$ may be random or generated from a geometry- or physics-based refinement rule. We use the point-to-slice correction from \eqref{eq:unified_refinement_correction} during the forward pass and optimize
+% \begin{equation}
+%     \min_{\theta}\,\mathbb{E}_{t}
+%     \left[
+%     \ell\!\left(
+%     \mathcal{G}_{\theta}\!\left(a\big|_{S_t}\right),
+%     u\big|_{S_t}
+%     \right)
+%     \right].
+%     \label{eq:distribution_amortized_objective}
+% \end{equation}
+% Because each corrected point-to-slice aggregation remains an estimator of the same $\rho$-based operator, changing $N_t$ and $\rho_t$ across training steps provides distributional augmentation without changing the operator target. Uniform variable-cardinality training is recovered when $\gamma_t=0$.

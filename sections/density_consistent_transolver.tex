@@ -1,7 +1,7 @@
 \subsection{Sampling-Density-Consistent Transolver}
 \label{sec:density_consistent_transolver}
 
-A decoder-only transformer neural operator is typically trained and evaluated on point sets generated according to a prescribed sampling measure $\rho$, which is determined by the discretization used for data generation, such as a uniform grid or a geometry-dependent mesh-refinement policy. At inference time, we may instead sample from a different measure $\widetilde{\rho}$ to obtain a different spatial description of the same physical domain. For example, aerodynamic geometries can be sampled more densely near surfaces or flow-sensitive structures and more sparsely in smooth exterior regions. However, because transformer neural operators approximate continuous operators through Monte Carlo integration, changing the sampling measure generally changes the limiting operator represented by the frozen model.
+Transolver is trained on point sets drawn from a prescribed sampling measure \(\rho\), induced by the discretization used to generate the training data, such as a uniform grid or a refined mesh. At inference time, we may instead sample from a different measure $\widetilde{\rho}$ to obtain a different spatial description of the same physical domain. For example, aerodynamic geometries may be sampled more densely near surfaces or flow-sensitive regions and more sparsely in smooth regions. However, changing the sampling measure alters the Monte Carlo aggregation in Transolver and therefore changes its limiting operator.
 
 Let $\lambda=\mathrm{d}\widetilde{\rho}/\mathrm{d}\rho>0$ denote the density ratio. For a slice location $\xi_s\in\Omega_s$, define the slice-weighted probability measure
 \begin{equation}
@@ -60,15 +60,16 @@ These results identify the point-to-slice aggregation as the source of the sampl
     =u_{s,j}^{\widetilde{\rho}},
     \label{eq:uncorrected_shifted_physics_token}
 \end{equation}
-rather than the reference token $u_{s,j}^{\rho}$ learned under $\rho$.
-
-We therefore correct the measure only when forming the physics tokens. For each inference point, let
+rather than the reference token $u_{s,j}^{\rho}$ learned under $\rho$. We therefore correct the measure only when forming the physics tokens.
+Let the measure-correction weight be
 \begin{equation}
-    c_i:=\frac{\mathrm{d}\rho}{\mathrm{d}\widetilde{\rho}}(x_i)
-    =\lambda(x_i)^{-1},
+    c_i
+    := \frac{\mathrm{d}\rho}{\mathrm{d}\widetilde{\rho}}(x_i)
+    = \lambda(x_i)^{-1},
     \label{eq:main_importance_weight}
 \end{equation}
-be its importance weight, or the corresponding inverse relative inclusion density for discrete sampling. The corrected aggregation is
+which corresponds to the inverse relative inclusion density under discrete sampling.
+The corrected aggregation becomes
 \begin{equation}
     \widehat{u}_{s,j}^{(N)}
     :=\frac{\sum_{i=1}^{N}c_iw_{i,j}h_i}
@@ -79,9 +80,7 @@ be its importance weight, or the corresponding inverse relative inclusion densit
     =u_{s,j}^{\rho}.
     \label{eq:density_consistent_physics_token}
 \end{equation}
-Because the estimator is self-normalized, only the relative density ratios are required. For finite samples, the implementation may replace $c_i$ with $c_i^{\beta}$, where $\beta=0$ recovers the original Transolver and $\beta=1$ gives the measure-consistent correction above.
-
-After the corrected physics tokens are obtained, we apply the original attention among physics tokens and the original deslice operation without further modification. For a Transolver with $L$ layers, the same correction is applied whenever layer $\ell$ forms new physics tokens from its current point features $h_i^{(\ell)}$:
+Because the estimator is self-normalized, only relative density ratios are required. After the corrected physics tokens are obtained, we apply the original attention among physics tokens and the original deslice operation without further modification. For a Transolver with $L$ layers, the same correction is applied whenever layer $\ell$ forms new physics tokens from its current point features $h_i^{(\ell)}$:
 \begin{equation}
     \widehat{u}_{s,j}^{(\ell)}
     =\frac{\sum_{i=1}^{N}c_iw_{i,j}^{(\ell)}h_i^{(\ell)}}
@@ -89,4 +88,4 @@ After the corrected physics tokens are obtained, we apply the original attention
     \qquad \ell=1,\ldots,L.
     \label{eq:layerwise_density_correction}
 \end{equation}
-Each layer then continues with its unchanged Physics-Attention and deslice operations. Thus, the correction follows the point-to-slice aggregation throughout the frozen network while preserving all learned projections and attention parameters.
+Thus, for any admissible sampling density \(\widetilde{\rho}\), all learned projections and attention parameters remain unchanged, and only the point-to-slice aggregation is reweighted.
