@@ -10,3 +10,5 @@ Exported from the author-updated `总图1.pptx`, slides 1–4. The presentation 
 | 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 8154 × 2927 |
 
 The ten native Office equations are verified against the presentation and restored as LaTeX vectors where the Linux exporter omits them. The editable source presentation is retained unchanged.
+
+Latest refresh: author-revised slides 3 and 4 (Airfoil and SuperWing inverse design), exported and cropped on 2026-09-23.

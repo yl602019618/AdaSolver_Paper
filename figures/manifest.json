@@ -37,32 +37,38 @@
       "name": "fig3_airfoil_optimization",
       "source_slide": 3,
       "crop_box_points": [
-        195.98124650994575,
-        102.91095743713572,
-        1237.385668698011,
-        461.12790011573685
+        195.98124702766626,
+        102.91095740426292,
+        1237.3856718543118,
+        461.1278999783648
       ],
-      "paper_scale": 0.380255731167317,
+      "paper_scale": 0.3802557302038726,
       "width_px": 8679,
-      "height_px": 2986
+      "height_px": 2986,
+      "source": "总图1.pptx",
+      "raster_dpi": 600,
+      "export_scope": "source slides 3 and 4 only"
     },
     {
       "name": "fig4_superwing_optimization",
       "source_slide": 4,
       "crop_box_points": [
-        178.98282477396023,
-        107.9068729159034,
-        1157.3930958227847,
-        459.1295339242298
+        178.9828252481102,
+        107.90687288152269,
+        1157.393098774048,
+        459.12953378746084
       ],
-      "paper_scale": 0.4047381877701475,
+      "paper_scale": 0.404738186745442,
       "width_px": 8154,
-      "height_px": 2927
+      "height_px": 2927,
+      "source": "总图1.pptx",
+      "raster_dpi": 600,
+      "export_scope": "source slides 3 and 4 only"
     }
   ],
   "source_presentation_edited_by_user": true,
   "source_presentation_modified_by_export": false,
   "original_equations_verified": true,
-  "upstream_manuscript_commit": "3b69746dedb66b3c907471bf66e345b994a2c08e",
-  "last_refresh_scope": "Fig2 / source slide 2 only"
+  "upstream_manuscript_commit": "b7e857704b62571414f821c51e1acb6400bb08cf",
+  "last_refresh_scope": "Fig3 and Fig4 / source slides 3 and 4 only"
 }
