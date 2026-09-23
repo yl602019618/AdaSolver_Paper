@@ -1,5 +1,5 @@
 \section{Related Work}
-
+\vspace{-1em}
 \paragraph{Neural operators on irregular geometries.}
 Fourier neural operators learn resolution-transferable spectral mappings on
 regular grids, while Geo-FNO extends them to general geometries through learned
@@ -12,7 +12,7 @@ GNOT, UPT, and Transolver \citep{hao2023gnot,alkin2024upt,wu2024transolver}.
 Transolver++ and Transolver-3 further scale this design to million-scale and
 industrial-scale geometries \citep{luo2025transolverpp,zhou2026transolver3}.
 These methods establish strong compatibility with irregular inputs. Our focus is complementary: we actively change the \emph{local} sampling density at inference and ask whether the model can preserve operator consistency while maintaining or even improving predictive performance.
-\vspace{-1.5em}
+\vspace{-1em}
 \paragraph{Discretization-consistent operator learning.}
 Extending finite neural architectures to function spaces requires discrete
 reductions to converge to fixed continuous integrals as the discretization
@@ -29,17 +29,4 @@ latent point aggregation, but use it to support a deliberate inference-time
 change of sampling density rather than only passive resolution transfer.
 \vspace{-1.5em}
 \paragraph{Adaptive meshes and test-time refinement.}
-Adaptive discretization concentrates resolution where numerical error is
-expected to be large. Learned approaches predict mesh density, refinement, or
-node relocation for numerical solvers
-\citep{huang2021meshgeneration,obiols2023adarnet,rowbottom2024gadaptivity},
-while MeshGraphNets integrates learned dynamics with mesh-based simulation
-\citep{pfaff2021meshgraphnets}. Test-time computation has also been increased
-through iterative denoising in PDE-Refiner, adaptive allocation or tokenization,
-and neural-operator composition
-\citep{lippe2023pderefiner,jenkins2026atca,
-wang2026adaptivetokenization,serrano2026splitting}. These directions determine
-where or how additional inference computation should be used. AdaSolver
-addresses the complementary operator-level requirement: changing the spatial
-sampling density of a frozen point-based neural operator while keeping its
-reference continuous measure fixed.
+Adaptive discretization concentrates resolution where numerical error is expected to be large, and learned methods predict mesh refinement or node relocation for numerical solvers \citep{huang2021meshgeneration,obiols2023adarnet,rowbottom2024gadaptivity}. Test-time compute has also been increased through iterative refinement, adaptive tokenization, and neural-operator composition \citep{lippe2023pderefiner,jenkins2026atca,wang2026adaptivetokenization,serrano2026splitting}. These methods determine where or how inference computation is allocated. AdaSolver instead addresses the operator-level challenge of changing spatial sampling density while preserving the reference operator.
