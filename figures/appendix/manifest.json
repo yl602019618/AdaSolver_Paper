@@ -3,6 +3,8 @@
     {
       "case": "airfoil2d",
       "sample_id": 1103,
+      "source": "airfoil_pressure_tuning/paper_update/fields/data/airfoil2d/candidates/1103",
+      "font": "Arial",
       "budget": 0.375,
       "seed": 0,
       "fields": [
@@ -35,8 +37,8 @@
             "out_of_range_fraction": {
               "uniform": 0.038328453553367045,
               "pi": 8.872327211427557e-05,
-              "cpg": 0.001242125809599858,
-              "ca": 0.000621062904799929
+              "cpg": 0.00026616981634282674,
+              "ca": 0.00017744654422855114
             }
           },
           "metrics": {
@@ -51,19 +53,41 @@
               "definition": "Full-support scalar relative L2"
             },
             "cpg": {
-              "relative_L2_percent": 1.7280393132835037,
-              "MAE": 0.003159811995275124,
+              "relative_L2_percent": 1.3488151624387714,
+              "MAE": 0.0030818219842782776,
               "definition": "Full-support scalar relative L2"
             },
             "ca": {
-              "relative_L2_percent": 1.6124344287453232,
-              "MAE": 0.003059225405526317,
+              "relative_L2_percent": 1.2986846451000353,
+              "MAE": 0.0027293532007719172,
               "definition": "Full-support scalar relative L2"
             }
           }
         }
       ],
+      "density": {
+        "bins": [
+          24,
+          8
+        ],
+        "definition": "Actual selected/native point fraction in fixed bins",
+        "global_fraction": {
+          "uniform": 0.37503327122704283,
+          "pi": 0.37503327122704283,
+          "cpg": 0.37503327122704283,
+          "ca": 0.37503327122704283
+        }
+      },
+      "density_colormap": "fig4_feature_light_teal",
+      "feature_colormap": "fig4_feature_light_teal",
       "feature_definition": "Actual sampler acquisition/prior score; coarse scores lifted to native support for display",
+      "time_weights": [],
+      "slice": null,
+      "surface_display": null,
+      "diagnostic_rows": [
+        "sampling",
+        "density_feature"
+      ],
       "error_definition": "Signed component residual or nonnegative Euclidean vector error norm"
     },
     {
@@ -1345,5 +1369,20 @@
     },
     "font_increment_pt": 1,
     "cumulative_font_increment_pt": 2
+  },
+  "airfoil_pressure_policy_update": {
+    "test_cases": 112,
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "CPG_rAUEC": 0.5843803481265784,
+    "CA_rAUEC": 0.5594680877340541,
+    "configs": "data/airfoil_pressure/configs.json",
+    "examples_preserved": [
+      1095,
+      1103
+    ]
   }
 }

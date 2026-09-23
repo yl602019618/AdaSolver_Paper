@@ -31,6 +31,8 @@ the full-mesh-trained reference with fewer points. On Plasticity, CPG at
 $37.5\%$ achieves $5.02\%$ relative $L_2$ error, compared with $6.40\%$ for
 Transolver at $100\%$: $62.5\%$ fewer points and $21.6\%$ lower error.
 On DrivAerML, the corresponding $C_D$ errors are $0.948\%$ and $1.05\%$.
+On Airfoil, CA at a $75\%$ budget reaches a normalized pressure error of
+$1.025$, using $25\%$ fewer points than the shared backbone's full mesh.
 The benefit depends on the task and output quantity. In Darcy, CPG and CA
 approach full-mesh field accuracy at small budgets, while PI stays close to
 Uniform, supporting density designs guided by solution-field variation.
@@ -79,8 +81,8 @@ specified below.
 
 The pressure jump in this example makes errors in its location visible as
 a narrow residual band. All three adaptive policies reduce the field error
-relative to Uniform. PI gives the lowest error for this particular geometry,
-illustrating the task-dependent policy ordering seen in the budget curves.
+relative to Uniform. CA gives the lowest error for this geometry ($1.30\%$),
+with PI and CPG attaining $1.33\%$ and $1.35\%$, respectively.
 
 \begin{figure}[!ht]
     \centering

@@ -31,7 +31,10 @@
       "source": "总图1.pptx",
       "export_scope": "slide 2 only",
       "renderer": "LibreOffice Impress",
-      "raster_dpi": 600
+      "raster_dpi": 600,
+      "pressure_policy_update": "data/airfoil_pressure/configs.json",
+      "updated_source_presentation": "airfoil_pressure_tuning/paper_update/总图1.pptx",
+      "updated_airfoil_sample_id": 1095
     },
     {
       "name": "fig3_airfoil_optimization",
@@ -70,5 +73,5 @@
   "source_presentation_modified_by_export": false,
   "original_equations_verified": true,
   "upstream_manuscript_commit": "b7e857704b62571414f821c51e1acb6400bb08cf",
-  "last_refresh_scope": "Fig3 and Fig4 / source slides 3 and 4 only"
+  "last_refresh_scope": "Airfoil field policy update in Figure 2; author layout retained"
 }

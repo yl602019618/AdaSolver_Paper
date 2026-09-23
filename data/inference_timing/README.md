@@ -3,6 +3,10 @@
 Source: `AdaSolver_official/inference_speed/profiles/all_methods_v4/final`.
 This is the complete four-method profile, extending the earlier GPU v3 comparison.
 The archived summaries were checked against the upstream reports on 2026-09-23.
+Airfoil rows have been remeasured with the pressure policies in
+`../airfoil_pressure/configs.json`, using the same cases, seeds, budgets,
+and repetition counts. Their 111 raw case records are in
+`../airfoil_pressure/timing_raw.jsonl`.
 
 The profiles cover the first, middle and last test case of eight benchmarks,
 three sampling seeds, and point budgets 37.5%, 50%, 75%, plus the 100% mesh.

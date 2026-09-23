@@ -197,7 +197,7 @@ Here $(\cdot)_+$ is the positive part and $\chi=\min(1,|\widehat L|/0.02)$ downw
 \begin{equation}
     \begin{aligned}
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
-       &=\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s_f])^{1/2}],\\
+       &=\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s_f])^{2}],\\
     \lambda_{\mathrm{tar}}^{C_D/C_L}
        &=\mathcal{N}\!\left[
           \bigl(0.1+\chi\mathcal{K}_{0.1}[v_R]
@@ -294,15 +294,19 @@ The displacement-gradient magnitude summarizes concentrated deformation over the
 \end{equation}
 
 \paragraph{Airfoil.}
-Pressure gradients identify flow variation relevant to field reconstruction and aerodynamic prediction. A $128\to8\to32\to1$ head predicts pressure, and both metrics use the same density rule. The coarse budget is $10\%$ for the field and $5\%$ for $C_D/C_L$, always including the 121 surface nodes. Denoting the pressure estimate for target $q$ by $\widehat p^{\mathrm{head},q}$ gives
+Pressure gradients identify flow variation relevant to field reconstruction and aerodynamic prediction. A $128\to8\to32\to1$ head predicts pressure, with density parameters selected for each metric. The coarse budget is $10\%$ for the field and $5\%$ for $C_D/C_L$, always including the 121 surface nodes. Denoting the pressure estimate for target $q$ by $\widehat p^{\mathrm{head},q}$ gives
 \begin{equation}
-    s_q=\mathcal{I}_0G_{16}[\widehat p^{\mathrm{head},q}],
-    \qquad
-    \lambda_{\mathrm{tar}}^q
-       =\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s_q])^{1/2}],
-    \quad q\in\{\mathrm{field},C_D/C_L\}.
+    \begin{aligned}
+    s_q&=\mathcal{I}_0G_{16}[\widehat p^{\mathrm{head},q}],
+       \quad q\in\{\mathrm{field},C_D/C_L\},\\
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+       &=\mathcal{N}[(0.01+\mathcal{Q}_{0.95}[s_{\mathrm{field}}])^2],\\
+    \lambda_{\mathrm{tar}}^{C_D/C_L}
+       &=\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s_{C_D/C_L}])^{1/2}].
+    \end{aligned}
     \label{eq:app_ca_airfoil_density}
 \end{equation}
+The CPG and CA field-policy parameters are screened on 24 geometries with one sampling seed and selected on 48 geometries with three seeds. The selected policies are frozen before evaluation on 48 additional confirmation geometries and the fixed 112 test cases satisfying $C_L>0.01$, with three sampling seeds for each set. Both field policies use $\beta=1$.
 
 \paragraph{Pipe.}
 The velocity-gradient magnitude provides a direct measure of local flow variation. A head with two Transolver blocks of width 128 learns $G=\|\nabla v_x\|_2$ from the training fields. Squaring the decoded estimate gives the allocation score:

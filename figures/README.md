@@ -12,3 +12,5 @@ Exported from the author-updated `总图1.pptx`, slides 1–4. The presentation 
 The ten native Office equations are verified against the presentation and restored as LaTeX vectors where the Linux exporter omits them. The editable source presentation is retained unchanged.
 
 Latest refresh: author-revised slides 3 and 4 (Airfoil and SuperWing inverse design), exported and cropped on 2026-09-23.
+
+Airfoil pressure-policy refresh: Figure 2 retains the author layout and sample 1095, with regenerated CPG/CA sampling and signed-error images. The corresponding L2 annotations are 0.52% and 0.98%. The updated policy parameters and population results are in `data/airfoil_pressure/`.
