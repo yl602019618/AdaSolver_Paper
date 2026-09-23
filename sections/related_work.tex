@@ -11,11 +11,8 @@ large point sets into latent representations before global interaction, as in
 GNOT, UPT, and Transolver \citep{hao2023gnot,alkin2024upt,wu2024transolver}.
 Transolver++ and Transolver-3 further scale this design to million-scale and
 industrial-scale geometries \citep{luo2025transolverpp,zhou2026transolver3}.
-These methods establish strong compatibility with irregular inputs and changing
-point counts. Our focus is complementary: we actively change the \emph{local}
-sampling density at inference and ask whether the frozen model still represents
-the same continuous operator.
-
+These methods establish strong compatibility with irregular inputs. Our focus is complementary: we actively change the \emph{local} sampling density at inference and ask whether the model can preserve operator consistency while maintaining or even improving predictive performance.
+\vspace{-1.5em}
 \paragraph{Discretization-consistent operator learning.}
 Extending finite neural architectures to function spaces requires discrete
 reductions to converge to fixed continuous integrals as the discretization
@@ -30,7 +27,7 @@ under a mismatch between training and evaluation discretizations
 \citep{gao2025discretization}. We adopt the same function-space principle for
 latent point aggregation, but use it to support a deliberate inference-time
 change of sampling density rather than only passive resolution transfer.
-
+\vspace{-1.5em}
 \paragraph{Adaptive meshes and test-time refinement.}
 Adaptive discretization concentrates resolution where numerical error is
 expected to be large. Learned approaches predict mesh density, refinement, or
