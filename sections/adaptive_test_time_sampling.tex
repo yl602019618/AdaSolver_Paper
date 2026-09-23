@@ -24,40 +24,54 @@ Here $\nu_{\psi}*\rho$ denotes the reweighted empirical measure induced by the r
 \subsubsection{Physics-Informed Density Refinement}
 \label{sec:physics_informed_refinement}
 
-The first policy constructs $r_{\psi}$ from prior information about the geometry or the governing physical problem. Let $s_{\mathrm{prior}}(x)\geq0$ be a problem-dependent indicator whose large values identify regions that are expected to require finer spatial resolution. This indicator can be obtained from a known geometric feature, a numerical refinement rule, or a physical quantity available before inference. We set
+The first policy constructs $r_{\psi}$ from prior information about the geometry
+or the physical problem. Let $s_{\mathrm{prior}}(x)\geq0$ be a problem-dependent
+indicator whose large values identify regions expected to require finer resolution.
+This indicator can be obtained from a known geometric feature, a numerical
+refinement rule, or a physical quantity available before inference. We set
 \begin{equation}
     \nu_{\mathrm{prior}}(x)
     :=\frac{s_{\mathrm{prior}}(x)}
     {\int_{\Omega}s_{\mathrm{prior}}(y)\,\mathrm{d}\rho(y)}
     \label{eq:prior_refinement_kernel}
 \end{equation}
-and use it in \eqref{eq:unified_refinement_measure} to sample the final point set.
-
-This policy does not require a preliminary network evaluation; once the prior indicator is available, points are sampled from $\widetilde{\rho}_{\gamma,\mathrm{prior}}$ and inferred with the correction in \eqref{eq:unified_refinement_correction}.
+and use it in \eqref{eq:unified_refinement_measure} to draw the inference samples. This policy does not require a preliminary network evaluation; once the prior indicator is available, points are sampled from $\widetilde{\rho}_{\gamma,\mathrm{prior}}$ and inferred with the correction in \eqref{eq:unified_refinement_correction}.
 
 \subsubsection{Coarse-Prediction-Guided Density Refinement}
 \label{sec:coarse_prediction_refinement}
 
-This strategy follows the test-time refinement perspective of PDE-Refiner~\citep{lippe2023pderefiner} and the initial-prediction--difficulty-estimation pipeline of ATCA~\citep{jenkins2026atca}. When no reliable prior is available, we draw a small coarse set $S_0$ from $\rho$ and evaluate the frozen operator on this set:
+This strategy is motivated by PDE-Refiner~\citep{lippe2023pderefiner}
+and ATCA~\citep{jenkins2026atca}. When no reliable prior is available,
+we draw a small coarse sample $S_0$ from $\rho$ and evaluate the frozen
+operator:
 \begin{equation}
     \widehat{u}^{(0)}
     :=\mathcal{G}_{\theta}\!\left(a\big|_{S_0}\right),
     \qquad |S_0|\ll N,
     \label{eq:coarse_draft_prediction}
 \end{equation}
-where $a\big|_{S_0}$ denotes the input field restricted to the coarse points. From $\widehat{u}^{(0)}$, we compute a nonnegative local-variation score, for example by combining discrete estimates of the gradient and Laplacian:
+where $a\big|_{S_0}$ denotes the input field restricted to $S_0$.
+We then construct a nonnegative refinement score from the coarse prediction,
+for example,
 \begin{equation}
     s_{\mathrm{coarse}}(x)
     :=\Phi\!\left(
-        \left\|\nabla\widehat{u}^{(0)}(x)\right\|_2,
-        \left\|\Delta\widehat{u}^{(0)}(x)\right\|_2
+        \widehat{u}^{(0)}(x),
+        \nabla\widehat{u}^{(0)}(x),
+        \Delta\widehat{u}^{(0)}(x),
+        \ldots
     \right),
     \qquad \Phi\geq0,
     \label{eq:coarse_refinement_score}
 \end{equation}
-where $\Phi$ is a fixed nonnegative combination and the derivatives are evaluated with the available mesh or point-cloud neighborhood. The score is transferred to candidate points, normalized as in \eqref{eq:unified_refinement_measure}, and used to sample $\widetilde{\rho}_{\gamma,\mathrm{coarse}}$.
+where $\Phi$ denotes a task-dependent combination of coarse predictive
+features. These quantities are estimated from the local discrete neighborhood
+and extended to candidate locations when necessary. The resulting score is
+normalized through \eqref{eq:unified_refinement_measure} to define
+$\widetilde{\rho}_{\gamma,\mathrm{coarse}}$.
 
-The method works because the draft variation score directs the final spatial resolution toward regions where the field is changing rapidly.
+The resulting density concentrates samples in regions that the coarse prediction
+identifies as spatially informative or task-relevant.
 
 \subsubsection{Cache-Aware Learned Refinement}
 \label{sec:cache_aware_refinement}
