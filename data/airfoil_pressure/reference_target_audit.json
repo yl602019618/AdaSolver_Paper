@@ -1,0 +1,34 @@
+{
+  "existing_airfoil_reference": {
+    "script": "fig3/fullpoint_budget_comparison/evaluate_grid.py",
+    "target_channel": 4,
+    "data_source": "same NACA_Cylinder_Q.npy",
+    "physical_target": "Mach number"
+  },
+  "pressure_task": {
+    "script": "AdaSolver_official/adasolver/data/airfoil2d_runtime.py",
+    "target_channel": 3
+  },
+  "verified_example_ids": [
+    1001,
+    1041,
+    1139
+  ],
+  "targets_identical": false,
+  "consequence": "Airfoil stock-reference field errors and force-ratio integration are not comparable to the pressure-task curves.",
+  "handling": "Excluded from both Airfoil appendix panels: no matched full-mesh-trained pressure checkpoint is available.",
+  "mach_identity_check": [
+    {
+      "sample_id": 1001,
+      "mach_identity_max_abs_diff": 0.0
+    },
+    {
+      "sample_id": 1041,
+      "mach_identity_max_abs_diff": 0.0
+    },
+    {
+      "sample_id": 1139,
+      "mach_identity_max_abs_diff": 0.0
+    }
+  ]
+}

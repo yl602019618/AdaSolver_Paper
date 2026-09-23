@@ -1327,7 +1327,7 @@
     }
   ],
   "curve_source": "normalized_curve_points.csv",
-  "curve_points": 192,
+  "curve_points": 184,
   "curve_reference": "Shared backbone full-mesh error = 1",
   "density_visualization": {
     "figure": "density_visualization.pdf",
@@ -1347,7 +1347,7 @@
     ]
   },
   "adaptive_curve_points": 144,
-  "fullmesh_training_curve_points": 48,
+  "fullmesh_training_curve_points": 40,
   "curve_sources": {
     "adaptive": "normalized_curve_points.csv",
     "fullmesh_training": "fullmesh_training_curve_points.csv"
@@ -1356,8 +1356,8 @@
   "curve_display": {
     "hollow_markers": true,
     "distinct_line_styles": true,
-    "zoom_insets": 7,
-    "main_axes_unchanged": true,
+    "zoom_insets": 8,
+    "main_axes_unchanged": false,
     "insets_show": "mean curves",
     "font_sizes_pt": {
       "inset_tick": 8.3,
@@ -1368,21 +1368,36 @@
       "panel_axis": 10
     },
     "font_increment_pt": 1,
-    "cumulative_font_increment_pt": 2
+    "cumulative_font_increment_pt": 2,
+    "airfoil_cdcl_scale": "linear to 5; log above 5",
+    "airfoil_cdcl_threshold": 5,
+    "endpoint_annotations_budget_percent": 75,
+    "airfoil_field_scale": "linear"
   },
   "airfoil_pressure_policy_update": {
-    "test_cases": 112,
+    "test_cases": 110,
     "sampling_seeds": [
       0,
       1,
       2
     ],
-    "CPG_rAUEC": 0.5843803481265784,
-    "CA_rAUEC": 0.5594680877340541,
+    "CPG_rAUEC": 0.5830755510512327,
+    "CA_rAUEC": 0.5579210712704356,
     "configs": "data/airfoil_pressure/configs.json",
     "examples_preserved": [
       1095,
       1103
-    ]
+    ],
+    "inclusion": "reference pressure-force Cl > 0.02"
+  },
+  "airfoil_cdcl_policy_update": {
+    "test_cases": 110,
+    "PI_rAUEC": 0.21740789812807265,
+    "CPG_rAUEC": 0.23794918587952682,
+    "CA_rAUEC": 0.24527881710358732,
+    "configs": "data/airfoil_pressure/cdcl_configs.json"
+  },
+  "excluded_fullmesh_training_references": {
+    "airfoil2d": "Available original checkpoint predicts Mach (Q4), whereas the task predicts pressure (Q3)."
   }
 }

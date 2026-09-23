@@ -1,0 +1,288 @@
+{
+  "uniform": {
+    "config": {
+      "coarse_fraction": 0.1,
+      "feature": "gradient_lsq",
+      "feature_k": 16,
+      "ell": 0.1,
+      "normalization": "q95",
+      "uniform_floor": 0.1,
+      "score_gamma": 0.5,
+      "beta": 1.0,
+      "sampler": "weighted",
+      "patch_count": 96,
+      "placement": "random",
+      "kappa": 8.0,
+      "operator_stage1_cache": false,
+      "pressure_offset": 0.0,
+      "geometry_weight": 0.5,
+      "ratio_weight": 1.0,
+      "lift_support_weight": 1.0,
+      "lift_balance_weight": 2.0,
+      "lift_reliability_scale": 0.02,
+      "per_budget": {},
+      "target": "pressure",
+      "method": "uniform",
+      "name": "uniform"
+    },
+    "cases": 110,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "records": 990,
+    "invalid_metrics": 0,
+    "per_seed_mean_errors": {
+      "0": [
+        0.12305082244286163,
+        0.07939630781240188,
+        0.02280124473989427
+      ],
+      "1": [
+        2.4233513296565836,
+        0.03840539260009136,
+        0.01655961062394617
+      ],
+      "2": [
+        0.1283984614400315,
+        0.031648767803099574,
+        0.019103029896701918
+      ]
+    },
+    "mean": [
+      0.8916002045131589,
+      0.04981682273853094,
+      0.01948796175351412
+    ],
+    "std": [
+      1.3265380813773577,
+      0.02583839096360968,
+      0.0031385710936879326
+    ],
+    "rauec_mean": 1.0,
+    "rauec_std": 0.0,
+    "per_seed_rauec": {
+      "0": 1.0,
+      "1": 1.0,
+      "2": 1.0
+    },
+    "pooled_rauec": 1.0
+  },
+  "pi": {
+    "config": {
+      "coarse_fraction": 0.1,
+      "feature": "gradient_lsq",
+      "feature_k": 16,
+      "ell": 0.3,
+      "normalization": "q95",
+      "uniform_floor": 0.1,
+      "score_gamma": 0.5,
+      "beta": 1.0,
+      "sampler": "weighted",
+      "patch_count": 96,
+      "placement": "random",
+      "kappa": 8.0,
+      "operator_stage1_cache": false,
+      "pressure_offset": 0.0,
+      "geometry_weight": 0.5,
+      "ratio_weight": 1.0,
+      "lift_support_weight": 1.0,
+      "lift_balance_weight": 2.0,
+      "lift_reliability_scale": 0.02,
+      "per_budget": {},
+      "target": "cdcl",
+      "method": "pi_voronoi",
+      "name": "pi_cdcl_tuned",
+      "amp": 20.0,
+      "status": "frozen_after_selection"
+    },
+    "cases": 110,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "records": 990,
+    "invalid_metrics": 0,
+    "per_seed_mean_errors": {
+      "0": [
+        0.015498515827271213,
+        0.014574593514615238,
+        0.015377813932744842
+      ],
+      "1": [
+        0.029702022857573746,
+        0.01797877096775764,
+        0.01837027488114657
+      ],
+      "2": [
+        0.015137025593753201,
+        0.01851034553598356,
+        0.014916770688720276
+      ]
+    },
+    "mean": [
+      0.020112521426199386,
+      0.01702123667278548,
+      0.016221619834203897
+    ],
+    "std": [
+      0.00830671849011271,
+      0.0021354601232432516,
+      0.001875014426952322
+    ],
+    "rauec_mean": 0.21740789812807265,
+    "rauec_std": 0.16875299674582236,
+    "per_seed_rauec": {
+      "0": 0.22116170942041027,
+      "1": 0.04680931163951278,
+      "2": 0.3842526733242949
+    },
+    "pooled_rauec": 0.09594159206274078
+  },
+  "cpg": {
+    "config": {
+      "coarse_fraction": 0.1,
+      "feature": "gradient_lsq",
+      "feature_k": 16,
+      "ell": 0.1,
+      "normalization": "q95",
+      "uniform_floor": 0.1,
+      "score_gamma": 0.5,
+      "beta": 1.0,
+      "sampler": "weighted",
+      "patch_count": 96,
+      "placement": "random",
+      "kappa": 8.0,
+      "operator_stage1_cache": false,
+      "pressure_offset": 0.0,
+      "geometry_weight": 0.5,
+      "ratio_weight": 1.0,
+      "lift_support_weight": 1.0,
+      "lift_balance_weight": 2.0,
+      "lift_reliability_scale": 0.02,
+      "per_budget": {},
+      "target": "cdcl",
+      "method": "cpg_force_ratio_lift_support",
+      "name": "cpg_cdcl_budget10",
+      "status": "frozen_after_selection"
+    },
+    "cases": 110,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "records": 990,
+    "invalid_metrics": 0,
+    "per_seed_mean_errors": {
+      "0": [
+        0.022019243038148267,
+        0.01952607565164255,
+        0.016062308162712764
+      ],
+      "1": [
+        0.017592906498662353,
+        0.020058097620620975,
+        0.017104105848785155
+      ],
+      "2": [
+        0.016208688337571452,
+        0.018214984307384805,
+        0.01599931483533064
+      ]
+    },
+    "mean": [
+      0.01860694595812736,
+      0.019266385859882777,
+      0.016388576282276187
+    ],
+    "std": [
+      0.0030351018930363585,
+      0.0009486020041699673,
+      0.000620466727742151
+    ],
+    "rauec_mean": 0.23794918587952682,
+    "rauec_std": 0.1781006455931864,
+    "per_seed_rauec": {
+      "0": 0.27706584155108105,
+      "1": 0.04354162185006604,
+      "2": 0.3932400942374334
+    },
+    "pooled_rauec": 0.1010931179684508
+  },
+  "ca": {
+    "config": {
+      "coarse_fraction": 0.05,
+      "feature": "gradient_lsq",
+      "feature_k": 16,
+      "ell": 0.1,
+      "normalization": "q95",
+      "uniform_floor": 0.1,
+      "score_gamma": 0.5,
+      "beta": 1.0,
+      "sampler": "weighted_nested",
+      "patch_count": 96,
+      "placement": "random",
+      "kappa": 8.0,
+      "operator_stage1_cache": false,
+      "pressure_offset": 0.0,
+      "geometry_weight": 0.5,
+      "ratio_weight": 1.0,
+      "lift_support_weight": 1.0,
+      "lift_balance_weight": 2.0,
+      "lift_reliability_scale": 0.02,
+      "per_budget": {},
+      "target": "cdcl",
+      "method": "ca",
+      "name": "ca_cdcl_budget10",
+      "head_checkpoint": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_best.pt",
+      "head_manifest": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_manifest.json",
+      "status": "frozen_after_selection"
+    },
+    "cases": 110,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "records": 990,
+    "invalid_metrics": 0,
+    "per_seed_mean_errors": {
+      "0": [
+        0.028719587383162232,
+        0.02123093612681044,
+        0.01681534937319833
+      ],
+      "1": [
+        0.017592717761859177,
+        0.018218938635655314,
+        0.02058986035195938
+      ],
+      "2": [
+        0.026840327967369574,
+        0.013265463341023,
+        0.01662754594701813
+      ]
+    },
+    "mean": [
+      0.02438421103746366,
+      0.017571779367829585,
+      0.018010918557391946
+    ],
+    "std": [
+      0.005956189190446945,
+      0.004021977189608319,
+      0.002235402227015593
+    ],
+    "rauec_mean": 0.2452788171035873,
+    "rauec_std": 0.1779119428110042,
+    "per_seed_rauec": {
+      "0": 0.30980828329807963,
+      "1": 0.04410694860562329,
+      "2": 0.381921219407059
+    },
+    "pooled_rauec": 0.10473944498218715
+  }
+}

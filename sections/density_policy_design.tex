@@ -111,13 +111,15 @@ Die contact and changes in the die profile localize deformation, so we refine ne
 \end{equation}
 
 \paragraph{Airfoil.}
-We use distance to the airfoil surface as a prior because surface pressure determines aerodynamic forces. All 121 surface nodes are retained, and the remaining points follow an exponential distance weight. With $d_\Gamma$ denoting physical distance to the surface, the two targets are
+We use distance to the airfoil surface as a prior because surface pressure determines aerodynamic forces. All 121 surface nodes are retained, and the remaining points follow an exponential distance weight. With $d_\Gamma$ denoting physical distance to the surface, both metrics use
 \begin{equation}
-    \lambda_{\mathrm{tar}}^{\mathrm{field}}=\mathcal{N}[1+20e^{-d_\Gamma/0.3}],
-    \qquad
-    \lambda_{\mathrm{tar}}^{C_D/C_L}=\mathcal{N}[1+8e^{-d_\Gamma/0.35}].
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+    =\lambda_{\mathrm{tar}}^{C_D/C_L}
+    =\mathcal{N}[1+20e^{-d_\Gamma/0.3}].
     \label{eq:app_pi_airfoil_density}
 \end{equation}
+
+For $C_D/C_L$, we screen 127 combinations of prior amplitude, distance scale, and density compensation on 24 calibration geometries with one sampling seed, then select among the shortlisted settings on 46 geometries with three seeds. The selected rule uses index-grid Voronoi compensation with $\beta=1$ and matches the existing field PI policy. One setting is used across all three budgets, followed by evaluation on the separate 48-geometry confirmation pool and the 110 test geometries.
 
 \paragraph{Pipe.}
 The no-slip walls produce near-wall velocity gradients, motivating additional resolution there. We reserve $75\%$ of the budget for uniform coverage and $25\%$ for points within wall distance $0.05$:
@@ -160,7 +162,7 @@ Changes in surface normals identify curved or sharp wing features, motivating de
     \label{eq:app_pi_superwing_density}
 \end{equation}
 
-Plasticity, Airfoil field prediction, DrivAerML, and SuperWing use $\lambda_V$ compensation with $\beta=1$. Elasticity, Darcy, and Airfoil $C_D/C_L$ use the target-density weights with $\beta=0.5$. For the two-stage samplers, let $H_d^+$ include both the wall band and any supplementary points. Giving all these points the same near-wall weight yields the equivalent compensation density $\lambda_{\mathrm{shell}}=\mathcal{N}[(1-\gamma)+\gamma\mathbf{1}_{H_d^+}/\rho(H_d)]$. Its inverse is raised to $\beta=0.75$ for Pipe and $\beta=0.5$ for ShapeNet-Car.
+Plasticity, both Airfoil metrics, DrivAerML, and SuperWing use $\lambda_V$ compensation with $\beta=1$. Elasticity and Darcy use the target-density weights with $\beta=0.5$. For the two-stage samplers, let $H_d^+$ include both the wall band and any supplementary points. Giving all these points the same near-wall weight yields the equivalent compensation density $\lambda_{\mathrm{shell}}=\mathcal{N}[(1-\gamma)+\gamma\mathbf{1}_{H_d^+}/\rho(H_d)]$. Its inverse is raised to $\beta=0.75$ for Pipe and $\beta=0.5$ for ShapeNet-Car.
 
 \subsection{Coarse-Prediction-Guided Density Refinement}
 \label{app:cpg_density_design}
@@ -306,7 +308,7 @@ Pressure gradients identify flow variation relevant to field reconstruction and 
     \end{aligned}
     \label{eq:app_ca_airfoil_density}
 \end{equation}
-The CPG and CA field-policy parameters are screened on 24 geometries with one sampling seed and selected on 48 geometries with three seeds. The selected policies are frozen before evaluation on 48 additional confirmation geometries and the fixed 112 test cases satisfying $C_L>0.01$, with three sampling seeds for each set. Both field policies use $\beta=1$.
+The CPG and CA field-policy parameters are screened on 24 geometries with one sampling seed and selected on 48 geometries with three seeds under the original $C_L>0.01$ inclusion rule. The selected policies are frozen before evaluation on 48 additional confirmation geometries. They are then reused without retuning for the 110 test cases satisfying $C_L>0.02$, with sampling seeds 0, 1, and 2. Both field policies use $\beta=1$.
 
 \paragraph{Pipe.}
 The velocity-gradient magnitude provides a direct measure of local flow variation. A head with two Transolver blocks of width 128 learns $G=\|\nabla v_x\|_2$ from the training fields. Squaring the decoded estimate gives the allocation score:

@@ -41,7 +41,7 @@ The Airfoil benchmark~\citep{li2023geofno} describes transonic flow around defor
     \end{aligned}
     \label{eq:app_airfoil}
 \end{equation}
-where $\rho_f$, $\mathbf{v}$, $p$, and $\mathcal{E}$ denote fluid density, velocity, pressure, and total energy per unit volume. The freestream conditions are $\rho_\infty=p_\infty=1$, $M_\infty=0.8$, and zero angle of attack, with $\gamma=1.4$ and no penetration at the airfoil surface. Each case uses a $221\times51$ body-fitted mesh with 11,271 points. The dataset split contains 1,000 training and 200 test cases. Our operator maps mesh coordinates to pressure, $\mathcal{G}_{\mathrm{airfoil}}:\Omega\mapsto p(\cdot)$, from which surface integration provides $C_D/C_L$.
+where $\rho_f$, $\mathbf{v}$, $p$, and $\mathcal{E}$ denote fluid density, velocity, pressure, and total energy per unit volume. The freestream conditions are $\rho_\infty=p_\infty=1$, $M_\infty=0.8$, and zero angle of attack, with $\gamma=1.4$ and no penetration at the airfoil surface. Each case uses a $221\times51$ body-fitted mesh with 11,271 points. The dataset split contains 1,000 training and 200 test cases. Our operator maps mesh coordinates to pressure, $\mathcal{G}_{\mathrm{airfoil}}:\Omega\mapsto p(\cdot)$, from which surface integration provides $C_D/C_L$. Both reported metrics use the 110 test cases with reference pressure-force $C_L>0.02$. This threshold was tightened from $0.01$ in a post-hoc sensitivity analysis, excluding two of the original 112 positive-lift cases.
 
 \paragraph{Pipe.}
 The Pipe benchmark~\citep{li2023geofno} considers incompressible viscous flow through two-dimensional pipes with varying centerlines. The governing Navier--Stokes equations are

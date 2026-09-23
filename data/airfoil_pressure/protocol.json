@@ -1,47 +1,195 @@
 {
-  "target": "full-grid pressure relative L2",
-  "selection_metric": "mean per-seed rAUEC over 37.5%, 50%, 75%, using paired Uniform",
-  "fixed_operator": "airfoil2d_transolver3_pressure_nmin040_best.pt",
-  "fixed_ca_head": "airfoil2d_ca_pressure_budget10_d8_best.pt",
-  "coarse_cap": 1127,
-  "mandatory_surface_points": 121,
-  "inclusion": "same signed reference Cl > 0.01 protocol at every stage",
+  "objective": "minimize Cd/Cl absolute-error rAUEC across all three budgets",
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "inclusion": "reference pressure-force Cl > 0.02",
+  "parameters": [
+    "geometry-only prior amplitude",
+    "surface-distance length scale",
+    "compensation exponent"
+  ],
+  "compensation_choices": [
+    "target-density inverse power",
+    "realized Voronoi-density inverse power"
+  ],
+  "candidate_count": 127,
   "screen": {
-    "samples": 24,
+    "cases": 24,
     "seeds": [
       3
-    ],
-    "candidates": 84
+    ]
   },
   "selection": {
-    "samples": 48,
+    "cases": 46,
     "seeds": [
       3,
       4,
       5
     ],
-    "shortlist": "top three configurations per family from screening"
+    "shortlist": "top three candidates for each compensation family, plus both previous PI settings",
+    "rule": "lowest mean per-seed Cd/Cl rAUEC; ties use lower seed standard deviation"
   },
-  "freeze": "one configuration per family after selection; unchanged thereafter",
   "confirmation": {
-    "samples": 48,
+    "cases": 48,
     "seeds": [
       6,
       7,
       8
     ],
-    "identity": "not in the stored historical pool inventory or prior budget10 splits"
+    "note": "reuses the existing separate confirmation pool; not newly unseen across the project"
   },
   "test": {
-    "samples": 112,
+    "cases": 110,
     "seeds": [
       0,
       1,
       2
-    ],
-    "identity": "existing fixed benchmark; no parameter selection"
+    ]
   },
-  "stopping_rule": "complete the declared search and report the result, including no improvement",
-  "data_use": "truth only for eligibility and offline metrics; sampling uses geometry and predicted pressure",
-  "known_operator_history": "Existing operator checkpoint was previously selected on IDs 1000:1200; this does not make that benchmark a newly untouched holdout."
+  "freeze": "one common PI configuration across all budgets before confirmation and test",
+  "metric_specific_policies": true,
+  "field_policy_retuned": false,
+  "no_prediction_clipping_or_case_removal": true,
+  "stock_mach_reference_excluded": true,
+  "paper_integration": "Table 1 and appendix budget curves",
+  "threshold_history": "Post-hoc change from true Cl > 0.01 (112 cases) to > 0.02 (110 cases).",
+  "sample_ids": [
+    1001,
+    1002,
+    1004,
+    1005,
+    1006,
+    1007,
+    1009,
+    1011,
+    1014,
+    1016,
+    1017,
+    1018,
+    1019,
+    1022,
+    1023,
+    1024,
+    1025,
+    1028,
+    1029,
+    1031,
+    1032,
+    1034,
+    1035,
+    1036,
+    1039,
+    1042,
+    1043,
+    1044,
+    1046,
+    1047,
+    1049,
+    1051,
+    1052,
+    1053,
+    1055,
+    1059,
+    1060,
+    1062,
+    1065,
+    1066,
+    1068,
+    1070,
+    1072,
+    1076,
+    1078,
+    1080,
+    1082,
+    1084,
+    1087,
+    1088,
+    1090,
+    1091,
+    1092,
+    1093,
+    1094,
+    1095,
+    1097,
+    1098,
+    1099,
+    1101,
+    1103,
+    1106,
+    1108,
+    1109,
+    1111,
+    1113,
+    1115,
+    1120,
+    1124,
+    1125,
+    1128,
+    1129,
+    1131,
+    1132,
+    1134,
+    1140,
+    1144,
+    1145,
+    1146,
+    1147,
+    1148,
+    1150,
+    1153,
+    1159,
+    1160,
+    1162,
+    1163,
+    1164,
+    1166,
+    1167,
+    1169,
+    1170,
+    1171,
+    1172,
+    1173,
+    1174,
+    1175,
+    1176,
+    1177,
+    1179,
+    1180,
+    1181,
+    1182,
+    1186,
+    1187,
+    1188,
+    1190,
+    1193,
+    1197,
+    1198
+  ],
+  "removed_case_ids": [
+    1041,
+    1139
+  ],
+  "metric_mapping": {
+    "field": {
+      "uniform": "uniform",
+      "pi": "pi_voronoi",
+      "cpg": "cpg_candidate_11",
+      "ca": "ca_candidate_10"
+    },
+    "cdcl": {
+      "uniform": "uniform",
+      "pi": "pi_cdcl_tuned",
+      "cpg": "cpg_cdcl_budget10",
+      "ca": "ca_cdcl_budget10"
+    }
+  },
+  "field_selection_protocol": "history/cl_gt_0p01/protocol.json",
+  "field_policies": "Previously selected under Cl > 0.01; unchanged for the Cl > 0.02 test cohort.",
+  "fullmesh_denominators": {
+    "field": 0.00511752859640037,
+    "cdcl": 0.01521041503537811
+  }
 }

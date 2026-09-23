@@ -5,46 +5,43 @@
 \label{app:budget_curves}
 
 Figure~\ref{fig:appendix_budget_curves} compares Uniform and the three
-AdaSolver policies with a Transolver reference trained on full meshes and
-evaluated with uniform sampling. The policies use nominal point budgets of
-$37.5\%$, $50\%$, and $75\%$; the Transolver curve also includes its $100\%$
-endpoint. All errors are normalized by the full-mesh error of the backbone
-shared by Uniform and AdaSolver. The horizontal line at one marks this
-reference. Shaded bands show one sample standard deviation across three
-sampling seeds; the full-mesh endpoint uses all points.
+AdaSolver policies at $37.5\%$, $50\%$, and $75\%$ point budgets with
+full-mesh-trained Transolver references, including their $100\%$ endpoints.
+Errors are divided by the full-mesh error of the backbone shared by Uniform
+and AdaSolver; the horizontal line at one marks this reference. Shaded bands
+show one sample standard deviation across three sampling seeds.
 
-The reference uses original Transolver checkpoints for Airfoil, Pipe, and
-Elasticity, and Transolver3 checkpoints for the other tasks. Point-cloud
-models reuse Uniform's sampled points and reconstruction.
-The original Airfoil and Pipe models require structured grids, so they use
-uniform Cartesian subgrids with the actual retained fractions plotted.
-Darcy already uses a full-mesh-trained backbone, making its Transolver and
-Uniform curves coincide. On DrivAerML, the reference changes the pressure
-checkpoint and uses Uniform's wall-shear-stress operator and predictions at
-the matching budget.
-Error definitions follow Section~\ref{sec:experiment_implementation}; Airfoil
-$C_D/C_L$ uses absolute ratio error before normalization. Airfoil field and
-coefficient errors, and Elasticity errors, use logarithmic vertical axes.
+References use original Transolver checkpoints for Pipe and Elasticity,
+and Transolver3 for the remaining tasks. Point-cloud models reuse Uniform's
+samples and reconstruction; Pipe uses Cartesian subgrids at the plotted
+retained fractions. Darcy's full-mesh-trained backbone makes its two curves
+coincide. DrivAerML changes the pressure checkpoint while retaining Uniform's
+wall-shear-stress predictions. The available original Airfoil checkpoint
+predicts Mach rather than pressure, so its curve is omitted. Both Airfoil
+panels use the shared pressure backbone's full-mesh error on the same 110
+test cases. Airfoil $C_D/C_L$ uses absolute ratio error before normalization.
+Its axis is linear through five and logarithmic above five, with the
+transition and four $75\%$ means labeled. Elasticity uses a logarithmic axis.
 
-The $100\%$ endpoint shows where adaptive sampling matches or improves upon
-the full-mesh-trained reference with fewer points. On Plasticity, CPG at
+On Plasticity, CPG at
 $37.5\%$ achieves $5.02\%$ relative $L_2$ error, compared with $6.40\%$ for
 Transolver at $100\%$: $62.5\%$ fewer points and $21.6\%$ lower error.
 On DrivAerML, the corresponding $C_D$ errors are $0.948\%$ and $1.05\%$.
 On Airfoil, CA at a $75\%$ budget reaches a normalized pressure error of
-$1.025$, using $25\%$ fewer points than the shared backbone's full mesh.
-The benefit depends on the task and output quantity. In Darcy, CPG and CA
+$1.026$, using $25\%$ fewer points than the shared backbone's full mesh.
+The benefit depends on the task and output quantity: in Darcy, CPG and CA
 approach full-mesh field accuracy at small budgets, while PI stays close to
-Uniform, supporting density designs guided by solution-field variation.
+Uniform.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{figures/appendix/budget_error_curves.pdf}
     \caption{\textbf{Accuracy across point budgets.}
     Panels (a)--(h) show field metrics and (i)--(l) show aerodynamic quantities.
-    Transolver denotes the full-mesh-trained reference, including its $100\%$
-    endpoint. The horizontal line marks full-mesh accuracy of the backbone
-    used by AdaSolver. Insets enlarge crowded portions of the mean curves.}
+    Transolver is the full-mesh-trained reference; the horizontal line marks
+    full-mesh accuracy of AdaSolver's backbone. Airfoil uses 110 cases with
+    reference $C_L>0.02$ and has no matched Transolver curve. Its $C_D/C_L$
+    axis is linear through five, then logarithmic. Insets enlarge mean curves.}
     \label{fig:appendix_budget_curves}
 \end{figure}
 

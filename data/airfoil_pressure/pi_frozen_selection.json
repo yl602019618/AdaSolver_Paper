@@ -1,0 +1,175 @@
+{
+  "source_candidate": "pi_voronoi",
+  "configuration": {
+    "coarse_fraction": 0.1,
+    "feature": "gradient_lsq",
+    "feature_k": 16,
+    "ell": 0.3,
+    "normalization": "q95",
+    "uniform_floor": 0.1,
+    "score_gamma": 0.5,
+    "beta": 1.0,
+    "sampler": "weighted",
+    "patch_count": 96,
+    "placement": "random",
+    "kappa": 8.0,
+    "operator_stage1_cache": false,
+    "pressure_offset": 0.0,
+    "geometry_weight": 0.5,
+    "ratio_weight": 1.0,
+    "lift_support_weight": 1.0,
+    "lift_balance_weight": 2.0,
+    "lift_reliability_scale": 0.02,
+    "per_budget": {},
+    "target": "cdcl",
+    "method": "pi_voronoi",
+    "name": "pi_cdcl_tuned",
+    "amp": 20.0,
+    "status": "frozen_after_selection"
+  },
+  "selection_cdcl": {
+    "config": {
+      "coarse_fraction": 0.1,
+      "feature": "gradient_lsq",
+      "feature_k": 16,
+      "ell": 0.3,
+      "normalization": "q95",
+      "uniform_floor": 0.1,
+      "score_gamma": 0.5,
+      "beta": 1.0,
+      "sampler": "weighted",
+      "patch_count": 96,
+      "placement": "random",
+      "kappa": 8.0,
+      "operator_stage1_cache": false,
+      "pressure_offset": 0.0,
+      "geometry_weight": 0.5,
+      "ratio_weight": 1.0,
+      "lift_support_weight": 1.0,
+      "lift_balance_weight": 2.0,
+      "lift_reliability_scale": 0.02,
+      "per_budget": {},
+      "target": "pressure",
+      "method": "pi_voronoi",
+      "name": "pi_voronoi",
+      "amp": 20.0
+    },
+    "cases": 46,
+    "seeds": [
+      3,
+      4,
+      5
+    ],
+    "records": 414,
+    "invalid_metrics": 0,
+    "per_seed_mean_errors": {
+      "3": [
+        0.018141069822463544,
+        0.015575127444620166,
+        0.01629621799771408
+      ],
+      "4": [
+        0.01653011238384628,
+        0.012695236636982656,
+        0.01528129501186378
+      ],
+      "5": [
+        0.014136801278224287,
+        0.014364885950573931,
+        0.015858445277906634
+      ]
+    },
+    "mean": [
+      0.016269327828178037,
+      0.014211750010725584,
+      0.015811986095828165
+    ],
+    "std": [
+      0.002014832023259584,
+      0.0014460396702835247,
+      0.0005090540329880243
+    ],
+    "rauec_mean": 0.5425169222156693,
+    "rauec_std": 0.02765389743769653,
+    "per_seed_rauec": {
+      "3": 0.5421843153942801,
+      "4": 0.5150308283881241,
+      "5": 0.5703356228646037
+    },
+    "pooled_rauec": 0.5419840291079951
+  },
+  "selection_field_diagnostic": {
+    "config": {
+      "coarse_fraction": 0.1,
+      "feature": "gradient_lsq",
+      "feature_k": 16,
+      "ell": 0.3,
+      "normalization": "q95",
+      "uniform_floor": 0.1,
+      "score_gamma": 0.5,
+      "beta": 1.0,
+      "sampler": "weighted",
+      "patch_count": 96,
+      "placement": "random",
+      "kappa": 8.0,
+      "operator_stage1_cache": false,
+      "pressure_offset": 0.0,
+      "geometry_weight": 0.5,
+      "ratio_weight": 1.0,
+      "lift_support_weight": 1.0,
+      "lift_balance_weight": 2.0,
+      "lift_reliability_scale": 0.02,
+      "per_budget": {},
+      "target": "pressure",
+      "method": "pi_voronoi",
+      "name": "pi_voronoi",
+      "amp": 20.0
+    },
+    "cases": 46,
+    "seeds": [
+      3,
+      4,
+      5
+    ],
+    "records": 414,
+    "invalid_metrics": 0,
+    "per_seed_mean_errors": {
+      "3": [
+        0.0074441714405225085,
+        0.006335947262321781,
+        0.005295381443460263
+      ],
+      "4": [
+        0.007924311384496244,
+        0.006544399930164684,
+        0.005297844657757062
+      ],
+      "5": [
+        0.007689365746469186,
+        0.00655583628554779,
+        0.0052728585941054455
+      ]
+    },
+    "mean": [
+      0.0076859495238293125,
+      0.006478727826011418,
+      0.005288694898440923
+    ],
+    "std": [
+      0.00024008820125657836,
+      0.00012378374118502032,
+      1.3769831423165634e-05
+    ],
+    "rauec_mean": 0.6340351963427967,
+    "rauec_std": 0.02093697196369399,
+    "per_seed_rauec": {
+      "3": 0.6423091923353541,
+      "4": 0.6495708325815377,
+      "5": 0.6102255641114984
+    },
+    "pooled_rauec": 0.6335355257539618
+  },
+  "criterion": "lowest mean per-seed Cd/Cl rAUEC on the selection set",
+  "confirmation_used_for_selection": false,
+  "test_used_for_selection": false
+}

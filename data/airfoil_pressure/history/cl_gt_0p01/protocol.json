@@ -1,0 +1,47 @@
+{
+  "target": "full-grid pressure relative L2",
+  "selection_metric": "mean per-seed rAUEC over 37.5%, 50%, 75%, using paired Uniform",
+  "fixed_operator": "airfoil2d_transolver3_pressure_nmin040_best.pt",
+  "fixed_ca_head": "airfoil2d_ca_pressure_budget10_d8_best.pt",
+  "coarse_cap": 1127,
+  "mandatory_surface_points": 121,
+  "inclusion": "same signed reference Cl > 0.01 protocol at every stage",
+  "screen": {
+    "samples": 24,
+    "seeds": [
+      3
+    ],
+    "candidates": 84
+  },
+  "selection": {
+    "samples": 48,
+    "seeds": [
+      3,
+      4,
+      5
+    ],
+    "shortlist": "top three configurations per family from screening"
+  },
+  "freeze": "one configuration per family after selection; unchanged thereafter",
+  "confirmation": {
+    "samples": 48,
+    "seeds": [
+      6,
+      7,
+      8
+    ],
+    "identity": "not in the stored historical pool inventory or prior budget10 splits"
+  },
+  "test": {
+    "samples": 112,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "identity": "existing fixed benchmark; no parameter selection"
+  },
+  "stopping_rule": "complete the declared search and report the result, including no improvement",
+  "data_use": "truth only for eligibility and offline metrics; sampling uses geometry and predicted pressure",
+  "known_operator_history": "Existing operator checkpoint was previously selected on IDs 1000:1200; this does not make that benchmark a newly untouched holdout."
+}

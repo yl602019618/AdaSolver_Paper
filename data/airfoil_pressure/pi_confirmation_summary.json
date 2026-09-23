@@ -1,0 +1,1150 @@
+{
+  "cdcl": {
+    "ca_candidate_10": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.01,
+        "score_gamma": 2.0,
+        "beta": 1.0,
+        "sampler": "weighted_nested",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "ca",
+        "name": "ca_candidate_10",
+        "head_checkpoint": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_best.pt",
+        "head_manifest": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_manifest.json",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.013144158017538713,
+          0.014547864559444809,
+          0.020188129269260145
+        ],
+        "7": [
+          0.021661490014940242,
+          0.020198587283418692,
+          0.018878377869926737
+        ],
+        "8": [
+          0.01968483309955055,
+          0.019481772040604854,
+          0.01859044833618595
+        ]
+      },
+      "mean": [
+        0.018163493710676503,
+        0.018076074627822784,
+        0.01921898515845761
+      ],
+      "std": [
+        0.004457812382839225,
+        0.0030764680622485515,
+        0.0008515609694716361
+      ],
+      "rauec_mean": 0.28341565227508175,
+      "rauec_std": 0.07970681266355399,
+      "per_seed_rauec": {
+        "6": 0.19577918015609397,
+        "7": 0.3028810127161544,
+        "8": 0.35158676395299693
+      },
+      "pooled_rauec": 0.2724184631086231
+    },
+    "ca_cdcl_budget10": {
+      "config": {
+        "coarse_fraction": 0.05,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted_nested",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "ca",
+        "name": "ca_cdcl_budget10",
+        "head_checkpoint": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_best.pt",
+        "head_manifest": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_manifest.json",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.02462168814644769,
+          0.022776719054728105,
+          0.01833209662898574
+        ],
+        "7": [
+          0.020860747902957652,
+          0.023478529093156095,
+          0.02051704987019602
+        ],
+        "8": [
+          0.019542528274626454,
+          0.02003374532598767,
+          0.01749162196972034
+        ]
+      },
+      "mean": [
+        0.0216749881080106,
+        0.02209633115795729,
+        0.0187802561563007
+      ],
+      "std": [
+        0.002635660559427803,
+        0.001820392696148535,
+        0.0015617101897236062
+      ],
+      "rauec_mean": 0.3148777255783003,
+      "rauec_std": 0.047158321401933975,
+      "per_seed_rauec": {
+        "6": 0.26116791294251657,
+        "7": 0.3339641508722173,
+        "8": 0.34950111292016706
+      },
+      "pooled_rauec": 0.308538175589418
+    },
+    "cpg_candidate_11": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 2.0,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "cpg_single_feature",
+        "name": "cpg_candidate_11",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.016911198797830793,
+          0.018259587685881377,
+          0.018165695547616555
+        ],
+        "7": [
+          0.018575257547766972,
+          0.01788228340659336,
+          0.019584831934769
+        ],
+        "8": [
+          0.01456586140478227,
+          0.016631312412454385,
+          0.018882461326934784
+        ]
+      },
+      "mean": [
+        0.016684105916793344,
+        0.017591061168309708,
+        0.018877662936440113
+      ],
+      "std": [
+        0.0020143219058304878,
+        0.0008523073891306121,
+        0.0007095803617269343
+      ],
+      "rauec_mean": 0.2701543847391872,
+      "rauec_std": 0.04796474491577559,
+      "per_seed_rauec": {
+        "6": 0.21765602170005685,
+        "7": 0.28112095641965157,
+        "8": 0.31168617609785304
+      },
+      "pooled_rauec": 0.26352772830913196
+    },
+    "cpg_cdcl_budget10": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "cpg_force_ratio_lift_support",
+        "name": "cpg_cdcl_budget10",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.021845366636741116,
+          0.01948764443457784,
+          0.018704326291946474
+        ],
+        "7": [
+          0.012894186423542281,
+          0.017512170291677173,
+          0.01786732431268736
+        ],
+        "8": [
+          0.017474653633272802,
+          0.01833777654829664,
+          0.018599032864640073
+        ]
+      },
+      "mean": [
+        0.017404735564518735,
+        0.018445863758183884,
+        0.018390227823091302
+      ],
+      "std": [
+        0.004475999687728353,
+        0.0009921626157153823,
+        0.000455897726856646
+      ],
+      "rauec_mean": 0.27564679790544877,
+      "rauec_std": 0.05171279421880415,
+      "per_seed_rauec": {
+        "6": 0.2371920261432013,
+        "7": 0.25531238425152253,
+        "8": 0.3344359833216224
+      },
+      "pooled_rauec": 0.26920610030009123
+    },
+    "pi_cdcl_tuned": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.3,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "pi_voronoi",
+        "name": "pi_cdcl_tuned",
+        "amp": 20.0,
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.02483776646885838,
+          0.018635898693110074,
+          0.017247088990800345
+        ],
+        "7": [
+          0.017302135842593595,
+          0.01725079850326138,
+          0.018849065722390774
+        ],
+        "8": [
+          0.022569437801085782,
+          0.019579145824782557,
+          0.019469269930341766
+        ]
+      },
+      "mean": [
+        0.021569780037512587,
+        0.018488614340384672,
+        0.018521808214510962
+      ],
+      "std": [
+        0.0038659952104314705,
+        0.001171140394157342,
+        0.0011466669696834724
+      ],
+      "rauec_mean": 0.28941512564772454,
+      "rauec_std": 0.06941187748045617,
+      "per_seed_rauec": {
+        "6": 0.23220040311200493,
+        "7": 0.2694131732068688,
+        "8": 0.3666318006242999
+      },
+      "pooled_rauec": 0.2804058342091149
+    },
+    "pi": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.35,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 0.5,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "pi",
+        "name": "pi",
+        "amp": 8.0
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.1896056575279356,
+          0.039326349714241766,
+          0.026307185981414752
+        ],
+        "7": [
+          0.11920984429027494,
+          0.04384379041820176,
+          0.028502916284178184
+        ],
+        "8": [
+          0.05261031643046003,
+          0.024848980717516046,
+          0.023788307453732695
+        ]
+      },
+      "mean": [
+        0.12047527274955686,
+        0.03600637361665319,
+        0.026199469906441876
+      ],
+      "std": [
+        0.06850643657710266,
+        0.009923073105532157,
+        0.0023591494591556333
+      ],
+      "rauec_mean": 0.6784039943114237,
+      "rauec_std": 0.12866474492956592,
+      "per_seed_rauec": {
+        "6": 0.7257777868341132,
+        "7": 0.7766654864129562,
+        "8": 0.5327687096872017
+      },
+      "pooled_rauec": 0.6904335077355015
+    },
+    "pi_voronoi": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.3,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "pi_voronoi",
+        "name": "pi_voronoi",
+        "amp": 20.0
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.02483776646885838,
+          0.018635898693110074,
+          0.017247088990800345
+        ],
+        "7": [
+          0.017302135842593595,
+          0.01725079850326138,
+          0.018849065722390774
+        ],
+        "8": [
+          0.022569437801085782,
+          0.019579145824782557,
+          0.019469269930341766
+        ]
+      },
+      "mean": [
+        0.021569780037512587,
+        0.018488614340384672,
+        0.018521808214510962
+      ],
+      "std": [
+        0.0038659952104314705,
+        0.001171140394157342,
+        0.0011466669696834724
+      ],
+      "rauec_mean": 0.28941512564772454,
+      "rauec_std": 0.06941187748045617,
+      "per_seed_rauec": {
+        "6": 0.23220040311200493,
+        "7": 0.2694131732068688,
+        "8": 0.3666318006242999
+      },
+      "pooled_rauec": 0.2804058342091149
+    },
+    "uniform": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "uniform",
+        "name": "uniform"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.09494503627176003,
+          0.11609766963190922,
+          0.026527920714631732
+        ],
+        "7": [
+          0.206623561335544,
+          0.05217562518018014,
+          0.016545499874401442
+        ],
+        "8": [
+          0.07876096204973722,
+          0.07144626443159412,
+          0.017436736324893964
+        ]
+      },
+      "mean": [
+        0.12677651988568042,
+        0.07990651974789449,
+        0.020170052304642378
+      ],
+      "std": [
+        0.06962143050690757,
+        0.03279007291445002,
+        0.005524078533269331
+      ],
+      "rauec_mean": 1.0,
+      "rauec_std": 0.0,
+      "per_seed_rauec": {
+        "6": 1.0,
+        "7": 1.0,
+        "8": 1.0
+      },
+      "pooled_rauec": 1.0
+    }
+  },
+  "field": {
+    "ca_candidate_10": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.01,
+        "score_gamma": 2.0,
+        "beta": 1.0,
+        "sampler": "weighted_nested",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "ca",
+        "name": "ca_candidate_10",
+        "head_checkpoint": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_best.pt",
+        "head_manifest": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_manifest.json",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.006706448525549935,
+          0.00572354695856181,
+          0.005271824353730871
+        ],
+        "7": [
+          0.006793918291440682,
+          0.005833951484481297,
+          0.0052303988699876946
+        ],
+        "8": [
+          0.006815808918097828,
+          0.005698221539798045,
+          0.005261081856564906
+        ]
+      },
+      "mean": [
+        0.006772058578362815,
+        0.005751906660947051,
+        0.005254435026761157
+      ],
+      "std": [
+        5.786457600676212e-05,
+        7.21724255548074e-05,
+        2.1497742571466378e-05
+      ],
+      "rauec_mean": 0.5882009580299197,
+      "rauec_std": 0.007339393269167441,
+      "per_seed_rauec": {
+        "6": 0.5835641862486747,
+        "7": 0.5966627919870588,
+        "8": 0.5843758958540254
+      },
+      "pooled_rauec": 0.5881671316731227
+    },
+    "ca_cdcl_budget10": {
+      "config": {
+        "coarse_fraction": 0.05,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted_nested",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "ca",
+        "name": "ca_cdcl_budget10",
+        "head_checkpoint": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_best.pt",
+        "head_manifest": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_manifest.json",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.008912812453976035,
+          0.007353924415310686,
+          0.005654014469911305
+        ],
+        "7": [
+          0.008669827345547903,
+          0.007474496231340858,
+          0.005961237474320423
+        ],
+        "8": [
+          0.008714981088157318,
+          0.007485815546158853,
+          0.005835603932951334
+        ]
+      },
+      "mean": [
+        0.008765873629227086,
+        0.007438078730936799,
+        0.005816951959061021
+      ],
+      "std": [
+        0.00012924000457235064,
+        7.309920212192312e-05,
+        0.00015445845948683064
+      ],
+      "rauec_mean": 0.7274750310386624,
+      "rauec_std": 0.010801665154488403,
+      "per_seed_rauec": {
+        "6": 0.7168532971832525,
+        "7": 0.7384480572310224,
+        "8": 0.7271237387017122
+      },
+      "pooled_rauec": 0.7274295553125456
+    },
+    "cpg_candidate_11": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 2.0,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "cpg_single_feature",
+        "name": "cpg_candidate_11",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.007198393307163968,
+          0.006154270455674643,
+          0.005272391834966212
+        ],
+        "7": [
+          0.007359608514666772,
+          0.006187864628998199,
+          0.005355626522671218
+        ],
+        "8": [
+          0.00722126277535519,
+          0.0061396114815867354,
+          0.005234992658394869
+        ]
+      },
+      "mean": [
+        0.0072597548657286435,
+        0.006160582188753192,
+        0.005287670338677433
+      ],
+      "std": [
+        8.722853058794255e-05,
+        2.473802820798904e-05,
+        6.175116848531309e-05
+      ],
+      "rauec_mean": 0.618525367152816,
+      "rauec_std": 0.008998450116280823,
+      "per_seed_rauec": {
+        "6": 0.6138310590157572,
+        "7": 0.6289002673453177,
+        "8": 0.6128447750973731
+      },
+      "pooled_rauec": 0.6184842395440198
+    },
+    "cpg_cdcl_budget10": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "cpg_force_ratio_lift_support",
+        "name": "cpg_cdcl_budget10",
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.008559032481223744,
+          0.007387006464289586,
+          0.00594724543028691
+        ],
+        "7": [
+          0.008876810421732058,
+          0.007412449488154815,
+          0.005933916612772708
+        ],
+        "8": [
+          0.008583172196764908,
+          0.007359542888222075,
+          0.00587033245689728
+        ]
+      },
+      "mean": [
+        0.008673005033240236,
+        0.007386332946888825,
+        0.005917164833318966
+      ],
+      "std": [
+        0.00017691285637377703,
+        2.6459729748763383e-05,
+        4.110192154946732e-05
+      ],
+      "rauec_mean": 0.7266616624624143,
+      "rauec_std": 0.009808482516430234,
+      "per_seed_rauec": {
+        "6": 0.7224807578147614,
+        "7": 0.7378678350825499,
+        "8": 0.7196363944899316
+      },
+      "pooled_rauec": 0.7266175504606003
+    },
+    "pi_cdcl_tuned": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.3,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "pi_voronoi",
+        "name": "pi_cdcl_tuned",
+        "amp": 20.0,
+        "status": "frozen_after_selection"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.007926500236279443,
+          0.006640963985778303,
+          0.005394046160034568
+        ],
+        "7": [
+          0.007922908647563755,
+          0.006765903328825879,
+          0.0053838270277200735
+        ],
+        "8": [
+          0.00779851775423695,
+          0.006626026178674359,
+          0.005370698039544051
+        ]
+      },
+      "mean": [
+        0.007882642212693382,
+        0.006677631164426181,
+        0.0053828570757662305
+      ],
+      "std": [
+        7.287604723307053e-05,
+        7.68099327959881e-05,
+        1.1704242295188917e-05
+      ],
+      "rauec_mean": 0.6587919820460505,
+      "rauec_std": 0.009233191230522662,
+      "per_seed_rauec": {
+        "6": 0.6550542913321896,
+        "7": 0.669308027608541,
+        "8": 0.6520136271974207
+      },
+      "pooled_rauec": 0.6587506515765053
+    },
+    "pi": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.35,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 0.5,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "pi",
+        "name": "pi",
+        "amp": 8.0
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.017213493843934953,
+          0.010831212394710708,
+          0.00837417407812634
+        ],
+        "7": [
+          0.016838766190626398,
+          0.009928690202572164,
+          0.008532437844286584
+        ],
+        "8": [
+          0.015529906234130874,
+          0.00983469234250465,
+          0.009238968166051418
+        ]
+      },
+      "mean": [
+        0.01652738875623074,
+        0.010198198313262508,
+        0.008715193362821448
+      ],
+      "std": [
+        0.0008839308456884899,
+        0.0005502172479194922,
+        0.00046045291647871196
+      ],
+      "rauec_mean": 1.0993096050475053,
+      "rauec_std": 0.024928931214067505,
+      "per_seed_rauec": {
+        "6": 1.1266765259215774,
+        "7": 1.0933553323349272,
+        "8": 1.077896956886011
+      },
+      "pooled_rauec": 1.0993418318365773
+    },
+    "pi_voronoi": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.3,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "pi_voronoi",
+        "name": "pi_voronoi",
+        "amp": 20.0
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.007926500236279443,
+          0.006640963985778303,
+          0.005394046160034568
+        ],
+        "7": [
+          0.007922908647563755,
+          0.006765903328825879,
+          0.0053838270277200735
+        ],
+        "8": [
+          0.00779851775423695,
+          0.006626026178674359,
+          0.005370698039544051
+        ]
+      },
+      "mean": [
+        0.007882642212693382,
+        0.006677631164426181,
+        0.0053828570757662305
+      ],
+      "std": [
+        7.287604723307053e-05,
+        7.68099327959881e-05,
+        1.1704242295188917e-05
+      ],
+      "rauec_mean": 0.6587919820460505,
+      "rauec_std": 0.009233191230522662,
+      "per_seed_rauec": {
+        "6": 0.6550542913321896,
+        "7": 0.669308027608541,
+        "8": 0.6520136271974207
+      },
+      "pooled_rauec": 0.6587506515765053
+    },
+    "uniform": {
+      "config": {
+        "coarse_fraction": 0.1,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.1,
+        "score_gamma": 0.5,
+        "beta": 1.0,
+        "sampler": "weighted",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "pressure",
+        "method": "uniform",
+        "name": "uniform"
+      },
+      "cases": 48,
+      "seeds": [
+        6,
+        7,
+        8
+      ],
+      "records": 432,
+      "invalid_metrics": 0,
+      "per_seed_mean_errors": {
+        "6": [
+          0.014419241392637935,
+          0.010306504726410563,
+          0.006822440697618744
+        ],
+        "7": [
+          0.013494315312510144,
+          0.010319477602951054,
+          0.006899432803452252
+        ],
+        "8": [
+          0.013367009817315643,
+          0.010378906902813137,
+          0.007209169573527585
+        ]
+      },
+      "mean": [
+        0.01376018884082124,
+        0.010334963077391585,
+        0.0069770143581995275
+      ],
+      "std": [
+        0.0005742946733330824,
+        3.8605294014469117e-05,
+        0.00020470461424497083
+      ],
+      "rauec_mean": 1.0,
+      "rauec_std": 0.0,
+      "per_seed_rauec": {
+        "6": 1.0,
+        "7": 1.0,
+        "8": 1.0
+      },
+      "pooled_rauec": 1.0
+    }
+  }
+}
