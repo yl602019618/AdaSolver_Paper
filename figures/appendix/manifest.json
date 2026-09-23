@@ -1371,7 +1371,7 @@
     "cumulative_font_increment_pt": 2,
     "airfoil_cdcl_scale": "linear to 5; log above 5",
     "airfoil_cdcl_threshold": 5,
-    "endpoint_annotations_budget_percent": 75,
+    "endpoint_annotations_budget_percent": null,
     "airfoil_field_scale": "linear"
   },
   "airfoil_pressure_policy_update": {
