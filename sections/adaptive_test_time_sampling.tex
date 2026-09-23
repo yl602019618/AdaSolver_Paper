@@ -80,20 +80,17 @@ Coarse-prediction-guided refinement requires a complete forward pass on
 $S_0$ solely to estimate the sampling density. Moreover, once new samples are
 introduced, the resulting change in the global physics tokens prevents most
 of this coarse computation from being reused. We address both limitations with
-a learned early refinement signal and a cache-aware final forward pass.
-
-Keeping the backbone frozen, we train a small head $H_\phi$ on the first-block
-features $h_i^{(1)}$ to predict a task-specific refinement signal,
+a learned early refinement signal and a cache-aware final forward pass. Keeping the backbone frozen, we train a small refinement head
+$H_\phi:\mathbb{R}^C\rightarrow\mathbb{R}_{+}$ on the first-block features
+$h_i^{(1)}$ to directly predict the refinement score,
 \begin{equation}
-    z_i = H_\phi\!\left(h_i^{(1)}\right),
-    \qquad
-    s_{\mathrm{CA}}(x_i)=\Psi(z_i),
+    r_{\mathrm{CA}}(x_i)
+    := H_\phi\!\left(h_i^{(1)}\right).
     \label{eq:learned_refinement_score}
 \end{equation}
-where $\Psi$ is either a fixed local-variation operator or the identity when
-the head directly predicts the refinement score. The resulting score defines
-the adaptive sampling density through
-\eqref{eq:unified_refinement_measure}, avoiding a full coarse inference.
+The predicted score is then used in
+\eqref{eq:unified_refinement_measure} to construct the adaptive sampling
+density, avoiding a complete coarse forward pass.
 
 Let $S_1=S_0\cup\Delta S$, where $\Delta S$ contains the newly sampled points.
 For the first Physics-Attention layer, the pointwise input features
