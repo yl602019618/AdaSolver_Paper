@@ -1328,5 +1328,12 @@
     "adaptive": "normalized_curve_points.csv",
     "fullmesh_training": "fullmesh_training_curve_points.csv"
   },
-  "fullmesh_training_endpoint_budget": 100
+  "fullmesh_training_endpoint_budget": 100,
+  "curve_display": {
+    "hollow_markers": true,
+    "distinct_line_styles": true,
+    "zoom_insets": 7,
+    "main_axes_unchanged": true,
+    "insets_show": "mean curves"
+  }
 }
