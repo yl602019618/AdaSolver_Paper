@@ -11,7 +11,7 @@ Physics-Attention projects point features into $M$ slice weights, applies attent
     \sum_{j=1}^{M}w_{i,j}=1,
     \label{eq:transolver_slice_weights}
 \end{equation}
-where $\tau_0$ is the temperature. The corresponding physics token is the normalized weighted aggregation
+where $\tau_0$ is the temperature. The corresponding physics token is a normalized weighted average
 \begin{equation}
     u_{s,j}^{(N)}
     = \frac{\frac{1}{N}\sum_{i=1}^{N}w_{i,j}h_i}
