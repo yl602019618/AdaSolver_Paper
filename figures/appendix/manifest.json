@@ -1334,6 +1334,15 @@
     "distinct_line_styles": true,
     "zoom_insets": 7,
     "main_axes_unchanged": true,
-    "insets_show": "mean curves"
+    "insets_show": "mean curves",
+    "font_sizes_pt": {
+      "inset_tick": 7.3,
+      "tick": 9.3,
+      "title": 11.5,
+      "legend": 10,
+      "axis": 12,
+      "panel_axis": 9
+    },
+    "font_increment_pt": 1
   }
 }

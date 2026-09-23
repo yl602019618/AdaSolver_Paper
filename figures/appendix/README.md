@@ -22,3 +22,5 @@ The density-feature row shows normalized refinement scores. Component errors are
 The Transolver curve includes its measured 100% endpoint. Labels are shortened to Uniform, PI, CPG, CA, Transolver, and Full mesh; protocol details are in the appendix text. The 48 reference-model points are in `fullmesh_training_curve_points.csv`.
 
 Curve visibility update: distinct line patterns, nested open markers, lighter uncertainty bands, and seven zoom insets distinguish overlapping traces. Insets show means; original values and main-axis limits are unchanged.
+
+Typography update: all curve labels, axis ticks, legends, and inset ticks are enlarged by 1 pt for readability in the paper.
