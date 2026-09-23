@@ -76,29 +76,47 @@ identifies as spatially informative or task-relevant.
 \subsubsection{Cache-Aware Learned Refinement}
 \label{sec:cache_aware_refinement}
 
-The coarse prediction provides features correlated with local physical or geometric variation, but the subsequent computation of the first pass is otherwise discarded. We reuse it as follows. Let $S_1=S_0\cup B$ be the final point set, where $B$ contains the newly allocated points. For the first Physics-Attention layer, let $h_i^{\mathrm{in}}$ be its pointwise input feature and $w_{i,j}^{(1)}$ its slice weight. Define
+Coarse-prediction-guided refinement requires a complete forward pass on
+$S_0$ solely to estimate the sampling density. Moreover, once new samples are
+introduced, the resulting change in the global physics tokens prevents most
+of this coarse computation from being reused. We address both limitations with
+a learned early refinement signal and a cache-aware final forward pass.
+
+Keeping the backbone frozen, we train a small head $H_\phi$ on the first-block
+features $h_i^{(1)}$ to predict a task-specific refinement signal,
 \begin{equation}
-    A_j(S):=\sum_{i\in S}c_iw_{i,j}^{(1)}h_i^{\mathrm{in}},
+    z_i = H_\phi\!\left(h_i^{(1)}\right),
     \qquad
-    D_j(S):=\sum_{i\in S}c_iw_{i,j}^{(1)}.
-    \label{eq:cache_additive_statistics}
-\end{equation}
-Because the summands are pointwise, their values on $S_0$ are unchanged after adding $B$, and
-\begin{equation}
-    A_j(S_1)=A_j(S_0)+A_j(B),
-    \qquad
-    D_j(S_1)=D_j(S_0)+D_j(B).
-    \label{eq:cache_statistics_additivity}
-\end{equation}
-so the coarse values can be cached and only the contributions from $B$ need to be computed. We train a lightweight head $H_{\phi}$ with the frozen backbone, attach it to the first-block feature $h_i^{(1)}$, and define
-\begin{equation}
-    \widehat{u}^{\mathrm{head}}_i=H_{\phi}\!\left(h_i^{(1)}\right),
-    \qquad
-    s_{\mathrm{head}}(x_i)
-    :=\Phi\!\left(
-        \left\|\nabla\widehat{u}^{\mathrm{head}}(x_i)\right\|_2,
-        \left\|\Delta\widehat{u}^{\mathrm{head}}(x_i)\right\|_2
-    \right),
+    s_{\mathrm{CA}}(x_i)=\Psi(z_i),
     \label{eq:learned_refinement_score}
 \end{equation}
-and use this score in \eqref{eq:unified_refinement_measure}. The head can alternatively learn $s_{\mathrm{head}}$ directly. Token attention, deslicing, and later blocks still run on $S_1$, because $B$ changes the global token states. Appendix~\ref{app:density_policy_design} gives the task-specific features and density constructions for all three policies.
+where $\Psi$ is either a fixed local-variation operator or the identity when
+the head directly predicts the refinement score. The resulting score defines
+the adaptive sampling density through
+\eqref{eq:unified_refinement_measure}, avoiding a full coarse inference.
+
+Let $S_1=S_0\cup\Delta S$, where $\Delta S$ contains the newly sampled points.
+For the first Physics-Attention layer, the pointwise input features
+$h_i^{\mathrm{in}}$ and slice weights $w_{i,j}^{(1)}$ computed on $S_0$
+remain unchanged when $\Delta S$ is added and can therefore be cached.
+After the final sampling density and measure-correction weights $c_i$ are
+determined, the first physics token is formed as
+\begin{equation}
+    \widehat{u}_{s,j}^{(1)}
+    =
+    \frac{
+        \sum_{i\in S_0} c_i w_{i,j}^{(1)}h_i^{\mathrm{in}}
+        +
+        \sum_{i\in\Delta S} c_i w_{i,j}^{(1)}h_i^{\mathrm{in}}
+    }{
+        \sum_{i\in S_0} c_i w_{i,j}^{(1)}
+        +
+        \sum_{i\in\Delta S} c_i w_{i,j}^{(1)}
+    } .
+    \label{eq:cache_aware_aggregation}
+\end{equation}
+Thus, the pointwise quantities for $S_0$ are reused, while only those for
+$\Delta S$ need to be newly computed. Token attention, deslicing, and later
+blocks are recomputed on $S_1$, since the added samples alter the global
+physics tokens. Appendix~\ref{app:density_policy_design} provides the
+task-specific refinement targets and density constructions.
