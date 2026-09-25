@@ -75,9 +75,9 @@ and complete field visualizations across all eight benchmarks.
 \subsection{Inverse Design}
 \label{sec:inverse_design}
 
-We evaluate AdaSolver in surrogate-based airfoil and wing design. The airfoil
-task minimizes $(C_D/C_L)^2$, while SuperWing minimizes drag subject to a
-fixed-lift target. Final designs are independently validated with CFD.
+We evaluate AdaSolver in surrogate-based airfoil and wing design. Both tasks
+minimize $(C_D/C_L)^2$, favoring low drag relative to lift and thus higher
+aerodynamic efficiency. Final designs are independently validated with CFD.
 Appendix~\ref{app:inverse_design_settings} details the geometry controls,
 optimization constraints, sampling schedules, and CFD settings.
 
@@ -89,18 +89,18 @@ AdaSolver accelerates the complete design process by $2.18\times$ while
 reaching essentially the same CFD-validated aerodynamic performance as
 full-mesh optimization. It also yields a substantially more accurate surrogate
 estimate of the final design, demonstrating that adaptive test-time sampling
-can reduce optimization cost without compromising design quality.
+can reduce optimization cost without compromising design quality. 
 \input{figures/fig3_airfoil_optimization.tex}
 
 \paragraph{3D SuperWing.}
 Figure~\ref{fig:superwing_design} compares CMA-ES~\citep{hansen2001completely}
 optimization on SuperWing~\citep{yang2025superwing}, with both methods initialized
-from the same geometry and flow condition. AdaSolver evaluates only $37.5\%$ of
+from the same geometry and flow condition. AdaSolver evaluates only $18.75\%$ of
 the surface points and periodically refreshes the sampling density as the geometry
 evolves. Since nearby optimization iterates typically exhibit similar geometries,
 the same density can be reused across multiple steps, avoiding unnecessary
 resampling overhead. AdaSolver achieves a $1.86\times$ speedup while attaining a
 slightly lower CFD-validated $C_D/C_L$ than full-mesh optimization. As shown in
 Figure~\ref{fig:superwing_design}, the relative prediction error also decreases
-from $3.82\%$ to $3.30\%$.
+from $3.82\%$ to $3.30\%$. 
 \input{figures/fig4_superwing_optimization.tex}
