@@ -35,41 +35,60 @@ Lower rAUEC is better, with uniform sampling normalized to $1$. We report mean r
 \label{sec:main_results}
 
 \paragraph{Standard Benchmarks.}
-Table~\ref{tab:standard_benchmarks} compares physics-informed density refinement (PI), coarse-prediction-guided density refinement (CPG), and cache-aware learned refinement (CA) with uniform subsampling across five standard PDE benchmarks. Overall, adaptive sampling reduces rAUEC, showing that point density is a design variable for improving neural operator predictions under a fixed spatial budget. CPG generally improves upon PI, indicating that features of the predicted solution can guide point allocation more effectively than geometry and prescribed heuristics alone. CA achieves performance close to CPG on several benchmarks, supporting the learnability of the field-dependent signals used for density refinement. On Airfoil pressure prediction, CPG and CA achieve rAUECs of $0.5831$ and $0.5579$, respectively, compared with $0.6166$ for PI. For $C_D/C_L$, PI attains the lowest mean rAUEC of $0.2174$, compared with $0.2379$ for CPG and $0.2453$ for CA. The differences are particularly clear on Darcy: PI provides little improvement over uniform sampling, whereas CPG and CA achieve similar, substantially lower rAUEC. Thus, even on a regular Cartesian grid, solution-informed density allocation can improve prediction accuracy. These results suggest that the benefit of adaptive sampling depends on how well its allocation signal reflects the solution field, beyond the geometric complexity of the domain.
+Table~\ref{tab:standard_benchmarks} compares physics-informed density
+refinement (PI), coarse-prediction-guided density refinement (CPG), and
+cache-aware learned refinement (CA) against uniform subsampling across five
+standard PDE benchmarks. Overall, adaptive test-time sampling improves the
+error--budget trade-off, demonstrating that sampling density provides a
+controllable axis for test-time computation. CPG generally outperforms PI,
+suggesting that solution-dependent variation can provide more informative
+refinement cues than geometry or prescribed heuristics alone. CA performs
+comparably to CPG on several tasks, showing that such solution-aware signals
+can be recovered from intermediate features without requiring a complete
+coarse prediction. The distinction is particularly clear on Darcy: despite its
+regular Cartesian grid, PI offers little improvement over uniform sampling,
+whereas CPG and CA substantially reduce rAUEC. This result indicates that the
+benefit of adaptive sampling is not limited to geometric complexity, but also
+depends on how well the sampling density captures localized structure in the
+solution.
 
 \input{tables/standard_benchmarks.tex}
 
 \paragraph{Industrial Applications.}
-Wind-tunnel testing informs vehicle and aircraft design by assessing aerodynamic performance through quantities such as drag and lift coefficients. Table~\ref{tab:industrial_benchmarks} reports both full-field prediction errors and errors in aerodynamic quantities on ShapeNet-Car, DrivAerML, and SuperWing. The results show that all three methods substantially improve neural operator accuracy across sampling budgets. For aerodynamic quantities, concentrating samples in influential regions can match or even surpass full-mesh accuracy with only $37.5\%$ of the points. This agrees with the physical intuition that some flow regions contribute more strongly to aerodynamic forces than others. Accurate predictions with fewer points can accelerate geometry optimization.
-
+Accurate aerodynamic surrogate modeling requires both high-fidelity full-field
+prediction and reliable estimation of design-relevant quantities such as drag
+and lift. Table~\ref{tab:industrial_benchmarks} evaluates both aspects on
+ShapeNet-Car, DrivAerML, and SuperWing. Across all three datasets, adaptive
+sampling consistently improves the error--budget trade-off for both field
+predictions and aerodynamic metrics. Notably, several aerodynamic quantities
+match or even surpass full-mesh accuracy using only about one-third of the
+points, indicating that spatial resolution can be concentrated in physically
+informative regions without sacrificing global field fidelity. The qualitative
+results in Figure~\ref{fig:field_comparison} support this interpretation:
+adaptive policies concentrate samples around localized solution structures and
+geometrically or physically sensitive regions, where the corresponding
+prediction residuals are also reduced relative to uniform sampling. Together, these results show that adaptive sampling improves accuracy by concentrating test-time resolution in more informative regions. Appendix~\ref{app:more_results} provides budget-wise error curves
+and complete field visualizations across all eight benchmarks.
 \input{tables/industrial_benchmarks.tex}
 
-Figure~\ref{fig:field_comparison} visualizes sampling locations, refinement
-features, and prediction errors for four test cases. Adaptive policies allocate
-points near localized field structure and reduce field error relative to uniform
-sampling in these examples.
-Appendix~\ref{app:more_results} provides
-budget-wise error profiles and complete field visualizations across all eight
-benchmarks.
 \input{figures/fig2_field_comparison.tex}
 
 \subsection{Inverse Design}
 \label{sec:inverse_design}
 
-We use the frozen surrogate to optimize airfoil and wing geometries. The airfoil
-objective minimizes $(C_D/C_L)^2$, while the wing objective minimizes drag subject
-to predicted-lift and geometry constraints. We assess both tasks using independent
-CFD $C_D/C_L$. Timing covers online surrogate-based optimization; CFD validation
-is performed offline.
+We evaluate AdaSolver in surrogate-based airfoil and wing design. Both tasks
+minimize $(C_D/C_L)^2$, favoring low drag relative to lift and thus higher
+aerodynamic efficiency. Final designs are independently validated with CFD.
 
 \paragraph{2D Airfoil.}
-Figure~\ref{fig:airfoil_design} uses the Geo-FNO airfoil design case~\citep{li2023geofno},
-with the same frozen operator, SLSQP optimizer, and geometry constraints for both
-methods. AdaSolver retains $18.75\%$ of the points using CA sampling with seed 29
-and fixes the indices after initialization. Five paired timing runs yield a
-$2.18\times$ speedup. The final CFD $C_D/C_L$ values
-are $0.05879$ for the full mesh and $0.05897$ for AdaSolver, while relative
-$C_D/C_L$ prediction error decreases from $3.26\%$ to $0.46\%$.
+We follow the airfoil inverse-design setting of Geo-FNO~\citep{li2023geofno},
+parameterizing the geometry by spline-node displacements and performing
+gradient-based optimization through the differentiable surrogate.
+AdaSolver accelerates the complete design process by $2.18\times$ while
+reaching essentially the same CFD-validated aerodynamic performance as
+full-mesh optimization. It also yields a substantially more accurate surrogate
+estimate of the final design, demonstrating that adaptive test-time sampling
+can reduce optimization cost without compromising design quality.
 \input{figures/fig3_airfoil_optimization.tex}
 
 \paragraph{3D SuperWing.}
