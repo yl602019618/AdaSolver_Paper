@@ -27,3 +27,13 @@ source arrays and an independent panel renderer.
 
 The inverse-design protocols for Figures 3 and 4 are described in Appendix B.5
 and recorded in [data/inverse_design_settings.json](data/inverse_design_settings.json).
+
+## Figures and design downloads
+
+| Content | Files |
+|---|---|
+| Fig1–4 | [All figures](figures/README.md) |
+| Fig3: Airfoil design | [PNG](figures/fig3_airfoil_optimization.png) · [PDF](figures/fig3_airfoil_optimization.pdf) |
+| Fig4: SuperWing design | [PNG](figures/fig4_superwing_optimization.png) · [PDF](figures/fig4_superwing_optimization.pdf) |
+| Additional design comparisons | [Figures, PPT, panels, and results](supplementary/design_transfer/README.md) |
+| Current inverse-design settings | [LaTeX](sections/inverse_design_settings.tex) · [Parameters](data/inverse_design_settings.json) |

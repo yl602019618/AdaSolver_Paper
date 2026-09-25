@@ -1,0 +1,89 @@
+{
+  "status": "complete",
+  "objective": "Test the Cd/Cl-selected CA density in the existing Airfoil inverse-design case.",
+  "initial_theta": [
+    0.005,
+    0.005,
+    0.0,
+    0.0,
+    0.005,
+    0.005,
+    0.0
+  ],
+  "flow": {
+    "Mach": 0.8,
+    "incidence_degrees": 0
+  },
+  "point_shape": [
+    221,
+    51
+  ],
+  "variants": {
+    "full": {
+      "method": "full",
+      "fraction": 1.0,
+      "method_config": null
+    },
+    "ca_original": {
+      "method": "ca",
+      "fraction": 0.1875,
+      "method_config": null
+    },
+    "ca_retuned": {
+      "method": "ca",
+      "fraction": 0.1875,
+      "method_config": {
+        "coarse_fraction": 0.05,
+        "feature": "gradient_lsq",
+        "feature_k": 16,
+        "ell": 0.1,
+        "normalization": "q95",
+        "uniform_floor": 0.01,
+        "score_gamma": 2.0,
+        "beta": 1.0,
+        "sampler": "weighted_nested",
+        "patch_count": 96,
+        "placement": "random",
+        "kappa": 8.0,
+        "operator_stage1_cache": false,
+        "pressure_offset": 0.0,
+        "geometry_weight": 0.5,
+        "ratio_weight": 1.0,
+        "lift_support_weight": 1.0,
+        "lift_balance_weight": 2.0,
+        "lift_reliability_scale": 0.02,
+        "per_budget": {},
+        "target": "cdcl",
+        "method": "ca",
+        "name": "ca_cdcl_025",
+        "head_checkpoint": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_best.pt",
+        "head_manifest": "checkpoints/airfoil2d/airfoil2d_ca_pressure_budget10_d8_manifest.json",
+        "status": "frozen_after_selection"
+      }
+    }
+  },
+  "seed": 29,
+  "refresh_cadence": 0,
+  "optimizer": "SLSQP",
+  "objective_function": "(Cd/Cl)^2",
+  "minimum_predicted_Cl": 0.05,
+  "control_bounds": [
+    -0.015,
+    0.015
+  ],
+  "maximum_iterations": 80,
+  "ftol": 1e-09,
+  "geometry_constraints": "Identical pointwise thickness, section area, camber and orientation constraints as the published design.",
+  "timing_repeats": 5,
+  "timing": "Single idle GPU, rotating method order, identical kernels and CUDA graph; common model loading reported separately.",
+  "transfer": "Apply the selected gradient feature and gamma/floor/beta policy to the design Gumbel-key sampler. The 18.75% design budget differs from the inference-calibration budgets.",
+  "cfd": "Initial geometry and all three final geometries; independent Euler solve with relative residual <=1e-7.",
+  "paper_updated": false,
+  "secondary_budget": {
+    "fraction": 0.375,
+    "purpose": "Check transfer within the original calibration budget range alongside the published18.75% extrapolation.",
+    "same_start_seed_optimizer_constraints": true,
+    "all_results_retained": true
+  },
+  "cfd_all_converged": true
+}

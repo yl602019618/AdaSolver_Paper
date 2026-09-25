@@ -9,8 +9,12 @@ Exported from the author-updated `总图1.pptx`, slides 1–4. The presentation 
 | 3 | [PNG](fig3_airfoil_optimization.png) | [PDF](fig3_airfoil_optimization.pdf) | 8679 × 2986 |
 | 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 8154 × 2927 |
 
-The ten native Office equations are verified against the presentation and restored as LaTeX vectors where the Linux exporter omits them. The editable source presentation is retained unchanged.
+The ten native Office equations are verified against the presentation and restored as LaTeX vectors where the Linux exporter omits them. The author's native layout and unrelated slide objects are preserved; Fig3/Fig4 density images and labels have been updated, with separately movable sampling overlays in the local source presentation.
 
-Latest refresh: author-revised slides 3 and 4 (Airfoil and SuperWing inverse design), exported and cropped on 2026-09-23.
+Latest Fig3/Fig4 refresh: 2026-09-25. Airfoil and SuperWing use the actual policy density normalized to uniform = 1, with recorded sampling points. The shared linear colorbar spans 0–5. Inverse-design settings for these two figures are in Appendix B.5 and [the configuration record](../data/inverse_design_settings.json).
 
 Airfoil pressure-policy refresh: Figure 2 retains the author layout and sample 1095, with regenerated CPG/CA sampling and signed-error images. The corresponding L2 annotations are 0.52% and 0.98%. The updated policy parameters and population results are in `data/airfoil_pressure/`.
+
+## Additional design figures
+
+The completed 18.75% and 37.5% design comparisons, including the two-page PPT, PDFs, individual panels, legends, and numerical results, are in [supplementary/design_transfer](../supplementary/design_transfer/README.md).
