@@ -1,11 +1,10 @@
-\begin{figure}[t]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/fig4_superwing_optimization.pdf}
     \caption{\textbf{SuperWing optimization.}
-    Left: CFD pressure coefficients, geometry changes, and AdaSolver's sampling
-    density, retained points, and pressure error. Density denotes normalized
-    sampling weights (uniform $=1$). Right: CFD $C_D/C_L$ against optimization
-    time, and relative $C_D/C_L$ prediction error over 150 generations.
-    Independent CFD evaluates each retained geometry.}
+    Left: CFD pressure coefficients, shape changes, AdaSolver density
+    (normalized as in Figure~\ref{fig:airfoil_design}), retained points, and pressure error.
+    Right: independently CFD-evaluated $C_D/C_L$ versus optimization time;
+    relative ratio prediction error over 150 generations.}
     \label{fig:superwing_design}
 \end{figure}
