@@ -10,8 +10,7 @@ generalization studies how neural operators extrapolate across grid sizes,
 point counts, or compatible discretizations while preserving the underlying
 sampling distribution \citep{li2021fno,li2023gino,liu2023nuno,alkin2024upt,
 zhou2026transolver3,gao2025discretization}. These methods make resolution
-changes feasible, but do not by themselves provide a mechanism for actively
-changing the local sampling density. Second, adaptive sampling and refinement
+changes feasible, but do not by themselves provide a mechanism for spatially reallocating samples according to local physical or solution structures. Second, adaptive sampling and refinement
 methods predict where a numerical mesh or point set should be refined, often
 as part of a solver pipeline or through a separately trained refinement model
 \citep{huang2021meshgeneration,obiols2023adarnet,rowbottom2024gadaptivity}.
