@@ -1,0 +1,98 @@
+\subsection{Ablation of Measure-Aware Physics-Attention}
+\label{app:beta_ablation}
+
+We vary $\beta\in\{0,0.25,0.5,0.75,1\}$ in the compensation weights
+$c_i^\beta$ for PI, CPG, and CA. Operator and head checkpoints, coarse and
+final point sets, and reconstruction stay fixed within each policy. We use
+the original test populations, retained fractions of $37.5\%$, $50\%$, and
+$75\%$, and sampling seeds 0, 1, and 2. Setting $\beta=0$ recovers the
+original point-to-slice aggregation, while $\beta=1$ applies full compensation.
+
+Let $A_{m,s}(\beta)$ denote the trapezoidal error--budget area for policy
+$m$ and seed $s$. The ordinate in Figure~\ref{fig:beta_ablation} is
+\begin{equation}
+    R_m(\beta)=\frac{1}{3}\sum_{s=0}^{2}
+    \frac{A_{m,s}(\beta)}{A_{m,s}(0)}.
+    \label{eq:beta_relative_area}
+\end{equation}
+Normalization precedes averaging, with $R_m(0)=1$ for every policy.
+Table~\ref{tab:beta_ablation} instead uses the common Uniform-normalized
+rAUEC to compare $\beta=0$ with the main-experiment exponent $\beta^{\star}$.
+The table isolates removal of correction, while the curves show sensitivity
+to its strength.
+
+\input{figures/appendix/beta_ablation.tex}
+
+For CPG, full correction reduces the error--budget area by $89.7\%$ on
+Airfoil field prediction and $93.9\%$ on Pipe. Darcy CPG and CA improve from
+rAUECs of 4.278 and 4.265 to 0.642 and 0.640, becoming better than Uniform
+with the sampled locations unchanged. On ShapeNet-Car drag prediction,
+$\beta^{\star}=0.75$ reduces the area by $20.2\%$ for CPG and $20.3\%$ for CA.
+
+On SuperWing field prediction, CPG and CA gain $66.1\%$ and $69.1\%$ from
+full correction; their DrivAerML drag gains are $63.3\%$ and $67.3\%$.
+For both datasets, $\beta=1$ gives the lowest area among the tested exponents
+for every policy and metric.
+
+\input{tables/beta_ablation.tex}
+
+The preferred strength varies across tasks. ShapeNet-Car CPG and CA attain
+their lowest areas at $\beta=0.75$, while PI favors $\beta=0.5$. Increasing
+PI to $\beta=1$ raises its drag area by $5.2\%$ relative to no correction.
+Elasticity gains only approximately $0.5$--$3.1\%$ at the main-experiment
+settings.
+
+\paragraph{Effect on physics tokens.}
+For fixed layer inputs $h_i$ and slice assignments $w_{i,j}$, define
+\begin{equation}
+    p_{i,j}(\beta)
+    =\frac{w_{i,j}c_i^\beta}{\sum_k w_{k,j}c_k^\beta},
+    \qquad
+    z_j(\beta)=\sum_i p_{i,j}(\beta)h_i.
+\end{equation}
+The direct derivative is
+\begin{equation}
+    \frac{\partial z_j}{\partial\beta}
+    =\operatorname{Cov}_{p_j(\beta)}(h,\log c).
+    \label{eq:beta_token_sensitivity}
+\end{equation}
+The identity holds for the displayed normalization with fixed inputs;
+implementation adds a small denominator stabilizer. Later layers also
+receive propagated changes from earlier layers. Direct sensitivity depends
+on feature--log-weight covariance, vanishing when features or compensation
+weights are constant within a slice.
+
+Exact density correction recovers reference-measure aggregation with
+sufficient sampling (Section~\ref{sec:density_consistent_transolver}). At
+finite budgets, matching cell mass does not recover within-cell feature
+variation: a Voronoi weight can count reference nodes exactly while its
+retained feature only approximates their aggregate. For reconstructed
+prediction $F_\beta$ and differentiable task loss $\mathcal L$,
+\begin{equation}
+    \frac{\mathrm d\mathcal L}{\mathrm d\beta}
+    =\left\langle\nabla_F\mathcal L,
+      \frac{\mathrm dF_\beta}{\mathrm d\beta}\right\rangle.
+    \label{eq:beta_task_sensitivity}
+\end{equation}
+The sign of this inner product determines whether increasing $\beta$ locally
+improves the target metric. Reference-measure consistency therefore differs
+from minimizing error against physical ground truth.
+
+\paragraph{Sensitivity of aerodynamic ratios.}
+For Airfoil geometry 1059, seed 1, and budget $37.5\%$, PI at $\beta=0.5$
+has pressure error $0.865\%$ but predicts $C_L=2.48\times10^{-5}$ instead
+of $0.024676$. Its absolute ratio error, 1438.20, contributes $90.0\%$ of
+the PI error--budget area at this exponent and seed across the 110 test
+geometries. Away from $C_L=0$,
+\begin{equation}
+    \frac{\mathrm d(C_D/C_L)}{\mathrm d\beta}
+    =\frac{C_L\,\mathrm dC_D/\mathrm d\beta
+           -C_D\,\mathrm dC_L/\mathrm d\beta}{C_L^2}.
+    \label{eq:beta_ratio_sensitivity}
+\end{equation}
+The near-zero denominator explains the peak. On this geometry, increasing
+$\beta$ from $0.75$ to $1$ improves pressure error from $0.703\%$ to
+$0.617\%$ but worsens ratio error from 0.677 to 1.079. A field norm measures
+error magnitude, whereas forces depend on signed surface integrals and the
+ratio adds lift-denominator sensitivity. These predictions show why field
+and aerodynamic metrics can prefer different correction strengths.

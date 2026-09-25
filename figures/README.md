@@ -1,10 +1,10 @@
 # Main-text figures
 
-Exported from the author-updated `总图1.pptx`, slides 1–4. The presentation content, typography, and layout are preserved. Each figure is cropped to visible content with a six-point margin. PNGs are rendered at 600 dpi; PDF text and lines remain vector graphics.
+Figure 1 is exported from the first slide of the author-updated `总图1_density.pptx`. Figures 2–4 use their supplied author exports. Presentation content, typography, and layout are preserved. Each figure is cropped to visible content with a six-point margin. PNGs are rendered at 600 dpi; PDF text and lines remain vector graphics.
 
 | Figure | PNG | PDF | Pixels |
 | --- | --- | --- | --- |
-| 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5779 × 3802 |
+| 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5829 × 3806 |
 | 2 | [PNG](fig2_field_comparison.png) | [PDF](fig2_field_comparison.pdf) | 10545 × 3373 |
 | 3 | [PNG](fig3_airfoil_optimization.png) | [PDF](fig3_airfoil_optimization.pdf) | 8679 × 2986 |
 | 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 8154 × 2927 |
@@ -18,3 +18,5 @@ Airfoil pressure-policy refresh: Figure 2 retains the author layout and sample 1
 ## Additional design figures
 
 The completed 18.75% and 37.5% design comparisons, including the two-page PPT, PDFs, individual panels, legends, and numerical results, are in [supplementary/design_transfer](../supplementary/design_transfer/README.md).
+
+The final twelve-panel beta ablation is in Appendix D.1: [PDF](appendix/beta_ablation.pdf), [PNG](appendix/beta_ablation.png), and [independent panels](appendix/beta_ablation_assets/panels/). Its data and normalization are documented in [data/beta_ablation](../data/beta_ablation/README.md).

@@ -65,8 +65,8 @@ informative regions without sacrificing global field fidelity. The qualitative
 results in Figure~\ref{fig:field_comparison} support this interpretation:
 adaptive policies concentrate samples around localized solution structures and
 geometrically or physically sensitive regions, where the corresponding
-prediction residuals are also reduced relative to uniform sampling. Together, these results show that adaptive sampling improves accuracy by concentrating test-time resolution in more informative regions. Appendix~\ref{app:more_results} provides budget-wise error curves
-and complete field visualizations across all eight benchmarks.
+prediction residuals are also reduced relative to uniform sampling. Together, these results show that adaptive sampling improves accuracy by concentrating test-time resolution in more informative regions. Appendix~\ref{app:beta_ablation} isolates the effect of measure correction,
+followed by budget-wise error curves and full-field visualizations across all eight benchmarks.
 \input{tables/industrial_benchmarks.tex}
 
 \input{figures/fig2_field_comparison.tex}
@@ -74,9 +74,9 @@ and complete field visualizations across all eight benchmarks.
 \subsection{Inverse Design}
 \label{sec:inverse_design}
 
-We evaluate AdaSolver in surrogate-based airfoil and wing design. Both tasks
-minimize $(C_D/C_L)^2$, favoring low drag relative to lift and thus higher
-aerodynamic efficiency. Final designs are independently validated with CFD.
+We evaluate AdaSolver in surrogate-based airfoil and wing design. The airfoil
+task minimizes $(C_D/C_L)^2$, while SuperWing minimizes drag subject to a
+fixed-lift target. Final designs are independently validated with CFD.
 Appendix~\ref{app:inverse_design_settings} details the geometry controls,
 optimization constraints, sampling schedules, and CFD settings.
 
@@ -84,17 +84,19 @@ optimization constraints, sampling schedules, and CFD settings.
 We follow the airfoil inverse-design setting of Geo-FNO~\citep{li2023geofno},
 parameterizing the geometry by spline-node displacements and performing
 gradient-based optimization through the differentiable surrogate.
-AdaSolver accelerates the complete design process by $2.18\times$ while
+AdaSolver retains 2,113 of 11,271 points ($18.75\%$) and keeps the sampled
+indices fixed after initialization. It accelerates the complete design process by $2.18\times$ while
 reaching essentially the same CFD-validated aerodynamic performance as
 full-mesh optimization. It also yields a substantially more accurate surrogate
 estimate of the final design, demonstrating that adaptive test-time sampling
 can reduce optimization cost without compromising design quality. 
 \input{figures/fig3_airfoil_optimization.tex}
 
+\FloatBarrier
 \paragraph{3D SuperWing.}
 Figure~\ref{fig:superwing_design} compares CMA-ES~\citep{hansen2001completely}
 optimization on SuperWing~\citep{yang2025superwing}, with both methods initialized
-from the same geometry and flow condition. AdaSolver evaluates only $18.75\%$ of
+from the same geometry and flow condition. AdaSolver evaluates only $37.5\%$ of
 the surface points and periodically refreshes the sampling density as the geometry
 evolves. Since nearby optimization iterates typically exhibit similar geometries,
 the same density can be reused across multiple steps, avoiding unnecessary

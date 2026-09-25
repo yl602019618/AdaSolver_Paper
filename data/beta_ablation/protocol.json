@@ -1,0 +1,58 @@
+{
+  "objective": "Isolate the effect of the measure-correction exponent beta with fixed frozen models, adaptive sampling sets, budgets, and reconstruction.",
+  "beta_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "methods": [
+    "pi",
+    "cpg",
+    "ca"
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "controls": "Uniform and production-beta values; beta=0 is uncompensated original Physics-Attention on the same adaptive point set",
+  "fixed_variables": [
+    "checkpoint",
+    "head",
+    "acquisition score and policy",
+    "coarse and final sampling indices",
+    "reconstruction",
+    "test cases",
+    "seeds"
+  ],
+  "test_population_counts": {
+    "airfoil2d": 110,
+    "pipe": 200,
+    "darcy": 200,
+    "elasticity": 200,
+    "plasticity2d": 80,
+    "shapenet_car": {
+      "field": 100,
+      "cd": 100
+    },
+    "driverml": {
+      "field": 50,
+      "cd": 50
+    },
+    "superwing": {
+      "field": 2871,
+      "cdcl": 2563
+    }
+  },
+  "normalization": "For each policy and seed, divide the trapezoidal error-budget area by its beta=0 area, then average the three ratios. Tables use matched Uniform as the rAUEC denominator.",
+  "selection": "The sweep does not change the exponents used in the main experiments.",
+  "superwing_cdcl_inclusion": "Fixed abs(Cl_GT) >= 0.07103351890721582 subset.",
+  "airfoil_inclusion": "Fixed true pressure-force Cl > 0.02 subset, shared by field and Cd/Cl metrics."
+}

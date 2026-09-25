@@ -1,5 +1,7 @@
 # Appendix figures
 
+[Measure-correction ablation PDF](beta_ablation.pdf) · [PNG](beta_ablation.png) · [SVG](beta_ablation.svg) · [Independent panels and legend](beta_ablation_assets/) · [Data](../../data/beta_ablation/README.md). Appendix D.1 contains all eight benchmarks and twelve metrics. Its ordinate is the error-budget area relative to the same policy and seed at beta=0, averaged across seeds. This reference differs from the full-mesh reference used in the subsequent budget curves.
+
 [Density visualization PDF](density_visualization.pdf) · [PNG](density_visualization.png) · [SVG](density_visualization.svg). This overview uses the same eight cases at a 37.5% budget and seed zero. It shows actual local selected/native point fractions on a shared scale; the refinement-feature rows in the case pages retain their original definitions.
 
 One compact budget-accuracy figure and eight separate case pages. All 21 physical quantities are retained. Field examples use a 37.5% point budget and sampling seed zero. Curve values are the supplied means and sample standard deviations over three seeds, normalized by the matching full-mesh mean error.

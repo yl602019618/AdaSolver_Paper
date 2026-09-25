@@ -1,0 +1,27 @@
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Measure correction on fixed adaptive samples. Entries are mean rAUEC over three sampling seeds, with Uniform equal to one. Bold marks the lower value in each within-policy $\beta=0$/$\beta^{\star}$ pair. Parentheses give the percentage decrease in mean rAUEC from $\beta=0$, computed before rounding. The compensation exponents $\beta^{\star}$ are specified in Appendix~\ref{app:density_policy_design}.}
+\label{tab:beta_ablation}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Dataset & Metric & \multicolumn{2}{c}{PI} & \multicolumn{2}{c}{CPG} & \multicolumn{2}{c}{CA} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+& & $\beta=0$ & $\beta^{\star}$ & $\beta=0$ & $\beta^{\star}$ & $\beta=0$ & $\beta^{\star}$ \\
+\midrule
+Airfoil & Field & 3.2852 & \textbf{0.6166}\,{\footnotesize (81.2\%)} & 5.6733 & \textbf{0.5831}\,{\footnotesize (89.7\%)} & 4.1829 & \textbf{0.5579}\,{\footnotesize (86.7\%)} \\
+Pipe & Field & 4.1234 & \textbf{0.8711}\,{\footnotesize (78.9\%)} & 11.1004 & \textbf{0.6719}\,{\footnotesize (93.9\%)} & 12.7244 & \textbf{0.7051}\,{\footnotesize (94.5\%)} \\
+Darcy & Field & 1.0315 & \textbf{0.9965}\,{\footnotesize (3.4\%)} & 4.2778 & \textbf{0.6419}\,{\footnotesize (85.0\%)} & 4.2654 & \textbf{0.6400}\,{\footnotesize (85.0\%)} \\
+Elasticity & Field & 0.7314 & \textbf{0.7280}\,{\footnotesize (0.5\%)} & 0.4832 & \textbf{0.4681}\,{\footnotesize (3.1\%)} & 0.5506 & \textbf{0.5469}\,{\footnotesize (0.7\%)} \\
+Plasticity & Field & 1.4393 & \textbf{0.8888}\,{\footnotesize (38.2\%)} & 2.3153 & \textbf{0.8890}\,{\footnotesize (61.6\%)} & 1.8908 & \textbf{0.8897}\,{\footnotesize (52.9\%)} \\
+ShapeNet-Car & Field & 0.6301 & \textbf{0.5895}\,{\footnotesize (6.4\%)} & 0.5962 & \textbf{0.5577}\,{\footnotesize (6.5\%)} & 0.5962 & \textbf{0.5577}\,{\footnotesize (6.4\%)} \\
+DrivAerML & Field & 0.9398 & \textbf{0.8834}\,{\footnotesize (6.0\%)} & 0.9298 & \textbf{0.8246}\,{\footnotesize (11.3\%)} & 1.3280 & \textbf{0.8263}\,{\footnotesize (37.8\%)} \\
+SuperWing & Field & 0.8369 & \textbf{0.7564}\,{\footnotesize (9.6\%)} & 1.9796 & \textbf{0.6706}\,{\footnotesize (66.1\%)} & 2.3252 & \textbf{0.7193}\,{\footnotesize (69.1\%)} \\
+Airfoil & Cd/Cl & 11.3964 & \textbf{0.2174}\,{\footnotesize (98.1\%)} & 2.1147 & \textbf{0.2379}\,{\footnotesize (88.7\%)} & 1.7583 & \textbf{0.2453}\,{\footnotesize (86.1\%)} \\
+ShapeNet-Car & Cd & 0.7649 & \textbf{0.6561}\,{\footnotesize (14.2\%)} & 0.8113 & \textbf{0.6474}\,{\footnotesize (20.2\%)} & 0.8130 & \textbf{0.6479}\,{\footnotesize (20.3\%)} \\
+DrivAerML & Cd & 4.9553 & \textbf{0.9245}\,{\footnotesize (81.3\%)} & 2.5121 & \textbf{0.9209}\,{\footnotesize (63.3\%)} & 2.8282 & \textbf{0.9244}\,{\footnotesize (67.3\%)} \\
+SuperWing & Cd/Cl & 1.4093 & \textbf{0.8246}\,{\footnotesize (41.5\%)} & 1.4403 & \textbf{0.8026}\,{\footnotesize (44.3\%)} & 1.7669 & \textbf{0.8167}\,{\footnotesize (53.8\%)} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -33,6 +33,7 @@ and recorded in [data/inverse_design_settings.json](data/inverse_design_settings
 | Content | Files |
 |---|---|
 | Fig1–4 | [All figures](figures/README.md) |
+| Appendix D.1: measure-correction ablation | [Figure PDF](figures/appendix/beta_ablation.pdf) · [PNG](figures/appendix/beta_ablation.png) · [Data and reproduction](data/beta_ablation/README.md) |
 | Fig3: Airfoil design | [PNG](figures/fig3_airfoil_optimization.png) · [PDF](figures/fig3_airfoil_optimization.pdf) |
 | Fig4: SuperWing design | [PNG](figures/fig4_superwing_optimization.png) · [PDF](figures/fig4_superwing_optimization.pdf) |
 | Additional design comparisons | [Figures, PPT, panels, and results](supplementary/design_transfer/README.md) |

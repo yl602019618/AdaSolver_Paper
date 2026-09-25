@@ -1,0 +1,421 @@
+{
+  "complete": true,
+  "panels": [
+    {
+      "benchmark": "airfoil2d",
+      "metric": "field",
+      "status": "complete",
+      "cases": 110,
+      "total_cases": 110,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.008432793683932738,
+        1.1171852152918988
+      ],
+      "scale": "linear",
+      "zoom": {
+        "bounds": [
+          0.58,
+          0.56,
+          0.39,
+          0.38
+        ],
+        "xlim": [
+          0.72,
+          1.025
+        ],
+        "ylim": [
+          0.065,
+          0.285
+        ],
+        "xticks": [
+          0.75,
+          1
+        ],
+        "yticks": [
+          0.1,
+          0.2
+        ],
+        "parent_envelope_overlap": false
+      },
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.073,
+        0.7351351351351351,
+        0.19246861924686193,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "pipe",
+      "metric": "field",
+      "status": "complete",
+      "cases": 200,
+      "total_cases": 200,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0,
+        1.1228772905788047
+      ],
+      "scale": "linear",
+      "zoom": {
+        "bounds": [
+          0.58,
+          0.57,
+          0.39,
+          0.37
+        ],
+        "xlim": [
+          0.72,
+          1.025
+        ],
+        "ylim": [
+          0.035,
+          0.235
+        ],
+        "xticks": [
+          0.75,
+          1
+        ],
+        "yticks": [
+          0.05,
+          0.15
+        ],
+        "parent_envelope_overlap": false
+      },
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.315510460251046,
+        0.7351351351351351,
+        0.19246861924686187,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "darcy",
+      "metric": "field",
+      "status": "complete",
+      "cases": 200,
+      "total_cases": 200,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.06386155284563358,
+        1.110634543754607
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.558020920502092,
+        0.7351351351351351,
+        0.19246861924686198,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "elasticity",
+      "metric": "field",
+      "status": "complete",
+      "cases": 200,
+      "total_cases": 200,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.951916131224684,
+        1.0132837896544775
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.800531380753138,
+        0.7351351351351351,
+        0.19246861924686187,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "plasticity2d",
+      "metric": "field",
+      "status": "complete",
+      "cases": 80,
+      "total_cases": 80,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.321635919344763,
+        1.0801703004410734
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.073,
+        0.4450675675675675,
+        0.19246861924686193,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "shapenet_car",
+      "metric": "field",
+      "status": "complete",
+      "cases": 100,
+      "total_cases": 100,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.9175079181371171,
+        1.009749064220159
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.315510460251046,
+        0.4450675675675675,
+        0.19246861924686187,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "driverml",
+      "metric": "field",
+      "status": "complete",
+      "cases": 50,
+      "total_cases": 50,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.5839348568505046,
+        1.0491713350994858
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.558020920502092,
+        0.4450675675675675,
+        0.19246861924686198,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "superwing",
+      "metric": "field",
+      "status": "complete",
+      "cases": 2871,
+      "total_cases": 2871,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.23856752941506978,
+        1.0899874737964008
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.800531380753138,
+        0.4450675675675675,
+        0.19246861924686187,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "airfoil2d",
+      "metric": "cdcl",
+      "status": "complete",
+      "cases": 110,
+      "total_cases": 110,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        -2.2635101496287686,
+        7.784549849324386
+      ],
+      "scale": "linear",
+      "zoom": {
+        "bounds": [
+          0.64,
+          0.64,
+          0.34,
+          0.3
+        ],
+        "xlim": [
+          0.73,
+          1.025
+        ],
+        "ylim": [
+          0,
+          0.42
+        ],
+        "xticks": [
+          0.75,
+          1
+        ],
+        "yticks": [
+          0,
+          0.2,
+          0.4
+        ],
+        "parent_envelope_overlap": false
+      },
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.073,
+        0.15499999999999992,
+        0.19246861924686193,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "shapenet_car",
+      "metric": "cd",
+      "status": "complete",
+      "cases": 100,
+      "total_cases": 100,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.7694588423852684,
+        1.0922672253590724
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.315510460251046,
+        0.15499999999999992,
+        0.19246861924686187,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "driverml",
+      "metric": "cd",
+      "status": "complete",
+      "cases": 50,
+      "total_cases": 50,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.10479550691022299,
+        1.1057968946378827
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.558020920502092,
+        0.15499999999999992,
+        0.19246861924686198,
+        0.2148648648648649
+      ]
+    },
+    {
+      "benchmark": "superwing",
+      "metric": "cdcl",
+      "status": "complete",
+      "cases": 2563,
+      "total_cases": 2563,
+      "source": "data/beta_ablation/summary.json",
+      "matched_sample_ids": null,
+      "y_limits": [
+        0.4042736632499441,
+        1.0704040216159156
+      ],
+      "scale": "linear",
+      "zoom": null,
+      "all_beta_values_present": true,
+      "whole_standard_deviation_envelope_visible": true,
+      "axis_bounds": [
+        0.800531380753138,
+        0.15499999999999992,
+        0.19246861924686187,
+        0.2148648648648649
+      ]
+    }
+  ],
+  "font_sizes_pt": {
+    "inset_tick": 8.3,
+    "tick": 10.3,
+    "title": 12.5,
+    "legend": 11,
+    "axis": 13,
+    "panel_axis": 10,
+    "provisional": 8.1
+  },
+  "curve_styles": {
+    "pi": {
+      "color": "#169C9C",
+      "ls": [
+        0,
+        [
+          6,
+          6
+        ]
+      ],
+      "lw": 2.5,
+      "marker": "^",
+      "ms": 7.2,
+      "mew": 1.2,
+      "z": 4
+    },
+    "cpg": {
+      "color": "#E45D42",
+      "ls": "-",
+      "lw": 2.05,
+      "marker": "s",
+      "ms": 6.2,
+      "mew": 1.2,
+      "z": 5
+    },
+    "ca": {
+      "color": "#7543A8",
+      "ls": [
+        0,
+        [
+          1.2,
+          2.3
+        ]
+      ],
+      "lw": 1.6,
+      "marker": "D",
+      "ms": 3.8,
+      "mew": 1.25,
+      "z": 6
+    }
+  },
+  "layout": {
+    "figsize": [
+      12.0,
+      6.5
+    ],
+    "left": 0.073,
+    "right": 0.993,
+    "bottom": 0.155,
+    "top": 0.95,
+    "wspace": 0.26,
+    "hspace": 0.35
+  },
+  "marker_positions_offset": false,
+  "x_label": "Compensation exponent $\\beta$",
+  "y_label": "Error\u2013budget area ratio $R_m(\\beta)$",
+  "normalization": "Per-policy, per-seed error-budget area divided by beta=0 area; then seed mean and sample standard deviation",
+  "uncertainty": "One sample SD across three paired seeds"
+}

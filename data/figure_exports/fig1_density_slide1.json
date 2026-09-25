@@ -1,0 +1,25 @@
+{
+  "source": "总图1_density.pptx",
+  "source_slide": 1,
+  "source_modified": false,
+  "renderer": "LibreOffice Impress",
+  "crop_box_points": [
+    336.9681570816313,
+    25.97385905446251,
+    1036.4043319901489,
+    482.6103365305818
+  ],
+  "original_page_points": [
+    1382.37165354331,
+    600.009448818898
+  ],
+  "output_size_points": [
+    699.4361749085176,
+    456.63647747611924
+  ],
+  "raster_dpi": 600,
+  "png_pixels": [
+    5829,
+    3806
+  ]
+}
