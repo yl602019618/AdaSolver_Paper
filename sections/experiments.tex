@@ -25,8 +25,7 @@ For a consistent comparison, we treat all input discretizations as unstructured 
           \bigl[E_{\mathrm{uniform}}(b_k)+E_{\mathrm{uniform}}(b_{k+1})\bigr]}.
     \label{eq:rauec}
 \end{equation}
-Lower rAUEC is better, with uniform sampling normalized to $1$. We report mean rAUEC and its sample standard deviation over three independent sampling runs with matched Uniform baselines. We also report end-to-end runtime for geometry optimization.
-
+Lower rAUEC is better, with \textbf{uniform sampling normalized to $1$}. 
 % Airfoil uses the same 110 cases with reference $C_L>0.02$ for field and $C_D/C_L$ evaluation, with metric-specific sampling policies and absolute error for $C_D/C_L$. Elasticity uses 200 independent holdout cases.
 
 % For industrial benchmarks, ShapeNet-Car combines full-cloud velocity relative $L_2$ with half the surface-pressure relative $L_2$ error. DrivAerML uses surface-pressure relative $L_2$, and SuperWing uses joint relative $L_2$ on the dataset-scaled pressure and skin-friction channels. The aerodynamic metrics are relative errors in $C_D$ for the car datasets and $C_D/C_L$ for SuperWing, with sampling policies selected separately for each metric. ShapeNet-Car and DrivAerML use 100 and 50 test geometries, respectively. SuperWing uses 2,871 cases for field evaluation and a fixed 2,563-case subset for $C_D/C_L$, selected by a calibration-derived lift-magnitude cutoff of approximately $0.071$.
