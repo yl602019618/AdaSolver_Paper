@@ -50,7 +50,10 @@
       "height_px": 2986,
       "source": "总图1.pptx",
       "raster_dpi": 600,
-      "export_scope": "source slides 3 and 4 only"
+      "export_scope": "latest author slides 3 and 4; density fields, sample overlays, density colorbar only",
+      "density": "actual normalized sampling weight, uniform = 1; linear range 0–5",
+      "sampling_points": "exact saved indices",
+      "density_data": "data/design_density"
     },
     {
       "name": "fig4_superwing_optimization",
@@ -66,12 +69,15 @@
       "height_px": 2927,
       "source": "总图1.pptx",
       "raster_dpi": 600,
-      "export_scope": "source slides 3 and 4 only"
+      "export_scope": "latest author slides 3 and 4; density fields, sample overlays, density colorbar only",
+      "density": "actual normalized sampling weight, uniform = 1; linear range 0–5",
+      "sampling_points": "exact saved indices",
+      "density_data": "data/design_density"
     }
   ],
   "source_presentation_edited_by_user": true,
   "source_presentation_modified_by_export": false,
   "original_equations_verified": true,
-  "upstream_manuscript_commit": "b7e857704b62571414f821c51e1acb6400bb08cf",
-  "last_refresh_scope": "Airfoil field policy update in Figure 2; author layout retained"
+  "upstream_manuscript_commit": "919f4fc106d6fcb0304547c53389f66c2a943bd1",
+  "last_refresh_scope": "Figures 3/4: verified policy density and actual sample overlays; latest author layout retained"
 }

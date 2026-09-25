@@ -20,3 +20,7 @@ The `v1/` directory contains earlier paper material. Current editing starts from
 Figures 1--4 use the author-edited exports in [figures/](figures/README.md).
 Their PDF and PNG contents are preserved; LaTeX includes the vector PDFs.
 Captions and labels are defined in the four `figures/fig*.tex` files.
+
+The actual density fields and retained sampling points in Figures 3 and 4 are
+documented in [data/design_density](data/design_density/README.md), with compact
+source arrays and an independent panel renderer.

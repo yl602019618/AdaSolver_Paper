@@ -1,0 +1,86 @@
+{
+  "airfoil2d_initial": {
+    "source": "fig5/design_grid/data/airfoil2d/ca_initial.npz",
+    "density_formula": "sqrt(0.1 + q95-normalized LSQ pressure gradient), divided by its native-grid mean",
+    "density_role": "Policy refinement density before conditioning on the retained coarse set; uniform reference = 1",
+    "saved_samples_reproduced": true,
+    "sampling_snapshot": "AdaSolver_official/airfoil2d_design/results/fig5_ca_seed29_trajectory/ca.sampling.json",
+    "total_selected": 2113,
+    "coarse_points": 564,
+    "acquisition_state": "initial geometry; native-index density fixed throughout design",
+    "statistics": {
+      "minimum": 0.6634890171715161,
+      "maximum": 4.587377963904249,
+      "mean": 1.0,
+      "quantiles": {
+        "0.5": 0.7512921618767009,
+        "0.9": 1.634738095046585,
+        "0.95": 2.2003974459477518,
+        "0.99": 3.2538092050476917
+      }
+    }
+  },
+  "airfoil2d_final": {
+    "source": "fig5/design_grid/data/airfoil2d/ca_final.npz",
+    "density_formula": "sqrt(0.1 + q95-normalized LSQ pressure gradient), divided by its native-grid mean",
+    "density_role": "Policy refinement density before conditioning on the retained coarse set; uniform reference = 1",
+    "saved_samples_reproduced": true,
+    "sampling_snapshot": "AdaSolver_official/airfoil2d_design/results/fig5_ca_seed29_trajectory/ca.sampling.json",
+    "total_selected": 2113,
+    "coarse_points": 564,
+    "acquisition_state": "initial geometry; native-index density fixed throughout design",
+    "statistics": {
+      "minimum": 0.6634890171715161,
+      "maximum": 4.587377963904249,
+      "mean": 1.0,
+      "quantiles": {
+        "0.5": 0.7512921618767009,
+        "0.9": 1.634738095046585,
+        "0.95": 2.2003974459477518,
+        "0.99": 3.2538092050476917
+      }
+    }
+  },
+  "superwing_initial": {
+    "source": "fig5/design_grid/data/superwing/pi_initial.npz",
+    "sampling_snapshot": "AdaSolver_official/superwing_design/results/wing_2319_device_speed/selected/seed1/pi/sampling_0000.npz",
+    "density_formula": "1 + 8 * sqrt(normal-variation score normalized between q01 and q99), divided by its mean",
+    "density_role": "Actual PI sampling probability divided by uniform native-cell probability",
+    "saved_samples_reproduced": true,
+    "sample_id": 15974,
+    "total_selected": 12288,
+    "acquisition_generation": 0,
+    "statistics": {
+      "minimum": 0.3357996811437038,
+      "maximum": 3.0221971302933337,
+      "mean": 0.9999999999999998,
+      "quantiles": {
+        "0.5": 0.825807785664661,
+        "0.9": 1.7329696482408379,
+        "0.95": 2.4142960983458406,
+        "0.99": 3.02211399881274
+      }
+    }
+  },
+  "superwing_final": {
+    "source": "fig5/design_grid/data/superwing/pi_final.npz",
+    "sampling_snapshot": "AdaSolver_official/superwing_design/results/wing_2319_device_speed/selected/seed1/pi/sampling_0141.npz",
+    "density_formula": "1 + 8 * sqrt(normal-variation score normalized between q01 and q99), divided by its mean",
+    "density_role": "Actual PI sampling probability divided by uniform native-cell probability",
+    "saved_samples_reproduced": true,
+    "sample_id": 15974,
+    "total_selected": 12288,
+    "acquisition_generation": 141,
+    "statistics": {
+      "minimum": 0.32156288723699733,
+      "maximum": 2.894065985132976,
+      "mean": 0.9999999999999999,
+      "quantiles": {
+        "0.5": 0.8326252168660317,
+        "0.9": 1.7014808150355425,
+        "0.95": 2.380328103776584,
+        "0.99": 2.8940638044752873
+      }
+    }
+  }
+}

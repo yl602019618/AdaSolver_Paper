@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "paper_build": {
+    "entrypoint": "iclr2027_conference.tex",
+    "pdf": "paper.pdf",
+    "pages": 37,
+    "undefined_references": [],
+    "overfull_boxes": []
+  },
+  "slides_updated": [
+    3,
+    4
+  ],
+  "other_slides_xml_unchanged": true,
+  "density_definition": "actual policy refinement weights normalized to native-grid mean 1",
+  "exact_sampling_replay": [
+    "airfoil2d_initial",
+    "airfoil2d_final",
+    "superwing_initial",
+    "superwing_final"
+  ],
+  "common_density_range": [
+    0,
+    5
+  ],
+  "no_density_clipping": true,
+  "visual_checks": [
+    "Previously verified original sampling replay and PPT figures",
+    "Rendered main-publication paper page 9",
+    "Fig3/Fig4 PDF objects identical to reviewed density revision"
+  ],
+  "baseline_commit": "919f4fc106d6fcb0304547c53389f66c2a943bd1",
+  "target_branch": "main",
+  "publication_scope": "Figures 3/4, density captions, source density arrays and renderer, compiled paper"
+}

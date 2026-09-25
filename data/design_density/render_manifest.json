@@ -1,0 +1,98 @@
+[
+  {
+    "media": "image86",
+    "case": "airfoil2d",
+    "stage": "initial",
+    "viewport": [
+      [
+        -0.16,
+        1.16
+      ],
+      [
+        -0.26,
+        0.26
+      ]
+    ],
+    "selected_count": 2113,
+    "displayed_count": 669,
+    "native_density_min": 0.6634890171715161,
+    "native_density_max": 4.587377963904249,
+    "colorbar_range": [
+      0,
+      5
+    ],
+    "samples_layer": "actual saved indices; back-facing wing samples hidden"
+  },
+  {
+    "media": "image87",
+    "case": "airfoil2d",
+    "stage": "final",
+    "viewport": [
+      [
+        -0.16,
+        1.16
+      ],
+      [
+        -0.26,
+        0.26
+      ]
+    ],
+    "selected_count": 2113,
+    "displayed_count": 667,
+    "native_density_min": 0.6634890171715161,
+    "native_density_max": 4.587377963904249,
+    "colorbar_range": [
+      0,
+      5
+    ],
+    "samples_layer": "actual saved indices; back-facing wing samples hidden"
+  },
+  {
+    "media": "image98",
+    "case": "superwing",
+    "stage": "initial",
+    "viewport": [
+      [
+        0.31667119437672736,
+        3.369386297530738
+      ],
+      [
+        -0.23582582259673754,
+        1.3234107140939448
+      ]
+    ],
+    "selected_count": 12288,
+    "displayed_count": 5220,
+    "native_density_min": 0.3357996811437038,
+    "native_density_max": 3.0221971302933337,
+    "colorbar_range": [
+      0,
+      5
+    ],
+    "samples_layer": "actual saved indices; back-facing wing samples hidden"
+  },
+  {
+    "media": "image99",
+    "case": "superwing",
+    "stage": "final",
+    "viewport": [
+      [
+        0.40126218622520227,
+        4.3252677909556
+      ],
+      [
+        -0.1765952383444629,
+        1.608748712526094
+      ]
+    ],
+    "selected_count": 12288,
+    "displayed_count": 5166,
+    "native_density_min": 0.32156288723699733,
+    "native_density_max": 2.894065985132976,
+    "colorbar_range": [
+      0,
+      5
+    ],
+    "samples_layer": "actual saved indices; back-facing wing samples hidden"
+  }
+]
