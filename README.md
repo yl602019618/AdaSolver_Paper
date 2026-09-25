@@ -24,3 +24,6 @@ Captions and labels are defined in the four `figures/fig*.tex` files.
 The actual density fields and retained sampling points in Figures 3 and 4 are
 documented in [data/design_density](data/design_density/README.md), with compact
 source arrays and an independent panel renderer.
+
+The inverse-design protocols for Figures 3 and 4 are described in Appendix B.5
+and recorded in [data/inverse_design_settings.json](data/inverse_design_settings.json).

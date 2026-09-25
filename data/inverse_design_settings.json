@@ -1,0 +1,215 @@
+{
+  "airfoil": {
+    "figure": 3,
+    "source_run": "AdaSolver_official/airfoil2d_design/results/fig5_ca_seed29_trajectory",
+    "operator_checkpoint": "airfoil2d_transolver3_pressure_nmin040_best.pt",
+    "head_checkpoint": "airfoil2d_ca_pressure_budget10_d8_best.pt",
+    "initial_theta": [
+      0.005,
+      0.005,
+      0.0,
+      0.0,
+      0.005,
+      0.005,
+      0.0
+    ],
+    "control_count": 7,
+    "control_bounds_chord_units": [
+      -0.015,
+      0.015
+    ],
+    "Mach": 0.8,
+    "incidence_degrees": 0,
+    "grid_shape": [
+      221,
+      51
+    ],
+    "full_points": 11271,
+    "surface_nodes": 121,
+    "objective": "(predicted Cd / predicted Cl)^2",
+    "minimum_predicted_Cl": 0.05,
+    "optimizer": {
+      "optimizer": "SLSQP",
+      "maxiter": 120,
+      "ftol": 1e-09
+    },
+    "constraints": {
+      "thickness_ratio": [
+        0.8,
+        1.2
+      ],
+      "section_area_ratio": [
+        0.9,
+        1.2
+      ],
+      "max_abs_camber_chords": 0.05,
+      "minimum_reference_cell_area_ratio": 0.2,
+      "cell_orientation_preserved": true
+    },
+    "sampling": {
+      "count": 2113,
+      "fraction": 0.1875,
+      "seed": 29,
+      "coarse_count": 564,
+      "all_surface_nodes_retained": true,
+      "refresh_cadence": 0,
+      "score": "coarse-head LSQ pressure-gradient magnitude, nearest-neighbor transfer, q95 normalization",
+      "feature_k": 16,
+      "density_floor": 0.1,
+      "density_exponent": 0.5,
+      "compensation": "native-lattice Voronoi mass, mean-normalized",
+      "compensation_exponent": 1
+    },
+    "timing_repeats": 5,
+    "CFD": {
+      "solver": "compressible Euler",
+      "initial_and_intermediate_relative_residual_tolerance": 1e-06,
+      "final_relative_residual_tolerance": 1e-07,
+      "full_trajectory_states": 42,
+      "AdaSolver_trajectory_states": 44
+    },
+    "head_layer_widths": [
+      128,
+      8,
+      32,
+      1
+    ],
+    "head_parameter_count": 1353
+  },
+  "superwing": {
+    "figure": 4,
+    "source_manifest": "AdaSolver_official/superwing_design/results/wing_2319_device_speed/selected/seed1/pi/manifest.json",
+    "shape_id": 2319,
+    "operator_checkpoint": "checkpoints/superwing/operators/operator.pt",
+    "condition": {
+      "Mach": 0.7519974134,
+      "Alpha": 9.3724910087
+    },
+    "reference_area_m2": 1.731713874514587,
+    "reference_chord_m": 1,
+    "Reynolds": 20000000,
+    "temperature_K": 300,
+    "controls": [
+      "SA",
+      "DA",
+      "DA_kink",
+      "AR",
+      "TR",
+      "kink",
+      "rootadj",
+      "rtcs_1",
+      "rtcs_2",
+      "twists_1",
+      "twists_2",
+      "twists_3"
+    ],
+    "initial_normalized_controls": [
+      0.3225903179990549,
+      0.14800177154964225,
+      0.48466678562949345,
+      0.6617079604819686,
+      0.3704799242579137,
+      0.4309261805854478,
+      0.4490789480324027,
+      0.768294036996216,
+      0.11085388530153584,
+      0.8245052181418884,
+      0.26659853955328705,
+      0.7619915854194157
+    ],
+    "target_predicted_Cl": 0.9213353835903751,
+    "CMA_seed": 10002,
+    "settings": {
+      "condition_sample": 0,
+      "objective": "fixed_lift_cd",
+      "point_fraction": 0.375,
+      "population_size": 12,
+      "sigma": 0.05,
+      "max_generations": 150,
+      "wall_seconds": null,
+      "density_refresh_generations": 20,
+      "density_refresh_min_q_rms": null,
+      "inference_backend": "graph",
+      "sampling_seed": 1,
+      "seed": 1,
+      "batch_size": 12,
+      "interior_margin": 0.03,
+      "trust_radius": 0.55,
+      "min_scaled_jacobian": 0.78,
+      "official_min_scaled_jacobian": 0.25,
+      "max_span_normal_degrees": 10.0,
+      "max_boundary_variables": 5,
+      "area_ratio_bounds": [
+        0.75,
+        1.3
+      ],
+      "min_thickness_ratio": 0.05,
+      "lift_relative_tolerance": 0.015,
+      "drag_scale": 0.05,
+      "lambda_lift": 200.0,
+      "lambda_deviation": 0.02,
+      "lambda_mesh_quality": 0.1,
+      "lambda_mesh_boundary": 0.1,
+      "lambda_mesh_trust": 0.1,
+      "boundary_soft_margin": 0.08,
+      "mesh_quality_target": 0.8,
+      "cmz_relative_tolerance": null,
+      "constraint_ranking": "feasibility_first",
+      "search_lift_relative_tolerance": 0.01,
+      "geometry_backend": "native",
+      "official_screen_backend": "cached_native",
+      "execution_workers": 4,
+      "overlap_official_screen": true,
+      "device_pipeline": true,
+      "compress_sampling_artifacts": false
+    },
+    "sampling_policy": {
+      "method": "pi",
+      "target": "cdcl",
+      "prior": "normal_variation",
+      "amp": 8,
+      "power": 0.5,
+      "beta": 1
+    },
+    "full_points": 32768,
+    "sampled_points": 12288,
+    "density_refresh_generations": [
+      0,
+      21,
+      41,
+      61,
+      81,
+      101,
+      121,
+      141
+    ],
+    "timing_repeats": 3,
+    "CFD": {
+      "solver": "ADflow RANS",
+      "surface_blocks": 13,
+      "pyHyp_volume_layers": 81,
+      "relative_density_and_total_residual_tolerance": 1e-06,
+      "coefficient_variation_tolerance": 0.002,
+      "stability_window": 10,
+      "unique_geometries": 68,
+      "generation_records": 302
+    }
+  },
+  "timing_definition": {
+    "included": [
+      "density acquisition or refresh",
+      "geometry updates",
+      "surrogate prediction",
+      "optimizer steps",
+      "acceptance checks"
+    ],
+    "excluded": [
+      "model loading",
+      "graph setup",
+      "warm-up",
+      "offline CFD"
+    ],
+    "repeat_seed": "fixed within each experiment"
+  },
+  "density_plot_definition": "policy sampling weights divided by their native-reference mean; shared linear range [0,5]; dots are recorded retained indices"
+}

@@ -76,9 +76,11 @@ and complete field visualizations across all eight benchmarks.
 \subsection{Inverse Design}
 \label{sec:inverse_design}
 
-We evaluate AdaSolver in surrogate-based airfoil and wing design. Both tasks
-minimize $(C_D/C_L)^2$, favoring low drag relative to lift and thus higher
-aerodynamic efficiency. Final designs are independently validated with CFD.
+We evaluate AdaSolver in surrogate-based airfoil and wing design. The airfoil
+task minimizes $(C_D/C_L)^2$, while SuperWing minimizes drag subject to a
+fixed-lift target. Final designs are independently validated with CFD.
+Appendix~\ref{app:inverse_design_settings} details the geometry controls,
+optimization constraints, sampling schedules, and CFD settings.
 
 \paragraph{2D Airfoil.}
 We follow the airfoil inverse-design setting of Geo-FNO~\citep{li2023geofno},

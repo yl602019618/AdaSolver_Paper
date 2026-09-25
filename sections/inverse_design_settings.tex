@@ -1,0 +1,41 @@
+\subsection{Inverse-Design Settings}
+\label{app:inverse_design_settings}
+
+In Figures~\ref{fig:airfoil_design} and~\ref{fig:superwing_design}, full-mesh and AdaSolver optimization share the initial geometry, flow condition, constraints, and frozen operator. Independent CFD validates the surrogate-designed geometries.
+
+\paragraph{Two-dimensional airfoil.}
+Following the NACA airfoil parameterization of Geo-FNO~\citep{li2023geofno}, seven spline-node displacements control the section and its $221\times51$ body-fitted mesh. The initial control vector is $(0.005,0.005,0,0,0.005,0.005,0)$, with each component bounded by $\pm0.015$ in chord units. At Mach $0.8$ and zero incidence, SLSQP minimizes the predicted $(C_D/C_L)^2$ subject to $C_L\geq0.05$. We use exact automatic-differentiation gradients, a maximum of 120 iterations, and a function tolerance of $10^{-9}$. Thickness remains within $80$--$120\%$ of the undeformed NACA reference, section area within $90$--$120\%$, and absolute camber within $0.05$ chord. Accepted geometries must preserve cell orientation and at least $20\%$ of each reference cell's area.
+
+AdaSolver retains 2,113 of 11,271 points ($18.75\%$). Its initialization uses 564 coarse points, including all 121 ordered surface nodes, with sampling seed 29. A frozen pressure head with an eight-dimensional bottleneck maps first-block features to coarse pressure. We transfer the magnitudes of 16-neighbor least-squares pressure gradients from the coarse set to reference points by nearest neighbors, obtaining $g_i$. The refinement weights are
+\begin{equation}
+    w_i=(0.1+s_i)^{1/2},\qquad
+    s_i=\frac{g_i}
+    {\max\!\left(Q_{0.95}(g),10^{-12}\right)}.
+    \label{eq:app_airfoil_design_density}
+\end{equation}
+Weighted sampling without replacement adds points while retaining the coarse set. The selected indices and native-lattice Voronoi compensation weights ($\beta=1$) remain fixed during this trajectory; their coordinates follow each deformed mesh. Full-mesh and AdaSolver runs use the same execution kernels and CUDA-graph implementation. Reported online times are medians of five paired repetitions.
+
+\paragraph{Three-dimensional SuperWing.}
+We optimize shape 2319 from SuperWing~\citep{yang2025superwing} at Mach $0.751997$ and incidence $9.372491^\circ$. The reference half-wing area is $1.731714\,\mathrm{m}^2$ and the reference chord is $1\,\mathrm{m}$. Twelve variables control sweep, dihedral and its kink adjustment, aspect and taper ratios, kink location, root adjustment, two section-thickness factors, and three twist angles. Each variable is normalized using the dataset's physical parameter bounds. We use a normalized interior margin of $0.03$ and a root-mean-square parameter trust radius of $0.55$ around the initial wing. CMA-ES~\citep{hansen2001completely} runs for 150 generations with 12 candidates per generation, initial step size $0.05$, and implementation seed 10002 (experiment seed 1).
+
+The wing objective is fixed-lift drag minimization,
+\begin{equation}
+    J=\left(\frac{C_D}{0.05}\right)^2
+      +200\left(C_L-0.9213353836\right)^2+P_{\mathrm{geom}},
+    \label{eq:app_wing_design_objective}
+\end{equation}
+where the lift target is the full-mesh surrogate prediction on the initial wing. CMA-ES ranks feasible candidates before infeasible candidates. Its search uses a $1\%$ relative lift band, while the acceptance check uses $1.5\%$. Geometry checks require scaled Jacobians of at least $0.78$ on the surrogate surface and $0.25$ on the official 13-block surface, span-normal angles below $10^\circ$, positive chords, thickness ratio at least $0.05$, area ratio within $[0.75,1.3]$, and at most five variables within $0.05$ of a normalized boundary. The geometry penalty combines squared parameter displacement (weight $0.02$), boundary proximity, mesh quality, and excess trust displacement (weight $0.1$ each), plus 100 times the summed squared geometry violations. The boundary soft margin is $0.08$; the mesh-quality penalty measures shortfall from $0.8$ with scale $0.05$. The trust penalty begins at displacement $0.45$ with scale $0.1$.
+
+AdaSolver samples 12,288 of 32,768 surface-cell centers ($37.5\%$), with sampling seed 1 and Voronoi compensation exponent $\beta=1$. If $v_i$ denotes the normal-variation score, its sampling weight is
+\begin{equation}
+    w_i=1+8\sqrt{\operatorname{clip}\!\left(
+    \frac{v_i-Q_{0.01}(v)}{Q_{0.99}(v)-Q_{0.01}(v)},0,1\right)}.
+    \label{eq:app_wing_design_density}
+\end{equation}
+The density is acquired at initialization and refreshed every 20 generations, at generations $21,41,\ldots,141$. Geometry features, normals, cell areas, and force-integration weights are recomputed for every candidate. Three repeated runs provide the median online times; the plotted trajectory is the repetition with median completion time.
+
+\paragraph{Density visualizations.}
+Both figures show $\lambda_i=w_i/(N^{-1}\sum_jw_j)$ on a shared linear scale from zero to five, with uniform density equal to one. These policy weights precede conditioning on mandatory coarse points; the dots show actual retained indices. Airfoil transports its initial density with the mesh, while SuperWing displays the initial and final-refresh densities.
+
+\paragraph{Independent CFD and timing.}
+Airfoil validation uses the original Euler solver on the native grid, with relative residual tolerance $10^{-6}$ along the trajectory and $10^{-7}$ at the final designs; all 42 full-mesh and 44 AdaSolver states have converged CFD references. SuperWing uses ADflow RANS~\citep{mader2020adflow} on an 81-layer pyHyp volume mesh from the official 13-block surface, at Reynolds number $2\times10^7$ and temperature $300\,\mathrm{K}$. Flow conditions and reference quantities match optimization. Density and total relative residuals must be at most $10^{-6}$, with coefficient variation over the final ten iterations at most $2\times10^{-3}$. The 68 converged geometries cover all 302 generation records, including initialization; repeated geometries reuse CFD solutions. Online time includes geometry updates, sampling, surrogate evaluation, optimizer steps, and acceptance checks, excluding model loading, graph setup, warm-up, and CFD. Timing repetitions share the optimization seed.

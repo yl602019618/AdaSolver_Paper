@@ -183,3 +183,5 @@ All backbones follow the Transolver architecture~\citep{wu2024transolver}, with 
 We adopt geometry-amortized training~\citep{zhou2026transolver3} by resampling a uniform subset of mesh points at each optimization step. The subset size is drawn uniformly from the integer interval specified in Table~\ref{tab:training_details}, and points are sampled without replacement. The lower bound is $\operatorname{round}(0.4N)$ for Elasticity, Plasticity, Airfoil, Pipe, and ShapeNet-Car, and $\operatorname{round}(0.3N)$ for SuperWing, where $N$ is the full-mesh point count. DrivAerML uses the absolute range $[85{,}900,859{,}000]$ for both its pressure and wall-shear-stress models. Darcy is trained on the full mesh. Each backbone remains frozen during sampling-policy evaluation.
 
 DrivAerML uses four workers with one case per worker, giving a global batch size of four and a peak learning rate of $10^{-3}\sqrt{4}=2\times10^{-3}$. Training minimizes relative $L_2$ error except on ShapeNet-Car, which uses velocity MSE plus $0.5$ times surface-pressure MSE in normalized output space.
+
+\input{sections/inverse_design_settings.tex}
