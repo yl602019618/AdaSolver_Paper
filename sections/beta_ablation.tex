@@ -2,78 +2,76 @@
 \label{app:beta_ablation}
 
 Section~\ref{sec:density_consistent_transolver} shows that changing the
-inference-time sampling measure changes the limiting point-to-slice
-aggregation in Physics-Attention. In particular, when points are sampled
-from an adaptive measure $\widetilde{\rho}$ rather than the reference
-measure $\rho$, the original Transolver aggregation converges to an
-operator under $\widetilde{\rho}$ instead of the reference operator under
-$\rho$. The measure-aware aggregation corrects this shift using
-$c(x)=\mathrm d\rho/\mathrm d\widetilde{\rho}$.
-Here we isolate the practical consequence of this sampling-induced bias:
-\emph{with exactly the same adaptively sampled points, how much does an
-incorrect measure correction affect inference accuracy?}
+sampling density at inference changes the point-to-slice aggregation in
+Physics-Attention and therefore introduces a sampling-measure bias unless
+the aggregation is properly compensated. The adaptive policies in our main
+experiments use policy-specific measure-correction weights $c_i^{\beta^\star}$,
+where $c_i$ is determined from the effective coverage of the selected
+samples and $\beta^\star$ is the correction exponent specified during
+policy design. Here we directly test how sensitive inference is to a
+\emph{mismatch} in this compensation.
 
-Let
+For a fixed set of sampled points, the measure-aware physics token is
+formed as
 \begin{equation}
-    \lambda_{\mathrm{eff}}(x)
-    =
-    \frac{\mathrm d\widetilde{\rho}_{\mathrm{eff}}}
-         {\mathrm d\rho}(x)
-\end{equation}
-denote the effective density ratio represented by the selected samples,
-as estimated by the coverage construction in Appendix~\ref{app:density_policy_design}.
-The corresponding correction weight is
-$c(x)=\lambda_{\mathrm{eff}}(x)^{-1}$.
-We temper this correction by an exponent $\beta\in[0,1]$,
-\begin{equation}
-    c_{\beta}(x)
-    =
-    c(x)^{\beta}
-    =
-    \lambda_{\mathrm{eff}}(x)^{-\beta}.
-    \label{eq:beta_tempered_correction}
-\end{equation}
-For self-normalized point-to-slice aggregation, applying
-$c_{\beta}$ to samples drawn from $\widetilde{\rho}_{\mathrm{eff}}$
-is equivalent, in the population limit, to aggregation under
-\begin{equation}
-    \mathrm d\rho_{\beta}(x)
+    \widehat{u}_{s,j}^{(\beta)}
     =
     \frac{
-        \lambda_{\mathrm{eff}}(x)^{1-\beta}
+        \sum_i w_{i,j} c_i^\beta h_i
     }{
-        \int_{\Omega}
-        \lambda_{\mathrm{eff}}(y)^{1-\beta}
-        \,\mathrm d\rho(y)
-    }
-    \,\mathrm d\rho(x).
-    \label{eq:beta_effective_measure}
+        \sum_i w_{i,j} c_i^\beta
+    },
+    \label{eq:beta_token}
 \end{equation}
-Thus, $\beta$ continuously controls the remaining density contrast
-relative to the reference measure. At $\beta=0$,
-$\rho_{\beta}=\widetilde{\rho}_{\mathrm{eff}}$, recovering the original
-Transolver aggregation without density compensation. At $\beta=1$,
-$\rho_{\beta}=\rho$, corresponding to full measure correction.
-Intermediate values retain a tempered measure shift; equivalently, the
-log-density contrast relative to the reference measure is scaled by
-$1-\beta$.
+where $\beta$ controls the strength of the density compensation.
+In particular, the relative contrast of two correction weights satisfies
+\begin{equation}
+    \log
+    \frac{c_i^\beta}{c_k^\beta}
+    =
+    \beta
+    \log
+    \frac{c_i}{c_k}.
+    \label{eq:beta_weight_contrast}
+\end{equation}
+Thus, $\beta=0$ removes density compensation entirely and recovers the
+original Transolver point-to-slice aggregation, whereas increasing
+$\beta$ strengthens the density-dependent reweighting.
 
-The main experiments use the task- and policy-specific correction exponent
-$\beta^{\star}$ specified in Appendix~\ref{app:density_policy_design}.
-To isolate the effect of measure correction from the effect of adaptive
-sampling itself, this ablation does \emph{not} resample points when
-$\beta$ changes. For each PI, CPG, and CA policy, we first generate the
-coarse and final point sets exactly as in the main experiments. We then
-rerun inference on these same point sets while changing only the
-correction weights $c_i^{\beta}$ inside the point-to-slice aggregation.
-The frozen operator and refinement-head checkpoints, sampled indices,
-reconstruction procedure, test examples, and sampling seeds are therefore
-identical across all values of $\beta$. We evaluate
-$\beta\in\{0,0.25,0.5,0.75,1\}$ at retained fractions of
-$37.5\%$, $50\%$, and $75\%$, using sampling seeds 0, 1, and 2.
+Importantly, the reference point in this ablation is the
+policy-specific exponent $\beta^\star$ used in the main experiments,
+which is not necessarily equal to one. Relative to this deployed
+correction, changing $\beta$ modifies the pairwise compensation ratio as
+\begin{equation}
+    \frac{
+        c_i^\beta/c_k^\beta
+    }{
+        c_i^{\beta^\star}/c_k^{\beta^\star}
+    }
+    =
+    \left(
+        \frac{c_i}{c_k}
+    \right)^{\beta-\beta^\star}.
+    \label{eq:beta_mismatch}
+\end{equation}
+Hence, $\beta<\beta^\star$ under-compensates the sampling-induced density
+shift relative to the main policy, while $\beta>\beta^\star$ applies a
+stronger compensation than that used by the policy.
 
-To summarize the effect across point budgets, let
-$A_{m,s}(\beta)$ denote the trapezoidal area under the error--budget
+We isolate this effect from adaptive sampling itself by keeping the
+sampling realization fixed. For each PI, CPG, and CA policy, we first
+generate the coarse and final point sets exactly as in the main
+experiments using the same policy, budget, and sampling seed. We then
+rerun the frozen Transolver on these \emph{same sampled points}, changing
+only the exponent $\beta$ in the inference-time compensation weights
+$c_i^\beta$. Operator and refinement-head checkpoints, coarse and final
+sampled indices, reconstruction, and test examples are unchanged.
+We evaluate
+$\beta\in\{0,0.25,0.5,0.75,1\}$
+at retained fractions of $37.5\%$, $50\%$, and $75\%$, using sampling
+seeds 0, 1, and 2.
+
+Let $A_{m,s}(\beta)$ denote the trapezoidal area under the error--budget
 curve for policy $m$ and sampling seed $s$. Figure~\ref{fig:beta_ablation}
 reports
 \begin{equation}
@@ -85,56 +83,55 @@ reports
          {A_{m,s}(0)}.
     \label{eq:beta_relative_area}
 \end{equation}
-The normalization is performed separately for each policy and seed before
-averaging. Hence $R_m(0)=1$, and $R_m(\beta)<1$ means that measure
-correction improves inference over the original, uncompensated
-Physics-Attention \emph{on exactly the same adaptive samples}. This
-normalization removes the benefit of the sampling locations themselves
-and exposes only the effect of correcting their induced measure shift.
-Table~\ref{tab:beta_ablation} additionally reports the
-Uniform-normalized rAUEC and compares $\beta=0$ with the
-main-experiment value $\beta^{\star}$.
+Normalization is performed separately for each policy and seed before
+averaging. Therefore, $R_m(0)=1$ corresponds to the same adaptive
+samples evaluated by the original Transolver without measure correction,
+and $R_m(\beta)<1$ indicates that inference-time compensation reduces
+the error--budget area. The marker at $\beta^\star$ denotes the
+correction exponent used by that policy in the main experiments.
+Because the sampled locations are identical along each curve, changes in
+$R_m(\beta)$ measure only the effect of changing the inference-time
+aggregation weights.
 
 \input{figures/appendix/beta_ablation.tex}
 
-The results closely follow the measure-shift analysis.
-Across most datasets and policies, adaptive sampling without the
-corresponding compensation produces substantially larger errors, whereas
-moving the correction toward the density associated with the sampler
-sharply reduces the error. Because the sampled locations are unchanged,
-these improvements cannot be attributed to placing points in better
-regions; they arise from correcting how the same point features are
-aggregated into physics tokens.
+The results show a clear sensitivity to compensation mismatch.
+Across most datasets and policies, the lowest or near-lowest error is
+obtained when the inference-time correction is matched to the
+policy-specific $\beta^\star$, while moving away from this setting
+increases the error--budget area. This behavior is consistent with the
+sampling-measure analysis: once the spatial samples are fixed, changing
+$c_i^{\beta^\star}$ to $c_i^\beta$ changes the relative contribution of
+the same point features to the physics tokens, introducing an aggregation
+bias that propagates through the frozen operator.
 
-The effect is particularly pronounced when the adaptive density is strongly
-non-uniform. For CPG, full correction reduces the error--budget area by
-$89.7\%$ on Airfoil field prediction and by $93.9\%$ on Pipe.
-On Darcy, the CPG and CA rAUECs decrease from $4.278$ and $4.265$ without
-correction to $0.642$ and $0.640$, respectively, even though the sampled
-points are identical. Similarly, full correction reduces the SuperWing
-field error--budget area by $66.1\%$ for CPG and $69.1\%$ for CA, and
-reduces the DrivAerML drag area by $63.3\%$ and $67.3\%$.
+The effect can be substantial. For CPG, removing the correction
+($\beta=0$) increases the error--budget area by a factor of approximately
+$9.7$ relative to full correction on Airfoil field prediction and by
+approximately $16.4$ on Pipe. On Darcy, the CPG and CA rAUECs change from
+$0.642$ and $0.640$ at their main-policy settings to $4.278$ and $4.265$
+without compensation, despite using exactly the same sampled locations.
+Similarly, the main correction reduces the SuperWing field
+error--budget area by $66.1\%$ for CPG and $69.1\%$ for CA, and reduces
+the DrivAerML drag area by $63.3\%$ and $67.3\%$, respectively.
 
 \input{tables/beta_ablation.tex}
 
-More generally, the minima of the curves occur at or near the correction
-strength used by the corresponding sampling policy in the main
-experiments. When the effective density is well represented by the
-coverage estimate, the lowest error is typically attained close to full
-correction. When a tempered correction is used in the main policy, the
-preferred exponent shifts accordingly; for example,
-ShapeNet-Car drag attains its lowest area near
-$\beta^{\star}=0.75$ for CPG and CA. Conversely, moving the compensation
-profile away from that associated with the sampler generally increases
-the inference error.
+The non-unit optimal exponents provide an especially informative control.
+For example, on ShapeNet-Car drag prediction, CPG and CA attain their
+lowest areas around the policy value $\beta^\star=0.75$, rather than at
+$\beta=1$, while PI favors the smaller correction used by its policy.
+Thus, the observed improvement is not simply a consequence of applying
+stronger reweighting. Instead, inference is most accurate when the
+compensation strength is consistent with that used to construct the
+corresponding adaptive policy.
 
-These results provide a direct empirical test of the bias characterized
-in Section~\ref{sec:density_consistent_transolver}. Adaptive sampling
-changes not only \emph{where} the operator is evaluated, but also the
-measure under which point features are aggregated. Keeping the samples
-fixed while perturbing only the compensation weights reproduces the
-predicted degradation: the larger the mismatch between the sampling
-measure and the measure used in aggregation, the larger the resulting
-inference bias. Measure-aware Physics-Attention is therefore necessary
-to separate adaptive spatial allocation from an unintended change of the
-operator being evaluated.
+Overall, this controlled experiment provides direct empirical evidence
+for the sampling-measure bias analyzed in
+Section~\ref{sec:density_consistent_transolver}. Adaptive sampling
+determines \emph{where} the frozen operator is evaluated, while the
+measure correction determines \emph{how} those sampled features are
+aggregated. Holding the former fixed and perturbing only the latter
+shows that a mismatch in compensation can substantially degrade
+prediction accuracy, whereas the policy-matched correction restores the
+intended inference behavior.

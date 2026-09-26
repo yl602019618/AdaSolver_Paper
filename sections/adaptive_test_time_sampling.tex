@@ -20,7 +20,13 @@ Here $\nu_{\psi}*\rho$ denotes the reweighted empirical measure induced by the r
     =\frac{1}{(1-\gamma)+\gamma\nu_{\psi}(x)}.
     \label{eq:unified_refinement_correction}
 \end{equation}
-
+We further parameterize the strength of measure correction as
+\begin{equation}
+    c_{\gamma,\psi}^{(\beta)}(x)
+    := c_{\gamma,\psi}(x)^{\beta},
+    \qquad \beta\in[0,1],
+\end{equation}
+where $\beta$ controls the strength of density compensation: $\beta=0$ recovers the original Transolver without correction, while larger $\beta$ increases the inverse-density reweighting. We use a fixed policy-specific $\beta$ in the main experiments and ablate it in Appendix~\ref{app:beta_ablation} with the sampled points held fixed.
 \subsubsection{Physics-Informed Density Refinement}
 \label{sec:physics_informed_refinement}
 
@@ -68,9 +74,7 @@ where $\Phi$ denotes a task-dependent combination of coarse predictive
 features. These quantities are estimated from the local discrete neighborhood
 and extended to candidate locations when necessary. The resulting score is
 normalized through \eqref{eq:unified_refinement_measure} to define
-$\widetilde{\rho}_{\gamma,\mathrm{coarse}}$.
-
-The resulting density concentrates samples in regions that the coarse prediction
+$\widetilde{\rho}_{\gamma,\mathrm{coarse}}$. The resulting density concentrates samples in regions that the coarse prediction
 identifies as spatially informative or task-relevant.
 
 \subsubsection{Cache-Aware Learned Refinement}
@@ -116,4 +120,4 @@ Thus, the pointwise quantities for $S_0$ are reused, while only those for
 $\Delta S$ need to be newly computed. Token attention, deslicing, and later
 blocks are recomputed on $S_1$, since the added samples alter the global
 physics tokens. Appendix~\ref{app:density_policy_design} provides the
-task-specific refinement targets and density constructions.
+task-specific density constructions.
