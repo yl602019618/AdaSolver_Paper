@@ -4,12 +4,12 @@ Figure 1 is exported from the first slide of the author-updated `总图1_density
 
 | Figure | PNG | PDF | Pixels |
 | --- | --- | --- | --- |
-| 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5779 × 3806 |
+| 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5817 × 3806 |
 | 2 | [PNG](fig2_field_comparison.png) | [PDF](fig2_field_comparison.pdf) | 10545 × 3373 |
 | 3 | [PNG](fig3_airfoil_optimization.png) | [PDF](fig3_airfoil_optimization.pdf) | 8679 × 2986 |
 | 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 8154 × 2927 |
 
-The ten native Office equations are verified against the presentation and restored as LaTeX vectors where the Linux exporter omits them. The author's native layout and unrelated slide objects are preserved; Fig3/Fig4 density images and labels have been updated, with separately movable sampling overlays in the local source presentation.
+The ten native Office equations in Figure 1 are read from the current presentation and restored as LaTeX vectors where the Linux exporter omits them, preserving the current expressions, colors, and placement. The author's native layout and unrelated slide objects are preserved; Fig3/Fig4 density images and labels have been updated, with separately movable sampling overlays in the local source presentation.
 
 Latest Fig3/Fig4 refresh: 2026-09-25. Airfoil and SuperWing use the actual policy density normalized to uniform = 1, with recorded sampling points. The shared linear colorbar spans 0–5. Inverse-design settings for these two figures are in Appendix B.5 and [the configuration record](../data/inverse_design_settings.json).
 
