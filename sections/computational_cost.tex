@@ -1,48 +1,37 @@
 \subsection{COMPUTATIONAL COST}
 \label{app:computational_cost}
 
-\paragraph{Measurement setup.}
-We profile GPU field prediction on the first, middle, and last test cases
-of each benchmark, using sampling seeds 0, 1, and 2. Each case runs on one
-NVIDIA H20 GPU with FP32 networks and batch size one. After warm-up, we time 20
-repetitions per sampled-field request (five for DrivAerML) and five per
-request that reconstructs a full field from fewer points, with CUDA
-synchronization around each measurement.
-The tables report the mean and sample standard deviation of the nine
-case--seed mean latencies. Full mesh uses the same frozen backbone at
-$100\%$ of the reference points and is averaged over the three cases.
+Adaptive inference trades the cost of constructing a sampling density for
+a smaller operator evaluation. Table~\ref{tab:inference_time_sampled}
+quantifies this trade-off across all eight benchmarks at the three
+evaluation budgets. All methods use the same frozen backbone. Uniform
+provides a reference at matched point counts, while full mesh measures the
+cost of evaluating all reference points. The reported latency includes
+online refinement and prediction at the selected points, with reusable
+preprocessing performed in advance. Reconstruction onto the full mesh is
+excluded.
 
 \input{tables/inference_time_sampled.tex}
 
-\paragraph{Sampling overhead.}
-Table~\ref{tab:inference_time_sampled} includes coarse inference or the
-learned head, density construction, point selection, compensation, final
-inference, decoding, and transfer of sampled predictions to the CPU.
-Across the 24 task--budget pairs, PI costs $1.015$--$1.048\times$ the
-Uniform latency, and CA costs $1.013$--$1.557\times$.
-CPG executes both the complete coarse and final operators, giving
-$1.157$--$2.152\times$ the Uniform latency. CA is faster than CPG at every
-measured budget. At a $37.5\%$ budget, its sampled-field request is faster
-than full-mesh inference on seven of the eight tasks.
+\paragraph{Refinement overhead.}
+PI remains close to Uniform, adding $1.5$--$4.8\%$ latency across the
+24 task--budget pairs. Its geometry-based density can be reused across
+predictions. CPG incurs a larger overhead because it evaluates a complete
+coarse prediction before selecting additional points. CA obtains its
+refinement signal from early features and reuses cached pointwise
+quantities during the final evaluation. It reduces latency by
+$12.3$--$34.1\%$ relative to CPG, with a reduction in every measured
+setting. Thus, the learned refinement signal lowers the cost of
+solution-aware sampling while retaining its ability to adapt to the input.
 
-
-\paragraph{Full-field reconstruction.}
-Table~\ref{tab:inference_time_reconstruction} adds reconstruction and
-transfer of the complete reference field at a $50\%$ point budget.
-For Pipe, Darcy, Plasticity, Airfoil, and SuperWing, the GPU variant uses
-local weighted linear fits over eight neighbors. Elasticity retains
-Delaunay interpolation. ShapeNet-Car and DrivAerML retain four-neighbor
-inverse-distance interpolation and nearest-neighbor reconstruction,
-respectively. Fixed interpolation maps can be prepared for Uniform and PI,
-whereas adaptive point sets require updated maps on each request.
-
-\input{tables/inference_time_reconstruction.tex}
-
-Reconstruction can dominate the online cost. For CA on SuperWing,
-the sampled-field request takes $8.49$~ms, while the original full-field
-path takes $195.87$~ms. GPU local reconstruction reduces the latter to
-$10.65$~ms, with the measured field error changing from $2.685\%$ to
-$2.749\%$. Elasticity retains its reconstruction cost: its full-field CA
-request takes $5.34$~ms, compared with $1.26$~ms for full mesh. Thus, the
-benefit of a smaller point budget depends on both the requested output
-and the reconstruction operator.
+\paragraph{Realized speedup.}
+At a $37.5\%$ point budget, CA is faster than full-mesh inference on seven
+of the eight benchmarks. The speedups reach $1.95\times$ on ShapeNet-Car,
+$2.61\times$ on DrivAerML, and $2.04\times$ on SuperWing. These gains are
+more pronounced when evaluating the spatial points accounts for a large
+share of the computation. On Elasticity, CA takes $1.52$~ms compared with
+$1.26$~ms for full mesh: refinement overhead outweighs the savings from
+evaluating fewer points. Point reduction therefore does not imply a
+proportional reduction in latency. The realized gain depends on how much
+operator computation is removed relative to the cost of acquiring the
+refinement signal.

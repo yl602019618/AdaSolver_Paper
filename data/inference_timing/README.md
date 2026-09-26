@@ -33,6 +33,7 @@ operators on five tasks. Identical full-field entries for Elasticity,
 ShapeNet-Car and DrivAerML are execution aliases with unchanged reconstruction.
 
 Run `python3 scripts/build_timing_tables.py` from the paper directory to
-regenerate the two appendix tables. Times remain in milliseconds; DrivAerML
-is displayed to one decimal place, and other tasks to three. Field errors in
-the reconstruction table are shown as percentages to three decimal places.
+regenerate the appendix inference latency table. Times remain in milliseconds;
+DrivAerML is displayed to one decimal place, and other tasks to three.
+The full-field reconstruction measurements remain in the archived CSVs but
+are not included as a separate manuscript table.

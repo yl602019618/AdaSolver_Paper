@@ -42,10 +42,10 @@ SuperWing & 37.5\% & $13.602\!\pm\!0.010$ & $5.671\!\pm\!0.002$ & $5.909\!\pm\!0
 \bottomrule
 \end{tabular}
 \endgroup
-\caption{\textbf{Prepared sampled-field request latency (ms).}
-Values are means $\pm$ sample standard deviations across three cases and three sampling seeds.
+\caption{\textbf{Inference latency at different point budgets (ms).}
+Values are means $\pm$ standard deviations across test cases and repeated samplings.
 The full-mesh column uses all reference points and three cases, and is shown once per task.
 $\dagger$ The Elasticity timing configuration uses a $25\%$ coarse set and a two-block head.
-Complete-field reconstruction is measured separately in Table~\ref{tab:inference_time_reconstruction}.}
+Timings cover prediction at the selected points and online refinement, excluding full-field reconstruction.}
 \label{tab:inference_time_sampled}
 \end{table}
