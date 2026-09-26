@@ -25,26 +25,6 @@ $1.157$--$2.152\times$ the Uniform latency. CA is faster than CPG at every
 measured budget. At a $37.5\%$ budget, its sampled-field request is faster
 than full-mesh inference on seven of the eight tasks.
 
-\clearpage
-\paragraph{Execution and preparation.}
-The profiles measure repeated requests after model loading and
-geometry-dependent preparation. Uniform and PI reuse point sets determined
-by the input, geometry, seed, and budget. CPG and CA recompute their draft
-predictions or head outputs, scores, and adaptive point sets on every request.
-Reusable work consists of geometry operators, candidate structures, and CUDA
-graphs. Changing their input dependencies requires preparation again.
-Data loading, initialization, ground-truth error evaluation, and file writing
-are outside the reported request times.
-
-The profiling configuration for Elasticity uses a $25\%$ coarse set and a
-two-block head. Its accuracy configuration in
-Appendix~\ref{app:density_policy_design} uses a $10\%$ coarse set and an MLP.
-Pipe and Darcy retain their two-block heads in these profiles.
-GPU sampling also uses implementation-specific FPS placement and seeded
-sampling realizations. The field errors below are measured on the same
-profiling cases with these implementations.
-Airfoil uses the field-policy parameters in Appendix~\ref{app:density_policy_design},
-including squared pressure-gradient weights for CPG and CA.
 
 \paragraph{Full-field reconstruction.}
 Table~\ref{tab:inference_time_reconstruction} adds reconstruction and
