@@ -7,23 +7,28 @@ In Figures~\ref{fig:airfoil_design} and~\ref{fig:superwing_design}, full-mesh an
 Following the parameterization of the NACA airfoil of Geo-FNO~\citep{li2023geofno}, seven spline-node displacements control the section and its body-fitted mesh $221\times51$. The initial control vector is $(0.005,0.005,0,0,0.005,0.005,0)$, with each component bounded by $\pm0.015$ in chord units. At Mach $0.8$ and zero incidence, SLSQP minimizes the predicted $(C_D/C_L)^2$ subject to $C_L\geq0.05$. We use exact automatic-differentiation gradients, a maximum of 120 iterations, and a function tolerance of $10^{-9}$. We restrict the optimized airfoil to remain close to the reference geometry, with thickness constrained to \(80\%\)–\(120\%\) of the undeformed profile, cross-sectional area to \(90\%\)–\(120\%\), and absolute camber below \(0.05\) chord. We further enforce mesh validity by requiring every cell to preserve its orientation and at least \(20\%\) of its original area. AdaSolver retains 2,113 of 11,271 points ($18.75\%$). Its initialization uses 564 coarse points, including all 121 ordered surface nodes. 
 
 \paragraph{Three-dimensional SuperWing.}
-We optimize shape 2319 from SuperWing~\citep{yang2025superwing} at Mach $0.751997$ and incidence $9.372491^\circ$. The reference half-wing area is $1.731714\,\mathrm{m}^2$ and the reference chord is $1\,\mathrm{m}$. Twelve variables control sweep, dihedral and its kink adjustment, aspect and taper ratios, kink location, root adjustment, two section-thickness factors, and three twist angles. Each variable is normalized using the dataset's physical parameter bounds. We use a normalized interior margin of $0.03$ and a root-mean-square parameter trust radius of $0.55$ around the initial wing. CMA-ES~\citep{hansen2001completely} runs for 150 generations with 12 candidates per generation, initial step size $0.05$, and implementation seed 10002 (experiment seed 1).
+We perform aerodynamic shape optimization on SuperWing~\citep{yang2025superwing}
+under a fixed transonic flow condition. The design space contains 12 variables
+controlling wing sweep, dihedral, aspect and taper ratios, kink location,
+section thickness, and twist. We use CMA-ES~\citep{hansen2001completely} for
+150 generations with 12 candidates per generation.
 
-The wing objective is fixed-lift drag minimization,
+The optimization minimizes drag while maintaining the lift of the initial design:
 \begin{equation}
     J=\left(\frac{C_D}{0.05}\right)^2
-      +200\left(C_L-0.9213353836\right)^2+P_{\mathrm{geom}},
+      +200\left(C_L-C_L^{\mathrm{target}}\right)^2
+      +P_{\mathrm{geom}},
     \label{eq:app_wing_design_objective}
 \end{equation}
-where the lift target is the full-mesh surrogate prediction on the initial wing. CMA-ES ranks feasible candidates before infeasible candidates. Its search uses a $1\%$ relative lift band, while the acceptance check uses $1.5\%$. Geometry checks require scaled Jacobians of at least $0.78$ on the surrogate surface and $0.25$ on the official 13-block surface, span-normal angles below $10^\circ$, positive chords, thickness ratio at least $0.05$, area ratio within $[0.75,1.3]$, and at most five variables within $0.05$ of a normalized boundary. The geometry penalty combines squared parameter displacement (weight $0.02$), boundary proximity, mesh quality, and excess trust displacement (weight $0.1$ each), plus 100 times the summed squared geometry violations. The boundary soft margin is $0.08$; the mesh-quality penalty measures shortfall from $0.8$ with scale $0.05$. The trust penalty begins at displacement $0.45$ with scale $0.1$.
+where $C_L^{\mathrm{target}}$ is the full-mesh surrogate prediction for the
+initial wing. The geometry penalty $P_{\mathrm{geom}}$ regularizes large
+parameter deviations, proximity to design-space boundaries, mesh degradation,
+and geometric constraint violations.
 
-AdaSolver samples 12,288 of 32,768 surface-cell centers ($37.5\%$), with sampling seed 1 and Voronoi compensation exponent $\beta=1$. If $v_i$ denotes the normal-variation score, its sampling weight is
-\begin{equation}
-    w_i=1+8\sqrt{\operatorname{clip}\!\left(
-    \frac{v_i-Q_{0.01}(v)}{Q_{0.99}(v)-Q_{0.01}(v)},0,1\right)}.
-    \label{eq:app_wing_design_density}
-\end{equation}
-The density is acquired at initialization and refreshed every 20 generations, at generations $21,41,\ldots,141$. Geometry features, normals, cell areas, and force-integration weights are recomputed for every candidate. Three repeated runs provide the median online times; the plotted trajectory is the repetition with median completion time.
+AdaSolver evaluates $12{,}288$ of the $32{,}768$ surface points ($37.5\%$).
+We use the normal-variation-based sampling policy described in
+Appendix~\ref{app:density_policy_design}, and refresh the sampling density every 20 generations to
+adapt to the evolving wing geometry.
 
 
 
