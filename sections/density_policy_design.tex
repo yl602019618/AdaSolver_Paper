@@ -1,87 +1,180 @@
 \section{Density Policy Design}
 \label{app:density_policy_design}
 
-We specify the sampling policies used for the eight benchmarks in Tables~\ref{tab:standard_benchmarks} and~\ref{tab:industrial_benchmarks}, including separate policies for field and aerodynamic metrics. Throughout this section, $N$ is the reference point count, $n=|S_1|$ is the final budget, and $\rho=N^{-1}\sum_{i=1}^{N}\delta_{x_i}$. We write $\langle f\rangle_\rho=N^{-1}\sum_i f(x_i)$ and $\mathcal{N}[f]=f/\langle f\rangle_\rho$. Thus, a positive allocation weight $t_\psi$ defines the target density ratio $\lambda_{\mathrm{tar}}=\mathcal{N}[t_\psi]$ and the measure $\mathrm{d}\widetilde\rho_{\mathrm{tar}}=\lambda_{\mathrm{tar}}\,\mathrm{d}\rho$. In particular, an additive weight is equivalent to the mixture in \eqref{eq:unified_refinement_measure}:
-\begin{equation}
-    t_\psi=b_0+a_0 r_\psi
-    \quad\Longrightarrow\quad
-    \lambda_{\mathrm{tar}}=(1-\gamma)+\gamma\nu_\psi,
-    \qquad
-    \nu_\psi=\mathcal{N}[r_\psi],
-    \quad
-    \gamma=\frac{a_0\langle r_\psi\rangle_\rho}{b_0+a_0\langle r_\psi\rangle_\rho}.
-    \label{eq:app_density_additive}
-\end{equation}
-Here $a_0\geq0$ and $b_0>0$. A general positive weight corresponds to $r_\psi=t_\psi$ and $\gamma=1$. Density normalization always uses the reference point measure, rather than physical area or volume.
+This section details the sampling policies used in
+Tables~\ref{tab:standard_benchmarks} and~\ref{tab:industrial_benchmarks}.
+Although the refinement signals are task dependent, all policies follow the
+same pipeline: construct a refinement score, convert it into a target sampling
+density, sample the prescribed number of points, and estimate the effective
+density represented by the selected samples for measure correction.
 
-\paragraph{Equivalent density from compensation.}
-Several benchmarks use simulation meshes that are already refined near walls or geometric details. For these meshes, the spatial coverage of the retained points provides a useful basis for compensation: each point should receive a weight proportional to the reference mesh it represents. Assigning every reference point to its nearest selected point gives a represented point count $m_i$, with average $N/n$. The compensation and equivalent density are then reciprocal:
+\paragraph{Target sampling density.}
+Let
+\[
+    \rho=\frac{1}{N}\sum_{i=1}^{N}\delta_{x_i}
+\]
+denote the reference point measure and let $n$ be the inference sampling
+budget. Each policy produces a nonnegative refinement score $r_\psi(x)$ and
+a corresponding positive sampling weight $t_\psi(x)$. We normalize this weight
+with respect to the reference measure,
 \begin{equation}
-    c_i=\frac{m_i}{N/n}
-    \quad\Longleftrightarrow\quad
-    \lambda_V(x_i)=\frac{1}{c_i}=\frac{N}{n m_i}.
-    \label{eq:app_density_voronoi}
-\end{equation}
-A point representing twice as many reference nodes has twice the compensation $c_i$ and half the equivalent density. The same idea applies to regional sampling. If region $P_k$ contains $N_k$ reference points and $n_k$ selected points, its relative density is the ratio of these two point fractions:
-\begin{equation}
-    \lambda_P(x_i)=\frac{n_k/n}{N_k/N},
+    \lambda_{\mathrm{tar}}(x)
+    :=
+    \frac{t_\psi(x)}
+         {\int_\Omega t_\psi(y)\,\mathrm{d}\rho(y)},
     \qquad
-    c_i=\lambda_P(x_i)^{-1}\propto\frac{N_k}{n_k}
-    \quad(x_i\in P_k).
-    \label{eq:app_density_partition}
+    \mathrm{d}\widetilde{\rho}_{\mathrm{tar}}(x)
+    =
+    \lambda_{\mathrm{tar}}(x)\,\mathrm{d}\rho(x).
+    \label{eq:app_target_density}
 \end{equation}
-We write $\mu_k=N_k/N$ for the reference fraction of region $P_k$. Both constructions use $c_i^\beta$ in aggregation, where a common weight scale cancels. Here $\lambda_{\mathrm{tar}}$ specifies the sampling target, while $\lambda_V$ and $\lambda_P$ describe the coverage represented by the selected set.
+Thus, $\lambda_{\mathrm{tar}}$ directly specifies where the inference samples
+should be concentrated. The additive construction
+$t_\psi=b_0+a_0r_\psi$ is equivalent, after normalization, to the mixture
+formulation in \eqref{eq:unified_refinement_measure}.
 
-For compact notation, let $Q_q(f)$ be the empirical $q$-quantile on the indicated point set. We use $\mathcal{Q}_q[f]=f/Q_q(f)$ and
+\paragraph{Coverage-based measure correction.}
+The target density specifies how points are sampled, while the selected samples
+may represent unequal portions of the reference discretization. We therefore
+estimate the effective coverage of each retained point and use its inverse
+density for the measure correction in Physics-Attention. If a selected point
+$x_i$ represents $m_i$ reference points, its correction weight is
 \begin{equation}
-    \mathcal{T}_{a,b}[f]
-    =\operatorname{clip}_{[0,1]}\!\left(\frac{f-Q_a(f)}{Q_b(f)-Q_a(f)}\right).
-    \label{eq:app_density_quantile}
+    c_i
+    =
+    \frac{m_i}{N/n}.
+    \label{eq:app_coverage_correction}
 \end{equation}
-Small numerical denominators are regularized in the implementation.
+For region-based sampling, the same principle gives
+$c_i\propto N_k/n_k$, where $N_k$ and $n_k$ are the reference and retained
+point counts in region $P_k$. A common scale in $c_i$ cancels in the
+self-normalized aggregation. 
 
-\paragraph{Shared variation and transfer operators.}
-Local field variation provides a score for deciding where to add points. For the $k$ nearest neighbors $\mathcal{N}_k(i)$ in coordinates $z$, define
-\begin{equation}
-    D_k[f]_i=\frac{1}{k}\sum_{j\in\mathcal{N}_k(i)}
-       \frac{\|f_i-f_j\|_2^2}{\|z_i-z_j\|_2^2+\epsilon},
-    \qquad
-    L_k[f]_i=\left\|f_i-\frac{1}{k}\sum_{j\in\mathcal{N}_k(i)}f_j\right\|_2.
-    \label{eq:app_density_local_features}
-\end{equation}
-$D_k$ measures local gradient energy: it is large when nearby points have different field values. $L_k$ measures departure from the neighborhood mean and serves as a graph-Laplacian proxy. We also write $G_k[f]=\|\nabla_{\mathrm{LSQ}}f\|_F$ for the gradient magnitude from a local least-squares fit. On a lattice, $\Delta_{\mathrm{FD}}$ applies first differences twice along each axis, while $\Delta_5$ denotes the five-point Laplacian.
+\paragraph{Shared refinement features.}
+The three policies differ primarily in how they construct $r_\psi$.
+We use local geometric or physical priors for PI, variation in a coarse
+prediction for CPG, and learned intermediate features for CA.
+For solution-dependent policies, local variation is estimated using
+neighbor differences, local-mean residuals, or least-squares gradients.
+When the score is available only on a coarse set, it is transferred to the
+reference discretization by nearest-neighbor, inverse-distance, or linear
+interpolation. Surface signals can additionally be extended to nearby volume
+points with distance-decaying weights.  For compactness, we summarize the shared refinement and transfer operators in Table~\ref{tab:density_primitives}. These primitives are combined differently across tasks, while all policies ultimately construct a target density \(\lambda_{\mathrm{tar}}\).
 
-The operators $\mathcal{I}_0$, $\mathcal{I}_8$, and $\mathcal{I}$ transfer coarse quantities to reference points by nearest neighbors, inverse-squared-distance weighting over eight neighbors, and linear interpolation with nearest-neighbor extrapolation, respectively. For a surface signal $v$, let $x_\Gamma$ be the nearest surface point and define
-\begin{equation}
-    \mathcal{E}_\ell[v](x)=e^{-d_\Gamma(x)/\ell}v(x_\Gamma),
-    \qquad
-    \mathcal{K}_\ell[v](x)=\max_{i\in\Gamma}
-       e^{-\|x-x_i\|/\ell}\mathcal{Q}_{0.95}[v]_i.
-    \label{eq:app_density_surface_transfer}
-\end{equation}
-These extend surface information into its surroundings with exponential distance decay. Coarse surface signals are first transferred to the full surface by nearest neighbors.
+\paragraph{Sampling procedures.}
+Depending on the geometry, the target density is realized either by direct
+weighted sampling or by regional sampling. The latter partitions the domain
+into spatial regions, distributes the sampling budget according to regional
+scores, and places points within each region using farthest-point sampling.
+For CPG and CA, the coarse samples $S_0$ are retained; only the remaining
+budget is sampled from the residual target density after accounting for the
+coverage already provided by $S_0$. The following subsections specify the
+task-specific refinement scores and density constructions.
 
-\paragraph{Regional allocation.}
-We write $\mathcal{P}_{K,\kappa}[s]$ for a density constructed by allocating points among $K$ spatial regions. With coarse counts $n_{0,k}$ and mean scores $\overline s_k$, regions are prioritized by
-\begin{equation}
-    \eta_k=\frac{\mu_k\overline s_k}{N_k-n_{0,k}},
-    \qquad
-    \mathcal{P}_{K,\kappa}[s](x)=\frac{n_k}{n\mu_k}
-    \quad(x\in P_k).
-    \label{eq:app_density_patch_allocation}
-\end{equation}
-The allocator assigns integer additions in decreasing $\eta_k$, using $\kappa$ to limit density contrast and respecting region capacities. Farthest-point sampling places the new points. The mean $\overline s_k$ is evaluated on the supplied score support.
+\begin{table}[t]
+\centering
+\caption{Shared primitives used to construct the sampling densities.}
+\label{tab:density_primitives}
+\small
+\begin{tabular}{p{0.13\linewidth} p{0.54\linewidth} p{0.25\linewidth}}
+\toprule
+Notation & Definition & Role \\
+\midrule
 
-\paragraph{Residual allocation.}
-When a coarse set $S_0$ is retained, its existing coverage can be subtracted from the target before sampling additional points. Define $\operatorname{Cap}_m(t)_i=\min(1,\zeta t_i)$, with $\zeta$ chosen so the entries sum to $m$. For $n_0=|S_0|$, $f_0=n_0/N$, and remaining candidates $R$, the residual probabilities are
-\begin{equation}
-    q=\operatorname{Cap}_n(\lambda_{\mathrm{tar}}),
-    \qquad
-    \pi_R=\operatorname{Cap}_{n-n_0}
-       \!\left(\max\!\left(\frac{q_R-f_0}{1-f_0},\epsilon\right)\right).
-    \label{eq:app_density_wing_residual}
-\end{equation}
-Weighted residual sampling uses weights $-\log(1-\min(\pi_i,1-\epsilon))$. Systematic sampling uses $\pi_i$ as conditional inclusion probabilities.
+$D_k[f]_i$
+&
+$\displaystyle
+\frac{1}{k}\sum_{j\in\mathcal N_k(i)}
+\frac{\|f_i-f_j\|_2^2}
+     {\|z_i-z_j\|_2^2+\epsilon}
+$
+&
+Local gradient-energy score
+\\[1.2em]
+
+$L_k[f]_i$
+&
+$\displaystyle
+\left\|
+f_i-\frac{1}{k}\sum_{j\in\mathcal N_k(i)}f_j
+\right\|_2
+$
+&
+Local curvature / graph-Laplacian proxy
+\\[1.2em]
+
+$G_k[f]$
+&
+$\displaystyle
+\|\nabla_{\mathrm{LSQ}}f\|_F
+$
+&
+Least-squares gradient magnitude
+\\[0.8em]
+
+$\mathcal Q_q[f]$
+&
+$\displaystyle
+\frac{f}{Q_q(f)}
+$
+&
+Quantile-based normalization
+\\[1em]
+
+$\mathcal T_{a,b}[f]$
+&
+$\displaystyle
+\operatorname{clip}_{[0,1]}
+\left(
+\frac{f-Q_a(f)}
+     {Q_b(f)-Q_a(f)}
+\right)
+$
+&
+Robust rescaling and clipping
+\\[1.2em]
+
+$\mathcal I_0,\mathcal I_8,\mathcal I$
+&
+Nearest-neighbor, eight-neighbor inverse-distance,
+and linear interpolation, respectively
+&
+Transfer coarse scores to reference points
+\\[0.8em]
+
+$\mathcal E_\ell[v](x)$
+&
+$\displaystyle
+e^{-d_\Gamma(x)/\ell}v(x_\Gamma)
+$
+&
+Extend a surface score to nearby volume points
+\\[1em]
+
+$\mathcal K_\ell[v](x)$
+&
+$\displaystyle
+\max_{i\in\Gamma}
+e^{-\|x-x_i\|/\ell}\,
+\mathcal Q_{0.95}[v]_i
+$
+&
+Propagate localized surface importance
+\\[1.2em]
+
+$\mathcal P_{K,\kappa}[s](x)$
+&
+$\displaystyle
+\frac{n_k}{n\mu_k},
+\qquad x\in P_k
+$
+&
+Region-based sampling density
+\\
+
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Physics-Informed Density Refinement}
 \label{app:pi_density_design}
