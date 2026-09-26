@@ -184,4 +184,11 @@ We adopt geometry-amortized training~\citep{zhou2026transolver3} by resampling a
 
 DrivAerML uses a global batch size of four and a peak learning rate of \(2\times10^{-3}\). Training minimizes relative \(L_2\) error, while ShapeNet-Car follows the training objective of Transolver \citep{wu2024transolver}.
 
+\paragraph{Inference timing.}
+Latency is measured with batch size one after warm-up, synchronizing GPU
+execution before and after each request. We average 20 repetitions per
+case (five for DrivAerML), including the transfer of sampled predictions
+to the CPU. Model loading and reusable preprocessing are outside the
+timed region.
+
 \input{sections/inverse_design_settings.tex}

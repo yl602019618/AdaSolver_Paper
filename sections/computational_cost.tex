@@ -1,8 +1,9 @@
 \subsection{COMPUTATIONAL COST}
 \label{app:computational_cost}
 
-Adaptive inference trades the cost of constructing a sampling density for
-a smaller operator evaluation. Table~\ref{tab:inference_time_sampled}
+Adaptive inference reduces operator evaluation cost by processing fewer
+spatial points, but introduces additional overhead for acquiring the
+refinement signal. Table~\ref{tab:inference_time_sampled}
 quantifies this trade-off across all eight benchmarks at the three
 evaluation budgets. All methods use the same frozen backbone. Uniform
 provides a reference at matched point counts, while full mesh measures the
@@ -21,17 +22,21 @@ coarse prediction before selecting additional points. CA obtains its
 refinement signal from early features and reuses cached pointwise
 quantities during the final evaluation. It reduces latency by
 $12.3$--$34.1\%$ relative to CPG, with a reduction in every measured
-setting. Thus, the learned refinement signal lowers the cost of
-solution-aware sampling while retaining its ability to adapt to the input.
+setting. Thus, the learned refinement signal substantially reduces the
+runtime overhead of input-adaptive sampling compared with
+coarse-prediction-based refinement.
 
 \paragraph{Realized speedup.}
 At a $37.5\%$ point budget, CA is faster than full-mesh inference on seven
-of the eight benchmarks. The speedups reach $1.95\times$ on ShapeNet-Car,
-$2.61\times$ on DrivAerML, and $2.04\times$ on SuperWing. These gains are
-more pronounced when evaluating the spatial points accounts for a large
-share of the computation. On Elasticity, CA takes $1.52$~ms compared with
-$1.26$~ms for full mesh: refinement overhead outweighs the savings from
-evaluating fewer points. Point reduction therefore does not imply a
-proportional reduction in latency. The realized gain depends on how much
-operator computation is removed relative to the cost of acquiring the
-refinement signal.
+of the eight benchmarks. The speedups, computed as
+$T_{\mathrm{full}}/T_{\mathrm{CA}}$, reach $1.95\times$ on ShapeNet-Car,
+$2.61\times$ on DrivAerML, and $2.04\times$ on SuperWing.
+These gains are more pronounced when
+point-dependent operator evaluation constitutes a large fraction of the
+total inference cost. On Elasticity, CA takes $1.52$~ms versus $1.26$~ms
+for full mesh: refinement overhead exceeds the savings in point-dependent
+computation.
+Point reduction does not imply a proportional reduction in latency.
+Consequently, the realized speedup is governed by the balance between the
+operator computation eliminated by point reduction and the additional
+cost of acquiring the refinement signal.
