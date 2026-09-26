@@ -175,275 +175,600 @@ Region-based sampling density
 \bottomrule
 \end{tabular}
 \end{table}
-
 \subsection{Physics-Informed Density Refinement}
 \label{app:pi_density_design}
 
-PI constructs densities from geometry or input coefficients. For Pipe and ShapeNet-Car, we first sample a fraction $1-\gamma$ of the budget uniformly across the reference mesh, then use the remaining fraction $\gamma$ near the wall. Let $H_d$ contain points within wall distance $d$, so $\rho(H_d)=|H_d|/N$ is their fraction of the reference mesh. The target density combines global coverage with near-wall refinement:
+PI constructs the refinement score directly from geometry or known input
+quantities available before inference. Each benchmark uses a simple prior that
+emphasizes regions where stronger solution variation or larger contributions to
+the target quantity are expected.
+
+For near-wall refinement, we use the generic density
 \begin{equation}
-    \lambda_{\mathrm{tar}}(x)
-    =\underbrace{(1-\gamma)}_{\text{global coverage}}
-     +\underbrace{\gamma\frac{\mathbf{1}_{H_d}(x)}{\rho(H_d)}}_{\text{near-wall refinement}}.
+    \lambda_{\mathrm{shell}}(x)
+    =(1-\gamma)
+    +\gamma\frac{\mathbf{1}_{H_d}(x)}{\rho(H_d)},
     \label{eq:app_density_shell}
 \end{equation}
-Thus, points near the wall receive additional density while the rest of the mesh retains a uniform base. Budget fractions are rounded to integer point counts. If the near-wall candidates are exhausted, we fill the remaining budget with the closest available points outside the wall band.
+where $H_d$ contains the reference points within wall distance $d$. This
+maintains global coverage while increasing the sampling density near the
+boundary.
 
 \paragraph{Elasticity.}
-The internal hole induces stress concentrations, motivating refinement near its boundary. We estimate the cavity distance $d_{\mathrm{cav}}$ from empty regions of a $64\times64$ auxiliary grid and let the additional density decay exponentially with distance:
-\begin{equation}
-    \lambda_{\mathrm{tar}}=\mathcal{N}[1+64\exp(-d_{\mathrm{cav}}/0.012)].
-    \label{eq:app_pi_elasticity_density}
-\end{equation}
-
-\paragraph{Plasticity.}
-Die contact and changes in the die profile localize deformation, so we refine near the contact region and beneath curved parts of the die. Let $z\in[0,1]$ denote normalized depth from contact and $k_d=|\partial_{xx}S_d|$ the profile's second-difference magnitude, with profile mean $\overline{k_d}$. We combine depth decay with this curvature indicator:
+Stress concentrates around the internal cavity, so we increase sampling density
+near its boundary. Using the estimated cavity distance $d_{\mathrm{cav}}$, we set
 \begin{equation}
     \lambda_{\mathrm{tar}}
-    =0.2+0.8\mathcal{N}\!\left[e^{-z/0.1}\left(1+0.5\frac{k_d}{\overline{k_d}}\right)\right].
+    =\mathcal{N}\!\left[
+        1+64\exp(-d_{\mathrm{cav}}/0.012)
+    \right].
+    \label{eq:app_pi_elasticity_density}
+\end{equation}
+The cavity distance is estimated from a $64\times64$ auxiliary grid.
+
+\paragraph{Plasticity.}
+Deformation is concentrated near die contact and beneath strongly curved parts
+of the die. We therefore combine depth from the contact surface with local die
+curvature:
+\begin{equation}
+    \lambda_{\mathrm{tar}}
+    =0.2+0.8\mathcal{N}\!\left[
+        e^{-z/0.1}
+        \left(1+0.5\frac{k_d}{\overline{k_d}}\right)
+    \right],
     \label{eq:app_pi_plasticity_density}
 \end{equation}
+where $z\in[0,1]$ is the normalized depth,
+$k_d=|\partial_{xx}S_d|$ is the die-curvature indicator, and
+$\overline{k_d}$ is its profile mean.
 
 \paragraph{Airfoil.}
-We use distance to the airfoil surface as a prior because surface pressure determines aerodynamic forces. All 121 surface nodes are retained, and the remaining points follow an exponential distance weight. With $d_\Gamma$ denoting physical distance to the surface, both metrics use
+Aerodynamic forces are determined by the surface pressure, motivating denser
+sampling near the airfoil surface. With $d_\Gamma$ denoting the distance to the
+surface, both field prediction and $C_D/C_L$ use
 \begin{equation}
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
     =\lambda_{\mathrm{tar}}^{C_D/C_L}
-    =\mathcal{N}[1+20e^{-d_\Gamma/0.3}].
+    =\mathcal{N}\!\left[
+        1+20e^{-d_\Gamma/0.3}
+    \right].
     \label{eq:app_pi_airfoil_density}
 \end{equation}
-
-For $C_D/C_L$, we screen 127 combinations of prior amplitude, distance scale, and density compensation on 24 calibration geometries with one sampling seed, then select among the shortlisted settings on 46 geometries with three seeds. The selected rule uses index-grid Voronoi compensation with $\beta=1$ and matches the existing field PI policy. One setting is used across all three budgets, followed by evaluation on the separate 48-geometry confirmation pool and the 110 test geometries.
+All 121 surface nodes are retained, and the remaining samples are drawn from
+the interior according to this density.
 
 \paragraph{Pipe.}
-The no-slip walls produce near-wall velocity gradients, motivating additional resolution there. We reserve $75\%$ of the budget for uniform coverage and $25\%$ for points within wall distance $0.05$:
+The no-slip boundary produces strong near-wall velocity gradients, so we refine
+the wall region while maintaining global coverage:
 \begin{equation}
-    \lambda_{\mathrm{tar}}(x)=0.75+0.25\frac{\mathbf{1}_{H_{0.05}}(x)}{\rho(H_{0.05})}.
+    \lambda_{\mathrm{tar}}(x)
+    =0.75
+    +0.25\frac{\mathbf{1}_{H_{0.05}}(x)}
+                  {\rho(H_{0.05})}.
     \label{eq:app_pi_pipe_density}
 \end{equation}
 
 \paragraph{Darcy.}
-Permeability jumps mark changes in the pressure gradient, motivating refinement near coefficient interfaces. Let $\mathcal{I}_a$ contain nodes adjacent to a coefficient jump and define the implemented distance proxy $d_a(x_i)=\min_{j\in\mathcal{I}_a}|i-j|/84$ along the flattened reference-grid ordering. The density decays away from these interfaces:
+Permeability discontinuities induce localized changes in the pressure gradient,
+so we increase resolution near coefficient interfaces. Let $\mathcal{I}_a$
+contain nodes adjacent to a coefficient jump and define
+\[
+    d_a(x_i)
+    =\min_{j\in\mathcal{I}_a}\frac{|i-j|}{84}.
+\]
+The target density decays away from these interfaces:
 \begin{equation}
-    \lambda_{\mathrm{tar}}=\mathcal{N}[1+0.25\exp(-d_a/(2/84))].
+    \lambda_{\mathrm{tar}}
+    =\mathcal{N}\!\left[
+        1+0.25\exp\!\left(-d_a/(2/84)\right)
+    \right].
     \label{eq:app_pi_darcy_density}
 \end{equation}
 
 \paragraph{ShapeNet-Car.}
-Surface pressure and near-wall velocity gradients determine drag, so the prior favors the vehicle surface and nearby fluid. We augment a uniform base with points from $H_{0.1}$. This near-wall sampling stage uses $50\%$ of the budget for field prediction and $37.5\%$ for $C_D$:
+Surface pressure and near-wall velocity gradients make the vehicle surface and
+nearby flow particularly informative. We combine uniform coverage with
+near-wall refinement:
 \begin{equation}
-    \lambda_{\mathrm{tar}}^{\mathrm{field}}=0.5+0.5\frac{\mathbf{1}_{H_{0.1}}}{\rho(H_{0.1})},
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+    =0.5+0.5\frac{\mathbf{1}_{H_{0.1}}}{\rho(H_{0.1})},
     \qquad
-    \lambda_{\mathrm{tar}}^{C_D}=0.625+0.375\frac{\mathbf{1}_{H_{0.1}}}{\rho(H_{0.1})}.
+    \lambda_{\mathrm{tar}}^{C_D}
+    =0.625+0.375\frac{\mathbf{1}_{H_{0.1}}}{\rho(H_{0.1})}.
     \label{eq:app_pi_car_density}
 \end{equation}
 
 \paragraph{DrivAerML.}
-Normal variation identifies geometric detail relevant to pressure reconstruction, while projected surface area measures sensitivity to pressure drag. We compute $s_n(x_i)=16^{-1}\sum_{j\in\mathcal{N}_{16}(i)}\|\mathbf{n}_i-\mathbf{n}_j\|_2^2$ and $s_D(x_i)=A_i|n_{i,x}|$, then increase density with the normalized indicator:
-\begin{equation}
-    \lambda_{\mathrm{tar}}^{\mathrm{field}}=\mathcal{N}[1+40\mathcal{T}_{0,0.99}[s_n]],
+Surface-normal variation identifies geometric detail relevant to pressure,
+while projected surface area measures sensitivity to pressure drag. We define
+\[
+    s_n(x_i)
+    =\frac{1}{16}
+      \sum_{j\in\mathcal{N}_{16}(i)}
+      \|\mathbf n_i-\mathbf n_j\|_2^2,
     \qquad
-    \lambda_{\mathrm{tar}}^{C_D}=\mathcal{N}[1+40\mathcal{T}_{0,0.99}[s_D]].
+    s_D(x_i)=A_i|n_{i,x}|,
+\]
+and construct
+\begin{equation}
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+    =\mathcal{N}\!\left[
+        1+40\mathcal{T}_{0,0.99}[s_n]
+    \right],
+    \qquad
+    \lambda_{\mathrm{tar}}^{C_D}
+    =\mathcal{N}\!\left[
+        1+40\mathcal{T}_{0,0.99}[s_D]
+    \right].
     \label{eq:app_pi_drivaerml_density}
 \end{equation}
 
 \paragraph{SuperWing.}
-Changes in surface normals identify curved or sharp wing features, motivating denser sampling around them. We compute $s_n=(\|\partial_I\mathbf{n}\|_2^2+\|\partial_J\mathbf{n}\|_2^2)^{1/2}$ on the surface lattice and normalize it as $\overline s_n=\mathcal{T}_{0.01,0.99}[s_n]$. The metric-specific densities are
-\begin{equation}
-    \lambda_{\mathrm{tar}}^{\mathrm{field}}=\mathcal{N}[1+16\overline s_n^2],
+Rapid changes in surface normals identify curved and sharp wing features where
+additional resolution is useful. We compute
+\[
+    s_n
+    =
+    \left(
+        \|\partial_I\mathbf n\|_2^2
+        +\|\partial_J\mathbf n\|_2^2
+    \right)^{1/2},
     \qquad
-    \lambda_{\mathrm{tar}}^{C_D/C_L}=\mathcal{N}[1+8\overline s_n^{1/2}].
+    \overline{s}_n
+    =\mathcal{T}_{0.01,0.99}[s_n],
+\]
+and use
+\begin{equation}
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+    =\mathcal{N}[1+16\overline{s}_n^2],
+    \qquad
+    \lambda_{\mathrm{tar}}^{C_D/C_L}
+    =\mathcal{N}[1+8\overline{s}_n^{1/2}].
     \label{eq:app_pi_superwing_density}
 \end{equation}
 
-Plasticity, both Airfoil metrics, DrivAerML, and SuperWing use $\lambda_V$ compensation with $\beta=1$. Elasticity and Darcy use the target-density weights with $\beta=0.5$. For the two-stage samplers, let $H_d^+$ include both the wall band and any supplementary points. Giving all these points the same near-wall weight yields the equivalent compensation density $\lambda_{\mathrm{shell}}=\mathcal{N}[(1-\gamma)+\gamma\mathbf{1}_{H_d^+}/\rho(H_d)]$. Its inverse is raised to $\beta=0.75$ for Pipe and $\beta=0.5$ for ShapeNet-Car.
+\paragraph{Measure correction.}
+When a tempered correction is used, the measure-correction weight $c_i$ is
+replaced by $c_i^\beta$. Plasticity, Airfoil, DrivAerML, and SuperWing use
+coverage-based correction with $\beta=1$. Elasticity and Darcy use
+$c_i=\lambda_{\mathrm{tar}}(x_i)^{-1}$ with $\beta=0.5$.
+For Pipe and ShapeNet-Car, let $H_d^+$ include both the near-wall samples and
+any supplementary points. We use
+\[
+    \lambda_{\mathrm{eff}}
+    =\mathcal{N}\!\left[
+        (1-\gamma)
+        +\gamma\frac{\mathbf{1}_{H_d^+}}{\rho(H_d)}
+    \right],
+    \qquad
+    c_i=\lambda_{\mathrm{eff}}(x_i)^{-1},
+\]
+with $\beta=0.75$ for Pipe and $\beta=0.5$ for ShapeNet-Car.
+
 
 \subsection{Coarse-Prediction-Guided Density Refinement}
 \label{app:cpg_density_design}
 
-CPG evaluates the frozen operator on a uniform coarse set $S_0$ containing approximately $10\%$ of the reference points. The draft $\widehat u^{(0)}$ then guides density allocation. Unless noted otherwise, $S_0$ is retained and compensation uses $\lambda_V$ with $\beta=1$. Nearest-point cells use reference-lattice coordinates when available, and physical coordinates otherwise.
+CPG first evaluates the frozen operator on a small uniform coarse sample
+$S_0$, typically containing about $10\%$ of the reference points. The resulting
+draft prediction $\widehat u^{(0)}$ provides a solution-dependent refinement
+signal. Unless stated otherwise, $S_0$ is retained, the remaining budget is
+sampled according to the resulting target density, and coverage-based
+measure correction uses $\beta=1$.
 
 \paragraph{Elasticity.}
-Stress variations identify regions where the response changes rapidly. We compute $s=\mathcal{I}_8D_8[\widehat\sigma_{\mathrm{vM}}^{(0)}]$ in physical coordinates and clip its upper tail. The target is realized through proportional quotas in 32 regions, with density contrast $\kappa=4$ and farthest-point placement:
+Regions with rapidly varying stress require higher resolution. We estimate this
+variation from the coarse von Mises stress,
+\[
+    s
+    =\mathcal{I}_8D_8[
+        \widehat{\sigma}_{\mathrm{vM}}^{(0)}
+    ],
+\]
+and use
 \begin{equation}
     \lambda_{\mathrm{tar}}
-    =0.375+0.625\mathcal{N}[\min(s,Q_{0.9}(s))].
+    =0.375
+    +0.625\mathcal{N}\!\left[
+        \min(s,Q_{0.9}(s))
+    \right].
     \label{eq:app_cpg_elasticity_density}
 \end{equation}
+The density is realized over 32 spatial regions with density contrast
+$\kappa=4$ and farthest-point placement.
 
 \paragraph{Plasticity.}
-Displacement gradients and curvature locate concentrated deformation throughout the loading trajectory. A quadratic fit over 16 neighbors gives $G=\|\nabla\widehat{\mathbf u}^{(0)}\|_F$ and $L=\|\Delta\widehat{\mathbf u}^{(0)}\|_2$ across all 40 displacement outputs, using physical spacing $0.5$. With coarse-point means $\overline G_0$ and $\overline L_0$, we transfer their normalized mixture and average over the full reference points in each region:
+Localized deformation is characterized by both displacement gradients and
+curvature over the loading trajectory. From the coarse prediction, we compute
+gradient and Laplacian magnitudes
+$G=\|\nabla\widehat{\mathbf u}^{(0)}\|_F$ and
+$L=\|\Delta\widehat{\mathbf u}^{(0)}\|_2$, and combine them as
 \begin{equation}
-    s=\mathcal{I}_0\!\left[\frac{G}{2\overline G_0}+\frac{L}{2\overline L_0}\right],
+    s
+    =\mathcal{I}_0\!\left[
+        \frac{G}{2\overline G_0}
+        +\frac{L}{2\overline L_0}
+    \right],
     \qquad
-    \lambda_{\mathrm{tar}}=\mathcal{P}_{24,4}[0.2+0.8\mathcal{N}[s]].
+    \lambda_{\mathrm{tar}}
+    =\mathcal{P}_{24,4}
+       [0.2+0.8\mathcal{N}[s]].
     \label{eq:app_cpg_plasticity_density}
 \end{equation}
 
 \paragraph{Airfoil.}
-Pressure gradients locate flow variation, while surface-pressure contributions determine the drag-to-lift ratio. For field prediction, use $s_f=\mathcal{I}_0G_{16}[\widehat p^{(0)}]$. For the ratio, let $\widehat D=\sum_\Gamma b_D\widehat p^{(0)}$ and $\widehat L=\sum_\Gamma b_L\widehat p^{(0)}$ be the unnormalized force sums from \eqref{eq:app_airfoil_coefficients}. Define ratio sensitivity $v_R$ and balanced lift contributions $v_B$ by
-\begin{equation}
-    v_R=\frac{|\widehat Lb_D-\widehat Db_L|}{\max(|\widehat L|,0.02)^2},
+For field prediction, pressure gradients identify regions requiring higher
+resolution; for $C_D/C_L$, the sampling density instead emphasizes surface
+regions that strongly influence drag and lift. For the field, we use
+\[
+    s_f
+    =\mathcal{I}_0G_{16}[\widehat p^{(0)}].
+\]
+For the aerodynamic ratio, let
+\[
+    \widehat D=\sum_\Gamma b_D\widehat p^{(0)},
     \qquad
-    v_B=\mathcal{Q}_{0.95}[(b_L\widehat p^{(0)})_+]
-          +\mathcal{Q}_{0.95}[(-b_L\widehat p^{(0)})_+].
+    \widehat L=\sum_\Gamma b_L\widehat p^{(0)}
+\]
+be the coarse drag and lift force sums. We define
+\begin{equation}
+    v_R
+    =\frac{|\widehat Lb_D-\widehat Db_L|}
+           {\max(|\widehat L|,0.02)^2},
+    \qquad
+    v_B
+    =\mathcal{Q}_{0.95}[(b_L\widehat p^{(0)})_+]
+     +\mathcal{Q}_{0.95}[(-b_L\widehat p^{(0)})_+].
     \label{eq:app_density_airfoil_signals}
 \end{equation}
-Here $(\cdot)_+$ is the positive part and $\chi=\min(1,|\widehat L|/0.02)$ downweights unreliable ratio estimates. We retain all 121 surface nodes and resample the interior using
+With
+$\chi=\min(1,|\widehat L|/0.02)$, the target densities are
 \begin{equation}
     \begin{aligned}
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
-       &=\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s_f])^{2}],\\
+       &=\mathcal{N}\!\left[
+          (0.1+\mathcal{Q}_{0.95}[s_f])^{2}
+          \right],\\
     \lambda_{\mathrm{tar}}^{C_D/C_L}
        &=\mathcal{N}\!\left[
-          \bigl(0.1+\chi\mathcal{K}_{0.1}[v_R]
-          +\mathcal{K}_{0.1}[|b_L|]+2\mathcal{K}_{0.1}[v_B]
-          +0.5e^{-d_\Gamma/0.1}\bigr)^{1/2}\right].
+          \bigl(
+          0.1+\chi\mathcal{K}_{0.1}[v_R]
+          +\mathcal{K}_{0.1}[|b_L|]
+          +2\mathcal{K}_{0.1}[v_B]
+          +0.5e^{-d_\Gamma/0.1}
+          \bigr)^{1/2}
+          \right].
     \end{aligned}
     \label{eq:app_density_airfoil_ratio}
 \end{equation}
+All 121 surface nodes are retained and only the interior is resampled.
 
 \paragraph{Pipe.}
-Local velocity variation identifies flow regions requiring higher resolution. We compute gradient energy from the coarse horizontal velocity in reference-lattice coordinates, then average it over coarse points in each region:
+High velocity variation indicates where additional flow resolution is useful.
+We therefore use the variation in the coarse horizontal velocity directly:
 \begin{equation}
-    \lambda_{\mathrm{tar}}=\mathcal{P}_{24,4}[D_8[\widehat v_x^{(0)}]].
+    \lambda_{\mathrm{tar}}
+    =\mathcal{P}_{24,4}
+       [D_8[\widehat v_x^{(0)}]].
     \label{eq:app_cpg_pipe_density}
 \end{equation}
 
 \paragraph{Darcy.}
-Pressure gradients and curvature reveal the response to heterogeneous permeability. On the normalized draft pressure, we combine coarse gradient energy with the lattice Laplacian of its nearest-neighbor extension:
+Both pressure gradients and curvature identify localized responses to
+heterogeneous permeability. We combine the two signals as
 \begin{equation}
-    s_{\mathrm{Darcy}}=D_8[\widehat p^{(0)}]
-       +|\Delta_{\mathrm{FD}}\mathcal{I}_0\widehat p^{(0)}|_{S_0},
+    s_{\mathrm{Darcy}}
+    =D_8[\widehat p^{(0)}]
+     +|\Delta_{\mathrm{FD}}
+        \mathcal{I}_0\widehat p^{(0)}|_{S_0},
     \qquad
-    \lambda_{\mathrm{tar}}=\mathcal{P}_{32,2}[s_{\mathrm{Darcy}}].
+    \lambda_{\mathrm{tar}}
+    =\mathcal{P}_{32,2}[s_{\mathrm{Darcy}}].
     \label{eq:app_cpg_darcy_density}
 \end{equation}
 
 \paragraph{ShapeNet-Car.}
-Pressure variation guides field resolution, and positive pressure-force contributions identify regions relevant to drag. We compute surface gradient energy on coarse points and extend it to the surrounding volume. For drag, $\widehat p_\Gamma^{(0)}$ is the pressure transferred to the full surface, $\overline p_0$ is the mean coarse surface pressure, and $b_{D,i}=-\sum_{f\ni i}A_fn_{f,z}/4$ follows \eqref{eq:app_car_drag}. The two scores are
+Pressure variation guides field reconstruction, while pressure-force
+contributions identify regions relevant to drag. We construct
 \begin{equation}
-    s_f=\mathcal{E}_{0.1}[D_4[\widehat p^{(0)}]],
+    s_f
+    =\mathcal{E}_{0.1}
+       [D_4[\widehat p^{(0)}]],
     \qquad
-    s_D=\mathcal{E}_{0.1}[(b_D(\widehat p_\Gamma^{(0)}-\overline p_0))_+].
+    s_D
+    =\mathcal{E}_{0.1}
+       [(b_D(\widehat p_\Gamma^{(0)}
+       -\overline p_0))_+],
     \label{eq:app_cpg_car_scores}
 \end{equation}
-For either score, set $s'=\max(\mathcal{Q}_{0.95}[s],0.1)$ and $z_s=\operatorname{clip}_{[0,1]}(s'/Q_{0.95}(s'|_\Gamma))$. We retain the surface and fill capped proportional volume quotas by farthest-point sampling, stratifying by wall distance and four score-quantile groups. Compensation uses $\lambda_P$, with $\beta=1$ for field prediction and $0.75$ for drag. For field and drag targets $q=f,D$, the density combines near-wall coverage with the pressure signal:
+where $\widehat p_\Gamma^{(0)}$ is the coarse pressure transferred to the full
+surface and $\overline p_0$ is the mean coarse surface pressure. For either
+score, define
+\[
+    s^\prime
+    =\max(\mathcal{Q}_{0.95}[s],0.1),
+    \qquad
+    z_s
+    =\operatorname{clip}_{[0,1]}
+      \left(
+      \frac{s^\prime}
+           {Q_{0.95}(s^\prime|_\Gamma)}
+      \right).
+\]
+The target density is
 \begin{equation}
     \lambda_{\mathrm{tar}}^q
-       =\mathcal{N}[(1+A_qe^{-d_\Gamma/0.1})(1+2z_{s_q})],
+    =\mathcal{N}\!\left[
+        (1+A_qe^{-d_\Gamma/0.1})(1+2z_{s_q})
+    \right],
     \qquad
-    (A_f,A_D)=(64,32),\quad q\in\{f,D\}.
+    (A_f,A_D)=(64,32),
+    \quad q\in\{f,D\}.
     \label{eq:app_density_car}
 \end{equation}
+The vehicle surface is retained and the remaining volume samples are selected
+by stratified regional sampling. Regional coverage correction uses
+$\beta=1$ for field prediction and $\beta=0.75$ for drag.
 
 \paragraph{DrivAerML.}
-Local pressure variation guides surface resolution, and projected area indicates its relevance to drag. We transfer the coarse graph-Laplacian score $s=\mathcal{I}_0L_{16}[\widehat p^{(0)}]$ and use weighted sampling with
+Local pressure variation identifies regions important for field reconstruction,
+while projected area weights their relevance to drag. From
+\[
+    s=\mathcal{I}_0L_{16}[\widehat p^{(0)}],
+\]
+we define
 \begin{equation}
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
-       =\mathcal{N}[1+40\mathcal{T}_{0,0.99}[s]],
+    =\mathcal{N}\!\left[
+        1+40\mathcal{T}_{0,0.99}[s]
+    \right],
     \qquad
     \lambda_{\mathrm{tar}}^{C_D}
-       =\mathcal{N}[1+40\mathcal{T}_{0,0.99}[A|n_x|s]].
+    =\mathcal{N}\!\left[
+        1+40\mathcal{T}_{0,0.99}[A|n_x|s]
+    \right].
     \label{eq:app_cpg_drivaerml_density}
 \end{equation}
 
 \paragraph{SuperWing.}
-Joint pressure and skin-friction curvature identifies localized aerodynamic structures. With $\mathbf u=(C_p,150C_{f,\tau},300C_{f,z})$, we compute $s=\mathcal{T}_{0.01,0.99}[\|\Delta_5\mathcal{I}\widehat{\mathbf u}^{(0)}\|_2]$ and use full-reference regional means. For $C_D/C_L$, we mix this signal with the normalized normal-variation prior $g=\overline s_n$:
+Localized aerodynamic structures are captured by curvature in the predicted
+pressure and skin-friction fields. With
+$\mathbf u=(C_p,150C_{f,\tau},300C_{f,z})$, we compute
+\[
+    s
+    =\mathcal{T}_{0.01,0.99}
+       \left[
+       \|\Delta_5\mathcal{I}
+       \widehat{\mathbf u}^{(0)}\|_2
+       \right].
+\]
+For $C_D/C_L$, this solution-dependent signal is blended with the geometric
+normal-variation prior $g=\overline{s}_n$:
 \begin{equation}
     \begin{aligned}
-    d_\omega&=(1-\omega)\mathcal{N}[1+8g^{1/2}]
-                      +\omega\mathcal{N}[1+8s^{1/2}],\\
+    d_\omega
+       &=(1-\omega)\mathcal{N}[1+8g^{1/2}]
+        +\omega\mathcal{N}[1+8s^{1/2}],\\
     \mathcal{B}_\omega[g,s]
-       &=\mathcal{N}\!\left[\max\!\left(d_\omega,\frac{\max_xd_\omega(x)}{8}\right)\right].
+       &=\mathcal{N}\!\left[
+          \max\!\left(
+          d_\omega,
+          \frac{\max_x d_\omega(x)}{8}
+          \right)
+          \right].
     \end{aligned}
     \label{eq:app_density_wing_blend}
 \end{equation}
-The ratio policy uses weighted residual sampling. The two densities are
+The final densities are
 \begin{equation}
-    \lambda_{\mathrm{tar}}^{\mathrm{field}}=\mathcal{P}_{64,4}[s],
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+    =\mathcal{P}_{64,4}[s],
     \qquad
-    \lambda_{\mathrm{tar}}^{C_D/C_L}=\mathcal{B}_{0.75}[g,s].
+    \lambda_{\mathrm{tar}}^{C_D/C_L}
+    =\mathcal{B}_{0.75}[g,s].
     \label{eq:app_cpg_superwing_density}
 \end{equation}
+The $C_D/C_L$ policy uses the residual-sampling construction described above.
+
 
 \subsection{Cache-Aware Learned Refinement}
 \label{app:ca_density_design}
 
-CA obtains one scalar per coarse point from a head $H_\phi(h^{(1)})$ on frozen first-block features. Field targets are standardized, while nonnegative score targets are standardized after a $\log(1+s)$ transform. All quantities below denote decoded predictions. MLP heads use GELU between linear layers. Unless stated otherwise, the coarse budget is $10\%$, the final set retains $S_0$, and compensation follows the corresponding CPG policy.
+CA replaces the complete coarse prediction used by CPG with a learned
+refinement signal extracted from early frozen-backbone features. For each task,
+an auxiliary refinement head is trained offline while keeping the backbone
+fixed. The predicted signal is converted into a target density using the same
+sampling machinery as CPG. Continuous field targets are standardized, while
+nonnegative score targets are transformed with $\log(1+s)$ before
+standardization. The head architectures and prediction targets are summarized
+in Table~\ref{tab:ca_head_architectures}.
+
+\begin{table}[t]
+\centering
+\caption{Refinement heads used by cache-aware learned refinement. MLP heads use
+GELU activations between linear layers.}
+\label{tab:ca_head_architectures}
+\small
+\begin{tabular}{p{0.18\linewidth}p{0.47\linewidth}p{0.27\linewidth}}
+\toprule
+Task & Predicted refinement quantity & Head architecture \\
+\midrule
+Elasticity
+& von Mises stress
+& $128\!\to\!4\!\to\!1$ \\
+
+Plasticity
+& Aggregated displacement-gradient magnitude
+& $128\!\to\!4\!\to\!32\!\to\!1$ \\
+
+Airfoil
+& Pressure
+& $128\!\to\!8\!\to\!32\!\to\!1$ \\
+
+Pipe
+& Velocity-gradient magnitude
+& 2 Transolver blocks, width 128 \\
+
+Darcy
+& CPG refinement score $s_{\mathrm{Darcy}}$
+& 2 Transolver blocks, width 128 \\
+
+ShapeNet-Car
+& Surface pressure
+& $256\!\to\!64\!\to\!1$ \\
+
+DrivAerML
+& Local pressure-variation score
+& $256\!\to\!8\!\to\!32\!\to\!1$ \\
+
+SuperWing
+& Joint pressure--friction curvature score
+& $128\!\to\!4\!\to\!1$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \paragraph{Elasticity.}
-Large local stress variations identify regions requiring refinement. A $128\to4\to1$ head predicts stress, from which we compute $s=\mathcal{I}_8D_8[\widehat\sigma_{\mathrm{vM}}^{\mathrm{head}}]$. We take regional maxima $v_k=\max_{x\in P_k}s(x)$ and assign proportional quotas across 32 regions with $\kappa=2$:
+The learned signal should identify regions of large stress variation. The head
+predicts the von Mises stress, from which we compute
+\[
+    s
+    =\mathcal{I}_8D_8[
+        \widehat{\sigma}_{\mathrm{vM}}^{\mathrm{head}}
+    ].
+\]
+Using regional maxima
+$v_k=\max_{x\in P_k}s(x)$, we define
 \begin{equation}
     \lambda_{\mathrm{tar}}(x)
-       =0.75+0.25\frac{\min(v_k,Q_{0.99}(v))^2}
-                         {\sum_j\mu_j\min(v_j,Q_{0.99}(v))^2}
-    \quad(x\in P_k).
+    =0.75+0.25
+      \frac{\min(v_k,Q_{0.99}(v))^2}
+           {\sum_j\mu_j\min(v_j,Q_{0.99}(v))^2},
+    \qquad x\in P_k.
     \label{eq:app_density_elasticity_ca}
 \end{equation}
 
 \paragraph{Plasticity.}
-The displacement-gradient magnitude summarizes concentrated deformation over the full loading trajectory. A $128\to4\to32\to1$ head learns $G_{\mathrm{GT}}=(\sum_{t,c}\|\nabla u_{t,c}\|_2^2)^{1/2}$ from the training fields, using reference spacing $0.5$. We transfer its estimate and draw weighted additions with
+The displacement-gradient magnitude provides a compact indicator of localized
+deformation over the full loading trajectory. The head learns
+\[
+    G_{\mathrm{GT}}
+    =
+    \left(
+        \sum_{t,c}\|\nabla u_{t,c}\|_2^2
+    \right)^{1/2},
+\]
+and its prediction gives
 \begin{equation}
-    \lambda_{\mathrm{tar}}=0.2+0.8\mathcal{N}[\mathcal{I}_0\widehat G^{\mathrm{head}}].
+    \lambda_{\mathrm{tar}}
+    =0.2+0.8\mathcal{N}\!\left[
+        \mathcal{I}_0\widehat G^{\mathrm{head}}
+    \right].
     \label{eq:app_ca_plasticity_density}
 \end{equation}
 
 \paragraph{Airfoil.}
-Pressure gradients identify flow variation relevant to field reconstruction and aerodynamic prediction. A $128\to8\to32\to1$ head predicts pressure, with density parameters selected for each metric. The coarse budget is $10\%$ for the field and $5\%$ for $C_D/C_L$, always including the 121 surface nodes. Denoting the pressure estimate for target $q$ by $\widehat p^{\mathrm{head},q}$ gives
+Pressure gradients provide the learned refinement signal for both field
+prediction and the aerodynamic ratio. From the head prediction, we define
+\[
+    s_q
+    =\mathcal{I}_0G_{16}
+       [\widehat p^{\mathrm{head},q}],
+    \qquad
+    q\in\{\mathrm{field},C_D/C_L\}.
+\]
+The corresponding densities are
 \begin{equation}
     \begin{aligned}
-    s_q&=\mathcal{I}_0G_{16}[\widehat p^{\mathrm{head},q}],
-       \quad q\in\{\mathrm{field},C_D/C_L\},\\
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
-       &=\mathcal{N}[(0.01+\mathcal{Q}_{0.95}[s_{\mathrm{field}}])^2],\\
+       &=\mathcal{N}\!\left[
+          (0.01+\mathcal{Q}_{0.95}[s_{\mathrm{field}}])^2
+          \right],\\
     \lambda_{\mathrm{tar}}^{C_D/C_L}
-       &=\mathcal{N}[(0.1+\mathcal{Q}_{0.95}[s_{C_D/C_L}])^{1/2}].
+       &=\mathcal{N}\!\left[
+          (0.1+\mathcal{Q}_{0.95}[s_{C_D/C_L}])^{1/2}
+          \right].
     \end{aligned}
     \label{eq:app_ca_airfoil_density}
 \end{equation}
-The CPG and CA field-policy parameters are screened on 24 geometries with one sampling seed and selected on 48 geometries with three seeds under the original $C_L>0.01$ inclusion rule. The selected policies are frozen before evaluation on 48 additional confirmation geometries. They are then reused without retuning for the 110 test cases satisfying $C_L>0.02$, with sampling seeds 0, 1, and 2. Both field policies use $\beta=1$.
+The coarse sample retains all 121 surface nodes. Policy design follows the
+$C_L>0.01$ inclusion rule, while test evaluation uses $C_L>0.02$.
 
 \paragraph{Pipe.}
-The velocity-gradient magnitude provides a direct measure of local flow variation. A head with two Transolver blocks of width 128 learns $G=\|\nabla v_x\|_2$ from the training fields. Squaring the decoded estimate gives the allocation score:
+Velocity-gradient magnitude directly identifies regions requiring additional
+flow resolution. The refinement head predicts this quantity, and we use
 \begin{equation}
     \lambda_{\mathrm{tar}}
-       =\mathcal{P}_{24,4}[(\widehat G^{\mathrm{head}})^2].
+    =\mathcal{P}_{24,4}
+       [(\widehat G^{\mathrm{head}})^2].
     \label{eq:app_ca_pipe_density}
 \end{equation}
 
 \paragraph{Darcy.}
-Pressure-gradient and curvature signals capture the spatially varying response to permeability. A head with two Transolver blocks of width 128 learns the frozen teacher score $s_{\mathrm{Darcy}}$ in \eqref{eq:app_cpg_darcy_density}, giving
+We directly learn the CPG pressure-variation score, avoiding an explicit coarse
+solution while preserving its refinement signal:
 \begin{equation}
-    \lambda_{\mathrm{tar}}=\mathcal{P}_{32,2}[\widehat s_{\mathrm{Darcy}}^{\mathrm{head}}].
+    \lambda_{\mathrm{tar}}
+    =\mathcal{P}_{32,2}
+       [\widehat s_{\mathrm{Darcy}}^{\mathrm{head}}].
     \label{eq:app_ca_darcy_density}
 \end{equation}
 
 \paragraph{ShapeNet-Car.}
-Surface pressure supplies both local-variation and drag-contribution signals. A $256\to64\to1$ head predicts pressure, which replaces the coarse operator prediction in \eqref{eq:app_cpg_car_scores}. The surface retention, volume quotas, and compensation remain those of CPG. With $z_s$ defined as above, the learned densities are
+The learned pressure estimate provides the same local-variation and
+drag-sensitive signals used by CPG without requiring a complete coarse forward
+pass. Replacing $\widehat p^{(0)}$ with
+$\widehat p^{\mathrm{head}}$ in the CPG score gives
 \begin{equation}
     \lambda_{\mathrm{tar}}^q
-       =\mathcal{N}[(1+A_qe^{-d_\Gamma/0.1})(1+2z_{s_q^{\mathrm{head}}})],
+    =\mathcal{N}\!\left[
+        (1+A_qe^{-d_\Gamma/0.1})
+        (1+2z_{s_q^{\mathrm{head}}})
+    \right],
     \qquad
-    (A_f,A_D)=(64,32),\quad q\in\{f,D\}.
+    (A_f,A_D)=(64,32),
+    \quad q\in\{f,D\}.
     \label{eq:app_ca_car_density}
 \end{equation}
+Surface retention, regional volume sampling, and measure correction follow the
+corresponding CPG policy.
 
 \paragraph{DrivAerML.}
-The local pressure residual estimates where surface predictions vary most, and projected area determines its relevance to drag. A $256\to8\to32\to1$ head learns $L_{16}[\widehat p^{(0)}]$ from the frozen teacher. After transfer, $s=\mathcal{I}_0\widehat L^{\mathrm{head}}$ gives
+The refinement head learns the local pressure-variation signal used by CPG.
+After transferring its prediction,
+\[
+    s=\mathcal{I}_0\widehat L^{\mathrm{head}},
+\]
+we use
 \begin{equation}
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
-       =\mathcal{N}[1+512\mathcal{T}_{0,0.99}[s]^2],
+    =\mathcal{N}\!\left[
+        1+512\mathcal{T}_{0,0.99}[s]^2
+    \right],
     \qquad
     \lambda_{\mathrm{tar}}^{C_D}
-       =\mathcal{N}[1+40\mathcal{T}_{0,0.99}[A|n_x|s]].
+    =\mathcal{N}\!\left[
+        1+40\mathcal{T}_{0,0.99}[A|n_x|s]
+    \right].
     \label{eq:app_ca_drivaerml_density}
 \end{equation}
 
 \paragraph{SuperWing.}
-Joint pressure and skin-friction curvature provides a compact signal for aerodynamic refinement. A $128\to4\to1$ head learns the normalized score $\mathcal{T}_{0.01,0.99}[\|\Delta_5\mathbf u_{\mathrm{GT}}\|_2]$. With $s=\mathcal{T}_{0.01,0.99}[\mathcal{I}\widehat s^{\mathrm{head}}]$ and the same geometric prior $g$, field prediction uses full-reference regional averages, while the ratio uses residual systematic sampling in Morton order:
+The learned score approximates curvature in the joint pressure and
+skin-friction fields, identifying localized aerodynamic structures. We define
+\[
+    s
+    =\mathcal{T}_{0.01,0.99}
+       [\mathcal{I}\widehat s^{\mathrm{head}}],
+\]
+and use
 \begin{equation}
-    \lambda_{\mathrm{tar}}^{\mathrm{field}}=\mathcal{P}_{64,4}[s^{1/2}],
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+    =\mathcal{P}_{64,4}[s^{1/2}],
     \qquad
-    \lambda_{\mathrm{tar}}^{C_D/C_L}=\mathcal{B}_{0.5}[g,s].
+    \lambda_{\mathrm{tar}}^{C_D/C_L}
+    =\mathcal{B}_{0.5}[g,s].
     \label{eq:app_ca_superwing_density}
 \end{equation}
+The $C_D/C_L$ policy combines the learned signal with the same geometric prior
+used by CPG.
