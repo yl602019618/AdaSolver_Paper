@@ -32,3 +32,5 @@ Airfoil pressure update: CPG uses a squared gradient weight with floor 0.1, and 
 Airfoil cohort and PI update: both metrics use the same 110 cases with reference pressure-force Cl > 0.02. PI uses amplitude 20, distance scale 0.3, and index-grid Voronoi compensation with beta 1 for both metrics. Normalization uses the matching 110-case full-mesh pressure model: field 0.005117528596400371 and absolute Cd/Cl error 0.015210415035378112. The original Mach-target Airfoil curves were excluded; their eight old points are retained only in the labeled history file. See `../../data/airfoil_pressure/` for records, configs, and the threshold history.
 
 The appendix now includes a completed full-mesh-trained pressure Transolver3 reference for Airfoil at all four budgets. See `../../data/airfoil_fullmesh_reference/` for its training metadata and 1,100 evaluation records. The historical Mach checkpoint remains excluded.
+
+Compact layout: the twelve panels retain their font sizes, limits, method styles, uncertainty bands, and nine insets. Tighter gutters and a shared bottom row of budget ticks reduce the figure height at the same manuscript width.
