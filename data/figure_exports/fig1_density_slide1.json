@@ -2,9 +2,10 @@
   "source": "总图1_density.pptx",
   "source_slide": 1,
   "source_modified": false,
+  "source_mtime_utc": "2026-09-26T07:02:33+00:00",
   "renderer": "LibreOffice Impress",
   "crop_box_points": [
-    336.9681570816313,
+    342.9676000626511,
     25.97385905446251,
     1036.4043319901489,
     482.6103365305818
@@ -14,12 +15,12 @@
     600.009448818898
   ],
   "output_size_points": [
-    699.4361749085176,
+    693.4367319274977,
     456.63647747611924
   ],
   "raster_dpi": 600,
   "png_pixels": [
-    5829,
+    5779,
     3806
   ]
 }
