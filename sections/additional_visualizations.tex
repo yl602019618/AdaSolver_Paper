@@ -14,8 +14,9 @@ Errors are divided by the full-mesh error of the backbone shared by Uniform
 and AdaSolver; the horizontal line at one marks this reference. Shaded bands
 show one sample standard deviation across three sampling seeds.
 
-References use original Transolver checkpoints for Pipe and Elasticity,
-and Transolver3 for the remaining tasks. Point-cloud models reuse Uniform's
+References use the original Transolver checkpoints for Pipe and Elasticity,
+and task-specific checkpoints trained on full meshes for the remaining
+tasks. Point-cloud models reuse Uniform's
 samples and reconstruction; Pipe uses Cartesian subgrids at the plotted
 retained fractions. Darcy's full-mesh-trained backbone makes its two curves
 coincide. DrivAerML changes the pressure checkpoint while retaining Uniform's
