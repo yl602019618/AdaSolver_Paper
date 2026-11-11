@@ -15,7 +15,7 @@ excluded.
 \input{tables/inference_time_sampled.tex}
 
 \paragraph{Refinement overhead.}
-PI remains close to Uniform, adding $1.5$--$4.8\%$ latency across the
+PI remains close to Uniform, adding $1.0$--$4.8\%$ latency across the
 24 task--budget pairs. Its geometry-based density can be reused across
 predictions. CPG incurs a larger overhead because it evaluates a complete
 coarse prediction before selecting additional points. CA obtains its
@@ -33,7 +33,7 @@ $T_{\mathrm{full}}/T_{\mathrm{CA}}$, reach $1.95\times$ on ShapeNet-Car,
 $2.61\times$ on DrivAerML, and $2.04\times$ on SuperWing.
 These gains are more pronounced when
 point-dependent operator evaluation constitutes a large fraction of the
-total inference cost. On Elasticity, CA takes $1.52$~ms versus $1.26$~ms
+total inference cost. On Elasticity, CA takes $2.39$~ms versus $1.26$~ms
 for full mesh: refinement overhead exceeds the savings in point-dependent
 computation.
 Point reduction does not imply a proportional reduction in latency.

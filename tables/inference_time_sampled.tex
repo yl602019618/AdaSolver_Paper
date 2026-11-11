@@ -20,9 +20,9 @@ Darcy & 37.5\% & $3.525\!\pm\!0.001$ & $1.929\!\pm\!0.002$ & $1.994\!\pm\!0.003$
  & 50\% &  & $2.212\!\pm\!0.001$ & $2.301\!\pm\!0.003$ & $3.785\!\pm\!0.017$ & $3.002\!\pm\!0.015$ \\
  & 75\% &  & $2.907\!\pm\!0.005$ & $3.030\!\pm\!0.004$ & $4.536\!\pm\!0.014$ & $3.738\!\pm\!0.006$ \\
 \addlinespace[2pt]
-Elasticity$\dagger$ & 37.5\% & $1.264\!\pm\!0.013$ & $0.987\!\pm\!0.007$ & $1.009\!\pm\!0.006$ & $2.086\!\pm\!0.013$ & $1.524\!\pm\!0.024$ \\
- & 50\% &  & $1.027\!\pm\!0.004$ & $1.047\!\pm\!0.003$ & $2.209\!\pm\!0.003$ & $1.598\!\pm\!0.017$ \\
- & 75\% &  & $1.166\!\pm\!0.003$ & $1.184\!\pm\!0.004$ & $2.401\!\pm\!0.038$ & $1.756\!\pm\!0.012$ \\
+Elasticity & 37.5\% & $1.256\!\pm\!0.001$ & $0.994\!\pm\!0.010$ & $1.011\!\pm\!0.011$ & $3.115\!\pm\!0.015$ & $2.392\!\pm\!0.013$ \\
+ & 50\% &  & $1.043\!\pm\!0.004$ & $1.054\!\pm\!0.005$ & $3.363\!\pm\!0.019$ & $2.692\!\pm\!0.022$ \\
+ & 75\% &  & $1.167\!\pm\!0.004$ & $1.186\!\pm\!0.002$ & $4.012\!\pm\!0.046$ & $3.306\!\pm\!0.022$ \\
 \addlinespace[2pt]
 Plasticity & 37.5\% & $2.049\!\pm\!0.006$ & $1.259\!\pm\!0.002$ & $1.289\!\pm\!0.003$ & $2.516\!\pm\!0.005$ & $1.657\!\pm\!0.003$ \\
  & 50\% &  & $1.430\!\pm\!0.002$ & $1.470\!\pm\!0.002$ & $2.716\!\pm\!0.007$ & $1.833\!\pm\!0.004$ \\
@@ -45,7 +45,7 @@ SuperWing & 37.5\% & $13.602\!\pm\!0.010$ & $5.671\!\pm\!0.002$ & $5.909\!\pm\!0
 \caption{\textbf{Inference latency at different point budgets (ms).}
 Values are means $\pm$ standard deviations across test cases and repeated samplings.
 The full-mesh column uses all reference points and three cases, and is shown once per task.
-$\dagger$ The Elasticity timing configuration uses a $25\%$ coarse set and a two-block head.
+Elasticity CPG and CA use 97 coarse points ($10\%$); CA uses a $128\!\to\!4\!\to\!1$ stress head.
 Timings cover prediction at the selected points and online refinement, excluding full-field reconstruction.}
 \label{tab:inference_time_sampled}
 \end{table}

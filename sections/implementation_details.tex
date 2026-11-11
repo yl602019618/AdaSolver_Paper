@@ -190,5 +190,8 @@ execution before and after each request. We average 20 repetitions per
 case (five for DrivAerML), including the transfer of sampled predictions
 to the CPU. Model loading and reusable preprocessing are outside the
 timed region.
+For Elasticity, the CPU nearest-neighbor assignment used to compute
+Voronoi weights is identical to that used for accuracy evaluation; its
+computation and associated transfers are included in the timed request.
 
 \input{sections/inverse_design_settings.tex}

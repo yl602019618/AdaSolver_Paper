@@ -37,8 +37,6 @@ def main():
         assert int(full['cases']) == 3
         for j, budget in enumerate(BUDGETS):
             name = NAMES[benchmark] if j == 0 else ''
-            if benchmark == 'elasticity' and j == 0:
-                name += r'$\dagger$'
             cells = [name, f'{budget * 100:g}\\%', time_cell(full) if j == 0 else '']
             for method in METHODS:
                 row = lookup[(benchmark, budget, method, 'sampled')]
@@ -51,7 +49,7 @@ def main():
               r'\caption{\textbf{Inference latency at different point budgets (ms).}',
               r'Values are means $\pm$ standard deviations across test cases and repeated samplings.',
               r'The full-mesh column uses all reference points and three cases, and is shown once per task.',
-              r'$\dagger$ The Elasticity timing configuration uses a $25\%$ coarse set and a two-block head.',
+              r'Elasticity CPG and CA use 97 coarse points ($10\%$); CA uses a $128\!\to\!4\!\to\!1$ stress head.',
               r'Timings cover prediction at the selected points and online refinement, excluding full-field reconstruction.}',
               r'\label{tab:inference_time_sampled}', r'\end{table}', '']
     (ROOT / 'tables/inference_time_sampled.tex').write_text('\n'.join(first))

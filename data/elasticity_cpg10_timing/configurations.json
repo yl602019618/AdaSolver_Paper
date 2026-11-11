@@ -1,0 +1,64 @@
+{
+  "checkpoint": "checkpoints/elasticity/elasticity_transolver3_varpts_nmin040_best.pt",
+  "policy": "configs/methods/elasticity_budget10_frozen_comparison.json",
+  "configurations": {
+    "uniform": {
+      "method": "uniform",
+      "status": "frozen"
+    },
+    "pi": {
+      "method": "pi",
+      "pi": {
+        "amp": 64.0,
+        "ell": 0.012,
+        "beta": 0.5
+      },
+      "status": "frozen"
+    },
+    "cpg": {
+      "method": "cpg",
+      "density": {
+        "coarse_fraction": 0.1,
+        "score": "difference",
+        "neighbors": 8,
+        "transfer": "idw8",
+        "quantile": 0.9,
+        "exponent": 1.0,
+        "gamma": 0.625,
+        "sampler": "patch",
+        "patches": 32,
+        "aggregation": "mean",
+        "kappa": 4.0,
+        "placement": "fps",
+        "beta": 1.0
+      },
+      "status": "frozen"
+    },
+    "ca": {
+      "method": "ca",
+      "density": {
+        "coarse_fraction": 0.1,
+        "score": "difference",
+        "neighbors": 8,
+        "transfer": "idw8",
+        "quantile": 0.99,
+        "exponent": 2.0,
+        "gamma": 0.25,
+        "sampler": "patch",
+        "patches": 32,
+        "aggregation": "max",
+        "kappa": 2.0,
+        "placement": "fps",
+        "beta": 1.0
+      },
+      "head_checkpoint": "checkpoints/elasticity/ca_budget10/d4_mse_seed0/epoch200.pt",
+      "head_manifest": "checkpoints/elasticity/ca_budget10/d4_mse_seed0/epoch200.json",
+      "status": "frozen"
+    }
+  },
+  "coarse_count": 97,
+  "n_full": 972,
+  "head_bottleneck": 4,
+  "head_parameters": 521,
+  "profiling_split": "historical_test"
+}

@@ -1,0 +1,23 @@
+{
+  "records": 111,
+  "samples": [
+    1800,
+    1899,
+    1999
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "final_counts": [
+    364,
+    486,
+    729
+  ],
+  "coarse_count": 97,
+  "all_reference_indices_equal": true,
+  "gpu_exclusive": true,
+  "max_full_field_relative_difference": 0.0,
+  "max_absolute_error_difference_from_saved_accuracy": 1.1038195327217615e-07
+}

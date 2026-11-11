@@ -357,6 +357,9 @@ sampled according to the resulting target density, and coverage-based
 measure correction uses $\beta=1$.
 
 \paragraph{Elasticity.}
+We use $|S_0|=\lfloor 0.10\times972\rfloor=97$ uniformly sampled
+coarse points in both accuracy and timing evaluations. The final budgets of
+364, 486, and 729 points include these coarse points.
 Regions with rapidly varying stress require higher resolution. We estimate this
 variation from the coarse von Mises stress,
 \[
@@ -589,7 +592,7 @@ in Table~\ref{tab:ca_head_architectures}.
 GELU activations between linear layers.}
 \label{tab:ca_head_architectures}
 \small
-\begin{tabular}{p{0.18\linewidth}p{0.47\linewidth}p{0.27\linewidth}}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.47\linewidth}p{0.27\linewidth}@{}}
 \toprule
 Task & Predicted refinement quantity & Head architecture \\
 \midrule
@@ -629,6 +632,9 @@ SuperWing
 \end{table}
 
 \paragraph{Elasticity.}
+The $128\!\to\!4\!\to\!1$ head is trained on frozen first-block
+features from coarse inputs containing at most 97 points and uses 97 points
+at inference, matching the CPG coarse budget.
 The learned signal should identify regions of large stress variation. The head
 predicts the von Mises stress, from which we compute
 \[
