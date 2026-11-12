@@ -1,0 +1,24 @@
+{
+  "completed_benchmarks": [
+    "elasticity",
+    "airfoil2d",
+    "darcy",
+    "superwing"
+  ],
+  "planned_benchmarks": [
+    "elasticity",
+    "airfoil2d",
+    "pipe",
+    "darcy",
+    "plasticity2d",
+    "superwing",
+    "shapenet_car",
+    "driverml"
+  ],
+  "full_eight_task_coverage": false,
+  "source": "complete primary records only",
+  "per_method_cases": 3,
+  "sampling_seeds": 3,
+  "repeats_per_condition": 100,
+  "error_bars": "sample SD of three geometry-level means"
+}

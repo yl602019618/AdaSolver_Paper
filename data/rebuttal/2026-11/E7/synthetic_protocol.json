@@ -1,0 +1,35 @@
+{
+  "protocol_id": "E7-known-categorical-v1",
+  "reference_count": 4096,
+  "reference_measure": "uniform discrete point mass 1/N",
+  "proposal": "1+(contrast-1)*exp(-((x-.32)/.085)^2), normalized over reference points",
+  "sampling": "independent categorical with replacement",
+  "budgets": [
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "contrasts": [
+    1,
+    4,
+    16,
+    64
+  ],
+  "replicates": 1000,
+  "betas": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "random_seed": 20261112,
+  "features": "six deterministic spatial functions; eight fixed softmax slices",
+  "paired_design": "same indices for all beta conditions within each replicate",
+  "correction": "c_i=(1/N)/proposal_probability_i",
+  "statistical_unit": "independent sampling realization; not model training",
+  "bias": "RMS of empirical mean token minus exact finite reference token",
+  "variance": "mean entrywise population variance over Monte Carlo realizations"
+}

@@ -1,0 +1,3 @@
+backbone,training_seed,epochs,optimizer_steps,global_batch_size,parameters,training_process_wall_seconds,cost_scope,input_feature_channels,preprocessing
+Transolver3,0,400,142000,2,3862340,6311.084484711289,"process elapsed including data setup, training, validation and checkpoint IO; concurrent host workload",10,same normalized seven physical features; Transolver3 also appends raw xyz
+LinearNO,0,400,142000,2,3852420,12351.140297986567,"process elapsed including data setup, training, validation and checkpoint IO; concurrent host workload",7,same normalized seven physical features; Transolver3 also appends raw xyz

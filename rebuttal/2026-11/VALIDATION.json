@@ -1,0 +1,304 @@
+{
+  "created_at_utc": "2026-11-12T04:03:02.437232+00:00",
+  "numeric_csv_checks": [
+    {
+      "target_path": "data/rebuttal/2026-11/E0/same_checkpoint_reference.csv",
+      "rows": 156,
+      "columns": 13,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/checkpoint_map.csv",
+      "rows": 8,
+      "columns": 5,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/model_asset_registry.csv",
+      "rows": 28,
+      "columns": 7,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/cpg_ca_low_budget_comparison.csv",
+      "rows": 48,
+      "columns": 13,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/latency_summary.csv",
+      "rows": 114,
+      "columns": 23,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/E6_low_budget_metric_alignment.csv",
+      "rows": 288,
+      "columns": 10,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/latency_repeats.csv",
+      "rows": 115920,
+      "columns": 19,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/stages.csv",
+      "rows": 20445,
+      "columns": 18,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/accuracy.csv",
+      "rows": 2133,
+      "columns": 17,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/baseline_summary.csv",
+      "rows": 125,
+      "columns": 12,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/rauec.csv",
+      "rows": 20,
+      "columns": 8,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/metrics_records.csv",
+      "rows": 22320,
+      "columns": 16,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_summary.csv",
+      "rows": 40,
+      "columns": 20,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_rauec.csv",
+      "rows": 12,
+      "columns": 11,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_accuracy_latency.csv",
+      "rows": 40,
+      "columns": 20,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_latency_summary.csv",
+      "rows": 40,
+      "columns": 19,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_training_cost.csv",
+      "rows": 2,
+      "columns": 10,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/checkpoint_registry.csv",
+      "rows": 2,
+      "columns": 13,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/isolated_memory.csv",
+      "rows": 276,
+      "columns": 7,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/metrics_records.csv",
+      "rows": 11200,
+      "columns": 24,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/controlled_latency_repeats.csv",
+      "rows": 33120,
+      "columns": 13,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/resolution_budget.csv",
+      "rows": 39,
+      "columns": 16,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/fixed_points.csv",
+      "rows": 12,
+      "columns": 16,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/region_summary.csv",
+      "rows": 153,
+      "columns": 8,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/metrics_records.csv",
+      "rows": 54000,
+      "columns": 20,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/training_seed_summary.csv",
+      "rows": 26,
+      "columns": 11,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/training_seed_rauec.csv",
+      "rows": 8,
+      "columns": 9,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/sampling_variability.csv",
+      "rows": 78,
+      "columns": 9,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/paired_training_differences.csv",
+      "rows": 18,
+      "columns": 10,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/checkpoint_registry.csv",
+      "rows": 3,
+      "columns": 20,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/metrics_records.csv",
+      "rows": 22200,
+      "columns": 24,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/paired_case_differences.csv",
+      "rows": 16200,
+      "columns": 11,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/static_18p75_table.csv",
+      "rows": 40,
+      "columns": 9,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/static_18p75.csv",
+      "rows": 32,
+      "columns": 7,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_surrogate_design_summary.csv",
+      "rows": 72,
+      "columns": 20,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_surrogate_equal_calls.csv",
+      "rows": 72,
+      "columns": 10,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_method_summary.csv",
+      "rows": 48,
+      "columns": 41,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_curve_data.csv",
+      "rows": 7200,
+      "columns": 8,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_curve_data.csv",
+      "rows": 2400,
+      "columns": 6,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_cfd_plot_data.csv",
+      "rows": 30,
+      "columns": 10,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/beta_default_comparison.csv",
+      "rows": 36,
+      "columns": 14,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/token_synthetic.csv",
+      "rows": 100,
+      "columns": 10,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_design_summary.csv",
+      "rows": 30,
+      "columns": 21,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_design_equal_calls.csv",
+      "rows": 36,
+      "columns": 11,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_design_equal_wall.csv",
+      "rows": 36,
+      "columns": 11,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_method_summary.csv",
+      "rows": 12,
+      "columns": 31,
+      "numeric_strings_unchanged": true
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_cfd_endpoints.csv",
+      "rows": 33,
+      "columns": 19,
+      "numeric_strings_unchanged": true
+    }
+  ],
+  "source_acceptance": {
+    "E0": "native source and same-checkpoint checks",
+    "E1": "closed accepted groups only",
+    "E2": "independent14760-index and rAUEC audit",
+    "E3": "independent accuracy and final latency/memory audit",
+    "E4": "27000 requests,135 complete groups and independent integrity checks",
+    "E5": "independent3-training-seed numeric/figure audit",
+    "E6": "independent33-Airfoil-CFD and72-Wing-surrogate audits",
+    "E7": "existing fixed-point sweep and synthetic identities; excludes unfinished audit claims"
+  },
+  "partial_components": [
+    "E1 formal DrivAerML and isolated memory",
+    "E6 complete Wing CFD population",
+    "E7 historical selection and real-case consolidation"
+  ],
+  "source_code_publication": false,
+  "raw_physical_data_publication": false
+}

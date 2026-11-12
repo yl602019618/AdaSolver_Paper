@@ -1,0 +1,9 @@
+metric,method,training_seed0,training_seed1,training_seed2,mean,training_seed_sd,independent_training_runs,aggregation
+field,uniform,1.0,1.0,1.0,1.0,0.0,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+field,pi,0.5869633652989145,0.5898470362138649,0.590071350468187,0.5889605839936555,0.0017332746773492825,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+field,cpg,0.5574021035851467,0.5487138326284992,0.5589355198209118,0.5550171520115192,0.005512414876557693,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+field,ca,0.5574826416728885,0.5487100324887887,0.5588789842221366,0.555023886127938,0.005512350130494128,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+cd,uniform,1.0,1.0,1.0,1.0,0.0,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+cd,pi,0.6081789974083365,0.6586333422250729,0.6346752027205338,0.6338291807846477,0.025237809781328762,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+cd,cpg,0.6326071234298484,0.6201336044328863,0.683477874200293,0.6454062006876758,0.03355572100373314,3,per-sampling-seed area ratio; mean within training model; SD across three training models
+cd,ca,0.6331215158778454,0.6211666551593913,0.6838628026052582,0.6460503245474983,0.03328764480029852,3,per-sampling-seed area ratio; mean within training model; SD across three training models

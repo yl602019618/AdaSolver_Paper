@@ -1,0 +1,290 @@
+[
+  {
+    "case_id": 1000,
+    "method": "uniform",
+    "resolution": 85,
+    "source": "records/examples/case1000_n85_uniform_k2709.npz",
+    "source_sha256": "299515b5dcba2d53e73cf64bb05143dc4e94b30b83a2139a8a6c510e455ab198",
+    "score_replay": "figures/examples/case1000_n85_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "uniform",
+    "resolution": 141,
+    "source": "records/examples/case1000_n141_uniform_k7455.npz",
+    "source_sha256": "56eef1daeacbb459b6293ee5225e76b436366a14bf5c5f8ebde76825056fa02b",
+    "score_replay": "figures/examples/case1000_n141_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "uniform",
+    "resolution": 211,
+    "source": "records/examples/case1000_n211_uniform_k16695.npz",
+    "source_sha256": "a727aa1771dc88c4e2e34bee213527d26d987ccf9477fb4da0a4429122036f03",
+    "score_replay": "figures/examples/case1000_n211_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "pi",
+    "resolution": 85,
+    "source": "records/examples/case1000_n85_pi_k2709.npz",
+    "source_sha256": "a1a1d12a0d2d300426f0961ef48a0976e1404332951e0d093200455afc10d3ef",
+    "score_replay": "figures/examples/case1000_n85_pi_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "pi",
+    "resolution": 141,
+    "source": "records/examples/case1000_n141_pi_k7455.npz",
+    "source_sha256": "eb16175188ba2f34bcab702e07cf323f8ed7571deb3726beb287fddace53dbb5",
+    "score_replay": "figures/examples/case1000_n141_pi_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "pi",
+    "resolution": 211,
+    "source": "records/examples/case1000_n211_pi_k16695.npz",
+    "source_sha256": "47e63141b780c67f4fb5f8c5954b48232368fe98950d4546d112e1ff09cbc482",
+    "score_replay": "figures/examples/case1000_n211_pi_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "cpg",
+    "resolution": 85,
+    "source": "records/examples/case1000_n85_cpg_k2709.npz",
+    "source_sha256": "c98aebe90b6cc83c283d08471c1ec0d29be0fe576c9b6d7d15023116e319f1c0",
+    "score_replay": "figures/examples/case1000_n85_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "cpg",
+    "resolution": 141,
+    "source": "records/examples/case1000_n141_cpg_k7455.npz",
+    "source_sha256": "88b0f742133f6644b1f2576010ee64a54439a38f6935b0fcdbac3a509a27350c",
+    "score_replay": "figures/examples/case1000_n141_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "cpg",
+    "resolution": 211,
+    "source": "records/examples/case1000_n211_cpg_k16695.npz",
+    "source_sha256": "f36c028cc79a9ebc462540383811a96f1159a3b4c0fd9871bfbb9d07d4e49793",
+    "score_replay": "figures/examples/case1000_n211_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "ca",
+    "resolution": 85,
+    "source": "records/examples/case1000_n85_ca_k2709.npz",
+    "source_sha256": "055813df92ff567adf426391f8232a003876d9b2e6ca25e408868e846473eed7",
+    "score_replay": "figures/examples/case1000_n85_ca_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "ca",
+    "resolution": 141,
+    "source": "records/examples/case1000_n141_ca_k7455.npz",
+    "source_sha256": "ea84c876b21e06376fbd092d74490a0e2272adf784ca760ab0e2a7468b600b26",
+    "score_replay": "figures/examples/case1000_n141_ca_score_data.npz"
+  },
+  {
+    "case_id": 1000,
+    "method": "ca",
+    "resolution": 211,
+    "source": "records/examples/case1000_n211_ca_k16695.npz",
+    "source_sha256": "d7abc0ff74f1e029026af12a2549a3ffd625d449e625911b2c0c3ffb37cedbbc",
+    "score_replay": "figures/examples/case1000_n211_ca_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "uniform",
+    "resolution": 85,
+    "source": "records/examples/case1099_n85_uniform_k2709.npz",
+    "source_sha256": "93b9be4840e95d33e8159515e1222c45c6c841cdaabcf7b09f50662bd8fe388f",
+    "score_replay": "figures/examples/case1099_n85_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "uniform",
+    "resolution": 141,
+    "source": "records/examples/case1099_n141_uniform_k7455.npz",
+    "source_sha256": "d686507ec19e4c437d530ad147a392b590e254c1a8d529f8748b176fcc932b23",
+    "score_replay": "figures/examples/case1099_n141_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "uniform",
+    "resolution": 211,
+    "source": "records/examples/case1099_n211_uniform_k16695.npz",
+    "source_sha256": "ea5976191b364707e510dbe0ebd80caabcf87781230214c6b6b0f1a066657fd1",
+    "score_replay": "figures/examples/case1099_n211_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "pi",
+    "resolution": 85,
+    "source": "records/examples/case1099_n85_pi_k2709.npz",
+    "source_sha256": "711c9f83bc38ee54c16dabe7517635a1fe816a9c1962223242eb5b540d07f796",
+    "score_replay": "figures/examples/case1099_n85_pi_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "pi",
+    "resolution": 141,
+    "source": "records/examples/case1099_n141_pi_k7455.npz",
+    "source_sha256": "e0cd80b0d93cb21d6895cfb27d2e7899db955ce6d0349ca7c16ef00363af6b5c",
+    "score_replay": "figures/examples/case1099_n141_pi_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "pi",
+    "resolution": 211,
+    "source": "records/examples/case1099_n211_pi_k16695.npz",
+    "source_sha256": "a5756f1d83097ea757e4388aeb24b195d99af00e6f64ba39ccc5c031ce389c17",
+    "score_replay": "figures/examples/case1099_n211_pi_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "cpg",
+    "resolution": 85,
+    "source": "records/examples/case1099_n85_cpg_k2709.npz",
+    "source_sha256": "50a510e548c0e5ebf48c7a669661ddfb4cf8556836dd7fac42ca62fe3a03a597",
+    "score_replay": "figures/examples/case1099_n85_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "cpg",
+    "resolution": 141,
+    "source": "records/examples/case1099_n141_cpg_k7455.npz",
+    "source_sha256": "36da529a7de34bc906336750d364d2a5cc0aa92bd37d3def722cf317d8e51cce",
+    "score_replay": "figures/examples/case1099_n141_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "cpg",
+    "resolution": 211,
+    "source": "records/examples/case1099_n211_cpg_k16695.npz",
+    "source_sha256": "18e078bba4e2a6fcfcd32bea9b8c219f55e54cdca440894ed7d31f9f02726981",
+    "score_replay": "figures/examples/case1099_n211_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "ca",
+    "resolution": 85,
+    "source": "records/examples/case1099_n85_ca_k2709.npz",
+    "source_sha256": "fe29201232ac7501cf901f280107cc82247b558484449db40ae2df85187c16d2",
+    "score_replay": "figures/examples/case1099_n85_ca_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "ca",
+    "resolution": 141,
+    "source": "records/examples/case1099_n141_ca_k7455.npz",
+    "source_sha256": "ca13c51c5815224c9ebe6d374f3a63a9e11eda0d0b756119ad17b60de55ef905",
+    "score_replay": "figures/examples/case1099_n141_ca_score_data.npz"
+  },
+  {
+    "case_id": 1099,
+    "method": "ca",
+    "resolution": 211,
+    "source": "records/examples/case1099_n211_ca_k16695.npz",
+    "source_sha256": "a4f14186b33e1635d906053359b84ba571cd3ab1cb7926a627840fd886f8eac4",
+    "score_replay": "figures/examples/case1099_n211_ca_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "uniform",
+    "resolution": 85,
+    "source": "records/examples/case1199_n85_uniform_k2709.npz",
+    "source_sha256": "44e89e00f78a7c6b6faef46a3f2261796c4f81e4caf603ae93b53126ce606aab",
+    "score_replay": "figures/examples/case1199_n85_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "uniform",
+    "resolution": 141,
+    "source": "records/examples/case1199_n141_uniform_k7455.npz",
+    "source_sha256": "695b93f5c8df50dca84d66a20008b7ef4a58073b5c452e3c1dfa5c9794d3574b",
+    "score_replay": "figures/examples/case1199_n141_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "uniform",
+    "resolution": 211,
+    "source": "records/examples/case1199_n211_uniform_k16695.npz",
+    "source_sha256": "02e31227749a44be122bbe461f79047d3e810168ed9b1ab294caeeeff74f80b9",
+    "score_replay": "figures/examples/case1199_n211_uniform_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "pi",
+    "resolution": 85,
+    "source": "records/examples/case1199_n85_pi_k2709.npz",
+    "source_sha256": "1ce4d8a3fe28a15a2dcf00324fbc86d4faedd62770e0dc07492e1a61e4c30c40",
+    "score_replay": "figures/examples/case1199_n85_pi_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "pi",
+    "resolution": 141,
+    "source": "records/examples/case1199_n141_pi_k7455.npz",
+    "source_sha256": "4a7a79fba07819d506ca0e9b3a4eecf1af312ae77aa90b44c7150469eadd2ea0",
+    "score_replay": "figures/examples/case1199_n141_pi_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "pi",
+    "resolution": 211,
+    "source": "records/examples/case1199_n211_pi_k16695.npz",
+    "source_sha256": "085663a3c55a9dfff8aeaf0a93947473a9c3bffcfc696f5797e5d6ec2673880b",
+    "score_replay": "figures/examples/case1199_n211_pi_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "cpg",
+    "resolution": 85,
+    "source": "records/examples/case1199_n85_cpg_k2709.npz",
+    "source_sha256": "586208512a1cb9f2a1841c4e02ffa94755208821bd018fe5d58a9bf6253f96bc",
+    "score_replay": "figures/examples/case1199_n85_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "cpg",
+    "resolution": 141,
+    "source": "records/examples/case1199_n141_cpg_k7455.npz",
+    "source_sha256": "9c7e6ffbf357b4a2b2440617a1b5940846bd7f6c139fc6f34f8f0bec4e2124be",
+    "score_replay": "figures/examples/case1199_n141_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "cpg",
+    "resolution": 211,
+    "source": "records/examples/case1199_n211_cpg_k16695.npz",
+    "source_sha256": "bd0097380b22da785efe0ee798d3119f93f484fe484bd3a242035f9b6833d092",
+    "score_replay": "figures/examples/case1199_n211_cpg_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "ca",
+    "resolution": 85,
+    "source": "records/examples/case1199_n85_ca_k2709.npz",
+    "source_sha256": "05375cbe190e04733e1af0cdf816e154224451d2181a90e23cdcd3d6d13d3d01",
+    "score_replay": "figures/examples/case1199_n85_ca_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "ca",
+    "resolution": 141,
+    "source": "records/examples/case1199_n141_ca_k7455.npz",
+    "source_sha256": "a8bc059472c0f37e4bba62c3c7ad1f3a36f83a5f6e0e3818407601c000d44759",
+    "score_replay": "figures/examples/case1199_n141_ca_score_data.npz"
+  },
+  {
+    "case_id": 1199,
+    "method": "ca",
+    "resolution": 211,
+    "source": "records/examples/case1199_n211_ca_k16695.npz",
+    "source_sha256": "d6dffd341851d80ec537baa03076a11e29b760057f606a0ab5cb447806b3b8d1",
+    "score_replay": "figures/examples/case1199_n211_ca_score_data.npz"
+  }
+]
