@@ -1,0 +1,23 @@
+{
+  "status": "verified",
+  "backbones": 9,
+  "heads": 9,
+  "benchmarks": [
+    "elasticity",
+    "pipe",
+    "darcy"
+  ],
+  "raw_records": 66600,
+  "complete_case_seed_budget_matrices": true,
+  "distinct_initialization_checkpoints": true,
+  "saved_indices_valid": true,
+  "uniform_pi_indices_match_across_training_models": true,
+  "coarse_prefixes_match_declared_sampling_rngs": true,
+  "test_used_for_checkpoint_selection": false,
+  "aggregation_checked_with_numpy_and_standard_library": true,
+  "canonical_darcy_evaluator_checks": 12,
+  "absolute_summary_rows": 39,
+  "rauec_rows": 12,
+  "sampling_variability_rows": 117,
+  "paired_summary_rows": 54
+}

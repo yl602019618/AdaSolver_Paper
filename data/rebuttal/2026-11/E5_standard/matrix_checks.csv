@@ -1,0 +1,10 @@
+dataset,training_seed,records,condition_matrix_complete,saved_indices_valid
+elasticity,0,7400,True,True
+elasticity,1,7400,True,True
+elasticity,2,7400,True,True
+pipe,0,7400,True,True
+pipe,1,7400,True,True
+pipe,2,7400,True,True
+darcy,0,7400,True,True
+darcy,1,7400,True,True
+darcy,2,7400,True,True

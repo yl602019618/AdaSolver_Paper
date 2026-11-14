@@ -1,0 +1,48 @@
+{
+  "experiment_id": "E5_standard_training_seeds",
+  "training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "head_seeds": [
+    0,
+    1,
+    2
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "benchmarks": [
+    "elasticity",
+    "pipe",
+    "darcy"
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "full_budget": 1.0,
+  "test_samples_per_benchmark": 200,
+  "fresh_backbones": 9,
+  "fresh_heads": 9,
+  "existing_checkpoints_reused": false,
+  "sampling_policies": "frozen production policies, no test-based retuning",
+  "statistics": "mean over case-averaged matched sampling-seed rAUEC ratios within each training run, then mean and sample SD over three independent training runs; absolute errors and sampling variability separately",
+  "darcy_scope": "new validation-selected weights; inherited historical policy choices are not claimed to be sealed-test-selected",
+  "status": "protocol_frozen",
+  "configs": {
+    "elasticity": "config/elasticity.json",
+    "pipe": "config/pipe.json",
+    "darcy": "config/darcy.json"
+  },
+  "policy_selection_history": {
+    "elasticity": "Original budget10 development-selected policies; final test IDs 1600..1799.",
+    "pipe": "Frozen parameters were historically calibrated on the first 50 of the current 200 test cases; no retuning in this study.",
+    "darcy": "Frozen historical test-informed policies; new model and head checkpoints use a disjoint validation cohort."
+  },
+  "elasticity_head_execution": "All three complete 128-to-4-to-1 heads use FP32 CPU feature extraction and 200-epoch CPU training; selected before the first head optimizer step. Backbones and final evaluation use GPU."
+}

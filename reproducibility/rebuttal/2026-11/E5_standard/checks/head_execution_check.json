@@ -1,0 +1,36 @@
+{
+  "scope": "execution check on initialized full models and validation inputs, not experiment results",
+  "checks": [
+    {
+      "benchmark": "elasticity",
+      "head_output_shape": [
+        2,
+        97,
+        1
+      ],
+      "head_gradients_present": true,
+      "backbone_frozen": true
+    },
+    {
+      "benchmark": "pipe",
+      "head_output_shape": [
+        2,
+        1664,
+        1
+      ],
+      "head_gradients_present": true,
+      "backbone_frozen": true
+    },
+    {
+      "benchmark": "darcy",
+      "head_output_shape": [
+        2,
+        722,
+        1
+      ],
+      "head_gradients_present": true,
+      "backbone_frozen": true
+    }
+  ],
+  "status": "passed"
+}

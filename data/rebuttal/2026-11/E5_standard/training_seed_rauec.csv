@@ -1,0 +1,13 @@
+dataset,metric,method,training_seed0,training_seed1,training_seed2,mean,training_seed_sd,independent_training_runs,aggregation
+elasticity,field,uniform,1.0,1.0,1.0,1.0,0.0,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+elasticity,field,pi,0.7242833781107824,0.7286159261223791,0.7263191057075526,0.7264061366469047,0.0021675847979954928,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+elasticity,field,cpg,0.4657019013525258,0.46795903608341377,0.46739873460945536,0.46701989068179833,0.001175289895935093,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+elasticity,field,ca,0.5597235002094836,0.5709804597635098,0.5496990371384803,0.5601343323704913,0.010646657904463123,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+pipe,field,uniform,1.0,1.0,1.0,1.0,0.0,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+pipe,field,pi,0.8703223625903818,0.8473468925931334,0.8494651312676068,0.855711462150374,0.012697658938614343,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+pipe,field,cpg,0.6610207121410085,0.6427954062658207,0.65950552452522,0.6544405476440164,0.010113403812089429,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+pipe,field,ca,0.698338258353302,0.6814445093198165,0.6970117157184603,0.6922648277971929,0.009394115062335772,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+darcy,field,uniform,1.0,1.0,1.0,1.0,0.0,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+darcy,field,pi,0.9977686767472091,0.9974535374766724,0.9926970979565011,0.9959731040601275,0.0028414767609831067,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+darcy,field,cpg,0.63542579213839,0.6567363150252833,0.6257069815740395,0.6392896962459043,0.0158714271513676,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs
+darcy,field,ca,0.6353813453587579,0.6574558349497822,0.6253979184807352,0.6394116995964251,0.01640458224231602,3,matched sampling-seed area ratios averaged within training run; sample SD across training runs

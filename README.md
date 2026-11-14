@@ -1,5 +1,23 @@
 # AdaSolver paper
 
+## Standard benchmarks: three independent training seeds
+
+This branch publishes the completed Elasticity, Pipe and Darcy training-seed
+supplement: **9 independently trained backbones, 9 matching CA heads and 66,600
+test observations**. Results report mean and sample SD across three independent
+training runs; inference-sampling variability is provided separately.
+
+**本分支内容：Elasticity / Pipe / Darcy 的三独立训练种子补充实验。**
+完整训练、评估和数值核验均已完成。请从
+[结果说明与文件索引](STANDARD_TRAINING_SEEDS.md)查看核心表格、逐 seed 结果、
+统计口径和复现入口。
+
+- [Complete results and tables](data/rebuttal/2026-11/E5_standard/README.md)
+- [Per-training-seed rAUEC](data/rebuttal/2026-11/E5_standard/training_seed_rauec.csv)
+- [Configurations and reproduction](reproducibility/rebuttal/2026-11/E5_standard/README.md)
+
+## Manuscript
+
 [Compiled paper](paper.pdf) · [LaTeX source](iclr2027_conference.tex)
 
 Build with TeX Live (`latexmk`, `pdflatex`, BibTeX), Python 3, and Poppler

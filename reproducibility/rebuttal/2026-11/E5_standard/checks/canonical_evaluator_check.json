@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "scope": "Original Darcy evaluator, identical checkpoint/head, first test case, sampling seed 0, all methods and all budgets",
+  "checks": [
+    {
+      "method": "uniform",
+      "budget": 0.375,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "uniform",
+      "budget": 0.5,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "uniform",
+      "budget": 0.75,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "pi",
+      "budget": 0.375,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "pi",
+      "budget": 0.5,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "pi",
+      "budget": 0.75,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "cpg",
+      "budget": 0.375,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "cpg",
+      "budget": 0.5,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "cpg",
+      "budget": 0.75,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "ca",
+      "budget": 0.375,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "ca",
+      "budget": 0.5,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    },
+    {
+      "method": "ca",
+      "budget": 0.75,
+      "indices_equal": true,
+      "absolute_error_difference": 0.0
+    }
+  ]
+}

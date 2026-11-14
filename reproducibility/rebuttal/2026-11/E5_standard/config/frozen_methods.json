@@ -1,0 +1,117 @@
+{
+  "elasticity": {
+    "uniform": {
+      "method": "uniform",
+      "status": "frozen"
+    },
+    "pi": {
+      "method": "pi",
+      "pi": {
+        "amp": 64.0,
+        "ell": 0.012,
+        "beta": 0.5
+      },
+      "status": "frozen"
+    },
+    "cpg": {
+      "method": "cpg",
+      "density": {
+        "coarse_fraction": 0.1,
+        "score": "difference",
+        "neighbors": 8,
+        "transfer": "idw8",
+        "quantile": 0.9,
+        "exponent": 1.0,
+        "gamma": 0.625,
+        "sampler": "patch",
+        "patches": 32,
+        "aggregation": "mean",
+        "kappa": 4.0,
+        "placement": "fps",
+        "beta": 1.0
+      },
+      "status": "frozen"
+    },
+    "ca": {
+      "method": "ca",
+      "density": {
+        "coarse_fraction": 0.1,
+        "score": "difference",
+        "neighbors": 8,
+        "transfer": "idw8",
+        "quantile": 0.99,
+        "exponent": 2.0,
+        "gamma": 0.25,
+        "sampler": "patch",
+        "patches": 32,
+        "aggregation": "max",
+        "kappa": 2.0,
+        "placement": "fps",
+        "beta": 1.0
+      },
+      "status": "frozen"
+    }
+  },
+  "pipe": {
+    "uniform": {},
+    "pi": {
+      "wall_band_fraction": 0.05,
+      "refinement_fraction": 0.25,
+      "beta": 0.75
+    },
+    "cpg": {
+      "coarse_fraction": 0.1,
+      "patch_count": 24,
+      "kappa_by_budget": {
+        "0.375": 4.0,
+        "0.5": 4.0,
+        "0.75": 4.0
+      },
+      "beta_by_budget": {
+        "0.375": 1.0,
+        "0.5": 1.0,
+        "0.75": 1.0
+      },
+      "placement": "fps",
+      "implementation": "adaptive_fast independent patch FPS, as in the final tuned evaluator"
+    },
+    "ca": {
+      "coarse_fraction": 0.1,
+      "patch_count": 24,
+      "kappa_by_budget": {
+        "0.375": 4.0,
+        "0.5": 4.0,
+        "0.75": 4.0
+      },
+      "beta_by_budget": {
+        "0.375": 1.0,
+        "0.5": 1.0,
+        "0.75": 1.0
+      },
+      "placement": "fps",
+      "implementation": "adaptive_fast independent patch FPS, as in the final tuned evaluator"
+    }
+  },
+  "darcy": {
+    "uniform": {},
+    "pi": {
+      "prior": "interface_distance",
+      "amp": 0.25,
+      "ell": 0.023809523809523808,
+      "beta": 0.5
+    },
+    "cpg": {
+      "patch_count": 32,
+      "coarse_fraction": 0.1,
+      "kappa": 2.0,
+      "beta": 1.0,
+      "acquisition": "grad_lap"
+    },
+    "ca": {
+      "patch_count": 32,
+      "coarse_fraction": 0.1,
+      "kappa": 2.0,
+      "beta": 1.0
+    }
+  }
+}
