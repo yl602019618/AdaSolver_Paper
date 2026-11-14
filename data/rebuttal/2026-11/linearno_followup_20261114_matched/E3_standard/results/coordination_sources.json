@@ -1,0 +1,17 @@
+{
+  "sources": {
+    "coordination/package_results.py": "405c7607f195d4ad0c9d8459b7983237880767063988f7f564737395ddf5b8f1",
+    "coordination/update_status.py": "04d69784e216f8d3f9200fe2dbe3ad3f9904c339e690c9d06ee13a5d19352cf2",
+    "standard_benchmarks/code/aggregate_rauec.py": "42085048dc529887a8fa992777ac5dc1144f8d621f8a60050433e2514131ee91",
+    "standard_benchmarks/code/collect_results.py": "41d319b40688316075924d78d3de2eed10c1a64c0195afafdf132373a3a1dd6e",
+    "standard_benchmarks/code/delivery_workflow.py": "f3e20f70f7787392f203284b121661154613d2722731ae549ed79a8bd2ffdf2c",
+    "standard_benchmarks/code/render_results.py": "0676baf4f175474cb4ff00d83921bb48cbf31b5acc6f629a32261dae50763846"
+  },
+  "python": "3.10.12",
+  "dependencies": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.8",
+    "torch": "2.10.0+cu128"
+  }
+}

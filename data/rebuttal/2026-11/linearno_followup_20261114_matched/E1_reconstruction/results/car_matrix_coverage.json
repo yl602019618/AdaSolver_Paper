@@ -1,0 +1,22 @@
+{
+  "accuracy_pairs_actual": 0,
+  "accuracy_pairs_expected": 7400,
+  "beta_pairs_expected": 1800,
+  "unique_timing_conditions_actual": {
+    "A": 0,
+    "B": 0,
+    "C": 0
+  },
+  "unique_timing_conditions_expected_per_scope": 330,
+  "formal_repeats_per_condition": 100,
+  "warmups_per_condition": 20,
+  "memory_conditions_actual": 0,
+  "memory_conditions_expected": 990,
+  "complete": false,
+  "unavailable": {
+    "LinearNO Car PI": "Not in completed historical Car E3 policy matrix; not added in this reconstruction follow-up",
+    "LinearNO Car CA": "No completed head matching this LinearNO backbone; Transolver3 head is not borrowed"
+  },
+  "generated_at_unix": 1794660777.5819027,
+  "protocol_sha256": "88ad8722b02efbcda46cde6503ac6a991533d554a38a222f358c8a14fcb03975"
+}

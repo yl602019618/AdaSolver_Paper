@@ -1,0 +1,8 @@
+{
+  "source": "latest user authorization relayed by root",
+  "publication_owner": "root",
+  "destination": "independent review branch",
+  "main_push_authorized": false,
+  "airfoil_runner_git_operations": false,
+  "historical_results_preserved": true
+}

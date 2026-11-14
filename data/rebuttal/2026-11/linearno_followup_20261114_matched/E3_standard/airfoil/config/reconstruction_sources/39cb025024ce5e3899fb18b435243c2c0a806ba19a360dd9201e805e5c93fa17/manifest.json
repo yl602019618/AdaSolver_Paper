@@ -1,0 +1,26 @@
+{
+  "implementation_version": "1.1",
+  "actual_loaded_module": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+  "sources": {
+    "reconstruct_api.py": {
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+      "snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/config/reconstruction_sources/39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17/reconstruct_api.py",
+      "sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17"
+    },
+    "native_grid_reference.py": {
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/native_grid_reference.py",
+      "snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/config/reconstruction_sources/39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17/native_grid_reference.py",
+      "sha256": "ef9ae24706764d3d1120d3537993dbf30ba2400802fb46beebe14bbef2edb08b"
+    },
+    "native_car_reference.py": {
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/native_car_reference.py",
+      "snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/config/reconstruction_sources/39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17/native_car_reference.py",
+      "sha256": "abdc797e68e871eb9cca7f1454c445916ebbbcf8907a85d85bafc6fd455a718b"
+    },
+    "timing_helper.py": {
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/timing_helper.py",
+      "snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/config/reconstruction_sources/39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17/timing_helper.py",
+      "sha256": "ac786c8851a2d2f360ad537bdd3a4ab3f6ddd9cbaae7a73cf7fe2f91b6e3a085"
+    }
+  }
+}

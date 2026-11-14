@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "scope": "CPU random-initialization API/untimed-sampler correctness only; not training or performance evidence",
+  "checks": [
+    {
+      "architecture": "t3",
+      "method": "uniform",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "t3",
+      "method": "pi",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "t3",
+      "method": "cpg_beta0",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "t3",
+      "method": "cpg",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "linearno",
+      "method": "uniform",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "linearno",
+      "method": "pi",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "linearno",
+      "method": "cpg_beta0",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    },
+    {
+      "architecture": "linearno",
+      "method": "cpg",
+      "indices_equal": true,
+      "weights_equal": true,
+      "full_shape": [
+        11271,
+        1
+      ],
+      "max_field_abs_difference": 2.220446049250313e-16
+    }
+  ],
+  "reconstruction_source_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+  "request_code_sha256": "70a5551175c64f97ad447f23dcfcde177e00d9a819e4942727739cb51eb8f5fb"
+}

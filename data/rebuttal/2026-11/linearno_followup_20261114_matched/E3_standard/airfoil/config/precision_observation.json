@@ -1,0 +1,14 @@
+{
+  "training_source": "config/execution_sources/train.py",
+  "running_training_code_changed": false,
+  "network_tensor_dtype": "float32",
+  "matmul_allow_tf32": false,
+  "cudnn_allow_tf32": "PyTorch2.10 default True; not overridden by training source",
+  "affected_model": "only supplementary conv-temp may use cuDNN convolution kernels; main point models use linear projections",
+  "kernel_execution_claim": "TF32 convolution permitted, not proof that a specific kernel used it",
+  "final_evaluation_and_latency": {
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false
+  },
+  "checkpoint_selection": "validation only; supplementary conv-temp validation uses the same allowed precision setting as its training"
+}

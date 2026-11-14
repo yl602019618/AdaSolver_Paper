@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "architecture": "linearno",
+  "checkpoint_sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+  "head_sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0",
+  "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+  "train_cases": 900,
+  "validation_cases": 100,
+  "epochs": 200,
+  "head_parameters": 1353,
+  "verified_bank_rows": 4000,
+  "head_seed": 0,
+  "feature_tap": "frozen_block0_on_S0",
+  "shards": [
+    {
+      "name": "train_cf0.05",
+      "records": 1800,
+      "coarse_count": 563,
+      "indices_sha256": "97714729f4879446435f9aa2e30e3502dbd1c7edfafe88a2d5c22ab3cb1fcb03"
+    },
+    {
+      "name": "train_cf0.1",
+      "records": 1800,
+      "coarse_count": 1127,
+      "indices_sha256": "4c6475456573b4832b81595837dd242202e7faf46e24b63c0f45dfc8c14b9a8f"
+    },
+    {
+      "name": "validation_cf0.05",
+      "records": 200,
+      "coarse_count": 563,
+      "indices_sha256": "f9ffb77d2882d6b881e0d0867a5ed5fe92a34ccae7269cbbfd750d81bcd9bc45"
+    },
+    {
+      "name": "validation_cf0.1",
+      "records": 200,
+      "coarse_count": 1127,
+      "indices_sha256": "cb4a858adc87cb90b2ccbccd2f4537f059f87f59675a08974b326dbc3a41ce1b"
+    }
+  ],
+  "selection_rule": "native validation Huber improvement greater than1e-7; exactly replayed over all200epochs",
+  "scope": "native strict head state, actual operator/normalizer hash, own train/validation IDs, all selected-index target normalization checks; CA field accuracy separate",
+  "validator_sha256": "1d662edde0e560b0791c41fd7cc0685cff432f6fea04273c91a31658dba09057",
+  "manifest_sha256": "eab2100f8c5d04dc98c0c5624aa46759d8eb4a85581bd2103afc460a3d2739a7",
+  "bank_manifest_sha256": "0a5869d7242028bbe692dd7b9201869729b730483e89b37b72515cc4ea681cb8"
+}

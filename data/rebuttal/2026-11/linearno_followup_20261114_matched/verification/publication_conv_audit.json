@@ -1,0 +1,86 @@
+{
+  "audit_id": "airfoil_native_conv_full_supplement_publication_addendum_v1",
+  "audited_at_utc": "2026-11-14T15:31:02.739032+00:00",
+  "status": "passed_for_declared_full_only_scope",
+  "all_requested_experiments_complete": false,
+  "adds_to": {
+    "point_audit": "coordination/publication_audit.json",
+    "point_audit_sha256": "2165487e087597a47b8c1d9955a3d7dbd1071dca1687f4dc3aa1e85c6f02fd1b",
+    "point_audit_unchanged": true,
+    "change": "Conv Full supplement is now complete; the earlier conv-pending snapshot is superseded only for this supplement."
+  },
+  "scope": {
+    "dataset": "Airfoil 221x51",
+    "model": "Official LinearAttentionNeuralOperator with LinearNO_Conv_temp",
+    "role": "native full-grid Full-only supplement; separate from variable-point main cohort",
+    "population": "published_cl_gt_0p02_110",
+    "cases": 110,
+    "budget": 1.0,
+    "sampling_seed": null,
+    "training_seed": 0,
+    "full_predictions": 110,
+    "raw_old_new_four_metric_rows": 880,
+    "field_rows": 220,
+    "full_array_artifacts_checked": 110,
+    "reconstruction_views": [
+      "grid_scipy_linear_nearest_native_v1",
+      "grid_qhull_sparse_apply_v1p1"
+    ],
+    "rauec": null,
+    "rauec_reason": "Full is outside the three-budget integral; convolution sparse inference is unsupported"
+  },
+  "result": {
+    "physical_full_field_relative_l2": 0.002791743868099491,
+    "old_new_scalar_metric_max_absolute_difference": 0.0,
+    "old_new_views_are_aliases_of_same_full_prediction": true
+  },
+  "identity": {
+    "checkpoint_sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+    "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+    "metrics_csv": "standard_benchmarks/airfoil/records/linearno_conv/metrics_complete.csv",
+    "metrics_csv_sha256": "1863449c79aeed493d0a9a0a2057bc3784051ec9a170bab3378fb248dd36615c",
+    "epochs_completed": 1000,
+    "updates_completed": 113000,
+    "identity_receipt_passed": true,
+    "training_points": 11271,
+    "training_cases": 900,
+    "validation_cases": 100,
+    "validation_selected_epoch_zero_based": 962
+  },
+  "precision": {
+    "network_tensor_dtype": "float32",
+    "training_matmul_tf32_allowed": false,
+    "training_cudnn_tf32_allowed": true,
+    "training_precision_evidence": "Frozen training source leaves cuDNN at PyTorch 2.10 default True; permission does not prove which convolution kernel was selected.",
+    "final_test_matmul_tf32_allowed": false,
+    "final_test_cudnn_tf32_allowed": false,
+    "comparison_interpretation": "Do not label this as the variable-point matched main cohort or claim identical convolution training arithmetic to point models."
+  },
+  "expanded_standard_tables": {
+    "raw_metric_rows": 81840,
+    "field_rows": 20460,
+    "absolute_error_rows": 66,
+    "rauec_rows": 20,
+    "conv_added_to_rauec": false
+  },
+  "input_hashes": {
+    "standard_benchmarks/airfoil/checkpoints/linearno_conv/manifest.json": "f29543c607e691b5cec20714ac7c68c34349f68767a168e2be44fdda377d90d1",
+    "standard_benchmarks/airfoil/results/linearno_conv_identity_validation.json": "c61628b044d7b279a28bd46aed2dbf9d9489675f5b7ed1e72146d51ff8765c97",
+    "standard_benchmarks/airfoil/results/linearno_conv_accuracy_acceptance.json": "e9417c499773fafd50807175a205ebe3a55b72dcc99e4317e6a471401b63365b",
+    "standard_benchmarks/airfoil/results/linearno_conv_complete_completion.json": "60bc803d3981cd50ef8eb8464224b1473350e9a68004d510d92f97a731209f7b",
+    "standard_benchmarks/airfoil/records/linearno_conv/metrics_complete.csv": "1863449c79aeed493d0a9a0a2057bc3784051ec9a170bab3378fb248dd36615c",
+    "standard_benchmarks/airfoil/config/precision_observation.json": "a06eddbefb939a7243eec540efc162e3bfb10e86c6a2f85027d041a0bc6b5bb0",
+    "standard_benchmarks/airfoil/config/execution_sources/train.py": "6d4afb2c9205d66dc5a12e8f7305aa8ed64925fc6873d92454fa66fe3d0d7b1f",
+    "standard_benchmarks/airfoil/records/linearno_conv/test_complete/sources/evaluate.py": "bf8c019dd6019bc0804a98bb7d113e79fd6645998c2fec0425fc2fd7ff03918f",
+    "standard_benchmarks/split_manifest.json": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+    "standard_benchmarks/results/backbone_absolute_errors.csv": "16eeeae78af114ff262f305ae4b36927d0b256865da2e32ad736282ee581df8f",
+    "standard_benchmarks/results/field_records.csv": "ec49b20b0364cb1f10e107e694e2e8fde252aa95192cf00d62c68d4869d935ae",
+    "standard_benchmarks/results/backbone_rauec.csv": "2ea80e3a71820c09ebbcac294627e8ba4d3c4831a7030aa4919b3cd1c1baab3c",
+    "standard_benchmarks/airfoil/records/linearno_conv/test_complete/metrics.jsonl": "83fc6ebcc9467f2039594566589200ae636b27902e6acfc042f478bb76b6d32a"
+  },
+  "scope_exclusions": [
+    "Darcy accuracy remains pending",
+    "Formal same-GPU latency and memory remain pending; no speedup certified",
+    "No GPU forward, training rerun, queue mutation or remote push performed"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "accepted": true,
+  "equivalence_class": "same mathematical interpolation rule; fp64 accumulation; tested tolerance",
+  "module": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+  "module_sha256": "50814303b0934aa41c1cd815fb2f428216f284e11734c76c0caf53bb97f8b5cc",
+  "validation_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/real_validation.json",
+  "contract_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/contract_validation.json",
+  "new_checkpoint_end_to_end_validation_required": true,
+  "main_A_mapping_lifetime": "build per request; no selected-set plan reuse",
+  "C_cache_key": "physical geometry identity + reference coordinates including dtype + selected order + surface mask + rule ID",
+  "output_dtype": "float64",
+  "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+  "new_models_full_test": "Compare native and accepted reconstruction from the same fixed prediction for every final test record; report differences, do not pair old accuracy with new time.",
+  "old_id": "grid_scipy_linear_nearest_native_v1",
+  "new_id": "grid_qhull_sparse_apply_v1",
+  "validation_case_ids": [
+    4,
+    501,
+    985
+  ],
+  "coordinate_space": "integer index_grid(221,51) float64; physical geometry identity separately keyed"
+}

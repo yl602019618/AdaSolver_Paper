@@ -1,0 +1,15 @@
+{
+  "experiment_id": "linearno_followup_darcy",
+  "execution_status": "waiting_resource",
+  "evidence_status": "pending",
+  "training_models": [
+    "transolver3",
+    "linearno",
+    "linearno_conv"
+  ],
+  "shared_training_split": "../split_manifest.json",
+  "protocol": "config/protocol_lock.json",
+  "launches": "runtime/launches.json",
+  "reason": "Foreign standard-seed training currently occupies GPUs0/1/5; no sharing or termination",
+  "final_test_gate": "config/evaluation_lock.json (accepted reconstruction and new-model validation required)"
+}

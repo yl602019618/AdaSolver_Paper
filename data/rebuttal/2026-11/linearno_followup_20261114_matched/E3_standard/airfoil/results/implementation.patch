@@ -1,0 +1,2139 @@
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/aggregate.py
+@@ -0,0 +1,94 @@
++"""Airfoil statistics: per-seed error curves first, then matched Uniform area ratios."""
++from common import *
++import csv,collections,math
++
++
++def csv_write(path,rows):
++    if not rows:return
++    path=Path(path);temp=path.with_name(path.name+f'.{os.getpid()}.tmp')
++    with temp.open('w',newline='') as f:
++        w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
++    temp.replace(path)
++
++
++def aggregate_unlocked():
++    groups=collections.defaultdict(list);sources=[]
++    for arch in ['t3','linearno','linearno_conv']:
++        complete=OUT/f'results/{arch}_accuracy_acceptance.json';preliminary=OUT/f'results/{arch}_preliminary_completion.json'
++        if complete.exists() and read(complete).get('passed'):receipt=read(complete)
++        elif preliminary.exists():receipt=read(preliminary)
++        else:continue
++        p=Path(receipt['metrics_csv'])
++        if p.exists():
++            assert sha(p)==receipt['metrics_sha256']
++            sources.append(dict(path=str(p),sha256=sha(p)))
++            with p.open() as f:
++                for row in csv.DictReader(f):
++                    key=(row['dataset'],row['backbone'],row['checkpoint_id'],row['metric_target'],row['test_population'],row['reconstruction_id'],row['metric'])
++                    groups[key].append(row)
++    budgets=[.375,.5,.75];budget_rows=[];area_rows=[];checks=[]
++    for key,rows in groups.items():
++        dataset,backbone,checkpoint,target,population,reconstruction,metric=key
++        common=dict(dataset=dataset,backbone=backbone,checkpoint_id=checkpoint,training_seed=0,metric_target=target,
++                    test_population=population,reconstruction_id=reconstruction,metric=metric)
++        full=[r for r in rows if r['method']=='full'];assert len(full)==110 and all(not r['sampling_seed'] for r in full)
++        full_values=[float(r['value']) for r in full if r['value']]
++        full_mean=float(np.mean(full_values)) if len(full_values)==110 else None
++        budget_rows.append(dict(**common,method='full',beta=None,budget_fraction=1.,cases=110,sampling_seeds=0,
++                                mean_error=full_mean,sampling_sd=None,full_error=full_mean,error_over_full=1. if full_mean else None,
++                                valid_records=len(full_values),status='complete' if len(full_values)==110 else 'nonfinite_metric_preserved'))
++        methods=sorted({r['method'] for r in rows if r['method']!='full'})
++        if not methods:continue
++        curves={}
++        for method in methods:
++            curves[method]={}
++            for seed in [0,1,2]:
++                values=[]
++                for budget in budgets:
++                    current=[r for r in rows if r['method']==method and r['sampling_seed']==str(seed) and float(r['budget_fraction'])==budget]
++                    assert len(current)==110 and len({r['case_id'] for r in current})==110
++                    numeric=[float(r['value']) for r in current if r['value']]
++                    values.append(float(np.mean(numeric)) if len(numeric)==110 else None)
++                curves[method][seed]=values
++            for j,budget in enumerate(budgets):
++                v=[curves[method][s][j] for s in [0,1,2]]
++                complete=all(x is not None and math.isfinite(x) for x in v)
++                m=float(np.mean(v)) if complete else None
++                budget_rows.append(dict(**common,method=method,beta=0. if method=='cpg_beta0' else None if method=='uniform' else 1.,
++                    budget_fraction=budget,cases=110,sampling_seeds=3,mean_error=m,
++                    sampling_sd=float(np.std(v,ddof=1)) if complete else None,full_error=full_mean,
++                    error_over_full=m/full_mean if m is not None and full_mean else None,
++                    valid_records=sum(110 for x in v if x is not None),status='complete' if complete else 'nonfinite_metric_preserved'))
++        for method in methods:
++            ratios=[]
++            for seed in [0,1,2]:
++                a=curves[method][seed];u=curves['uniform'][seed]
++                if any(v is None for v in a+u):ratios.append(None);continue
++                # Explicit trapezoidal weights for (.375,.5,.75), independently of root's aggregator.
++                area=.0625*a[0]+.1875*a[1]+.125*a[2]
++                denominator=.0625*u[0]+.1875*u[1]+.125*u[2]
++                if denominator<=0:raise ValueError('Uniform area must be positive')
++                ratios.append(area/denominator)
++            complete=all(x is not None for x in ratios)
++            area_rows.append(dict(**common,method=method,beta=0. if method=='cpg_beta0' else None if method=='uniform' else 1.,
++                                 mean_rauec=float(np.mean(ratios)) if complete else None,
++                                 sampling_sd=float(np.std(ratios,ddof=1)) if complete else None,
++                                 seed0=ratios[0],seed1=ratios[1],seed2=ratios[2],sampling_seeds=3,cases=110,
++                                 status='complete' if complete else 'nonfinite_metric_preserved'))
++        checks.append(dict(**common,methods=methods,full_records=len(full),nonfull_per_method=990,area_definition='per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD'))
++    csv_write(OUT/'results/backbone_budget_metrics.csv',budget_rows)
++    csv_write(OUT/'results/backbone_absolute_errors.csv',budget_rows)
++    csv_write(OUT/'results/backbone_rauec.csv',area_rows)
++    write(OUT/'results/statistical_checks.json',dict(groups=checks,source_files=sources,
++         full_excluded_from_rauec=True,sampling_seeds_not_training_replicates=True))
++    print('budget rows',len(budget_rows),'rAUEC rows',len(area_rows))
++
++
++def main():
++    import fcntl
++    with (OUT/'runtime/aggregation.lock').open('a') as lock:
++        fcntl.flock(lock,fcntl.LOCK_EX)
++        aggregate_unlocked()
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/audit_training_sampling.py
+@@ -0,0 +1,55 @@
++"""Replay the isolated sampling streams and verify against saved runtime RNG states."""
++from common import *
++import io,time
++
++
++def ensure_final():
++    """Run once after both real point-model training processes completed."""
++    import fcntl
++    if not all(read(OUT/f'checkpoints/{a}/manifest.json').get('execution_status')=='completed' for a in ['t3','linearno']):return
++    with (OUT/'runtime/final_sampling_audit.lock').open('a') as lock:
++        fcntl.flock(lock,fcntl.LOCK_EX)
++        path=OUT/'results/training_sampling_identity.json';old=read(path) if path.exists() else {}
++        if old.get('saved_runtime_rng_states') and len(old.get('checks',[]))==2 and all(r['checkpoint_steps']==113000 for r in old['checks']):return
++        main()
++
++
++def main():
++    snapshots={}
++    for arch in ['t3','linearno']:
++        path=OUT/f'checkpoints/{arch}/resume.pt'
++        payload=path.read_bytes();saved=torch.load(io.BytesIO(payload),map_location='cpu',weights_only=False)
++        snapshots[arch]=dict(epoch=saved['epoch'],steps=saved['steps'],point_rng=saved['point_rng'],
++                             order_rng=saved['order_rng'],checkpoint_path=str(path),checkpoint_snapshot_sha256=hashlib.sha256(payload).hexdigest())
++    train_ids=np.asarray(read(SPLITS)['training_ids']);point=np.random.default_rng(2001);order=np.random.default_rng(1001)
++    captures=[];states={};step=0;maximum=max(s['epoch'] for s in snapshots.values());mandatory=np.arange(50,171)*51
++    wanted_steps={0,1,2,112,113,114,225,226}
++    for s in snapshots.values():wanted_steps.update([s['steps']-3,s['steps']-2,s['steps']-1])
++    for epoch in range(maximum+1):
++        geometry_order=order.permutation(train_ids)
++        for lower in range(0,900,8):
++            count=int(point.integers(4508,11272));indices=point.permutation(11271)[:count]
++            if step in wanted_steps:
++                captures.append(dict(global_step_zero_based=step,epoch=epoch,batch=lower//8,point_count=count,
++                    geometry_ids=geometry_order[lower:lower+8].tolist(),selected_indices_sha256=hashlib.sha256(indices.astype(np.int64).tobytes()).hexdigest(),
++                    retained_surface_points=int(np.isin(indices,mandatory).sum())))
++            step+=1
++        if epoch in {s['epoch'] for s in snapshots.values()}:states[epoch]=dict(point_rng=point.bit_generator.state.copy(),order_rng=order.bit_generator.state.copy())
++    checks=[]
++    for arch,s in snapshots.items():
++        assert s['steps']==113*(s['epoch']+1)
++        expected=states[s['epoch']]
++        assert expected['point_rng']==s['point_rng'] and expected['order_rng']==s['order_rng']
++        checks.append(dict(architecture=arch,checkpoint_epoch=s['epoch'],checkpoint_steps=s['steps'],
++                           checkpoint_snapshot_sha256=s['checkpoint_snapshot_sha256'],point_rng_exact=True,geometry_order_rng_exact=True))
++    result=dict(passed=True,scope='replay independently seeded RNGs; verify their states against actual saved runtime checkpoints',
++                live_per_batch_capture=False,backbone_training_mandatory_surface=False,head_and_inference_mandatory_surface=121,
++                point_selection='uniform_without_replacement over all11271 points',index_dtype='int64',
++                both_primary_models_use_identical_sampling_code=True,code_source=str(OUT/'config/execution_sources/train.py'),
++                checks=checks,saved_runtime_rng_states=snapshots,replayed_batch_samples=captures)
++    write(OUT/'results/training_sampling_identity.json',result)
++    write(OUT/'config/factual_sampling_note.json',dict(backbone_training_mandatory_surface=False,head_and_inference_mandatory_surface=121,
++          action='documentation and RNG replay verification only; running training code unchanged',proof='results/training_sampling_identity.json'))
++    print(json.dumps(dict(passed=True,checks=checks,replayed_batches=len(captures)),indent=2))
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/benchmark.py
+@@ -0,0 +1,302 @@
++"""Same empty GPU, balanced old/new/backbone complete field timing and memory."""
++import os
++for _thread_variable in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
++    os.environ[_thread_variable]='4'
++from common import *
++import argparse,csv,gc,platform,subprocess,time,shutil
++from evaluate import attach_reconstruction,metrics
++from runtime import Runtime,configurations
++from request import Request
++
++api,gate=attach_reconstruction()
++from benchmark_core import run_group
++from timing_helper import isolated_memory,timed_request
++sys.path.append(str(CURRENT/'AdaSolver_official'))
++from inference_speed.gpu_monitor import ExclusiveGPU
++
++LABELS={'t3':'Transolver3','linearno':'LinearNO_point_temp','linearno_conv':'LinearNO_conv_temp_fullgrid'}
++SCOPES={'A':'A_cpu_cpu','B':'B_gpu_gpu','C':'C_cpu_cpu_cached_map'}
++CASES=[1001,1094,1198]
++CODE_SOURCE_BYTES={name:(OUT/'code'/name).read_bytes() for name in ['benchmark.py','benchmark_core.py','request.py','runtime.py','evaluate.py','common.py']}
++CODE_IDENTITIES={name:hashlib.sha256(value).hexdigest() for name,value in CODE_SOURCE_BYTES.items()}
++SOURCE_SNAPSHOT_ID=hashlib.sha256(json.dumps(CODE_IDENTITIES,sort_keys=True).encode()).hexdigest()
++
++
++def array_hash(array):return hashlib.sha256(np.ascontiguousarray(array).tobytes()).hexdigest()
++
++
++def preserve_previous(path):
++    if path.exists():
++        history=path.parent/'history';history.mkdir(exist_ok=True)
++        shutil.copyfile(path,history/f'{path.stem}.{time.time_ns()}{path.suffix}')
++
++
++def identity(request):
++    coarse_prediction_hash=None
++    if request.method in ['cpg','cpg_beta0']:
++        key=(request.sid,request.seed,len(request.last_coarse),None,request.config['operator_stage1_cache'])
++        coarse_prediction_hash=array_hash(request.runtime.coarse_cache[key][0])
++    return dict(selected_indices_hash=array_hash(np.asarray(request.last_indices,np.int64)),
++        coarse_indices_hash=None if request.last_coarse is None else array_hash(np.asarray(request.last_coarse,np.int64)),
++        compensation_hash=None if request.last_compensation is None else array_hash(request.last_compensation),
++        coarse_prediction_hash=coarse_prediction_hash)
++
++
++def metadata(request):
++    rt=request.runtime;method=request.method
++    return dict(dataset='airfoil2d',backbone=LABELS[rt.architecture],case_id=request.sid,method=method,
++        beta=None if request.config is None or method=='uniform' else request.config['beta'],
++        budget_fraction=request.budget,sampling_seed=request.seed,training_seed=0,head_seed=0 if method=='ca' else None,
++        checkpoint_id=rt.operator_hash,normalizer_id=rt.data.normalizer_sha256,
++        head_checkpoint_sha256=rt.head(request.config)[1] if method=='ca' else None,
++        implementation='full_shared' if method=='full' else request.implementation,scope=request.scope,
++        reconstruction_id=request.reconstruction_id,metric_target='field',test_population='published_cl_gt_0p02_110',
++        reconstruction_sha256=api.IMPLEMENTATION_SOURCE_SHA256,source_snapshot_id=SOURCE_SNAPSHOT_ID,
++        request_code_sha256=CODE_IDENTITIES['request.py'],runtime_code_sha256=CODE_IDENTITIES['runtime.py'],
++        benchmark_code_sha256=CODE_IDENTITIES['benchmark.py'],timing_core_sha256=CODE_IDENTITIES['benchmark_core.py'],
++        output_device='cuda' if request.scope=='B_gpu_gpu' else 'cpu',output_dtype='float64',
++        first_preparation='model/head loading and native kernel warmup separate; first request builds actual geometry/map',
++        reuse_assumption='same physical geometry and exact selected order; only interpolation map cached; coarse/score/selection rerun' if request.scope=='C_cpu_cpu_cached_map' else 'none')
++
++
++def reference_values():
++    result={}
++    for arch in LABELS:
++        completion=read(OUT/f'results/{arch}_complete_completion.json')
++        assert read(OUT/f'results/{arch}_accuracy_acceptance.json')['passed']
++        for name in completion['source_files']:
++            source=Path(name)
++            for line in source.open():
++                row=json.loads(line)
++                if row['case_id'] not in CASES:continue
++                result[(arch,row['case_id'],row['method'],row['sampling_seed'],row['budget_fraction'])]=(row,source.parent/row['arrays'])
++    return result
++
++
++def check_output(request,output,references):
++    if request.scope=='B_gpu_gpu':
++        assert torch.is_tensor(output) and output.dtype==torch.float64 and output.device.type=='cuda'
++        observed=output.cpu().numpy()
++    else:
++        assert isinstance(output,np.ndarray) and output.dtype==np.float64
++        observed=output
++    assert observed.shape==(11271,1) and np.isfinite(observed).all()
++    row,array_path=references[(request.runtime.architecture,request.sid,request.method,request.seed,request.budget)]
++    assert row['checkpoint_sha256']==request.runtime.operator_hash
++    assert row['normalizer_sha256']==request.runtime.data.normalizer_sha256
++    if request.method=='ca':assert row['head_sha256']==request.runtime.head(request.config)[1]
++    if request.method in ['cpg','cpg_beta0']:
++        assert identity(request)['coarse_prediction_hash']==row['coarse_prediction_hash']
++    with np.load(array_path) as arrays:
++        if request.method=='full':expected=arrays['field']
++        else:
++            assert np.array_equal(request.last_indices,arrays['indices'])
++            assert np.array_equal(np.asarray([] if request.last_coarse is None else request.last_coarse),arrays['coarse_indices'])
++            if request.method!='uniform':assert np.array_equal(request.last_compensation,arrays['compensation'])
++            expected=api.native_reconstruct('airfoil',arrays['indices'],arrays['prediction'],request.reference)
++    delta=np.abs(observed-expected);allowed=1e-6+1e-5*np.abs(expected)
++    if np.any(delta>allowed):raise RuntimeError('timed full field differs from accepted fixed prediction/index artifact')
++    rt=request.runtime;field_error=metrics(observed,request.coords,rt.data.target(request.sid).astype(np.float64))['field_relative_l2']
++    original=row['old' if request.implementation=='old' else 'new']['field_relative_l2']
++    if abs(field_error-original)>1e-8+1e-5*abs(original):raise RuntimeError('timed downstream field metric differs')
++    return dict(max_absolute_field_difference=float(delta.max()),relative_field_norm_difference=float(np.linalg.norm(delta)/np.linalg.norm(expected)),
++        field_error=field_error,reference_field_error=original,retained_points=len(request.last_indices),
++        cached_map_cpu_bytes=request.last_plan.cpu_bytes if request.last_plan is not None else 0,
++        cached_map_gpu_bytes=request.last_plan.device_bytes() if request.last_plan is not None else 0,
++        source_arrays=str(array_path),**identity(request))
++
++
++@torch.no_grad()
++def profile_request(request,repeats=5):
++    """Separate decomposition with nested rows; never substituted for direct time."""
++    rows=[]
++    def measure(label,fn,repeat):
++        value,ms=timed_request(fn);rows.append(dict(profile_repeat=repeat,component=label,ms=ms,timing_scope='separate instrumented pass'))
++        return value
++    if request.scope=='C_cpu_cpu_cached_map' and request.method!='full':
++        request.runtime.clear_dynamic();sampled=request._prepare_sampling(request.coords)
++        cold=measure('first_cache_map_build',lambda:api.build_plan('airfoil',request.reference,sampled[0].indices,
++            channels=1,device=request.runtime.device if request.implementation=='new' else None,profile=True),-1)
++        rows[-1].update(cache_cpu_bytes=cold.cpu_bytes,cache_gpu_bytes=cold.device_bytes(),
++            timing_scope='separate cold map build and transfer, not part of steady cached application')
++        del cold
++    for repeat in range(repeats):
++        rt=request.runtime;rt.clear_dynamic()
++        if request.method=='full':
++            pred=measure('full_forward_decode_input_transfer',lambda:request._prediction(np.arange(11271),None,request.coords),repeat)
++            measure('output_conversion_transfer',lambda:pred.to(torch.float64) if request.scope=='B_gpu_gpu' else pred.cpu().numpy().astype(np.float64),repeat)
++            rows.append(dict(profile_repeat=repeat,component='reconstruction_ms',ms=0.,timing_scope='separate instrumented pass'));continue
++        coords=request.coords
++        if request.scope=='B_gpu_gpu' and request.method!='uniform':coords=measure('geometry_d2h',lambda:request.gpu_coords.cpu().numpy(),repeat)
++        (sampling,coarse,_)=measure('sampling_with_acquisition',lambda:request._prepare_sampling(coords,instrumented=True),repeat)
++        for key in ['coarse_sampling_seconds','coarse_seconds','head_seconds','feature_seconds','refinement_seconds']:
++            rows.append(dict(profile_repeat=repeat,component='nested_'+key.replace('_seconds','_ms'),ms=float(sampling.metadata.get(key,0))*1000,
++                timing_scope='nested sampler profile, overlaps parent'))
++        comp=None if request.method=='uniform' else sampling.compensation
++        pred=measure('final_forward_decode_input_transfer_compensation',lambda:request._prediction(sampling.indices,comp,coords),repeat)
++        measure('reconstruction_complete_output',lambda:request._reconstruct(sampling.indices,pred),repeat)
++        if request.scope=='C_cpu_cpu_cached_map':
++            plan,hit=measure('cache_key_lookup',lambda:request.cache.get('airfoil',request.reference,sampling.indices,
++                geometry_identity=request.geometry_id,reconstruction_id=gate['new_id'],channels=1),repeat)
++            if request.implementation=='old':
++                cpu=measure('prediction_d2h',lambda:pred.cpu().numpy(),repeat)
++                measure('cached_sparse_apply',lambda:plan.apply_numpy(cpu),repeat)
++            else:
++                field=measure('cached_sparse_apply',lambda:plan.apply_tensor(pred),repeat)
++                measure('field_d2h',lambda:field.cpu().numpy(),repeat)
++            rows.append(dict(profile_repeat=repeat,component='cache_hit',ms=None,cache_hit=hit,timing_scope='cache metadata'))
++        elif request.implementation=='old':
++            cpu=measure('prediction_d2h',lambda:pred.cpu().numpy(),repeat)
++            field=measure('native_build_query_weights_apply',lambda:api.native_reconstruct('airfoil',sampling.indices,cpu,request.reference),repeat)
++            if request.scope=='B_gpu_gpu':measure('field_h2d',lambda:torch.as_tensor(field,device=rt.device),repeat)
++        else:
++            plan=measure('new_plan_build_and_upload',lambda:api.build_plan('airfoil',request.reference,sampling.indices,
++                channels=1,device=rt.device,profile=True),repeat)
++            rows.append(dict(profile_repeat=repeat,component='coordinate_index_prepare',ms=plan.timings['coordinate_index_prepare_ms'],timing_scope='nested plan profile'))
++            for mapping in plan.timings['maps']:
++                for key,value in mapping.items():
++                    if key.endswith('_ms'):rows.append(dict(profile_repeat=repeat,component='nested_'+key,ms=value,timing_scope='nested plan profile'))
++            rows.append(dict(profile_repeat=repeat,component='map_h2d',ms=plan.timings['map_h2d_ms'],timing_scope='nested plan profile'))
++            field=measure('gpu_sparse_apply',lambda:plan.apply_tensor(pred),repeat)
++            if request.scope=='A_cpu_cpu':measure('field_d2h',lambda:field.cpu().numpy(),repeat)
++    return rows
++
++
++@torch.no_grad()
++def cuda_warmup(runtime):
++    start=time.perf_counter();coords=runtime.data.coords(read(SPLITS)['training_ids'][0])
++    for count in ([11271] if runtime.architecture=='linearno_conv' else [1127,4227,5636,8453,11271]):
++        pos=torch.as_tensor(coords[:count],device=runtime.device)[None]
++        for _ in range(5):runtime.model(pos,pos)
++    if runtime.architecture!='linearno_conv':
++        cfg=next(c for c in configurations(runtime.architecture) if c['name']=='ca');head=runtime.head(cfg)[0]
++        pos=torch.as_tensor(coords[:1127],device=runtime.device)[None]
++        for _ in range(5):head.forward_with_cache(pos,pos)
++    torch.cuda.synchronize();runtime.clear_dynamic();return time.perf_counter()-start
++
++
++@torch.no_grad()
++def reconstruction_warmup(runtime):
++    """Warm libraries on discarded training-case maps; no timing-case map survives."""
++    sid=read(SPLITS)['training_ids'][0];coords=runtime.data.coords(sid)
++    indices=np.random.default_rng(20261114).choice(11271,4227,replace=False)
++    pos=torch.as_tensor(coords[indices],device=runtime.device)[None]
++    prediction=runtime.data.decode(runtime.model(pos,pos))[0]
++    torch.cuda.synchronize();start=time.perf_counter()
++    for _ in range(3):
++        api.native_reconstruct('airfoil',indices,prediction.cpu().numpy(),runtime.reference)
++        plan=api.build_plan('airfoil',runtime.reference,indices,channels=1)
++        output=plan.apply_tensor(prediction).cpu().numpy()
++        del output,plan
++    torch.cuda.synchronize();return time.perf_counter()-start
++
++
++def paired(gpu):
++    folder=OUT/'timing';folder.mkdir(exist_ok=True);references=reference_values()
++    for name in ['gpu_telemetry.json','setup.json','scheduled_order.json']:preserve_previous(folder/name)
++    with ExclusiveGPU(gpu,folder/'gpu_telemetry.json',interval=1.) as monitor:
++        start=time.perf_counter();models=[Runtime(arch) for arch in LABELS]
++        loading_seconds=time.perf_counter()-start;head_loading={}
++        for runtime in models[:2]:
++            start=time.perf_counter();runtime.head(next(c for c in configurations(runtime.architecture) if c['name']=='ca'))
++            head_loading[runtime.architecture]=time.perf_counter()-start
++        setup=dict(physical_gpu=gpu,model_loading_seconds=loading_seconds,head_loading_seconds=head_loading,
++            kernel_warmup_seconds={r.architecture:cuda_warmup(r) for r in models},
++            reconstruction_warmup_including_discarded_training_maps_seconds=reconstruction_warmup(models[0]),
++            warmup_map_policy='three old/new warmups on an unused training geometry/set; all maps discarded; actual request maps built inside request',
++            torch_version=torch.__version__,cuda=torch.version.cuda,python=platform.python_version(),
++            cpu_threads=torch.get_num_threads(),cpu_affinity=sorted(os.sched_getaffinity(0)),gpu_name=torch.cuda.get_device_name(0),
++            gpu_compute_capability=torch.cuda.get_device_capability(0),network_dtype='float32',tf32=False,
++            reconstruction_version=api.IMPLEMENTATION_VERSION,reconstruction_sha256=api.IMPLEMENTATION_SOURCE_SHA256,
++            sources=CODE_IDENTITIES,source_snapshot_id=SOURCE_SNAPSHOT_ID,
++            timing_helper_sha256=sha(Path(gate['module']).parent/'timing_helper.py'),environment=environment(gpu))
++        write(folder/'setup.json',setup)
++        snapshot=folder/'sources'/SOURCE_SNAPSHOT_ID;snapshot.mkdir(parents=True,exist_ok=True)
++        for name,value in CODE_SOURCE_BYTES.items():(snapshot/name).write_bytes(value)
++        configs={r.architecture:{c['name']:c for c in configurations(r.architecture)} for r in models[:2]}
++        jobs=[]
++        for scope in SCOPES.values():
++            for sid in CASES:
++                jobs.append((scope,sid,'full',1.,None))
++                jobs.extend((scope,sid,method,budget,seed) for budget in [.375,.5,.75] for seed in [0,1,2] for method in ['uniform','pi','cpg','ca'])
++        order=np.random.default_rng(20261114).permutation(len(jobs)).tolist()
++        write(folder/'scheduled_order.json',dict(seed=20261114,groups=[jobs[i] for i in order],
++            rule='randomized group order; within group balanced cyclic old/new and backbone ordering'))
++        for sequence,i in enumerate(order):
++            scope,sid,method,budget,seed=jobs[i]
++            if method=='full':
++                requests={LABELS[r.architecture]:Request(r,api,gate,sid,None,1.,None,'new',scope) for r in models}
++                group=f'{scope}_case{sid}_full'
++            else:
++                requests={LABELS[r.architecture]+'_'+mode:Request(r,api,gate,sid,seed,budget,configs[r.architecture][method],mode,scope)
++                          for r in models[:2] for mode in ['old','new']}
++                group=f'{scope}_case{sid}_{method}_s{seed}_b{budget:.3f}'
++            run_group(folder/'groups',group,requests,{name:metadata(r) for name,r in requests.items()},scope=scope,
++                check_output=lambda name,out:check_output(requests[name],out,references),identity_of=lambda name,r:identity(r),
++                guard=monitor.assert_exclusive,extra_profiles=lambda reqs:{name:profile_request(r) for name,r in reqs.items()})
++            write(folder/'progress.json',dict(completed_groups=sequence+1,expected_groups=333,last_group=group))
++            print('completed',sequence+1,len(order),group,flush=True)
++            del requests;gc.collect();torch.cuda.empty_cache()
++    write(folder/'paired_complete.json',dict(execution_status='completed',groups=333,physical_conditions=1323,
++        formal_repeats=132300,warmups=26460,Full_alias='old/new views share one actual Full series per scope; conv has Full only'))
++
++
++def memory(gpu,architecture,method):
++    folder=OUT/'timing/memory';folder.mkdir(parents=True,exist_ok=True);key=architecture+'_'+method;path=folder/(key+'.json')
++    if path.exists():
++        if read(path).get('execution_status')=='completed':return
++        raise FileExistsError(path)
++    references=reference_values();rows=[]
++    preserve_previous(folder/(key+'_gpu.json'))
++    with ExclusiveGPU(gpu,folder/(key+'_gpu.json'),interval=1.) as monitor:
++        runtime=Runtime(architecture)
++        cfg=None if method=='full' else next(c for c in configurations(architecture) if c['name']==method)
++        if method=='ca':runtime.head(cfg)
++        for scope in SCOPES.values():
++            for sid in CASES:
++                for budget in ([1.] if method=='full' else [.375,.5,.75]):
++                    for seed in ([None] if method=='full' else [0,1,2]):
++                        for mode in (['new'] if method=='full' else ['old','new']):
++                            request=Request(runtime,api,gate,sid,seed,budget,cfg,mode,scope)
++                            request.collect_memory=True
++                            gc.collect();torch.cuda.empty_cache();torch.cuda.synchronize();torch.cuda.reset_peak_memory_stats()
++                            first=request();torch.cuda.synchronize()
++                            cold=dict(first_request_peak_cuda_allocated_bytes=torch.cuda.max_memory_allocated(),
++                                first_request_peak_cuda_reserved_bytes=torch.cuda.max_memory_reserved())
++                            check_output(request,first,references);del first;monitor.assert_exclusive()
++                            def sample():
++                                state=monitor.snapshot();return dict(device_used_MiB=state['gpu']['memory.used'],processes=state['processes'])
++                            measured=isolated_memory(request,warmups=2,repeats=2,nvml_post_sample=sample)
++                            rows.append(dict(**metadata(request),**measured,**cold,
++                                reconstruction_map_cpu_bytes=request.last_map_cpu_bytes,reconstruction_map_gpu_bytes=request.last_map_gpu_bytes,
++                                cached_map_cpu_bytes=request.last_map_cpu_bytes if scope.startswith('C_') else 0,
++                                cached_map_gpu_bytes=request.last_map_gpu_bytes if scope.startswith('C_') else 0,cache_hit=request.last_cache_hit,
++                                map_byte_scope='numerical neighbor/weight/denominator/exact-slot/target-row arrays; Python and shared reference metadata excluded'))
++                            del request;gc.collect();torch.cuda.empty_cache();monitor.assert_exclusive()
++                print('memory',key,scope,sid,flush=True)
++    write(path,dict(execution_status='completed',architecture=architecture,method=method,rows=rows,
++        scope='independent architecture/method process; PyTorch allocator peaks and synchronized NVML observations; external transient peaks not certified'))
++
++
++def environment(gpu):
++    import scipy
++    def command(args):
++        result=subprocess.run(args,capture_output=True,text=True);return result.stdout.strip() if result.returncode==0 else result.stderr.strip()
++    return dict(python=platform.python_version(),torch=torch.__version__,scipy=scipy.__version__,numpy=np.__version__,
++        cuda=torch.version.cuda,cudnn=torch.backends.cudnn.version(),gpu_index=gpu,
++        gpu=command(['nvidia-smi','-i',str(gpu),'--query-gpu=uuid,name,driver_version,memory.total','--format=csv']),
++        cpu=command(['lscpu']),cpu_affinity=sorted(os.sched_getaffinity(0)),cpu_threads=torch.get_num_threads(),
++        thread_environment={k:os.environ.get(k) for k in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']},
++        cpu_load_average=os.getloadavg(),processes=command(['ps','-eo','pid,psr,pcpu,pmem,comm','--sort=-pcpu']),
++        fp32_network=True,tf32=False,mode='native_eager',memory_statistics='independent per-model/method process')
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--phase',choices=['paired','memory'],required=True);p.add_argument('--gpu',type=int,required=True)
++    p.add_argument('--architecture',choices=list(LABELS),default='t3');p.add_argument('--method',default='full');a=p.parse_args()
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    if a.phase=='paired':paired(a.gpu)
++    else:memory(a.gpu,a.architecture,a.method)
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/benchmark_core.py
+@@ -0,0 +1,62 @@
++"""Durable direct timing; separate profiles cannot discard completed repeats."""
++from __future__ import annotations
++import hashlib,json,os,time,traceback
++from pathlib import Path
++from timing_helper import measure_paired
++
++
++def save(path,record):
++    temp=path.with_name(path.name+f'.{os.getpid()}.tmp');temp.write_text(json.dumps(record,indent=2)+'\n');temp.replace(path)
++
++
++def run_group(directory,group_id,requests,metadata,*,scope,check_output,identity_of,guard=None,extra_profiles=None):
++    directory=Path(directory);directory.mkdir(parents=True,exist_ok=True);destination=directory/(group_id+'.json')
++    result=json.loads(destination.read_text()) if destination.exists() else None
++    resumed=result is not None
++    if result and result.get('execution_status')!='completed':raise FileExistsError('incomplete direct timing must be explicitly recovered')
++    if result:
++        for name,meta in metadata.items():
++            for field in ['checkpoint_id','normalizer_id','reconstruction_id','request_code_sha256','runtime_code_sha256','reconstruction_sha256']:
++                if result['metadata'][name][field]!=meta[field]:raise RuntimeError(f'resumed timing identity changed: {name} {field}')
++    if result and result.get('profiles_status')=='completed':return result
++    first_identity={};identity_rows=[]
++    if result is None:
++        def check(name,output):
++            first_identity[name]=identity_of(name,requests[name])
++            return check_output(name,output)
++        def progress(kind,current,total):
++            for name,request in requests.items():
++                identity=identity_of(name,request)
++                if identity!=first_identity[name]:raise RuntimeError('point/weight identity changed within fixed-seed condition')
++                identity_rows.append(dict(condition=name,kind=kind,repeat_id=current-1,**identity))
++            save(directory/'heartbeat.json',dict(group=group_id,kind=kind,completed=current,total=total,time=time.time()))
++        seed=int.from_bytes(hashlib.sha256(group_id.encode()).digest()[:4],'little')
++        started_at=time.time()
++        try:
++            result=measure_paired(requests,scope=scope,warmups=20,repeats=100,order_seed=seed,
++                check_output=check,guard=guard,progress=progress)
++        except Exception as exc:
++            failures=directory.parent/'failures';failures.mkdir(exist_ok=True)
++            save(failures/f'{group_id}.{time.time_ns()}.json',dict(execution_status='failed',group_id=group_id,
++                metadata=metadata,error=str(exc),traceback=traceback.format_exc(),identities_observed=identity_rows,
++                started_at_epoch=started_at,failed_at_epoch=time.time(),scope='failed group is excluded from accepted timing'))
++            raise
++        result.update(execution_status='completed',group_id=group_id,metadata=metadata,identities=identity_rows,
++            verification='first complete field and every timed selected/coarse index and weight identity match accepted accuracy',profiles_status='pending',
++            measurement_started_at_epoch=started_at,measurement_finished_at_epoch=time.time())
++        save(destination,result)
++    if extra_profiles:
++        try:
++            if guard:guard()
++            if resumed:
++                for name,request in requests.items():check_output(name,request())
++            result['profiles']=extra_profiles(requests);result['profiles_status']='completed'
++            result['profile_metadata']=metadata
++            if guard:guard()
++        except Exception as exc:
++            result['profiles_status']='failed';result['profile_error']=dict(error=str(exc),traceback=traceback.format_exc())
++            failures=directory.parent/'failures';failures.mkdir(exist_ok=True)
++            save(failures/f'{group_id}.profile.{time.time_ns()}.json',dict(group_id=group_id,stage='profiles',**result['profile_error']))
++            save(destination,result);raise
++    else:result['profiles_status']='not_requested'
++    save(destination,result);return result
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/common.py
+@@ -0,0 +1,137 @@
++"""Airfoil pressure data and the two explicitly identified native backbones."""
++from __future__ import annotations
++import importlib.util
++import json
++import os
++from pathlib import Path
++import sys
++import types
++import hashlib
++import numpy as np
++import torch
++from torch import nn
++from einops import rearrange
++
++OUT=Path(__file__).resolve().parents[1]
++CURRENT=OUT.parents[2]
++DATA=Path('/mnt/ai-material-data/shuaibinqu/NACA/data/naca')
++SPLITS=OUT.parent/'split_manifest.json'
++sys.path[:0]=[str(OUT/'code/vendor'),str(OUT/'code/vendor/linearno_standard')]
++from adasolver.models.adapter import Transolver3Adapter
++from adasolver.layers import install_compensation as install_t3_compensation
++from adasolver.metrics.field import relative_l2
++
++OFFICIAL_PATH=OUT/'code/vendor/linearno_standard/model/LinearAttnNeuralOperator.py'
++spec=importlib.util.spec_from_file_location('airfoil_official_linearno',OFFICIAL_PATH)
++official=importlib.util.module_from_spec(spec);sys.modules[spec.name]=official;spec.loader.exec_module(official)
++
++
++def read(path):return json.loads(Path(path).read_text())
++
++
++def write(path,data):
++    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
++    temp=path.with_name(path.name+f'.{os.getpid()}.tmp')
++    temp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');temp.replace(path)
++
++
++def sha(path):
++    h=hashlib.sha256()
++    with Path(path).open('rb') as f:
++        for block in iter(lambda:f.read(8*1024*1024),b''):h.update(block)
++    return h.hexdigest()
++
++
++class LinearNOAdapter(nn.Module):
++    def __init__(self,variant='temp'):
++        super().__init__();self.variant=variant
++        self.net=official.LinearAttentionNeuralOperator(
++            space_dim=2,fun_dim=0,out_dim=1,n_hidden=128,n_layers=8,n_head=8,
++            mlp_ratio=1,key_ratio=64,dropout=0.,Time_Input=False,unified_pos=False,
++            H=221,W=51,args=types.SimpleNamespace(model=variant))
++
++    def forward(self,pos,fx=None):
++        return self.net(pos,None)
++
++
++def build_model(architecture):
++    if architecture=='t3':
++        return Transolver3Adapter(space_dim=2,fun_dim=2,out_dim=1,hidden_dim=128,
++                                 layers=8,heads=8,mlp_ratio=2,slices=64)
++    if architecture=='linearno':return LinearNOAdapter('temp')
++    if architecture=='linearno_conv':return LinearNOAdapter('conv_temp')
++    raise ValueError(architecture)
++
++
++def feature0(model,pos):
++    inputs=pos if isinstance(model,LinearNOAdapter) else torch.cat((pos,pos),dim=-1)
++    hidden=model.net.preprocess(inputs)+model.net.placeholder[None,None,:]
++    return model.net.blocks[0](hidden)
++
++
++class LinearContext:
++    def __init__(self):self.weights=None;self.log_weights=None
++    def clear(self):self.weights=None;self.log_weights=None
++    def set(self,weights):
++        self.weights=weights;self.log_weights=None if weights is None else weights.log()
++
++
++def compensated_linear_forward(self,x):
++    context=self._followup_context
++    if context.weights is None:return self._native_forward(x)
++    mid=rearrange(self.in_project_x(x),'b n (h d) -> b h n d',h=self.heads,d=self.dim_head)
++    q,k,v=self.to_q(mid),self.to_k(mid),self.to_v(mid)
++    if hasattr(self,'temperature_q'):
++        q=q/torch.clamp(self.temperature_q,min=.01,max=1)
++        k=k/torch.clamp(self.temperature_k,min=.01,max=1)
++    lw=context.log_weights.to(x)
++    if lw.ndim==1:lw=lw[None,None,:,None]
++    elif lw.ndim==2:lw=lw[:,None,:,None]
++    else:raise ValueError('correction must be [N] or [B,N]')
++    q=torch.softmax(q,dim=-1);k=torch.softmax(k+lw,dim=-2)
++    kv=torch.einsum('bhnd,bhnc->bhdc',k,v)
++    out=torch.einsum('bhnd,bhdc->bhnc',q,kv)
++    return self.to_out(rearrange(out,'b h n d -> b n (h d)'))
++
++
++def install_compensation(model):
++    if not isinstance(model,LinearNOAdapter):return install_t3_compensation(model)
++    if model.variant!='temp':raise ValueError('variable-point correction is limited to the official point-temp model')
++    context=LinearContext();count=0
++    for m in model.modules():
++        if isinstance(m,official.LinearNO_temp):
++            m._followup_context=context;m._native_forward=m.forward
++            m.forward=types.MethodType(compensated_linear_forward,m);count+=1
++    assert count==8
++    return context,count
++
++
++class Data:
++    def __init__(self):
++        self.splits=read(SPLITS)
++        self.pos=np.load(OUT/'cache/coords_trainpool.npy',mmap_mode='r')
++        self.pressure=np.load(OUT/'cache/pressure_trainpool.npy',mmap_mode='r')
++        normalizer=np.load(OUT/'cache/normalizer.npz');self.mean=np.float32(normalizer['mean'].item());self.std=np.float32(normalizer['std'].item())
++        self.normalizer_path=OUT/'cache/normalizer.npz'
++        self.x=self.y=self.q=None
++
++    def sample(self,sid):
++        if sid<1000:return np.array(self.pos[sid]),np.array(self.pressure[sid])
++        if self.x is None:
++            self.x=np.load(DATA/'NACA_Cylinder_X.npy',mmap_mode='r');self.y=np.load(DATA/'NACA_Cylinder_Y.npy',mmap_mode='r');self.q=np.load(DATA/'NACA_Cylinder_Q.npy',mmap_mode='r')
++        pos=np.stack((self.x[sid],self.y[sid]),axis=-1).reshape(-1,2).astype(np.float32)
++        pressure=np.asarray(self.q[sid,3],dtype=np.float32).reshape(-1,1)
++        return pos,pressure
++
++    def decode(self,pred):
++        return pred*self.std+self.mean
++
++
++def load_model(architecture,device='cuda:0'):
++    m=read(OUT/f'checkpoints/{architecture}/manifest.json')
++    assert m['execution_status']=='completed'
++    assert sha(m['checkpoint'])==m['checkpoint_sha256']
++    assert sha(m['normalizer'])==m['normalizer_sha256']
++    model=build_model(architecture).to(device)
++    model.load_state_dict(torch.load(m['checkpoint'],map_location=device,weights_only=True))
++    return model.requires_grad_(False).eval(),m
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/evaluate.py
+@@ -0,0 +1,198 @@
++"""Paired old/new reconstruction from fixed predictions; no test-based selection."""
++from runtime import *
++import argparse,time,math,csv,shutil
++from adasolver.evaluation.airfoil2d import force_record,pressure_surface_force
++
++EVALUATION_SOURCE_BYTES={name:(OUT/'code'/name).read_bytes() for name in ['evaluate.py','runtime.py','common.py']}
++EVALUATION_SOURCE_HASHES={name:hashlib.sha256(value).hexdigest() for name,value in EVALUATION_SOURCE_BYTES.items()}
++
++
++def attach_reconstruction():
++    gate=read(OUT/'config/evaluation_gate.json')
++    if not gate.get('accepted'):raise RuntimeError('No accepted reconstruction gate')
++    path=Path(gate['module']);assert sha(path)==gate['module_sha256']
++    sys.path.insert(0,str(path.parent))
++    import reconstruct_api
++    if reconstruct_api.IMPLEMENTATION_VERSION!='1.1':raise RuntimeError('Unexpected loaded reconstruction version')
++    if reconstruct_api.IMPLEMENTATION_SOURCE_SHA256!=gate['module_sha256']:raise RuntimeError('Loaded reconstruction source differs from gate')
++    snapshot=OUT/'config/reconstruction_sources'/gate['module_sha256'];snapshot.mkdir(parents=True,exist_ok=True)
++    sources={}
++    for name in ['reconstruct_api.py','native_grid_reference.py','native_car_reference.py','timing_helper.py']:
++        original=path.parent/name;target=snapshot/name
++        if target.exists() and sha(target)!=sha(original):raise RuntimeError('Frozen reconstruction dependency changed')
++        if not target.exists():shutil.copyfile(original,target)
++        sources[name]=dict(source=str(original),snapshot=str(target),sha256=sha(target))
++    write(snapshot/'manifest.json',dict(implementation_version=reconstruct_api.IMPLEMENTATION_VERSION,
++          actual_loaded_module=str(Path(reconstruct_api.__file__).resolve()),sources=sources))
++    return reconstruct_api,gate
++
++
++def metrics(field,coords,truth):
++    value=np.asarray(field,dtype=np.float64)
++    rel=float(np.linalg.norm(value-truth)/np.linalg.norm(truth))
++    true=force_record(pressure_surface_force(coords,truth));pred=force_record(pressure_surface_force(coords,value))
++    ratio=None if pred['Cd_over_Cl'] is None or true['Cd_over_Cl'] is None else abs(pred['Cd_over_Cl']-true['Cd_over_Cl'])
++    return dict(field_relative_l2=rel,cd_abs_error=abs(pred['Cd']-true['Cd']),cl_abs_error=abs(pred['Cl']-true['Cl']),
++                cdcl_abs_error=ratio,prediction=pred,truth=true)
++
++
++def compare_pair(old,new,coords,truth):
++    delta=np.abs(new-old);bound=1e-6+1e-5*np.abs(old)
++    old_metrics,new_metrics=metrics(old,coords,truth),metrics(new,coords,truth)
++    d={k:None if old_metrics[k] is None or new_metrics[k] is None else abs(old_metrics[k]-new_metrics[k])
++       for k in ['field_relative_l2','cd_abs_error','cl_abs_error','cdcl_abs_error']}
++    valid=int(np.count_nonzero(delta>bound))==0
++    for k,v in d.items():
++        if v is None:valid &= old_metrics[k] is None and new_metrics[k] is None
++        else:valid &= v<=1e-8+1e-5*abs(old_metrics[k])
++    return dict(max_abs=float(delta.max()),relative_norm=float(np.linalg.norm(delta)/max(np.linalg.norm(old),1e-300)),
++                abs_quantiles=np.quantile(delta,[.5,.9,.99,1.]).tolist(),elementwise_violations=int(np.count_nonzero(delta>bound)),
++                metric_differences=d,passed=bool(valid)),old_metrics,new_metrics
++
++
++def evaluate_group(runtime,api,gate,ids,configs,stage,validation=False,with_full=True):
++    dest=OUT/'records'/runtime.architecture/stage;dest.mkdir(parents=True,exist_ok=True)
++    status_path=dest/'manifest.json'
++    if status_path.exists() and read(status_path).get('execution_status')=='completed':return read(status_path)
++    if (dest/'metrics.jsonl').exists():raise FileExistsError('Partial run must be explicitly resumed/repaired')
++    state=dict(architecture=runtime.architecture,execution_status='running',evidence_status='pending',stage=stage,
++               checkpoint=runtime.metadata['checkpoint'],checkpoint_sha256=runtime.operator_hash,
++               normalizer_sha256=runtime.data.normalizer_sha256,sample_ids=ids,sampling_seeds=[0,1,2],
++               budgets=[.375,.5,.75],reconstruction_gate=gate,metric_target='field',force_metrics='field-target diagnostics only',
++               expected_requests=len(ids)*(int(with_full)+9*len(configs)),configurations=configs,with_full=with_full,
++               evaluation_sources=EVALUATION_SOURCE_HASHES)
++    code_snapshot=dest/'sources';code_snapshot.mkdir(exist_ok=True)
++    for name,value in EVALUATION_SOURCE_BYTES.items():(code_snapshot/name).write_bytes(value)
++    write(status_path,state);count=0;violations=[];pair_checks=[];start=time.perf_counter()
++    with (dest/'metrics.jsonl').open('x') as stream:
++        for index,sid in enumerate(ids,1):
++            runtime.clear_dynamic();coords=runtime.data.coords(sid);truth=runtime.data.target(sid).astype(np.float64)
++            if with_full:
++                full=runtime.predict_full(sid).cpu().numpy().astype(np.float64)
++                full_metrics=metrics(full,coords,truth)
++                full_array=f'case{sid}_full.npz';np.savez_compressed(dest/full_array,field=full)
++                stream.write(json.dumps(dict(case_id=sid,method='full',sampling_seed=None,budget_fraction=1.,retained_points=11271,
++                        reconstruction_id='full_native_identity_float64',old=full_metrics,new=full_metrics,
++                        checkpoint_sha256=runtime.operator_hash,normalizer_sha256=runtime.data.normalizer_sha256,arrays=full_array),allow_nan=False)+'\n');count+=1
++            pairs={}
++            for seed in [0,1,2]:
++                for budget in [.375,.5,.75]:
++                    for cfg in configs:
++                        pred,sampling,coarse,metadata=runtime.predict_subset(sid,seed,budget,cfg)
++                        indices=sampling.indices;prediction=pred.cpu().numpy()
++                        old=api.native_reconstruct('airfoil',indices,prediction,runtime.reference)
++                        plan=api.build_plan('airfoil',runtime.reference,indices,channels=1,device=runtime.device)
++                        new=plan.apply_tensor(pred).cpu().numpy()
++                        agreement,old_metric,new_metric=compare_pair(old,new,coords,truth)
++                        name=cfg['name'];key=(seed,budget)
++                        ih=hashlib.sha256(indices.astype(np.int64).tobytes()).hexdigest()
++                        ch=None if coarse is None else hashlib.sha256(coarse.astype(np.int64).tobytes()).hexdigest()
++                        if name=='cpg_beta0':pairs[key]=(ih,ch,metadata['coarse_prediction_hash'])
++                        elif name=='cpg':
++                            equal=pairs[key]==(ih,ch,metadata['coarse_prediction_hash']);assert equal
++                            pair_checks.append(dict(case_id=sid,seed=seed,budget=budget,coarse_and_final_identical=True))
++                        if not agreement['passed']:violations.append(dict(case_id=sid,method=name,seed=seed,budget=budget,agreement=agreement))
++                        array_name=f'case{sid}_s{seed}_b{budget}_{name}.npz'
++                        arrays=dict(indices=indices,coarse_indices=np.asarray([] if coarse is None else coarse),
++                                    compensation=sampling.compensation,prediction=prediction)
++                        if validation:arrays.update(old_field=old,new_field=new,absolute_difference=np.abs(new-old))
++                        np.savez_compressed(dest/array_name,**arrays)
++                        row=dict(case_id=sid,method=name,method_family=cfg['method'],beta=None if name=='uniform' else cfg['beta'],
++                                 sampling_seed=seed,budget_fraction=budget,retained_points=len(indices),coarse_points=0 if coarse is None else len(coarse),
++                                 indices_hash=ih,coarse_indices_hash=ch,coarse_prediction_hash=metadata.get('coarse_prediction_hash'),
++                                 checkpoint_sha256=runtime.operator_hash,normalizer_sha256=runtime.data.normalizer_sha256,
++                                 head_sha256=metadata.get('head_sha256'),
++                                 old_reconstruction_id=gate['old_id'],new_reconstruction_id=gate['new_id'],
++                                 old=old_metric,new=new_metric,agreement=agreement,arrays=array_name)
++                        stream.write(json.dumps(row,allow_nan=False)+'\n');count+=1
++            stream.flush();state.update(completed_cases=index,completed_requests=count,elapsed_seconds=time.perf_counter()-start);write(status_path,state)
++            print(stage,runtime.architecture,index,'/',len(ids),count,'requests',flush=True)
++            if validation and violations:break
++    state.update(execution_status='completed' if count==state['expected_requests'] and not violations else 'failed',
++                 evidence_status='pending',completed_requests=count,equivalence_violations=violations,
++                 paired_beta_groups=len(pair_checks),elapsed_seconds=time.perf_counter()-start)
++    write(dest/'beta_pair_checks.json',pair_checks);write(status_path,state)
++    if violations:raise RuntimeError(f'{len(violations)} reconstruction equivalence failures; not relaxing tolerance')
++    return state
++
++
++def export_metrics(architecture,gate,sources,phase):
++    rows=[];seen=set()
++    fields=['dataset','backbone','checkpoint_id','training_seed','head_seed','sampling_seed','method','beta',
++            'budget_fraction','case_id','metric_target','test_population','reconstruction_id','metric','value','unit',
++            'status','selected_indices_hash','coarse_indices_hash','coarse_prediction_hash','retained_points',
++            'normalizer_sha256','head_sha256','full_alias','source_file']
++    label={'t3':'Transolver3','linearno':'LinearNO_point_temp','linearno_conv':'LinearNO_conv_temp_fullgrid'}[architecture]
++    for source in sources:
++        for line in source.open():
++            record=json.loads(line)
++            key=(record['case_id'],record['method'],record['sampling_seed'],record['budget_fraction'])
++            if key in seen:raise ValueError('duplicate actual prediction request')
++            seen.add(key)
++            for variant,rid in [('old',gate['old_id']),('new',gate['new_id'])]:
++                for metric in ['field_relative_l2','cd_abs_error','cl_abs_error','cdcl_abs_error']:
++                    value=record[variant][metric]
++                    rows.append(dict(dataset='airfoil2d',backbone=label,checkpoint_id=record['checkpoint_sha256'],
++                        training_seed=0,head_seed=0 if record['method']=='ca' else None,sampling_seed=record['sampling_seed'],
++                        method=record['method'],beta=record.get('beta'),budget_fraction=record['budget_fraction'],
++                        case_id=record['case_id'],metric_target='field',test_population='published_cl_gt_0p02_110',
++                        reconstruction_id=rid,metric=metric,value=value,
++                        unit='ratio' if metric=='field_relative_l2' else 'coefficient_ratio' if metric=='cdcl_abs_error' else 'coefficient',
++                        status='ok' if value is not None else 'nonfinite_metric_preserved',
++                        selected_indices_hash=record.get('indices_hash',hashlib.sha256(np.arange(11271,dtype=np.int64).tobytes()).hexdigest()),
++                        coarse_indices_hash=record.get('coarse_indices_hash'),coarse_prediction_hash=record.get('coarse_prediction_hash'),
++                        retained_points=record['retained_points'],normalizer_sha256=record['normalizer_sha256'],
++                        head_sha256=record.get('head_sha256'),
++                        full_alias=record['method']=='full' and variant=='new',source_file=str(source)))
++    target=OUT/f'records/{architecture}/metrics_{phase}.csv'
++    temporary=target.with_name(target.name+f'.{os.getpid()}.tmp')
++    with temporary.open('w',newline='') as f:w=csv.DictWriter(f,fields);w.writeheader();w.writerows(rows)
++    if target.exists():
++        if target.read_bytes()!=temporary.read_bytes():raise FileExistsError(f'Immutable phase CSV differs: {target}')
++        temporary.unlink()
++    else:temporary.replace(target)
++    compatibility=OUT/f'records/{architecture}/metrics.csv'
++    temporary=compatibility.with_name(compatibility.name+f'.{os.getpid()}.tmp');shutil.copyfile(target,temporary);temporary.replace(compatibility)
++    return dict(actual_unique_prediction_requests=len(seen),metric_rows=len(rows),metrics_csv=str(target),
++                metrics_sha256=sha(target),compatibility_metrics_csv=str(compatibility),export_phase=phase,
++                source_files=[str(p) for p in sources],full_computed_once_per_case=True)
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--architecture',choices=['t3','linearno','linearno_conv'],required=True)
++    p.add_argument('--phase',choices=['preliminary','complete'],default='complete');a=p.parse_args()
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    import update_registry
++    update_registry.main()
++    assert read(OUT/f'results/{a.architecture}_identity_validation.json')['passed']
++    import audit_training_sampling
++    audit_training_sampling.ensure_final()
++    api,gate=attach_reconstruction();runtime=Runtime(a.architecture)
++    split=read(SPLITS);validation_ids=gate['validation_case_ids'];assert set(validation_ids)<=set(split['validation_ids'])
++    if a.architecture=='linearno_conv':
++        evaluate_group(runtime,api,gate,validation_ids,[],'validation_complete',validation=True)
++        result=evaluate_group(runtime,api,gate,split['airfoil']['primary_test_ids'],[],'test_complete')
++        sources=[OUT/f'records/{a.architecture}/test_complete/metrics.jsonl']
++    else:
++        configs=configurations(a.architecture,include_ca=False)
++        evaluate_group(runtime,api,gate,validation_ids,configs,'validation_preliminary',validation=True)
++        result=evaluate_group(runtime,api,gate,split['airfoil']['primary_test_ids'],configs,'test_preliminary')
++        sources=[OUT/f'records/{a.architecture}/test_preliminary/metrics.jsonl']
++        if a.phase=='complete':
++            ca=[c for c in configurations(a.architecture) if c['name']=='ca']
++            evaluate_group(runtime,api,gate,validation_ids,ca,'validation_ca',validation=True,with_full=False)
++            result=evaluate_group(runtime,api,gate,split['airfoil']['primary_test_ids'],ca,'test_ca',with_full=False)
++            sources.append(OUT/f'records/{a.architecture}/test_ca/metrics.jsonl')
++    exported=export_metrics(a.architecture,gate,sources,a.phase)
++    result.update(exported,phase=a.phase,reconstruction_id=gate['new_id'],old_reconstruction_id=gate['old_id'])
++    write(OUT/f'results/{a.architecture}_{a.phase}_completion.json',result)
++    if a.phase=='complete':
++        import validate_accuracy
++        validate_accuracy.validate(a.architecture)
++    import aggregate
++    aggregate.main()
++    import update_registry
++    update_registry.main()
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/finalize_latency.py
+@@ -0,0 +1,115 @@
++"""Traceable condition-level Airfoil timing, profiling, memory and reuse tables."""
++from __future__ import annotations
++import argparse,csv,collections,json
++import numpy as np
++from common import OUT,read,write,sha as digest
++
++
++KEYS=['dataset','backbone','case_id','method','budget_fraction','sampling_seed','implementation','scope']
++
++
++def key(row):return tuple(str(row.get(k)) for k in KEYS)
++
++
++def csv_write(path,rows):
++    if not rows:raise ValueError(f'No observations for {path}')
++    fields=list(dict.fromkeys(k for row in rows for k in row))
++    with path.open('w',newline='') as stream:
++        writer=csv.DictWriter(stream,fields);writer.writeheader();writer.writerows(rows)
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--allow-partial',action='store_true');args=p.parse_args()
++    directory=OUT/'timing';destination=OUT/'results';groups=[]
++    for path in sorted((directory/'groups').glob('*.json')):
++        if path.name=='heartbeat.json':continue
++        value=read(path)
++        if value.get('execution_status')=='completed':groups.append((path,value))
++    memories={};memory_inputs={}
++    for path in sorted((directory/'memory').glob('*.json')):
++        if path.name.endswith('_gpu.json'):continue
++        value=read(path)
++        if value.get('execution_status')!='completed':continue
++        memory_inputs[str(path)]=digest(path)
++        for row in value['rows']:
++            identity=key(row)
++            if identity in memories:raise ValueError('duplicate memory condition')
++            memories[identity]=row
++    rows=[];raw=[];profile=[];reuse=[];inputs={}
++    for path,group in groups:
++        if group.get('profiles_status')!='completed' and not args.allow_partial:
++            raise RuntimeError(f'Profile incomplete: {path}')
++        inputs[str(path)]=digest(path)
++        first={r['condition']:r for r in group['first_requests']}
++        summaries={r['condition']:r for r in group['summary']}
++        for condition,meta in group['metadata'].items():
++            formal=[r for r in group['raw'] if r['condition']==condition and r['kind']=='formal']
++            warmup=[r for r in group['raw'] if r['condition']==condition and r['kind']=='warmup']
++            assert len(formal)==100 and len(warmup)==20
++            assert {r['repeat_id'] for r in formal}==set(range(100))
++            timings=np.array([r['total_ms'] for r in formal]);assert np.isfinite(timings).all() and (timings>0).all()
++            for r in formal+warmup:raw.append(dict(**meta,group_id=group['group_id'],condition=condition,
++                kind=r['kind'],repeat_id=r['repeat_id'],order_position=r['order_position'],total_ms=r['total_ms'],
++                order_seed=group['order']['seed'],source_json=str(path)))
++            components=group.get('profiles',{}).get(condition,[])
++            for r in components:profile.append(dict(**meta,group_id=group['group_id'],condition=condition,**r))
++            reconstruction=[r['ms'] for r in components if r['component']=='reconstruction_complete_output']
++            if meta['method']!='full' and len(reconstruction)!=5 and not args.allow_partial:raise ValueError('incomplete reconstruction profile')
++            sample=first[condition];check=sample['output_check'];memory=memories.get(key(meta))
++            if memory is None and not args.allow_partial:raise ValueError(f'memory absent: {key(meta)}')
++            if memory:
++                for field in ['checkpoint_id','normalizer_id','reconstruction_id','request_code_sha256','runtime_code_sha256','reconstruction_sha256']:
++                    if memory[field]!=meta[field]:raise ValueError(f'memory and direct timing identity differs: {field}')
++            row=dict(**meta,group_id=group['group_id'],condition=condition,
++                direct_total_ms=float(np.median(timings)),p95_ms=float(np.percentile(timings,95)),
++                mean_ms=float(timings.mean()),sample_sd_ms=float(timings.std(ddof=1)),formal_repeats=100,warmups=20,
++                reconstruction_ms=0. if meta['method']=='full' else float(np.median(reconstruction)) if reconstruction else None,
++                reconstruction_timing='separate 5-pass synchronized full reconstruction incl required transfers; not a direct-total decomposition',
++                first_request_ms=sample['first_request_ms'],field_error=check['field_error'],
++                selected_indices_hash=check['selected_indices_hash'],coarse_indices_hash=check['coarse_indices_hash'],
++                cached_map_cpu_bytes=check.get('cached_map_cpu_bytes'),cached_map_gpu_bytes=check.get('cached_map_gpu_bytes'),
++                reuse_assumption='same physical case, coordinates and selected order; recompute model/score/selection each call' if meta['scope'].startswith('C_') else 'no interpolation-map cache',
++                memory_status='measured' if memory else 'N/A: memory stage incomplete',source_json=str(path),source_sha256=inputs[str(path)])
++            row['profile_source_snapshot_id']=group.get('profile_metadata',group['metadata'])[condition]['source_snapshot_id']
++            if memory:
++                for name in ['peak_cuda_allocated_bytes','peak_cuda_reserved_bytes','first_request_peak_cuda_allocated_bytes','first_request_peak_cuda_reserved_bytes','allocator_scope','external_scope']:
++                    row[name]=memory[name]
++                samples=[m['device_used_MiB'] for m in memory['nvml_post_samples'] if m and 'device_used_MiB' in m]
++                row['nvml_post_max_device_MiB']=max(samples) if samples else None
++            rows.append(row)
++            if meta['scope'].startswith('C_') and meta['method']!='full':
++                cold=[r['ms'] for r in components if r['component']=='first_cache_map_build']
++                for count in [1,2,5,10,20,50,100]:
++                    # An assembled observation sum; the cold and post-warmup measurements are not contiguous.
++                    seq=sample['first_request_ms']+sum(r['total_ms'] for r in sorted(formal,key=lambda r:r['repeat_id'])[:count-1])
++                    reuse.append(dict(**meta,requests=count,assembled_observation_sum_ms=seq,
++                        modeled_median_total_ms=sample['first_request_ms']+(count-1)*row['direct_total_ms'],
++                        first_request_ms=sample['first_request_ms'],steady_median_ms=row['direct_total_ms'],
++                        separate_map_build_ms=cold[0] if cold else None,
++                        cost_definition='cold first request plus n-1 post-warmup formal observations; an assembled cost, not a contiguous n-request measurement',
++                        model_definition='first request + (n-1)*formal median, derived estimate not separate measurement',
++                        cached_map_cpu_bytes=row['cached_map_cpu_bytes'],cached_map_gpu_bytes=row['cached_map_gpu_bytes'],
++                        reuse_assumption=row['reuse_assumption'],source_json=str(path)))
++    identities=[key(r) for r in rows];assert len(set(identities))==len(identities)
++    complete=len(groups)==333 and len(rows)==1323 and len(memories)==1323 and all(g.get('profiles_status')=='completed' for _,g in groups)
++    if not args.allow_partial and not complete:raise ValueError(f'matrix incomplete: groups={len(groups)}, timing={len(rows)}, memory={len(memories)}')
++    if rows:
++        csv_write(destination/'backbone_latency_summary.csv',rows);csv_write(destination/'latency_raw_repeats.csv',raw)
++        csv_write(destination/'latency_profiles.csv',profile);csv_write(destination/'latency_reuse_costs.csv',reuse)
++    write(destination/'latency_completion.json',dict(execution_status='completed' if complete else 'partial',
++        expected_groups=333,actual_groups=len(groups),expected_conditions=1323,actual_conditions=len(rows),
++        expected_formal_repeats=132300,actual_formal_repeats=sum(r['kind']=='formal' for r in raw),
++        expected_memory_conditions=1323,actual_memory_conditions=len(memories),
++        group_inputs=inputs,memory_inputs=memory_inputs,
++        full_alias='one actual physical Full timing series per backbone/case/scope; old/new reference it',
++        C_scope='separate cached-map scene; never divided by scope A Full',
++        external_memory_scope='PyTorch allocator peak plus post-request NVML samples; transient external GPU peaks and CPU allocations not certified'))
++    if complete:
++        write(destination/'latency_validation.json',dict(passed=True,expected_groups=333,actual_groups=len(groups),conditions=len(rows),memory_conditions=len(memories),
++            formal_repeats=sum(r['kind']=='formal' for r in raw),scope='complete matrix, direct repeats, output/index agreement, profiles and isolated memory; source identities in latency_completion.json'))
++        import update_registry
++        update_registry.main()
++    print(json.dumps(dict(complete=complete,groups=len(groups),conditions=len(rows),memory=len(memories))))
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/monitor.py
+@@ -0,0 +1,40 @@
++"""Persist concise real progress without launching or terminating experiments."""
++from pathlib import Path
++import os,json,time,datetime,fcntl
++
++OUT=Path(__file__).resolve().parents[1]
++LOCK=(OUT/'runtime/progress_monitor.lock').open('a');fcntl.flock(LOCK,fcntl.LOCK_EX|fcntl.LOCK_NB)
++
++def read(path):
++    for attempt in range(4):
++        try:return json.loads(path.read_text())
++        except (OSError,json.JSONDecodeError):time.sleep(.2)
++    return {}
++
++def write(path,value):
++    p=path.with_name(path.name+f'.{os.getpid()}.tmp');p.write_text(json.dumps(value,indent=2)+'\n');p.replace(path)
++
++while True:
++    now=datetime.datetime.now(datetime.timezone.utc).isoformat();rows=[]
++    for arch in ['t3','linearno','linearno_conv']:
++        flow=read(OUT/f'runtime/{arch}_workflow.json');model=read(OUT/f'checkpoints/{arch}/manifest.json')
++        sub=read(OUT/f'runtime/{arch}_head_substages.json') if flow.get('active_stage')=='head' else {}
++        rows.append(dict(architecture=arch,workflow=flow.get('execution_status','not_started'),
++                         stage=sub.get('active_stage') or flow.get('active_stage'),outer_stage=flow.get('active_stage'),epochs_completed=model.get('epochs_completed',0),
++                         best_validation_relative_l2=model.get('best_validation_relative_l2'),
++                         train_pid=model.get('pid'),training_seconds=model.get('training_seconds')))
++    timing=read(OUT/'runtime/latency_workflow.json')
++    state=dict(updated_at_utc=now,models=rows,latency=timing.get('execution_status','not_started'))
++    write(OUT/'runtime/progress.json',state)
++    text=f'Updated UTC: {now}\n'
++    for row in rows:text+=f"{row['architecture']}: {row['workflow']}, stage={row['stage']}, epochs={row['epochs_completed']}/1000, best validation physical L2={row['best_validation_relative_l2']}\n"
++    text+='Main models use 900train/100validation; test population is the fixed published110 cases.\n'
++    text+='LinearNO point-temp and conv-temp are distinct official model variants; conv is a full-grid supplement only.\n'
++    text+='Training costs are observed wall time; an early shared-GPU interval is documented. Formal latency requires exclusivity.\n'
++    text+='Raw/equivalence results: records/{architecture}; immutable phase metrics: metrics_preliminary.csv and metrics_complete.csv; metrics.csv is a compatibility view.\n'
++    text+='Final reconstruction/latency uses accepted v1.1 with actual imported source identity; old/new predictions share indices.\n'
++    text+=f"Latency: {state['latency']}. Results, figures and proof of completeness are separate from process completion.\n"
++    text+='This Airfoil runner performs no Git operations. Root handles the user-authorized independent-branch snapshot; main and Feishu remain outside this runner.\n'
++    p=OUT/'read.me';temp=p.with_name(p.name+'.tmp');temp.write_text(text);temp.replace(p)
++    if all(r['workflow']=='completed' for r in rows) and state['latency']=='completed':break
++    time.sleep(30)
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/postprocess_workflow.py
+@@ -0,0 +1,63 @@
++"""Durable accepted-accuracy -> empty-GPU timing -> isolated memory -> local report."""
++from pathlib import Path
++import argparse,fcntl,json,os,subprocess,sys,time
++OUT=Path(__file__).resolve().parents[1];CODE=OUT/'code'
++
++
++def read(path):
++    try:return json.loads(Path(path).read_text())
++    except (OSError,json.JSONDecodeError):return {}
++
++
++def write(path,value):
++    temp=path.with_name(path.name+f'.{os.getpid()}.tmp');temp.write_text(json.dumps(value,indent=2)+'\n');temp.replace(path)
++
++
++def wait_for_gpu(state,path,gpu,stage):
++    idle_since=None
++    while True:
++        try:
++            r=subprocess.run(['nvidia-smi','-i',str(gpu),'--query-compute-apps=pid','--format=csv,noheader'],capture_output=True,text=True,timeout=10)
++            pids=[int(line.strip()) for line in r.stdout.splitlines() if line.strip().isdigit()];known=r.returncode==0
++        except (OSError,subprocess.TimeoutExpired):pids=[];known=False
++        if known and not pids:
++            idle_since=idle_since or time.monotonic()
++            if time.monotonic()-idle_since>=30:return
++        else:idle_since=None
++        state.update(execution_status='waiting_resource',active_stage=stage,observed_gpu_pids=pids,heartbeat=time.time())
++        write(path,state);time.sleep(5)
++
++
++def main():
++    parser=argparse.ArgumentParser();parser.add_argument('--gpu',type=int,default=2);args=parser.parse_args()
++    lock=(OUT/'runtime/latency_workflow.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
++    path=OUT/'runtime/latency_workflow.json';state=read(path) or dict(stages={})
++    state.update(pid=os.getpid(),execution_status='waiting_dependency',evidence_status='pending',physical_gpu=args.gpu)
++    while True:
++        dependency={arch:read(OUT/f'results/{arch}_accuracy_acceptance.json').get('passed',False) for arch in ['t3','linearno','linearno_conv']}
++        if all(dependency.values()):break
++        state.update(dependencies=dependency,heartbeat=time.time());write(path,state);time.sleep(10)
++    stages=[('accuracy_aggregation','aggregate.py',[],False),('paired_latency','benchmark.py',['--phase','paired','--gpu',str(args.gpu)],True)]
++    for arch in ['t3','linearno']:
++        for method in ['full','uniform','pi','cpg','ca']:
++            stages.append((f'memory_{arch}_{method}','benchmark.py',['--phase','memory','--architecture',arch,'--method',method,'--gpu',str(args.gpu)],True))
++    stages.extend([('memory_conv_full','benchmark.py',['--phase','memory','--architecture','linearno_conv','--method','full','--gpu',str(args.gpu)],True),
++        ('latency_aggregation','finalize_latency.py',[],False),('local_report','report_results.py',[],False)])
++    for name,script,arguments,gpu_stage in stages:
++        if state['stages'].get(name,{}).get('execution_status')=='completed':continue
++        if not (CODE/script).exists():raise FileNotFoundError(script)
++        if gpu_stage:wait_for_gpu(state,path,args.gpu,name)
++        cmd=[sys.executable,'-u',str(CODE/script),*arguments];env=os.environ.copy();env['CUDA_VISIBLE_DEVICES']=str(args.gpu)
++        log=OUT/f'logs/postprocess_{name}.log'
++        with log.open('a') as stream:
++            child=subprocess.Popen(cmd,env=env,stdout=stream,stderr=subprocess.STDOUT,cwd=OUT)
++            state['stages'][name]=dict(execution_status='running',pid=child.pid,command=cmd,log=str(log),started_at=time.time())
++            state.update(execution_status='running',active_stage=name);write(path,state)
++            while child.poll() is None:state['heartbeat']=time.time();write(path,state);time.sleep(10)
++        state['stages'][name].update(execution_status='completed' if child.returncode==0 else 'failed',returncode=child.returncode,finished_at=time.time())
++        write(path,state)
++        if child.returncode:state.update(execution_status='failed',error=f'{name} returned {child.returncode}');write(path,state);return
++    state.update(execution_status='completed',active_stage=None,evidence_status='awaiting_cross_dataset_independent_review',finished_at=time.time());write(path,state)
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/prepare.py
+@@ -0,0 +1,54 @@
++from common import *
++import platform
++
++def main():
++    split=read(SPLITS);train=split['training_ids'];val=split['validation_ids']
++    assert len(train)==900 and len(val)==100 and not set(train)&set(val)
++    x=np.load(DATA/'NACA_Cylinder_X.npy',mmap_mode='r');y=np.load(DATA/'NACA_Cylinder_Y.npy',mmap_mode='r');q=np.load(DATA/'NACA_Cylinder_Q.npy',mmap_mode='r')
++    assert x.shape==y.shape==(2490,221,51) and q.shape==(2490,5,221,51)
++    coords=np.stack((x[:1000],y[:1000]),axis=-1).reshape(1000,11271,2).astype(np.float32)
++    pressure=np.asarray(q[:1000,3],dtype=np.float32).reshape(1000,11271,1)
++    assert np.isfinite(coords).all() and np.isfinite(pressure).all()
++    training=pressure[train]
++    mean=np.float32(np.mean(training,dtype=np.float64));std=np.float32(np.std(training,dtype=np.float64,ddof=1)+1e-8)
++    np.save(OUT/'cache/coords_trainpool.npy',coords);np.save(OUT/'cache/pressure_trainpool.npy',pressure)
++    np.savez(OUT/'cache/normalizer.npz',mean=np.array([[[mean]]],dtype=np.float32),std=np.array([[[std]]],dtype=np.float32),training_ids=np.asarray(train,dtype=np.int64))
++    record=dict(benchmark='airfoil2d',target='pressure',target_channel=3,shape=[221,51],source_shape=list(q.shape),
++                train_ids=train,validation_ids=val,primary_test_ids=split['airfoil']['primary_test_ids'],
++                secondary_test_ids=split['airfoil']['secondary_pressure_test_ids'],
++                normalization='global pressure channel, fitted on900 training samples only; float64 accumulation saved asfloat32',
++                pressure_mean=float(mean),pressure_std=float(std),normalizer_sha256=sha(OUT/'cache/normalizer.npz'),
++                split_manifest_sha256=sha(SPLITS),training_input_sha256=sha(OUT/'cache/coords_trainpool.npy'),
++                pressure_pool_sha256=sha(OUT/'cache/pressure_trainpool.npy'),
++                source_files={name:dict(path=str(DATA/name),bytes=(DATA/name).stat().st_size) for name in ['NACA_Cylinder_X.npy','NACA_Cylinder_Y.npy','NACA_Cylinder_Q.npy']},
++                test_used_for_normalization=False,test_used_for_selection=False,
++                history='The historical200-case test pool was previously viewed; this is not a never-touched holdout.')
++    write(OUT/'config/data_manifest.json',record)
++    protocol=dict(protocol_id='airfoil_matched_pressure_20261114_v1',architectures=['t3','linearno'],
++                  training_seed=0,head_seed=0,epochs=1000,batch_size=8,steps_per_epoch=113,total_updates=113000,
++                  learning_rate=.001,weight_decay=.00001,optimizer='AdamW',scheduler='OneCycleLR',pct_start=.3,
++                  max_grad_norm=dict(t3=.1,linearno=1.,linearno_conv=1.),loss='sum of per-case physical-space pressure relativeL2 after decoding',
++                  point_schedule=dict(minimum=4508,maximum=11271,inclusive=True,common_K_per_batch=True,
++                                      count_distribution='discrete_uniform',selected_points='uniform_without_replacement',
++                                      independent_data_rng_seed=1001,independent_point_rng_seed=2001),
++                  model_selection='minimum full-point physical relativeL2 on fixed100 validation cases',
++                  t3=dict(class_name='adasolver.models.adapter.Transolver3Adapter',hidden=128,layers=8,heads=8,mlp_ratio=2,slices=64,input='rawxy duplicated as pos/fx,4 channels'),
++                  linearno=dict(class_name='official Standard_PDE_Benchmark.LinearAttentionNeuralOperator',
++                                attention_class='LinearNO_temp',args_model='temp',hidden=128,layers=8,heads=8,
++                                mlp_ratio=1,key_dimension=64,key_ratio_semantics='absolute key width',input='rawxy,2 channels',
++                                source_commit='3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269'),
++                  head=dict(architecture=[128,8,32,1],activation='GELU',epochs=200,patience=201,
++                            fractions=[.05,.1],masks_per_geometry=2,batch_points=65536,learning_rate=.001,
++                            weight_decay=.00001,max_grad_norm=1.,loss='smooth_l1_beta1',feature_tap='own frozen first block on coarse subset'),
++                  extra_lr_search_budget=0,network_execution='native eager float32, TF32 disabled',
++                  reconstruction='pending task1 accepted reconstruction ID before formal test/timing',
++                  history_differences=['old model fit1000 and selected on200 historical test; new fit900/val100',
++                                       'old T3 runner trained normalized target relativeL2; new shared loss uses physical pressure',
++                                       'official Airfoil script predictsMach; this requested task predictspressure',
++                                       'official conv_temp script cannot accept arbitrary point subsets; point-temp is a distinct native official variant'],
++                  split_manifest_sha256=sha(SPLITS),normalizer_sha256=record['normalizer_sha256'],
++                  environment=dict(python=platform.python_version(),torch=torch.__version__,cuda=torch.version.cuda))
++    write(OUT/'config/protocol_lock.json',protocol)
++    print(json.dumps({k:record[k] for k in ['pressure_mean','pressure_std','normalizer_sha256','split_manifest_sha256']},indent=2))
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/report_results.py
+@@ -0,0 +1,84 @@
++"""Generate the local evidence card from actual receipts and train/head manifests."""
++from common import *
++import csv,datetime,difflib
++
++
++def read_optional(path):return read(path) if Path(path).exists() else {}
++
++
++def main():
++    now=datetime.datetime.now(datetime.timezone.utc).isoformat();costs=[];rows=[]
++    starts={r['architecture']:r for r in read(OUT/'config/training_process_starts.json')}
++    for arch in ['t3','linearno','linearno_conv']:
++        m=read_optional(OUT/f'checkpoints/{arch}/manifest.json');h=read_optional(OUT/f'checkpoints/{arch}/head/manifest.json')
++        accuracy=read_optional(OUT/f'results/{arch}_accuracy_acceptance.json')
++        head_stages=read_optional(OUT/f'runtime/{arch}_head_substages.json')
++        rows.append((arch,m.get('epochs_completed',0),m.get('execution_status','pending'),accuracy.get('passed','pending'),m.get('checkpoint_sha256','pending')))
++        costs.append(dict(dataset='airfoil2d',architecture=arch,training_seed=0,train_cases=900,validation_cases=100,
++            epochs_completed=m.get('epochs_completed',0),updates_completed=m.get('total_updates',0),parameter_count=m.get('parameter_count'),
++            training_loop_wall_seconds=m.get('training_seconds'),
++            process_start_to_completed_manifest_seconds=(OUT/f'checkpoints/{arch}/manifest.json').stat().st_mtime-starts[arch]['process_start_epoch'] if m.get('execution_status')=='completed' else None,
++            timing_scope='training loop plus validation; separate process-start to final-manifest measure includes setup and checkpoint write; shared-GPU interval documented',
++            head_seed=0 if h else None,head_epochs=h.get('epochs_completed'),head_parameters=h.get('parameter_count'),
++            head_feature_generation_seconds=h.get('dataset_generation_seconds'),head_training_seconds=h.get('training_seconds'),
++            head_bank_stage_seconds=h.get('head_bank_stage_seconds'),head_training_stage_seconds=h.get('head_training_stage_seconds'),
++            head_cost_scope='observed stage wall time on the shared machine; not isolated inference throughput' if h else 'not_applicable_or_pending',
++            preliminary_evaluation_seconds=head_stages.get('stages',{}).get('preliminary_evaluation',{}).get('seconds'),
++            head_acceptance_seconds=head_stages.get('stages',{}).get('head_acceptance',{}).get('seconds'),
++            head_pipeline_including_preliminary_seconds=head_stages.get('pipeline_including_preliminary_seconds'),
++            checkpoint_sha256=m.get('checkpoint_sha256','pending'),normalizer_sha256=m.get('normalizer_sha256','pending'),head_sha256=h.get('head_sha256','N/A: pending or Full-only')))
++    with (OUT/'results/training_head_cost.csv').open('w',newline='') as f:w=csv.DictWriter(f,list(costs[0]));w.writeheader();w.writerows(costs)
++    latency=read_optional(OUT/'results/latency_completion.json');passed=read_optional(OUT/'results/latency_validation.json').get('passed',False)
++    text=f'# Airfoil LinearNO follow-up\n\nGenerated from local records: {now}.\n\n'
++    text+='Shared task: pressure channel 3 on the 221×51 grid, 900 training and 100 validation geometries, fixed published 110-case positive-lift test population. Historical test visibility is disclosed in protocol.md.\n\n'
++    text+='| Model | Epochs | Training state | Accuracy accepted | Weight SHA-256 |\n|---|---:|---|---|---|\n'
++    for row in rows:text+='| '+' | '.join(map(str,row))+' |\n'
++    text+='\nThe main point models use native Transolver3 and the official LinearNO point-temp variant. The official conv-temp variant is reported separately at Full grid only. Its lack of variable-point support is recorded in model_compatibility.md.\n\n'
++    text+='Reconstruction uses accepted grid_qhull_sparse_apply_v1p1, with original integer-grid float64 coordinates and the original linear-plus-nearest rule. Every sampled prediction is reconstructed by both old and new implementations. Full predictions are saved once and explicitly aliased between reconstruction views.\n\n'
++    area_path=OUT/'results/backbone_rauec.csv';area=[]
++    if area_path.exists():
++        with area_path.open() as stream:area=[r for r in csv.DictReader(stream) if r['metric']=='field_relative_l2' and r['reconstruction_id']=='grid_qhull_sparse_apply_v1p1']
++    if area:
++        text+='Complete pressure-field area ratios below use each backbone’s own Uniform. Mean ± sample SD is across three sampling seeds of one training seed. CPG beta=0 is the separate mechanism control.\n\n'
++        text+='| Backbone | Method | Beta | rAUEC |\n|---|---|---:|---:|\n'
++        for row in area:text+=f"| {row['backbone']} | {row['method']} | {row['beta'] or 'N/A'} | {float(row['mean_rauec']):.6f} ± {float(row['sampling_sd']):.6f} |\n"
++        text+='\n'
++    absolute_path=OUT/'results/backbone_absolute_errors.csv';full_errors=[]
++    if absolute_path.exists():
++        with absolute_path.open() as stream:full_errors=[r for r in csv.DictReader(stream) if r['metric']=='field_relative_l2' and r['method']=='full' and r['reconstruction_id']=='grid_qhull_sparse_apply_v1p1']
++    if full_errors:
++        text+='Full-grid pressure errors are directly comparable on the same 110 cases. The convolutional model is a separately trained Full-only supplement.\n\n| Native model | Full relative L2 |\n|---|---:|\n'
++        for row in full_errors:text+=f"| {row['backbone']} | {float(row['mean_error']):.9f} |\n"
++        text+='\n'
++    text+=f"Formal latency acceptance: {passed}; observed groups {latency.get('actual_groups',0)}/333, conditions {latency.get('actual_conditions',0)}/1323, formal repeats {latency.get('actual_formal_repeats',0)}/132300. A is CPU input to float64 CPU field; B and C have separate rows.\n\n"
++    text+='Results: results/backbone_budget_metrics.csv, backbone_absolute_errors.csv, backbone_rauec.csv and backbone_latency_summary.csv. Missing files mean the corresponding stage is pending; no historical results are substituted. rAUEC is independently calculated per sampling seed, then reported as mean and sample SD across three sampling seeds; Full is excluded.\n\n'
++    text+='Commands and source identities: runtime/launches.json, runtime/*_workflow.json, config/execution_sources, config/reconstruction_sources, timing/sources. Raw predictions and selected indices: records/{architecture}; raw latency groups and occupancy records: timing/. Cross-task plots and archive assembly belong to the parent standard_benchmarks delivery.\n'
++    (OUT/'REPORT.md').write_text(text)
++    claims='# Claim card\n\n'
++    claims+='Supported implementation statements: native point-temp accepts variable point sets; its key-mass correction passes unit-weight and explicit-duplication checks; original conv-temp rejects arbitrary point sets and supports the full grid; replayed common sampling RNG states match saved training checkpoints. These checks do not establish accuracy or speed improvement.\n\n'
++    claims+='Trained accuracy is accepted only for rows marked true in REPORT.md and backed by results/{architecture}_accuracy_acceptance.json. No checkpoint is selected with test error. The CPG beta=0/1 mechanism keeps coarse and selected index hashes paired.\n\n'
++    if area:
++        claims+='Observed pressure-field results in the fixed 110-case population:\n\n'
++        for label in sorted({r['backbone'] for r in area}):
++            current={r['method']:r for r in area if r['backbone']==label}
++            if 'cpg' not in current:continue
++            cpg=float(current['cpg']['mean_rauec']);zero=float(current['cpg_beta0']['mean_rauec'])
++            claims+=f"- {label}: CPG beta=1 rAUEC {cpg:.6f} ({100*(1-cpg):.2f}% less area than its matched Uniform); paired beta=0 rAUEC {zero:.6f}.\n"
++            if 'ca' in current:
++                ca=float(current['ca']['mean_rauec']);claims+=f"- {label}: CA rAUEC {ca:.6f}; its observed mean is {'higher' if ca>cpg else 'lower'} than CPG beta=1. This ordering is retained.\n"
++        claims+='\nThis beta=0/1 experiment supports the compensation mechanism for this cohort and field-target policy. It does not identify the optimum over untested beta values.\n\n'
++    if full_errors:
++        claims+='Absolute Full errors (same 110-case population): '+', '.join(f"{r['backbone']}={float(r['mean_error']):.9f}" for r in full_errors)+'.\n\n'
++        claims+='The convolutional variant uses its native full-grid training/input path and has no subsampling/rAUEC result. Its Full accuracy must remain visible when interpreting the point-variant comparison.\n\n'
++    claims+=f'Complete-request timing supported: {passed}. Reconstruction-only speedups and cache reuse have separate meanings from A-scope end-to-end speedups.\n\n'
++    claims+='Comparative claims about which backbone is faster or more accurate must be drawn from completed absolute field-error and same-scope latency rows. Each backbone has its own Uniform rAUEC denominator; those normalized scores cannot rank absolute model accuracy. Unfavorable results are preserved.\n'
++    (OUT/'CLAIM_CARD.md').write_text(claims)
++    pieces=[];sources={}
++    for path in sorted((OUT/'code').glob('*.py')):
++        name='standard_benchmarks/airfoil/code/'+path.name
++        pieces.extend(difflib.unified_diff([],path.read_text().splitlines(keepends=True),fromfile='/dev/null',tofile='b/'+name))
++        sources[name]=sha(path)
++    (OUT/'results/implementation.patch').write_text(''.join(pieces));write(OUT/'results/implementation_sources.json',sources)
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/request.py
+@@ -0,0 +1,89 @@
++"""Complete field requests with explicit A/B/C input/output/cache contracts."""
++from runtime import *
++import inspect
++from types import FunctionType,SimpleNamespace
++
++
++def untimed_sampling(runtime):
++    original=inspect.unwrap(AirfoilEvaluator.sampling)
++    namespace=dict(original.__globals__)
++    namespace['time']=SimpleNamespace(perf_counter=lambda:0.)
++    namespace['synchronized_time']=lambda device:0.
++    function=FunctionType(original.__code__,namespace,original.__name__,original.__defaults__,original.__closure__)
++    function.__kwdefaults__=original.__kwdefaults__
++    return types.MethodType(function,runtime)
++
++
++class Request:
++    def __init__(self,runtime,api,gate,sid,seed,budget,config,implementation,scope):
++        self.runtime=runtime;self.api=api;self.gate=gate;self.sid=sid;self.seed=seed;self.budget=budget
++        self.config=config;self.method='full' if config is None else config['name']
++        self.implementation=implementation;self.scope=scope;self.sampling=untimed_sampling(runtime)
++        self.coords=np.ascontiguousarray(runtime.data.coords(sid));self.reference=runtime.reference
++        self.geometry_id=None
++        self.gpu_coords=torch.as_tensor(self.coords,device=runtime.device) if scope=='B_gpu_gpu' else None
++        self.cache=api.PlanCache(max_entries=1) if scope=='C_cpu_cpu_cached_map' else None
++        self.last_indices=None;self.last_compensation=None;self.last_coarse=None;self.last_cache_hit=None
++        self.last_plan=None
++        self.last_map_cpu_bytes=0;self.last_map_gpu_bytes=0;self.collect_memory=False
++        self.reconstruction_id='full_native_identity_float64' if self.method=='full' else gate['old_id'] if implementation=='old' and scope!='C_cpu_cpu_cached_map' else gate['new_id']
++        if scope=='C_cpu_cpu_cached_map' and self.method!='full':
++            self.reconstruction_id='grid_qhull_cached_cpu_apply_v1p1' if implementation=='old' else 'grid_qhull_cached_gpu_apply_v1p1'
++
++    def _prepare_sampling(self,coords,instrumented=False):
++        runtime=self.runtime;original=runtime.data.coords
++        runtime.data.coords=lambda sid:coords
++        try:
++            function=runtime.sampling if instrumented else self.sampling
++            return function(self.sid,self.seed,self.budget,self.config)
++        finally:runtime.data.coords=original
++
++    def _prediction(self,indices,compensation,coords):
++        if self.method=='full':
++            pos=self.gpu_coords[None] if self.scope=='B_gpu_gpu' else torch.as_tensor(coords,device=self.runtime.device)[None]
++        elif self.scope=='B_gpu_gpu':
++            selected=torch.as_tensor(indices,device=self.runtime.device)
++            pos=self.gpu_coords[selected][None]
++        else:pos=torch.as_tensor(coords[indices],device=self.runtime.device)[None]
++        self.runtime.context.set(None if compensation is None else torch.as_tensor(compensation,dtype=torch.float32,device=self.runtime.device))
++        try:return self.runtime.data.decode(self.runtime.model(pos,pos))[0]
++        finally:self.runtime.context.clear()
++
++    def _reconstruct(self,indices,prediction):
++        if self.cache is not None:
++            # The first cached request pays physical-geometry identity construction.
++            if self.geometry_id is None:self.geometry_id=hashlib.sha256(self.coords.tobytes()).hexdigest()
++            plan,hit=self.cache.get('airfoil',self.reference,indices,geometry_identity=self.geometry_id,
++                                    reconstruction_id=self.gate['new_id'],channels=1)
++            self.last_cache_hit=hit
++            self.last_plan=plan
++            if self.collect_memory:self.last_map_cpu_bytes=plan.cpu_bytes
++            if self.implementation=='old':return plan.apply_numpy(prediction.cpu().numpy())
++            output=plan.apply_tensor(prediction).cpu().numpy()
++            if self.collect_memory:self.last_map_gpu_bytes=plan.device_bytes()
++            return output
++        if self.implementation=='old':
++            output=self.api.native_reconstruct('airfoil',indices,prediction.cpu().numpy(),self.reference)
++            return torch.as_tensor(output,device=self.runtime.device) if self.scope=='B_gpu_gpu' else output
++        plan=self.api.build_plan('airfoil',self.reference,indices,reconstruction_id=self.gate['new_id'],channels=1)
++        output=plan.apply_tensor(prediction)
++        if self.collect_memory:self.last_map_cpu_bytes=plan.cpu_bytes;self.last_map_gpu_bytes=plan.device_bytes()
++        return output if self.scope=='B_gpu_gpu' else output.cpu().numpy()
++
++    @torch.no_grad()
++    def __call__(self):
++        runtime=self.runtime;runtime.clear_dynamic()
++        if self.method=='full':
++            indices=np.arange(11271,dtype=np.int64)
++            prediction=self._prediction(indices,None,self.coords)
++            self.last_indices=indices;self.last_compensation=None;self.last_coarse=None
++            return prediction.to(torch.float64) if self.scope=='B_gpu_gpu' else prediction.cpu().numpy().astype(np.float64)
++        # PI/CPG/CA require physical geometry on CPU. Scope B pays the actual D2H.
++        coords=self.gpu_coords.cpu().numpy() if self.scope=='B_gpu_gpu' and self.method!='uniform' else self.coords
++        sampling,coarse,_=self._prepare_sampling(coords)
++        compensation=None if self.method=='uniform' else sampling.compensation
++        prediction=self._prediction(sampling.indices,compensation,coords)
++        output=self._reconstruct(sampling.indices,prediction)
++        self.last_indices=sampling.indices;self.last_compensation=compensation;self.last_coarse=coarse
++        return output
++
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/runtime.py
+@@ -0,0 +1,84 @@
++"""Native sampling policies bound to newly trained Airfoil backbones and heads."""
++from common import *
++import copy
++from adasolver.evaluation.airfoil2d import AirfoilEvaluator
++from adasolver.data.airfoil2d_runtime import AirfoilRuntimeData
++from adasolver.inference.airfoil2d_config import resolve_config
++from adasolver.inference.ca.airfoil2d import Airfoil2dPressureHead
++from adasolver.utils.interpolation import index_grid
++
++
++class OwnPressureHead(Airfoil2dPressureHead):
++    @torch.no_grad()
++    def features(self,pos,fx=None):return feature0(self.operator,pos)
++
++    def forward_with_cache(self,pos,fx=None,*,capture=False):
++        if capture:raise ValueError('The frozen Field policy has operator_stage1_cache=False')
++        return self.head(self.features(pos,fx)),None
++
++
++def configurations(architecture,include_ca=True):
++    path=OUT/'config/frozen_field_policies.json'
++    bank=read(path)
++    result=[]
++    for name in ['uniform','pi','cpg_beta0','cpg','ca']:
++        if name=='ca' and not include_ca:continue
++        cfg=copy.deepcopy(bank[name])
++        if name=='ca':
++            cfg['head_checkpoint']=str(OUT/f'checkpoints/{architecture}/head/pressure_d8_best.pt')
++            cfg['head_manifest']=str(OUT/f'checkpoints/{architecture}/head/manifest.json')
++        result.append(resolve_config(cfg['method'],cfg))
++    return result
++
++
++class Runtime(AirfoilEvaluator):
++    def __init__(self,architecture,device='cuda:0',*,model_override=None):
++        self.architecture=architecture;self.device=device
++        if model_override is None:self.model,self.metadata=load_model(architecture,device)
++        else:self.model,self.metadata=model_override
++        self.model.requires_grad_(False).eval()
++        self.context,self.patched=(LinearContext(),0) if architecture=='linearno_conv' else install_compensation(self.model)
++        self.manifest=str(OUT/f'checkpoints/{architecture}/manifest.json')
++        self.checkpoint=self.metadata['checkpoint'];self.operator_hash=self.metadata['checkpoint_sha256']
++        self.data=AirfoilRuntimeData(DATA,self.manifest)
++        self.reference=index_grid((221,51))
++        self.heads={};self.coarse_cache={};self.patch_cache={};self.feature_cache={};self.last_visualization=None
++
++    def head(self,config):
++        checkpoint,manifest=config['head_checkpoint'],config['head_manifest'];key=(checkpoint,manifest)
++        if key not in self.heads:
++            m=read(manifest)
++            if m['operator_sha256']!=self.operator_hash or m['normalizer_sha256']!=self.data.normalizer_sha256:
++                raise ValueError('Head must be trained on this backbone and normalizer')
++            if sha(checkpoint)!=m['head_sha256']:raise ValueError('head identity changed')
++            accepted=read(OUT/f'results/{self.architecture}_head_acceptance.json')
++            if not accepted['passed'] or accepted['head_sha256']!=m['head_sha256']:
++                raise ValueError('own-backbone head acceptance is required')
++            h=OwnPressureHead(self.model,float(self.data.mean),float(self.data.std),feature_dim=8).to(self.device).eval()
++            h.head.load_state_dict(torch.load(checkpoint,map_location=self.device,weights_only=True))
++            self.heads[key]=(h,m['head_sha256'],m)
++        return self.heads[key]
++
++    def clear_dynamic(self):
++        self.context.clear();self.coarse_cache.clear();self.feature_cache.clear();self.patch_cache.clear()
++
++    @torch.no_grad()
++    def predict_subset(self,sid,seed,budget,config):
++        sampling,coarse,cache=self.sampling(sid,seed,budget,config)
++        coords=self.data.coords(sid);indices=sampling.indices
++        pos=torch.as_tensor(coords[indices],device=self.device)[None]
++        weights=None if config['method']=='uniform' else torch.as_tensor(sampling.compensation,dtype=torch.float32,device=self.device)
++        self.context.set(weights)
++        try:prediction=self.data.decode(self.model(pos,pos))[0]
++        finally:self.context.clear()
++        metadata=dict(sampling.metadata)
++        if coarse is not None and config['method'].startswith('cpg'):
++            cache_key=(sid,seed,len(coarse),None,config['operator_stage1_cache'])
++            values=self.coarse_cache[cache_key][0]
++            metadata['coarse_prediction_hash']=hashlib.sha256(np.ascontiguousarray(values).tobytes()).hexdigest()
++        return prediction,sampling,coarse,metadata
++
++    @torch.no_grad()
++    def predict_full(self,sid):
++        pos=torch.as_tensor(self.data.coords(sid),device=self.device)[None];self.context.clear()
++        return self.data.decode(self.model(pos,pos))[0]
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/train.py
+@@ -0,0 +1,85 @@
++"""Matched full1000-epoch training with isolated sampling RNGs and resume state."""
++from common import *
++import argparse,time,math
++
++def main():
++    parser=argparse.ArgumentParser();parser.add_argument('--architecture',choices=['t3','linearno','linearno_conv'],required=True);parser.add_argument('--resume',action='store_true');args=parser.parse_args()
++    torch.set_num_threads(4);torch.manual_seed(0);torch.cuda.manual_seed_all(0);torch.backends.cuda.matmul.allow_tf32=False
++    protocol=read(OUT/'config/protocol_lock.json');data=Data();device='cuda:0';arch=args.architecture
++    clip=.1 if arch=='t3' else 1.
++    target=OUT/'checkpoints'/arch;target.mkdir(exist_ok=True)
++    resume_path=target/'resume.pt';manifest_path=target/'manifest.json'
++    if (target/'last.pt').exists() and read(manifest_path).get('execution_status')=='completed':raise FileExistsError('Completed model exists')
++    if resume_path.exists() and not args.resume:raise FileExistsError('Use explicit --resume for existing run')
++    model=build_model(arch).to(device)
++    coords=torch.from_numpy(np.array(data.pos)).to(device);pressure=torch.from_numpy(np.array(data.pressure)).to(device)
++    train_ids=np.array(data.splits['training_ids']);val_ids=data.splits['validation_ids']
++    optimizer=torch.optim.AdamW(model.parameters(),lr=protocol['learning_rate'],weight_decay=protocol['weight_decay'])
++    scheduler=torch.optim.lr_scheduler.OneCycleLR(optimizer,max_lr=protocol['learning_rate'],epochs=1000,steps_per_epoch=113,pct_start=.3)
++    order_rng=np.random.default_rng(1001);point_rng=np.random.default_rng(2001)
++    begin_epoch=0;steps=0;best=float('inf');best_epoch=None;accumulated_seconds=0.
++    if args.resume:
++        saved=torch.load(resume_path,map_location=device,weights_only=False)
++        model.load_state_dict(saved['model']);optimizer.load_state_dict(saved['optimizer']);scheduler.load_state_dict(saved['scheduler'])
++        begin_epoch=saved['epoch']+1;steps=saved['steps'];best=saved['best'];best_epoch=saved['best_epoch']
++        order_rng.bit_generator.state=saved['order_rng'];point_rng.bit_generator.state=saved['point_rng'];accumulated_seconds=saved['training_seconds']
++        torch.set_rng_state(saved['torch_rng'].cpu());torch.cuda.set_rng_state(saved['cuda_rng'].cpu())
++    manifest=dict(benchmark='airfoil2d',architecture='Transolver3' if arch=='t3' else 'LinearNO',
++                  architecture_variant=arch,model_class=type(model).__name__,native_model_class=type(model.net).__name__,
++                  native_attention_class=type(model.net.blocks[0].Attn).__name__,parameter_count=sum(p.numel() for p in model.parameters()),
++                  execution_status='running',evidence_status='pending',epochs_requested=1000,epochs_completed=begin_epoch,
++                  training_samples=900,validation_samples=100,training_seed=0,target_name='pressure',target_channel=3,
++                  shape=[221,51],nfull=11271,nmin_count=11271 if arch=='linearno_conv' else 4508,
++                  nmin_fraction=1. if arch=='linearno_conv' else .4,batch_size=8,point_schedule=protocol['point_schedule'],
++                  normalizer=str(data.normalizer_path),normalizer_sha256=sha(data.normalizer_path),split_manifest_sha256=sha(SPLITS),
++                  checkpoint=str(target/'best.pt'),last_checkpoint=str(target/'last.pt'),resume_checkpoint=str(resume_path),
++                  protocol=str(OUT/'config/protocol_lock.json'),source_manifest_sha256=sha(OUT/'config/source_manifest.json'),
++                  common_code_sha256=sha(OUT/'code/common.py'),max_grad_norm=clip,
++                  data_path=str(DATA),data_split=dict(train=data.splits['training_ids'],validation=data.splits['validation_ids'],test=data.splits['airfoil']['primary_test_ids']),
++                  train_code_sha256=sha(__file__),torch=torch.__version__,cuda=torch.version.cuda,pid=os.getpid(),
++                  device=torch.cuda.get_device_name(),cpu_affinity=sorted(os.sched_getaffinity(0)),
++                  validation_criterion=protocol['model_selection'],test_used_for_selection=False,training_seconds=accumulated_seconds)
++    # Conv is a separately labelled full-grid efficiency baseline, never variable-point evidence.
++    if arch=='linearno_conv':manifest['point_schedule']=dict(minimum=11271,maximum=11271,distribution='full_grid')
++    write(manifest_path,manifest);start=time.perf_counter()
++    history=target/'history.jsonl'
++    with history.open('a' if args.resume else 'x') as log:
++        for epoch in range(begin_epoch,1000):
++            epoch_start=time.perf_counter();model.train();order=order_rng.permutation(train_ids);total=0.;counts=[]
++            for lower in range(0,len(order),8):
++                batch=torch.as_tensor(order[lower:lower+8],device=device)
++                K=int(point_rng.integers(4508,11272)) if arch!='linearno_conv' else 11271
++                selected=torch.as_tensor(point_rng.permutation(11271)[:K],device=device) if arch!='linearno_conv' else torch.arange(11271,device=device)
++                pos=coords[batch][:,selected];truth=pressure[batch][:,selected]
++                pred=data.decode(model(pos,pos))
++                loss=relative_l2(pred,truth).sum()
++                if not torch.isfinite(loss):raise RuntimeError('nonfinite training loss')
++                optimizer.zero_grad(set_to_none=True);loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),clip)
++                optimizer.step();scheduler.step();total+=float(loss.detach());counts.append(K);steps+=1
++            model.eval();values=[]
++            with torch.no_grad():
++                for lower in range(0,100,8):
++                    batch=torch.tensor(val_ids[lower:lower+8],device=device)
++                    pred=data.decode(model(coords[batch],coords[batch]));values.extend(relative_l2(pred,pressure[batch]).cpu().tolist())
++            validation=float(np.mean(values));assert math.isfinite(validation)
++            if validation<best:
++                best=validation;best_epoch=epoch;temp=target/'best.tmp.pt';torch.save(model.state_dict(),temp);temp.replace(target/'best.pt')
++            elapsed=accumulated_seconds+time.perf_counter()-start
++            row=dict(epoch=epoch,train_physical_relative_l2=total/900,validation_physical_relative_l2=validation,
++                     best_validation=best,best_epoch=best_epoch,k_mean=float(np.mean(counts)),k_min=min(counts),k_max=max(counts),
++                     global_step=steps,epoch_seconds=time.perf_counter()-epoch_start,training_seconds=elapsed)
++            log.write(json.dumps(row)+'\n');log.flush();print(json.dumps(row),flush=True)
++            manifest.update(epochs_completed=epoch+1,total_updates=steps,best_epoch=best_epoch,
++                            best_validation_relative_l2=best,training_seconds=elapsed)
++            write(manifest_path,manifest)
++            if (epoch+1)%10==0 or epoch==999:
++                temp=target/'resume.tmp.pt';torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),
++                    scheduler=scheduler.state_dict(),epoch=epoch,steps=steps,best=best,best_epoch=best_epoch,
++                    order_rng=order_rng.bit_generator.state,point_rng=point_rng.bit_generator.state,
++                    torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),training_seconds=elapsed),temp);temp.replace(resume_path)
++    torch.save(model.state_dict(),target/'last.pt')
++    manifest.update(execution_status='completed',epochs_completed=1000,total_updates=steps,
++                    checkpoint_sha256=sha(target/'best.pt'),last_checkpoint_sha256=sha(target/'last.pt'))
++    write(manifest_path,manifest)
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/train_head.py
+@@ -0,0 +1,105 @@
++"""Each backbone trains its own complete pressure head on its own block0 features."""
++from common import *
++import argparse,time,subprocess
++from adasolver.inference.airfoil2d_contract import coarse_count
++from adasolver.inference.uniform.airfoil2d import sample_airfoil_uniform
++from adasolver.train.airfoil2d_pressure_head import train as train_pressure_head
++
++TRAIN_HEAD_SOURCE_BYTES=Path(__file__).read_bytes()
++TRAIN_HEAD_SOURCE_SHA256=hashlib.sha256(TRAIN_HEAD_SOURCE_BYTES).hexdigest()
++
++
++@torch.no_grad()
++def build_bank(architecture):
++    model,operator=load_model(architecture);data=Data();root=OUT/'cache'/f'{architecture}_head';root.mkdir(exist_ok=True)
++    manifest_path=root/'manifest.json'
++    if manifest_path.exists() and read(manifest_path).get('status')=='complete':
++        existing=read(manifest_path)
++        assert existing['operator_sha256']==operator['checkpoint_sha256']
++        assert existing['normalizer_sha256']==operator['normalizer_sha256']
++        assert existing['train_ids']==data.splits['training_ids'] and existing['validation_ids']==data.splits['validation_ids']
++        return root
++    mandatory=np.arange(50,171,dtype=np.int64)*51;shards=[];start=time.perf_counter()
++    for split,ids in [('train',data.splits['training_ids']),('validation',data.splits['validation_ids'])]:
++        for fraction in [.05,.1]:
++            count=coarse_count(11271,fraction,121);name=f'{split}_cf{fraction:g}'
++            number=len(ids)*2
++            features=np.lib.format.open_memmap(root/f'{name}_features.npy',mode='w+',dtype=np.float32,shape=(number,count,128))
++            targets=np.lib.format.open_memmap(root/f'{name}_target.npy',mode='w+',dtype=np.float32,shape=(number,count,1))
++            indices=np.lib.format.open_memmap(root/f'{name}_indices.npy',mode='w+',dtype=np.int64,shape=(number,count))
++            entries=[]
++            for local,sid in enumerate(ids):
++                coords,pressure=data.sample(sid)
++                for mask_id in range(2):
++                    seed=(10_000_000 if split=='train' else 20_000_000)+1000*sid+mask_id
++                    chosen=sample_airfoil_uniform(11271,count,mandatory,np.random.default_rng(seed)).indices
++                    pos=torch.as_tensor(coords[chosen],device='cuda:0')[None]
++                    feature=feature0(model,pos)[0].cpu().numpy();row=local*2+mask_id
++                    features[row]=feature;targets[row]=(pressure[chosen]-data.mean)/data.std;indices[row]=chosen
++                    entries.append(dict(sample_id=sid,mask_seed=seed))
++                if (local+1)%100==0:print(architecture,name,local+1,'/',len(ids),flush=True)
++            for array in [features,targets,indices]:array.flush()
++            shards.append(dict(name=name,split=split,fraction=fraction,coarse_count=count,records=number,entries=entries,
++                               features=f'{name}_features.npy',target=f'{name}_target.npy',indices=f'{name}_indices.npy'))
++    manifest=dict(benchmark='airfoil2d',version='followup20261114',status='complete',
++        backbone=architecture,operator_checkpoint=operator['checkpoint'],operator_manifest=str(OUT/f'checkpoints/{architecture}/manifest.json'),
++        operator_sha256=operator['checkpoint_sha256'],normalizer_sha256=operator['normalizer_sha256'],
++        target='zscore_pressure',target_mean=float(data.mean),target_std=float(data.std),feature_tap='frozen_block0_on_S0',
++        hidden_dim=128,nfull=11271,train_ids=data.splits['training_ids'],validation_ids=data.splits['validation_ids'],
++        masks_per_geometry_fraction=2,fractions=[.05,.1],coarse_cap_count=1127,mandatory_count=121,
++        feature_model_class=operator['native_model_class'],feature_attention_class=operator['native_attention_class'],
++        source_code_sha256=TRAIN_HEAD_SOURCE_SHA256,shards=shards,dataset_generation_seconds=time.perf_counter()-start)
++    write(manifest_path,manifest)
++    return root
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--architecture',choices=['t3','linearno'],required=True);a=p.parse_args()
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False
++    pipeline_started=time.perf_counter()
++    source_snapshot=OUT/'config/head_execution_sources'/TRAIN_HEAD_SOURCE_SHA256
++    source_snapshot.mkdir(parents=True,exist_ok=True);(source_snapshot/'train_head.py').write_bytes(TRAIN_HEAD_SOURCE_BYTES)
++    status_path=OUT/f'runtime/{a.architecture}_head_substages.json'
++    state=dict(architecture=a.architecture,pid=os.getpid(),execution_status='running',stages={},
++               actual_order=['preliminary_evaluation','feature_bank','head_training','head_acceptance'],
++               execution_source_sha256=TRAIN_HEAD_SOURCE_SHA256,source_snapshot=str(source_snapshot))
++    # Send the non-CA cohort first when reconstruction has already been accepted.
++    gate=OUT/'config/evaluation_gate.json'
++    evaluator=OUT/'code/evaluate.py'
++    if gate.exists() and read(gate).get('accepted') and evaluator.exists():
++        command=[sys.executable,'-u',str(evaluator),'--architecture',a.architecture,'--phase','preliminary']
++        log=OUT/f'logs/{a.architecture}_preliminary.log';started=time.perf_counter()
++        with log.open('a') as stream:
++            process=subprocess.Popen(command,cwd=CURRENT,stdout=stream,stderr=subprocess.STDOUT)
++            state.update(active_stage='preliminary_evaluation');state['stages']['preliminary_evaluation']=dict(execution_status='running',command=command,pid=process.pid,log=str(log))
++            write(status_path,state);process.wait()
++        state['stages']['preliminary_evaluation'].update(execution_status='completed' if process.returncode==0 else 'failed',returncode=process.returncode,seconds=time.perf_counter()-started)
++        write(status_path,state)
++        if process.returncode:write(OUT/f'results/{a.architecture}_preliminary_attempt.json',dict(returncode=process.returncode,head_training_independent=True))
++    state.update(active_stage='feature_bank');state['stages']['feature_bank']=dict(execution_status='running');write(status_path,state)
++    bank_started=time.perf_counter();bank=build_bank(a.architecture);bank_seconds=time.perf_counter()-bank_started
++    output=OUT/'checkpoints'/a.architecture/'head';output.mkdir(exist_ok=True)
++    state['stages']['feature_bank'].update(execution_status='completed',seconds=bank_seconds,
++        feature_generation_seconds=read(bank/'manifest.json')['dataset_generation_seconds'])
++    state.update(active_stage='head_training');state['stages']['head_training']=dict(execution_status='running');write(status_path,state)
++    head_started=time.perf_counter()
++    result=train_pressure_head(bank,output,'pressure_d8',feature_dim=8,device='cuda:0',epochs=200,patience=201,batch_points=65536,seed=0)
++    head_seconds=time.perf_counter()-head_started
++    result.update(backbone=a.architecture,execution_status='completed',evidence_status='pending',
++                  data_scope='own backbone frozen features; same900train/100validation; no test labels',
++                  truth_access_scope='inference acquisition only; head training uses train pressure labels and validation selection',
++                  dataset_generation_seconds=read(bank/'manifest.json')['dataset_generation_seconds'],
++                  head_bank_stage_seconds=bank_seconds,head_training_stage_seconds=head_seconds,
++                  train_head_code_sha256=TRAIN_HEAD_SOURCE_SHA256)
++    write(output/'manifest.json',result)
++    state['stages']['head_training'].update(execution_status='completed',seconds=head_seconds,training_loop_seconds=result['training_seconds'])
++    state.update(active_stage='head_acceptance');state['stages']['head_acceptance']=dict(execution_status='running');write(status_path,state)
++    acceptance_started=time.perf_counter()
++    import validate_head
++    validate_head.validate(a.architecture)
++    state['stages']['head_acceptance'].update(execution_status='completed',seconds=time.perf_counter()-acceptance_started)
++    state.update(execution_status='completed',active_stage=None,pipeline_including_preliminary_seconds=time.perf_counter()-pipeline_started)
++    write(status_path,state)
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/update_registry.py
+@@ -0,0 +1,65 @@
++"""Separate model identity, training completion and experiment acceptance."""
++from common import *
++import csv
++
++
++def main():
++    rows=[]
++    for arch in ['t3','linearno','linearno_conv']:
++        p=OUT/f'checkpoints/{arch}/manifest.json'
++        if not p.exists():continue
++        m=read(p);completed=m.get('execution_status')=='completed';identity=False;completion=False
++        proof_path=OUT/f'results/{arch}_identity_validation.json'
++        if completed:
++            existing=read(proof_path) if proof_path.exists() else {}
++            if existing.get('checkpoint_sha256')==m['checkpoint_sha256'] and existing.get('passed'):
++                identity=completion=True
++            else:
++                assert sha(m['checkpoint'])==m['checkpoint_sha256']
++                assert sha(m['normalizer'])==m['normalizer_sha256']
++                normalizer=np.load(m['normalizer']);assert normalizer['training_ids'].tolist()==read(SPLITS)['training_ids']
++                model=build_model(arch)
++                model.load_state_dict(torch.load(m['checkpoint'],map_location='cpu',weights_only=True),strict=True)
++                checkpoint=torch.load(m['resume_checkpoint'],map_location='cpu',weights_only=False)
++                assert checkpoint['epoch']==999 and checkpoint['steps']==113000
++                assert all(int(s['step'].item())==113000 for s in checkpoint['optimizer']['state'].values())
++                history=[json.loads(line) for line in (OUT/f'checkpoints/{arch}/history.jsonl').open()]
++                assert len(history)==1000 and [r['epoch'] for r in history]==list(range(1000))
++                assert [r['global_step'] for r in history]==[113*(epoch+1) for epoch in range(1000)]
++                validation=np.array([r['validation_physical_relative_l2'] for r in history]);assert np.isfinite(validation).all()
++                assert int(np.argmin(validation))==m['best_epoch'] and float(validation.min())==m['best_validation_relative_l2']
++                if arch=='linearno_conv':assert all(r['k_min']==r['k_max']==11271 for r in history)
++                else:assert all(4508<=r['k_min']<=r['k_mean']<=r['k_max']<=11271 for r in history)
++                assert sha(OUT/'code/common.py')==m['common_code_sha256']
++                assert sha(OUT/'config/execution_sources/train.py')==m['train_code_sha256']
++                assert sum(t.numel() for t in model.parameters())==m['parameter_count']
++                proof=dict(passed=True,checkpoint_sha256=m['checkpoint_sha256'],normalizer_sha256=m['normalizer_sha256'],
++                           model_class=type(model.net).__name__,attention_class=type(model.net.blocks[0].Attn).__name__,
++                           parameters=m['parameter_count'],epochs_completed=1000,updates_completed=113000,
++                           optimizer_parameter_steps=113000,history_epochs_verified=1000,checkpoint_selected_epoch=m['best_epoch'],
++                           history_sha256=sha(OUT/f'checkpoints/{arch}/history.jsonl'),verifier_sha256=sha(__file__),
++                           scope='strict native state/hash, train-only normalization IDs, actual final resume/optimizer steps, all epoch history and validation-min checkpoint selection; accuracy/latency separate')
++                write(proof_path,proof);identity=completion=True
++        acceptance=OUT/f'results/{arch}_accuracy_acceptance.json'
++        accuracy=read(acceptance).get('passed') is True if acceptance.exists() else 'pending'
++        latency_path=OUT/'results/latency_validation.json'
++        latency=read(latency_path).get('passed') is True if latency_path.exists() else 'pending'
++        head_path=OUT/f'checkpoints/{arch}/head/manifest.json';head=read(head_path) if head_path.exists() else {}
++        head_proof_path=OUT/f'results/{arch}_head_acceptance.json'
++        head_proof=read(head_proof_path) if head_proof_path.exists() else {}
++        rows.append(dict(dataset='airfoil2d',backbone=arch,native_model_class=m.get('native_model_class'),
++            native_attention_class=m.get('native_attention_class'),parameters=m.get('parameter_count'),
++            training_seed=0,epochs_completed=m.get('epochs_completed',0),updates_completed=m.get('total_updates',0),
++            checkpoint_path=m['checkpoint'],checkpoint_sha256=m.get('checkpoint_sha256','pending'),
++            normalizer_path=m['normalizer'],normalizer_sha256=m['normalizer_sha256'],normalizer_fit_cases=900,
++            identity_verified=identity,training_completed=completion,accuracy_verified=accuracy,latency_verified=latency,
++            head_applicability='none_fullgrid_only' if arch=='linearno_conv' else 'own_backbone_pressure_head',
++            head_completed=head.get('execution_status')=='completed',head_sha256=head.get('head_sha256',''),
++            head_identity_verified='not_applicable' if arch=='linearno_conv' else bool(head_proof.get('passed') and head_proof.get('head_sha256')==head.get('head_sha256')) if head_proof else 'pending',
++            identity_verification_scope='strict state/hash/normalizer and final training step; accuracy/latency have separate flags'))
++    path=OUT/'results/checkpoint_registry.csv';temp=path.with_name(path.name+f'.{os.getpid()}.tmp')
++    with temp.open('w',newline='') as f:w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
++    temp.replace(path)
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/validate_accuracy.py
+@@ -0,0 +1,70 @@
++"""Independent manifest/index/count audit; numerical agreement stays traceable to raw pairs."""
++from common import *
++import argparse,csv
++
++
++def validate(architecture):
++    gate=read(OUT/'config/evaluation_gate.json');split=read(SPLITS)
++    result=read(OUT/f'results/{architecture}_complete_completion.json')
++    checkpoint=read(OUT/f'checkpoints/{architecture}/manifest.json')
++    expected_methods=['full'] if architecture=='linearno_conv' else ['full','uniform','pi','cpg_beta0','cpg','ca']
++    expected={(sid,method,seed,budget) for sid in split['airfoil']['primary_test_ids'] for method in expected_methods
++              for seed in ([None] if method=='full' else [0,1,2]) for budget in ([1.] if method=='full' else [.375,.5,.75])}
++    records={};pairs=0;maximum_difference=0.;violations=[]
++    for source in result['source_files']:
++        path=Path(source)
++        manifest=read(path.parent/'manifest.json')
++        assert manifest['execution_status']=='completed' and not manifest['equivalence_violations']
++        assert manifest['reconstruction_gate']['module_sha256']==gate['module_sha256']
++        for line in path.open():
++            row=json.loads(line);key=(row['case_id'],row['method'],row['sampling_seed'],row['budget_fraction'])
++            assert key not in records;records[key]=row
++            assert row['checkpoint_sha256']==checkpoint['checkpoint_sha256']
++            assert row['normalizer_sha256']==checkpoint['normalizer_sha256']
++            if row['method']=='ca':
++                head=read(OUT/f'results/{architecture}_head_acceptance.json')
++                assert head['passed'] and row['head_sha256']==head['head_sha256']
++            for mode in ['old','new']:assert np.isfinite(row[mode]['field_relative_l2']) and row[mode]['field_relative_l2']>=0
++            with np.load(path.parent/row['arrays']) as arrays:
++                if row['method']=='full':
++                    assert arrays['field'].shape==(11271,1) and arrays['field'].dtype==np.float64 and np.isfinite(arrays['field']).all()
++                else:
++                    ids=arrays['indices'];coarse=arrays['coarse_indices'];pred=arrays['prediction']
++                    assert ids.dtype==np.int64 and len(ids)==row['retained_points'] and len(ids)==len(np.unique(ids))
++                    assert len(ids)==int(round(11271*row['budget_fraction']))
++                    assert ids.min()>=0 and ids.max()<11271 and np.isfinite(pred).all()
++                    assert hashlib.sha256(ids.tobytes()).hexdigest()==row['indices_hash']
++                    if len(coarse):assert hashlib.sha256(coarse.astype(np.int64).tobytes()).hexdigest()==row['coarse_indices_hash']
++                    assert pred.shape==(len(ids),1) and pred.dtype==np.float32
++                    assert row['agreement']['passed'] and row['agreement']['elementwise_violations']==0
++                    maximum_difference=max(maximum_difference,row['agreement']['max_abs'])
++    assert set(records)==expected,(len(records),len(expected))
++    for key,row in records.items():
++        sid,method,seed,budget=key
++        if method!='full':assert (sid,'uniform',seed,budget) in records and (sid,'full',None,1.) in records
++        if method=='cpg':
++            zero=records[(sid,'cpg_beta0',seed,budget)]
++            for field in ['indices_hash','coarse_indices_hash','coarse_prediction_hash']:assert row[field]==zero[field]
++            assert row['beta']==1 and zero['beta']==0;pairs+=1
++    assert sha(result['metrics_csv'])==result['metrics_sha256']
++    with Path(result['metrics_csv']).open() as f:long=list(csv.DictReader(f))
++    assert len(long)==len(expected)*8
++    validation_groups=['validation_complete'] if architecture=='linearno_conv' else ['validation_preliminary','validation_ca']
++    for stage in validation_groups:
++        state=read(OUT/f'records/{architecture}/{stage}/manifest.json')
++        assert state['execution_status']=='completed' and not state['equivalence_violations']
++        assert state['sample_ids']==gate['validation_case_ids']
++    receipt=dict(passed=True,architecture=architecture,checkpoint_sha256=checkpoint['checkpoint_sha256'],
++        normalizer_sha256=checkpoint['normalizer_sha256'],reconstruction_sha256=gate['module_sha256'],
++        unique_prediction_requests=len(records),expected_prediction_requests=len(expected),long_metric_rows=len(long),
++        test_cases=len(split['airfoil']['primary_test_ids']),methods=expected_methods,paired_beta_groups=pairs,
++        maximum_old_new_absolute_field_difference=maximum_difference,
++        acceptance_scope='independent complete matrix/hash/shape/finiteness/paired-indices audit plus raw numerical equivalence receipts; latency separately pending',
++        source_files=result['source_files'],metrics_csv=result['metrics_csv'],metrics_sha256=result['metrics_sha256'],validator_sha256=sha(__file__))
++    write(OUT/f'results/{architecture}_accuracy_acceptance.json',receipt)
++    return receipt
++
++
++if __name__=='__main__':
++    p=argparse.ArgumentParser();p.add_argument('--architecture',choices=['t3','linearno','linearno_conv'],required=True)
++    print(json.dumps(validate(p.parse_args().architecture),indent=2))
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/validate_gpu_request.py
+@@ -0,0 +1,42 @@
++"""Trained GPU request/accuracy identity preflight; no latency measurements."""
++from benchmark import *
++
++
++def main():
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    references={};sid=1001
++    for arch in ['t3','linearno']:
++        complete=read(OUT/f'results/{arch}_complete_completion.json')
++        assert read(OUT/f'results/{arch}_accuracy_acceptance.json')['passed']
++        for source in complete['source_files']:
++            path=Path(source)
++            for line in path.open():
++                row=json.loads(line)
++                if row['case_id']==sid:references[(arch,sid,row['method'],row['sampling_seed'],row['budget_fraction'])]=(row,path.parent/row['arrays'])
++    checks=[];requests=0
++    with ExclusiveGPU(2,OUT/'results/gpu_request_validation_occupancy.json',interval=1.) as monitor:
++        for arch in ['t3','linearno']:
++            rt=Runtime(arch)
++            cfgs=[None]+[c for c in configurations(arch) if c['name'] in ['uniform','pi','cpg','ca']]
++            for cfg in cfgs:
++                method='full' if cfg is None else cfg['name']
++                for scope in SCOPES.values():
++                    for mode in (['new'] if cfg is None else ['old','new']):
++                        request=Request(rt,api,gate,sid,None if cfg is None else 0,1. if cfg is None else .375,cfg,mode,scope)
++                        output=request();requests+=1;torch.cuda.synchronize()
++                        check=check_output(request,output,references);del output
++                        reused=False
++                        if cfg is not None and scope.startswith('C_'):
++                            assert request.last_cache_hit is False
++                            output=request();requests+=1;torch.cuda.synchronize();check_output(request,output,references);del output
++                            assert request.last_cache_hit is True;reused=True
++                        checks.append(dict(architecture=arch,method=method,scope=scope,implementation=mode,cache_reuse_checked=reused,**check))
++                        print(arch,method,scope,mode,'passed',flush=True);monitor.assert_exclusive()
++                        del request
++            del rt;gc.collect();torch.cuda.empty_cache()
++    write(OUT/'results/gpu_request_development_validation.json',dict(passed=True,physical_gpu=2,request_calls=requests,conditions=len(checks),checks=checks,
++        source_snapshot_id=SOURCE_SNAPSHOT_ID,code_identities=CODE_IDENTITIES,reconstruction_sha256=api.IMPLEMENTATION_SOURCE_SHA256,
++        scope='trained main checkpoints and accepted own heads, actual GPU2 A/B/C complete-field/index/coarse/weight identity against frozen test artifacts; no latency statistics'))
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/validate_head.py
+@@ -0,0 +1,62 @@
++"""Own-backbone/normalizer and supervised train-only CA feature-bank acceptance."""
++from common import *
++from adasolver.inference.ca.airfoil2d import PressureMLP
++import argparse
++
++
++def validate(architecture):
++    operator=read(OUT/f'checkpoints/{architecture}/manifest.json')
++    path=OUT/f'checkpoints/{architecture}/head/manifest.json';head=read(path)
++    bank_path=Path(head['dataset_manifest']);bank=read(bank_path);data=Data()
++    assert operator['execution_status']==head['execution_status']=='completed'
++    assert head['operator_sha256']==operator['checkpoint_sha256']==sha(operator['checkpoint'])
++    assert head['normalizer_sha256']==operator['normalizer_sha256']==sha(operator['normalizer'])==bank['normalizer_sha256']
++    assert bank['operator_sha256']==operator['checkpoint_sha256']
++    assert head['feature_tap']==bank['feature_tap']=='frozen_block0_on_S0'
++    assert head['target_channel']==3 and head['target_name']=='pressure' and head['target']=='zscore_pressure'
++    assert head['operator_frozen'] and head['seed']==0 and head['epochs_requested']==head['epochs_completed']==200
++    assert head['architecture_layers']==[128,8,32,1] and head['feature_dim']==8 and head['parameter_count']==1353
++    assert head['data_split']['head_train']==bank['train_ids']==data.splits['training_ids']
++    assert head['data_split']['head_validation']==bank['validation_ids']==data.splits['validation_ids']
++    assert not set(bank['train_ids']+bank['validation_ids']) & set(data.splits['airfoil']['primary_test_ids'])
++    assert head['target_mean']==bank['target_mean']==float(data.mean)
++    assert head['target_std']==bank['target_std']==float(data.std)
++    weights=path.parent/'pressure_d8_best.pt';assert sha(weights)==head['head_sha256']
++    model=PressureMLP(8);model.load_state_dict(torch.load(weights,map_location='cpu',weights_only=True),strict=True)
++    history=head['training_history'];assert len(history)==200 and [r['epoch'] for r in history]==list(range(200))
++    best=float('inf');best_epoch=None
++    for row in history:
++        assert np.isfinite([row['train_huber'],row['validation_huber']]).all()
++        if row['validation_huber']<best-1e-7:best=row['validation_huber'];best_epoch=row['epoch']
++    assert best==head['best_validation_huber'] and best_epoch==head['best_epoch']
++    verified=0;shard_checks=[];mandatory=np.arange(50,171)*51
++    for shard in bank['shards']:
++        ids=bank['train_ids'] if shard['split']=='train' else bank['validation_ids']
++        expected=[sid for sid in ids for _ in range(2)]
++        assert [r['sample_id'] for r in shard['entries']]==expected
++        indices=np.load(bank_path.parent/shard['indices'],mmap_mode='r')
++        targets=np.load(bank_path.parent/shard['target'],mmap_mode='r')
++        features=np.load(bank_path.parent/shard['features'],mmap_mode='r')
++        assert indices.shape==(len(expected),shard['coarse_count']) and targets.shape==indices.shape+(1,)
++        assert features.shape==indices.shape+(128,) and features.dtype==targets.dtype==np.float32
++        assert indices.dtype==np.int64 and indices.min()>=0 and indices.max()<11271
++        assert np.isfinite(targets).all()
++        for row,sid in enumerate(expected):
++            chosen=indices[row];assert len(np.unique(chosen))==len(chosen) and np.isin(mandatory,chosen).all()
++            _,pressure=data.sample(sid);wanted=(pressure[chosen]-data.mean)/data.std
++            if not np.array_equal(targets[row],wanted):raise RuntimeError('feature-bank target does not match train-only normalization and saved selected indices')
++            verified+=1
++        shard_checks.append(dict(name=shard['name'],records=len(expected),coarse_count=shard['coarse_count'],indices_sha256=sha(bank_path.parent/shard['indices'])))
++    assert verified==4000
++    receipt=dict(passed=True,architecture=architecture,checkpoint_sha256=operator['checkpoint_sha256'],head_sha256=head['head_sha256'],
++        normalizer_sha256=head['normalizer_sha256'],train_cases=900,validation_cases=100,epochs=200,head_parameters=1353,
++        verified_bank_rows=verified,head_seed=0,feature_tap=head['feature_tap'],shards=shard_checks,
++        selection_rule='native validation Huber improvement greater than1e-7; exactly replayed over all200epochs',
++        scope='native strict head state, actual operator/normalizer hash, own train/validation IDs, all selected-index target normalization checks; CA field accuracy separate',
++        validator_sha256=sha(__file__),manifest_sha256=sha(path),bank_manifest_sha256=sha(bank_path))
++    write(OUT/f'results/{architecture}_head_acceptance.json',receipt);return receipt
++
++
++if __name__=='__main__':
++    p=argparse.ArgumentParser();p.add_argument('--architecture',choices=['t3','linearno'],required=True);args=p.parse_args()
++    print(json.dumps(validate(args.architecture),indent=2))
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/verify_benchmark.py
+@@ -0,0 +1,47 @@
++"""CPU development check of artifact-to-request matching, including own CA feature tap."""
++from benchmark import *
++from runtime import OwnPressureHead
++
++
++@torch.no_grad()
++def main():
++    torch.set_num_threads(4);torch.manual_seed(314);sid=gate['validation_case_ids'][0]
++    destination=OUT/'results/benchmark_development';destination.mkdir(exist_ok=True);checks=[]
++    for arch in ['t3','linearno']:
++        meta=read(OUT/f'checkpoints/{arch}/manifest.json');meta=dict(meta,checkpoint_sha256='random_development_only')
++        rt=Runtime(arch,'cpu',model_override=(build_model(arch).eval(),meta))
++        head=OwnPressureHead(rt.model,float(rt.data.mean),float(rt.data.std),feature_dim=8).eval()
++        rt.head=lambda cfg:(head,'random_development_head_only',{})
++        full=rt.predict_full(sid).numpy().astype(np.float64);full_path=destination/f'{arch}_full.npz';np.savez_compressed(full_path,field=full)
++        full_metrics=metrics(full,rt.data.coords(sid),rt.data.target(sid).astype(np.float64))
++        reference={(arch,sid,'full',None,1.):(dict(old=full_metrics,new=full_metrics,
++            checkpoint_sha256=rt.operator_hash,normalizer_sha256=rt.data.normalizer_sha256),full_path)}
++        for scope in ['A_cpu_cpu','C_cpu_cpu_cached_map']:
++            request=Request(rt,api,gate,sid,None,1.,None,'new',scope)
++            checked=check_output(request,request(),reference)
++            checks.append(dict(architecture=arch,method='full',scope=scope,implementation='shared',**checked))
++        for cfg in configurations(arch):
++            rt.clear_dynamic();prediction,sampling,coarse,extra=rt.predict_subset(sid,0,.375,cfg)
++            raw=api.native_reconstruct('airfoil',sampling.indices,prediction.numpy(),rt.reference)
++            result=metrics(raw,rt.data.coords(sid),rt.data.target(sid).astype(np.float64))
++            path=destination/f'{arch}_{cfg["name"]}.npz'
++            np.savez_compressed(path,indices=sampling.indices,compensation=sampling.compensation,
++                coarse_indices=np.asarray([] if coarse is None else coarse),prediction=prediction.numpy())
++            reference={(arch,sid,cfg['name'],0,.375):(dict(old=result,new=result,coarse_prediction_hash=extra.get('coarse_prediction_hash'),
++                checkpoint_sha256=rt.operator_hash,normalizer_sha256=rt.data.normalizer_sha256,
++                head_sha256='random_development_head_only' if cfg['name']=='ca' else None),path)}
++            for scope in ['A_cpu_cpu','C_cpu_cpu_cached_map']:
++                for mode in ['old','new']:
++                    request=Request(rt,api,gate,sid,0,.375,cfg,mode,scope)
++                    verified=check_output(request,request(),reference)
++                    if scope.startswith('C_'):
++                        assert request.last_cache_hit is False
++                        verified=check_output(request,request(),reference);assert request.last_cache_hit is True
++                    checks.append(dict(architecture=arch,method=cfg['name'],scope=scope,implementation=mode,**verified))
++                    print(arch,cfg['name'],scope,mode,'passed',flush=True)
++    write(OUT/'results/benchmark_development_validation.json',dict(passed=True,checks=checks,
++        scope='CPU random backbone/head initialization; complete output/index/weight/coarse identity checking, not accuracy or timing evidence',
++        benchmark_source_sha256=sha(OUT/'code/benchmark.py'),request_source_sha256=sha(OUT/'code/request.py')))
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/verify_interface.py
+@@ -0,0 +1,51 @@
++"""Interface and exact weighted-key checks; these are not test-set results."""
++from common import *
++import argparse,time
++
++
++def main():
++    parser=argparse.ArgumentParser();parser.add_argument('--device',default='cpu');args=parser.parse_args()
++    torch.set_num_threads(4);torch.manual_seed(0);torch.backends.cuda.matmul.allow_tf32=False
++    report={'scope':'model API and backward correctness, not trained accuracy','device':args.device,'checks':[]}
++    for arch in ['t3','linearno']:
++        model=build_model(arch).to(args.device)
++        for n in [17,43]:
++            pos=torch.rand(2,n,2,device=args.device)
++            output=model(pos,pos)
++            assert output.shape==(2,n,1) and torch.isfinite(output).all()
++            loss=(output-torch.rand_like(output)).square().mean();loss.backward()
++            assert all(p.grad is not None for p in model.parameters() if p.requires_grad)
++            report['checks'].append(dict(architecture=arch,points=n,shape=list(output.shape),backward_finite=True,
++                                         parameters=sum(p.numel() for p in model.parameters())))
++            model.zero_grad(set_to_none=True)
++        model.eval();pos=torch.rand(1,7,2,device=args.device)
++        with torch.no_grad():
++            native=model(pos,pos)
++            context,patched=install_compensation(model);context.set(torch.ones(7,device=args.device))
++            unit=model(pos,pos);context.clear()
++            torch.testing.assert_close(unit,native,rtol=2e-5,atol=1e-6)
++            if arch=='linearno':
++                mass=torch.tensor([1,2,3,1,2,1,3],device=args.device,dtype=torch.float32)
++                context.set(mass);weighted=model(pos,pos);context.clear()
++                expanded=torch.repeat_interleave(pos,mass.to(torch.long),dim=1)
++                duplicate=model(expanded,expanded)
++                starts=torch.cat((mass.new_zeros(1),mass.cumsum(0)[:-1])).long()
++                duplicate=duplicate[:,starts]
++                torch.testing.assert_close(weighted,duplicate,rtol=2e-5,atol=1e-6)
++                report['checks'].append(dict(architecture=arch,weighted_duplicate_max_abs=float((weighted-duplicate).abs().max())))
++        report['checks'].append(dict(architecture=arch,unit_compensation_max_abs=float((unit-native).abs().max()),patched_layers=patched))
++    conv=build_model('linearno_conv').to(args.device).eval()
++    try:
++        conv(torch.rand(1,43,2,device=args.device),None)
++    except Exception as exc:
++        report['conv_variable_points']=dict(compatible=False,error_type=type(exc).__name__,error=str(exc))
++    else:raise AssertionError('Expected native fixed-grid conv to reject irregular point count')
++    with torch.no_grad():
++        y=conv(torch.rand(1,11271,2,device=args.device),None)
++        assert y.shape==(1,11271,1) and torch.isfinite(y).all()
++    report['conv_full_grid']=dict(compatible=True,shape=list(y.shape),parameters=sum(p.numel() for p in conv.parameters()))
++    report['status']='passed'
++    write(OUT/'results/interface_validation.json',report)
++    print(json.dumps(report,indent=2))
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/verify_phase_export.py
+@@ -0,0 +1,37 @@
++"""Phase immutability/schema fixture; temporary synthetic rows are never research evidence."""
++from common import *
++import evaluate,tempfile,csv
++
++
++def main():
++    true_out=evaluate.OUT
++    with tempfile.TemporaryDirectory(dir=OUT/'results',prefix='phase_export_development_') as directory:
++        root=Path(directory);evaluate.OUT=root;(root/'records/t3').mkdir(parents=True)
++        metrics={k:1. for k in ['field_relative_l2','cd_abs_error','cl_abs_error','cdcl_abs_error']}
++        common=dict(case_id=4,checkpoint_sha256='development_fixture',normalizer_sha256='development_fixture',old=metrics,new=metrics)
++        full=dict(common,method='full',sampling_seed=None,budget_fraction=1.,retained_points=11271)
++        pair=[dict(common,method=m,sampling_seed=0,budget_fraction=.375,retained_points=4227,beta=beta,
++            indices_hash='fixture_selected',coarse_indices_hash='fixture_coarse',coarse_prediction_hash='fixture_prediction')
++            for m,beta in [('cpg_beta0',0.),('cpg',1.)]]
++        baseline=root/'baseline.jsonl';baseline.write_text(''.join(json.dumps(row)+'\n' for row in [full,*pair]))
++        gate={'old_id':'old_fixture','new_id':'new_fixture'}
++        preliminary=evaluate.export_metrics('t3',gate,[baseline],'preliminary');payload=Path(preliminary['metrics_csv']).read_bytes()
++        ca=root/'ca.jsonl';ca.write_text(json.dumps(dict(common,method='ca',sampling_seed=0,budget_fraction=.375,
++            retained_points=4227,beta=1.,indices_hash='fixture_selected',head_sha256='fixture_head'))+'\n')
++        complete=evaluate.export_metrics('t3',gate,[baseline,ca],'complete')
++        assert Path(preliminary['metrics_csv']).read_bytes()==payload
++        assert Path(complete['metrics_csv']).read_bytes()==Path(complete['compatibility_metrics_csv']).read_bytes()
++        rows=list(csv.DictReader(Path(preliminary['metrics_csv']).open()));assert len(rows)==24
++        cpg=[r for r in rows if r['method']=='cpg'];assert all(r['coarse_prediction_hash']=='fixture_prediction' and r['retained_points']=='4227' for r in cpg)
++        evaluate.export_metrics('t3',gate,[baseline],'preliminary')
++        try:evaluate.export_metrics('t3',gate,[baseline,ca],'preliminary')
++        except FileExistsError:pass
++        else:raise AssertionError('immutable preliminary unexpectedly changed')
++    evaluate.OUT=true_out
++    write(OUT/'results/phase_export_development_validation.json',dict(passed=True,
++        preliminary_unchanged_after_complete=True,coarse_prediction_hash_and_retained_count_exported=True,
++        conflicting_phase_rewrite_rejected=True,scope='temporary schema fixture; no measured model results; temporary rows deleted',
++        export_source_sha256=sha(OUT/'code/evaluate.py')))
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/verify_request.py
+@@ -0,0 +1,36 @@
++"""CPU development check for the timing adapter; not trained accuracy evidence."""
++from request import *
++from evaluate import attach_reconstruction
++
++
++@torch.no_grad()
++def main():
++    torch.set_num_threads(4);torch.manual_seed(123)
++    api,gate=attach_reconstruction();checks=[]
++    sid=gate['validation_case_ids'][0]
++    for arch in ['t3','linearno']:
++        meta=read(OUT/f'checkpoints/{arch}/manifest.json');meta=dict(meta,checkpoint_sha256='random_initialization_development_only')
++        runtime=Runtime(arch,'cpu',model_override=(build_model(arch).eval(),meta))
++        for cfg in configurations(arch,include_ca=False):
++            runtime.clear_dynamic();normal=runtime.sampling(sid,0,.375,cfg)
++            runtime.clear_dynamic();fast=untimed_sampling(runtime)(sid,0,.375,cfg)
++            np.testing.assert_array_equal(normal[0].indices,fast[0].indices)
++            np.testing.assert_array_equal(normal[0].compensation,fast[0].compensation)
++            if normal[1] is not None:np.testing.assert_array_equal(normal[1],fast[1])
++            old=Request(runtime,api,gate,sid,0,.375,cfg,'old','A_cpu_cpu')
++            new=Request(runtime,api,gate,sid,0,.375,cfg,'new','A_cpu_cpu')
++            a=old();b=new();np.testing.assert_array_equal(old.last_indices,new.last_indices)
++            assert a.dtype==np.float64 and b.dtype==np.float64
++            delta=np.abs(a-b);assert np.all(delta<=1e-6+1e-5*np.abs(a))
++            checks.append(dict(architecture=arch,method=cfg['name'],indices_equal=True,weights_equal=True,
++                               full_shape=list(a.shape),max_field_abs_difference=float(delta.max())))
++        cfg=configurations(arch,include_ca=False)[0]
++        cached=Request(runtime,api,gate,sid,0,.375,cfg,'new','C_cpu_cpu_cached_map')
++        a=cached();assert cached.last_cache_hit is False
++        b=cached();assert cached.last_cache_hit is True
++        np.testing.assert_array_equal(a,b)
++    write(OUT/'results/request_development_validation.json',dict(status='passed',scope='CPU random-initialization API/untimed-sampler correctness only; not training or performance evidence',checks=checks,
++          reconstruction_source_sha256=gate['module_sha256'],request_code_sha256=sha(__file__.replace('verify_request.py','request.py'))))
++    print('request development checks',len(checks),'passed')
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/verify_timing_resume.py
+@@ -0,0 +1,37 @@
++"""CPU failure/recovery verification of record durability; no scientific latency claim."""
++from common import *
++from evaluate import attach_reconstruction
++api,gate=attach_reconstruction()
++from benchmark_core import run_group
++import tempfile
++
++class RequestFixture:
++    def __init__(self):self.calls=0
++    def __call__(self):self.calls+=1;return np.array([1.],dtype=np.float64)
++
++
++def main():
++    original=torch.cuda.synchronize;torch.cuda.synchronize=lambda:None
++    metadata={name:{field:'development_only' for field in ['checkpoint_id','normalizer_id','reconstruction_id','request_code_sha256','runtime_code_sha256','reconstruction_sha256']} for name in ['old','new']}
++    path=OUT/'results/benchmark_development';path.mkdir(exist_ok=True)
++    def check(name,output):assert output[0]==1.;return {'passed':True}
++    def fail(requests):raise ValueError('intentional separate-profile failure')
++    try:
++        with tempfile.TemporaryDirectory(dir=path,prefix='core_resume_') as folder:
++            group_dir=Path(folder)/'groups'
++            initial={name:RequestFixture() for name in metadata}
++            try:run_group(group_dir,'development_only',initial,metadata,scope='CPU development fixture',check_output=check,identity_of=lambda n,r:{'fixed':True},extra_profiles=fail)
++            except ValueError as e:assert str(e)=='intentional separate-profile failure'
++            saved=read(group_dir/'development_only.json');assert saved['execution_status']=='completed' and saved['profiles_status']=='failed'
++            assert len(saved['raw'])==240 and all(r.calls==121 for r in initial.values())
++            recovered={name:RequestFixture() for name in metadata}
++            after=run_group(group_dir,'development_only',recovered,metadata,scope='CPU development fixture',check_output=check,identity_of=lambda n,r:{'fixed':True},extra_profiles=lambda r:{n:[] for n in r})
++            assert after['raw']==saved['raw'] and all(r.calls==1 for r in recovered.values()) and after['profiles_status']=='completed'
++        write(OUT/'results/timing_resume_development_validation.json',dict(passed=True,direct_observations_preserved=240,
++            repeated_direct_measurements_on_recovery=0,cache_rehydration_requests_per_condition=1,
++            scope='CPU fixture with synchronization stub, intentional profile failure and exact raw-record preservation; not model timing',
++            timing_core_source_sha256=sha(OUT/'code/benchmark_core.py')))
++    finally:torch.cuda.synchronize=original
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/airfoil/code/workflow.py
+@@ -0,0 +1,50 @@
++"""Persistent per-backbone training/head/evaluation supervisor."""
++from common import *
++import argparse,subprocess,time,traceback,datetime
++
++
++def robust_read(path):
++    for attempt in range(5):
++        try:return read(path)
++        except (OSError,json.JSONDecodeError):time.sleep(.2*(attempt+1))
++    return read(path)
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--architecture',choices=['t3','linearno','linearno_conv'],required=True);args=p.parse_args();arch=args.architecture
++    state_path=OUT/f'runtime/{arch}_workflow.json'
++    state=dict(architecture=arch,pid=os.getpid(),execution_status='running',evidence_status='pending',stages={},
++               started_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),cpu_affinity=sorted(os.sched_getaffinity(0)),
++               physical_gpu=os.environ.get('CUDA_VISIBLE_DEVICES'))
++    write(state_path,state)
++    stages=[('train','train.py')]
++    if arch!='linearno_conv':stages.append(('head','train_head.py'))
++    for name,script in stages:
++        state['active_stage']=name
++        cmd=[sys.executable,'-u',str(OUT/'code'/script),'--architecture',arch]
++        log_path=OUT/f'logs/{arch}_{name}.log'
++        with log_path.open('x') as stream:
++            process=subprocess.Popen(cmd,stdout=stream,stderr=subprocess.STDOUT,cwd=CURRENT)
++            state['stages'][name]=dict(execution_status='running',pid=process.pid,command=cmd,log=str(log_path));write(state_path,state)
++            while process.poll() is None:
++                state['heartbeat_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();write(state_path,state);time.sleep(15)
++        state['stages'][name].update(execution_status='completed' if process.returncode==0 else 'failed',returncode=process.returncode)
++        write(state_path,state)
++        if process.returncode:
++            state['execution_status']='failed';write(state_path,state);raise SystemExit(process.returncode)
++    state['active_stage']='waiting_reconstruction';write(state_path,state)
++    gate=OUT/'config/evaluation_gate.json'
++    while not gate.exists() or robust_read(gate).get('accepted') is not True:
++        state['heartbeat_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();write(state_path,state);time.sleep(30)
++    cmd=[sys.executable,'-u',str(OUT/'code/evaluate.py'),'--architecture',arch]
++    log_path=OUT/f'logs/{arch}_evaluation.log'
++    with log_path.open('x') as stream:
++        process=subprocess.Popen(cmd,stdout=stream,stderr=subprocess.STDOUT,cwd=CURRENT)
++        state['active_stage']='evaluation';state['stages']['evaluation']=dict(execution_status='running',pid=process.pid,command=cmd,log=str(log_path));write(state_path,state)
++        while process.poll() is None:
++            state['heartbeat_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();write(state_path,state);time.sleep(15)
++    state['stages']['evaluation'].update(execution_status='completed' if process.returncode==0 else 'failed',returncode=process.returncode)
++    state.update(execution_status='completed' if process.returncode==0 else 'failed',active_stage=None);write(state_path,state)
++
++
++if __name__=='__main__':main()

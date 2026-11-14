@@ -1,0 +1,158 @@
+{
+  "status": "passed",
+  "device": "CPU",
+  "evidence_scope": "implementation integration of initialized full classes only; no trained result generated",
+  "checks": [
+    {
+      "backbone": "Transolver3",
+      "method": "full",
+      "case_id": 4,
+      "budget": 1.0,
+      "retained_points": 7225,
+      "old_new_max_abs": 0.0,
+      "relative_difference": 0.0,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "Transolver3",
+      "method": "uniform",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.9459940948757966e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "Transolver3",
+      "method": "pi",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 4.174965853055981e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "Transolver3",
+      "method": "cpg_beta0",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.993967675603428e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "Transolver3",
+      "method": "cpg",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.995906086678161e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "Transolver3",
+      "method": "ca",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.8494385864121154e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "LinearNO",
+      "method": "full",
+      "case_id": 4,
+      "budget": 1.0,
+      "retained_points": 7225,
+      "old_new_max_abs": 0.0,
+      "relative_difference": 0.0,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "LinearNO",
+      "method": "uniform",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.868047618795765e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "LinearNO",
+      "method": "pi",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.9666989502670795e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "LinearNO",
+      "method": "cpg_beta0",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 4.0705239926522346e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "LinearNO",
+      "method": "cpg",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 4.027808406870633e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    },
+    {
+      "backbone": "LinearNO",
+      "method": "ca",
+      "case_id": 4,
+      "budget": 0.375,
+      "retained_points": 2709,
+      "old_new_max_abs": 1.734723475976807e-18,
+      "relative_difference": 3.9736098426006204e-17,
+      "metric_difference": 0.0,
+      "status": "passed",
+      "scope": "CPU integration only; untrained model, not accuracy/latency evidence"
+    }
+  ],
+  "head_backward": "both own-native two-block heads finite and participating",
+  "source_sha256": {
+    "preflight_request.py": "0c2dab7023603b926a1909feaaf3f781e35f1875743f8e4a1dae50a6d9d8d140",
+    "inference.py": "afb65690716dc1483ded0e52dea540df989b36b4b416d366eb7db961f162cf39",
+    "common.py": "d893c29e27373f0e82563816245563e4a7c419a29d5c3f6f159b684f2a9b76ca",
+    "ca_support.py": "e6169bb8baf7ba022c92a860cbd847764087446714014e4911fc1562611a00bd"
+  }
+}

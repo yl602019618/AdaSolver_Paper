@@ -1,0 +1,440 @@
+{
+  "audit_status": "valid_domain_cpu_checks_passed_with_candidate_issues",
+  "checked_at_utc": "2026-11-14T13:09:07.808363+00:00",
+  "test_device": "cpu",
+  "cuda_validation_performed": false,
+  "performance_measurement_performed": false,
+  "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/gpu_knn_candidate.py",
+  "source_sha256": "c79f2352fc3a9a29518fe52b1e38985c969f13c0b1c30cbff1695cb5891f8035",
+  "source_unchanged": true,
+  "environment": {
+    "python": "3.10.12",
+    "torch": "2.10.0+cu128",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "cuda_visible_devices": ""
+  },
+  "valid_cases": [
+    {
+      "name": "random_2d_scalar_blocked",
+      "source_points": 37,
+      "query_points": 23,
+      "dimensions": 2,
+      "value_shape": [
+        37
+      ],
+      "output_shape": [
+        23,
+        1
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 23,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 37,
+      "requested_max_pairs": 73,
+      "tie_fallback_rows": 0,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "random_3d_four_channels_blocked",
+      "source_points": 41,
+      "query_points": 17,
+      "dimensions": 3,
+      "value_shape": [
+        41,
+        4
+      ],
+      "output_shape": [
+        17,
+        4
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 9,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 82,
+      "requested_max_pairs": 89,
+      "tie_fallback_rows": 0,
+      "max_abs_field_difference": 2.220446049250313e-16,
+      "relative_field_difference": 1.0947474572250936e-16,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "duplicates_exact_hits",
+      "source_points": 6,
+      "query_points": 4,
+      "dimensions": 2,
+      "value_shape": [
+        6,
+        3
+      ],
+      "output_shape": [
+        4,
+        3
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 2,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 12,
+      "requested_max_pairs": 17,
+      "tie_fallback_rows": 4,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "permuted_duplicate_source_order",
+      "source_points": 6,
+      "query_points": 4,
+      "dimensions": 2,
+      "value_shape": [
+        6,
+        3
+      ],
+      "output_shape": [
+        4,
+        3
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 2,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 12,
+      "requested_max_pairs": 17,
+      "tie_fallback_rows": 4,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "cutoff_tie_group",
+      "source_points": 8,
+      "query_points": 2,
+      "dimensions": 2,
+      "value_shape": [
+        8
+      ],
+      "output_shape": [
+        2,
+        1
+      ],
+      "output_dtype": "float64",
+      "effective_k": 3,
+      "cdist_calls": 2,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 8,
+      "requested_max_pairs": 8,
+      "tie_fallback_rows": 2,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "k1_tie_vector",
+      "source_points": 8,
+      "query_points": 2,
+      "dimensions": 2,
+      "value_shape": [
+        8,
+        4
+      ],
+      "output_shape": [
+        2,
+        4
+      ],
+      "output_dtype": "float64",
+      "effective_k": 1,
+      "cdist_calls": 1,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 16,
+      "requested_max_pairs": 16,
+      "tie_fallback_rows": 1,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "source_smaller_than_k",
+      "source_points": 2,
+      "query_points": 3,
+      "dimensions": 3,
+      "value_shape": [
+        2,
+        2
+      ],
+      "output_shape": [
+        3,
+        2
+      ],
+      "output_dtype": "float64",
+      "effective_k": 2,
+      "cdist_calls": 2,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 4,
+      "requested_max_pairs": 4,
+      "tie_fallback_rows": 1,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "single_source_scalar",
+      "source_points": 1,
+      "query_points": 2,
+      "dimensions": 2,
+      "value_shape": [
+        1
+      ],
+      "output_shape": [
+        2,
+        1
+      ],
+      "output_dtype": "float64",
+      "effective_k": 1,
+      "cdist_calls": 1,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 2,
+      "requested_max_pairs": 2,
+      "tie_fallback_rows": 0,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "epsilon_boundary",
+      "source_points": 4,
+      "query_points": 3,
+      "dimensions": 2,
+      "value_shape": [
+        4
+      ],
+      "output_shape": [
+        3,
+        1
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 2,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 8,
+      "requested_max_pairs": 8,
+      "tie_fallback_rows": 3,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "large_offset_close_points",
+      "source_points": 5,
+      "query_points": 2,
+      "dimensions": 2,
+      "value_shape": [
+        5
+      ],
+      "output_shape": [
+        2,
+        1
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 1,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 10,
+      "requested_max_pairs": 10,
+      "tie_fallback_rows": 0,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "integer_grid_tie_frequency",
+      "source_points": 67,
+      "query_points": 169,
+      "dimensions": 2,
+      "value_shape": [
+        67,
+        2
+      ],
+      "output_shape": [
+        169,
+        2
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 57,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 201,
+      "requested_max_pairs": 256,
+      "tie_fallback_rows": 156,
+      "max_abs_field_difference": 0.0,
+      "relative_field_difference": 0.0,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    },
+    {
+      "name": "noncontiguous_coordinates",
+      "source_points": 23,
+      "query_points": 13,
+      "dimensions": 3,
+      "value_shape": [
+        23,
+        3
+      ],
+      "output_shape": [
+        13,
+        3
+      ],
+      "output_dtype": "float64",
+      "effective_k": 4,
+      "cdist_calls": 7,
+      "all_source_points_visited_per_block": true,
+      "each_query_visited_once": true,
+      "max_distance_pairs": 46,
+      "requested_max_pairs": 52,
+      "tie_fallback_rows": 0,
+      "max_abs_field_difference": 3.469446951953614e-17,
+      "relative_field_difference": 1.7581947625830566e-17,
+      "default_field_tolerance_violations": 0,
+      "native_indices_identical": true,
+      "passed": true
+    }
+  ],
+  "valid_case_count": 12,
+  "maximum_absolute_field_difference": 2.220446049250313e-16,
+  "default_field_tolerance_violations": 0,
+  "issue_probes": [
+    {
+      "id": "PAIR_BOUND",
+      "requested_max_pairs": 10,
+      "actual_max_pairs": 11,
+      "query_block": 1,
+      "accepted": true,
+      "bound_violated": true
+    },
+    {
+      "id": "ZERO_PAIR_BUDGET",
+      "requested_max_pairs": 0,
+      "actual_max_pairs": 11,
+      "query_block": 1,
+      "accepted": true,
+      "bound_violated": true
+    },
+    {
+      "id": "REORDERED_SOURCE_CPU",
+      "expected": [
+        [
+          9.0
+        ]
+      ],
+      "actual": [
+        [
+          30.0
+        ]
+      ],
+      "max_abs_difference": 21.0,
+      "fallback_rows": 1,
+      "silently_accepted": true
+    },
+    {
+      "id": "STALE_QUERY_CPU",
+      "expected": [
+        [
+          9.0
+        ]
+      ],
+      "actual": [
+        [
+          40.0
+        ]
+      ],
+      "max_abs_difference": 31.0,
+      "fallback_rows": 1,
+      "silently_accepted": true
+    },
+    {
+      "id": "INVALID_K",
+      "k": 0,
+      "builder_returned_map": true,
+      "apply_raised": "IndexError: argmax(): Expected reduction dim 1 to have non-zero size."
+    },
+    {
+      "id": "INVALID_K",
+      "k": -1,
+      "builder_returned_map": true,
+      "apply_raised": "IndexError: argmax(): Expected reduction dim 1 to have non-zero size."
+    },
+    {
+      "id": "NONFINITE_SOURCE",
+      "native_raised": "ValueError",
+      "candidate_returned_map": true,
+      "returned_distances_finite": true
+    }
+  ],
+  "configured_dimension_tile_bounds": [
+    {
+      "source_points": 2709,
+      "query_points": 7225,
+      "query_block": 512,
+      "distance_tile_pairs": 1387008,
+      "distance_tile_mib": 10.58203125
+    },
+    {
+      "source_points": 8453,
+      "query_points": 11271,
+      "query_block": 512,
+      "distance_tile_pairs": 4327936,
+      "distance_tile_mib": 33.01953125
+    },
+    {
+      "source_points": 24140,
+      "query_points": 32186,
+      "query_block": 347,
+      "distance_tile_pairs": 8376580,
+      "distance_tile_mib": 63.908233642578125
+    },
+    {
+      "source_points": 32186,
+      "query_points": 32186,
+      "query_block": 260,
+      "distance_tile_pairs": 8368360,
+      "distance_tile_mib": 63.84552001953125
+    }
+  ],
+  "approval": "CPU correctness evidence only. Keep candidate outside accepted GPU protocol until issues and CUDA/end-to-end validation are resolved."
+}

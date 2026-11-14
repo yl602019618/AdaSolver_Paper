@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "CPU orchestration only, no latency evidence",
+  "checks": [
+    "100 direct repeats retained after profile interruption",
+    "resume profiles without rerunning direct repetitions",
+    "metadata equality checked"
+  ],
+  "source_sha256": "1a802535f5f87fdd5a12e79478613f6caa547a00d8006e288164c869700558b8"
+}

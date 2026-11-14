@@ -1,0 +1,68 @@
+{
+  "status": "verified_for_reuse",
+  "models": [
+    {
+      "backbone": "Transolver3",
+      "checkpoint_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/shapenet_car_t3_ddp2_e400_trainingseed0_best.pt",
+      "checkpoint_sha256": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+      "normalizer_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/shapenet_car_t3_ddp2_e400_trainingseed0_coef_norm.npz",
+      "normalizer_sha256": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+      "epochs": 400,
+      "updates": 142000,
+      "train_samples": 710,
+      "validation_samples": 79,
+      "test_samples": 100,
+      "legacy_registry_values": [
+        {
+          "checkpoint_id": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+          "dataset": "shapenet_car",
+          "backbone": "Transolver3",
+          "training_protocol": "e5_shapenet_current_ddp2_v1",
+          "training_seed": "0",
+          "checkpoint_sha256": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+          "head_sha256": "",
+          "normalizer_sha256": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+          "training_data": "710 locked operator-training cases",
+          "selection_split": "operator_validation79",
+          "origin_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/shapenet_car_t3_ddp2_e400_trainingseed0_best.pt",
+          "verified": "False",
+          "operator_manifest": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/shapenet_car_t3_ddp2_e400_trainingseed0_manifest.json"
+        }
+      ],
+      "verification_status": "current files match training manifests and final independent E3 receipts"
+    },
+    {
+      "backbone": "LinearNO_ShapeNet_native",
+      "checkpoint_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/checkpoints/seed0/shapenet_car_linearno_ddp2_e400_trainingseed0_best.pt",
+      "checkpoint_sha256": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+      "normalizer_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/checkpoints/seed0/shapenet_car_linearno_ddp2_e400_trainingseed0_coef_norm.npz",
+      "normalizer_sha256": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+      "epochs": 400,
+      "updates": 142000,
+      "train_samples": 710,
+      "validation_samples": 79,
+      "test_samples": 100,
+      "legacy_registry_values": [
+        {
+          "checkpoint_id": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+          "dataset": "shapenet_car",
+          "backbone": "LinearNO",
+          "training_protocol": "e3_linearno_shapenet_matched_v1",
+          "training_seed": "0",
+          "checkpoint_sha256": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+          "head_sha256": "",
+          "normalizer_sha256": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+          "training_data": "710 locked operator-training cases",
+          "selection_split": "operator_validation79",
+          "origin_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/checkpoints/seed0/shapenet_car_linearno_ddp2_e400_trainingseed0_best.pt",
+          "verified": "False",
+          "operator_manifest": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/checkpoints/seed0/shapenet_car_linearno_ddp2_e400_trainingseed0_manifest.json"
+        }
+      ],
+      "verification_status": "current files match training manifests and final independent E3 receipts"
+    }
+  ],
+  "source_accuracy_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/results/independent_accuracy_audit.json",
+  "source_latency_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/results/final_independent_latency_audit.json",
+  "note": "Old registration flags are preserved as historical metadata; reuse status comes from current file hashes and completed independent audits, not the filename."
+}

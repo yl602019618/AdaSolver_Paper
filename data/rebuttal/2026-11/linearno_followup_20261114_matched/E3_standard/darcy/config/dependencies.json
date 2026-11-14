@@ -1,0 +1,46 @@
+{
+  "python": "3.10.12",
+  "packages": [
+    {
+      "package": "torch",
+      "version": "2.10.0+cu128",
+      "official_source": "https://github.com/pytorch/pytorch",
+      "license_metadata": "BSD-3-Clause",
+      "license_metadata_truncated": false
+    },
+    {
+      "package": "numpy",
+      "version": "2.2.6",
+      "official_source": "https://github.com/numpy/numpy",
+      "license_metadata": "Copyright (c) 2005-2024, NumPy Developers.\n All rights reserved.\n\n Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions are\n met:\n\n     * Redistributions of source code must retain the above copyright\n        notice, this list of conditions and the following disclaimer.\n\n     * Redistributions in binary form must reproduce the above\n        copyright notice, this list of conditions and the following\n        disclaimer in the documentation and/or other materials provided\n        with the distribution.\n\n     * Neither the name of the NumPy Developers nor the names of any\n        contributors may be used to endorse or promote products derived\n        from this software without specific prior written permission.\n\n THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n OF",
+      "license_metadata_truncated": true
+    },
+    {
+      "package": "scipy",
+      "version": "1.15.3",
+      "official_source": "https://github.com/scipy/scipy",
+      "license_metadata": "Copyright (c) 2001-2002 Enthought, Inc. 2003-2024, SciPy Developers.\n All rights reserved.\n\n Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions\n are met:\n\n 1. Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n\n 2. Redistributions in binary form must reproduce the above\n    copyright notice, this list of conditions and the following\n    disclaimer in the documentation and/or other materials provided\n    with the distribution.\n\n 3. Neither the name of the copyright holder nor the names of its\n    contributors may be used to endorse or promote products derived\n    from this software without specific prior written permission.\n\n THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n OF THIS S",
+      "license_metadata_truncated": true
+    },
+    {
+      "package": "scikit-learn",
+      "version": "1.7.2",
+      "official_source": "https://github.com/scikit-learn/scikit-learn",
+      "license_metadata": "BSD-3-Clause",
+      "license_metadata_truncated": false
+    },
+    {
+      "package": "einops",
+      "version": "0.8.2",
+      "official_source": "https://github.com/arogozhnikov/einops",
+      "license_metadata": "MIT",
+      "license_metadata_truncated": false
+    }
+  ],
+  "LinearNO": {
+    "source": "https://github.com/HiPRL/LinearNO",
+    "commit": "3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269",
+    "license": "No LICENSE or package license metadata found at pinned official revision"
+  },
+  "extra_GPU_knn_libraries": "none used; grid SciPy QHull plus PyTorch sparse gather/apply"
+}

@@ -1,0 +1,132 @@
+{
+  "id": "linearno-followup-20261114-v1",
+  "training_seed": 0,
+  "head_seed": 0,
+  "split_manifest": "standard_benchmarks/split_manifest.json",
+  "train_count": 900,
+  "validation_count": 100,
+  "epochs": 1000,
+  "test_training_selection": false,
+  "historical_test_viewed": true,
+  "no_remote_write": true,
+  "main_backbones": {
+    "Transolver3": {
+      "width": 128,
+      "layers": 8,
+      "heads": 8,
+      "mlp_ratio": 2,
+      "slices": 64,
+      "clip": 0.1,
+      "weight_decay": 1e-05
+    },
+    "LinearNO_point_temp": {
+      "official_variant": "temp",
+      "width": 128,
+      "layers": 8,
+      "heads": 8,
+      "mlp_ratio": 1,
+      "key_dimension": 64,
+      "clip": 1,
+      "weight_decay": {
+        "darcy": 1e-06,
+        "airfoil": 1e-05
+      }
+    }
+  },
+  "native_reference": {
+    "LinearNO_conv_temp": "Full only; existing official variant cannot receive subsets; Airfoil full-grid training separate from main variable-point schedule"
+  },
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "scheduler": "OneCycle",
+  "extra_learning_rate_search_budget_per_backbone": 0,
+  "datasets": {
+    "darcy": {
+      "shape": [
+        85,
+        85
+      ],
+      "batch_size": 4,
+      "updates": 225000,
+      "training_points": [
+        7225,
+        7225
+      ],
+      "loss": "physical_relative_L2_plus_0.1_official_derivative_term",
+      "test_count": 200,
+      "pi": "interface_distance_2d_v1; amp=.25,ell=2/84,beta=.5"
+    },
+    "airfoil": {
+      "shape": [
+        221,
+        51
+      ],
+      "batch_size": 8,
+      "updates": 113000,
+      "training_points": [
+        4508,
+        11271
+      ],
+      "loss": "decoded_physical_pressure_relative_L2",
+      "target_channel": 3,
+      "primary_test_count": 110,
+      "test_population": "published Cl>0.02 IDs",
+      "secondary_population": "all200 pressure only, separate if run"
+    }
+  },
+  "inference": {
+    "budgets": [
+      0.375,
+      0.5,
+      0.75
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "main_methods": [
+      "uniform",
+      "pi",
+      "cpg_beta1",
+      "ca"
+    ],
+    "mechanism_accuracy": [
+      "cpg_beta0",
+      "cpg_beta1"
+    ],
+    "same_indices_required": "CPG beta0/beta1 and old/new reconstruction within a given model,case,seed,budget",
+    "Full": "one actual output per case; aliases explicit; no sampling seed or rAUEC"
+  },
+  "reconstruction_gate": "reconstruction/accepted_protocols.json plus per-new-checkpoint end-to-end validation",
+  "timing": {
+    "case_count_per_task": 3,
+    "warmups": 20,
+    "formal_repetitions": 100,
+    "scopes": [
+      "A_CPU_to_CPU_float64",
+      "B_GPU_to_GPU",
+      "C_explicit_map_reuse"
+    ],
+    "network": "eager FP32 native implementation fixed across reconstruction versions",
+    "full_alias": "old/new Full can reference one real baseline series",
+    "exclusive_gpu_required": true
+  },
+  "statistics": {
+    "area_budgets": [
+      0.375,
+      0.5,
+      0.75
+    ],
+    "mean_order": "case mean within each seed/budget, then seed-wise AUEC/Uniform AUEC, then three-seed mean and sampleSD",
+    "ddof": 1,
+    "primary_CPG_beta": 1,
+    "rank_scope": "within same backbone,dataset,metric,population,reconstruction; ties at displayed precision",
+    "full_in_area": false
+  },
+  "resources": {
+    "status": "Airfoil training active; foreign jobs occupy other cards; Darcy/reconstruction wait",
+    "training_sharing_preference": "await optional user input; default wait for unoccupied card",
+    "external_jobs_touched": false
+  }
+}

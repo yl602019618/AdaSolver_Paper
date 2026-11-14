@@ -1,0 +1,295 @@
+{
+  "status": "passed_for_declared_partial_accuracy_scope",
+  "passed": true,
+  "checked_at_utc": "2026-11-14T15:32:14.345185+00:00",
+  "reviewer": "followup_reconstruction",
+  "renderer_sha256": "4124a71e5ea0135252abe3551aebac7058f3387aed9890cf69063e0cb9a42a15",
+  "scope": "Previously inspected point-model rAUEC/beta/absolute outputs plus newly inspected Airfoil conv Full supplement",
+  "experiment_matrix_complete": false,
+  "darcy_accuracy_available": false,
+  "latency_results_available": false,
+  "inspected_figures": [
+    {
+      "figure": "rauec_new",
+      "actual_png_inspected": true,
+      "png_size": [
+        2614,
+        1018
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "formats": {
+        "png": "2f0e7650803612afbf080c558a27de84cc703827840f1803a96354f3aa63a964",
+        "pdf": "d04a0224f4cbada78a33d9d44a87227d5db03f3ce31b4e3c6f4e670b1a922469",
+        "svg": "77f974e2d6b6d2f5d859cd17eed01e93981f6cd23d0fdee6b237fac7a7fe015d"
+      },
+      "svg_text_editable": true,
+      "clipping_observed": false,
+      "legend_or_axis_overlap_observed": false,
+      "dataset_completeness": {
+        "airfoil2d": "shown: fixed110 Cl>0.02 field population",
+        "darcy": "pending; no measured data shown"
+      },
+      "inspection_basis": "Prior actual PNG inspection retained via exact unchanged PNG hash; no new conv rAUEC or point-curve data"
+    },
+    {
+      "figure": "rauec_old",
+      "actual_png_inspected": true,
+      "png_size": [
+        2614,
+        1018
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "formats": {
+        "png": "2f0e7650803612afbf080c558a27de84cc703827840f1803a96354f3aa63a964",
+        "pdf": "187cd7ac736977ec040580353acf97bbf7eb1d8f4dc746d9e2b97f1178bd8108",
+        "svg": "eac6ccc66beae54e7d701397571ac13c369df571ab5ec7034c7dc1d1f255f414"
+      },
+      "svg_text_editable": true,
+      "clipping_observed": false,
+      "legend_or_axis_overlap_observed": false,
+      "dataset_completeness": {
+        "airfoil2d": "shown: fixed110 Cl>0.02 field population",
+        "darcy": "pending; no measured data shown"
+      },
+      "inspection_basis": "Prior actual PNG inspection retained via exact unchanged PNG hash; no new conv rAUEC or point-curve data"
+    },
+    {
+      "figure": "absolute_error_budget_new",
+      "actual_png_inspected": true,
+      "png_size": [
+        2734,
+        1198
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "formats": {
+        "png": "59576c99c3e2b8e046606ad492df186630f3544ed30e136cad216179f4ef5d4c",
+        "pdf": "811fae9e01fb5a677dfd59a85eaf676500ed4cafab438c4c60b8450f0895fd91",
+        "svg": "614879079520f6b34e9fae3b58b41054c1ca61b8a0a286b0f2059fd41b8bba0a"
+      },
+      "svg_text_editable": true,
+      "clipping_observed": false,
+      "legend_or_axis_overlap_observed": false,
+      "dataset_completeness": {
+        "airfoil2d": "shown: fixed110 Cl>0.02 field population",
+        "darcy": "pending; no measured data shown"
+      },
+      "inspection_basis": "Prior actual PNG inspection retained via exact unchanged PNG hash; no new conv rAUEC or point-curve data"
+    },
+    {
+      "figure": "absolute_error_budget_old",
+      "actual_png_inspected": true,
+      "png_size": [
+        2734,
+        1198
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "formats": {
+        "png": "59576c99c3e2b8e046606ad492df186630f3544ed30e136cad216179f4ef5d4c",
+        "pdf": "640eac9e2839ec9a1310570499c62ce86a9124ec1aca4b0235ff13317dd8dcaf",
+        "svg": "e11b592d44e4570a1e810e4c5991752b3edf619692501fe93af7f245f8801a6d"
+      },
+      "svg_text_editable": true,
+      "clipping_observed": false,
+      "legend_or_axis_overlap_observed": false,
+      "dataset_completeness": {
+        "airfoil2d": "shown: fixed110 Cl>0.02 field population",
+        "darcy": "pending; no measured data shown"
+      },
+      "inspection_basis": "Prior actual PNG inspection retained via exact unchanged PNG hash; no new conv rAUEC or point-curve data"
+    }
+  ],
+  "compiled_latex_tables": [
+    {
+      "table": "standard_benchmarks/tables/rauec_new.tex",
+      "source_sha256": "2daf5f52c3117783f878f76aae1f432d777918885b5c0b366f8f5c089e1bb345",
+      "review_pdf": "coordination/publication_render_qa/rauec_new_final_review.pdf",
+      "log": "coordination/publication_render_qa/rauec_new_final_review.log",
+      "compile_passed": true,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "text_width_inches": 5.5,
+      "font": "Times text; article10pt with table small9pt"
+    },
+    {
+      "table": "standard_benchmarks/tables/rauec_old.tex",
+      "source_sha256": "cc9293447873ae8cd209a8e3894ba79d7ef21f233df7f030ab842c9adc9db1c0",
+      "review_pdf": "coordination/publication_render_qa/rauec_old_final_review.pdf",
+      "log": "coordination/publication_render_qa/rauec_old_final_review.log",
+      "compile_passed": true,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "text_width_inches": 5.5,
+      "font": "Times text; article10pt with table small9pt"
+    },
+    {
+      "table": "standard_benchmarks/tables/cpg_beta_pairs.tex",
+      "source_sha256": "83819491c763820ee208ea7dcfa656f85a67a80429fbf73e1704030691b20aad",
+      "review_pdf": "coordination/publication_render_qa/cpg_beta_pairs_final_review.pdf",
+      "log": "coordination/publication_render_qa/cpg_beta_pairs_final_review.log",
+      "compile_passed": true,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "text_width_inches": 5.5,
+      "font": "Times text; article10pt with table small9pt"
+    },
+    {
+      "table": "standard_benchmarks/tables/absolute_errors_airfoil2d_new.tex",
+      "source_sha256": "549afd003ce9acd35df03628412376e30d4a217231cc2d57efa0021ff281cfb0",
+      "review_pdf": "coordination/publication_render_qa/conv_full_addendum/absolute_new_review.pdf",
+      "log": "coordination/publication_render_qa/conv_full_addendum/absolute_new_review.log",
+      "review_png": "coordination/publication_render_qa/conv_full_addendum/absolute_new_review.png",
+      "compile_passed": true,
+      "actual_page_inspected": true,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "float_too_large": false,
+      "text_width_inches": 5.5,
+      "font": "Times text; article10pt with table small9pt",
+      "numeric_rows": 33
+    },
+    {
+      "table": "standard_benchmarks/tables/absolute_errors_airfoil2d_old.tex",
+      "source_sha256": "549afd003ce9acd35df03628412376e30d4a217231cc2d57efa0021ff281cfb0",
+      "review_pdf": "coordination/publication_render_qa/conv_full_addendum/absolute_old_review.pdf",
+      "log": "coordination/publication_render_qa/conv_full_addendum/absolute_old_review.log",
+      "review_png": "coordination/publication_render_qa/conv_full_addendum/absolute_old_review.png",
+      "compile_passed": true,
+      "actual_page_inspected": true,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "float_too_large": false,
+      "text_width_inches": 5.5,
+      "font": "Times text; article10pt with table small9pt",
+      "numeric_rows": 33
+    }
+  ],
+  "source_number_checks": "coordination/publication_render_qa/display_number_checks.json",
+  "source_number_checks_passed": true,
+  "display_counts": {
+    "rauec_numeric_cells_per_reconstruction": 8,
+    "rauec_pending_darcy_cells_per_reconstruction": 8,
+    "absolute_numeric_rows_per_reconstruction": 33,
+    "beta_paired_rows": 4
+  },
+  "resolved_issues": [
+    {
+      "id": "BETA_TABLE_WIDTH",
+      "severity": "medium",
+      "initial": "51.25645pt overfull at manuscript5.5in text width",
+      "resolution": "Root used4pt tabcolsep and mean/SD on separate gathered lines",
+      "status": "resolved; final compile and page image inspected"
+    },
+    {
+      "id": "DARCY_EMPTY_ABSOLUTE_PANEL",
+      "severity": "medium",
+      "initial": "Blank Darcy absolute-error panel without an explicit pending label",
+      "resolution": "Root added Pending Darcy results and removed meaningless numeric ticks",
+      "status": "resolved; actual new/old images checked"
+    },
+    {
+      "id": "ABSENT_CONV_REFERENCE_CAPTION",
+      "severity": "medium",
+      "initial": "Caption claimed a conv-temp Full reference was in a table containing only point backbones",
+      "resolution": "Caption now states the conv-temp reference is pending",
+      "status": "resolved"
+    },
+    {
+      "id": "AIRFOIL_POPULATION_LABEL",
+      "severity": "low",
+      "initial": "Main captions did not state the fixed110-case Cl>0.02 population",
+      "resolution": "rAUEC and absolute-error captions/tables now name the declared population",
+      "status": "resolved"
+    },
+    {
+      "id": "ABSOLUTE_METADATA_ROW",
+      "severity": "low",
+      "initial": "Long training-settings row visually extended beyond the table rule although within the page text width",
+      "resolution": "Root split parameters/epochs and updates into two lines",
+      "status": "resolved; final old/new tables recompiled and final page inspected"
+    }
+  ],
+  "unresolved_render_issues": [],
+  "source_csv_hashes": {
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_rauec.csv": "2ea80e3a71820c09ebbcac294627e8ba4d3c4831a7030aa4919b3cd1c1baab3c",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_absolute_errors.csv": "16eeeae78af114ff262f305ae4b36927d0b256865da2e32ad736282ee581df8f",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_latency_summary.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "notes": [
+    "Darcy pending panels are not certified as completed experiments.",
+    "Full is excluded from rAUEC; sampling SD is n=3 for the same training model.",
+    "Both backbones share the Airfoil physical-error axes; rAUEC uses each backbone own Uniform.",
+    "Old/new PNG pairs are pixel-identical; the corresponding source CSV values agree while reconstruction IDs remain separate.",
+    "Original per-case statistical audit and portable recomputation are separate evidence checks, not duplicated by render QA.",
+    "The reviewer did not edit the renderer, manuscript worktree, publication worktree or queues.",
+    "Conv Full is now available as an absolute-error supplement only; the33-row old/new tables were recompiled and inspected. The20-row rAUEC source is unchanged and excludes conv."
+  ],
+  "conv_full_addendum": {
+    "status": "passed",
+    "checked_at_utc": "2026-11-14T15:32:14.345185+00:00",
+    "scope": "conv Full supplement in old/new absolute-error tables only",
+    "previous_receipt": "coordination/publication_render_qa/conv_full_addendum/publication_render_qa_before_conv.json",
+    "number_checks": "coordination/publication_render_qa/conv_full_addendum/number_checks.json",
+    "recompiled_tables": [
+      {
+        "table": "standard_benchmarks/tables/absolute_errors_airfoil2d_new.tex",
+        "source_sha256": "549afd003ce9acd35df03628412376e30d4a217231cc2d57efa0021ff281cfb0",
+        "review_pdf": "coordination/publication_render_qa/conv_full_addendum/absolute_new_review.pdf",
+        "log": "coordination/publication_render_qa/conv_full_addendum/absolute_new_review.log",
+        "review_png": "coordination/publication_render_qa/conv_full_addendum/absolute_new_review.png",
+        "compile_passed": true,
+        "actual_page_inspected": true,
+        "overfull_boxes": 0,
+        "underfull_boxes": 0,
+        "float_too_large": false,
+        "text_width_inches": 5.5,
+        "font": "Times text; article10pt with table small9pt",
+        "numeric_rows": 33
+      },
+      {
+        "table": "standard_benchmarks/tables/absolute_errors_airfoil2d_old.tex",
+        "source_sha256": "549afd003ce9acd35df03628412376e30d4a217231cc2d57efa0021ff281cfb0",
+        "review_pdf": "coordination/publication_render_qa/conv_full_addendum/absolute_old_review.pdf",
+        "log": "coordination/publication_render_qa/conv_full_addendum/absolute_old_review.log",
+        "review_png": "coordination/publication_render_qa/conv_full_addendum/absolute_old_review.png",
+        "compile_passed": true,
+        "actual_page_inspected": true,
+        "overfull_boxes": 0,
+        "underfull_boxes": 0,
+        "float_too_large": false,
+        "text_width_inches": 5.5,
+        "font": "Times text; article10pt with table small9pt",
+        "numeric_rows": 33
+      }
+    ],
+    "absolute_rows_per_reconstruction": 33,
+    "absolute_total_rows": 66,
+    "rauec_rows": 20,
+    "rauec_source_unchanged": true,
+    "point_absolute_rows_unchanged": true,
+    "conv_excluded_from_rauec": true,
+    "conv_full_supplement_caption_present": true,
+    "conv_full_error": 0.0027917438680994905,
+    "displayed_conv_error": "0.002792",
+    "conv_sampling_sd": "N/A",
+    "test_population": "published_cl_gt_0p02_110",
+    "no_visual_clipping_or_overlap": true,
+    "renderer_sha256": "4124a71e5ea0135252abe3551aebac7058f3387aed9890cf69063e0cb9a42a15",
+    "source_csv_hashes": {
+      "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_rauec.csv": "2ea80e3a71820c09ebbcac294627e8ba4d3c4831a7030aa4919b3cd1c1baab3c",
+      "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_absolute_errors.csv": "16eeeae78af114ff262f305ae4b36927d0b256865da2e32ad736282ee581df8f",
+      "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_latency_summary.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

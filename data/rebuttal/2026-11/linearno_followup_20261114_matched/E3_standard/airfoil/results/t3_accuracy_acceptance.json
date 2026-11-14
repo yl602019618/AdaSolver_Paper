@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "architecture": "t3",
+  "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+  "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+  "reconstruction_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+  "unique_prediction_requests": 5060,
+  "expected_prediction_requests": 5060,
+  "long_metric_rows": 40480,
+  "test_cases": 110,
+  "methods": [
+    "full",
+    "uniform",
+    "pi",
+    "cpg_beta0",
+    "cpg",
+    "ca"
+  ],
+  "paired_beta_groups": 990,
+  "maximum_old_new_absolute_field_difference": 4.440892098500626e-16,
+  "acceptance_scope": "independent complete matrix/hash/shape/finiteness/paired-indices audit plus raw numerical equivalence receipts; latency separately pending",
+  "source_files": [
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/metrics.jsonl",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_ca/metrics.jsonl"
+  ],
+  "metrics_csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/metrics_complete.csv",
+  "metrics_sha256": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad",
+  "validator_sha256": "cc88d14823693a9186832d80e74fa746acd4d2631ea2ead4a1ca5f1a1139636c"
+}

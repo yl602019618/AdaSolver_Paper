@@ -1,0 +1,102 @@
+{
+  "t3": {
+    "full_error": 0.0040926861119723055,
+    "budget_errors_mean": {
+      "uniform": [
+        0.010916471996089819,
+        0.00862404005287301,
+        0.0060850976878475925
+      ],
+      "pi": [
+        0.006981564312087266,
+        0.005695866353032035,
+        0.004392817715642265
+      ],
+      "cpg_beta0": [
+        0.10319672986502144,
+        0.08323877154914612,
+        0.016982435037187837
+      ],
+      "cpg": [
+        0.0046851113392443215,
+        0.004325961212079249,
+        0.004125912618315279
+      ]
+    },
+    "rauec": {
+      "uniform": {
+        "mean": 1.0,
+        "sampling_sd": 0.0
+      },
+      "pi": {
+        "mean": 0.6710981402037617,
+        "sampling_sd": 0.007489007827517411
+      },
+      "cpg_beta0": {
+        "mean": 7.901201617639432,
+        "sampling_sd": 0.26733446624389007
+      },
+      "cpg": {
+        "mean": 0.5293446129085795,
+        "sampling_sd": 0.0067437970620434235
+      }
+    },
+    "test_seconds": 813.4328985586762,
+    "requests": 4070,
+    "metric_rows": 32560,
+    "csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/metrics_preliminary.csv",
+    "csv_sha256": "97af019b2a96c4d71fbb4f0f791b9fba8808402f53f4eb5c616c70269edc3aa7",
+    "equivalence_violations": 0,
+    "beta_pair_groups": 990
+  },
+  "linearno": {
+    "full_error": 0.004775013377014457,
+    "budget_errors_mean": {
+      "uniform": [
+        0.011377689896978835,
+        0.009133380519210565,
+        0.006772933264460233
+      ],
+      "pi": [
+        0.007256061590678845,
+        0.006116103200806006,
+        0.0049813739529953795
+      ],
+      "cpg_beta0": [
+        0.06971972730308747,
+        0.06664452496951,
+        0.027256934441545658
+      ],
+      "cpg": [
+        0.0050506547625286365,
+        0.004868047414407407,
+        0.004789292091305545
+      ]
+    },
+    "rauec": {
+      "uniform": {
+        "mean": 1.0,
+        "sampling_sd": 0.0
+      },
+      "pi": {
+        "mean": 0.6806219687259744,
+        "sampling_sd": 0.030818611106823973
+      },
+      "cpg_beta0": {
+        "mean": 6.201754180010074,
+        "sampling_sd": 0.23842022218388295
+      },
+      "cpg": {
+        "mean": 0.5592960053237309,
+        "sampling_sd": 0.021060236995368492
+      }
+    },
+    "test_seconds": 890.1703154891729,
+    "requests": 4070,
+    "metric_rows": 32560,
+    "csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno/metrics_preliminary.csv",
+    "csv_sha256": "1c8f9d9165652ce86e76c63f5bd97d06603690d8dec12f117c2d3301aa669b65",
+    "equivalence_violations": 0,
+    "beta_pair_groups": 990
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "direct_observations_preserved": 240,
+  "repeated_direct_measurements_on_recovery": 0,
+  "cache_rehydration_requests_per_condition": 1,
+  "scope": "CPU fixture with synchronization stub, intentional profile failure and exact raw-record preservation; not model timing",
+  "timing_core_source_sha256": "89d7559bbe0c8ca28f1efae14669e731141ae828f7c50dbafc4a68eb504a495a"
+}

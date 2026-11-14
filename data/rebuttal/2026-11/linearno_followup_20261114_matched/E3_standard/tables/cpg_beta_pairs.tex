@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering\small
+\caption{Paired CPG correction comparison. Entries are rAUEC mean $\pm$ sampling SD ($n=3$). Negative paired $\Delta$ favors $\beta=1$.}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllccc}
+\toprule
+Dataset & Backbone & Reconstruction & $\beta=0$ & $\beta=1$ & $\Delta(1-0)$ \\
+\midrule
+airfoil2d & Transolver3 & Original & $\begin{gathered}7.9012\\[-2pt]\pm 0.2673\end{gathered}$ & $\begin{gathered}0.5293\\[-2pt]\pm 0.0067\end{gathered}$ & $\begin{gathered}-7.3719\\[-2pt]\pm 0.2732\end{gathered}$ \\
+airfoil2d & Transolver3 & Sparse application & $\begin{gathered}7.9012\\[-2pt]\pm 0.2673\end{gathered}$ & $\begin{gathered}0.5293\\[-2pt]\pm 0.0067\end{gathered}$ & $\begin{gathered}-7.3719\\[-2pt]\pm 0.2732\end{gathered}$ \\
+airfoil2d & LinearNO (point-temp) & Original & $\begin{gathered}6.2018\\[-2pt]\pm 0.2384\end{gathered}$ & $\begin{gathered}0.5593\\[-2pt]\pm 0.0211\end{gathered}$ & $\begin{gathered}-5.6425\\[-2pt]\pm 0.2193\end{gathered}$ \\
+airfoil2d & LinearNO (point-temp) & Sparse application & $\begin{gathered}6.2018\\[-2pt]\pm 0.2384\end{gathered}$ & $\begin{gathered}0.5593\\[-2pt]\pm 0.0211\end{gathered}$ & $\begin{gathered}-5.6425\\[-2pt]\pm 0.2193\end{gathered}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,119 @@
+{
+  "accuracy_complete": false,
+  "latency_complete": false,
+  "models": [
+    {
+      "dataset": "darcy",
+      "backbone": "Transolver3",
+      "expected_methods": [
+        "full",
+        "uniform",
+        "pi",
+        "cpg_beta0",
+        "cpg",
+        "ca"
+      ],
+      "accuracy_status": "pending",
+      "reason": "Training or complete preliminary evaluation pending"
+    },
+    {
+      "dataset": "darcy",
+      "backbone": "LinearNO_point_temp",
+      "expected_methods": [
+        "full",
+        "uniform",
+        "pi",
+        "cpg_beta0",
+        "cpg",
+        "ca"
+      ],
+      "accuracy_status": "pending",
+      "reason": "Training or complete preliminary evaluation pending"
+    },
+    {
+      "dataset": "darcy",
+      "backbone": "LinearNO_conv_temp",
+      "expected_methods": [
+        "full"
+      ],
+      "accuracy_status": "pending",
+      "reason": "Training or complete preliminary evaluation pending"
+    },
+    {
+      "dataset": "airfoil",
+      "backbone": "Transolver3",
+      "expected_methods": [
+        "full",
+        "uniform",
+        "pi",
+        "cpg_beta0",
+        "cpg",
+        "ca"
+      ],
+      "accuracy_status": "complete",
+      "reason": "",
+      "source_csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/metrics_complete.csv",
+      "actual_field_rows": 10120,
+      "expected_field_rows": 10120,
+      "population_cases": 110
+    },
+    {
+      "dataset": "airfoil",
+      "backbone": "LinearNO_point_temp",
+      "expected_methods": [
+        "full",
+        "uniform",
+        "pi",
+        "cpg_beta0",
+        "cpg",
+        "ca"
+      ],
+      "accuracy_status": "complete",
+      "reason": "",
+      "source_csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno/metrics_complete.csv",
+      "actual_field_rows": 10120,
+      "expected_field_rows": 10120,
+      "population_cases": 110
+    },
+    {
+      "dataset": "airfoil",
+      "backbone": "LinearNO_conv_temp",
+      "expected_methods": [
+        "full"
+      ],
+      "accuracy_status": "complete",
+      "reason": "",
+      "source_csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno_conv/metrics_complete.csv",
+      "actual_field_rows": 220,
+      "expected_field_rows": 220,
+      "population_cases": 110
+    }
+  ],
+  "field_rows": 20460,
+  "rauec_rows": 20,
+  "latency_conditions": 0,
+  "latency_sources": [],
+  "source_records": [
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/metrics_complete.csv",
+      "sha256": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad",
+      "rows": 40480,
+      "dataset": "airfoil",
+      "architecture": "t3"
+    },
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno/metrics_complete.csv",
+      "sha256": "09013bf539c3cc0b7b59d8d7a42769afb66139f8045b409f621f8ad8172f91a3",
+      "rows": 40480,
+      "dataset": "airfoil",
+      "architecture": "linearno"
+    },
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno_conv/metrics_complete.csv",
+      "sha256": "1863449c79aeed493d0a9a0a2057bc3784051ec9a170bab3378fb248dd36615c",
+      "rows": 880,
+      "dataset": "airfoil",
+      "architecture": "linearno_conv"
+    }
+  ]
+}

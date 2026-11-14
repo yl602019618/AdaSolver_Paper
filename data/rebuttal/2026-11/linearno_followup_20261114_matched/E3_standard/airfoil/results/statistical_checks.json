@@ -1,0 +1,340 @@
+{
+  "groups": [
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "field_relative_l2",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "cd_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "cl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "cdcl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "field_relative_l2",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "cd_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "cl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "checkpoint_id": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "cdcl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "field_relative_l2",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "cd_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "cl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "metric": "cdcl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "field_relative_l2",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "cd_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "cl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_id": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "training_seed": 0,
+      "metric_target": "field",
+      "test_population": "published_cl_gt_0p02_110",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "metric": "cdcl_abs_error",
+      "methods": [
+        "ca",
+        "cpg",
+        "cpg_beta0",
+        "pi",
+        "uniform"
+      ],
+      "full_records": 110,
+      "nonfull_per_method": 990,
+      "area_definition": "per-seed trapezoid divided by matched Uniform, then mean/ddof1 SD"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/metrics_complete.csv",
+      "sha256": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad"
+    },
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno/metrics_complete.csv",
+      "sha256": "09013bf539c3cc0b7b59d8d7a42769afb66139f8045b409f621f8ad8172f91a3"
+    },
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno_conv/metrics_complete.csv",
+      "sha256": "1863449c79aeed493d0a9a0a2057bc3784051ec9a170bab3378fb248dd36615c"
+    }
+  ],
+  "full_excluded_from_rauec": true,
+  "sampling_seeds_not_training_replicates": true
+}

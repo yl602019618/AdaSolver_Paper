@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "fixtures": 12,
+  "stage_observations": 1100,
+  "profile_repeats": 5,
+  "device": "CPU",
+  "threads": 4,
+  "pid": 1183396,
+  "accuracy_scope": "published checkpoints on fixed validation cases; no new test-set or new-cohort evidence",
+  "fused_stage": "Native SciPy grid search/weights/application is compiled and reported as one interval",
+  "maximum_staged_native_absolute_difference": 0.0
+}

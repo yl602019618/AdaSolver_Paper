@@ -1,0 +1,12 @@
+{
+  "reason": "Pre-test correction of flattened-mask EDT into actual2D interface distance; no test-score-based selection",
+  "old_sha256": "6171c4dae9c0a1b26c62ec3bddf6857a61cb5d0288d799d42cebb1ddc97f5e69",
+  "new_sha256": "2c28f5f7daa32037807c6e960ac3ddf53bca98e4f4e1a3f928d9e72f68272257",
+  "new_id": "interface_distance_2d_v1",
+  "unchanged": {
+    "amp": 0.25,
+    "ell": 0.023809523809523808,
+    "beta": 0.5
+  },
+  "legacy1d_not_main_matrix": true
+}

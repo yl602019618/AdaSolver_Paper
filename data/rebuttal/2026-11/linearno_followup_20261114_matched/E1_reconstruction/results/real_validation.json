@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "records": 108,
+  "protocol": {
+    "validation_cases": {
+      "darcy": [
+        4,
+        501,
+        985
+      ],
+      "airfoil": [
+        4,
+        501,
+        985
+      ],
+      "shapenet_car": [
+        "param1/1eae4fcec701c176e742b0b5e87bec54",
+        "param4/9d400df8825de9a62514ed2901e978de",
+        "param8/c8fb314a1866d1d2428df271ebc70bc0"
+      ]
+    },
+    "budgets": [
+      0.375,
+      0.5,
+      0.75
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+    "metric_tolerance": "absolute downstream error change <=1e-8 +1e-5*abs(old metric)",
+    "checkpoint_scope": "published frozen checkpoints supply physical prediction values for implementation validation, not new-cohort accuracy",
+    "final_new_models": "must additionally compare reconstruction and metrics on their own validation cases before final tests",
+    "gpu": 7,
+    "workers": 4
+  },
+  "max_abs": 5.684341886080802e-14,
+  "max_relative_norm": 6.242208892534781e-17,
+  "max_field_metric_delta": 2.7755575615628914e-17
+}

@@ -1,0 +1,34 @@
+{
+  "status": "passed_for_declared_partial_accuracy_scope",
+  "receipt": "publication_render_qa.json",
+  "table_previews": [
+    "verification/table_previews/rauec_new_final_review.pdf",
+    "verification/table_previews/rauec_old_final_review.pdf",
+    "verification/table_previews/cpg_beta_pairs_final_review.pdf",
+    "verification/table_previews/absolute_new_review.pdf",
+    "verification/table_previews/absolute_old_review.pdf"
+  ],
+  "png_identity": [
+    {
+      "figure": "E3_standard/figures/absolute_error_budget_new.png",
+      "sha256": "59576c99c3e2b8e046606ad492df186630f3544ed30e136cad216179f4ef5d4c",
+      "matches_reviewed_source": true
+    },
+    {
+      "figure": "E3_standard/figures/absolute_error_budget_old.png",
+      "sha256": "59576c99c3e2b8e046606ad492df186630f3544ed30e136cad216179f4ef5d4c",
+      "matches_reviewed_source": true
+    },
+    {
+      "figure": "E3_standard/figures/rauec_new.png",
+      "sha256": "2f0e7650803612afbf080c558a27de84cc703827840f1803a96354f3aa63a964",
+      "matches_reviewed_source": true
+    },
+    {
+      "figure": "E3_standard/figures/rauec_old.png",
+      "sha256": "2f0e7650803612afbf080c558a27de84cc703827840f1803a96354f3aa63a964",
+      "matches_reviewed_source": true
+    }
+  ],
+  "published_table_sources_match_reviewed_sha256": true
+}

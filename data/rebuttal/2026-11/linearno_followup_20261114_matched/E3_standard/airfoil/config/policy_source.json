@@ -1,0 +1,10 @@
+{
+  "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/paper_git/data/airfoil_pressure/configs.json",
+  "sha256": "0941df82c72017f5b297e5a00539ef49bebd60bda7a5f03454c7ead1428edb31",
+  "changes": [
+    "names made readable",
+    "new own-backbone CA head paths attached at runtime",
+    "CPG beta0 paired control"
+  ],
+  "beta_selection": "fixed before new tests; not reselected on test"
+}

@@ -1,0 +1,49 @@
+{
+  "recorded_at_unix": 1794660832.520624,
+  "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.35",
+  "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+  "torch": "2.10.0+cu128",
+  "numpy": "2.2.6",
+  "scipy": "1.15.3",
+  "torch_cuda": "12.8",
+  "torch_threads": 4,
+  "cpu_affinity": [
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135
+  ],
+  "gpu": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,name,driver_version,memory.total",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "stdout": "index, uuid, name, driver_version, memory.total [MiB]\n0, GPU-041b5d9a-0cc1-b9ad-2249-9289d952e8e5, NVIDIA H20, 570.86.10, 97871 MiB\n1, GPU-5ac7260d-d956-20a6-1557-17ff0156a50f, NVIDIA H20, 570.86.10, 97871 MiB\n2, GPU-2ea2008d-ecb3-f36c-f48c-b0288ee03dfb, NVIDIA H20, 570.86.10, 97871 MiB\n3, GPU-fe808ea6-a07c-ebfd-2613-8b6f5354e2b0, NVIDIA H20, 570.86.10, 97871 MiB\n4, GPU-13e0ae0b-d1d1-253d-0e00-81f379bbcf56, NVIDIA H20, 570.86.10, 97871 MiB\n5, GPU-e74df101-4757-0c9a-4ad3-68cfa976c6f4, NVIDIA H20, 570.86.10, 97871 MiB\n6, GPU-e345280b-4c47-ce6b-9b00-f93c5abc008e, NVIDIA H20, 570.86.10, 97871 MiB\n7, GPU-11eba984-86aa-73bd-421a-119c3b9c9477, NVIDIA H20, 570.86.10, 97871 MiB",
+    "stderr": ""
+  },
+  "cpu": {
+    "command": [
+      "lscpu"
+    ],
+    "returncode": 0,
+    "stdout": "Architecture:                       x86_64\nCPU op-mode(s):                     32-bit, 64-bit\nAddress sizes:                      52 bits physical, 57 bits virtual\nByte Order:                         Little Endian\nCPU(s):                             192\nOn-line CPU(s) list:                0-191\nVendor ID:                          GenuineIntel\nModel name:                         Intel(R) Xeon(R) Platinum 8457C\nCPU family:                         6\nModel:                              143\nThread(s) per core:                 2\nCore(s) per socket:                 48\nSocket(s):                          2\nStepping:                           8\nCPU max MHz:                        3800.0000\nCPU min MHz:                        800.0000\nBogoMIPS:                           5200.00\nFlags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 invpcid_single intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nVirtualization:                     VT-x\nL1d cache:                          4.5 MiB (96 instances)\nL1i cache:                          3 MiB (96 instances)\nL2 cache:                           192 MiB (96 instances)\nL3 cache:                           195 MiB (2 instances)\nNUMA node(s):                       2\nNUMA node0 CPU(s):                  0-47,96-143\nNUMA node1 CPU(s):                  48-95,144-191\nVulnerability Gather data sampling: Not affected\nVulnerability Itlb multihit:        Not affected\nVulnerability L1tf:                 Not affected\nVulnerability Mds:                  Not affected\nVulnerability Meltdown:             Not affected\nVulnerability Mmio stale data:      Not affected\nVulnerability Retbleed:             Not affected\nVulnerability Spec rstack overflow: Not affected\nVulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl and seccomp\nVulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:           Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence\nVulnerability Srbds:                Not affected\nVulnerability Tsx async abort:      Not affected",
+    "stderr": ""
+  },
+  "load_average": [
+    10.009765625,
+    10.736328125,
+    10.66259765625
+  ],
+  "environment": {
+    "OMP_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "ADASOLVER_NATIVE_CACHE": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/runtime/native_fps_cache"
+  }
+}

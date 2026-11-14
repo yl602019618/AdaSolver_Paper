@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+  "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+  "model_class": "Model",
+  "attention_class": "Physics_Attention_Irregular_Mesh",
+  "parameters": 977345,
+  "epochs_completed": 1000,
+  "updates_completed": 113000,
+  "optimizer_parameter_steps": 113000,
+  "history_epochs_verified": 1000,
+  "checkpoint_selected_epoch": 975,
+  "history_sha256": "a3e2e2fb7891dfa5bb7e2f9601527b939ae0a2a72b2b9d9e207d4d065b980c1c",
+  "verifier_sha256": "cd8b5e8ca0195e7d127a4dc34e70ce0a7b0a1b08c0989d59decb915a84c8d4bd",
+  "scope": "strict native state/hash, train-only normalization IDs, actual final resume/optimizer steps, all epoch history and validation-min checkpoint selection; accuracy/latency separate"
+}

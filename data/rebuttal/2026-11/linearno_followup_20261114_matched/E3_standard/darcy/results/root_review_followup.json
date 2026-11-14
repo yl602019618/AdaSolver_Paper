@@ -1,0 +1,33 @@
+{
+  "timestamp_utc": "2026-11-14 13:23:44 UTC",
+  "controllers": {
+    "transolver3": {
+      "pid": 1179572,
+      "execution_status": "waiting_resource",
+      "active_stage": "backbone",
+      "observed_gpu_pids": [
+        1138759
+      ]
+    },
+    "linearno": {
+      "pid": 1179573,
+      "execution_status": "waiting_resource",
+      "active_stage": "backbone",
+      "observed_gpu_pids": [
+        1138760
+      ]
+    },
+    "linearno_conv": {
+      "pid": 1179575,
+      "execution_status": "waiting_resource",
+      "active_stage": "backbone",
+      "observed_gpu_pids": [
+        1138508
+      ]
+    }
+  },
+  "controllers_restarted": false,
+  "training_protocol_changed": false,
+  "identity_validation": "results/head_normalizer_identity_validation.json",
+  "full_validation": "results/full_input_path_validation.json"
+}

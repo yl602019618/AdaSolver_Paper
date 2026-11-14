@@ -1,0 +1,1 @@
+Relative area under the error–budget curve for three sampling seeds (mean ± sample SD). The three budgets are 37.5%, 50%, and 75%. Each backbone uses its own matched Uniform denominator. Reconstruction: grid_scipy_linear_nearest_native_v1. Airfoil uses the fixed published 110 cases with true Cl>0.02. N/A indicates pending evidence; Full is outside the integral.

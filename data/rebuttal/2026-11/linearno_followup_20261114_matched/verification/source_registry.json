@@ -1,0 +1,65 @@
+{
+  "checked_at_utc": "2026-11-14T11:56:47.063052+00:00",
+  "official_repository": "https://github.com/HiPRL/LinearNO",
+  "official_commit": "3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269",
+  "official_main_fresh_api_matches_pin": true,
+  "official_license": "No LICENSE or GitHub license metadata at pin; code kept internal",
+  "paper_remote_main": "d4021228aa183f7d5f7912124d17d3f69f8930b9",
+  "local_code_git_metadata": null,
+  "files": [
+    {
+      "path": "AdaSolver_official/adasolver/models/transolver3.py",
+      "bytes": 12665,
+      "sha256": "2dc6476d64613b66e0da285e676bd87ffd6110b49ff4c2d53ed4e9013309562c",
+      "same_as_E3_snapshot": true
+    },
+    {
+      "path": "AdaSolver_official/adasolver/layers/compensation.py",
+      "bytes": 7005,
+      "sha256": "5afdb1a535660cc0c02496aa2535c7153320bf3c21fb43089e99b5ac66bdca3b",
+      "same_as_E3_snapshot": true
+    },
+    {
+      "path": "AdaSolver_official/adasolver/utils/interpolation.py",
+      "bytes": 1230,
+      "sha256": "ef9ae24706764d3d1120d3537993dbf30ba2400802fb46beebe14bbef2edb08b",
+      "same_as_E3_snapshot": true
+    },
+    {
+      "path": "AdaSolver_official/adasolver/metrics/shapenet_car.py",
+      "bytes": 6979,
+      "sha256": "abdc797e68e871eb9cca7f1454c445916ebbbcf8907a85d85bafc6fd455a718b",
+      "same_as_E3_snapshot": true
+    },
+    {
+      "path": "AdaSolver_official/inference_speed/gpu_reconstruction.py",
+      "bytes": 6289,
+      "sha256": "335826975968b3c3883672be54d2f2b5ba579aa237c3d1f3afa3839261f9271b"
+    },
+    {
+      "path": "AdaSolver_official/inference_speed/reference_mass.py",
+      "bytes": 4945,
+      "sha256": "65f107f49cbdf8f9d2801817b476e3bb75dca97ca40c92388f12bfa483e6e024"
+    },
+    {
+      "path": "AdaSolver_official/inference_speed/gpu_reference_mass.py",
+      "bytes": 3059,
+      "sha256": "8a9fe5a3ca421ccce1e0794f5a740a8c191e3ebc6e3e4aecabb0bd8a44139d3b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/model/LinearAttnNeuralOperator.py",
+      "bytes": 15591,
+      "sha256": "2019eacb9c6b61b3b7ede6a94e4ebfa3acb6ab95b25c1ab22299ab3dcc6c79d6"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/scripts/LinearNO_Darcy.sh",
+      "bytes": 350,
+      "sha256": "bcd87f6d87a5f61a84008a8f28d36f3e8117dacf87ca99b70fb0776be546cde6"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/scripts/LinearNO_airfoil.sh",
+      "bytes": 378,
+      "sha256": "094d38354e29bede206c6585ff8dd5b95bf2df2cfeb455d48e0e432126dbd35f"
+    }
+  ]
+}

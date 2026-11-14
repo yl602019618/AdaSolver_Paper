@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "preliminary_unchanged_after_complete": true,
+  "coarse_prediction_hash_and_retained_count_exported": true,
+  "conflicting_phase_rewrite_rejected": true,
+  "scope": "temporary schema fixture; no measured model results; temporary rows deleted",
+  "export_source_sha256": "bf8c019dd6019bc0804a98bb7d113e79fd6645998c2fec0425fc2fd7ff03918f"
+}

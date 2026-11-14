@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scope": "identity-gate metadata fixtures using actual current normalizer hash; no completed head checkpoint claimed",
+  "current_normalizer_sha256": "5a2b073849d5b7d2e968f05f1492737a7646ccbd78baaacc3d662db6aca36251",
+  "checks": [
+    {
+      "case": "matching",
+      "accepted": true,
+      "expected_acceptance": true,
+      "error": null
+    },
+    {
+      "case": "head_mismatch",
+      "accepted": false,
+      "expected_acceptance": false,
+      "error": "head/backbone/current data normalizer mismatch"
+    },
+    {
+      "case": "backbone_current_mismatch",
+      "accepted": false,
+      "expected_acceptance": false,
+      "error": "backbone/current data normalizer mismatch"
+    }
+  ],
+  "source_sha256": "523fd7044ef1ace79711a5b40b10ed58a095c2e8f0be09c872c730e07336a98d"
+}

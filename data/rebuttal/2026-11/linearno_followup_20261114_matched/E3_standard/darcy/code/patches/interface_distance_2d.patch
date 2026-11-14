@@ -1,0 +1,11 @@
+--- legacy/adasolver/inference/pi/darcy.py
++++ followup/adasolver/inference/pi/darcy.py
+@@ -32,7 +32,7 @@
+     if not mask.any():
+         return np.ones(mask.size, dtype=np.float64)
+     # EDT returns zero on interface nodes and cell-distance elsewhere.
+-    return distance_transform_edt(~mask).reshape(-1) / max(shape[0] - 1, 1)
++    return distance_transform_edt(~mask.reshape(shape)).reshape(-1) / max(shape[0] - 1, 1)
+ 
+ 
+ def coefficient_interface_score(

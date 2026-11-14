@@ -1,0 +1,267 @@
+{
+  "passed": true,
+  "scope": "replay independently seeded RNGs; verify their states against actual saved runtime checkpoints",
+  "live_per_batch_capture": false,
+  "backbone_training_mandatory_surface": false,
+  "head_and_inference_mandatory_surface": 121,
+  "point_selection": "uniform_without_replacement over all11271 points",
+  "index_dtype": "int64",
+  "both_primary_models_use_identical_sampling_code": true,
+  "code_source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/config/execution_sources/train.py",
+  "checks": [
+    {
+      "architecture": "t3",
+      "checkpoint_epoch": 999,
+      "checkpoint_steps": 113000,
+      "checkpoint_snapshot_sha256": "6d861790be0efb0dc915d6aae26f98f9ac96b2d482bdec9cf0a7004462b4d529",
+      "point_rng_exact": true,
+      "geometry_order_rng_exact": true
+    },
+    {
+      "architecture": "linearno",
+      "checkpoint_epoch": 999,
+      "checkpoint_steps": 113000,
+      "checkpoint_snapshot_sha256": "c4e21d8d3c9b5bce8440d9e0d2199b81b9d62ec73b532bb07fd7f76c313ad92d",
+      "point_rng_exact": true,
+      "geometry_order_rng_exact": true
+    }
+  ],
+  "saved_runtime_rng_states": {
+    "t3": {
+      "epoch": 999,
+      "steps": 113000,
+      "point_rng": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 168777124235017772964125518632664805694,
+          "inc": 63306644816639285970073607820614806277
+        },
+        "has_uint32": 1,
+        "uinteger": 3833825820
+      },
+      "order_rng": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 279858572145597846525511530650846002346,
+          "inc": 75832438150325598680414078138474848963
+        },
+        "has_uint32": 0,
+        "uinteger": 2971834092
+      },
+      "checkpoint_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/resume.pt",
+      "checkpoint_snapshot_sha256": "6d861790be0efb0dc915d6aae26f98f9ac96b2d482bdec9cf0a7004462b4d529"
+    },
+    "linearno": {
+      "epoch": 999,
+      "steps": 113000,
+      "point_rng": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 168777124235017772964125518632664805694,
+          "inc": 63306644816639285970073607820614806277
+        },
+        "has_uint32": 1,
+        "uinteger": 3833825820
+      },
+      "order_rng": {
+        "bit_generator": "PCG64",
+        "state": {
+          "state": 279858572145597846525511530650846002346,
+          "inc": 75832438150325598680414078138474848963
+        },
+        "has_uint32": 0,
+        "uinteger": 2971834092
+      },
+      "checkpoint_path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/resume.pt",
+      "checkpoint_snapshot_sha256": "c4e21d8d3c9b5bce8440d9e0d2199b81b9d62ec73b532bb07fd7f76c313ad92d"
+    }
+  },
+  "replayed_batch_samples": [
+    {
+      "global_step_zero_based": 0,
+      "epoch": 0,
+      "batch": 0,
+      "point_count": 4645,
+      "geometry_ids": [
+        889,
+        481,
+        621,
+        255,
+        649,
+        195,
+        975,
+        192
+      ],
+      "selected_indices_sha256": "a2c59d6a7ccafd272f6944fbf888acb470cecbac02908a51e8ecbb99d81ff7b0",
+      "retained_surface_points": 53
+    },
+    {
+      "global_step_zero_based": 1,
+      "epoch": 0,
+      "batch": 1,
+      "point_count": 7545,
+      "geometry_ids": [
+        582,
+        127,
+        988,
+        834,
+        196,
+        852,
+        293,
+        477
+      ],
+      "selected_indices_sha256": "71271dba3eee613c0d88ef5739a399a2e1a6f6f494184d12d3285fcf89974670",
+      "retained_surface_points": 77
+    },
+    {
+      "global_step_zero_based": 2,
+      "epoch": 0,
+      "batch": 2,
+      "point_count": 7076,
+      "geometry_ids": [
+        528,
+        352,
+        373,
+        274,
+        355,
+        396,
+        272,
+        798
+      ],
+      "selected_indices_sha256": "dbb1188642b331ac7b6e166267d0893dd17da57ab125426d177e12c27c8b5367",
+      "retained_surface_points": 73
+    },
+    {
+      "global_step_zero_based": 112,
+      "epoch": 0,
+      "batch": 112,
+      "point_count": 8578,
+      "geometry_ids": [
+        617,
+        922,
+        409,
+        638
+      ],
+      "selected_indices_sha256": "6d08b0b65227068677e2566ca3841934ed2ab55c6199aa8073ed3c1205fe2f42",
+      "retained_surface_points": 91
+    },
+    {
+      "global_step_zero_based": 113,
+      "epoch": 1,
+      "batch": 0,
+      "point_count": 8358,
+      "geometry_ids": [
+        204,
+        441,
+        249,
+        876,
+        816,
+        931,
+        659,
+        881
+      ],
+      "selected_indices_sha256": "54cda3d1ba9989a741fcdb40261a49b57db32829c146fe33a6938a9ead455edb",
+      "retained_surface_points": 96
+    },
+    {
+      "global_step_zero_based": 114,
+      "epoch": 1,
+      "batch": 1,
+      "point_count": 7704,
+      "geometry_ids": [
+        369,
+        230,
+        28,
+        202,
+        991,
+        958,
+        20,
+        830
+      ],
+      "selected_indices_sha256": "aac69bdcde0020a019d9a69f2408174eec8be2743135747845d18c4f929da696",
+      "retained_surface_points": 79
+    },
+    {
+      "global_step_zero_based": 225,
+      "epoch": 1,
+      "batch": 112,
+      "point_count": 8801,
+      "geometry_ids": [
+        681,
+        756,
+        246,
+        554
+      ],
+      "selected_indices_sha256": "4cc1df849f08262be68e40ad3d9731b0b9c0dd1953943c7cfb010cbafdf982ab",
+      "retained_surface_points": 95
+    },
+    {
+      "global_step_zero_based": 226,
+      "epoch": 2,
+      "batch": 0,
+      "point_count": 10946,
+      "geometry_ids": [
+        174,
+        556,
+        276,
+        12,
+        831,
+        46,
+        921,
+        318
+      ],
+      "selected_indices_sha256": "7ffcf8ca811b1abc12e850c235b7d299cbada0daa65c126da07b7fcb24a282fb",
+      "retained_surface_points": 116
+    },
+    {
+      "global_step_zero_based": 112997,
+      "epoch": 999,
+      "batch": 110,
+      "point_count": 6010,
+      "geometry_ids": [
+        845,
+        400,
+        725,
+        276,
+        628,
+        148,
+        475,
+        663
+      ],
+      "selected_indices_sha256": "b48d3e4b955985190399ca798075260ca07f5e39399926e090a16da0fe3f243f",
+      "retained_surface_points": 56
+    },
+    {
+      "global_step_zero_based": 112998,
+      "epoch": 999,
+      "batch": 111,
+      "point_count": 10841,
+      "geometry_ids": [
+        180,
+        200,
+        851,
+        801,
+        924,
+        450,
+        796,
+        983
+      ],
+      "selected_indices_sha256": "62d3e28e4e9e6838c588102ecc242e5a8e092568ceba65cb7d0f5594d4feaf5d",
+      "retained_surface_points": 119
+    },
+    {
+      "global_step_zero_based": 112999,
+      "epoch": 999,
+      "batch": 112,
+      "point_count": 10909,
+      "geometry_ids": [
+        487,
+        533,
+        786,
+        298
+      ],
+      "selected_indices_sha256": "3533d7a8bd871d540c07d6a51bc4227c31c996c0821e1c0e49cc2fa32f0c4364",
+      "retained_surface_points": 118
+    }
+  ]
+}

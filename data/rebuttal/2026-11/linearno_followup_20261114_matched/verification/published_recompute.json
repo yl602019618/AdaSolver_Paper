@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "scope": "Airfoil training-seed0 point backbones and separate conv-temp Full supplement, completed field accuracy only",
+  "raw_rows": 81840,
+  "field_rows": 20460,
+  "rauec_rows": 20,
+  "absolute_rows": 66,
+  "maximum_statistic_difference": 0.0,
+  "sources": [
+    {
+      "path": "E3_standard/airfoil/records/t3/metrics_complete.csv.gz",
+      "uncompressed_sha256": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad",
+      "rows": 40480
+    },
+    {
+      "path": "E3_standard/airfoil/records/linearno/metrics_complete.csv.gz",
+      "uncompressed_sha256": "09013bf539c3cc0b7b59d8d7a42769afb66139f8045b409f621f8ad8172f91a3",
+      "rows": 40480
+    },
+    {
+      "path": "E3_standard/airfoil/records/linearno_conv/metrics_complete.csv",
+      "uncompressed_sha256": "1863449c79aeed493d0a9a0a2057bc3784051ec9a170bab3378fb248dd36615c",
+      "rows": 880
+    }
+  ],
+  "formal_latency_verified": false
+}

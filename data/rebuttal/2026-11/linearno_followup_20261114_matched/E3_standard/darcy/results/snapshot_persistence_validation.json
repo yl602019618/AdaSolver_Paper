@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "scope": "CPU filesystem contract only; no simulated metrics or figures",
+  "checks": [
+    "first complete payload published",
+    "identical publication retains bytes and mtime",
+    "different content rejected without replacing existing artifact",
+    "preexisting interrupted temporary artifact preserved"
+  ],
+  "source_sha256": "163fc919a7a886dd769334f25d8fefdfdde259799238816621e116a6591a1ecd"
+}

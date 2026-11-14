@@ -1,0 +1,27 @@
+{
+  "inputs": {
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_rauec.csv": "2ea80e3a71820c09ebbcac294627e8ba4d3c4831a7030aa4919b3cd1c1baab3c",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_absolute_errors.csv": "16eeeae78af114ff262f305ae4b36927d0b256865da2e32ad736282ee581df8f",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/results/backbone_latency_summary.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "renderer_sha256": "4124a71e5ea0135252abe3551aebac7058f3387aed9890cf69063e0cb9a42a15",
+  "accuracy_complete": false,
+  "latency_complete": false,
+  "outputs": [
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/absolute_error_budget_new.pdf",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/absolute_error_budget_new.png",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/absolute_error_budget_new.svg",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/absolute_error_budget_old.pdf",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/absolute_error_budget_old.png",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/absolute_error_budget_old.svg",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/rauec_new.pdf",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/rauec_new.png",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/rauec_new.svg",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/rauec_old.pdf",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/rauec_old.png",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/figures/rauec_old.svg"
+  ],
+  "render_qa": "passed for current partial Airfoil accuracy scope, including separate conv Full supplement",
+  "source_number_policy": "CSV only; missing values are N/A, never zero",
+  "render_qa_receipt": "../../../verification/publication_render_qa.json"
+}

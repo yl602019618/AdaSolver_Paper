@@ -1,0 +1,488 @@
+{
+  "audit_id": "airfoil_two_point_backbones_accuracy_partial_publication_v1",
+  "audited_at_utc": "2026-11-14T15:06:27.209953+00:00",
+  "status": "passed_for_declared_scope",
+  "all_requested_experiments_complete": false,
+  "scope": {
+    "dataset": "Airfoil 221x51",
+    "test_population": "published_cl_gt_0p02_110",
+    "test_cases": 110,
+    "backbones": [
+      "Transolver3",
+      "LinearNO_point_temp"
+    ],
+    "methods": [
+      "Full",
+      "Uniform",
+      "PI beta=1",
+      "CPG beta=0",
+      "CPG beta=1",
+      "CA beta=1"
+    ],
+    "budgets": [
+      0.375,
+      0.5,
+      0.75
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "training_seed": 0,
+    "reconstruction_ids": [
+      "grid_scipy_linear_nearest_native_v1",
+      "grid_qhull_sparse_apply_v1p1"
+    ]
+  },
+  "counts": {
+    "physical_requests": 10120,
+    "raw_four_metric_old_new_rows": 80960,
+    "field_rows": 20240,
+    "absolute_error_summary_rows": 64,
+    "rauec_summary_rows": 20,
+    "cpg_beta_pairs": 1980,
+    "prediction_artifacts_checked": 10120,
+    "formal_latency_conditions": 0
+  },
+  "verification": {
+    "checkpoint_and_normalizer_and_head_files_rehashed": true,
+    "exact_case_method_budget_seed_reconstruction_metric_matrix": true,
+    "source_json_to_csv_to_standard_field_records": true,
+    "all_npz_shapes_dtypes_selected_hashes_and_finiteness_checked": true,
+    "paired_coarse_and_retained_hashes_equal": true,
+    "beta0_compensation_arrays_all_one": true,
+    "full_computed_once_no_sampling_seed": true,
+    "rauec_recomputed": "Per-seed mean case error at each budget; explicit trapezoid weights [0.0625,0.1875,0.125]; divide same-backbone/checkpoint/population/protocol Uniform; then mean and sample SD (ddof=1). Full excluded.",
+    "statistics_comparison_tolerance": {
+      "rtol": 1e-12,
+      "atol": 1e-14
+    },
+    "maximum_statistics_absolute_difference": 3.552713678800501e-15,
+    "old_new_verification": "Scalar differences independently recomputed from all raw pairs; dense-field differences audited against stored pair certificates. No model forward or dense reconstruction rerun during this publication audit.",
+    "no_gpu_used": true,
+    "no_training_or_queue_mutations": true,
+    "no_remote_push": true
+  },
+  "model_identities": [
+    {
+      "backbone": "Transolver3",
+      "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "head_sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+      "checkpoint_file": "standard_benchmarks/airfoil/checkpoints/t3/best.pt",
+      "normalizer_file": "standard_benchmarks/airfoil/cache/normalizer.npz",
+      "head_file": "standard_benchmarks/airfoil/checkpoints/t3/head/pressure_d8_best.pt",
+      "epochs": 1000,
+      "updates": 113000,
+      "training_seed": 0,
+      "training_cases": 900,
+      "validation_cases": 100,
+      "parameters": 977345,
+      "head_seed": 0,
+      "head_epochs": 200,
+      "head_feature_source": "frozen_block0_on_S0",
+      "metrics_csv": "standard_benchmarks/airfoil/records/t3/metrics_complete.csv",
+      "metrics_csv_sha256": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad",
+      "physical_requests": 5060,
+      "raw_metric_rows": 40480,
+      "field_rows": 10120,
+      "cpg_beta_pairs": 990,
+      "prediction_artifacts_checked": 5060,
+      "prediction_artifact_sequence_sha256": "cbfa6c4153c0b0e7ca642d04a4700a06e5434f95ff86763d6cbc77f006b6a031",
+      "minimum_declared_truth_Cl": 0.024176366211576324
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "checkpoint_sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "head_sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0",
+      "checkpoint_file": "standard_benchmarks/airfoil/checkpoints/linearno/best.pt",
+      "normalizer_file": "standard_benchmarks/airfoil/cache/normalizer.npz",
+      "head_file": "standard_benchmarks/airfoil/checkpoints/linearno/head/pressure_d8_best.pt",
+      "epochs": 1000,
+      "updates": 113000,
+      "training_seed": 0,
+      "training_cases": 900,
+      "validation_cases": 100,
+      "parameters": 585217,
+      "head_seed": 0,
+      "head_epochs": 200,
+      "head_feature_source": "frozen_block0_on_S0",
+      "metrics_csv": "standard_benchmarks/airfoil/records/linearno/metrics_complete.csv",
+      "metrics_csv_sha256": "09013bf539c3cc0b7b59d8d7a42769afb66139f8045b409f621f8ad8172f91a3",
+      "physical_requests": 5060,
+      "raw_metric_rows": 40480,
+      "field_rows": 10120,
+      "cpg_beta_pairs": 990,
+      "prediction_artifacts_checked": 5060,
+      "prediction_artifact_sequence_sha256": "54213d61caca30e28b527218c293f6bb243048e59436466805224cf511bbf12d",
+      "minimum_declared_truth_Cl": 0.024176366211576324
+    }
+  ],
+  "full_errors": [
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "mean_field_relative_l2": 0.0040926861119723055,
+      "cases": 110
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "mean_field_relative_l2": 0.0040926861119723055,
+      "cases": 110
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "mean_field_relative_l2": 0.004775013377014456,
+      "cases": 110
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "mean_field_relative_l2": 0.004775013377014456,
+      "cases": 110
+    }
+  ],
+  "rauec": [
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "uniform",
+      "beta": null,
+      "mean": 1.0,
+      "sampling_sd": 0.0,
+      "seed_ratios": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "pi",
+      "beta": 1,
+      "mean": 0.6710981402037616,
+      "sampling_sd": 0.007489007827517398,
+      "seed_ratios": [
+        0.6632089566912271,
+        0.6781096238508171,
+        0.6719758400692406
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "cpg_beta0",
+      "beta": 0,
+      "mean": 7.901201617639433,
+      "sampling_sd": 0.26733446624389073,
+      "seed_ratios": [
+        8.203301101380577,
+        7.6952005947609825,
+        7.80510315677674
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "cpg",
+      "beta": 1,
+      "mean": 0.5293446129085795,
+      "sampling_sd": 0.006743797062043533,
+      "seed_ratios": [
+        0.523551176978868,
+        0.5367475348091524,
+        0.527735126937718
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "ca",
+      "beta": 1,
+      "mean": 0.5632490159452782,
+      "sampling_sd": 0.007347181955102871,
+      "seed_ratios": [
+        0.5590089723099761,
+        0.5717328106343821,
+        0.5590052648914762
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "uniform",
+      "beta": null,
+      "mean": 1.0,
+      "sampling_sd": 0.0,
+      "seed_ratios": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "pi",
+      "beta": 1,
+      "mean": 0.6710981402037617,
+      "sampling_sd": 0.007489007827517332,
+      "seed_ratios": [
+        0.6632089566912274,
+        0.6781096238508172,
+        0.6719758400692406
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "cpg_beta0",
+      "beta": 0,
+      "mean": 7.901201617639433,
+      "sampling_sd": 0.26733446624389173,
+      "seed_ratios": [
+        8.203301101380578,
+        7.6952005947609825,
+        7.80510315677674
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "cpg",
+      "beta": 1,
+      "mean": 0.5293446129085795,
+      "sampling_sd": 0.006743797062043485,
+      "seed_ratios": [
+        0.5235511769788681,
+        0.5367475348091524,
+        0.527735126937718
+      ]
+    },
+    {
+      "backbone": "Transolver3",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "ca",
+      "beta": 1,
+      "mean": 0.5632490159452782,
+      "sampling_sd": 0.007347181955102839,
+      "seed_ratios": [
+        0.5590089723099763,
+        0.5717328106343821,
+        0.5590052648914762
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "uniform",
+      "beta": null,
+      "mean": 1.0,
+      "sampling_sd": 0.0,
+      "seed_ratios": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "pi",
+      "beta": 1,
+      "mean": 0.6806219687259744,
+      "sampling_sd": 0.030818611106823914,
+      "seed_ratios": [
+        0.6468513602747608,
+        0.6877889246258745,
+        0.7072256212772878
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "cpg_beta0",
+      "beta": 0,
+      "mean": 6.201754180010074,
+      "sampling_sd": 0.23842022218388217,
+      "seed_ratios": [
+        5.926489323430134,
+        6.3434048660357645,
+        6.335368350564323
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "cpg",
+      "beta": 1,
+      "mean": 0.5592960053237309,
+      "sampling_sd": 0.02106023699536838,
+      "seed_ratios": [
+        0.5368375188241064,
+        0.5624477569820452,
+        0.5786027401650411
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "method": "ca",
+      "beta": 1,
+      "mean": 0.5899806153045715,
+      "sampling_sd": 0.025944707322740897,
+      "seed_ratios": [
+        0.5623810859858824,
+        0.5936894273774251,
+        0.6138713325504067
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "uniform",
+      "beta": null,
+      "mean": 1.0,
+      "sampling_sd": 0.0,
+      "seed_ratios": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "pi",
+      "beta": 1,
+      "mean": 0.6806219687259745,
+      "sampling_sd": 0.030818611106823927,
+      "seed_ratios": [
+        0.6468513602747608,
+        0.6877889246258746,
+        0.7072256212772878
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "cpg_beta0",
+      "beta": 0,
+      "mean": 6.201754180010075,
+      "sampling_sd": 0.23842022218388245,
+      "seed_ratios": [
+        5.926489323430134,
+        6.343404866035765,
+        6.335368350564323
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "cpg",
+      "beta": 1,
+      "mean": 0.5592960053237309,
+      "sampling_sd": 0.02106023699536838,
+      "seed_ratios": [
+        0.5368375188241064,
+        0.5624477569820452,
+        0.5786027401650411
+      ]
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "method": "ca",
+      "beta": 1,
+      "mean": 0.5899806153045715,
+      "sampling_sd": 0.025944707322740956,
+      "seed_ratios": [
+        0.5623810859858824,
+        0.5936894273774252,
+        0.6138713325504068
+      ]
+    }
+  ],
+  "old_new_differences": [
+    {
+      "backbone": "Transolver3",
+      "maximum_recorded_dense_field_absolute_difference": 4.440892098500626e-16,
+      "maximum_recorded_dense_field_relative_norm_difference": 7.10080253458428e-17,
+      "maximum_scalar_metric_differences": {
+        "field_relative_l2": 5.551115123125783e-17,
+        "cd_abs_error": 3.469446951953614e-18,
+        "cl_abs_error": 0.0,
+        "cdcl_abs_error": 2.7755575615628914e-17
+      },
+      "elementwise_violations": 0,
+      "nonfinite_auxiliary_records": {}
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "maximum_recorded_dense_field_absolute_difference": 4.440892098500626e-16,
+      "maximum_recorded_dense_field_relative_norm_difference": 7.099225351807377e-17,
+      "maximum_scalar_metric_differences": {
+        "field_relative_l2": 2.7755575615628914e-17,
+        "cd_abs_error": 3.469446951953614e-18,
+        "cl_abs_error": 0.0,
+        "cdcl_abs_error": 1.1102230246251565e-16
+      },
+      "elementwise_violations": 0,
+      "nonfinite_auxiliary_records": {}
+    }
+  ],
+  "input_hashes": {
+    "standard_benchmarks/split_manifest.json": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+    "standard_benchmarks/results/backbone_rauec.csv": "2ea80e3a71820c09ebbcac294627e8ba4d3c4831a7030aa4919b3cd1c1baab3c",
+    "standard_benchmarks/results/backbone_absolute_errors.csv": "4d6756317259a0495ca65941da5a1efd88e7db1615df2ffc489d3067baa36661",
+    "standard_benchmarks/results/field_records.csv": "e1c289f4c14aa91daf95abd0766a0b5fe79f4cb2b7a59099ec0e9aff72521f4c",
+    "standard_benchmarks/results/checkpoint_registry.csv": "c7789caf6a3e0357d236910d7cd2e7e2e58f8c9804c748ba4c96f3a12a884bbf",
+    "standard_benchmarks/results/collection_status.json": "da795634ebf947558431e3f7a8042e346eb1b3a25dabc866ab6f3178cabac94a",
+    "standard_benchmarks/airfoil/checkpoints/t3/manifest.json": "62eb067653e3b03efd3908d9e8dd6f400f3cd23a6987c0bbc96365060a8768d6",
+    "standard_benchmarks/airfoil/checkpoints/t3/head/manifest.json": "660b1d079c03e875fcaf91200eaefa0469e15cb60e784281889b3afd08df1c27",
+    "standard_benchmarks/airfoil/results/t3_complete_completion.json": "69975c76a1161eef96fa9c7f65fec2685a4fe2fb5e939b70b4ad7308db838fc3",
+    "standard_benchmarks/airfoil/results/t3_accuracy_acceptance.json": "5591a6bd67d232cf5382c6098b8a5a50205edcf8757e0759378c5b48d28c0442",
+    "standard_benchmarks/airfoil/results/t3_identity_validation.json": "7fabef23f1fc3dc83b242fe3abfee6e0300f6485d2175fa2580c8c0194309bca",
+    "standard_benchmarks/airfoil/records/t3/metrics_complete.csv": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad",
+    "standard_benchmarks/airfoil/records/t3/test_preliminary/metrics.jsonl": "b05500093c7cc7f238ede86372fc471b4209e06294bdd55f63e84d3826852546",
+    "standard_benchmarks/airfoil/records/t3/test_ca/metrics.jsonl": "30ed27ad82438765d7d91ef9498b7a7d796a036ec22d5819be288a0bfa5753ca",
+    "standard_benchmarks/airfoil/checkpoints/linearno/manifest.json": "1dd62ae0e679ec9f8c24faa9b13cb0dedfe9a084a92deea0af09b605285e101c",
+    "standard_benchmarks/airfoil/checkpoints/linearno/head/manifest.json": "eab2100f8c5d04dc98c0c5624aa46759d8eb4a85581bd2103afc460a3d2739a7",
+    "standard_benchmarks/airfoil/results/linearno_complete_completion.json": "baec135992c524ddd65ae822b69b1b7e86b1b0a0a0aad9ebd41d5d87f5757a54",
+    "standard_benchmarks/airfoil/results/linearno_accuracy_acceptance.json": "7b6547ca8b30d0f261fcf24c9eb9261adf9a0cc19b4d2df522e72cadf2015d07",
+    "standard_benchmarks/airfoil/results/linearno_identity_validation.json": "c628d057f3fc7f951b5d580c4d51362ac057a0c48bdabf53024780a7091861ef",
+    "standard_benchmarks/airfoil/records/linearno/metrics_complete.csv": "09013bf539c3cc0b7b59d8d7a42769afb66139f8045b409f621f8ad8172f91a3",
+    "standard_benchmarks/airfoil/records/linearno/test_preliminary/metrics.jsonl": "6108e993eecf87ecebe4e3058b4f42cc3f856d671c0b1647d2adde557c64bd76",
+    "standard_benchmarks/airfoil/records/linearno/test_ca/metrics.jsonl": "65164aa558054cf3344eba195add11b0025c8d66962f2b4aa7a7af7eb5671b8c"
+  },
+  "scope_exclusions": [
+    "Darcy new matched models and accuracy: pending; not certified",
+    "Official Airfoil conv-temp Full baseline: still training at audit snapshot; not certified",
+    "Formal same-GPU old/new latency and memory matrices: pending; no speedup certified",
+    "ShapeNet-Car follow-up and overall task completion: outside this receipt",
+    "Sampling SD is not independent-training SD; historically viewed test population is not an untouched holdout"
+  ],
+  "other_execution_snapshot": {
+    "darcy_transolver3": {
+      "epochs_completed": 0,
+      "execution_status": "waiting_resource"
+    },
+    "darcy_linearno": {
+      "epochs_completed": 0,
+      "execution_status": "waiting_resource"
+    },
+    "darcy_linearno_conv": {
+      "epochs_completed": 0,
+      "execution_status": "waiting_resource"
+    },
+    "airfoil_conv_temp": {
+      "epochs_completed": 930,
+      "execution_status": "running"
+    }
+  }
+}

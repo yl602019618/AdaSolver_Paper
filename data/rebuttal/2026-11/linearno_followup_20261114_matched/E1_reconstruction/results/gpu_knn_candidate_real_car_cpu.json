@@ -1,0 +1,467 @@
+{
+  "status": "passed",
+  "candidate_version": "0.2-input-guards",
+  "candidate_source_sha256": "47e77fa402622f14583f814ef04b4ffe3731f28f1f6a124474ae2427e0f594b0",
+  "fixture": {
+    "fixture_id": "ef5c03ded391a985",
+    "dataset": "shapenet_car",
+    "case_id": "param1/1eae4fcec701c176e742b0b5e87bec54",
+    "backbone": "Transolver3",
+    "checkpoint_sha256": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+    "budget_fraction": 0.5,
+    "sampling_seed": 0,
+    "selection": "validation Uniform",
+    "selected_indices_sha256": "aa6db0fff0423b916e572422be5709fe488303da399f3e94ab2a099a70458ae7",
+    "prediction_sha256": "707b9ae9575917c9fb0608dfafe5121ba2aaa7145d8d386e6df87e1ed3a7a98a",
+    "reference_coordinates_sha256": "9f43e61fef2537e137baebff06410c5a6e37f36cab241c819f9e8e018f159898",
+    "reference_dtype": "float32",
+    "prediction_dtype": "float32",
+    "output_dtype": "float64",
+    "prediction_device": "CPU",
+    "fixture_file": "records/reconstruction_microprofile/fixtures/ef5c03ded391a985.npz",
+    "evidence_scope": "CPU reconstruction stage diagnostic; not new-cohort accuracy or GPU timing",
+    "native_stage_equivalence": {
+      "max_abs": 0.0,
+      "relative_norm": 0.0,
+      "q50": 0.0,
+      "q95": 0.0,
+      "q99": 0.0,
+      "violations": 0,
+      "elements": 128744
+    }
+  },
+  "original_coordinate_dtype": "float32",
+  "candidate_coordinate_dtype": "float64 (value-preserving promotion)",
+  "output_dtype": "float64",
+  "checks": [
+    {
+      "output": "velocity",
+      "source_points": 16093,
+      "query_points": 32186,
+      "channels": 3,
+      "all_sources_visited_each_query": true,
+      "query_rows_visited_once": 32186,
+      "exact_native_neighbor_indices": true,
+      "cdist_call_count": 63,
+      "observed_max_tile_pairs": 8239616,
+      "candidate_metadata": {
+        "search": "exhaustive blocked direct Euclidean float64",
+        "candidate_version": "0.2-input-guards",
+        "max_pairs_budget": 8388608,
+        "query_block": 512,
+        "source_points": 16093,
+        "query_points": 32186,
+        "max_distance_pairs": 8239616,
+        "max_distance_tile_bytes": 65916928,
+        "legacy_tie_rows": 135,
+        "tie_rule": "ambiguous top-k or boundary distances delegated to original cKDTree source order",
+        "coordinate_dtype": "float64",
+        "distance_kind": "Euclidean distance, not squared distance",
+        "candidate_only": true,
+        "input_contract": "positive integer k/pair budget; finite coordinate tensors; optional CPU copies have matching float64 dtype, shape, values and order"
+      },
+      "diagnostic_execution_seconds": 1.2575664594769478,
+      "diagnostic_time_scope": "one CPU correctness check; not formal latency",
+      "cdist_blocks": [
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 16093,
+          "pair_count": 8239616
+        },
+        {
+          "query_rows": 442,
+          "source_rows": 16093,
+          "pair_count": 7113106
+        }
+      ]
+    },
+    {
+      "output": "surface_pressure",
+      "source_points": 1860,
+      "query_points": 3682,
+      "channels": 1,
+      "all_sources_visited_each_query": true,
+      "query_rows_visited_once": 3682,
+      "exact_native_neighbor_indices": true,
+      "cdist_call_count": 8,
+      "observed_max_tile_pairs": 952320,
+      "candidate_metadata": {
+        "search": "exhaustive blocked direct Euclidean float64",
+        "candidate_version": "0.2-input-guards",
+        "max_pairs_budget": 8388608,
+        "query_block": 512,
+        "source_points": 1860,
+        "query_points": 3682,
+        "max_distance_pairs": 952320,
+        "max_distance_tile_bytes": 7618560,
+        "legacy_tie_rows": 2,
+        "tie_rule": "ambiguous top-k or boundary distances delegated to original cKDTree source order",
+        "coordinate_dtype": "float64",
+        "distance_kind": "Euclidean distance, not squared distance",
+        "candidate_only": true,
+        "input_contract": "positive integer k/pair budget; finite coordinate tensors; optional CPU copies have matching float64 dtype, shape, values and order"
+      },
+      "diagnostic_execution_seconds": 0.016919396817684174,
+      "diagnostic_time_scope": "one CPU correctness check; not formal latency",
+      "cdist_blocks": [
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 512,
+          "source_rows": 1860,
+          "pair_count": 952320
+        },
+        {
+          "query_rows": 98,
+          "source_rows": 1860,
+          "pair_count": 182280
+        }
+      ]
+    }
+  ],
+  "full_field_difference": {
+    "max_abs": 7.105427357601002e-15,
+    "relative_norm": 1.4611432124487132e-18,
+    "q50": 0.0,
+    "q95": 0.0,
+    "q99": 0.0,
+    "violations": 0,
+    "elements": 128744
+  },
+  "test_device": "CPU",
+  "cuda_validation_performed": false,
+  "acceptance": "One real fixed-prediction CPU Car reconstruction check only; no CUDA, fresh model end-to-end, speed or peak-GPU-memory claim"
+}

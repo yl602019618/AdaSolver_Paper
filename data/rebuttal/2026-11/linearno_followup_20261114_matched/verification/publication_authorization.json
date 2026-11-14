@@ -1,0 +1,11 @@
+{
+  "authorized_by": "User instruction authorizing independent-branch publication on 2026-11-14",
+  "scope": "Publish the reviewed current experiment snapshot to an independent GitHub branch, with explicit experiment types, changes and incomplete conditions",
+  "branch": "rebuttal/20261114-linearno-followup",
+  "repository": "https://github.com/yl602019618/AdaSolver_Paper",
+  "main_update": false,
+  "feishu_write": false,
+  "experiment_workers_publish": false,
+  "root_publishes": true,
+  "supersedes": "The earlier no-push restriction for this task; all other experiment and preservation constraints remain"
+}

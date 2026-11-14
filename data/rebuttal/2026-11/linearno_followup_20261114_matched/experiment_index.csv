@@ -1,0 +1,9 @@
+experiment_id,experiment_type,dataset_population,status,training_seed,sampling_seeds,budgets,configuration_or_change,artifact
+E3-A,matched_backbone_training_and_accuracy,Airfoil 221x51 pressure,complete,0,0/1/2,Full 1.0; sampled 0.375/0.5/0.75,Transolver3 and official LinearNO point-temp; same900/100 split,E3_standard/results/backbone_absolute_errors.csv
+E3-B,paired_compensation_ablation,Airfoil 110 fixed Cl>0.02 cases,complete,0,0/1/2,0.375/0.5/0.75,CPG beta0/1 share coarse prediction and final indices,E3_standard/tables/cpg_beta_pairs.csv
+E3-C,own_backbone_CA_head_transfer,Airfoil pressure,complete,0,0/1/2,0.375/0.5/0.75,Each frozen backbone has its own200epoch head,E3_standard/airfoil/results/training_head_cost.csv
+E1-A,rule_preserving_reconstruction_equivalence,Car/Darcy/Airfoil fixed-prediction fixtures; full new-Airfoil test,accepted_in_declared_scope,,,see reconstruction registry,Original coordinate precision/rule/fallback and float64 output; new sparse application,E1_reconstruction/reconstruction_registry.json
+E1-B,exact_knn_candidate_correctness,one real Car fixture plus CPU numeric contracts,CPU_only_GPU_pending,,,0.5 real fixture,Independent candidate; not primary v1.1 or timing evidence,E1_reconstruction/results/gpu_knn_candidate_guard_audit.json
+E3-D,matched_backbone_training_and_accuracy,Darcy85x85,pending_GPU,0,0/1/2,Full 1.0; sampled0.375/0.5/0.75,New900/100 cohort; predeclared2D PI correction; no accuracy result yet,E3_standard/darcy/protocol.md
+E3-E,native_convolutional_Full_reference,Airfoil221x51,complete_Full_only,0,,1.0,"Official conv-temp fixed grid; distinct from point-temp main cohort; training cuDNN TF32 allowed, final test disabled",E3_standard/airfoil/model_compatibility.md
+E1-E3-F,complete_output_latency_and_memory,Car/Darcy/Airfoil,pending_exclusive_GPU,0,0/1/2,Full1.0; sampled0.375/0.5/0.75,A CPU-CPU; B GPU-GPU; C reusable-map;20warmup100formal per condition,E3_standard/protocol.md

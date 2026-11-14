@@ -1,0 +1,6 @@
+{
+  "backbone_training_mandatory_surface": false,
+  "head_and_inference_mandatory_surface": 121,
+  "action": "documentation and RNG replay verification only; running training code unchanged",
+  "proof": "results/training_sampling_identity.json"
+}

@@ -1,0 +1,1202 @@
+--- /dev/null
++++ b/coordination/package_results.py
+@@ -0,0 +1,111 @@
++"""Assemble a local, explicitly scoped E1/E3 extension without remote writes."""
++from __future__ import annotations
++
++import argparse
++import datetime as dt
++import hashlib
++import json
++from pathlib import Path
++import shutil
++import zipfile
++
++ROOT = Path(__file__).resolve().parents[1]
++ALLOWED = {'.py', '.md', '.me', '.json', '.jsonl', '.csv', '.tex', '.pdf', '.svg', '.png', '.patch', '.txt', '.yaml', '.yml', '.sh'}
++EXCLUDE = {'__pycache__', 'vendor', 'cache', 'checkpoints', 'data', 'logs', 'runtime'}
++
++
++def read(path):
++    return json.loads(path.read_text()) if path.exists() else {}
++
++
++def hash_file(path):
++    digest = hashlib.sha256()
++    with path.open('rb') as f:
++        for block in iter(lambda: f.read(8 * 1024 * 1024), b''):
++            digest.update(block)
++    return digest.hexdigest()
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--allow-partial', action='store_true')
++    parser.add_argument('--zip', action='store_true')
++    args = parser.parse_args()
++    standard = read(ROOT / 'standard_benchmarks/results/collection_status.json')
++    car = read(ROOT / 'reconstruction/results/car_delivery_receipt.json')
++    qa = read(ROOT / 'coordination/render_qa.json')
++    numeric_complete = standard.get('accuracy_complete') and standard.get('latency_complete') and car.get('execution_status') == 'completed'
++    complete = bool(numeric_complete and qa.get('passed'))
++    if not args.allow_partial and not complete:
++        raise RuntimeError('Final archive requires complete standard/Car matrices and actual rendered QA')
++    target = ROOT / 'archive_ready'
++    target.mkdir(exist_ok=True)
++    copied, pointers = [], []
++    seen_targets = set()
++    for source, section in [(ROOT / 'reconstruction', 'E1_reconstruction'),
++                            (ROOT / 'standard_benchmarks', 'E3_standard')]:
++        for path in sorted(source.rglob('*')):
++            relative = path.relative_to(source)
++            if not path.is_file() or any(part in EXCLUDE for part in relative.parts):
++                continue
++            if path.suffix not in ALLOWED and path.name != 'read.me':
++                continue
++            if path.stat().st_size > 64 * 1024 * 1024:
++                pointers.append(dict(path=str(path), bytes=path.stat().st_size, sha256=hash_file(path), reason='large raw record; kept at internal path'))
++                continue
++            destination = target / section / relative
++            destination.parent.mkdir(parents=True, exist_ok=True)
++            shutil.copy2(path, destination)
++            seen_targets.add(destination)
++            copied.append(dict(archive_path=str(destination.relative_to(target)), source=str(path), bytes=path.stat().st_size, sha256=hash_file(destination)))
++    # Checkpoints and caches stay internal. Their manifests preserve identities,
++    # recorded costs and the exact original paths without copying weight payloads.
++    for task in ['darcy', 'airfoil']:
++        folder = ROOT / 'standard_benchmarks' / task
++        for manifest in (folder / 'checkpoints').glob('**/manifest.json'):
++            value = read(manifest)
++            pointers.append(dict(manifest=str(manifest), manifest_sha256=hash_file(manifest),
++                checkpoint=value.get('checkpoint', value.get('head_checkpoint')),
++                checkpoint_sha256=value.get('checkpoint_sha256', value.get('head_sha256')),
++                normalizer=value.get('normalizer'), normalizer_sha256=value.get('normalizer_sha256'),
++                execution_status=value.get('execution_status'), reason='weights remain internal'))
++        pointers.append(dict(path=str(folder / 'cache'), reason='training caches remain internal'))
++        pointers.append(dict(path=str(folder / 'records'), reason='full arrays remain internal; per-case metrics and hashes are included'))
++        pointers.append(dict(path=str(folder / 'logs'), reason='large training logs remain internal; cost summaries and manifests are included'))
++    for name in ['PLAN.md', 'protocol_lock.json', 'source_registry.json', 'source_diff_summary.md',
++                 'legacy_car_checkpoint_verification.json', 'darcy_independent_code_review.md']:
++        source = ROOT / 'coordination' / name
++        if source.exists():
++            destination = target / 'coordination' / name
++            destination.parent.mkdir(exist_ok=True)
++            shutil.copy2(source, destination)
++            copied.append(dict(archive_path=str(destination.relative_to(target)), source=str(source), bytes=source.stat().st_size, sha256=hash_file(destination)))
++    now = dt.datetime.now(dt.timezone.utc).isoformat()
++    manifest = dict(created_at_utc=now, complete=complete, numeric_complete=bool(numeric_complete),
++        status='complete_local_package' if complete else 'partial_local_package',
++        standard_state=standard, car_state=car, render_qa=qa or 'pending',
++        historical_release_preserved='91c1fa7cc81b8c1cb61a43618296c1c892d818c0',
++        remote_push=False, files=copied, internal_artifacts=pointers)
++    (target / 'archive_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
++    (target / 'README.md').write_text('# LinearNO follow-up local package\n\n'
++        f'Status: {manifest["status"]}. Generated {now}.\n\n'
++        '`E1_reconstruction/` contains the new reconstruction implementation, rules, correctness records, costs and figures when available. '
++        '`E3_standard/` contains the new matched Darcy/Airfoil protocols, raw metrics, independent statistics and paper tables/figures when available. '
++        'Missing matrices remain pending and are listed in archive_manifest.json.\n\n'
++        'Weights, full prediction arrays, caches and large logs remain at the internal paths in the manifest. '
++        'Task commands in each protocol/COMMANDS document run from the original development workspace and require the recorded datasets and source dependencies. '
++        'Official LinearNO source is pinned in the source registry; no LICENSE metadata was found, and its vendored source is not bundled here.\n\n'
++        'The old E1/E3 release and current manuscript are preserved. This package is local; no GitHub push or Feishu write is performed.\n')
++    if args.zip:
++        zip_path = ROOT / ('linearno_followup_20261114_complete.zip' if complete else 'linearno_followup_20261114_partial.zip')
++        with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
++            for path in sorted(target.rglob('*')):
++                if path.is_file():
++                    z.write(path, arcname=str(Path('linearno_followup_20261114') / path.relative_to(target)))
++        print(json.dumps(dict(path=str(zip_path), bytes=zip_path.stat().st_size, sha256=hash_file(zip_path), complete=complete)))
++    else:
++        print(json.dumps(dict(path=str(target), included_files=len(copied), complete=complete)))
++
++
++if __name__ == '__main__':
++    main()
+--- /dev/null
++++ b/coordination/update_status.py
+@@ -0,0 +1,118 @@
++"""Refresh the shared status from live manifests; never infer completed evidence."""
++from __future__ import annotations
++
++import argparse
++import datetime as dt
++import fcntl
++import json
++import os
++from pathlib import Path
++import subprocess
++import time
++import traceback
++
++ROOT = Path(__file__).resolve().parents[1]
++READ_CACHE = {}
++
++
++def read(path):
++    path = Path(path)
++    for attempt in range(5):
++        try:
++            value = json.loads(path.read_text())
++            READ_CACHE[str(path)] = value
++            return value
++        except FileNotFoundError:
++            return {}
++        except (OSError, json.JSONDecodeError) as error:
++            warning = str(error)
++            time.sleep(.1 * (attempt + 1))
++    return {**READ_CACHE.get(str(path), {}), 'observation_warning': warning}
++
++
++def last_history(path):
++    try:
++        with Path(path).open('rb') as f:
++            f.seek(max(0, Path(path).stat().st_size - 8192))
++            lines = f.read().splitlines()
++        return next(json.loads(line) for line in reversed(lines) if line.startswith(b'{'))
++    except (OSError, ValueError, StopIteration):
++        return {}
++
++
++def atomic(path, value):
++    path = Path(path)
++    temp = path.with_name(path.name + f'.{os.getpid()}.tmp')
++    temp.write_text(value)
++    temp.replace(path)
++
++
++def refresh():
++    now = dt.datetime.now(dt.timezone.utc).isoformat()
++    state = {'updated_at_utc': now, 'tasks': {}, 'external_writes': 'not authorized for this follow-up'}
++    lines = [f'LinearNO follow-up status — {now}', '',
++             'Local work only. No remote push, main overwrite or Feishu write.', '',
++             'Model training and final accuracy/timing acceptance are separate states.', '']
++    for dataset in ('airfoil', 'darcy'):
++        base = ROOT / 'standard_benchmarks' / dataset
++        tasks = {}
++        for path in sorted((base / 'runtime').glob('*workflow.json')):
++            tasks[path.name] = read(path)
++        state['tasks'][dataset] = tasks
++        models = ['t3', 'linearno', 'linearno_conv'] if dataset == 'airfoil' else ['transolver3', 'linearno', 'linearno_conv']
++        for arch in models:
++            meta = read(base / 'checkpoints' / arch / 'manifest.json')
++            history = last_history(base / 'checkpoints' / arch / 'history.jsonl')
++            workflow = tasks.get(arch + '_workflow.json', {})
++            completed = history.get('epoch', -1) + 1 if history else meta.get('epochs_completed', 0)
++            best = meta.get('best_validation_relative_l2', history.get('best_validation'))
++            stages = read(base / 'runtime' / f'{arch}_head_substages.json')
++            head = read(base / 'checkpoints' / arch / 'head' / 'manifest.json')
++            acceptance = read(base / 'results' / f'{arch}_accuracy_acceptance.json')
++            detail = {'epochs_completed': completed, 'best_validation_relative_l2': best,
++                      'workflow': workflow.get('execution_status', 'pending'),
++                      'active_stage': stages.get('active_stage') or workflow.get('active_stage'),
++                      'head_epochs_completed': head.get('epochs_completed', 0),
++                      'final_accuracy_accepted': acceptance.get('passed', False)}
++            state['tasks'][dataset][arch + '_progress'] = detail
++            lines.append(f"{dataset}/{arch}: {completed}/1000 backbone epochs; {detail['workflow']}; "
++                         f"stage={detail['active_stage']}; final accuracy accepted={detail['final_accuracy_accepted']}.")
++        receipt = read(base / 'results' / 'latency_completion.json')
++        lines.append(f"{dataset} formal timing: {receipt.get('actual_conditions', 0)}/1323 conditions, "
++                     f"{receipt.get('actual_formal_repeats', 0)}/132300 repetitions.")
++        lines.append('')
++    state['tasks']['reconstruction'] = read(ROOT / 'reconstruction/runtime/car_workflow.json')
++    state['reconstruction_gate'] = read(ROOT / 'reconstruction/accepted_protocols.json')
++    car = state['tasks']['reconstruction']
++    lines += [f"Car workflow: {car.get('execution_status', 'pending')}; stage={car.get('active_stage')}.",
++              'Shared reconstruction API v1.1 has numeric equivalence receipts. Each newly trained model still requires its own end-to-end validation.',
++              'Formal latency is measured after exclusive GPU admission; CPU diagnostic profiles are not end-to-end speedup evidence.', '',
++              'Protocols and resource plan: coordination/PLAN.md; dataset read.me files retain detailed stage counts.',
++              'Cross-dataset tables and figures require raw-record independent aggregation and rendered QA.', '']
++    try:
++        state['gpu_snapshot'] = subprocess.check_output(
++            ['nvidia-smi', '--query-gpu=index,name,utilization.gpu,memory.used,memory.total', '--format=csv'],
++            text=True, timeout=10)
++    except (OSError, subprocess.SubprocessError) as error:
++        state['gpu_snapshot_error'] = str(error)
++    atomic(ROOT / 'coordination/status_snapshot.json', json.dumps(state, indent=2) + '\n')
++    atomic(ROOT / 'read.me', '\n'.join(lines))
++    return state
++
++
++if __name__ == '__main__':
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--watch', action='store_true')
++    args = parser.parse_args()
++    with (ROOT / 'coordination/status_monitor.lock').open('a') as lock:
++        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
++        while True:
++            try:
++                refresh()
++            except OSError:
++                traceback.print_exc()
++                if not args.watch:
++                    raise
++            if not args.watch:
++                break
++            time.sleep(45)
+--- /dev/null
++++ b/standard_benchmarks/code/aggregate_rauec.py
+@@ -0,0 +1,129 @@
++"""Independent seed-first rAUEC aggregation for normalized long records.
++
++The input adapter must provide explicit checkpoint, population and reconstruction
++identities. This module never infers a cohort from a method's filename.
++"""
++from __future__ import annotations
++import argparse
++import csv
++from collections import defaultdict
++from pathlib import Path
++
++import numpy as np
++
++BUDGETS=(.375,.5,.75)
++GROUP=('dataset','backbone','checkpoint_id','normalizer_id','training_seed','metric_target',
++       'test_population','reconstruction_id','metric','unit')
++
++
++def aggregate(rows, expected_populations=None):
++    cohorts=defaultdict(list)
++    for row in rows:
++        if any(key not in row for key in GROUP):
++            raise ValueError('Missing explicit cohort identity')
++        cohorts[tuple(str(row[k]) for k in GROUP)].append(row)
++    output=[];curves=[];absolute=[]
++    for cohort,records in cohorts.items():
++        identity=dict(zip(GROUP,cohort))
++        subsets=defaultdict(list)
++        full_rows=[]
++        for row in records:
++            method=row['method'].lower()
++            if method in ('full','fullmesh'):
++                absolute.append({**identity,**row})
++                full_rows.append(row)
++                continue
++            if int(row['sampling_seed']) not in (0,1,2) or float(row['budget_fraction']) not in BUDGETS:
++                raise ValueError(('Unexpected seed or budget',cohort,row['sampling_seed'],row['budget_fraction']))
++            beta=str(row.get('beta','')) if method!='uniform' else ''
++            subsets[method,beta].append(row)
++        full_ids=[str(r['case_id']) for r in full_rows]
++        if not full_rows or len(set(full_ids))!=len(full_ids):
++            raise ValueError(('Missing or duplicated Full reference',cohort))
++        if any(float(r['budget_fraction'])!=1. or r.get('sampling_seed') not in ('',None,'None')
++               or r.get('status','ok')!='ok' or not np.isfinite(float(r['value'])) for r in full_rows):
++            raise ValueError(('Invalid Full reference identity/metric',cohort))
++        if expected_populations is not None:
++            expected=expected_populations[identity['dataset'],identity['test_population']]
++            if set(full_ids)!=set(map(str,expected)):
++                raise ValueError(('Full differs from predeclared population',cohort))
++        if not subsets:continue  # Native grid-only Full reference has no rAUEC.
++        uniform=subsets.get(('uniform',''))
++        if not uniform:raise ValueError(('Missing matched Uniform',cohort))
++        reference={}
++        populations={}
++        for seed in (0,1,2):
++            means=[]
++            for budget in BUDGETS:
++                group=[r for r in uniform if int(r['sampling_seed'])==seed and float(r['budget_fraction'])==budget]
++                ids=[str(r['case_id']) for r in group]
++                if not group or len(set(ids))!=len(ids):raise ValueError(('Missing/duplicate Uniform case',cohort,seed,budget))
++                if any(r.get('status','ok')!='ok' or not np.isfinite(float(r['value'])) for r in group):
++                    raise ValueError(('Invalid Uniform reference; retain failures outside aggregation',cohort))
++                populations[seed,budget]=set(ids)
++                means.append(float(np.mean([float(r['value']) for r in group])))
++            reference[seed]=float(np.trapezoid(means,BUDGETS))
++            if reference[seed]<=0:raise ValueError(('Nonpositive Uniform area',cohort,seed))
++        if len({tuple(sorted(x)) for x in populations.values()})!=1:
++            raise ValueError(('Uniform population differs across seed/budget',cohort))
++        if set(full_ids)!=populations[0,BUDGETS[0]]:
++            raise ValueError(('Missing or duplicated matched Full reference',cohort))
++        for (method,beta),method_rows in subsets.items():
++            ratios=[]
++            for seed in (0,1,2):
++                means=[]
++                for budget in BUDGETS:
++                    group=[r for r in method_rows if int(r['sampling_seed'])==seed and float(r['budget_fraction'])==budget]
++                    ids=[str(r['case_id']) for r in group]
++                    if len(set(ids))!=len(ids) or set(ids)!=populations[seed,budget]:
++                        raise ValueError(('Incomplete/duplicate method population',cohort,method,beta,seed,budget))
++                    if any(r.get('status','ok')!='ok' or not np.isfinite(float(r['value'])) for r in group):
++                        raise ValueError(('Invalid method metric; do not drop cases',cohort,method,beta))
++                    mean=float(np.mean([float(r['value']) for r in group]));means.append(mean)
++                    curves.append({**identity,'method':method,'beta':beta,'sampling_seed':seed,
++                                   'budget_fraction':budget,'cases':len(ids),'mean_error':mean})
++                ratios.append(float(np.trapezoid(means,BUDGETS))/reference[seed])
++            output.append({**identity,'method':method,'beta':beta,'cases':len(populations[0,BUDGETS[0]]),
++                           'sampling_seeds':3,'seed0_rauec':ratios[0],'seed1_rauec':ratios[1],
++                           'seed2_rauec':ratios[2],'mean':float(np.mean(ratios)),
++                           'sampling_sd':float(np.std(ratios,ddof=1))})
++    return output,curves,absolute
++
++
++def self_test():
++    base=dict(dataset='analytic_fixture',backbone='fixed_model',checkpoint_id='fixed',normalizer_id='fixed',training_seed=0,
++              metric_target='field',test_population='two_cases',reconstruction_id='same_rule',metric='field',unit='ratio',status='ok')
++    rows=[]
++    for seed,expected in enumerate([.5,.6,.7]):
++        for bi,budget in enumerate(BUDGETS):
++            for case,values in [('a',[1.,3.,5.]),('b',[3.,5.,9.])]:
++                rows.append({**base,'method':'uniform','beta':'','sampling_seed':seed,'budget_fraction':budget,'case_id':case,'value':values[bi]})
++                rows.append({**base,'method':'cpg','beta':1,'sampling_seed':seed,'budget_fraction':budget,'case_id':case,'value':(1.75/.375)*expected})
++    for case in ['a','b']:
++        rows.append({**base,'method':'full','sampling_seed':'','budget_fraction':1.,'case_id':case,'value':100000.})
++    summary,_,_=aggregate(rows);method=next(r for r in summary if r['method']=='cpg')
++    np.testing.assert_allclose([method['seed0_rauec'],method['seed1_rauec'],method['seed2_rauec'],method['mean'],method['sampling_sd']], [.5,.6,.7,.6,.1],atol=1e-14)
++    assert not any(r['method']=='full' for r in summary)
++    try:aggregate(rows[1:])
++    except ValueError:pass
++    else:raise AssertionError('Missing case was silently accepted')
++    try:aggregate(rows,{('analytic_fixture','two_cases'):['a','b','missing_case']})
++    except ValueError:pass
++    else:raise AssertionError('Wrong locked population was silently accepted')
++    print('Independent aggregation fixture passed: population means, seed-wise areas, sample SD and Full exclusion.')
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--input',type=Path,nargs='+');p.add_argument('--output',type=Path);p.add_argument('--self-test',action='store_true');args=p.parse_args()
++    if args.self_test:self_test();return
++    if not args.input or not args.output:p.error('input and output required')
++    records=[]
++    for path in args.input:
++        with path.open() as f:records.extend(csv.DictReader(f))
++    summary,curves,_=aggregate(records);args.output.mkdir(parents=True,exist_ok=True)
++    for name,rows in [('independent_rauec.csv',summary),('independent_seed_curves.csv',curves)]:
++        with (args.output/name).open('w',newline='') as f:
++            if rows:w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
++
++
++if __name__=='__main__':main()
+--- /dev/null
++++ b/standard_benchmarks/code/collect_results.py
+@@ -0,0 +1,294 @@
++"""Independently assemble standard-task evidence from accepted raw CSVs.
++
++Can publish an explicitly partial table after a complete preliminary cohort.
++Never imports training modules, opens a GPU, or substitutes historical results.
++"""
++from __future__ import annotations
++
++import argparse
++from collections import defaultdict
++import csv
++import hashlib
++import io
++import json
++from pathlib import Path
++import sys
++
++import numpy as np
++
++from aggregate_rauec import aggregate, GROUP
++
++BASE = Path(__file__).resolve().parents[1]
++FOLLOWUP = BASE.parent
++MODELS = {'darcy': ['transolver3', 'linearno', 'linearno_conv'],
++          'airfoil': ['t3', 'linearno', 'linearno_conv']}
++LABELS = {'transolver3': 'Transolver3', 't3': 'Transolver3',
++          'linearno': 'LinearNO_point_temp', 'linearno_conv': 'LinearNO_conv_temp'}
++METHODS = ['full', 'uniform', 'pi', 'cpg_beta0', 'cpg', 'ca']
++
++
++def read(path):
++    return json.loads(Path(path).read_text()) if Path(path).exists() else {}
++
++
++def sha(path):
++    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
++
++
++def write_json(path, value):
++    path = Path(path)
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
++
++
++def write_csv(path, rows):
++    path = Path(path)
++    if not rows:
++        # Clear our generated view so an earlier cohort cannot survive a newer
++        # empty collection. Preserve its schema when one was already available.
++        header = next(csv.reader(path.open()), []) if path.exists() else []
++        path.parent.mkdir(parents=True, exist_ok=True)
++        with path.open('w', newline='') as f:
++            if header:
++                csv.writer(f).writerow(header)
++        return
++    fields = list(dict.fromkeys(k for row in rows for k in row))
++    path.parent.mkdir(parents=True, exist_ok=True)
++    with path.open('w', newline='') as f:
++        writer = csv.DictWriter(f, fields)
++        writer.writeheader()
++        writer.writerows(rows)
++
++
++def csv_snapshot(path):
++    payload = Path(path).read_bytes()
++    return list(csv.DictReader(io.StringIO(payload.decode()))), hashlib.sha256(payload).hexdigest()
++
++
++def cohort_status(dataset, architecture):
++    folder = BASE / dataset
++    if dataset == 'darcy':
++        final = read(folder / 'records' / architecture / 'complete_completion.json')
++        if final.get('execution_status') == 'completed':
++            return True, True, final
++        baseline = read(folder / 'records' / architecture / 'baseline_completion.json')
++        return baseline.get('execution_status') == 'completed', False, baseline
++    final = read(folder / 'results' / f'{architecture}_accuracy_acceptance.json')
++    if final.get('passed'):
++        return True, True, read(folder / 'results' / f'{architecture}_complete_completion.json')
++    preliminary = read(folder / 'results' / f'{architecture}_preliminary_completion.json')
++    return preliminary.get('execution_status') == 'completed', False, preliminary
++
++
++def collect_accuracy():
++    split = read(BASE / 'split_manifest.json')
++    populations = {('darcy', 'historical_smooth2_200'): split['darcy']['test_ids'],
++                   ('airfoil2d', 'published_cl_gt_0p02_110'): split['airfoil']['primary_test_ids']}
++    field_rows, auxiliary, registry, sources, states = [], [], [], [], []
++    for dataset, architectures in MODELS.items():
++        for arch in architectures:
++            folder = BASE / dataset
++            ready, complete, receipt = cohort_status(dataset, arch)
++            model = read(folder / 'checkpoints' / arch / 'manifest.json')
++            state = dict(dataset=dataset, backbone=LABELS[arch],
++                         expected_methods=['full'] if arch == 'linearno_conv' else METHODS,
++                         accuracy_status='complete' if complete else 'preliminary' if ready else 'pending',
++                         reason='' if ready else 'Training or complete preliminary evaluation pending')
++            states.append(state)
++            if not ready:
++                continue
++            if model.get('execution_status') != 'completed' or model.get('epochs_completed') != 1000:
++                raise ValueError(('Evaluation lacks completed locked training', dataset, arch))
++            path = Path(receipt['metrics_csv'])
++            raw, source_sha = csv_snapshot(path)
++            if source_sha != receipt.get('metrics_sha256', receipt.get('metrics_csv_sha256')):
++                raise ValueError(('Immutable phase CSV does not match receipt', path))
++            sources.append(dict(path=str(path), sha256=source_sha, rows=len(raw), dataset=dataset, architecture=arch))
++            state['source_csv'] = str(path)
++            checkpoint = model['checkpoint_sha256']
++            normalizer = model['normalizer_sha256']
++            reconstruction = read(folder / 'config' / ('evaluation_gate.json' if dataset == 'airfoil' else 'evaluation_lock.json'))
++            expected_ids = {reconstruction[k] for k in (('old_id', 'new_id') if dataset == 'airfoil' else ('old_reconstruction_id', 'new_reconstruction_id'))}
++            current = []
++            for index, record in enumerate(raw, 2):
++                row = dict(record)
++                row['normalizer_id'] = row.get('normalizer_id') or row.get('normalizer_sha256')
++                row['backbone'] = LABELS[arch]
++                row['source_csv'] = str(path)
++                row['source_line'] = index
++                row['source_csv_sha256'] = source_sha
++                if row['checkpoint_id'] != checkpoint or row['normalizer_id'] != normalizer:
++                    raise ValueError(('CSV/checkpoint/normalizer mismatch', path, index))
++                if row['training_seed'] != '0' or row['metric_target'] != 'field' or row['reconstruction_id'] not in expected_ids:
++                    raise ValueError(('Unexpected cohort identity', path, index))
++                if row['dataset'] != ('airfoil2d' if dataset == 'airfoil' else 'darcy'):
++                    raise ValueError(('Incorrect task identity', path, index))
++                if row['metric'] != 'field_relative_l2':
++                    auxiliary.append(row)
++                    continue
++                if row['unit'] != 'ratio' or row['status'] != 'ok' or not np.isfinite(float(row['value'])) or float(row['value']) < 0:
++                    raise ValueError(('Invalid field observation', path, index))
++                current.append(row)
++            actual_methods = {r['method'] for r in current}
++            wanted = {'full'} if arch == 'linearno_conv' else set(METHODS if complete else METHODS[:-1])
++            if actual_methods != wanted:
++                raise ValueError(('Method matrix differs from completion state', path, actual_methods, wanted))
++            population_key = (current[0]['dataset'], current[0]['test_population'])
++            ids = populations[population_key]
++            expected = {(str(sid), method, '' if method == 'full' else str(seed), 1. if method == 'full' else budget, rid)
++                        for sid in ids for method in wanted
++                        for seed in ([None] if method == 'full' else [0, 1, 2])
++                        for budget in ([1.] if method == 'full' else [.375, .5, .75]) for rid in expected_ids}
++            keyed = {(r['case_id'], r['method'], r['sampling_seed'], float(r['budget_fraction']), r['reconstruction_id']): r for r in current}
++            if len(keyed) != len(current) or set(keyed) != expected:
++                raise ValueError(('Raw field matrix incomplete or duplicated', path, len(current), len(expected)))
++            for key, row in keyed.items():
++                beta = None if row['method'] in ('full', 'uniform') else .5 if row['method'] == 'pi' and dataset == 'darcy' else 0. if row['method'] == 'cpg_beta0' else 1.
++                if (None if row['beta'] == '' else float(row['beta'])) != beta:
++                    raise ValueError(('Incorrect locked beta', path, key))
++                if row['method'] == 'cpg':
++                    zero = keyed[(key[0], 'cpg_beta0', *key[2:])]
++                    for column in ['selected_indices_hash', 'coarse_indices_hash', 'coarse_prediction_hash']:
++                        if not row.get(column):
++                            raise ValueError(('Missing CPG identity', path, key, column))
++                        if row[column] != zero[column]:
++                            raise ValueError(('CPG beta-pair point identity mismatch', path, key, column))
++            state.update(actual_field_rows=len(current), expected_field_rows=len(expected), population_cases=len(ids))
++            field_rows.extend(current)
++            registry.append(dict(dataset=current[0]['dataset'], backbone=LABELS[arch], checkpoint_id=checkpoint,
++                normalizer_id=normalizer, training_seed=0, training_cases=900, validation_cases=100, epochs=1000,
++                updates=113000 if dataset == 'airfoil' else 225000, parameters=model['parameter_count'],
++                training_seconds=model.get('training_seconds', model.get('training_wall_seconds')),
++                best_validation=model['best_validation_relative_l2'], model_class=model.get('native_model_class', model.get('model_class')),
++                training_points='full grid' if dataset == 'darcy' or arch == 'linearno_conv' else 'shared uniform K in [4508,11271]',
++                checkpoint_path=model['checkpoint'], accuracy_status=state['accuracy_status'],
++                model_manifest=str(folder / 'checkpoints' / arch / 'manifest.json')))
++    return field_rows, auxiliary, registry, sources, states, populations
++
++
++def absolute_tables(records, curves, registry):
++    groups = defaultdict(list)
++    for row in curves:
++        groups[tuple(row[k] for k in GROUP) + (row['method'], row['beta'], float(row['budget_fraction']))].append(row)
++    full_groups = defaultdict(list)
++    for row in records:
++        if row['method'] == 'full':
++            full_groups[tuple(str(row[k]) for k in GROUP)].append(row)
++    models = {(r['dataset'], r['backbone'], r['checkpoint_id']): r for r in registry}
++    output = []
++    for key, raw in full_groups.items():
++        identity = dict(zip(GROUP, key))
++        full = float(np.mean([float(r['value']) for r in raw]))
++        model = models[identity['dataset'], identity['backbone'], identity['checkpoint_id']]
++        output.append({**identity, 'method': 'full', 'beta': '', 'budget_fraction': 1., 'cases': len(raw),
++                       'sampling_seeds': 0, 'mean_error': full, 'sampling_sd': '', 'same_checkpoint_full_error': full,
++                       'parameters': model['parameters'], 'training_epochs': model['epochs'], 'training_updates': model['updates']})
++    for key, rows in groups.items():
++        identity = dict(zip(GROUP, key[:len(GROUP)]))
++        values = [float(r['mean_error']) for r in rows]
++        assert {int(r['sampling_seed']) for r in rows} == {0, 1, 2}
++        full = float(np.mean([float(r['value']) for r in full_groups[key[:len(GROUP)]]]))
++        model = models[identity['dataset'], identity['backbone'], identity['checkpoint_id']]
++        output.append({**identity, 'method': key[-3], 'beta': key[-2], 'budget_fraction': key[-1],
++                       'cases': rows[0]['cases'], 'sampling_seeds': 3, 'mean_error': float(np.mean(values)),
++                       'sampling_sd': float(np.std(values, ddof=1)), 'same_checkpoint_full_error': full,
++                       'parameters': model['parameters'], 'training_epochs': model['epochs'], 'training_updates': model['updates']})
++    return output
++
++
++def compare_owner_tables(independent):
++    checks = []
++    for dataset in MODELS:
++        path = BASE / dataset / 'results/backbone_rauec.csv'
++        if not path.exists():
++            continue
++        rows, digest = csv_snapshot(path)
++        for row in rows:
++            if row['metric'] != 'field_relative_l2':
++                continue
++            backbone = row['backbone'].replace('_fullgrid', '')
++            match = [r for r in independent if all(str(r[k]) == str(row[k]) for k in
++                     ('dataset', 'checkpoint_id', 'training_seed', 'metric_target', 'test_population', 'reconstruction_id', 'metric', 'method'))
++                     and r['backbone'] == backbone]
++            if not match:
++                continue  # A newly completed cohort may appear after our atomic raw snapshot.
++            if len(match) != 1:
++                raise ValueError(('Ambiguous independent match', path, row))
++            reference = match[0]
++            actual = [float(row.get('mean', row.get('mean_rauec'))), float(row['sampling_sd'])]
++            wanted = [reference['mean'], reference['sampling_sd']]
++            np.testing.assert_allclose(actual, wanted, rtol=1e-12, atol=1e-14)
++            for seed in range(3):
++                np.testing.assert_allclose(float(row[f'seed{seed}']), reference[f'seed{seed}_rauec'], rtol=1e-12, atol=1e-14)
++            checks.append(dict(dataset=row['dataset'], backbone=backbone, method=row['method'],
++                reconstruction_id=row['reconstruction_id'], source=str(path), source_sha256=digest,
++                mean_absolute_difference=abs(actual[0] - wanted[0]), sd_absolute_difference=abs(actual[1] - wanted[1])))
++    return checks
++
++
++def collect_latency(registry):
++    results, receipts = [], []
++    models = {(r['dataset'], r['backbone']): r for r in registry}
++    for dataset in MODELS:
++        folder = BASE / dataset
++        receipt = read(folder / 'results/latency_completion.json')
++        if receipt.get('execution_status') != 'completed':
++            continue
++        path = folder / 'results/backbone_latency_summary.csv'
++        rows, digest = csv_snapshot(path)
++        if len(rows) != 1323:
++            raise ValueError(('Latency condition count differs', path, len(rows)))
++        for row in rows:
++            row['backbone'] = row['backbone'].replace('_fullgrid', '')
++            model = models[row['dataset'], row['backbone']]
++            if row['checkpoint_id'] != model['checkpoint_id'] or row['normalizer_id'] != model['normalizer_id']:
++                raise ValueError(('Accuracy/timing model mismatch', path))
++            if int(row['formal_repeats']) != 100 or int(row['warmups']) != 20 or row['output_dtype'] != 'float64':
++                raise ValueError(('Timing contract mismatch', path))
++            row['condition_source_csv'] = str(path)
++            row['condition_source_csv_sha256'] = digest
++            results.append(row)
++        receipts.append(dict(dataset=dataset, source=str(path), sha256=digest, conditions=len(rows)))
++    return results, receipts
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--require-complete', action='store_true')
++    args = parser.parse_args()
++    rows, auxiliary, registry, sources, states, populations = collect_accuracy()
++    destination = BASE / 'results'
++    destination.mkdir(exist_ok=True)
++    complete = all(r['accuracy_status'] == 'complete' for r in states)
++    if args.require_complete and not complete:
++        raise RuntimeError('New-task accuracy matrices are not all complete')
++    areas, curves, _ = aggregate(rows, populations)
++    absolute = absolute_tables(rows, curves, registry)
++    checks = compare_owner_tables(areas)
++    if args.require_complete and len(checks) != len(areas):
++        raise RuntimeError('Independent rAUEC rows do not all have matching owner summaries')
++    latency, latency_sources = collect_latency(registry)
++    if args.require_complete and len(latency) != 2646:
++        raise RuntimeError('Both new-task latency matrices are not complete')
++    for name, values in [('field_records.csv', rows), ('auxiliary_metric_records.csv', auxiliary),
++                         ('checkpoint_registry.csv', registry), ('backbone_rauec.csv', areas),
++                         ('backbone_budget_metrics.csv', absolute), ('backbone_absolute_errors.csv', absolute),
++                         ('seed_budget_errors.csv', curves), ('backbone_latency_summary.csv', latency)]:
++        write_csv(destination / name, values)
++    write_json(destination / 'independent_statistics_check.json', dict(
++        passed=bool(rows), status='checked_available_complete_cohorts' if rows else 'waiting_for_real_cohort',
++        validation_scope='Explicit locked populations; exact raw matrix; identity and beta checks; independent seed-first trapezoid and ddof=1 SD',
++        accuracy_complete=complete, field_rows=len(rows), auxiliary_rows_preserved=len(auxiliary),
++        method_area_rows=len(areas), owner_comparisons=checks, sources=sources,
++        split_manifest_sha256=sha(BASE / 'split_manifest.json'), collector_sha256=sha(__file__),
++        aggregator_sha256=sha(Path(__file__).with_name('aggregate_rauec.py'))))
++    write_json(destination / 'collection_status.json', dict(
++        accuracy_complete=complete, latency_complete=len(latency) == 2646, models=states,
++        field_rows=len(rows), rauec_rows=len(areas), latency_conditions=len(latency),
++        latency_sources=latency_sources, source_records=sources))
++    print(json.dumps(dict(accuracy_complete=complete, field_rows=len(rows), rauec_rows=len(areas),
++                         owner_comparisons=len(checks), latency_conditions=len(latency))))
++
++
++if __name__ == '__main__':
++    main()
+--- /dev/null
++++ b/standard_benchmarks/code/delivery_workflow.py
+@@ -0,0 +1,103 @@
++"""Keep accepted preliminary/final standard results visible while jobs run."""
++from __future__ import annotations
++
++import argparse
++import datetime as dt
++import fcntl
++import json
++import os
++from pathlib import Path
++import subprocess
++import sys
++import time
++
++from collect_results import BASE, FOLLOWUP, read, write_json
++
++
++def receipt_signature():
++    files = []
++    for dataset in ['darcy', 'airfoil']:
++        folder = BASE / dataset
++        for pattern in ['results/*completion.json', 'results/*acceptance.json',
++                        'records/*/*completion.json', 'results/backbone_rauec.csv']:
++            files.extend(folder.glob(pattern))
++    return sorted((str(p), p.stat().st_size, p.stat().st_mtime_ns) for p in files)
++
++
++def report():
++    state = read(BASE / 'results/collection_status.json')
++    now = dt.datetime.now(dt.timezone.utc).isoformat()
++    lines = ['# LinearNO standard benchmark follow-up', '', f'Generated from current receipts at {now}.', '',
++             'The main comparison uses Transolver3 and the official LinearNO point-temp model on Darcy 85×85 and Airfoil 221×51. '
++             'The official convolution variant is a separate Full-only reference. Both point models share a new 900/100 training/validation split, '
++             'training seed 0, and the same task-specific point schedule. Historical test visibility is disclosed in protocol.md.', '',
++             '| Dataset | Backbone | Accuracy stage | Field rows | Reason if pending |', '| --- | --- | --- | ---: | --- |']
++    for row in state.get('models', []):
++        lines.append(f"| {row['dataset']} | {row['backbone']} | {row['accuracy_status']} | {row.get('actual_field_rows', 'N/A')} | {row['reason']} |")
++    lines += ['', f"Complete accuracy matrix: {state.get('accuracy_complete', False)}. Complete A/B/C latency matrix: {state.get('latency_complete', False)}.", '',
++              f"Current independently checked field rows: {state.get('field_rows', 0)}; rAUEC rows: {state.get('rauec_rows', 0)}; formal timing conditions: {state.get('latency_conditions', 0)} / 2,646.", '',
++              'The independent collector verifies the predeclared test IDs, checkpoint and normalizer, exact method/budget/seed matrix, and CPG beta pairing. '
++              'rAUEC integrates each seed’s case-average error curve at 37.5%, 50%, and 75%, divides by its own matched Uniform area, then reports mean and sample SD. '
++              'Full 100% does not enter the integral. Each backbone has its own denominator.', '',
++              'Final predictions use reconstruction v1.1: original QHull linear interpolation with nearest fallback, and a sparse application of the same weights. '
++              'Both reconstructions consume the same fixed predictions. Each new checkpoint must pass validation and full-test equivalence checks.', '',
++              'Tables and figures are generated from results/*.csv by code/render_results.py. The render manifest records source CSVs; visual QA is separate. '
++              'Missing cohorts or CA rows are N/A, and incomplete timing is not replaced with a single evaluation-call duration. '
++              'Full-only convolution results are kept out of rAUEC.', '',
++              'Primary timing A is CPU input to a complete float64 CPU field. B is GPU-resident input to a complete float64 GPU field. '
++              'C reuses only an interpolation map for identical geometry and retained point order. '
++              'Formal results contain 20 warmups and 100 direct wall-time repeats per condition; reconstruction profiling and memory runs are separate.', '',
++              'Training and raw arrays remain indexed in the task directories. The local archive excludes checkpoint payloads and large training caches. '
++              'No GitHub push, main overwrite or Feishu update is performed.', '']
++    (BASE / 'REPORT.md').write_text('\n'.join(lines))
++    claims = ['# Evidence and claim card', '',
++              '| Question | Current support |', '| --- | --- |',
++              '| Does the official point-temp accept variable point sets? | Actual-class interface checks in both task results directories. |',
++              '| Does official conv-temp accept arbitrary retained point sets? | No; native fixed-grid reshape is incompatible. Its Full reference is trained separately. |',
++              '| Does reconstruction preserve the mathematical rule? | Shared fixed-prediction validation passed; each newly trained checkpoint has a separate required acceptance receipt. |',
++              f"| Are all new-task final accuracy rows present? | {state.get('accuracy_complete', False)}; see model states in REPORT.md. |",
++              f"| Are all formal cost conditions complete? | {state.get('latency_complete', False)}; {state.get('latency_conditions', 0)}/2646 conditions collected. |",
++              '| Is beta=1 always best? | No universal guarantee is claimed. Use the paired beta=0/1 table with identical point sets. |',
++              '| Which backbone is more accurate? | Compare complete physical field errors, including each same-checkpoint Full reference. rAUEC values use different backbone denominators. |',
++              '| Is optimized reconstruction faster? | Only accepted same-scope old/new direct timing supports this; CPU diagnostics are not a GPU speed result. Slowdowns are retained. |',
++              '| Is this an untouched test population? | No; the historical populations were previously viewed. New training selection uses the locked validation split. |',
++              '| Were results published? | No. This task produces a local evidence package only. |', '']
++    (BASE / 'CLAIM_CARD.md').write_text('\n'.join(claims))
++    (BASE / 'read.me').write_text(f"Standard follow-up updated {now}. Accuracy complete={state.get('accuracy_complete', False)}, latency complete={state.get('latency_complete', False)}.\n"
++        'Live epochs and resource waits: ../read.me. Independent statistical state: results/collection_status.json.\n'
++        'REPORT.md and CLAIM_CARD.md distinguish interface checks, preliminary accuracy, final accuracy, formal latency and pending visual QA.\n'
++        'No remote writes.\n')
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--watch', action='store_true')
++    args = parser.parse_args()
++    directory = FOLLOWUP / 'coordination'
++    signature = None
++    with (directory / 'delivery_workflow.lock').open('a') as lock:
++        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
++        while True:
++            current = receipt_signature()
++            if current != signature:
++                state = dict(pid=os.getpid(), execution_status='running', updated_at_utc=dt.datetime.now(dt.timezone.utc).isoformat(),
++                             source_signature=current, stages={})
++                for script in ['collect_results.py', 'render_results.py']:
++                    command = [sys.executable, str(Path(__file__).with_name(script))]
++                    process = subprocess.run(command, cwd=FOLLOWUP, capture_output=True, text=True)
++                    state['stages'][script] = dict(command=command, returncode=process.returncode, stdout=process.stdout, stderr=process.stderr)
++                    if process.returncode:
++                        state['execution_status'] = 'failed'
++                        break
++                else:
++                    report()
++                    state['execution_status'] = 'waiting_for_new_receipt'
++                    signature = current
++                write_json(directory / 'delivery_workflow.json', state)
++            if not args.watch:
++                break
++            time.sleep(45)
++
++
++if __name__ == '__main__':
++    main()
+--- /dev/null
++++ b/standard_benchmarks/code/render_results.py
+@@ -0,0 +1,429 @@
++"""Reproducible paper tables and figures from independently checked CSVs."""
++from __future__ import annotations
++
++import argparse
++from collections import defaultdict
++import csv
++import hashlib
++import json
++from pathlib import Path
++
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++from matplotlib.lines import Line2D
++import numpy as np
++
++from collect_results import BASE, read, write_csv, write_json
++
++DATASETS = [('darcy', 'Darcy'), ('airfoil2d', 'Airfoil')]
++BACKBONES = ['Transolver3', 'LinearNO_point_temp']
++BACKBONE_TEXT = {'Transolver3': 'Transolver3', 'LinearNO_point_temp': 'LinearNO (point-temp)',
++                 'LinearNO_conv_temp': 'LinearNO (conv-temp, Full)'}
++METHODS = ['uniform', 'pi', 'cpg', 'ca']
++METHOD_TEXT = {'full': 'Full', 'uniform': 'Uniform', 'pi': 'PI', 'cpg': 'CPG', 'cpg_beta0': 'CPG (beta=0)', 'ca': 'CA'}
++COLORS = {'uniform': '#777777', 'pi': '#E69F00', 'cpg': '#0072B2', 'ca': '#009E73'}
++STYLES = {'Transolver3': ('-', 'o'), 'LinearNO_point_temp': ('--', 's')}
++RECON = {'new': 'grid_qhull_sparse_apply_v1p1', 'old': 'grid_scipy_linear_nearest_native_v1'}
++R = BASE / 'results'
++FIG = BASE / 'figures'
++TABLE = BASE / 'tables'
++
++
++def rows(name):
++    path = R / name
++    return list(csv.DictReader(path.open())) if path.exists() else []
++
++
++def number(row, key):
++    return float(row[key]) if row.get(key) not in ('', None, 'None') else float('nan')
++
++
++def pick(source, **criteria):
++    found = [r for r in source if all(str(r.get(k)) == str(v) for k, v in criteria.items())]
++    if len(found) > 1:
++        raise ValueError(('Ambiguous display cell', criteria))
++    return found[0] if found else None
++
++
++def output_figure(fig, name, source, caption):
++    FIG.mkdir(exist_ok=True)
++    for suffix in ['pdf', 'svg', 'png']:
++        fig.savefig(FIG / f'{name}.{suffix}', dpi=300, bbox_inches='tight', facecolor='white')
++    plt.close(fig)
++    write_csv(FIG / f'{name}.csv', source)
++    (FIG / f'{name}.caption.md').write_text(caption + '\n')
++
++
++def tex_escape(value):
++    return str(value).replace('_', r'\_').replace('%', r'\%')
++
++
++def ranks(source):
++    means = sorted(set(round(number(r, 'mean'), 4) for r in source))
++    return {v: index + 1 for index, v in enumerate(means)}
++
++
++def rauec_table(source, mode):
++    relevant = [r for r in source if r['reconstruction_id'] == RECON[mode] and r['method'] in METHODS]
++    if not relevant:
++        return
++    lines = [r'\begin{table}[t]', r'\centering', r'\small',
++        r'\caption{rAUEC ($\downarrow$) of complete physical fields, with means above sampling standard deviations ($n=3$). '
++        r'Each backbone is normalized by its own matched Uniform. CPG uses $\beta=1$. '
++        r'Best and second means within each backbone and dataset are bold and underlined; ties use displayed precision. '
++        + ('Original' if mode == 'old' else 'Sparse-application') + r' reconstruction.}',
++        r'\label{tab:linearno-standard-' + mode + '}',
++        r'\setlength{\tabcolsep}{8pt}', r'\renewcommand{\arraystretch}{1.15}',
++        r'\begin{tabular}{lcc}', r'\toprule', r'Method & Darcy Field & Airfoil Field \\', r'\midrule']
++    markdown = ['| Backbone | Method | Darcy Field | Airfoil Field |', '| --- | --- | ---: | ---: |']
++    for index, backbone in enumerate(BACKBONES):
++        if index:
++            lines.append(r'\midrule')
++        lines.append(r'\multicolumn{3}{l}{\textit{' + tex_escape(BACKBONE_TEXT[backbone]) + r'}} \\')
++        rank = {d: ranks([r for r in relevant if r['dataset'] == d and r['backbone'] == backbone]) for d, _ in DATASETS}
++        for method in METHODS:
++            latex_cells, md_cells = [], []
++            for dataset, _ in DATASETS:
++                row = pick(relevant, dataset=dataset, backbone=backbone, method=method)
++                if row is None:
++                    latex_cells.append('N/A'); md_cells.append('N/A (pending)'); continue
++                value = f"{number(row, 'mean'):.4f}"
++                position = rank[dataset][round(number(row, 'mean'), 4)]
++                if position == 1:
++                    value = r'\mathbf{' + value + '}'
++                elif position == 2:
++                    value = r'\underline{' + value + '}'
++                latex_cells.append(r'$\begin{gathered}' + value + r'\\[-2pt]\pm ' + f"{number(row, 'sampling_sd'):.4f}" + r'\end{gathered}$')
++                md_cells.append(f"{number(row, 'mean'):.4f} ± {number(row, 'sampling_sd'):.4f}")
++            lines.append(METHOD_TEXT[method] + ' & ' + ' & '.join(latex_cells) + r' \\')
++            markdown.append('| ' + ' | '.join([BACKBONE_TEXT[backbone], METHOD_TEXT[method], *md_cells]) + ' |')
++    lines += [r'\bottomrule', r'\end{tabular}', r'\end{table}', '']
++    (TABLE / f'rauec_{mode}.tex').write_text('\n'.join(lines))
++    (TABLE / f'rauec_{mode}.md').write_text('\n'.join(markdown) + '\n\nSampling seeds n=3. N/A marks a pending cohort or method. Darcy PI uses beta=0.5; Airfoil PI and both CA use beta=1. Full is excluded from rAUEC.\n')
++    write_csv(TABLE / f'rauec_{mode}.csv', relevant)
++
++
++def rauec_plot(source, mode):
++    values = [r for r in source if r['reconstruction_id'] == RECON[mode] and r['method'] in METHODS]
++    if not values:
++        return
++    fig, axes = plt.subplots(1, 2, figsize=(8.6, 3.3), layout='constrained')
++    for axis, (dataset, title) in zip(axes, DATASETS):
++        axis.set_title(title)
++        axis.axhline(1., color='#333333', linestyle=':', lw=1.1, zorder=0)
++        for bi, backbone in enumerate(BACKBONES):
++            for mi, method in enumerate(METHODS):
++                x = bi * 5 + mi
++                row = pick(values, dataset=dataset, backbone=backbone, method=method)
++                if row is None:
++                    axis.text(x, .03, 'N/A', ha='center', va='bottom', rotation=90, fontsize=7)
++                    continue
++                axis.bar(x, number(row, 'mean'), width=.76, yerr=number(row, 'sampling_sd'),
++                         color=COLORS[method], edgecolor='white', linewidth=.5, capsize=2.5)
++        axis.set_xticks([1.5, 6.5], ['Transolver3', 'LinearNO\n(point-temp)'])
++        axis.set_xlim(-.7, 8.7)
++        axis.set_ylim(bottom=0)
++        axis.set_ylabel('rAUEC (lower is better)')
++        axis.grid(axis='y', alpha=.15)
++        axis.set_axisbelow(True)
++    handles = [Line2D([], [], color=COLORS[m], marker='s', linestyle='', label=METHOD_TEXT[m]) for m in METHODS]
++    fig.legend(handles=handles, loc='outside upper center', ncol=4, frameon=False)
++    output_figure(fig, f'rauec_{mode}', values,
++        'Relative area under the error–budget curve for three sampling seeds (mean ± sample SD). '
++        'The three budgets are 37.5%, 50%, and 75%. Each backbone uses its own matched Uniform denominator. '
++        f'Reconstruction: {RECON[mode]}. N/A indicates pending evidence; Full is outside the integral.')
++
++
++def curve_handles():
++    return ([Line2D([], [], color=COLORS[m], label=METHOD_TEXT[m]) for m in METHODS] +
++            [Line2D([], [], color='#333333', linestyle=STYLES[b][0], marker=STYLES[b][1], label=BACKBONE_TEXT[b]) for b in BACKBONES] +
++            [Line2D([], [], color='#333333', linestyle=':', label='Full reference')])
++
++
++def absolute_plot(source, mode):
++    values = [r for r in source if r['reconstruction_id'] == RECON[mode] and r['method'] in ['full', *METHODS]]
++    if not values:
++        return
++    fig, axes = plt.subplots(1, 2, figsize=(9, 3.9), layout='constrained')
++    for axis, (dataset, title) in zip(axes, DATASETS):
++        axis.set_title(title)
++        for bi, backbone in enumerate(BACKBONES):
++            style, marker = STYLES[backbone]
++            for method in METHODS:
++                curve = sorted([r for r in values if r['dataset'] == dataset and r['backbone'] == backbone and r['method'] == method], key=lambda r: number(r, 'budget_fraction'))
++                if not curve:
++                    continue
++                if len(curve) != 3:
++                    raise ValueError('Incomplete absolute-error curve')
++                axis.errorbar([100 * number(r, 'budget_fraction') for r in curve], [number(r, 'mean_error') for r in curve],
++                    yerr=[number(r, 'sampling_sd') for r in curve], color=COLORS[method], linestyle=style,
++                    marker=marker, capsize=2, markersize=4, lw=1.3)
++            full = pick(values, dataset=dataset, backbone=backbone, method='full')
++            if full:
++                y = number(full, 'mean_error')
++                axis.plot([36.5, 76], [y, y], color='#333333', linestyle=':', lw=1)
++                axis.plot([36.5 + bi * 2], [y], color='#333333', marker=marker, markersize=5)
++        axis.set_xlabel('Retained points (%)')
++        axis.set_xticks([37.5, 50, 75])
++        axis.set_ylabel('Physical relative L2')
++        axis.grid(alpha=.15)
++    fig.legend(handles=curve_handles(), loc='outside upper center', ncol=4, frameon=False)
++    output_figure(fig, f'absolute_error_budget_{mode}', values,
++        'Absolute full-field errors at three retained budgets. Error bars are sample SD of three sampling-seed means. '
++        'Both backbones share each dataset axis and complete test population. Horizontal references are each checkpoint’s Full error. '
++        'The official conv-temp Full-only reference is in the absolute-error table. '
++        f'Reconstruction: {RECON[mode]}.')
++
++
++def mechanism_table(source):
++    output = []
++    for one in source:
++        if one['method'] != 'cpg':
++            continue
++        criteria = {k: one[k] for k in ['dataset', 'backbone', 'checkpoint_id', 'test_population', 'reconstruction_id']}
++        zero = pick(source, **criteria, method='cpg_beta0')
++        if not zero:
++            raise ValueError('Missing paired CPG beta=0')
++        deltas = [number(one, f'seed{s}_rauec') - number(zero, f'seed{s}_rauec') for s in range(3)]
++        output.append({**criteria, 'beta0_mean': number(zero, 'mean'), 'beta0_sd': number(zero, 'sampling_sd'),
++                       'beta1_mean': number(one, 'mean'), 'beta1_sd': number(one, 'sampling_sd'),
++                       'paired_delta_mean': float(np.mean(deltas)), 'paired_delta_sampling_sd': float(np.std(deltas, ddof=1)),
++                       **{f'seed{s}_delta': deltas[s] for s in range(3)}})
++    write_csv(TABLE / 'cpg_beta_pairs.csv', output)
++    if output:
++        text = ['| Dataset | Backbone | Reconstruction | beta=0 | beta=1 | Paired delta (1−0) |', '| --- | --- | --- | ---: | ---: | ---: |']
++        latex = [r'\begin{table}[t]', r'\centering\small',
++                 r'\caption{Paired CPG correction comparison. Entries are rAUEC mean $\pm$ sampling SD ($n=3$). Negative paired $\Delta$ favors $\beta=1$.}',
++                 r'\begin{tabular}{lllccc}', r'\toprule',
++                 r'Dataset & Backbone & Reconstruction & $\beta=0$ & $\beta=1$ & $\Delta(1-0)$ \\', r'\midrule']
++        for row in output:
++            text.append(f"| {row['dataset']} | {BACKBONE_TEXT[row['backbone']]} | {row['reconstruction_id']} | {row['beta0_mean']:.4f} ± {row['beta0_sd']:.4f} | {row['beta1_mean']:.4f} ± {row['beta1_sd']:.4f} | {row['paired_delta_mean']:.4f} ± {row['paired_delta_sampling_sd']:.4f} |")
++            mode = 'Sparse application' if row['reconstruction_id'] == RECON['new'] else 'Original'
++            latex.append(' & '.join([tex_escape(row['dataset']), tex_escape(BACKBONE_TEXT[row['backbone']]), mode,
++                f"${row['beta0_mean']:.4f}\\pm {row['beta0_sd']:.4f}$", f"${row['beta1_mean']:.4f}\\pm {row['beta1_sd']:.4f}$",
++                f"${row['paired_delta_mean']:.4f}\\pm {row['paired_delta_sampling_sd']:.4f}$"]) + r' \\')
++        (TABLE / 'cpg_beta_pairs.md').write_text('\n'.join(text) + '\n\nEach paired comparison shares the coarse prediction and retained indices. Negative delta favors beta=1. SD is across three sampling seeds.\n')
++        latex += [r'\bottomrule', r'\end{tabular}', r'\end{table}', '']
++        (TABLE / 'cpg_beta_pairs.tex').write_text('\n'.join(latex))
++
++
++def reconstruction_pairs(latency):
++    groups = defaultdict(dict)
++    for row in latency:
++        if row['method'] != 'full':
++            key = tuple(row[k] for k in ['dataset', 'backbone', 'case_id', 'method', 'budget_fraction', 'sampling_seed', 'scope'])
++            groups[key][row['implementation']] = row
++    output = []
++    for key, pair in groups.items():
++        if set(pair) != {'old', 'new'}:
++            raise ValueError(('Missing old/new timing pair', key))
++        old, new = pair['old'], pair['new']
++        for field in ['checkpoint_id', 'normalizer_id', 'selected_indices_hash', 'output_dtype', 'output_device', 'metric_target', 'test_population']:
++            if old[field] != new[field]:
++                raise ValueError(('Old/new timing mismatch', key, field))
++        output.append({**dict(zip(['dataset', 'backbone', 'case_id', 'method', 'budget_fraction', 'sampling_seed', 'scope'], key)),
++            'checkpoint_id': old['checkpoint_id'], 'normalizer_id': old['normalizer_id'], 'selected_indices_hash': old['selected_indices_hash'],
++            'old_reconstruction_id': old['reconstruction_id'], 'new_reconstruction_id': new['reconstruction_id'],
++            'old_field_error': old['field_error'], 'new_field_error': new['field_error'],
++            'old_reconstruction_ms': old['reconstruction_ms'], 'new_reconstruction_ms': new['reconstruction_ms'],
++            'reconstruction_speedup': number(old, 'reconstruction_ms') / number(new, 'reconstruction_ms'),
++            'old_direct_total_ms': old['direct_total_ms'], 'new_direct_total_ms': new['direct_total_ms'],
++            'complete_request_speedup': number(old, 'direct_total_ms') / number(new, 'direct_total_ms'),
++            'old_p95_ms': old['p95_ms'], 'new_p95_ms': new['p95_ms'],
++            'output_dtype': old['output_dtype'], 'output_device': old['output_device'],
++            'old_first_request_ms': old['first_request_ms'], 'new_first_request_ms': new['first_request_ms'],
++            'reuse_assumption': old['reuse_assumption'], 'old_source_json': old['source_json'], 'new_source_json': new['source_json']})
++    write_csv(R / 'reconstruction_summary.csv', output)
++    return output
++
++
++def speedup_plot(pairs):
++    source = [r for r in pairs if r['scope'] == 'A_cpu_cpu' and r['backbone'] in BACKBONES and r['method'] in METHODS]
++    if not source:
++        return
++    fig, axes = plt.subplots(2, 2, figsize=(9, 6), layout='constrained')
++    for di, (dataset, title) in enumerate(DATASETS):
++        for ci, metric in enumerate(['reconstruction_speedup', 'complete_request_speedup']):
++            axis = axes[di, ci]
++            axis.set_title(title + (' · reconstruction' if ci == 0 else ' · complete request'))
++            axis.axhline(1., color='#333333', linestyle=':', lw=1)
++            for backbone in BACKBONES:
++                style, marker = STYLES[backbone]
++                for method in METHODS:
++                    values = [r for r in source if r['dataset'] == dataset and r['backbone'] == backbone and r['method'] == method]
++                    if not values:
++                        continue
++                    y = [np.median([float(r[metric]) for r in values if float(r['budget_fraction']) == b]) for b in [.375, .5, .75]]
++                    axis.plot([37.5, 50, 75], y, color=COLORS[method], linestyle=style, marker=marker, markersize=4)
++            axis.set_xticks([37.5, 50, 75]); axis.set_xlabel('Retained points (%)')
++            axis.set_ylabel('Old / new time'); axis.grid(alpha=.15)
++    fig.legend(handles=curve_handles()[:-1], loc='outside upper center', ncol=4, frameon=False)
++    output_figure(fig, 'reconstruction_speedup_scope_A', source,
++        'Median paired old/new speed ratios across the three fixed timing cases and three sampling seeds at each budget. '
++        'Left: reconstruction profiles. Right: directly measured complete request medians. Values below one indicate a slowdown. '
++        'All pairs use CPU input and float64 CPU output, the same checkpoint, selected indices and reconstruction rule. '
++        'The source CSV retains every case/seed condition and its p95.')
++
++
++def latency_error_plot(latency, absolute):
++    times = [r for r in latency if r['scope'] == 'A_cpu_cpu' and r['backbone'] in BACKBONES]
++    if not times:
++        return
++    used = []
++    fig, axes = plt.subplots(2, 2, figsize=(9, 6.1), layout='constrained')
++    for di, (dataset, title) in enumerate(DATASETS):
++        for ci, mode in enumerate(['old', 'new']):
++            axis = axes[di, ci]
++            axis.set_title(title + (' · original reconstruction' if mode == 'old' else ' · sparse application'))
++            for backbone in BACKBONES:
++                style, marker = STYLES[backbone]
++                for method in METHODS:
++                    plotted = []
++                    for budget in [.375, .5, .75]:
++                        conditions = [r for r in times if r['dataset'] == dataset and r['backbone'] == backbone and r['method'] == method
++                                      and float(r['budget_fraction']) == budget and r['implementation'] == mode]
++                        error = pick(absolute, dataset=dataset, backbone=backbone, method=method,
++                                     budget_fraction=str(budget), reconstruction_id=RECON[mode])
++                        if not conditions or not error:
++                            continue
++                        if len(conditions) != 9:
++                            raise ValueError('Expected three cases x three sampling seeds per latency point')
++                        x = float(np.median([number(r, 'direct_total_ms') for r in conditions]))
++                        y = number(error, 'mean_error')
++                        plotted.append((x, y))
++                        used.append(dict(dataset=dataset, backbone=backbone, method=method, budget_fraction=budget,
++                            reconstruction_id=RECON[mode], scope='A_cpu_cpu', median_of_condition_medians_ms=x,
++                            mean_full_population_error=y, sampling_sd=error['sampling_sd'], timing_conditions=len(conditions)))
++                    if plotted:
++                        axis.plot(*zip(*plotted), color=COLORS[method], linestyle=style, marker=marker, markersize=4)
++                full_times = [r for r in times if r['dataset'] == dataset and r['backbone'] == backbone and r['method'] == 'full']
++                full = pick(absolute, dataset=dataset, backbone=backbone, method='full', reconstruction_id=RECON[mode])
++                if full and full_times:
++                    full_ms = float(np.median([number(r, 'direct_total_ms') for r in full_times]))
++                    used.append(dict(dataset=dataset, backbone=backbone, method='full', budget_fraction=1.,
++                        reconstruction_id=RECON[mode], scope='A_cpu_cpu', median_of_condition_medians_ms=full_ms,
++                        mean_full_population_error=number(full, 'mean_error'), sampling_sd='', timing_conditions=len(full_times)))
++                    axis.plot(full_ms, number(full, 'mean_error'),
++                              marker=marker, color='#222222', markerfacecolor='white', markersize=7, linestyle='')
++            axis.set_xlabel('Complete request latency (ms)')
++            axis.set_ylabel('Physical relative L2'); axis.grid(alpha=.15)
++    fig.legend(handles=curve_handles()[:-1] + [Line2D([], [], marker='o', markerfacecolor='white', color='#222222', linestyle='', label='Full')],
++               loc='outside upper center', ncol=4, frameon=False)
++    output_figure(fig, 'absolute_error_latency_scope_A', used,
++        'Absolute field error versus complete CPU-to-CPU request latency. Accuracy is the complete test-population mean; '
++        'latency is the median of nine condition medians (three fixed timing cases × three sampling seeds), each based on 100 direct repeats. '
++        'Full uses three case conditions and no sampling seed. Native and optimized reconstruction occupy separate panels. '
++        'All outputs are float64 CPU fields. Budgets along each method curve are 37.5%, 50%, and 75%.')
++
++
++def absolute_table(source):
++    for dataset, title in DATASETS:
++        for mode in RECON:
++            current = [r for r in source if r['dataset'] == dataset and r['reconstruction_id'] == RECON[mode]]
++            if not current:
++                continue
++            text = ['| Backbone | Method | Budget | Physical relative L2 | Sampling SD | Full error | Parameters | Epochs / updates |',
++                    '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |']
++            latex = [r'\begin{table}[t]', r'\centering\small',
++                     r'\caption{' + title + r' physical field error. Sampling SD uses three seeds. Full has no sampling SD.}',
++                     r'\setlength{\tabcolsep}{6pt}', r'\begin{tabular}{lrrr}', r'\toprule',
++                     r'Method & Budget & Error & SD \\', r'\midrule']
++            previous_backbone = None
++            for row in sorted(current, key=lambda r: (r['backbone'], ['full', *METHODS, 'cpg_beta0'].index(r['method']), number(r, 'budget_fraction'))):
++                sd = f"{number(row, 'sampling_sd'):.6f}" if row['method'] != 'full' else 'N/A'
++                text.append(f"| {BACKBONE_TEXT[row['backbone']]} | {METHOD_TEXT[row['method']]} | {100 * number(row, 'budget_fraction'):g}% | {number(row, 'mean_error'):.6f} | {sd} | {number(row, 'same_checkpoint_full_error'):.6f} | {row['parameters']} | {row['training_epochs']} / {row['training_updates']} |")
++                if row['backbone'] != previous_backbone:
++                    if previous_backbone is not None:
++                        latex.append(r'\midrule')
++                    latex += [r'\multicolumn{4}{l}{\textit{' + tex_escape(BACKBONE_TEXT[row['backbone']]) + r'}} \\',
++                        r'\multicolumn{4}{l}{' + f"{int(row['parameters']):,} parameters; {row['training_epochs']} epochs; {int(row['training_updates']):,} updates" + r'} \\',
++                        r'\multicolumn{4}{l}{Same-checkpoint Full error: ' + f"{number(row, 'same_checkpoint_full_error'):.6f}" + r'} \\']
++                    previous_backbone = row['backbone']
++                latex.append(' & '.join([tex_escape(METHOD_TEXT[row['method']]),
++                    f"{100 * number(row, 'budget_fraction'):g}" + r'\%', f"{number(row, 'mean_error'):.6f}", sd]) + r' \\')
++            latex += [r'\bottomrule', r'\end{tabular}', r'\end{table}', '']
++            (TABLE / f'absolute_errors_{dataset}_{mode}.md').write_text('\n'.join(text) + '\n')
++            (TABLE / f'absolute_errors_{dataset}_{mode}.tex').write_text('\n'.join(latex))
++            write_csv(TABLE / f'absolute_errors_{dataset}_{mode}.csv', current)
++
++
++def efficiency_tables(latency):
++    groups = defaultdict(list)
++    keys = ['dataset', 'backbone', 'method', 'budget_fraction', 'reconstruction_id', 'implementation', 'scope']
++    for row in latency:
++        groups[tuple(row[k] for k in keys)].append(row)
++    summaries = []
++    for key, values in groups.items():
++        identity = dict(zip(keys, key))
++        summary = {**identity, 'conditions': len(values),
++            'reconstruction_ms_median': float(np.median([number(r, 'reconstruction_ms') for r in values])),
++            'direct_ms_median_of_condition_medians': float(np.median([number(r, 'direct_total_ms') for r in values])),
++            'condition_p95_ms_min': min(number(r, 'p95_ms') for r in values), 'condition_p95_ms_max': max(number(r, 'p95_ms') for r in values),
++            'peak_allocator_bytes_max': max(number(r, 'peak_cuda_allocated_bytes') for r in values),
++            'first_request_ms_median': float(np.median([number(r, 'first_request_ms') for r in values])),
++            'output_dtype': values[0]['output_dtype'], 'output_device': values[0]['output_device'],
++            'reuse_assumption': values[0]['reuse_assumption'], 'memory_scope': values[0]['allocator_scope'],
++            'external_memory_scope': values[0]['external_scope']}
++        summaries.append(summary)
++    write_csv(TABLE / 'efficiency_display_summary.csv', summaries)
++    for dataset, _ in DATASETS:
++        for scope in sorted({r['scope'] for r in summaries}):
++            values = [r for r in summaries if r['dataset'] == dataset and r['scope'] == scope]
++            if not values:
++                continue
++            lines = ['| Backbone | Method | Budget | Implementation | Reconstruction ms | Direct ms | Condition p95 range ms | Peak allocator GiB | First request ms |',
++                     '| --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: |']
++            latex = [r'\begingroup\scriptsize', r'\setlength{\tabcolsep}{3pt}',
++                     r'\begin{longtable}{lllrrrrrr}',
++                     r'\caption{' + tex_escape(dataset + ', ' + scope) + r'. Times in ms; direct entries are medians of condition medians. The p95 column gives the range of condition p95s. Framework allocator memory is in GiB.}\\',
++                     r'\toprule', r'Model & Method & Budget & Version & Recon. & Direct & p95 range & Memory & First \\',
++                     r'\midrule\endfirsthead', r'\toprule',
++                     r'Model & Method & Budget & Version & Recon. & Direct & p95 range & Memory & First \\', r'\midrule\endhead']
++            for row in values:
++                lines.append(f"| {BACKBONE_TEXT[row['backbone']]} | {METHOD_TEXT[row['method']]} | {100 * float(row['budget_fraction']):g}% | {row['implementation']} | {row['reconstruction_ms_median']:.3f} | {row['direct_ms_median_of_condition_medians']:.3f} | {row['condition_p95_ms_min']:.3f}–{row['condition_p95_ms_max']:.3f} | {row['peak_allocator_bytes_max'] / 2**30:.3f} | {row['first_request_ms_median']:.3f} |")
++                short = {'Transolver3': 'T3', 'LinearNO_point_temp': 'LNO point', 'LinearNO_conv_temp': 'LNO conv'}[row['backbone']]
++                latex.append(' & '.join([short, tex_escape(METHOD_TEXT[row['method']]), f"{100 * float(row['budget_fraction']):g}" + r'\%',
++                    'shared' if row['implementation'] == 'full_shared' else tex_escape(row['implementation']),
++                    f"{row['reconstruction_ms_median']:.3f}", f"{row['direct_ms_median_of_condition_medians']:.3f}",
++                    f"{row['condition_p95_ms_min']:.3f}--{row['condition_p95_ms_max']:.3f}",
++                    f"{row['peak_allocator_bytes_max'] / 2**30:.3f}", f"{row['first_request_ms_median']:.3f}"]) + r' \\')
++            lines += ['', 'Direct ms is the median of condition medians, not a pooled request median. Each condition has 100 formal direct repeats. '
++                      'The p95 column reports the range of condition p95s; the condition-level CSV retains every p95. '
++                      'Reconstruction profiles are measured separately. Memory includes framework allocator peaks, with the external allocation scope preserved in the CSV. '
++                      'Output device/dtype, preparation and reuse assumptions are explicit in the source table.', '']
++            (TABLE / f'efficiency_{dataset}_{scope}.md').write_text('\n'.join(lines))
++            latex += [r'\bottomrule', r'\end{longtable}', r'\endgroup', '']
++            (TABLE / f'efficiency_{dataset}_{scope}.tex').write_text('\n'.join(latex))
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--require-complete', action='store_true')
++    args = parser.parse_args()
++    state = read(R / 'collection_status.json')
++    check = read(R / 'independent_statistics_check.json')
++    if args.require_complete and not (state.get('accuracy_complete') and state.get('latency_complete')):
++        raise RuntimeError('Final rendering requires completed accuracy and timing matrices')
++    if not check.get('passed'):
++        print('Waiting for independently checked real result rows; no numeric figures generated.')
++        return
++    FIG.mkdir(exist_ok=True); TABLE.mkdir(exist_ok=True)
++    plt.rcParams.update({'font.size': 9, 'font.family': 'DejaVu Sans', 'axes.spines.top': False,
++                         'axes.spines.right': False, 'svg.fonttype': 'none', 'pdf.fonttype': 42})
++    areas = rows('backbone_rauec.csv'); absolute = rows('backbone_absolute_errors.csv'); latency = rows('backbone_latency_summary.csv')
++    for mode in RECON:
++        rauec_table(areas, mode); rauec_plot(areas, mode); absolute_plot(absolute, mode)
++    absolute_table(absolute); mechanism_table(areas)
++    if latency:
++        pairs = reconstruction_pairs(latency); speedup_plot(pairs); efficiency_tables(latency); latency_error_plot(latency, absolute)
++    inputs = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in [R / 'backbone_rauec.csv', R / 'backbone_absolute_errors.csv', R / 'backbone_latency_summary.csv'] if path.exists()}
++    write_json(FIG / 'render_manifest.json', dict(inputs=inputs, renderer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
++        accuracy_complete=state['accuracy_complete'], latency_complete=state['latency_complete'],
++        outputs=[str(p) for p in sorted(FIG.glob('*')) if p.suffix in ['.pdf', '.svg', '.png']],
++        render_qa='pending actual image/table inspection', source_number_policy='CSV only; missing values are N/A, never zero'))
++    print('Rendered available checked cohorts. Actual image inspection is still required.')
++
++
++if __name__ == '__main__':
++    main()

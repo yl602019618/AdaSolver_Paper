@@ -1,0 +1,293 @@
+{
+  "status": "passed",
+  "scope": "mathematical-rule contracts; real validation cases are a separate gate",
+  "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+  "cases": [
+    {
+      "case": "car_duplicates",
+      "dataset": "shapenet_car",
+      "source_points": 36,
+      "query_points": 96,
+      "channels": 4,
+      "reference_dtype": "float64",
+      "old_dtype": "float64",
+      "new_dtype": "float64",
+      "checks": {
+        "cpu_sparse": {
+          "max_abs": 0.0,
+          "relative_norm": 0.0,
+          "q50": 0.0,
+          "q95": 0.0,
+          "q99": 0.0,
+          "violations": 0,
+          "elements": 384
+        },
+        "gpu_sparse": {
+          "max_abs": 1.1102230246251565e-16,
+          "relative_norm": 1.52580587550045e-17,
+          "q50": 0.0,
+          "q95": 0.0,
+          "q99": 7.077671781986036e-18,
+          "violations": 0,
+          "elements": 384
+        }
+      },
+      "plan_timings": {
+        "coordinate_index_prepare_ms": 0.022567808628082275,
+        "maps": [
+          {
+            "build_index_ms": 0.02002716064453125,
+            "neighbor_query_ms": 0.5127042531967163,
+            "weight_build_ms": 0.03419816493988037
+          },
+          {
+            "build_index_ms": 0.02111494541168213,
+            "neighbor_query_ms": 0.27014315128326416,
+            "weight_build_ms": 0.0203549861907959
+          }
+        ],
+        "cpu_plan_total_ms": 0.9283721446990967,
+        "map_h2d_ms": 0.731252133846283
+      },
+      "device_map_bytes": 10560
+    },
+    {
+      "case": "car_equidistant",
+      "dataset": "shapenet_car",
+      "source_points": 6,
+      "query_points": 7,
+      "channels": 4,
+      "reference_dtype": "float64",
+      "old_dtype": "float64",
+      "new_dtype": "float64",
+      "checks": {
+        "cpu_sparse": {
+          "max_abs": 0.0,
+          "relative_norm": 0.0,
+          "q50": 0.0,
+          "q95": 0.0,
+          "q99": 0.0,
+          "violations": 0,
+          "elements": 28
+        },
+        "gpu_sparse": {
+          "max_abs": 0.0,
+          "relative_norm": 0.0,
+          "q50": 0.0,
+          "q95": 0.0,
+          "q99": 0.0,
+          "violations": 0,
+          "elements": 28
+        }
+      },
+      "plan_timings": {
+        "coordinate_index_prepare_ms": 0.01730024814605713,
+        "maps": [
+          {
+            "build_index_ms": 0.01856684684753418,
+            "neighbor_query_ms": 0.5535334348678589,
+            "weight_build_ms": 0.029645860195159912
+          },
+          {
+            "build_index_ms": 0.021167099475860596,
+            "neighbor_query_ms": 0.28651952743530273,
+            "weight_build_ms": 0.019453465938568115
+          }
+        ],
+        "cpu_plan_total_ms": 0.9748637676239014,
+        "map_h2d_ms": 0.2050548791885376
+      },
+      "device_map_bytes": 1232
+    },
+    {
+      "case": "car_float64_geometry",
+      "dataset": "shapenet_car",
+      "source_points": 24,
+      "query_points": 48,
+      "channels": 4,
+      "reference_dtype": "float64",
+      "old_dtype": "float64",
+      "new_dtype": "float64",
+      "checks": {
+        "cpu_sparse": {
+          "max_abs": 0.0,
+          "relative_norm": 0.0,
+          "q50": 0.0,
+          "q95": 0.0,
+          "q99": 0.0,
+          "violations": 0,
+          "elements": 192
+        },
+        "gpu_sparse": {
+          "max_abs": 1.4210854715202004e-14,
+          "relative_norm": 1.6932010807782828e-17,
+          "q50": 0.0,
+          "q95": 0.0,
+          "q99": 3.552713678800501e-15,
+          "violations": 0,
+          "elements": 192
+        }
+      },
+      "plan_timings": {
+        "coordinate_index_prepare_ms": 0.01574307680130005,
+        "maps": [
+          {
+            "build_index_ms": 0.01914799213409424,
+            "neighbor_query_ms": 0.5334541201591492,
+            "weight_build_ms": 0.06601214408874512
+          },
+          {
+            "build_index_ms": 0.050805509090423584,
+            "neighbor_query_ms": 0.3223791718482971,
+            "weight_build_ms": 0.025197863578796387
+          }
+        ],
+        "cpu_plan_total_ms": 1.0682791471481323,
+        "map_h2d_ms": 0.21935999393463135
+      },
+      "device_map_bytes": 5632
+    },
+    {
+      "case": "grid_sparse_boundary_c1",
+      "dataset": "airfoil",
+      "source_points": 5,
+      "query_points": 391,
+      "channels": 1,
+      "reference_dtype": "float64",
+      "old_dtype": "float64",
+      "new_dtype": "float64",
+      "checks": {
+        "cpu_sparse": {
+          "max_abs": 1.1102230246251565e-16,
+          "relative_norm": 4.186904210691579e-17,
+          "q50": 0.0,
+          "q95": 2.7755575615628914e-17,
+          "q99": 1.1102230246251565e-16,
+          "violations": 0,
+          "elements": 391
+        },
+        "gpu_sparse": {
+          "max_abs": 1.1102230246251565e-16,
+          "relative_norm": 4.7512657906480916e-17,
+          "q50": 0.0,
+          "q95": 5.551115123125783e-17,
+          "q99": 1.1102230246251565e-16,
+          "violations": 0,
+          "elements": 391
+        }
+      },
+      "plan_timings": {
+        "coordinate_index_prepare_ms": 0.027023255825042725,
+        "maps": [
+          {
+            "triangulation_ms": 0.09137392044067383,
+            "simplex_query_ms": 0.03912299871444702,
+            "barycentric_weights_ms": 0.13250857591629028,
+            "nearest_fallback_ms": 0.3639832139015198,
+            "fallback_count": 204
+          }
+        ],
+        "cpu_plan_total_ms": 0.6874874234199524,
+        "map_h2d_ms": 0.13674795627593994
+      },
+      "device_map_bytes": 28152
+    },
+    {
+      "case": "grid_sparse_boundary_c4",
+      "dataset": "airfoil",
+      "source_points": 5,
+      "query_points": 391,
+      "channels": 4,
+      "reference_dtype": "float64",
+      "old_dtype": "float64",
+      "new_dtype": "float64",
+      "checks": {
+        "cpu_sparse": {
+          "max_abs": 2.220446049250313e-16,
+          "relative_norm": 3.595823750993643e-17,
+          "q50": 0.0,
+          "q95": 2.7755575615628914e-17,
+          "q99": 1.1102230246251565e-16,
+          "violations": 0,
+          "elements": 1564
+        },
+        "gpu_sparse": {
+          "max_abs": 2.220446049250313e-16,
+          "relative_norm": 3.595823750993643e-17,
+          "q50": 0.0,
+          "q95": 2.7755575615628914e-17,
+          "q99": 1.1102230246251565e-16,
+          "violations": 0,
+          "elements": 1564
+        }
+      },
+      "plan_timings": {
+        "coordinate_index_prepare_ms": 0.0235140323638916,
+        "maps": [
+          {
+            "triangulation_ms": 0.09094923734664917,
+            "simplex_query_ms": 0.04094839096069336,
+            "barycentric_weights_ms": 0.09487569332122803,
+            "nearest_fallback_ms": 0.3749951720237732,
+            "fallback_count": 204
+          }
+        ],
+        "cpu_plan_total_ms": 0.6568357348442078,
+        "map_h2d_ms": 0.1428946852684021
+      },
+      "device_map_bytes": 28152
+    },
+    {
+      "case": "grid_quantized_shared_edges",
+      "dataset": "darcy",
+      "source_points": 105,
+      "query_points": 289,
+      "channels": 1,
+      "reference_dtype": "float64",
+      "old_dtype": "float64",
+      "new_dtype": "float64",
+      "checks": {
+        "cpu_sparse": {
+          "max_abs": 2.220446049250313e-16,
+          "relative_norm": 3.823295045036309e-17,
+          "q50": 0.0,
+          "q95": 5.551115123125783e-17,
+          "q99": 1.1102230246251565e-16,
+          "violations": 0,
+          "elements": 289
+        },
+        "gpu_sparse": {
+          "max_abs": 2.220446049250313e-16,
+          "relative_norm": 4.038012335883728e-17,
+          "q50": 0.0,
+          "q95": 5.551115123125783e-17,
+          "q99": 1.1352030426792235e-16,
+          "violations": 0,
+          "elements": 289
+        }
+      },
+      "plan_timings": {
+        "coordinate_index_prepare_ms": 0.02282857894897461,
+        "maps": [
+          {
+            "triangulation_ms": 0.5191043019294739,
+            "simplex_query_ms": 0.4926025867462158,
+            "barycentric_weights_ms": 0.09545683860778809,
+            "nearest_fallback_ms": 0.36454200744628906,
+            "fallback_count": 8
+          }
+        ],
+        "cpu_plan_total_ms": 1.524113118648529,
+        "map_h2d_ms": 0.13406574726104736
+      },
+      "device_map_bytes": 20808
+    }
+  ],
+  "cache_check": {
+    "geometry_identity_invalidates": true,
+    "selected_order_invalidates": true,
+    "predictions_not_cached": true
+  },
+  "torch": "2.10.0+cu128",
+  "numpy": "2.2.6"
+}

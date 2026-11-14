@@ -1,0 +1,33 @@
+{
+  "status": "CPU_checks_passed_before_formal_GPU_execution",
+  "workers": {
+    "car_accuracy.py": "791515f2e8da85514afb10e75dc2a1f0de11e9c66f779ca6241ee4506c3c2ad1",
+    "car_timing.py": "6020a7d0fbf476dc42a15072a493ac2987e3bec0b4f5312e316e2b1a02352c56",
+    "car_memory.py": "292b92258bcc0a97fc3ce89c684e54ed7eb166d4d4bb9baa8859b0bd1503d89b",
+    "run_attempt.py": "e8dc617512eb04de8f09d29b70f63346328e1b9e6bc80987ad557f49c4006831"
+  },
+  "protected_sources": {
+    "protected/car_workflow.py": "cbc954f43777c5341902c2ad882c6ed177fe1e17888c40fb6a32400acd6a8e69",
+    "protected/reconstruct_api.py": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+    "protected/timing_helper.py": "ac786c8851a2d2f360ad537bdd3a4ab3f6ddd9cbaae7a73cf7fe2f91b6e3a085",
+    "protected/car_request.py": "37406a4dd758e3d708a1acd1e9ead1115d51c19c9fe839add3f30561eca94a86"
+  },
+  "automated_fault_injection": "results/attempt_recording_validation.json",
+  "controller_pid": 1197515,
+  "controller_restarted": false,
+  "mathematical_request_modified": false,
+  "behavior": [
+    "atomic accuracy status and retained-index NPZ writes",
+    "completed identical-source accuracy can be recognized on resume",
+    "per-group completed timing markers retain100 formal repeats; separate profiling has an exclusivity check",
+    "attempt receipts and old telemetry are preserved separately",
+    "Python exceptions salvage partial timing/memory observations",
+    "worker locks reject duplicate children after a controller restart",
+    "malformed raw JSONL is reported with its line; never silently trimmed"
+  ],
+  "limits": [
+    "No GPU fault injection performed",
+    "An uncatchable process kill can leave a running attempt marker; completed raw records remain the resume boundary",
+    "Changed source/protocol is not appended to an old run"
+  ]
+}

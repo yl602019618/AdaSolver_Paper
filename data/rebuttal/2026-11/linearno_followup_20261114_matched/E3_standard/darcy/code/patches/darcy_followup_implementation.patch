@@ -1,0 +1,1832 @@
+diff --git a/code/benchmark.py b/code/benchmark.py
+new file mode 100644
+index 0000000..e178af3
+--- /dev/null
++++ b/code/benchmark.py
+@@ -0,0 +1,268 @@
++"""Controlled same-GPU A/B/C old/new requests for the newly trained Darcy cohort."""
++from __future__ import annotations
++import argparse,csv,json,os,sys,time,gc,subprocess,platform
++from pathlib import Path
++import numpy as np
++import torch
++from common import OUT,FOLLOWUP,read,write,digest
++from inference import (Runtime,CompleteRequest,metric,array_hash,reconstruction_module,budget_count,
++                        GRID_NATIVE,GRID_PLAN,build_plan,native_reconstruct)
++from benchmark_core import run_group
++from timing_helper import isolated_memory
++from adasolver.inference import adaptive
++
++CURRENT=FOLLOWUP.parent
++sys.path.append(str(CURRENT/'AdaSolver_official'))
++from inference_speed.gpu_monitor import ExclusiveGPU
++
++SCOPES={'A':'A_cpu_cpu','B':'B_gpu_gpu','C':'C_cpu_cpu_cached_map'}
++
++
++def identity(request):
++    last=request.last
++    return dict(selected_indices_hash=array_hash(np.asarray(last['indices'],np.int64)),
++                coarse_indices_hash=None if last['coarse_indices'] is None else array_hash(np.asarray(last['coarse_indices'],np.int64)),
++                compensation_weights_hash=None if last['weights'] is None else array_hash(np.asarray(last['weights'],np.float32)))
++
++
++def metadata(runtime,sid,method,budget,seed,implementation,scope):
++    rid='identity_full' if method=='full' else GRID_NATIVE if implementation=='old' else GRID_PLAN
++    if scope=='C' and method!='full':rid='grid_qhull_cached_cpu_apply_v1p1' if implementation=='old' else 'grid_qhull_cached_gpu_apply_v1p1'
++    return dict(dataset='darcy',backbone=runtime.label,model_variant=runtime.variant,case_id=sid,method=method,
++                beta=None if method in ['full','uniform'] else .5 if method=='pi' else 1.,budget_fraction=budget,
++                sampling_seed=seed,training_seed=0,head_seed=0 if method=='ca' else None,
++                checkpoint_id=runtime.metadata['checkpoint_sha256'],normalizer_id=runtime.metadata['normalizer_sha256'],
++                head_checkpoint_id=None if method!='ca' else runtime.head_metadata['checkpoint_sha256'],
++                retained_points=7225 if method=='full' else budget_count(7225,budget),test_population='historical_smooth2_200',
++                request_code_sha256=digest(__file__),inference_code_sha256=digest(Path(__file__).with_name('inference.py')),
++                timing_core_sha256=digest(Path(__file__).with_name('benchmark_core.py')),
++                implementation=implementation,scope=SCOPES[scope],reconstruction_id=rid,
++                metric_target='field',output_device='cuda' if scope=='B' else 'cpu',output_dtype='float64',
++                input_device='cuda' if scope=='B' else 'cpu',input_dtype='float32',
++                input_features='model-ready xy and normalized coefficient; prediction physical decode included in request',
++                first_preparation='model/load/kernel setup separate; first request measured before plan-cache warmup')
++
++
++def reference_values():
++    values={}
++    for key in ['transolver3','linearno','linearno_conv']:
++        p=OUT/'records'/key/'metrics_records.csv'
++        for row in csv.DictReader(p.open()):
++            k=(row['backbone'],int(row['case_id']),row['method'],float(row['budget_fraction']),row['sampling_seed'],row['reconstruction_id'])
++            row['_arrays_path']=str(p.parent/row['arrays_path']);values[k]=row
++    return values
++
++
++def check_output(request,output,references):
++    if torch.is_tensor(output):
++        if output.dtype!=torch.float64 or output.device.type!='cuda':raise RuntimeError('B output device/dtype differs')
++        output=output.cpu().numpy()
++    else:
++        if output.dtype!=np.float64:raise RuntimeError('CPU output dtype differs')
++    rid=GRID_NATIVE if request.method=='full' or request.reconstruction=='old' else GRID_PLAN
++    key=(request.runtime.label,request.sid,request.method,float(request.budget),'' if request.seed is None else str(request.seed),rid)
++    row=references[key];current=metric(output,request.runtime.case(request.sid)['truth'])
++    expected=float(row['value']);difference=abs(current-expected)
++    if difference>1e-7+1e-5*abs(expected):raise RuntimeError('timed output differs from accepted accuracy')
++    point=identity(request)
++    if point['selected_indices_hash']!=row['selected_indices_hash']:raise RuntimeError('timed selected points differ')
++    if (point['coarse_indices_hash'] or '')!=row['coarse_indices_hash']:raise RuntimeError('timed coarse points differ')
++    if (point['compensation_weights_hash'] or '')!=row['compensation_weights_hash']:raise RuntimeError('timed compensation differs')
++    with np.load(row['_arrays_path']) as saved:
++        baseline=saved['prediction'].astype(np.float64) if request.method=='full' else native_reconstruct('darcy',saved['indices'],saved['prediction'],request.runtime.reference)
++    absolute=np.abs(output-baseline)
++    if np.any(absolute>1e-6+1e-5*np.abs(baseline)):raise RuntimeError('timed complete field differs from fixed accepted prediction')
++    return dict(field_error=current,reference_field_error=expected,absolute_difference=difference,**point,
++                full_field_max_absolute_difference=float(absolute.max()),
++                full_field_relative_difference=float(np.linalg.norm(output-baseline)/max(np.linalg.norm(baseline),1e-300)),
++                accepted_prediction_arrays=row['_arrays_path'],
++                cached_map_cpu_bytes=request.last['plan_cpu_bytes'],cached_map_gpu_bytes=request.last['plan_device_bytes'],
++                cache_hit=request.last['cache_hit'])
++
++
++@torch.no_grad()
++def profile_request(request,repeats=5):
++    """Independent instrumented pass, never added into the direct total."""
++    result=[];rt=request.runtime
++    def measure(label,fn,repeat):
++        torch.cuda.synchronize();start=time.perf_counter();out=fn();torch.cuda.synchronize()
++        result.append(dict(profile_repeat=repeat,component=label,ms=(time.perf_counter()-start)*1000,
++                           timing_scope='separate instrumented pass'))
++        return out
++    if request.scope=='C' and request.method!='full':
++        # Independent cold-map profile. This is outside the directly timed first request.
++        sampled=rt.sample(request.sid,request.method,request.budget,request.seed,request.scope)
++        cold=measure('first_cache_map_build',lambda:build_plan('darcy',rt.reference,sampled[0],channels=1,
++                     reconstruction_id=GRID_PLAN,device=rt.device if request.reconstruction=='new' else None,profile=True),-1)
++        result[-1].update(cache_cpu_bytes=cold.cpu_bytes,cache_gpu_bytes=cold.device_bytes(),
++                          timing_scope='separate cold-map profile; includes construction and map transfer')
++        del cold
++    if request.method.startswith('cpg') or request.method=='ca':
++        for repeat in range(repeats):
++            measure('native_patch_geometry_build_probe',lambda:adaptive.build_patches(rt.reference,32,seed=0),repeat)
++            result[-1]['timing_scope']='separate geometry probe; already included in sampling stage and direct total'
++    for repeat in range(repeats):
++        sampled=measure('sampling_coarse_score_selection_compensation',
++            lambda:rt.sample(request.sid,request.method,request.budget,request.seed,request.scope),repeat)
++        ids,weights,coarse,cp,meta=sampled
++        if rt.context:measure('attention_weight_upload_and_transform',lambda:rt.context.set(None if weights is None else torch.tensor(weights,dtype=torch.float32,device=rt.device)),repeat)
++        try:prediction=measure('final_forward_with_input_transfer',lambda:rt.forward(rt.case(request.sid),None if request.method=='full' else ids,request.scope),repeat)
++        finally:
++            if rt.context:rt.context.clear()
++        pred=measure('physical_decode',lambda:prediction*rt.std[0]+rt.mean[0],repeat)
++        if request.method=='full':
++            measure('output_conversion_transfer',lambda:pred.to(torch.float64) if request.scope=='B' else pred.cpu().numpy().astype(np.float64),repeat)
++            continue
++        def reconstruction_complete_output():
++            if request.scope=='C':
++                plan,hit=request.cache.get('darcy',rt.reference,ids,geometry_identity=f'darcy_case_{request.sid}',
++                    reconstruction_id=GRID_PLAN,channels=1,device=rt.device if request.reconstruction=='new' else None)
++                return plan.apply_numpy(pred.cpu().numpy()) if request.reconstruction=='old' else plan.apply_tensor(pred).cpu().numpy()
++            if request.reconstruction=='old':
++                field=native_reconstruct('darcy',ids,pred.cpu().numpy(),rt.reference)
++                return torch.as_tensor(field,dtype=torch.float64,device=rt.device) if request.scope=='B' else field
++            plan=build_plan('darcy',rt.reference,ids,channels=1,reconstruction_id=GRID_PLAN,device=rt.device)
++            field=plan.apply_tensor(pred)
++            return field if request.scope=='B' else field.cpu().numpy()
++        measure('reconstruction_complete_output',reconstruction_complete_output,repeat)
++        if request.scope=='C':
++            plan,hit=measure('cache_key_and_lookup',lambda:request.cache.get('darcy',rt.reference,ids,
++                geometry_identity=f'darcy_case_{request.sid}',reconstruction_id=GRID_PLAN,channels=1,
++                device=rt.device if request.reconstruction=='new' else None),repeat)
++            if request.reconstruction=='old':
++                cpu=measure('prediction_d2h',lambda:pred.cpu().numpy(),repeat)
++                measure('cached_cpu_sparse_apply',lambda:plan.apply_numpy(cpu),repeat)
++            else:
++                field=measure('cached_gpu_sparse_apply',lambda:plan.apply_tensor(pred),repeat)
++                measure('complete_field_d2h',lambda:field.cpu().numpy(),repeat)
++            result.append(dict(profile_repeat=repeat,component='cache_hit',ms=None,timing_scope='cache metadata',cache_hit=hit))
++        elif request.reconstruction=='old':
++            cpu=measure('prediction_d2h',lambda:pred.cpu().numpy(),repeat)
++            field=measure('native_reconstruction_build_query_apply',lambda:native_reconstruct('darcy',ids,cpu,rt.reference),repeat)
++            if request.scope=='B':measure('complete_field_h2d',lambda:torch.tensor(field,dtype=torch.float64,device=rt.device),repeat)
++        else:
++            plan=measure('new_plan_build_and_map_transfer',lambda:build_plan('darcy',rt.reference,ids,
++                channels=1,reconstruction_id=GRID_PLAN,device=rt.device,profile=True),repeat)
++            for mapping in plan.timings.get('maps',[]):
++                for name,value in mapping.items():
++                    if name.endswith('_ms'):result.append(dict(profile_repeat=repeat,component='nested_'+name,ms=value,timing_scope='nested map profile, not additive to parent component'))
++            field=measure('gpu_sparse_apply',lambda:plan.apply_tensor(pred),repeat)
++            if request.scope=='A':measure('complete_field_d2h',lambda:field.cpu().numpy(),repeat)
++    return result
++
++
++def cuda_warmup(runtime):
++    case=runtime.case(runtime.data.split['training_ids'][0]);start=time.perf_counter()
++    with torch.no_grad():
++        for count in ([7225] if runtime.conv else [722,2709,3612,5419,7225]):
++            ids=np.arange(count)
++            for _ in range(5):runtime.forward(case,None if count==7225 else ids)
++    torch.cuda.synchronize();return time.perf_counter()-start
++
++
++def paired(gpu):
++    folder=OUT/'timing';folder.mkdir(exist_ok=True);references=reference_values();lock=read(OUT/'config/evaluation_lock.json')
++    assert reconstruction_module.IMPLEMENTATION_VERSION==lock['implementation_version']=='1.1'
++    assert reconstruction_module.IMPLEMENTATION_SOURCE_SHA256==lock['implementation_source_sha256']
++    with ExclusiveGPU(gpu,folder/'gpu_telemetry.json',interval=1.) as monitor:
++        model_start=time.perf_counter()
++        models=[Runtime('Transolver3'),Runtime('LinearNO'),Runtime('LinearNO',conv=True)]
++        setup=dict(model_loading_seconds=time.perf_counter()-model_start,kernel_warmup_seconds={m.label:cuda_warmup(m) for m in models},
++                   source_files={name:digest(Path(__file__).with_name(name)) for name in ['benchmark.py','benchmark_core.py','inference.py','common.py']},
++                   reconstruction_version=reconstruction_module.IMPLEMENTATION_VERSION,reconstruction_sha256=reconstruction_module.IMPLEMENTATION_SOURCE_SHA256,
++                   timing_helper_sha256=digest(FOLLOWUP/'reconstruction/code/timing_helper.py'),environment=environment(gpu))
++        write(folder/'setup.json',setup)
++        input_preparations=[]
++        jobs=[]
++        for scope in ['A','B','C']:
++            for sid in lock['timing_case_ids']:
++                jobs.append((scope,sid,'full',1.,None))
++                for budget in [.375,.5,.75]:
++                    for seed in [0,1,2]:
++                        for method in ['uniform','pi','cpg','ca']:
++                            jobs.append((scope,sid,method,budget,seed))
++        order=np.random.default_rng(20261114).permutation(len(jobs)).tolist()
++        write(folder/'scheduled_order.json',dict(seed=20261114,groups=[jobs[i] for i in order],
++                    rule='randomized group order; within group cyclic old/new and backbone ordering'))
++        for sequence,i in enumerate(order):
++            scope,sid,method,budget,seed=jobs[i]
++            input_started=time.perf_counter()
++            for runtime in models:runtime.cases.clear()
++            if method=='full':
++                requests={m.label:CompleteRequest(m,sid,method,budget,seed,'new',scope) for m in models}
++                meta={name:metadata(r.runtime,sid,method,budget,seed,'full_shared',scope) for name,r in requests.items()}
++                group=f'{scope}_case{sid}_full'
++            else:
++                requests={m.label+'_'+implementation:CompleteRequest(m,sid,method,budget,seed,implementation,scope)
++                          for m in models[:2] for implementation in ['old','new']}
++                meta={name:metadata(r.runtime,sid,method,budget,seed,r.reconstruction,scope) for name,r in requests.items()}
++                group=f'{scope}_case{sid}_{method}_s{seed}_b{budget:.3f}'
++            torch.cuda.synchronize()
++            input_preparations.append(dict(group_id=group,setup_ms=(time.perf_counter()-input_started)*1000,
++                scope='CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary',
++                loaded_backbones=3 if method=='full' else 2))
++            write(folder/'input_preparation.json',input_preparations)
++            run_group(folder/'groups',group,requests,meta,scope=SCOPES[scope],
++                check_output=lambda name,out:check_output(requests[name],out,references),identity_of=lambda name,r:identity(r),
++                guard=monitor.assert_exclusive,extra_profiles=lambda reqs:{name:profile_request(r) for name,r in reqs.items()})
++            print('completed',sequence+1,len(order),group,flush=True)
++            del requests;gc.collect();torch.cuda.empty_cache()
++    write(folder/'paired_complete.json',dict(execution_status='completed',groups=333,physical_conditions=1323,
++        formal_repeats=132300,warmups=26460,Full_alias='old/new views share one actual Full series in each scope; convFull has no sampling variants'))
++
++
++def memory(gpu,backbone,method,conv=False):
++    folder=OUT/'timing/memory';folder.mkdir(parents=True,exist_ok=True)
++    lock=read(OUT/'config/evaluation_lock.json');references=reference_values()
++    label='LinearNO_conv_temp' if conv else 'LinearNO_point_temp' if backbone=='LinearNO' else 'Transolver3'
++    key=label+'_'+method;file=folder/(key+'.json')
++    if file.exists():raise FileExistsError(file)
++    with ExclusiveGPU(gpu,folder/(key+'_gpu.json'),interval=1.) as monitor:
++        runtime=Runtime(backbone,conv=conv,require_head=method=='ca',load_head=method=='ca');rows=[]
++        for scope in ['A','B','C']:
++            for sid in lock['timing_case_ids']:
++                runtime.cases.clear()
++                for budget in ([1.] if method=='full' else [.375,.5,.75]):
++                    for seed in ([None] if method=='full' else [0,1,2]):
++                        for implementation in (['full_shared'] if method=='full' else ['old','new']):
++                            request=CompleteRequest(runtime,sid,method,budget,seed,'new' if implementation=='full_shared' else implementation,scope)
++                            gc.collect();torch.cuda.empty_cache();torch.cuda.synchronize();torch.cuda.reset_peak_memory_stats()
++                            first_output=request();torch.cuda.synchronize()
++                            cold=dict(first_request_peak_cuda_allocated_bytes=torch.cuda.max_memory_allocated(),
++                                      first_request_peak_cuda_reserved_bytes=torch.cuda.max_memory_reserved())
++                            check_output(request,first_output,references);del first_output;monitor.assert_exclusive()
++                            def nvml_sample():
++                                result=subprocess.run(['nvidia-smi','-i',str(gpu),'--query-gpu=memory.used','--format=csv,noheader,nounits'],capture_output=True,text=True)
++                                return {'device_used_MiB':int(result.stdout.strip())} if result.returncode==0 else {'available':False}
++                            measured=isolated_memory(request,warmups=2,repeats=2,nvml_post_sample=nvml_sample)
++                            rows.append(dict(**metadata(runtime,sid,method,budget,seed,implementation,scope),**measured,**cold,
++                                              cached_map_cpu_bytes=request.last['plan_cpu_bytes'],cached_map_gpu_bytes=request.last['plan_device_bytes']))
++                            del request;gc.collect();torch.cuda.empty_cache()
++                print('memory',key,scope,sid,flush=True)
++    write(file,dict(execution_status='completed',model=runtime.label,method=method,rows=rows,
++                    scope='single architecture/method process; PyTorch allocator peaks; CPU SciPy and transient external GPU/context peaks not claimed'))
++
++
++def environment(gpu):
++    import scipy
++    def command(args):
++        result=subprocess.run(args,capture_output=True,text=True);return result.stdout.strip() if result.returncode==0 else result.stderr.strip()
++    return dict(python=platform.python_version(),torch=torch.__version__,scipy=scipy.__version__,numpy=np.__version__,
++                cuda=torch.version.cuda,cudnn=torch.backends.cudnn.version(),gpu_index=gpu,
++                gpu=command(['nvidia-smi','-i',str(gpu),'--query-gpu=uuid,name,driver_version,memory.total','--format=csv']),
++                cpu=command(['lscpu']),cpu_affinity=sorted(os.sched_getaffinity(0)),cpu_threads=torch.get_num_threads(),
++                cpu_load_average=os.getloadavg(),processes=command(['ps','-eo','pid,psr,pcpu,pmem,comm','--sort=-pcpu']),
++                fp32_network=True,tf32=False,mode='eager',memory_statistics='separate per-model/method subprocess')
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--phase',choices=['paired','memory'],required=True);p.add_argument('--gpu',type=int,required=True)
++    p.add_argument('--backbone',default='Transolver3');p.add_argument('--method',default='full');p.add_argument('--conv-only',action='store_true');a=p.parse_args()
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    lock=read(OUT/'config/evaluation_lock.json')
++    if reconstruction_module.IMPLEMENTATION_VERSION!=lock['implementation_version'] or reconstruction_module.IMPLEMENTATION_SOURCE_SHA256!=lock['implementation_source_sha256']:
++        raise RuntimeError('Reconstruction module differs from accepted protocol')
++    if a.phase=='paired':paired(a.gpu)
++    else:memory(a.gpu,a.backbone,a.method,a.conv_only)
++
++if __name__=='__main__':main()
+diff --git a/code/benchmark_core.py b/code/benchmark_core.py
+new file mode 100644
+index 0000000..b863b24
+--- /dev/null
++++ b/code/benchmark_core.py
+@@ -0,0 +1,50 @@
++"""Dataset-independent persistence around the shared direct-wall timing helper."""
++from __future__ import annotations
++import hashlib,json,time
++from pathlib import Path
++from timing_helper import measure_paired
++
++
++def run_group(directory,group_id,requests,metadata,*,scope,check_output,identity_of,guard=None,extra_profiles=None):
++    """All identity inspection happens outside the timed callable interval."""
++    directory=Path(directory);directory.mkdir(parents=True,exist_ok=True)
++    destination=directory/(group_id+'.json')
++    def persist(value):
++        temporary=destination.with_suffix('.tmp');temporary.write_text(json.dumps(value,indent=2)+'\n');temporary.replace(destination)
++    def finish_profiles(result):
++        if not extra_profiles:return result
++        if result.get('profile_execution_status')=='completed':return result
++        if guard:guard()
++        try:
++            result['profiles']=extra_profiles(requests)
++            if guard:guard()
++            result['profile_execution_status']='completed';result.pop('profile_error',None)
++        except Exception as exc:
++            result['profile_execution_status']='failed';result['profile_error']=repr(exc);persist(result);raise
++        persist(result);return result
++    if destination.exists():
++        old=json.loads(destination.read_text())
++        if old.get('execution_status')!='completed':
++            raise FileExistsError('incomplete group must be archived before explicit recovery')
++        if old.get('metadata')!=metadata:raise RuntimeError('existing timing metadata differs from current request')
++        if old.get('profile_execution_status')!='completed' and extra_profiles:
++            for name,request in requests.items():check_output(name,request())
++        return finish_profiles(old)
++    identity_rows=[];first_identity={}
++    def check(name,output):
++        identity=identity_of(name,requests[name]);first_identity[name]=identity
++        return check_output(name,output)
++    def progress(kind,current,total):
++        for name,request in requests.items():
++            identity=identity_of(name,request)
++            if identity!=first_identity[name]:raise RuntimeError('point identity changed within fixed-seed timing condition')
++            identity_rows.append(dict(condition=name,kind=kind,repeat_id=current-1,**identity))
++        (directory/'heartbeat.json').write_text(json.dumps(dict(group=group_id,kind=kind,completed=current,total=total,time=time.time()))+'\n')
++    seed=int.from_bytes(hashlib.sha256(group_id.encode()).digest()[:4],'little')
++    result=measure_paired(requests,scope=scope,warmups=20,repeats=100,order_seed=seed,
++                          check_output=check,guard=guard,progress=progress)
++    result.update(execution_status='completed',group_id=group_id,metadata=metadata,identities=identity_rows,
++                  verification='all first outputs matched accepted accuracy; all timed identities remained equal')
++    result['profile_execution_status']='pending' if extra_profiles else 'not_requested'
++    persist(result)
++    return finish_profiles(result)
+diff --git a/code/ca_support.py b/code/ca_support.py
+new file mode 100644
+index 0000000..59a3fdb
+--- /dev/null
++++ b/code/ca_support.py
+@@ -0,0 +1,34 @@
++"""Two-block acquisition heads with each backbone's own frozen features."""
++import numpy as np
++import torch
++from torch import nn
++import types
++from common import official
++from adasolver.inference.ca.head import TransolverGradientHead
++
++
++def model_core(model,backbone):
++    return model.net if backbone=='Transolver3' else model
++
++
++class ScoreHead(nn.Module):
++    def __init__(self,backbone):
++        super().__init__();self.backbone=backbone
++        if backbone=='Transolver3':self.body=TransolverGradientHead(hidden_dim=128,heads=8,mlp_ratio=2,slices=64,blocks=2)
++        else:
++            self.body=nn.Sequential(*[official.LinearNO_block(num_heads=8,hidden_dim=128,dropout=0.,
++                mlp_ratio=1,key_ratio=64,last_layer=i==1,out_dim=1,args=types.SimpleNamespace(model='temp')) for i in range(2)])
++    def forward(self,hidden):return self.body(hidden)
++
++
++@torch.no_grad()
++def frozen_features(model,backbone,pos,fx):
++    core=model_core(model,backbone)
++    hidden=core.preprocess(torch.cat((pos,fx),dim=-1))
++    if backbone=='Transolver3':hidden=hidden+core.placeholder[None,None,:]
++    return core.blocks[0](hidden)
++
++
++def decode_score(prediction,mean,std):
++    value=np.asarray(prediction,dtype=np.float64)
++    return np.expm1(np.clip(value*std+mean,0.,None))
+diff --git a/code/common.py b/code/common.py
+new file mode 100644
+index 0000000..b7e2754
+--- /dev/null
++++ b/code/common.py
+@@ -0,0 +1,154 @@
++"""Locked Darcy runtime; fits and model identities are local to this cohort."""
++from __future__ import annotations
++
++import hashlib
++import importlib.util
++import json
++import os
++import random
++import sys
++import types
++from pathlib import Path
++
++import numpy as np
++import torch
++from einops import rearrange
++
++OUT=Path(__file__).resolve().parents[1]
++FOLLOWUP=OUT.parents[1]
++CODE=Path(__file__).resolve().parent
++sys.path[:0]=[str(CODE/'vendor'),str(CODE/'vendor/LinearNOStandard')]
++from adasolver.models import Transolver3ModelSpec
++from adasolver.layers import install_compensation
++
++source=CODE/'vendor/LinearNOStandard/model/LinearAttnNeuralOperator.py'
++spec=importlib.util.spec_from_file_location('darcy_official_linearno',source)
++official=importlib.util.module_from_spec(spec);sys.modules[spec.name]=official;spec.loader.exec_module(official)
++
++
++def read(path):
++    return json.loads(Path(path).read_text())
++
++
++def write(path,value):
++    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
++    temp=path.with_suffix(path.suffix+f'.{os.getpid()}.tmp')
++    temp.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n');temp.replace(path)
++
++
++def digest(path):
++    h=hashlib.sha256()
++    with Path(path).open('rb') as f:
++        for data in iter(lambda:f.read(1024*1024),b''):h.update(data)
++    return h.hexdigest()
++
++
++def seeds(seed=0):
++    random.seed(seed);np.random.seed(seed);torch.manual_seed(seed)
++    if torch.cuda.is_available():torch.cuda.manual_seed_all(seed)
++
++
++def build_model(backbone,*,conv=False):
++    if backbone=='Transolver3':
++        return Transolver3ModelSpec(space_dim=2,fun_dim=1,out_dim=1,hidden_dim=128,
++            heads=8,layers=8,mlp_ratio=2,slices=64,dropout=0.,ref=8).build()
++    if backbone!='LinearNO':raise ValueError(backbone)
++    return official.LinearAttentionNeuralOperator(space_dim=2,fun_dim=1,out_dim=1,
++        n_hidden=128,n_head=8,n_layers=8,mlp_ratio=1,key_ratio=64,dropout=0.,
++        Time_Input=False,unified_pos=False,H=85,W=85,
++        args=types.SimpleNamespace(model='conv_temp' if conv else 'temp'))
++
++
++class LinearContext:
++    def __init__(self):self.weights=None;self.log_weights=None
++    def set(self,weights):
++        self.weights=weights;self.log_weights=None if weights is None else weights.log()
++    def clear(self):self.weights=None;self.log_weights=None
++
++
++def compensated_linear_forward(self,x):
++    context=self._measure_context
++    if context.weights is None:return self._native_forward(x)
++    mid=rearrange(self.in_project_x(x),'b n (h d) -> b h n d',h=self.heads,d=self.dim_head)
++    q,k,v=self.to_q(mid),self.to_k(mid),self.to_v(mid)
++    q=torch.softmax(q/torch.clamp(self.temperature_q,min=.01,max=1),dim=-1)
++    logits=k/torch.clamp(self.temperature_k,min=.01,max=1)
++    log=context.log_weights.to(x)
++    if log.ndim==1:log=log[None,None,:,None]
++    elif log.ndim==2:log=log[:,None,:,None]
++    else:raise ValueError('weights must align to [N] or [B,N]')
++    k=torch.softmax(logits+log,dim=-2)
++    kv=torch.einsum('bhnd,bhnc->bhdc',k,v)
++    output=torch.einsum('bhnd,bhdc->bhnc',q,kv)
++    return self.to_out(rearrange(output,'b h n d -> b n (h d)'))
++
++
++def install(backbone,model):
++    if backbone=='Transolver3':return install_compensation(model)[0]
++    context=LinearContext();count=0
++    for layer in model.modules():
++        if isinstance(layer,official.LinearNO_temp):
++            layer._native_forward=layer.forward;layer._measure_context=context
++            layer.forward=types.MethodType(compensated_linear_forward,layer);count+=1
++    if count!=8:raise ValueError(f'expected8 point-temp blocks, got{count}')
++    return context
++
++
++def relative_error(pred,target):
++    pred=pred.flatten(1);target=target.flatten(1)
++    return torch.linalg.vector_norm(pred-target,dim=1)/torch.linalg.vector_norm(target,dim=1).clamp_min(1e-12)
++
++
++def gradients(field):
++    """Official Darcy central-difference convention, h=1/85 and zero padding."""
++    field=field.reshape(-1,85,85,1)
++    padded=torch.nn.functional.pad(field,(0,0,1,1,1,1),mode='constant',value=0.)
++    dx=(padded[:,1:-1,2:]-padded[:,1:-1,:-2])*(85/2)
++    dy=(padded[:,2:,1:-1]-padded[:,:-2,1:-1])*(85/2)
++    return dx,dy
++
++
++def training_loss(prediction,target):
++    field=relative_error(prediction,target).sum()
++    predicted_grid=prediction.reshape(-1,85,85,1)
++    interior=predicted_grid[:,1:-1,1:-1].permute(0,3,1,2)
++    boundary_zero=torch.nn.functional.pad(interior,(1,1,1,1)).permute(0,2,3,1)
++    pg=gradients(boundary_zero);tg=gradients(target)
++    derivative=relative_error(pg[0],tg[0]).sum()+relative_error(pg[1],tg[1]).sum()
++    return field+.1*derivative,field,derivative
++
++
++class Dataset:
++    def __init__(self):
++        self.split=read(FOLLOWUP/'standard_benchmarks/split_manifest.json')
++        self.normalizer=np.load(OUT/'data/normalizer.npz')
++        self.x_mean=torch.from_numpy(self.normalizer['x_mean'].copy())
++        self.x_std=torch.from_numpy(self.normalizer['x_std'].copy())
++        self.y_mean=torch.from_numpy(self.normalizer['y_mean'].copy())
++        self.y_std=torch.from_numpy(self.normalizer['y_std'].copy())
++        self.pos=torch.from_numpy(np.load(OUT/'data/positions.npy'))
++        self.reference=np.load(OUT/'data/reference_coordinates.npy')
++        self.pool_x=np.load(OUT/'data/pool_coeff.npy',mmap_mode='r')
++        self.pool_y=np.load(OUT/'data/pool_solution.npy',mmap_mode='r')
++        self.test_x=np.load(OUT/'data/test_coeff.npy',mmap_mode='r')
++        self.test_y=np.load(OUT/'data/test_solution.npy',mmap_mode='r')
++
++    def arrays(self,ids):
++        x=[];y=[]
++        for sid in ids:
++            source_x,source_y,index=(self.pool_x,self.pool_y,sid) if sid<1000 else (self.test_x,self.test_y,sid-1000)
++            x.append(np.asarray(source_x[index]));y.append(np.asarray(source_y[index]))
++        xx=torch.from_numpy(np.stack(x).copy());yy=torch.from_numpy(np.stack(y).copy())
++        return (xx-self.x_mean)/self.x_std,yy
++
++    def sample(self,sid):
++        x,y=self.arrays([int(sid)]);return self.pos,x[0],y[0]
++
++    def model(self,backbone,device='cpu'):
++        directory=OUT/'checkpoints'/backbone.lower()
++        manifest=read(directory/'manifest.json')
++        path=directory/'best.pt'
++        if digest(path)!=manifest['checkpoint_sha256']:raise ValueError('checkpoint identity mismatch')
++        model=build_model(backbone).to(device)
++        model.load_state_dict(torch.load(path,map_location=device,weights_only=True))
++        return model.requires_grad_(False).eval(),manifest
+diff --git a/code/evaluate.py b/code/evaluate.py
+new file mode 100644
+index 0000000..6336a3b
+--- /dev/null
++++ b/code/evaluate.py
+@@ -0,0 +1,207 @@
++"""Full old/new reconstruction accuracy matrix after model-specific validation."""
++from __future__ import annotations
++import argparse,csv,json,time,os,hashlib
++from pathlib import Path
++import numpy as np
++import torch
++from common import OUT,write,read,digest
++from inference import Runtime,comparison,metric,array_hash,build_plan,native_reconstruct,GRID_NATIVE,GRID_PLAN,reconstruction_module
++
++FIELDS=['dataset','backbone','model_variant','checkpoint_id','normalizer_id','training_seed','head_seed','sampling_seed',
++        'method','beta','budget_fraction','retained_points','case_id','metric_target','test_population','reconstruction_id',
++        'metric','value','unit','status','selected_indices_hash','coarse_indices_hash','coarse_prediction_hash','full_alias',
++        'arrays_path','old_new_max_abs','old_new_relative_difference','old_new_metric_difference','compensation_weights_hash']
++
++
++def publish_immutable_bytes(path,payload):
++    """Publish a complete file without replacing an existing, different artifact."""
++    path=Path(path)
++    if path.exists():
++        if path.read_bytes()!=payload:raise FileExistsError(f'Conflicting immutable artifact: {path}')
++        return
++    temporary=path.with_name(path.name+f'.{os.getpid()}.snapshot.tmp')
++    created=False
++    try:
++        with temporary.open('xb') as stream:
++            created=True
++            stream.write(payload);stream.flush();os.fsync(stream.fileno())
++        try:os.link(temporary,path)
++        except FileExistsError:
++            if path.read_bytes()!=payload:raise FileExistsError(f'Conflicting immutable artifact: {path}')
++    finally:
++        if created and temporary.exists():temporary.unlink()
++
++
++def snapshot_metrics(directory,phase,state):
++    """A completion receipt is published only after its immutable CSV exists."""
++    if phase not in ['baseline','complete']:raise ValueError(phase)
++    directory=Path(directory);live=directory/'metrics_records.csv';payload=live.read_bytes()
++    records=list(csv.DictReader(payload.decode().splitlines()))
++    expected=int(state['completed_requests'])*2
++    if len(records)!=expected:raise RuntimeError('Snapshot count differs from completed requests')
++    target=directory/f'metrics_{phase}.csv';publish_immutable_bytes(target,payload)
++    receipt=dict(execution_status='completed',phase=phase,metrics_csv=str(target),
++        metrics_csv_sha256=hashlib.sha256(payload).hexdigest(),checkpoint_id=state['checkpoint_id'],
++        normalizer_id=state['normalizer_id'],backbone=state['backbone'],dataset='darcy',training_seed=0,
++        physical_requests=int(state['completed_requests']),metric_rows=len(records),
++        methods=sorted({r['method'] for r in records}),case_ids=sorted({int(r['case_id']) for r in records}),
++        reconstruction_ids=state['reconstruction_ids'],metric_target='field',test_population='historical_smooth2_200',
++        model_specific_validation_accepted=state['model_specific_validation_accepted'],
++        coarse_prediction_space=state['coarse_prediction_space'],retained_prediction_space=state['retained_prediction_space'],
++        source_live_csv=str(live),evaluator_sha256=digest(__file__))
++    receipt_path=directory/f'{phase}_completion.json'
++    publish_immutable_bytes(receipt_path,(json.dumps(receipt,indent=2,allow_nan=False)+'\n').encode())
++    return receipt
++
++
++@torch.no_grad()
++def predictions(runtime,sid,budget,seed,methods):
++    cpg_sampling=None
++    for method in methods:
++        if method.startswith('cpg'):
++            if cpg_sampling is None:cpg_sampling=runtime.sample(sid,'cpg',budget,seed)
++            ids,weights,coarse,coarse_prediction,metadata=cpg_sampling
++            comp=np.ones(len(ids),dtype=np.float32) if method=='cpg_beta0' else weights
++            runtime.context.set(torch.as_tensor(comp,dtype=torch.float32,device=runtime.device))
++            try:pred=runtime.forward(runtime.case(sid),ids)*runtime.std[0]+runtime.mean[0]
++            finally:runtime.context.clear()
++            actual_metadata={**metadata,'compensation_beta':0. if method=='cpg_beta0' else 1.,'selection_shared_across_beta_pair':True}
++            info=dict(indices=ids,weights=comp,coarse_indices=coarse,coarse_prediction=coarse_prediction,sampling_metadata=actual_metadata)
++        else:pred,info=runtime.predict(sid,method,budget,seed)
++        yield method,pred,info
++
++
++@torch.no_grad()
++def reconstruct(runtime,pred,info,full=False):
++    if full:
++        field=pred.cpu().numpy().astype(np.float64);return field,field
++    old=native_reconstruct('darcy',info['indices'],pred.cpu().numpy(),runtime.reference)
++    plan=build_plan('darcy',runtime.reference,info['indices'],channels=1,reconstruction_id=GRID_PLAN,device=runtime.device)
++    new=plan.apply_tensor(pred).cpu().numpy()
++    return old,new
++
++
++@torch.no_grad()
++def main():
++    parser=argparse.ArgumentParser();parser.add_argument('--backbone',required=True);parser.add_argument('--conv-only',action='store_true')
++    parser.add_argument('--phase',choices=['all','baseline','ca'],default='all');args=parser.parse_args()
++    if args.conv_only and args.phase=='ca':raise ValueError('conv Full-only baseline has no CA phase')
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    lock=read(OUT/'config/evaluation_lock.json')
++    if reconstruction_module.IMPLEMENTATION_VERSION!=lock['implementation_version'] or reconstruction_module.IMPLEMENTATION_SOURCE_SHA256!=lock['implementation_source_sha256']:
++        raise RuntimeError('Loaded reconstruction module identity differs from accepted lock')
++    if lock['new_reconstruction_id']!=GRID_PLAN:raise RuntimeError('unrecognized reconstruction contract')
++    for name,expected in lock['reconstruction_sources'].items():
++        if digest(Path(lock['reconstruction_code'])/name)!=expected:raise RuntimeError('reconstruction implementation changed after lock')
++    needs_head=not args.conv_only and args.phase!='baseline'
++    runtime=Runtime(args.backbone,'cuda:0',conv=args.conv_only,require_head=needs_head,load_head=needs_head)
++    key='linearno_conv' if args.conv_only else args.backbone.lower();directory=OUT/'records'/key;directory.mkdir(parents=True,exist_ok=True)
++    if (directory/'metrics_records.csv').exists() and args.phase!='ca':raise FileExistsError('Completed/partial evaluation exists; preserve before explicit recovery')
++    phase_list=[('baseline',['uniform','pi','cpg_beta0','cpg']),('ca',['ca'])]
++    if args.phase!='all':phase_list=[(phase,methods) for phase,methods in phase_list if phase==args.phase]
++    if args.conv_only:phase_list=[]
++    methods=[method for phase,names in phase_list for method in names]
++    validations=[]
++    for sid in lock['validation_case_ids']:
++        if args.conv_only:
++            pred,info=runtime.predict(sid,'full',1.,None);old,new=reconstruct(runtime,pred,info,True)
++            validations.append(dict(case_id=sid,method='full',**comparison(old,new,runtime.case(sid)['truth'])))
++        else:
++            for budget in [.375,.5,.75]:
++                for seed in [0,1,2]:
++                    for method,pred,info in predictions(runtime,sid,budget,seed,methods):
++                        old,new=reconstruct(runtime,pred,info)
++                        check=comparison(old,new,runtime.case(sid)['truth'])
++                        validations.append(dict(case_id=sid,method=method,budget=budget,seed=seed,**check))
++    accepted=all(x['violating_elements']==0 and x['metric_difference']<=x['metric_tolerance'] for x in validations)
++    write(OUT/'results'/f'{key}_{args.phase}_reconstruction_validation.json',dict(accepted=accepted,rows=validations,
++         reconstruction_lock=lock,checkpoint_id=runtime.metadata['checkpoint_sha256']))
++    if not accepted:raise RuntimeError('New checkpoint reconstruction contract failed before test')
++    arrays=directory/'arrays';arrays.mkdir(exist_ok=True)
++    expected=200 if args.conv_only else 9200
++    state=dict(execution_status='running',evidence_status='pending',backbone=runtime.label,expected_requests=expected,
++               expected_metric_rows=expected*2,completed_requests=0,completed_metric_rows=0,
++               checkpoint_id=runtime.metadata['checkpoint_sha256'],normalizer_id=runtime.metadata['normalizer_sha256'],
++               test_ids=lock['test_case_ids'],reconstruction_ids=[GRID_NATIVE,GRID_PLAN],
++               coarse_prediction_space='normalized solution before physical decode; coarse_prediction_hash covers these normalized bytes',
++               retained_prediction_space='physical solution after output standard deviation and mean; field errors computed after full reconstruction',
++               model_specific_validation_accepted=True)
++    rows=[];paired=[];previous_seconds=0.
++    if args.phase=='ca':
++        previous=read(directory/'run_manifest.json')
++        if previous.get('execution_status')!='baseline_completed':raise RuntimeError('CA append requires completed baseline phase')
++        if previous['checkpoint_id']!=state['checkpoint_id'] or previous['normalizer_id']!=state['normalizer_id']:
++            raise RuntimeError('CA phase checkpoint/normalizer differs from baseline')
++        rows=list(csv.DictReader((directory/'metrics_records.csv').open()))
++        if len(rows)!=14800 or any(row['method']=='ca' for row in rows):raise RuntimeError('baseline matrix is not exactly complete')
++        state.update(completed_requests=7400,completed_metric_rows=14800)
++        paired=read(directory/'cpg_pair_validation.json');previous_seconds=previous['elapsed_seconds']
++    state.update(active_phase=args.phase);write(directory/'run_manifest.json',state);start=time.perf_counter()
++    with (directory/'metrics_records.csv').open('a' if args.phase=='ca' else 'x',newline='') as stream,(directory/'requests.jsonl').open('a' if args.phase=='ca' else 'x') as raw:
++        writer=csv.DictWriter(stream,FIELDS)
++        if args.phase!='ca':writer.writeheader()
++        def record(sid,method,budget,seed,pred,info):
++            full=method=='full';old,new=reconstruct(runtime,pred,info,full);check=comparison(old,new,runtime.case(sid)['truth'])
++            if check['violating_elements'] or check['metric_difference']>check['metric_tolerance']:
++                write(directory/'reconstruction_failure.json',dict(case_id=sid,method=method,budget=budget,seed=seed,**check))
++                raise RuntimeError('Test reconstruction equivalence failed; no tolerance relaxation')
++            identity=array_hash(np.asarray(info['indices'],np.int64));coarse=info['coarse_indices'];cp=info['coarse_prediction']
++            ci=None if coarse is None else array_hash(np.asarray(coarse,np.int64));ch=None if cp is None else array_hash(cp)
++            weights=info['weights'];wh=None if weights is None else array_hash(np.asarray(weights,np.float32))
++            name=f'case{sid}_{method}_s{seed}_b{budget:.3f}.npz'
++            np.savez_compressed(arrays/name,indices=info['indices'],prediction=pred.cpu().numpy(),
++                coarse_indices=np.array([],np.int64) if coarse is None else coarse,
++                coarse_prediction=np.array([],np.float32) if cp is None else cp,
++                compensation_weights=np.array([],np.float32) if weights is None else weights)
++            request=dict(case_id=sid,method=method,budget=budget,sampling_seed=seed,indices_hash=identity,
++                         coarse_indices_hash=ci,coarse_prediction_hash=ch,compensation_weights_hash=wh,sampling_metadata=info['sampling_metadata'],
++                         checkpoint_id=runtime.metadata['checkpoint_sha256'],normalizer_id=runtime.metadata['normalizer_sha256'],
++                         arrays=name,**check)
++            raw.write(json.dumps(request,allow_nan=False)+'\n')
++            beta=None if method in ['full','uniform'] else .5 if method=='pi' else 0. if method=='cpg_beta0' else 1.
++            for rid,value in [(GRID_NATIVE,check['metric_old']),(GRID_PLAN,check['metric_new'])]:
++                row=dict(dataset='darcy',backbone=runtime.label,model_variant=runtime.variant,
++                    checkpoint_id=runtime.metadata['checkpoint_sha256'],normalizer_id=runtime.metadata['normalizer_sha256'],
++                    training_seed=0,head_seed=0 if method=='ca' else None,sampling_seed=seed,method=method,beta=beta,
++                    budget_fraction=budget,retained_points=len(info['indices']),case_id=sid,metric_target='field',
++                    test_population='historical_smooth2_200',reconstruction_id=rid,metric='field_relative_l2',value=value,
++                    unit='ratio',status='ok',selected_indices_hash=identity,coarse_indices_hash=ci,coarse_prediction_hash=ch,
++                    full_alias=full,arrays_path='arrays/'+name,old_new_max_abs=check['max_absolute_difference'],
++                    old_new_relative_difference=check['relative_difference'],old_new_metric_difference=check['metric_difference'],
++                    compensation_weights_hash=wh)
++                writer.writerow(row);rows.append(row)
++            state['completed_requests']+=1;state['completed_metric_rows']+=2
++            return request
++        # Full is evaluated once per physical case, never three fake seeds.
++        if args.phase!='ca':
++            for number,sid in enumerate(lock['test_case_ids'],1):
++                pred,info=runtime.predict(sid,'full',1.,None);record(sid,'full',1.,None,pred,info)
++        # Export the requested Full/Uniform/PI/CPG first; CA is its own final phase.
++        for phase,phase_methods in phase_list:
++            for number,sid in enumerate(lock['test_case_ids'],1):
++                for budget in [.375,.5,.75]:
++                    for seed in [0,1,2]:
++                        pair={}
++                        for method,pred,info in predictions(runtime,sid,budget,seed,phase_methods):
++                            rr=record(sid,method,budget,seed,pred,info)
++                            if method.startswith('cpg'):pair[method]=rr
++                        if pair:
++                            assert pair['cpg']['indices_hash']==pair['cpg_beta0']['indices_hash']
++                            assert pair['cpg']['coarse_indices_hash']==pair['cpg_beta0']['coarse_indices_hash']
++                            assert pair['cpg']['coarse_prediction_hash']==pair['cpg_beta0']['coarse_prediction_hash']
++                            paired.append(dict(case_id=sid,budget=budget,seed=seed,identical_coarse=True,identical_final=True))
++                stream.flush();raw.flush();write(directory/'run_manifest.json',state)
++                print(key,phase,number,'/200',state['completed_requests'],flush=True)
++            write(directory/f'{phase}_phase_complete.json',dict(execution_status='completed',records=state['completed_requests']))
++            if phase=='baseline':
++                stream.flush();raw.flush();snapshot_metrics(directory,'baseline',state)
++    phase_expected=7400 if args.phase=='baseline' and not args.conv_only else expected
++    assert state['completed_requests']==phase_expected and len(rows)==2*phase_expected
++    state.update(execution_status='completed' if phase_expected==expected else 'baseline_completed',evidence_status='pending',elapsed_seconds=previous_seconds+time.perf_counter()-start,
++                 cpg_pairs=len(paired),paired_indices_and_coarse_predictions=True,
++                 raw_schema=FIELDS,source_sha256=digest(__file__))
++    snapshot_metrics(directory,'complete' if phase_expected==expected else 'baseline',state)
++    write(directory/'run_manifest.json',state);write(directory/'cpg_pair_validation.json',paired)
++
++
++if __name__=='__main__':main()
+diff --git a/code/finalize_accuracy.py b/code/finalize_accuracy.py
+new file mode 100644
+index 0000000..858ca52
+--- /dev/null
++++ b/code/finalize_accuracy.py
+@@ -0,0 +1,103 @@
++"""Derive Darcy budget/absolute/rAUEC tables from complete raw metric rows."""
++from __future__ import annotations
++import csv,json,collections
++import numpy as np
++from common import OUT,read,write,digest
++
++
++def csv_write(path,rows):
++    with path.open('w',newline='') as f:
++        w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
++
++
++def main():
++    all_rows=[];checkpoints=[]
++    lock=read(OUT/'config/evaluation_lock.json')
++    for key in ['transolver3','linearno','linearno_conv']:
++        directory=OUT/'records'/key;manifest=read(directory/'run_manifest.json')
++        if manifest['execution_status']!='completed':raise RuntimeError('accuracy matrix not complete: '+key)
++        rows=list(csv.DictReader((directory/'metrics_records.csv').open()));expected=400 if key=='linearno_conv' else 18400
++        assert len(rows)==expected
++        identity=lambda r:(r['backbone'],r['case_id'],r['sampling_seed'],r['method'],r['beta'],r['budget_fraction'],r['reconstruction_id'])
++        assert len({identity(r) for r in rows})==len(rows)
++        assert all(r['status']=='ok' and np.isfinite(float(r['value'])) for r in rows)
++        all_rows.extend(rows)
++        cm=read(OUT/'checkpoints'/key/'manifest.json')
++        assert cm['execution_status']=='completed' and cm['epochs_completed']==1000 and cm['total_optimization_steps']==225000
++        assert digest(OUT/'checkpoints'/key/'best.pt')==cm['checkpoint_sha256']
++        assert digest(OUT/'data/normalizer.npz')==cm['normalizer_sha256']
++        assert all(r['checkpoint_id']==cm['checkpoint_sha256'] and r['normalizer_id']==cm['normalizer_sha256']
++                   and r['training_seed']=='0' and r['metric_target']=='field' and r['metric']=='field_relative_l2'
++                   and r['test_population']=='historical_smooth2_200' for r in rows)
++        actual={(int(r['case_id']),r['method'],float(r['budget_fraction']),r['sampling_seed'],r['reconstruction_id']) for r in rows}
++        expected_ids={(sid,'full',1.,'',rid) for sid in lock['test_case_ids'] for rid in [lock['old_reconstruction_id'],lock['new_reconstruction_id']]}
++        if key!='linearno_conv':
++            expected_ids.update((sid,method,budget,str(seed),rid) for sid in lock['test_case_ids']
++                for method in ['uniform','pi','cpg_beta0','cpg','ca'] for budget in [.375,.5,.75] for seed in [0,1,2]
++                for rid in [lock['old_reconstruction_id'],lock['new_reconstruction_id']])
++        assert actual==expected_ids
++        for row in rows:
++            beta=None if row['method'] in ['full','uniform'] else .5 if row['method']=='pi' else 0. if row['method']=='cpg_beta0' else 1.
++            assert (None if row['beta']=='' else float(row['beta']))==beta
++        checkpoints.append(dict(dataset='darcy',backbone=rows[0]['backbone'],model_class=cm['model_class'],model_variant=cm['variant'],
++            checkpoint_id=cm['checkpoint_sha256'],normalizer_id=cm['normalizer_sha256'],training_seed=0,training_cases=900,validation_cases=100,
++            epochs=1000,updates=225000,parameters=cm['parameter_count'],training_seconds=cm['training_wall_seconds'],
++            best_validation=cm['best_validation_relative_l2'],checkpoint_path=cm['checkpoint'],identity_verified=True,
++            training_completed=True,accuracy_matrix_completed=True,latency_acceptance='pending',
++            verification_scope='training completion and byte identity; numeric independence and latency have separate receipts'))
++    groups=collections.defaultdict(list)
++    for row in all_rows:groups[row['backbone'],row['reconstruction_id'],row['method'],float(row['budget_fraction'])].append(row)
++    budget_rows=[]
++    for (backbone,recon,method,budget),rows in groups.items():
++        values=np.asarray([float(r['value']) for r in rows]);full=groups[(backbone,recon,'full',1.)]
++        full_mean=float(np.mean([float(r['value']) for r in full]))
++        seeds=sorted({r['sampling_seed'] for r in rows if r['sampling_seed']!=''})
++        means=[float(np.mean([float(r['value']) for r in rows if r['sampling_seed']==seed])) for seed in seeds]
++        budget_rows.append(dict(dataset='darcy',backbone=backbone,reconstruction_id=recon,method=method,
++            beta=rows[0]['beta'],budget_fraction=budget,case_count=len({r['case_id'] for r in rows}),
++            sampling_seed_count=len(seeds),mean_error=float(values.mean()),sampling_sd=float(np.std(means,ddof=1)) if len(means)>1 else None,
++            same_checkpoint_full_error=full_mean,error_over_full=float(values.mean())/full_mean,
++            checkpoint_id=rows[0]['checkpoint_id'],training_seed=0,test_population='historical_smooth2_200',
++            normalizer_id=rows[0]['normalizer_id'],metric_target='field',metric='field_relative_l2',unit='ratio',
++            retained_points=int(rows[0]['retained_points'])))
++        assert budget_rows[-1]['case_count']==200
++    rauec=[];seed_details=[]
++    for backbone in sorted({r['backbone'] for r in all_rows if r['method']!='full'}):
++        for recon in sorted({r['reconstruction_id'] for r in all_rows}):
++            for method in ['uniform','pi','cpg_beta0','cpg','ca']:
++                ratios=[]
++                for seed in ['0','1','2']:
++                    curves=[]
++                    for m in [method,'uniform']:
++                        curve=[np.mean([float(r['value']) for r in groups[backbone,recon,m,b] if r['sampling_seed']==seed]) for b in [.375,.5,.75]]
++                        curves.append(curve)
++                    den=np.trapezoid(curves[1],[.375,.5,.75]);assert den>0
++                    ratios.append(float(np.trapezoid(curves[0],[.375,.5,.75])/den))
++                    seed_details.append(dict(dataset='darcy',backbone=backbone,reconstruction_id=recon,method=method,sampling_seed=int(seed),
++                        checkpoint_id=groups[backbone,recon,method,.375][0]['checkpoint_id'],
++                        mean_error_0375=curves[0][0],mean_error_050=curves[0][1],mean_error_075=curves[0][2],
++                        uniform_mean_error_0375=curves[1][0],uniform_mean_error_050=curves[1][1],uniform_mean_error_075=curves[1][2],
++                        method_auec=float(np.trapezoid(curves[0],[.375,.5,.75])),uniform_auec=float(den),rauec=ratios[-1]))
++                rauec.append(dict(dataset='darcy',backbone=backbone,reconstruction_id=recon,method=method,
++                    beta=None if method=='uniform' else .5 if method=='pi' else 0. if method=='cpg_beta0' else 1.,
++                    metric_target='field',test_population='historical_smooth2_200',training_seed=0,
++                    checkpoint_id=groups[backbone,recon,method,.375][0]['checkpoint_id'],
++                    normalizer_id=groups[backbone,recon,method,.375][0]['normalizer_id'],metric='field_relative_l2',unit='relative_area_ratio',
++                    seed0=ratios[0],seed1=ratios[1],seed2=ratios[2],mean=float(np.mean(ratios)),sampling_sd=float(np.std(ratios,ddof=1)),
++                    sampling_seeds=3,normalization='per-seed AUEC(method)/AUEC(matched Uniform), then mean/sampleSD'))
++    csv_write(OUT/'results/backbone_budget_metrics.csv',budget_rows)
++    csv_write(OUT/'results/backbone_absolute_errors.csv',budget_rows)
++    csv_write(OUT/'results/backbone_rauec.csv',rauec)
++    csv_write(OUT/'results/rauec_seed_details.csv',seed_details)
++    csv_write(OUT/'results/checkpoint_registry.csv',checkpoints)
++    csv_write(OUT/'results/metrics_records.csv',all_rows)
++    assert len(all_rows)==37200 and len(budget_rows)==66 and len(rauec)==20
++    write(OUT/'results/accuracy_completion.json',dict(execution_status='completed',evidence_status='pending_independent_aggregation',
++        total_rows=len(all_rows),physical_requests=18600,budget_rows=len(budget_rows),rauec_rows=len(rauec),
++        conv_sampling='N/A: native convolution requires85x85; Full-only reference retained',
++        mean_before_area=False,per_case_ratio=False,full_in_rauec=False,
++        input_records={key:digest(OUT/'records'/key/'metrics_records.csv') for key in ['transolver3','linearno','linearno_conv']}))
++    print(json.dumps(dict(rows=len(all_rows),budget_rows=len(budget_rows),rauec_rows=len(rauec))))
++
++
++if __name__=='__main__':main()
+diff --git a/code/finalize_latency.py b/code/finalize_latency.py
+new file mode 100644
+index 0000000..53b08f3
+--- /dev/null
++++ b/code/finalize_latency.py
+@@ -0,0 +1,110 @@
++"""Traceable condition-level Darcy timing, profiling, memory and reuse tables."""
++from __future__ import annotations
++import argparse,csv,collections,json
++import numpy as np
++from common import OUT,read,write,digest
++
++
++KEYS=['dataset','backbone','case_id','method','budget_fraction','sampling_seed','implementation','scope']
++
++
++def key(row):return tuple(str(row.get(k)) for k in KEYS)
++
++
++def csv_write(path,rows):
++    if not rows:raise ValueError(f'No observations for {path}')
++    fields=list(dict.fromkeys(k for row in rows for k in row))
++    with path.open('w',newline='') as stream:
++        writer=csv.DictWriter(stream,fields);writer.writeheader();writer.writerows(rows)
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--allow-partial',action='store_true');args=p.parse_args()
++    directory=OUT/'timing';destination=OUT/'results';groups=[]
++    for path in sorted((directory/'groups').glob('*.json')):
++        if path.name=='heartbeat.json':continue
++        value=read(path)
++        if value.get('execution_status')=='completed':groups.append((path,value))
++    memories={};memory_inputs={}
++    for path in sorted((directory/'memory').glob('*.json')):
++        if path.name.endswith('_gpu.json'):continue
++        value=read(path)
++        if value.get('execution_status')!='completed':continue
++        memory_inputs[str(path)]=digest(path)
++        for row in value['rows']:
++            identity=key(row)
++            if identity in memories:raise ValueError('duplicate memory condition')
++            memories[identity]=row
++    rows=[];raw=[];profile=[];reuse=[];inputs={}
++    for path,group in groups:
++        if group.get('profile_execution_status')!='completed' and not args.allow_partial:
++            raise RuntimeError(f'Profile incomplete: {path}')
++        inputs[str(path)]=digest(path)
++        first={r['condition']:r for r in group['first_requests']}
++        summaries={r['condition']:r for r in group['summary']}
++        for condition,meta in group['metadata'].items():
++            formal=[r for r in group['raw'] if r['condition']==condition and r['kind']=='formal']
++            warmup=[r for r in group['raw'] if r['condition']==condition and r['kind']=='warmup']
++            assert len(formal)==100 and len(warmup)==20
++            assert {r['repeat_id'] for r in formal}==set(range(100))
++            timings=np.array([r['total_ms'] for r in formal]);assert np.isfinite(timings).all() and (timings>0).all()
++            for r in formal+warmup:raw.append(dict(**meta,group_id=group['group_id'],condition=condition,
++                kind=r['kind'],repeat_id=r['repeat_id'],order_position=r['order_position'],total_ms=r['total_ms'],
++                order_seed=group['order']['seed'],source_json=str(path)))
++            components=group.get('profiles',{}).get(condition,[])
++            for r in components:profile.append(dict(**meta,group_id=group['group_id'],condition=condition,**r))
++            reconstruction=[r['ms'] for r in components if r['component']=='reconstruction_complete_output']
++            if meta['method']!='full' and len(reconstruction)!=5 and not args.allow_partial:raise ValueError('incomplete reconstruction profile')
++            sample=first[condition];check=sample['output_check'];memory=memories.get(key(meta))
++            if memory is None and not args.allow_partial:raise ValueError(f'memory absent: {key(meta)}')
++            row=dict(**meta,group_id=group['group_id'],condition=condition,
++                direct_total_ms=float(np.median(timings)),p95_ms=float(np.percentile(timings,95)),
++                mean_ms=float(timings.mean()),sample_sd_ms=float(timings.std(ddof=1)),formal_repeats=100,warmups=20,
++                reconstruction_ms=0. if meta['method']=='full' else float(np.median(reconstruction)) if reconstruction else None,
++                reconstruction_timing='separate 5-pass synchronized full reconstruction incl required transfers; not a direct-total decomposition',
++                first_request_ms=sample['first_request_ms'],field_error=check['field_error'],
++                selected_indices_hash=check['selected_indices_hash'],coarse_indices_hash=check['coarse_indices_hash'],
++                compensation_weights_hash=check['compensation_weights_hash'],
++                full_field_max_absolute_difference=check['full_field_max_absolute_difference'],
++                full_field_relative_difference=check['full_field_relative_difference'],
++                accepted_prediction_arrays=check['accepted_prediction_arrays'],
++                cached_map_cpu_bytes=check.get('cached_map_cpu_bytes'),cached_map_gpu_bytes=check.get('cached_map_gpu_bytes'),
++                reuse_assumption='same physical case, coordinates and selected order; recompute model/score/selection each call' if meta['scope'].startswith('C_') else 'no interpolation-map cache',
++                memory_status='measured' if memory else 'N/A: memory stage incomplete',source_json=str(path),source_sha256=inputs[str(path)])
++            if memory:
++                for name in ['peak_cuda_allocated_bytes','peak_cuda_reserved_bytes','first_request_peak_cuda_allocated_bytes','first_request_peak_cuda_reserved_bytes','allocator_scope','external_scope']:
++                    row[name]=memory[name]
++                samples=[m['device_used_MiB'] for m in memory['nvml_post_samples'] if m and 'device_used_MiB' in m]
++                row['nvml_post_max_device_MiB']=max(samples) if samples else None
++            rows.append(row)
++            if meta['scope'].startswith('C_') and meta['method']!='full':
++                cold=[r['ms'] for r in components if r['component']=='first_cache_map_build']
++                for count in [1,2,5,10,20,50,100]:
++                    # A derived sum of observed requests, not a contiguous n-request lifetime measurement.
++                    seq=sample['first_request_ms']+sum(r['total_ms'] for r in sorted(formal,key=lambda r:r['repeat_id'])[:count-1])
++                    reuse.append(dict(**meta,requests=count,assembled_observation_sum_ms=seq,
++                        modeled_median_total_ms=sample['first_request_ms']+(count-1)*row['direct_total_ms'],
++                        first_request_ms=sample['first_request_ms'],steady_median_ms=row['direct_total_ms'],
++                        separate_map_build_ms=cold[0] if cold else None,
++                        cost_definition='assembled first request + n-1 post-warmup observations; excludes 20 warmups; not a separately measured contiguous request sequence',
++                        model_definition='first request + (n-1)*formal median, derived estimate not separate measurement',
++                        cached_map_cpu_bytes=row['cached_map_cpu_bytes'],cached_map_gpu_bytes=row['cached_map_gpu_bytes'],
++                        reuse_assumption=row['reuse_assumption'],source_json=str(path)))
++    identities=[key(r) for r in rows];assert len(set(identities))==len(identities)
++    complete=len(groups)==333 and len(rows)==1323 and len(memories)==1323 and all(g.get('profile_execution_status')=='completed' for _,g in groups)
++    if not args.allow_partial and not complete:raise ValueError(f'matrix incomplete: groups={len(groups)}, timing={len(rows)}, memory={len(memories)}')
++    if rows:
++        csv_write(destination/'backbone_latency_summary.csv',rows);csv_write(destination/'latency_raw_repeats.csv',raw)
++        csv_write(destination/'latency_profiles.csv',profile);csv_write(destination/'latency_reuse_costs.csv',reuse)
++    write(destination/'latency_completion.json',dict(execution_status='completed' if complete else 'partial',
++        expected_groups=333,actual_groups=len(groups),expected_conditions=1323,actual_conditions=len(rows),
++        expected_formal_repeats=132300,actual_formal_repeats=sum(r['kind']=='formal' for r in raw),
++        expected_memory_conditions=1323,actual_memory_conditions=len(memories),
++        group_inputs=inputs,memory_inputs=memory_inputs,
++        full_alias='one actual physical Full timing series per backbone/case/scope; old/new reference it',
++        C_scope='separate cached-map scene; never divided by scope A Full',
++        external_memory_scope='PyTorch allocator peak plus post-request NVML samples; transient external GPU peaks and CPU allocations not certified'))
++    print(json.dumps(dict(complete=complete,groups=len(groups),conditions=len(rows),memory=len(memories))))
++
++
++if __name__=='__main__':main()
+diff --git a/code/inference.py b/code/inference.py
+new file mode 100644
+index 0000000..6cd6476
+--- /dev/null
++++ b/code/inference.py
+@@ -0,0 +1,200 @@
++"""Darcy sampling and complete-output requests with explicitly keyed reconstruction."""
++from __future__ import annotations
++import hashlib,json,sys,time
++from pathlib import Path
++import numpy as np
++import torch
++from torch import nn
++from common import OUT,FOLLOWUP,Dataset,build_model,install,read,digest
++from ca_support import ScoreHead,frozen_features,decode_score
++from adasolver.inference.pi.darcy import sample_darcy_pi
++from adasolver.inference.cpg.darcy import DarcyCPG
++from adasolver.inference.ca.darcy import DarcyCA
++from adasolver.inference.uniform import sample_uniform
++from adasolver.utils import budget_count
++from adasolver.utils.seed import make_numpy_rng
++from adasolver.inference import adaptive
++
++RECON=FOLLOWUP/'reconstruction'
++sys.path.insert(0,str(RECON/'code'))
++import reconstruct_api as reconstruction_module
++from reconstruct_api import build_plan,native_reconstruct,PlanCache,GRID_NATIVE,GRID_PLAN
++
++
++def array_hash(x):return hashlib.sha256(np.ascontiguousarray(x).tobytes()).hexdigest()
++
++
++def validate_normalizer_identity(backbone_metadata,current_normalizer_sha256,head_metadata=None):
++    """Reject stale preprocessing identities before model/head inference."""
++    if backbone_metadata.get('normalizer_sha256')!=current_normalizer_sha256:
++        raise ValueError('backbone/current data normalizer mismatch')
++    if head_metadata is not None and head_metadata.get('normalizer_sha256')!=current_normalizer_sha256:
++        raise ValueError('head/backbone/current data normalizer mismatch')
++
++
++class HeadAcquisition(nn.Module):
++    def __init__(self,operator,backbone,head,metadata):
++        super().__init__();self.operator=operator;self.backbone=backbone;self.head=head
++        self.metadata=metadata
++    def forward(self,pos,fx):return self.head(frozen_features(self.operator,self.backbone,pos,fx))
++    def decode_score(self,value):return decode_score(value,self.metadata['target_mean'],self.metadata['target_std'])
++
++
++class Runtime:
++    def __init__(self,backbone,device='cuda:0',conv=False,require_head=True,load_head=True):
++        self.backbone=backbone;self.variant='conv_temp' if conv else 'point_temp' if backbone=='LinearNO' else 'native_point'
++        self.label='LinearNO_conv_temp' if conv else 'LinearNO_point_temp' if backbone=='LinearNO' else 'Transolver3'
++        self.device=torch.device(device);self.data=Dataset();self.conv=conv
++        key='linearno_conv' if conv else backbone.lower();folder=OUT/'checkpoints'/key
++        self.metadata=read(folder/'manifest.json');assert self.metadata['execution_status']=='completed'
++        if digest(folder/'best.pt')!=self.metadata['checkpoint_sha256']:raise ValueError('backbone hash mismatch')
++        self.normalizer_sha256=digest(OUT/'data/normalizer.npz')
++        validate_normalizer_identity(self.metadata,self.normalizer_sha256)
++        self.model=build_model(backbone,conv=conv).to(self.device)
++        self.model.load_state_dict(torch.load(folder/'best.pt',map_location=self.device,weights_only=True));self.model.requires_grad_(False).eval()
++        self.context=None if conv else install(backbone,self.model)
++        self.mean=self.data.y_mean.to(self.device);self.std=self.data.y_std.to(self.device)
++        self.reference=self.data.reference;self.cpg=self.ca=self.head_metadata=None
++        self.cases={}
++        if not conv:
++            self.cpg=DarcyCPG(self.reference,patch_count=32,coarse_fraction=.1,kappa=2.,beta=1.,acquisition='grad_lap')
++            hm=folder/'head/manifest.json'
++            if load_head and hm.exists() and read(hm).get('execution_status')=='completed':
++                self.head_metadata=read(hm)
++                if self.head_metadata['operator_sha256']!=self.metadata['checkpoint_sha256']:raise ValueError('head/backbone mismatch')
++                validate_normalizer_identity(self.metadata,self.normalizer_sha256,self.head_metadata)
++                head=ScoreHead(backbone).to(self.device)
++                hp=folder/'head/best.pt'
++                if digest(hp)!=self.head_metadata['checkpoint_sha256']:raise ValueError('head hash mismatch')
++                head.load_state_dict(torch.load(hp,map_location=self.device,weights_only=True));head.requires_grad_(False).eval()
++                self.ca=DarcyCA(self.reference,HeadAcquisition(self.model,backbone,head,self.head_metadata),
++                                patch_count=32,coarse_fraction=.1,kappa=2.,beta=1.)
++            elif require_head:raise RuntimeError('Corresponding CA head incomplete')
++
++    def case(self,sid):
++        sid=int(sid)
++        if sid not in self.cases:
++            pos,fx,truth=self.data.sample(sid)
++            self.cases[sid]={'pos':pos,'fx':fx,'truth':truth.numpy(),
++                            'coeff':(fx*self.data.x_std[0]+self.data.x_mean[0]).numpy(),
++                            'gpu_pos':None,'gpu_fx':None}
++        return self.cases[sid]
++
++    @torch.no_grad()
++    def forward(self,case,ids=None,scope='A'):
++        if scope=='B':
++            if case['gpu_pos'] is None:
++                case['gpu_pos']=case['pos'].to(self.device);case['gpu_fx']=case['fx'].to(self.device)
++            if ids is None:pos=case['gpu_pos'][None];fx=case['gpu_fx'][None]
++            else:
++                idx=torch.as_tensor(ids,dtype=torch.long,device=self.device)
++                pos=case['gpu_pos'][idx][None];fx=case['gpu_fx'][idx][None]
++        elif ids is None:pos=case['pos'][None].to(self.device);fx=case['fx'][None].to(self.device)
++        else:pos=case['pos'][ids][None].to(self.device);fx=case['fx'][ids][None].to(self.device)
++        return self.model(pos,fx)[0]
++
++    @torch.no_grad()
++    def sample(self,sid,method,budget,seed,scope='A'):
++        if self.conv and method!='full':raise ValueError('official conv-temp requires full85x85 grid')
++        case=self.case(sid)
++        if self.context:self.context.clear()
++        count=7225 if method=='full' else budget_count(7225,budget)
++        if method=='full':return np.arange(7225),None,None,None,{}
++        rng=make_numpy_rng(int(seed),int(sid));coarse=None;coarse_prediction=None
++        if method=='uniform':sampling=sample_uniform(7225,count,rng)
++        elif method=='pi':
++            coefficients=case['coeff']
++            if scope=='B':
++                coefficients=(case['gpu_fx']*self.data.x_std[0].to(self.device)+self.data.x_mean[0].to(self.device)).cpu().numpy()
++            sampling=sample_darcy_pi(coefficients,self.reference,count,rng,
++                      amp=.25,beta=.5,prior='interface_distance',ell=2/84,shape=(85,85))
++        else:
++            coarse=rng.choice(7225,722,replace=False)
++            sampler=self.cpg if method.startswith('cpg') else self.ca
++            if sampler is None:raise RuntimeError('corresponding acquisition unavailable')
++            # Count native geometric patch construction in each request, including C.
++            # C's only reuse is the explicitly keyed reconstruction map.
++            sampler.patch_id,sampler.patch_mass=adaptive.build_patches(self.reference,32,seed=0)
++            if method.startswith('cpg'):
++                coarse_prediction=self.forward(case,coarse,scope).cpu().numpy()
++                sampling=self.cpg.refine(coarse,coarse_prediction,count,rng)
++            elif method=='ca':
++                if self.ca is None:raise RuntimeError('head unavailable')
++                if scope=='B':
++                    idx=torch.as_tensor(coarse,dtype=torch.long,device=self.device)
++                    cp=case['gpu_pos'][idx][None];cx=case['gpu_fx'][idx][None]
++                else:cp=case['pos'][coarse][None].to(self.device);cx=case['fx'][coarse][None].to(self.device)
++                sampling=self.ca.refine(coarse,cp,cx,count,rng)
++            else:raise ValueError(method)
++        weights=None if method=='uniform' else np.ones(count,dtype=np.float32) if method=='cpg_beta0' else sampling.compensation
++        metadata=dict(sampling.metadata)
++        if method.startswith('cpg'):metadata['coarse_prediction_space']='normalized solution output, before physical decode; native Darcy grad_lap semantics'
++        metadata['compensation_beta']=None if method=='uniform' else 0. if method=='cpg_beta0' else .5 if method=='pi' else 1.
++        if method.startswith('cpg') or method=='ca':metadata['geometry_preparation']='native full-grid patches rebuilt in every request'
++        if method=='ca':
++            metadata['head_architecture']=self.head_metadata['head_architecture']
++            metadata['architecture']='official_point_temp_two_block_head' if self.backbone=='LinearNO' else 'transolver_gradient_head'
++        return sampling.indices,weights,coarse,coarse_prediction,metadata
++
++    @torch.no_grad()
++    def predict(self,sid,method,budget,seed,scope='A'):
++        case=self.case(sid)
++        if scope=='B' and case['gpu_pos'] is None:
++            case['gpu_pos']=case['pos'].to(self.device);case['gpu_fx']=case['fx'].to(self.device)
++        ids,weights,coarse,cp,metadata=self.sample(sid,method,budget,seed,scope)
++        if self.context:self.context.set(None if weights is None else torch.as_tensor(weights,dtype=torch.float32,device=self.device))
++        try:pred=self.forward(self.case(sid),None if method=='full' else ids,scope)*self.std[0]+self.mean[0]
++        finally:
++            if self.context:self.context.clear()
++        return pred,dict(indices=ids,weights=weights,coarse_indices=coarse,coarse_prediction=cp,sampling_metadata=metadata)
++
++
++class CompleteRequest:
++    def __init__(self,runtime,sid,method,budget,seed,reconstruction='new',scope='A'):
++        if scope not in ['A','B','C']:raise ValueError(scope)
++        self.runtime=runtime;self.sid=int(sid);self.method=method;self.budget=budget;self.seed=seed
++        self.reconstruction=reconstruction;self.scope=scope;self.cache=PlanCache(max_entries=2);self.last=None
++        self.runtime.case(sid)
++        if scope=='B':
++            case=self.runtime.case(sid)
++            case['gpu_pos']=case['pos'].to(self.runtime.device);case['gpu_fx']=case['fx'].to(self.runtime.device)
++        self.reconstruction_id=GRID_NATIVE if reconstruction=='old' else GRID_PLAN
++        if scope=='C':self.reconstruction_id='grid_qhull_cached_cpu_apply_v1p1' if reconstruction=='old' else 'grid_qhull_cached_gpu_apply_v1p1'
++
++    @torch.no_grad()
++    def __call__(self):
++        pred,meta=self.runtime.predict(self.sid,self.method,self.budget,self.seed,self.scope)
++        if self.method=='full':
++            self.last={**meta,'cache_hit':False,'plan_cpu_bytes':0,'plan_device_bytes':0}
++            return pred.to(torch.float64) if self.scope=='B' else pred.cpu().numpy().astype(np.float64,copy=False)
++        if self.scope=='C':
++            plan,hit=self.cache.get('darcy',self.runtime.reference,meta['indices'],
++                geometry_identity=f'darcy_case_{self.sid}',channels=1,reconstruction_id=GRID_PLAN,
++                device=self.runtime.device if self.reconstruction=='new' else None)
++            result=plan.apply_numpy(pred.cpu().numpy()) if self.reconstruction=='old' else plan.apply_tensor(pred).cpu().numpy()
++        elif self.reconstruction=='old':
++            result=native_reconstruct('darcy',meta['indices'],pred.cpu().numpy(),self.runtime.reference)
++            if self.scope=='B':result=torch.as_tensor(result,dtype=torch.float64,device=self.runtime.device)
++            plan=None;hit=False
++        else:
++            plan=build_plan('darcy',self.runtime.reference,meta['indices'],channels=1,
++                            reconstruction_id=GRID_PLAN,device=self.runtime.device)
++            result=plan.apply_tensor(pred)
++            if self.scope=='A':result=result.cpu().numpy()
++            hit=False
++        self.last={**meta,'cache_hit':hit,'plan_cpu_bytes':plan.cpu_bytes if plan else 0,
++                   'plan_device_bytes':plan.device_bytes() if plan else 0}
++        return result
++
++
++def metric(field,truth):
++    return float(np.linalg.norm(np.asarray(field,dtype=np.float64)-np.asarray(truth,dtype=np.float64))/np.linalg.norm(np.asarray(truth,dtype=np.float64)))
++
++
++def comparison(old,new,truth):
++    old=np.asarray(old);new=np.asarray(new);difference=np.abs(new-old);tolerance=1e-6+1e-5*np.abs(old)
++    a,b=metric(old,truth),metric(new,truth)
++    return dict(max_absolute_difference=float(difference.max()),relative_difference=float(np.linalg.norm(new-old)/max(np.linalg.norm(old),1e-300)),
++                violating_elements=int(np.count_nonzero(difference>tolerance)),metric_old=a,metric_new=b,
++                metric_difference=abs(a-b),metric_tolerance=1e-7+1e-5*abs(a),
++                difference_quantiles={str(q):float(np.quantile(difference,q)) for q in [.5,.9,.99,.999,1.]})
+diff --git a/code/postprocess_workflow.py b/code/postprocess_workflow.py
+new file mode 100644
+index 0000000..8d929b9
+--- /dev/null
++++ b/code/postprocess_workflow.py
+@@ -0,0 +1,65 @@
++"""Persistent accuracy -> controlled timing -> isolated memory -> aggregation queue."""
++from __future__ import annotations
++import argparse,fcntl,json,os,subprocess,sys,time
++from pathlib import Path
++from workflow import OUT,CODE,read,write,wait_for_gpu
++
++
++def update_readme(state):
++    lines=['Darcy follow-up status — '+time.strftime('%Y-%m-%d %H:%M:%S UTC',time.gmtime()),'',
++        'Locked: shared 900/100 split, 900-only normalizers, native T3 / official LinearNO point-temp, additional conv-temp Full-only, reconstruction v1.1. See protocol.md, LINEARNO_ADAPTER.md and COMMANDS.md.',
++        'Completed implementation checks are in results/*preflight.json. Initialized-model checks are not trained accuracy or latency evidence.','']
++    for key in ['transolver3','linearno','linearno_conv']:
++        workflow=read(OUT/'runtime'/f'{key}_workflow.json');model=read(OUT/'checkpoints'/key/'manifest.json')
++        head=read(OUT/'checkpoints'/key/'head/manifest.json');evaluation=read(OUT/'records'/key/'run_manifest.json')
++        lines.append(f'{key}: {workflow.get("execution_status","pending")}; stage {workflow.get("active_stage")}; controller PID {workflow.get("pid")}; backbone {model.get("epochs_completed",0)}/1000 epochs; head {head.get("epochs_completed",0)}/1000 epochs; accuracy {evaluation.get("completed_requests",0)}/{evaluation.get("expected_requests",200 if key=="linearno_conv" else 9200)} requests.')
++        if workflow.get('waiting_for'):lines.append('  Waiting for '+workflow['waiting_for']+'; observed GPU PIDs '+str(workflow.get('observed_gpu_pids',[])))
++    lines.extend(['',f'Postprocess: {state.get("execution_status")}; stage {state.get("active_stage")}; PID {state.get("pid")}.',
++        'Baseline evaluation precedes own CA head training: 7,400 baseline requests plus 1,800 CA additions per point model. Conv contributes 200 Full requests.',
++        'Formal A/B/C matrix: 333 groups / 1,323 conditions / 132,300 repetitions, all on GPU0 after stable idle admission. Separate 11-process memory matrix; no external job is terminated.',
++        'Final cross-dataset plots and independent rAUEC review are parent-owned. No remote push, old result overwrite or Feishu write.'])
++    path=OUT/'read.me';temporary=path.with_suffix(f'.{os.getpid()}.tmp');temporary.write_text('\n'.join(lines)+'\n');temporary.replace(path)
++
++
++def main():
++    parser=argparse.ArgumentParser();parser.add_argument('--gpu',type=int,default=0);args=parser.parse_args()
++    lock=(OUT/'runtime/postprocess.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
++    statefile=OUT/'runtime/postprocess_workflow.json';state=read(statefile) or dict(stages={})
++    state.update(pid=os.getpid(),execution_status='waiting_dependency',evidence_status='pending',gpu=args.gpu)
++    while True:
++        dependencies={key:read(OUT/'records'/key/'run_manifest.json').get('execution_status','pending')
++                      for key in ['transolver3','linearno','linearno_conv']}
++        if all(v=='completed' for v in dependencies.values()):break
++        state.update(dependencies=dependencies,heartbeat=time.time());write(statefile,state);update_readme(state);time.sleep(10)
++    stages=[('accuracy_aggregation','finalize_accuracy.py',[],False),
++            ('paired_latency','benchmark.py',['--phase','paired','--gpu',str(args.gpu)],True)]
++    for backbone in ['Transolver3','LinearNO']:
++        for method in ['full','uniform','pi','cpg','ca']:
++            stages.append((f'memory_{backbone}_{method}','benchmark.py',
++                ['--phase','memory','--backbone',backbone,'--method',method,'--gpu',str(args.gpu)],True))
++    stages.append(('memory_LinearNO_conv_full','benchmark.py',
++                   ['--phase','memory','--backbone','LinearNO','--conv-only','--method','full','--gpu',str(args.gpu)],True))
++    stages.append(('latency_aggregation','finalize_latency.py',[],False))
++    stages.append(('local_report','report_results.py',[],False))
++    for name,script,arguments,gpu_stage in stages:
++        if state['stages'].get(name,{}).get('execution_status')=='completed':continue
++        if not (CODE/script).exists():raise FileNotFoundError(script)
++        if gpu_stage:wait_for_gpu(state,statefile,args.gpu,name)
++        command=[sys.executable,'-u',str(CODE/script),*arguments]
++        env=os.environ.copy();env['CUDA_VISIBLE_DEVICES']=str(args.gpu)
++        log=OUT/'logs'/f'postprocess_{name}.log'
++        with log.open('a') as stream:
++            child=subprocess.Popen(command,env=env,stdout=stream,stderr=subprocess.STDOUT)
++            state['stages'][name]=dict(execution_status='running',command=command,pid=child.pid,started_at=time.time(),log=str(log))
++            state.update(execution_status='running',active_stage=name);state.pop('waiting_for',None);write(statefile,state)
++            while child.poll() is None:
++                state['heartbeat']=time.time();write(statefile,state);update_readme(state);time.sleep(10)
++        state['stages'][name].update(execution_status='completed' if child.returncode==0 else 'failed',
++                                    returncode=child.returncode,finished_at=time.time());write(statefile,state)
++        if child.returncode:
++            state.update(execution_status='failed',error=f'{name}: returncode {child.returncode}');write(statefile,state);update_readme(state);return
++    state.update(execution_status='completed',active_stage=None,finished_at=time.time(),
++                 evidence_status='pending_cross_dataset_independent_review');write(statefile,state);update_readme(state)
++
++
++if __name__=='__main__':main()
+diff --git a/code/preflight.py b/code/preflight.py
+new file mode 100644
+index 0000000..d1c0f1f
+--- /dev/null
++++ b/code/preflight.py
+@@ -0,0 +1,50 @@
++"""Interface, source-variant, normalization and compensation checks."""
++import json
++import types
++import numpy as np
++import torch
++from common import OUT,Dataset,build_model,install,seeds,write,relative_error
++
++torch.set_num_threads(4);seeds(0)
++data=Dataset();sid=data.split['training_ids'][0];pos,fx,truth=data.sample(sid)
++checks=[]
++for name in ['Transolver3','LinearNO']:
++    model=build_model(name).eval()
++    with torch.no_grad():
++        for count in [7225,2709,3612,5419]:
++            y=model(pos[:count][None],fx[:count][None]);assert y.shape==(1,count,1) and torch.isfinite(y).all()
++            checks.append(dict(backbone=name,points=count,shape=list(y.shape),finite=True))
++        sample_pos=pos[:32][None];sample_fx=fx[:32][None]
++        native=model(sample_pos,sample_fx);context=install(name,model)
++        context.set(torch.ones(32));unit=model(sample_pos,sample_fx)
++        torch.testing.assert_close(unit,native,atol=2e-6,rtol=2e-5)
++        # Exact weighted-duplication identity is applied to the first fixed-input
++        # LinearNO attention layer, avoiding later-layer changed features.
++        if name=='LinearNO':
++            context.clear();layer=model.blocks[0].Attn
++            hidden=model.blocks[0].ln_1(model.preprocess(torch.cat((sample_pos,sample_fx),dim=-1)))
++            multiplicity=torch.tensor([1,2,3,2]*8,dtype=torch.float32)
++            context.set(multiplicity);weighted=layer(hidden)
++            context.clear();repeated=torch.repeat_interleave(hidden,multiplicity.long(),dim=1)
++            duplicated=layer(repeated)
++            offsets=torch.cat((torch.tensor([0]),multiplicity.long().cumsum(0)[:-1]))
++            torch.testing.assert_close(weighted,duplicated[:,offsets],atol=2e-6,rtol=2e-5)
++        context.clear()
++    checks.append(dict(backbone=name,parameter_count=sum(p.numel() for p in model.parameters()),
++                       unit_compensation_max_abs=float((unit-native).abs().max())))
++conv=build_model('LinearNO',conv=True).eval()
++with torch.no_grad():
++    y=conv(pos[None],fx[None]);assert y.shape==(1,7225,1) and torch.isfinite(y).all()
++    error=None
++    try:conv(pos[:2709][None],fx[:2709][None])
++    except Exception as exc:error=f'{type(exc).__name__}: {exc}'
++    assert error is not None,'Expected native convolution grid constraint'
++checks.append(dict(backbone='LinearNO',variant='conv_temp',full_interface=True,
++                   sampled_points=2709,sampled_interface_error=error,
++                   parameter_count=sum(p.numel() for p in conv.parameters())))
++write(OUT/'results/interface_preflight.json',dict(status='passed',checks=checks,
++      selected_variable_point_class='official LinearAttentionNeuralOperator with LinearNO_temp blocks',
++      additional_full_only_class='official LinearAttentionNeuralOperator with LinearNO_Conv_temp blocks',
++      existing_conv_body_modified=False,normalizer_fit_ids=data.split['training_ids'],
++      test_in_model_selection=False))
++print(json.dumps(checks,indent=2),flush=True)
+diff --git a/code/preflight_identity_full.py b/code/preflight_identity_full.py
+new file mode 100644
+index 0000000..872f49c
+--- /dev/null
++++ b/code/preflight_identity_full.py
+@@ -0,0 +1,43 @@
++"""Minimal normalizer gate and native Full-input checks; no trained metrics."""
++import hashlib
++import numpy as np
++import torch
++from common import OUT,Dataset,build_model,digest,seeds,write
++from inference import Runtime,validate_normalizer_identity
++
++
++def main():
++    current=digest(OUT/'data/normalizer.npz');different=hashlib.sha256(b'explicit mismatched metadata fixture').hexdigest()
++    identity=[]
++    cases=[('matching',current,current,True),('head_mismatch',current,different,False),
++           ('backbone_current_mismatch',different,different,False)]
++    for name,backbone_hash,head_hash,expected in cases:
++        error=None
++        try:
++            validate_normalizer_identity({'normalizer_sha256':backbone_hash},current,{'normalizer_sha256':head_hash})
++            accepted=True
++        except ValueError as exc:accepted=False;error=str(exc)
++        assert accepted==expected
++        identity.append(dict(case=name,accepted=accepted,expected_acceptance=expected,error=error))
++    write(OUT/'results/head_normalizer_identity_validation.json',dict(status='passed',
++        scope='identity-gate metadata fixtures using actual current normalizer hash; no completed head checkpoint claimed',
++        current_normalizer_sha256=current,checks=identity,source_sha256=digest(OUT/'code/inference.py')))
++    torch.set_num_threads(4);seeds(0);data=Dataset();pos,fx,truth=data.sample(4);rows=[]
++    for backbone,conv in [('Transolver3',False),('LinearNO',False),('LinearNO',True)]:
++        rt=Runtime.__new__(Runtime);rt.device=torch.device('cpu');rt.model=build_model(backbone,conv=conv).eval()
++        inputs={'pos':pos,'fx':fx,'gpu_pos':None,'gpu_fx':None};pointers=[]
++        hook=rt.model.register_forward_pre_hook(lambda module,args:pointers.append((args[0].data_ptr(),args[1].data_ptr())))
++        direct=rt.forward(inputs,None,'A');indexed=rt.forward(inputs,np.arange(7225),'A');hook.remove()
++        delta=float(torch.max(torch.abs(direct-indexed)))
++        assert torch.equal(direct,indexed)
++        assert pointers[0]==(pos.data_ptr(),fx.data_ptr())
++        assert pointers[1]!=(pos.data_ptr(),fx.data_ptr())
++        rows.append(dict(backbone=backbone,conv=conv,full_points=7225,max_absolute_difference=delta,
++            full_inputs_share_original_tensor_storage=True,indexed_reference_allocates_copy=True))
++    write(OUT/'results/full_input_path_validation.json',dict(status='passed',device='CPU',
++        scope='initialized actual native classes; same full output without full-range fancy indexing; not a GPU speed measurement',
++        checks=rows,source_sha256=digest(OUT/'code/inference.py')))
++    print('head normalizer identity and native Full paths passed',flush=True)
++
++
++if __name__=='__main__':main()
+diff --git a/code/preflight_request.py b/code/preflight_request.py
+new file mode 100644
+index 0000000..5ce487e
+--- /dev/null
++++ b/code/preflight_request.py
+@@ -0,0 +1,44 @@
++"""CPU-only integration checks; untrained initialized models are not experiment results."""
++import numpy as np
++import torch
++from common import OUT,Dataset,build_model,install,seeds,write,digest
++from ca_support import ScoreHead,frozen_features
++from inference import Runtime,CompleteRequest,HeadAcquisition,comparison,array_hash,DarcyCPG,DarcyCA
++
++
++def main():
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;seeds(0)
++    data=Dataset();rows=[]
++    for backbone in ['Transolver3','LinearNO']:
++        rt=Runtime.__new__(Runtime);rt.backbone=backbone;rt.device=torch.device('cpu');rt.conv=False
++        rt.data=data;rt.reference=data.reference;rt.model=build_model(backbone).requires_grad_(False).eval()
++        rt.context=install(backbone,rt.model);rt.mean=data.y_mean;rt.std=data.y_std;rt.cases={}
++        rt.cpg=DarcyCPG(rt.reference,patch_count=32,coarse_fraction=.1,kappa=2.,beta=1.,acquisition='grad_lap')
++        head=ScoreHead(backbone).eval();rt.head_metadata=dict(head_architecture='native_two_block',target_mean=0.,target_std=1.)
++        rt.ca=DarcyCA(rt.reference,HeadAcquisition(rt.model,backbone,head,rt.head_metadata),patch_count=32,coarse_fraction=.1,kappa=2.,beta=1.)
++        sid=4;truth=rt.case(sid)['truth']
++        for method in ['full','uniform','pi','cpg_beta0','cpg','ca']:
++            budget=1. if method=='full' else .375;seed=None if method=='full' else 0
++            old=CompleteRequest(rt,sid,method,budget,seed,'old','A');new=CompleteRequest(rt,sid,method,budget,seed,'new','A')
++            a,b=old(),new();difference=comparison(a,b,truth)
++            assert a.shape==b.shape==(7225,1) and a.dtype==b.dtype==np.float64
++            assert difference['violating_elements']==0 and difference['metric_difference']<=difference['metric_tolerance']
++            assert array_hash(old.last['indices'])==array_hash(new.last['indices'])
++            c=CompleteRequest(rt,sid,method,budget,seed,'new','C');first=c();second=c()
++            assert np.array_equal(first,second) and (method=='full' or c.last['cache_hit'])
++            rows.append(dict(backbone=backbone,method=method,case_id=sid,budget=budget,
++                retained_points=len(new.last['indices']),old_new_max_abs=difference['max_absolute_difference'],
++                relative_difference=difference['relative_difference'],metric_difference=difference['metric_difference'],
++                status='passed',scope='CPU integration only; untrained model, not accuracy/latency evidence'))
++        selected=np.arange(722);pos,fx,_=data.sample(sid)
++        features=frozen_features(rt.model,backbone,pos[selected][None],fx[selected][None])
++        head.train();head.zero_grad();head(features).square().mean().backward()
++        assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in head.parameters())
++        print('passed',backbone,flush=True)
++    write(OUT/'results/request_integration_preflight.json',dict(status='passed',device='CPU',
++        evidence_scope='implementation integration of initialized full classes only; no trained result generated',
++        checks=rows,head_backward='both own-native two-block heads finite and participating',
++        source_sha256={name:digest(__file__.replace('preflight_request.py',name)) for name in ['preflight_request.py','inference.py','common.py','ca_support.py']}))
++
++
++if __name__=='__main__':main()
+diff --git a/code/prepare_data.py b/code/prepare_data.py
+new file mode 100644
+index 0000000..601f5c0
+--- /dev/null
++++ b/code/prepare_data.py
+@@ -0,0 +1,42 @@
++"""Extract the same real85-grid observations and fit only the locked900 cases."""
++from pathlib import Path
++import json,time
++import numpy as np
++import scipy.io
++import torch
++from common import OUT,FOLLOWUP,write,digest
++
++source=Path('/mnt/ai-material-data/zhijun/CarD/Neural_Operator_NACA/data/darcy')
++split=json.loads((FOLLOWUP/'standard_benchmarks/split_manifest.json').read_text())
++train=split['training_ids'];validation=split['validation_ids']
++assert len(train)==900 and len(validation)==100 and not set(train)&set(validation)
++output=OUT/'data';output.mkdir(exist_ok=True)
++records=[];started=time.perf_counter()
++for kind,filename,count in [('pool','piececonst_r421_N1024_smooth1.mat',1000),('test','piececonst_r421_N1024_smooth2.mat',200)]:
++    p=source/filename
++    raw=scipy.io.loadmat(p,variable_names=['coeff','sol'])
++    assert raw['coeff'].shape==raw['sol'].shape==(1024,421,421)
++    for key,label in [('coeff','coeff'),('sol','solution')]:
++        field=np.ascontiguousarray(raw[key][:count,::5,::5].reshape(count,7225,1),dtype=np.float32)
++        assert np.isfinite(field).all()
++        np.save(output/f'{kind}_{label}.npy',field)
++    records.append(dict(file=str(p),source_shape=list(raw['coeff'].shape),source_sha256=digest(p),observed_grid=[85,85],stride=5,retained_endpoints=True))
++    del raw
++    print('extracted',kind,flush=True)
++xx=torch.from_numpy(np.load(output/'pool_coeff.npy')[train]);yy=torch.from_numpy(np.load(output/'pool_solution.npy')[train])
++normalizer={}
++for name,values in [('x',xx),('y',yy)]:
++    normalizer[name+'_mean']=values.mean(dim=(0,1),keepdim=True).numpy()
++    normalizer[name+'_std']=(values.std(dim=(0,1),keepdim=True)+1e-8).numpy()
++np.savez(output/'normalizer.npz',**normalizer)
++axis=np.linspace(0,1,85);gx,gy=np.meshgrid(axis,axis)
++pos=np.column_stack((gx.ravel(),gy.ravel())).astype(np.float32)
++np.save(output/'positions.npy',pos);np.save(output/'reference_coordinates.npy',pos.astype(np.float64))
++write(OUT/'config/data_manifest.json',dict(status='prepared',source=records,training_ids=train,validation_ids=validation,
++    test_ids=split['darcy']['test_ids'],test_source_rows=split['darcy']['test_raw_rows'],normalizer_fit_ids=train,
++    normalizer_sha256=digest(output/'normalizer.npz'),normalizer_statistics={k:v.tolist() for k,v in normalizer.items()},
++    shared_split_sha256=digest(FOLLOWUP/'standard_benchmarks/split_manifest.json'),
++    coordinate_rule='numpy meshgrid xy [0,1], castfloat32 for model; promote same values tofloat64 for legacy reconstruction',
++    history='smooth2 test previously viewed historically; never used for checkpoint/head/policy selection in this new cohort',
++    wall_seconds=time.perf_counter()-started))
++print('prepared900-onlynormalizer',normalizer,flush=True)
+diff --git a/code/prepare_head.py b/code/prepare_head.py
+new file mode 100644
+index 0000000..0f5324b
+--- /dev/null
++++ b/code/prepare_head.py
+@@ -0,0 +1,47 @@
++"""Create training/validation acquisition targets from each frozen backbone."""
++import argparse,time,json
++import numpy as np
++import torch
++from common import OUT,Dataset,write,digest
++from ca_support import model_core
++from adasolver.train.darcy_ca_head import coarse_grad_lap_score
++
++
++@torch.no_grad()
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--backbone',required=True);args=p.parse_args()
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    key=args.backbone.lower();output=OUT/'head_banks'/key;output.mkdir(parents=True,exist_ok=True)
++    if (output/'manifest.json').exists():raise FileExistsError(output)
++    data=Dataset();model,metadata=data.model(args.backbone,'cuda:0');assert metadata['execution_status']=='completed'
++    ids=data.split['training_ids']+data.split['validation_ids'];features=[];targets=[];indices=[]
++    capture={}
++    def hook(module,inputs,value):capture['features']=value.detach().cpu().numpy().copy()
++    handle=model_core(model,args.backbone).blocks[0].register_forward_hook(hook)
++    start=time.perf_counter()
++    for offset in range(0,len(ids),8):
++        batch_ids=ids[offset:offset+8];x,y=data.arrays(batch_ids)
++        selected=np.stack([np.random.default_rng(np.random.SeedSequence([0,int(sid),20261114])).choice(7225,722,replace=False) for sid in batch_ids])
++        pos=torch.stack([data.pos[s] for s in selected]).to('cuda:0')
++        fx=torch.stack([x[i,s] for i,s in enumerate(selected)]).to('cuda:0')
++        prediction=model(pos,fx).cpu().numpy()
++        features.extend(capture['features'])
++        for s,pred in zip(selected,prediction):targets.append(coarse_grad_lap_score(data.reference,s,pred))
++        indices.extend(selected)
++        print('head_bank',key,offset+len(batch_ids),'/1000',flush=True)
++    handle.remove()
++    log_targets=np.log1p(np.asarray(targets,dtype=np.float64));mean=float(log_targets[:900].mean());std=float(log_targets[:900].std()+1e-8)
++    normalized=((log_targets-mean)/std)[...,None].astype(np.float32)
++    np.save(output/'features.npy',np.asarray(features,dtype=np.float32));np.save(output/'targets.npy',normalized)
++    np.save(output/'coarse_indices.npy',np.asarray(indices,dtype=np.int32));np.save(output/'sample_ids.npy',np.asarray(ids,dtype=np.int64))
++    write(output/'manifest.json',dict(execution_status='completed',backbone=args.backbone,
++        operator_sha256=metadata['checkpoint_sha256'],normalizer_sha256=metadata['normalizer_sha256'],
++        training_ids=ids[:900],validation_ids=ids[900:],test_ids_used=[],
++        feature_source='own frozen backbone block0 output on selected coarse points',
++        teacher='own frozen full coarse forward normalized solution; original grad_lap acquisition',
++        coarse_count=722,target_mean=mean,target_std=std,target_normalizer_fit='training900 only',
++        source_metric='coarse_grad_lap_score from frozen task-local code',head_seed=0,
++        bank_seconds=time.perf_counter()-start,
++        files={name:digest(output/name) for name in ['features.npy','targets.npy','coarse_indices.npy','sample_ids.npy']}))
++
++if __name__=='__main__':main()
+diff --git a/code/report_results.py b/code/report_results.py
+new file mode 100644
+index 0000000..f19a3aa
+--- /dev/null
++++ b/code/report_results.py
+@@ -0,0 +1,69 @@
++"""Build the local evidence report only from complete, traceable result tables."""
++from __future__ import annotations
++import csv,collections,json
++from common import OUT,read,write,digest
++from finalize_latency import csv_write
++
++
++def load(name):return list(csv.DictReader((OUT/'results'/name).open()))
++
++
++def main():
++    accuracy=read(OUT/'results/accuracy_completion.json');latency=read(OUT/'results/latency_completion.json')
++    if accuracy['execution_status']!='completed' or latency['execution_status']!='completed':raise RuntimeError('local result matrices incomplete')
++    times=load('backbone_latency_summary.csv');rauec=load('backbone_rauec.csv');absolute=load('backbone_absolute_errors.csv')
++    groups=collections.defaultdict(dict)
++    for row in times:
++        if row['method']=='full':continue
++        groups[tuple(row[k] for k in ['backbone','case_id','method','budget_fraction','sampling_seed','scope'])][row['implementation']]=row
++    comparisons=[]
++    for key,group in groups.items():
++        if set(group)!=set(['old','new']):raise ValueError('old/new latency pair absent')
++        old,new=group['old'],group['new']
++        assert all(old[k]==new[k] for k in ['checkpoint_id','normalizer_id','selected_indices_hash','output_dtype','output_device'])
++        comparisons.append(dict(dataset='darcy',backbone=key[0],case_id=key[1],method=key[2],budget_fraction=key[3],sampling_seed=key[4],scope=key[5],
++            checkpoint_id=old['checkpoint_id'],old_reconstruction_id=old['reconstruction_id'],new_reconstruction_id=new['reconstruction_id'],
++            old_field_error=old['field_error'],new_field_error=new['field_error'],
++            old_reconstruction_ms=old['reconstruction_ms'],new_reconstruction_ms=new['reconstruction_ms'],
++            reconstruction_speedup=float(old['reconstruction_ms'])/float(new['reconstruction_ms']),
++            old_direct_total_ms=old['direct_total_ms'],new_direct_total_ms=new['direct_total_ms'],
++            complete_request_speedup=float(old['direct_total_ms'])/float(new['direct_total_ms']),
++            old_p95_ms=old['p95_ms'],new_p95_ms=new['p95_ms'],
++            old_peak_allocated_bytes=old['peak_cuda_allocated_bytes'],new_peak_allocated_bytes=new['peak_cuda_allocated_bytes'],
++            old_peak_reserved_bytes=old['peak_cuda_reserved_bytes'],new_peak_reserved_bytes=new['peak_cuda_reserved_bytes'],
++            preparation_old_first_request_ms=old['first_request_ms'],preparation_new_first_request_ms=new['first_request_ms'],
++            output_dtype=old['output_dtype'],output_device=old['output_device'],reuse_assumption=old['reuse_assumption'],
++            old_source=old['source_json'],new_source=new['source_json']))
++    csv_write(OUT/'results/reconstruction_summary.csv',comparisons)
++    registry=load('checkpoint_registry.csv')
++    for row in registry:row['latency_acceptance']='completed';row['independent_rauec_review']='parent-owned separate receipt'
++    csv_write(OUT/'results/checkpoint_registry.csv',registry)
++    lines=['# Darcy matched cohort results','',
++        'All local model, accuracy and A/B/C timing stages are complete. Cross-dataset aggregation and independent rAUEC review remain separate receipts.','',
++        'Models share the locked 900/100 split, 900-only normalizers, 1,000 epochs / 225,000 updates and physical-field plus derivative training loss. The smooth2 test population was historically viewed. The official convolution variant is Full-only because sparse inputs violate its native 85×85 shape.','',
++        f'Physical accuracy requests: {accuracy["physical_requests"]:,}; raw old/new metric rows: {accuracy["total_rows"]:,}. Timing conditions: {latency["actual_conditions"]:,}; formal repeats: {latency["actual_formal_repeats"]:,}.','',
++        '| Backbone | Method | Reconstruction | rAUEC mean ± sampling SD (n=3) |','| --- | --- | --- | --- |']
++    for row in rauec:
++        lines.append(f'| {row["backbone"]} | {row["method"]} | {row["reconstruction_id"]} | {float(row["mean"]):.6f} ± {float(row["sampling_sd"]):.6f} |')
++    lines.extend(['','The three budgets are 37.5%, 50% and 75%. Each seed forms an area ratio against its own backbone/checkpoint Uniform. Full is excluded from the integral. These normalized ratios do not compare absolute errors across backbones.','',
++        'Absolute errors are in `results/backbone_absolute_errors.csv`; each row includes its same-checkpoint Full error. Formal timing, independent profiling, cold/steady allocator measurements and cache costs are in `results/backbone_latency_summary.csv`, `latency_profiles.csv`, `latency_raw_repeats.csv` and `latency_reuse_costs.csv`.','',
++        'The CPU→CPU scene returns float64 fields. GPU-resident inputs return GPU float64 fields in B. C reuses only geometry/selected-index reconstruction maps and recomputes acquisition/predictions. Speed ratios in `reconstruction_summary.csv` always remain within the same scene, model, point set and output contract.','',
++        'Peak memory covers PyTorch CUDA allocator peaks plus post-request NVML samples; the samples do not certify transient external-library GPU peaks or CPU SciPy allocations. Model loading and kernel warmup are recorded in `timing/setup.json`. No CUDA Graph or approximate-neighbor path is used.',''])
++    (OUT/'REPORT.md').write_text('\n'.join(lines))
++    claims=['# Darcy claim card','',
++        '| Claim | Evidence and allowed interpretation |','| --- | --- |',
++        '| Same reconstruction rule on both point backbones | Checkpoint-specific validation and every test old/new pair passed the locked elementwise and field-metric tolerances. |',
++        '| β=1 improves over β=0 | Assess paired CPG records and the rAUEC mechanism rows; no universal best-β claim follows from nominal inverse proposal correction. Retain adverse rows. |',
++        '| LinearNO is slower or faster than Transolver3 | Assess same-scene Full and sampled direct request observations. Official point-temp and conv-temp are separate variants. |',
++        '| Reconstruction optimization improves latency | Use each old/new paired row. Reconstruction-only and complete-request speedup are separate columns; ratios below 1 are retained. |',
++        '| New untouched holdout | Unsupported: historical smooth2 data had previously been viewed. |',
++        '| Official conv-temp supports variable-point inference | Unsupported: native reshape rejected sparse input. Its valid Full reference is included. |',
++        '| Complete publication-ready cross-task comparison | Pending parent cross-dataset aggregation, independent rAUEC audit and figures. |','']
++    (OUT/'CLAIM_CARD.md').write_text('\n'.join(claims))
++    (OUT/'read.me').write_text('Darcy local training, CA, accuracy and A/B/C latency matrices complete. REPORT.md and CLAIM_CARD.md bind the local scope; cross-dataset publication artifacts remain parent-owned. No remote push performed.\n')
++    write(OUT/'results/local_report_completion.json',dict(execution_status='completed',
++        inputs={name:digest(OUT/'results'/name) for name in ['backbone_rauec.csv','backbone_absolute_errors.csv','backbone_latency_summary.csv']},
++        report=str(OUT/'REPORT.md'),claims=str(OUT/'CLAIM_CARD.md')))
++
++
++if __name__=='__main__':main()
+diff --git a/code/train_backbone.py b/code/train_backbone.py
+new file mode 100644
+index 0000000..1bd542d
+--- /dev/null
++++ b/code/train_backbone.py
+@@ -0,0 +1,103 @@
++"""Matched900/100 Darcy cohort; one frozen architecture per independent process."""
++from __future__ import annotations
++import argparse,json,os,platform,time,shutil
++from pathlib import Path
++import numpy as np
++import torch
++from common import OUT,CODE,Dataset,build_model,seeds,write,digest,relative_error,training_loss
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--backbone',choices=['Transolver3','LinearNO'],required=True)
++    p.add_argument('--variant',choices=['point','conv'],default='point');p.add_argument('--resume',action='store_true');args=p.parse_args()
++    key='transolver3' if args.backbone=='Transolver3' else 'linearno' if args.variant=='point' else 'linearno_conv'
++    if args.backbone=='Transolver3' and args.variant!='point':raise ValueError('T3 has only the registered native point class')
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
++    torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True;seeds(0)
++    directory=OUT/'checkpoints'/key;directory.mkdir(parents=True,exist_ok=True)
++    preflight=json.loads((OUT/'results/interface_preflight.json').read_text());assert preflight['status']=='passed'
++    protocol=json.loads((OUT/'config/protocol_lock.json').read_text())
++    spec=protocol['models'][key];epochs=protocol['training']['epochs'];batch=protocol['training']['batch_size']
++    data=Dataset();fit_ids=data.split['training_ids'];val_ids=data.split['validation_ids']
++    xt,yt=data.arrays(fit_ids);xv,yv=data.arrays(val_ids)
++    device=torch.device('cuda:0');pos=data.pos.to(device);xt,yt,xv,yv=[t.to(device) for t in [xt,yt,xv,yv]]
++    mean,std=data.y_mean.to(device),data.y_std.to(device)
++    model=build_model(args.backbone,conv=args.variant=='conv').to(device)
++    optimizer=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=spec['weight_decay'])
++    steps=len(fit_ids)//batch;assert steps==225
++    scheduler=torch.optim.lr_scheduler.OneCycleLR(optimizer,max_lr=.001,epochs=epochs,steps_per_epoch=steps,pct_start=.3)
++    generator=torch.Generator().manual_seed(0)
++    first=0;best=float('inf');best_epoch=0
++    resume=directory/'resume.pt'
++    if args.resume:
++        saved=torch.load(resume,map_location='cpu',weights_only=False)
++        model.load_state_dict(saved['model']);optimizer.load_state_dict(saved['optimizer']);scheduler.load_state_dict(saved['scheduler'])
++        first=saved['epochs_completed'];best=saved['best_validation'];best_epoch=saved['best_epoch'];generator.set_state(saved['data_generator_state'])
++    elif resume.exists() or (directory/'best.pt').exists():raise FileExistsError('Existing run requires explicit --resume')
++    source_manifest={name:digest(CODE/name) for name in ['train_backbone.py','common.py']}
++    archive=directory/'source_at_start';archive.mkdir(exist_ok=True)
++    for name in source_manifest:shutil.copy2(CODE/name,archive/name)
++    info=dict(benchmark='darcy',architecture=args.backbone,variant=spec['variant'],model_class=spec['model_class'],
++        model_parameters=spec,parameter_count=sum(p.numel() for p in model.parameters()),seed=0,
++        epochs=epochs,epochs_completed=first,batch_size=batch,steps_per_epoch=steps,total_optimization_steps=0,
++        nfull=7225,nmin_fraction=1.,input_point_order='fixed native85x85 lattice',
++        train_samples=900,validation_samples=100,test_samples=200,train_ids=fit_ids,validation_ids=val_ids,
++        test_used_for_selection=False,test_history='same historical smooth2 population was previously viewed',
++        normalizer=str(OUT/'data/normalizer.npz'),normalizer_sha256=digest(OUT/'data/normalizer.npz'),
++        training_objective='physical relative L2 +0.1*(central-difference x relativeL2 + y relativeL2), summed over batch',
++        predicted_derivative_boundary='zero Dirichlet collar as official exp_darcy.py',
++        optimizer=dict(name='AdamW',lr=.001,weight_decay=spec['weight_decay'],max_grad_norm=spec['max_grad_norm']),
++        scheduler=dict(name='OneCycleLR',pct_start=.3,total_steps=epochs*steps),
++        official_source_commit=protocol['official_linearno_commit'] if args.backbone=='LinearNO' else None,
++        runtime=dict(python=platform.python_version(),torch=torch.__version__,cuda=torch.version.cuda,
++                     gpu=torch.cuda.get_device_name(),visible_devices=os.environ.get('CUDA_VISIBLE_DEVICES'),
++                     affinity=sorted(os.sched_getaffinity(0)),tf32_matmul=False,tf32_cudnn=False,
++                     cudnn_deterministic=True,execution='eager FP32',data_residency='train/validation tensors uploaded once'),
++        source_sha256=source_manifest,execution_status='running',checkpoint=str(directory/'best.pt'))
++    start=time.perf_counter();write(directory/'manifest.json',info)
++    history=(OUT/'logs'/f'{key}_history.jsonl').open('a')
++    print(json.dumps(dict(event='started',model=key,pid=os.getpid(),epochs=epochs,steps_per_epoch=steps,train=900,validation=100,parameters=info['parameter_count'])),flush=True)
++    for epoch in range(first,epochs):
++        epoch_start=time.perf_counter();model.train();total=torch.zeros(3,device=device)
++        order=torch.randperm(900,generator=generator).to(device)
++        for offset in range(0,900,batch):
++            ids=order[offset:offset+batch]
++            prediction=model(pos[None].expand(len(ids),-1,-1),xt[ids])*std+mean
++            loss,field,derivative=training_loss(prediction,yt[ids])
++            if not bool(torch.isfinite(loss)):raise RuntimeError(f'nonfinite training loss at epoch{epoch}')
++            optimizer.zero_grad(set_to_none=True);loss.backward()
++            torch.nn.utils.clip_grad_norm_(model.parameters(),spec['max_grad_norm'])
++            optimizer.step();scheduler.step();total+=torch.stack((loss.detach(),field.detach(),derivative.detach()))
++        model.eval();values=[]
++        with torch.no_grad():
++            for offset in range(0,100,8):
++                pred=model(pos[None].expand(len(xv[offset:offset+8]),-1,-1),xv[offset:offset+8])*std+mean
++                values.append(relative_error(pred,yv[offset:offset+8]))
++        validation=float(torch.cat(values).mean());components=(total/900).cpu().tolist()
++        if not np.isfinite(validation):raise RuntimeError('nonfinite validation')
++        improved=validation<best
++        if improved:
++            best=validation;best_epoch=epoch+1
++            temp=directory/'best.tmp.pt';torch.save(model.state_dict(),temp);temp.replace(directory/'best.pt')
++        row=dict(epoch=epoch+1,global_step=(epoch+1)*steps,train_loss=components[0],train_field_l2=components[1],
++                 train_derivative_loss=components[2],validation_field_l2=validation,best_validation=best,
++                 best_epoch=best_epoch,learning_rate=scheduler.get_last_lr()[0],seconds=time.perf_counter()-epoch_start)
++        history.write(json.dumps(row)+'\n');history.flush();print(json.dumps(row),flush=True)
++        info.update(epochs_completed=epoch+1,total_optimization_steps=(epoch+1)*steps,
++                    best_validation_relative_l2=best,best_epoch=best_epoch,training_wall_seconds=time.perf_counter()-start)
++        write(directory/'manifest.json',info)
++        write(OUT/'runtime'/f'{key}_progress.json',dict(execution_status='running',pid=os.getpid(),**row))
++        if (epoch+1)%10==0 or epoch+1==epochs:
++            temp=directory/'resume.tmp.pt'
++            torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),scheduler=scheduler.state_dict(),
++                epochs_completed=epoch+1,best_validation=best,best_epoch=best_epoch,data_generator_state=generator.get_state()),temp)
++            temp.replace(resume)
++    history.close();torch.save(model.state_dict(),directory/'last.pt')
++    info.update(execution_status='completed',checkpoint_sha256=digest(directory/'best.pt'),
++                last_checkpoint=str(directory/'last.pt'),last_checkpoint_sha256=digest(directory/'last.pt'),
++                resume_checkpoint=str(resume),training_wall_seconds=time.perf_counter()-start)
++    write(directory/'manifest.json',info);write(OUT/'runtime'/f'{key}_progress.json',dict(execution_status='completed',pid=os.getpid(),epochs_completed=epochs,manifest=str(directory/'manifest.json')))
++    print(json.dumps(dict(event='completed',model=key,best_validation=best,epochs=epochs)),flush=True)
++
++
++if __name__=='__main__':main()
+diff --git a/code/train_head.py b/code/train_head.py
+new file mode 100644
+index 0000000..6973e95
+--- /dev/null
++++ b/code/train_head.py
+@@ -0,0 +1,63 @@
++"""Train each complete two-block learned acquisition head on its own bank."""
++import argparse,time,json,os,shutil
++import numpy as np
++import torch
++from common import OUT,read,write,digest,seeds
++from ca_support import ScoreHead
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--backbone',required=True);p.add_argument('--resume',action='store_true');args=p.parse_args()
++    torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False;seeds(0)
++    key=args.backbone.lower();bank=OUT/'head_banks'/key;bm=read(bank/'manifest.json');assert bm['execution_status']=='completed'
++    folder=OUT/'checkpoints'/key/'head';folder.mkdir(exist_ok=True)
++    if (folder/'best.pt').exists() and not args.resume:raise FileExistsError('Existing head run requires explicit --resume')
++    features=torch.from_numpy(np.load(bank/'features.npy')).to('cuda:0');target=torch.from_numpy(np.load(bank/'targets.npy')).to('cuda:0')
++    model=ScoreHead(args.backbone).to('cuda:0');optimizer=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=1e-5)
++    epochs=1000;scheduler=torch.optim.lr_scheduler.OneCycleLR(optimizer,max_lr=.001,epochs=epochs,steps_per_epoch=225,pct_start=.3)
++    generator=torch.Generator().manual_seed(0);best=float('inf');best_epoch=0;first=0;previous_seconds=0.
++    if args.resume:
++        saved=torch.load(folder/'resume.pt',map_location='cpu',weights_only=False)
++        model.load_state_dict(saved['model']);optimizer.load_state_dict(saved['optimizer']);scheduler.load_state_dict(saved['scheduler'])
++        generator.set_state(saved['generator']);first=saved['epochs_completed'];best=saved['best'];best_epoch=saved['best_epoch']
++        previous_seconds=read(folder/'manifest.json').get('training_seconds',0.)
++        archived=folder/f'recovery_before_epoch_{first}_{int(time.time())}';archived.mkdir()
++        for name in ['best.pt','manifest.json']:shutil.copy2(folder/name,archived/name)
++        torch.save(saved['best_model'],folder/'best.pt')
++    start=time.perf_counter()
++    manifest=dict(execution_status='running',backbone=args.backbone,head_seed=0,epochs=epochs,epochs_completed=0,
++                  blocks=2,feature_dim=128,head_architecture='TransolverGradientHead' if args.backbone=='Transolver3' else 'two official LinearNO_temp blocks',
++                  parameter_count=sum(p.numel() for p in model.parameters()),bank_manifest=str(bank/'manifest.json'),
++                  operator_sha256=bm['operator_sha256'],normalizer_sha256=bm['normalizer_sha256'],
++                  target='zscore_log1p_grad_lap',target_mean=bm['target_mean'],target_std=bm['target_std'],
++                  training_ids=bm['training_ids'],validation_ids=bm['validation_ids'],test_used_for_selection=False,
++                  training_loss='smooth_l1_loss beta1 mean over all coarse values',selection='mean validation per-case vector error norm')
++    write(folder/'manifest.json',manifest)
++    manifest.update(epochs_completed=first,resumed_from_epoch=first,previous_training_seconds=previous_seconds,
++                    source_sha256=digest(__file__),bank_manifest_sha256=digest(bank/'manifest.json'))
++    write(folder/'manifest.json',manifest)
++    with (OUT/'logs'/f'{key}_head_history.jsonl').open('a') as stream:
++        for epoch in range(first,epochs):
++            model.train();total=torch.zeros((),device='cuda:0');order=torch.randperm(900,generator=generator).to('cuda:0')
++            for offset in range(0,900,4):
++                ids=order[offset:offset+4];prediction=model(features[ids]);loss=torch.nn.functional.smooth_l1_loss(prediction,target[ids],beta=1.)
++                optimizer.zero_grad(set_to_none=True);loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),.1);optimizer.step();scheduler.step();total+=loss.detach()*len(ids)
++            model.eval();values=[]
++            with torch.no_grad():
++                for offset in range(900,1000,8):
++                    prediction=model(features[offset:offset+8]);values.append(torch.linalg.vector_norm((prediction-target[offset:offset+8]).flatten(1),dim=1))
++            validation=float(torch.cat(values).mean());train=float(total/900)
++            if not np.isfinite(validation+train):raise RuntimeError('nonfinite head loss')
++            if validation<best:
++                best=validation;best_epoch=epoch+1;torch.save(model.state_dict(),folder/'best.pt')
++            row=dict(epoch=epoch+1,train_loss=train,validation=validation,best_validation=best,best_epoch=best_epoch)
++            stream.write(json.dumps(row)+'\n');stream.flush();print(json.dumps(row),flush=True)
++            manifest.update(epochs_completed=epoch+1,best_validation=best,best_epoch=best_epoch,training_seconds=previous_seconds+time.perf_counter()-start);write(folder/'manifest.json',manifest)
++            write(OUT/'runtime'/f'{key}_head_progress.json',dict(execution_status='running',pid=os.getpid(),**row))
++            if (epoch+1)%25==0 or epoch+1==epochs:
++                torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),scheduler=scheduler.state_dict(),epochs_completed=epoch+1,generator=generator.get_state(),best=best,best_epoch=best_epoch,best_model=torch.load(folder/'best.pt',map_location='cpu',weights_only=True)),folder/'resume.tmp.pt')
++                (folder/'resume.tmp.pt').replace(folder/'resume.pt')
++    torch.save(model.state_dict(),folder/'last.pt');manifest.update(execution_status='completed',checkpoint=str(folder/'best.pt'),checkpoint_sha256=digest(folder/'best.pt'),last_checkpoint_sha256=digest(folder/'last.pt'));write(folder/'manifest.json',manifest)
++    write(OUT/'runtime'/f'{key}_head_progress.json',dict(execution_status='completed',pid=os.getpid(),epochs_completed=epochs))
++
++if __name__=='__main__':main()
+diff --git a/code/workflow.py b/code/workflow.py
+new file mode 100644
+index 0000000..4de2878
+--- /dev/null
++++ b/code/workflow.py
+@@ -0,0 +1,72 @@
++"""Persistent per-backbone stage controller; scientific gates stay explicit."""
++from __future__ import annotations
++import argparse,json,os,subprocess,sys,time,traceback
++from pathlib import Path
++
++OUT=Path(__file__).resolve().parents[1]
++CODE=Path(__file__).resolve().parent
++
++def read(path):
++    try:return json.loads(Path(path).read_text())
++    except (OSError,json.JSONDecodeError):return {}
++
++def write(path,value):
++    path=Path(path);temp=path.with_suffix(path.suffix+f'.{os.getpid()}.tmp')
++    for attempt in range(4):
++        try:temp.write_text(json.dumps(value,indent=2)+'\n');temp.replace(path);return
++        except OSError:
++            if attempt==3:raise
++            time.sleep(.5)
++
++def wait_for_gpu(state,path,physical_gpu,stage):
++    """Admit only after a stable idle interval; never terminate another job."""
++    idle_since=None
++    while True:
++        try:
++            result=subprocess.run(['nvidia-smi','-i',str(physical_gpu),
++                '--query-compute-apps=pid','--format=csv,noheader'],capture_output=True,text=True,timeout=10)
++            pids=[int(s.strip()) for s in result.stdout.splitlines() if s.strip().isdigit()]
++            known=result.returncode==0
++        except (OSError,subprocess.TimeoutExpired):known=False;pids=[]
++        if known and not pids:
++            idle_since=idle_since or time.monotonic()
++            if time.monotonic()-idle_since>=30:return
++        else:idle_since=None
++        state.update(execution_status='waiting_resource',active_stage=stage,
++                     waiting_for=f'idle GPU{physical_gpu}',observed_gpu_pids=pids,heartbeat=time.time())
++        write(path,state);time.sleep(5)
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--key',choices=['transolver3','linearno','linearno_conv'],required=True);p.add_argument('--gpu',type=int,required=True);args=p.parse_args()
++    key=args.key;backbone='Transolver3' if key=='transolver3' else 'LinearNO'
++    path=OUT/'runtime'/f'{key}_workflow.json'
++    state=read(path) or dict(model=key,stages={})
++    state.update(pid=os.getpid(),execution_status='running',evidence_status='pending')
++    stages=[('backbone','train_backbone.py',['--backbone',backbone]+(['--variant','conv'] if key=='linearno_conv' else []))]
++    if key!='linearno_conv':
++        stages += [('baseline_evaluation','evaluate.py',['--backbone',backbone,'--phase','baseline']),
++                   ('head_bank','prepare_head.py',['--backbone',backbone]),('head','train_head.py',['--backbone',backbone]),
++                   ('evaluation','evaluate.py',['--backbone',backbone,'--phase','ca'])]
++    else:stages += [('evaluation','evaluate.py',['--backbone',backbone,'--conv-only'])]
++    for stage,script,argv in stages:
++        if state['stages'].get(stage,{}).get('execution_status')=='completed':continue
++        while not (CODE/script).exists() or ('evaluation' in stage and not (OUT/'config/evaluation_lock.json').exists()):
++            state.update(active_stage=stage,waiting_for='implementation or accepted reconstruction gate',heartbeat=time.time())
++            write(path,state);time.sleep(10)
++        wait_for_gpu(state,path,args.gpu,stage)
++        command=[sys.executable,'-u',str(CODE/script),*argv]
++        state['stages'][stage]=dict(execution_status='running',command=command,started_at=time.time())
++        log=OUT/'logs'/f'{key}_{stage}.log'
++        with log.open('a') as stream:
++            child=subprocess.Popen(command,stdout=stream,stderr=subprocess.STDOUT,env=os.environ.copy())
++            state['stages'][stage]['pid']=child.pid;state['active_stage']=stage;state['execution_status']='running';state.pop('waiting_for',None);write(path,state)
++            while child.poll() is None:
++                state['heartbeat']=time.time();write(path,state);time.sleep(10)
++            rc=child.returncode
++        state['stages'][stage].update(returncode=rc,finished_at=time.time(),execution_status='completed' if rc==0 else 'failed')
++        write(path,state)
++        if rc:
++            state.update(execution_status='failed',error=f'{stage} returncode{rc}');write(path,state);return
++    state.update(execution_status='completed',active_stage=None,finished_at=time.time());write(path,state)
++
++if __name__=='__main__':main()

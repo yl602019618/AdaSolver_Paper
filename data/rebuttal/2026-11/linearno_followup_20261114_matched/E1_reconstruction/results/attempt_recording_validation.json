@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "evidence_scope": "Synthetic CPU fault injection only; no model or experiment results",
+  "test_directory": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/runtime/attempt_selftest_phztksxl",
+  "preserved_prior_telemetry": true,
+  "partial_warmup_observations": 40,
+  "partial_formal_observations": 4,
+  "completed_pair_count_preserved": 7,
+  "failure_traceback_saved": true,
+  "distinct_attempt_receipts": true,
+  "prior_failed_attempt_unchanged_after_retry": true,
+  "duplicate_live_worker_refused": true
+}

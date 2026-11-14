@@ -1,0 +1,12 @@
+{
+  "native_fps_prepare_ms": 809.9997118115425,
+  "compiled_cache_existed_before": false,
+  "cache": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/runtime/native_fps_cache",
+  "artifacts": [
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/runtime/native_fps_cache/fps_ce52890bb84516f4befe.so",
+      "sha256": "113ab64163650036cf106cddef72c79fa7e8bde1751b7120f9e2a366f1ed324c"
+    }
+  ],
+  "scope": "one-time native FPS compile/load; no geometry or selected-set map is cached here"
+}

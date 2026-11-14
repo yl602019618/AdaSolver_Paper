@@ -1,0 +1,5 @@
+{
+  "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/darcy/code/finalize_latency.py",
+  "source_sha256": "e4ebaf4d085fb9f1970cd1e2245f4bf9f98a721d3fdbd224c0bd8eb4b76bc340",
+  "adaptation": "dataset wording, common digest alias, profile-status key, separate acceptance receipt"
+}

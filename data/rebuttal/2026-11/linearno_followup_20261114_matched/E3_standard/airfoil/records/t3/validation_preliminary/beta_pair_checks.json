@@ -1,0 +1,164 @@
+[
+  {
+    "case_id": 4,
+    "seed": 0,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 0,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 0,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 1,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 1,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 1,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 2,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 2,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 4,
+    "seed": 2,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 0,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 0,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 0,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 1,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 1,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 1,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 2,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 2,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 501,
+    "seed": 2,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 0,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 0,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 0,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 1,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 1,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 1,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 2,
+    "budget": 0.375,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 2,
+    "budget": 0.5,
+    "coarse_and_final_identical": true
+  },
+  {
+    "case_id": 985,
+    "seed": 2,
+    "budget": 0.75,
+    "coarse_and_final_identical": true
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "scope": "local follow-up files; no historical experiment or controller change",
+  "files": [
+    {
+      "path": "code/aggregate_car.py",
+      "sha256": "b41579f5609933b7567332a1b191f3e2d648e56b73c8c5422a5500ffc2d3f86a",
+      "bytes": 24366
+    },
+    {
+      "path": "code/audit_gpu_knn_guards.py",
+      "sha256": "fb52fefdd13ddd28d7150148f06999320b276c9a1685eb01667a474278f41b43",
+      "bytes": 11182
+    },
+    {
+      "path": "code/car_accuracy.py",
+      "sha256": "791515f2e8da85514afb10e75dc2a1f0de11e9c66f779ca6241ee4506c3c2ad1",
+      "bytes": 10184
+    },
+    {
+      "path": "code/car_memory.py",
+      "sha256": "292b92258bcc0a97fc3ce89c684e54ed7eb166d4d4bb9baa8859b0bd1503d89b",
+      "bytes": 3356
+    },
+    {
+      "path": "code/car_request.py",
+      "sha256": "37406a4dd758e3d708a1acd1e9ead1115d51c19c9fe839add3f30561eca94a86",
+      "bytes": 12737
+    },
+    {
+      "path": "code/car_timing.py",
+      "sha256": "6020a7d0fbf476dc42a15072a493ac2987e3bec0b4f5312e316e2b1a02352c56",
+      "bytes": 12609
+    },
+    {
+      "path": "code/car_workflow.py",
+      "sha256": "cbc954f43777c5341902c2ad882c6ed177fe1e17888c40fb6a32400acd6a8e69",
+      "bytes": 6140
+    },
+    {
+      "path": "code/check_car_rauec.py",
+      "sha256": "7a19934090a115dcc2c731b5a44a13b37e370048d7d9bd46268d80e3d88e8a82",
+      "bytes": 3093
+    },
+    {
+      "path": "code/gpu_knn_candidate.py",
+      "sha256": "47e77fa402622f14583f814ef04b4ffe3731f28f1f6a124474ae2427e0f594b0",
+      "bytes": 6228
+    },
+    {
+      "path": "code/native_car_reference.py",
+      "sha256": "abdc797e68e871eb9cca7f1454c445916ebbbcf8907a85d85bafc6fd455a718b",
+      "bytes": 6979
+    },
+    {
+      "path": "code/native_grid_reference.py",
+      "sha256": "ef9ae24706764d3d1120d3537993dbf30ba2400802fb46beebe14bbef2edb08b",
+      "bytes": 1230
+    },
+    {
+      "path": "code/plot_car.py",
+      "sha256": "3c1e1e62a0f15306e0c6d2b843ca10ec0c451955f3a54121bc2b5ba5bde13d1a",
+      "bytes": 14197
+    },
+    {
+      "path": "code/prepare_car_protocol.py",
+      "sha256": "7b5e627f65599e06e981f4e4f8eb9d0418cc298fe37a70e8c38aeab8850c3786",
+      "bytes": 2880
+    },
+    {
+      "path": "code/prepare_car_runtime.py",
+      "sha256": "cbbf80aa0b3bb964d129a5e3894f4473a0daccbc9966f6b2f3f1984fef979dbe",
+      "bytes": 3777
+    },
+    {
+      "path": "code/profile_native_reconstruction.py",
+      "sha256": "004565dba70b93f3550f37037002a0c526788bc98672ae370312dd7813c0da3f",
+      "bytes": 4302
+    },
+    {
+      "path": "code/reconstruct_api.py",
+      "sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+      "bytes": 12023
+    },
+    {
+      "path": "code/reconstruction_microprofile.py",
+      "sha256": "8b2a1da4ea80704f636b9213f2fd0e7977804c8ee875b6a915d6de24063f4e01",
+      "bytes": 6036
+    },
+    {
+      "path": "code/run_attempt.py",
+      "sha256": "e8dc617512eb04de8f09d29b70f63346328e1b9e6bc80987ad557f49c4006831",
+      "bytes": 5282
+    },
+    {
+      "path": "code/timing_helper.py",
+      "sha256": "ac786c8851a2d2f360ad537bdd3a4ab3f6ddd9cbaae7a73cf7fe2f91b6e3a085",
+      "bytes": 4571
+    },
+    {
+      "path": "code/validate_attempt_recording.py",
+      "sha256": "f197fcf4ee922f26d1b68c8ea5901ce905dbf6b2c27d4b8a7306fb9f6d856ac8",
+      "bytes": 3629
+    },
+    {
+      "path": "code/validate_candidate_car_cpu.py",
+      "sha256": "d410651851d91ee9016ffd746d41340eb2d09ea09da0abde374735f4ebbe0a7f",
+      "bytes": 4429
+    },
+    {
+      "path": "code/validate_car_request_cpu.py",
+      "sha256": "ddc295d16de0f99861dc698ffa52a651d7411f2fa07df4003cbcfa742e3c40cc",
+      "bytes": 2504
+    },
+    {
+      "path": "code/validate_contract.py",
+      "sha256": "1c64b9c2906546a7231ca86f16e4f8c997678c1b196622488962d4f89541b7e0",
+      "bytes": 4843
+    },
+    {
+      "path": "code/validate_real.py",
+      "sha256": "626422dcbd8e6e6a44331df84ecfa8a4dd5ba0857df738eca7ea2ba3b9d34700",
+      "bytes": 9836
+    },
+    {
+      "path": "code/versions/car_accuracy_before_attempt_records.py",
+      "sha256": "5682be7908cd2cd0ea0f2aa2c7f20d058fb53968d4d2e6ea7ef46db9bc1c572a",
+      "bytes": 9006
+    },
+    {
+      "path": "code/versions/car_memory_before_attempt_records.py",
+      "sha256": "a0758ec57563527a1b3f79a0eedfcac2a9dcd527a70fb3dcf9f4a299108ead30",
+      "bytes": 3220
+    },
+    {
+      "path": "code/versions/car_timing_before_attempt_records.py",
+      "sha256": "3cd6846a65eb2f156294459aa648a177fe0c36ce207c61aace9200bae64a7c03",
+      "bytes": 11996
+    },
+    {
+      "path": "code/versions/gpu_knn_candidate_before_input_guards.py",
+      "sha256": "c79f2352fc3a9a29518fe52b1e38985c969f13c0b1c30cbff1695cb5891f8035",
+      "bytes": 3770
+    },
+    {
+      "path": "code/versions/reconstruct_api_v1.py",
+      "sha256": "50814303b0934aa41c1cd815fb2f428216f284e11734c76c0caf53bb97f8b5cc",
+      "bytes": 11391
+    },
+    {
+      "path": "code/versions/reconstruct_api_v1p1.py",
+      "sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+      "bytes": 12023
+    },
+    {
+      "path": "code/write_car_report.py",
+      "sha256": "48eb632456038f2a9d1305eda90eb9c6b7dad8a75a17ec929824837932ae0a05",
+      "bytes": 10067
+    }
+  ],
+  "reconstruction_api_frozen": "1.1",
+  "candidate_version": "0.2-input-guards",
+  "formal_results": "pending GPU execution"
+}

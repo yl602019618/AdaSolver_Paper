@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "device": "CPU",
+  "scope": "initialized actual native classes; same full output without full-range fancy indexing; not a GPU speed measurement",
+  "checks": [
+    {
+      "backbone": "Transolver3",
+      "conv": false,
+      "full_points": 7225,
+      "max_absolute_difference": 0.0,
+      "full_inputs_share_original_tensor_storage": true,
+      "indexed_reference_allocates_copy": true
+    },
+    {
+      "backbone": "LinearNO",
+      "conv": false,
+      "full_points": 7225,
+      "max_absolute_difference": 0.0,
+      "full_inputs_share_original_tensor_storage": true,
+      "indexed_reference_allocates_copy": true
+    },
+    {
+      "backbone": "LinearNO",
+      "conv": true,
+      "full_points": 7225,
+      "max_absolute_difference": 0.0,
+      "full_inputs_share_original_tensor_storage": true,
+      "indexed_reference_allocates_copy": true
+    }
+  ],
+  "source_sha256": "523fd7044ef1ace79711a5b40b10ed58a095c2e8f0be09c872c730e07336a98d"
+}

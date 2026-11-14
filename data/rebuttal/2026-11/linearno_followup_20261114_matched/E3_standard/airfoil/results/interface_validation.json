@@ -1,0 +1,79 @@
+{
+  "scope": "model API and backward correctness, not trained accuracy",
+  "device": "cpu",
+  "checks": [
+    {
+      "architecture": "t3",
+      "points": 17,
+      "shape": [
+        2,
+        17,
+        1
+      ],
+      "backward_finite": true,
+      "parameters": 977345
+    },
+    {
+      "architecture": "t3",
+      "points": 43,
+      "shape": [
+        2,
+        43,
+        1
+      ],
+      "backward_finite": true,
+      "parameters": 977345
+    },
+    {
+      "architecture": "t3",
+      "unit_compensation_max_abs": 0.0,
+      "patched_layers": 8
+    },
+    {
+      "architecture": "linearno",
+      "points": 17,
+      "shape": [
+        2,
+        17,
+        1
+      ],
+      "backward_finite": true,
+      "parameters": 585217
+    },
+    {
+      "architecture": "linearno",
+      "points": 43,
+      "shape": [
+        2,
+        43,
+        1
+      ],
+      "backward_finite": true,
+      "parameters": 585217
+    },
+    {
+      "architecture": "linearno",
+      "weighted_duplicate_max_abs": 3.203749656677246e-07
+    },
+    {
+      "architecture": "linearno",
+      "unit_compensation_max_abs": 0.0,
+      "patched_layers": 8
+    }
+  ],
+  "conv_variable_points": {
+    "compatible": false,
+    "error_type": "EinopsError",
+    "error": " Error while processing rearrange-reduction pattern \"b (h w) c -> b c h w\".\n Input tensor shape: torch.Size([1, 43, 128]). Additional info: {'h': 221, 'w': 51}.\n Shape mismatch, 43 != 11271"
+  },
+  "conv_full_grid": {
+    "compatible": true,
+    "shape": [
+      1,
+      11271,
+      1
+    ],
+    "parameters": 1765889
+  },
+  "status": "passed"
+}

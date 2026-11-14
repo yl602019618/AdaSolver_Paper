@@ -1,0 +1,66 @@
+{
+  "architecture": "linearno_conv",
+  "execution_status": "completed",
+  "evidence_status": "pending",
+  "stage": "validation_complete",
+  "checkpoint": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/best.pt",
+  "checkpoint_sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+  "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+  "sample_ids": [
+    4,
+    501,
+    985
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "reconstruction_gate": {
+    "accepted": true,
+    "equivalence_class": "same mathematical interpolation rule; fp64 accumulation; tested tolerance",
+    "module": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+    "module_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+    "validation_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/real_validation.json",
+    "contract_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/contract_validation.json",
+    "new_checkpoint_end_to_end_validation_required": true,
+    "main_A_mapping_lifetime": "build per request; no selected-set plan reuse",
+    "C_cache_key": "physical geometry identity + reference coordinates including dtype + selected order + surface mask + rule ID",
+    "output_dtype": "float64",
+    "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+    "new_models_full_test": "Compare native and accepted reconstruction from the same fixed prediction for every final test record; report differences, do not pair old accuracy with new time.",
+    "old_id": "grid_scipy_linear_nearest_native_v1",
+    "new_id": "grid_qhull_sparse_apply_v1p1",
+    "validation_case_ids": [
+      4,
+      501,
+      985
+    ],
+    "coordinate_space": "integer index_grid(221,51) float64; physical geometry identity separately keyed",
+    "profiling_default": false,
+    "additional_validation": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/untimed_api_validation.json",
+    "implementation_version": "1.1",
+    "source_snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/versions/reconstruct_api_v1p1.py",
+    "runtime_identity": "Read IMPLEMENTATION_VERSION and IMPLEMENTATION_SOURCE_SHA256 from the imported module; require1.1 in a fresh evaluation process."
+  },
+  "metric_target": "field",
+  "force_metrics": "field-target diagnostics only",
+  "expected_requests": 3,
+  "configurations": [],
+  "with_full": true,
+  "evaluation_sources": {
+    "evaluate.py": "bf8c019dd6019bc0804a98bb7d113e79fd6645998c2fec0425fc2fd7ff03918f",
+    "runtime.py": "44633069a743f424deecaafd8f927f897dfbb3f26755d3b286dc16574d2de175",
+    "common.py": "eba482f6c99104a8657b42e938e13777e9885610f764a1c455d44981ef18ca44"
+  },
+  "completed_cases": 3,
+  "completed_requests": 3,
+  "elapsed_seconds": 0.8585097566246986,
+  "equivalence_violations": [],
+  "paired_beta_groups": 0
+}

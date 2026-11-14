@@ -1,0 +1,58 @@
+\begin{table}[t]
+\centering\small
+\caption{Airfoil physical field error. Sampling SD uses three seeds. Full has no sampling SD. Airfoil uses the fixed published 110 cases with true $C_L>0.02$. The official conv-temp is a Full-only supplement and is excluded from rAUEC.}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lrrr}
+\toprule
+Method & Budget & Error & SD \\
+\midrule
+\multicolumn{4}{l}{\textit{LinearNO (conv-temp, Full)}} \\
+\multicolumn{4}{l}{1,765,889 parameters; 1000 epochs} \\
+\multicolumn{4}{l}{113,000 updates} \\
+\multicolumn{4}{l}{Same-checkpoint Full error: 0.002792} \\
+Full & 100\% & 0.002792 & N/A \\
+\midrule
+\multicolumn{4}{l}{\textit{LinearNO (point-temp)}} \\
+\multicolumn{4}{l}{585,217 parameters; 1000 epochs} \\
+\multicolumn{4}{l}{113,000 updates} \\
+\multicolumn{4}{l}{Same-checkpoint Full error: 0.004775} \\
+Full & 100\% & 0.004775 & N/A \\
+Uniform & 37.5\% & 0.011378 & 0.000683 \\
+Uniform & 50\% & 0.009133 & 0.000408 \\
+Uniform & 75\% & 0.006773 & 0.000169 \\
+PI & 37.5\% & 0.007256 & 0.000034 \\
+PI & 50\% & 0.006116 & 0.000033 \\
+PI & 75\% & 0.004981 & 0.000036 \\
+CPG & 37.5\% & 0.005051 & 0.000060 \\
+CPG & 50\% & 0.004868 & 0.000026 \\
+CPG & 75\% & 0.004789 & 0.000007 \\
+CA & 37.5\% & 0.006071 & 0.000039 \\
+CA & 50\% & 0.005058 & 0.000028 \\
+CA & 75\% & 0.004794 & 0.000014 \\
+CPG (beta=0) & 37.5\% & 0.069720 & 0.000699 \\
+CPG (beta=0) & 50\% & 0.066645 & 0.001120 \\
+CPG (beta=0) & 75\% & 0.027257 & 0.001083 \\
+\midrule
+\multicolumn{4}{l}{\textit{Transolver3}} \\
+\multicolumn{4}{l}{977,345 parameters; 1000 epochs} \\
+\multicolumn{4}{l}{113,000 updates} \\
+\multicolumn{4}{l}{Same-checkpoint Full error: 0.004093} \\
+Full & 100\% & 0.004093 & N/A \\
+Uniform & 37.5\% & 0.010916 & 0.000102 \\
+Uniform & 50\% & 0.008624 & 0.000070 \\
+Uniform & 75\% & 0.006085 & 0.000081 \\
+PI & 37.5\% & 0.006982 & 0.000032 \\
+PI & 50\% & 0.005696 & 0.000036 \\
+PI & 75\% & 0.004393 & 0.000035 \\
+CPG & 37.5\% & 0.004685 & 0.000078 \\
+CPG & 50\% & 0.004326 & 0.000042 \\
+CPG & 75\% & 0.004126 & 0.000009 \\
+CA & 37.5\% & 0.005776 & 0.000077 \\
+CA & 50\% & 0.004522 & 0.000053 \\
+CA & 75\% & 0.004117 & 0.000031 \\
+CPG (beta=0) & 37.5\% & 0.103197 & 0.002376 \\
+CPG (beta=0) & 50\% & 0.083239 & 0.003825 \\
+CPG (beta=0) & 75\% & 0.016982 & 0.000765 \\
+\bottomrule
+\end{tabular}
+\end{table}

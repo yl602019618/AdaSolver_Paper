@@ -1,0 +1,237 @@
+{
+  "passed": true,
+  "status": "checked_available_complete_cohorts",
+  "validation_scope": "Explicit locked populations; exact raw matrix; identity and beta checks; independent seed-first trapezoid and ddof=1 SD",
+  "accuracy_complete": false,
+  "field_rows": 20460,
+  "auxiliary_rows_preserved": 61380,
+  "method_area_rows": 20,
+  "owner_comparisons": [
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "ca",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 1.1102230246251565e-16,
+      "sd_absolute_difference": 3.209238430557093e-17
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "cpg",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 1.1102230246251565e-16,
+      "sd_absolute_difference": 6.071532165918825e-17
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "cpg_beta0",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 3.3306690738754696e-16
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "pi",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 1.1102230246251565e-16,
+      "sd_absolute_difference": 6.071532165918825e-18
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "uniform",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "ca",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "cpg",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 1.1102230246251565e-16,
+      "sd_absolute_difference": 6.071532165918825e-17
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "cpg_beta0",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 3.3306690738754696e-16
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "pi",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 1.1102230246251565e-16,
+      "sd_absolute_difference": 6.071532165918825e-18
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "Transolver3",
+      "method": "uniform",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "ca",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "cpg",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "cpg_beta0",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 2.7755575615628914e-16
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "pi",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "uniform",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "ca",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "cpg",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "cpg_beta0",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 2.7755575615628914e-16
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "pi",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    },
+    {
+      "dataset": "airfoil2d",
+      "backbone": "LinearNO_point_temp",
+      "method": "uniform",
+      "reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+      "source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/results/backbone_rauec.csv",
+      "source_sha256": "a49163d0ed545734e0643c2b453407ca723cc14b8938bb5231a9e543fca9f389",
+      "mean_absolute_difference": 0.0,
+      "sd_absolute_difference": 0.0
+    }
+  ],
+  "sources": [
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/metrics_complete.csv",
+      "sha256": "5eab02b38711c206e46538db614feb2fd3b81297ba3c9250b3ba2203f11b88ad",
+      "rows": 40480,
+      "dataset": "airfoil",
+      "architecture": "t3"
+    },
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno/metrics_complete.csv",
+      "sha256": "09013bf539c3cc0b7b59d8d7a42769afb66139f8045b409f621f8ad8172f91a3",
+      "rows": 40480,
+      "dataset": "airfoil",
+      "architecture": "linearno"
+    },
+    {
+      "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil/records/linearno_conv/metrics_complete.csv",
+      "sha256": "1863449c79aeed493d0a9a0a2057bc3784051ec9a170bab3378fb248dd36615c",
+      "rows": 880,
+      "dataset": "airfoil",
+      "architecture": "linearno_conv"
+    }
+  ],
+  "split_manifest_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+  "collector_sha256": "41d319b40688316075924d78d3de2eed10c1a64c0195afafdf132373a3a1dd6e",
+  "aggregator_sha256": "42085048dc529887a8fa992777ac5dc1144f8d621f8a60050433e2514131ee91"
+}

@@ -1,0 +1,22 @@
+{
+  "old_candidate": "code/versions/gpu_knn_candidate_before_input_guards.py",
+  "old_candidate_sha256": "c79f2352fc3a9a29518fe52b1e38985c969f13c0b1c30cbff1695cb5891f8035",
+  "original_independent_audit": [
+    {
+      "original": "results/gpu_knn_candidate_cpu_audit.py",
+      "archive": "records/gpu_knn_candidate_input_guards/original_audit/gpu_knn_candidate_cpu_audit.py",
+      "sha256": "7ee2df596edb4df4944c7ee18fa0728e89bc452daacd7a2e90bfdb94b4d8dc30"
+    },
+    {
+      "original": "results/gpu_knn_candidate_cpu_audit.json",
+      "archive": "records/gpu_knn_candidate_input_guards/original_audit/gpu_knn_candidate_cpu_audit.json",
+      "sha256": "9b897f1369c4c1c3d620dc0546983caa399b0b938ffd90d96ce38b0083e184af"
+    },
+    {
+      "original": "results/gpu_knn_candidate_cpu_audit.md",
+      "archive": "records/gpu_knn_candidate_input_guards/original_audit/gpu_knn_candidate_cpu_audit.md",
+      "sha256": "ab53dfe871e3092b03dc3193693d1edc3f3b045a5f64bd9105dae7e8c2cfe7b9"
+    }
+  ],
+  "frozen_api_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17"
+}

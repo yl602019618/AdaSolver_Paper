@@ -1,0 +1,33 @@
+{
+  "status": "locked_not_measured",
+  "physical_accuracy_requests": 18600,
+  "raw_old_new_metric_rows": 37200,
+  "baseline_requests_per_point_model": 7400,
+  "ca_requests_per_point_model": 1800,
+  "conv_full_requests": 200,
+  "cpg_paired_conditions": 3600,
+  "budget_summary_rows": 66,
+  "rauec_rows": 20,
+  "timing_groups": 333,
+  "timing_conditions": 1323,
+  "timing_formal_repeats": 132300,
+  "timing_warmups": 26460,
+  "memory_processes": 11,
+  "memory_conditions": 1323,
+  "scope_counts": {
+    "A": 441,
+    "B": 441,
+    "C": 441
+  },
+  "timing_methods": [
+    "full",
+    "uniform",
+    "pi",
+    "cpg",
+    "ca"
+  ],
+  "accuracy_only": [
+    "cpg_beta0"
+  ],
+  "incomplete_value": "N/A with reason; never filled from historical scores"
+}

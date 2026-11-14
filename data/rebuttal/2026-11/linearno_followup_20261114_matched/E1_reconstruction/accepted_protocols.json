@@ -1,0 +1,90 @@
+{
+  "status": "accepted_rule_preserving_v1",
+  "created_at_utc": "2026-11-14T11:34:19.331233+00:00",
+  "datasets": {
+    "darcy": {
+      "accepted": true,
+      "equivalence_class": "same mathematical interpolation rule; fp64 accumulation; tested tolerance",
+      "module": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+      "module_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+      "validation_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/real_validation.json",
+      "contract_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/contract_validation.json",
+      "new_checkpoint_end_to_end_validation_required": true,
+      "main_A_mapping_lifetime": "build per request; no selected-set plan reuse",
+      "C_cache_key": "physical geometry identity + reference coordinates including dtype + selected order + surface mask + rule ID",
+      "output_dtype": "float64",
+      "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+      "new_models_full_test": "Compare native and accepted reconstruction from the same fixed prediction for every final test record; report differences, do not pair old accuracy with new time.",
+      "old_id": "grid_scipy_linear_nearest_native_v1",
+      "new_id": "grid_qhull_sparse_apply_v1p1",
+      "validation_case_ids": [
+        4,
+        501,
+        985
+      ],
+      "coordinate_space": "DarcyAdapter float32 [0,1] xy coordinates, then float64; do not regenerate double linspace",
+      "profiling_default": false,
+      "additional_validation": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/untimed_api_validation.json",
+      "implementation_version": "1.1",
+      "source_snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/versions/reconstruct_api_v1p1.py",
+      "runtime_identity": "Read IMPLEMENTATION_VERSION and IMPLEMENTATION_SOURCE_SHA256 from the imported module; require1.1 in a fresh evaluation process."
+    },
+    "airfoil": {
+      "accepted": true,
+      "equivalence_class": "same mathematical interpolation rule; fp64 accumulation; tested tolerance",
+      "module": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+      "module_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+      "validation_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/real_validation.json",
+      "contract_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/contract_validation.json",
+      "new_checkpoint_end_to_end_validation_required": true,
+      "main_A_mapping_lifetime": "build per request; no selected-set plan reuse",
+      "C_cache_key": "physical geometry identity + reference coordinates including dtype + selected order + surface mask + rule ID",
+      "output_dtype": "float64",
+      "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+      "new_models_full_test": "Compare native and accepted reconstruction from the same fixed prediction for every final test record; report differences, do not pair old accuracy with new time.",
+      "old_id": "grid_scipy_linear_nearest_native_v1",
+      "new_id": "grid_qhull_sparse_apply_v1p1",
+      "validation_case_ids": [
+        4,
+        501,
+        985
+      ],
+      "coordinate_space": "integer index_grid(221,51) float64; physical geometry identity separately keyed",
+      "profiling_default": false,
+      "additional_validation": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/untimed_api_validation.json",
+      "implementation_version": "1.1",
+      "source_snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/versions/reconstruct_api_v1p1.py",
+      "runtime_identity": "Read IMPLEMENTATION_VERSION and IMPLEMENTATION_SOURCE_SHA256 from the imported module; require1.1 in a fresh evaluation process."
+    },
+    "shapenet_car": {
+      "accepted": true,
+      "equivalence_class": "same mathematical interpolation rule; fp64 accumulation; tested tolerance",
+      "module": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+      "module_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+      "validation_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/real_validation.json",
+      "contract_receipt": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/contract_validation.json",
+      "new_checkpoint_end_to_end_validation_required": true,
+      "main_A_mapping_lifetime": "build per request; no selected-set plan reuse",
+      "C_cache_key": "physical geometry identity + reference coordinates including dtype + selected order + surface mask + rule ID",
+      "output_dtype": "float64",
+      "tolerance": "abs(new-old)<=1e-6+1e-5*abs(old)",
+      "new_models_full_test": "Compare native and accepted reconstruction from the same fixed prediction for every final test record; report differences, do not pair old accuracy with new time.",
+      "old_id": "car_scipy_idw4_native_v1",
+      "new_id": "car_ckdtree4_sparse_apply_v1p1",
+      "validation_case_ids": [
+        "param1/1eae4fcec701c176e742b0b5e87bec54",
+        "param4/9d400df8825de9a62514ed2901e978de",
+        "param8/c8fb314a1866d1d2428df271ebc70bc0"
+      ],
+      "coordinate_space": "physical xyz, original stored precision, SciPy promotes search tofloat64",
+      "profiling_default": false,
+      "additional_validation": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/results/untimed_api_validation.json",
+      "implementation_version": "1.1",
+      "source_snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/versions/reconstruct_api_v1p1.py",
+      "runtime_identity": "Read IMPLEMENTATION_VERSION and IMPLEMENTATION_SOURCE_SHA256 from the imported module; require1.1 in a fresh evaluation process."
+    }
+  },
+  "amendment": "untimed main API; profile=True for separate stages only",
+  "implementation_version": "1.1",
+  "source_snapshot": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reconstruction/code/versions/reconstruct_api_v1p1.py"
+}

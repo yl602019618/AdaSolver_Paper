@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\small
+\caption{rAUEC ($\downarrow$) of complete physical fields, with means above sampling standard deviations ($n=3$). Each backbone is normalized by its own matched Uniform. CPG uses $\beta=1$. Best and second means within each backbone and dataset are bold and underlined; ties use displayed precision. N/A denotes pending experiments. Airfoil uses the fixed 110-case population with true $C_L>0.02$. Sparse-application reconstruction.}
+\label{tab:linearno-standard-new}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lcc}
+\toprule
+Method & Darcy Field & Airfoil Field \\
+\midrule
+\multicolumn{3}{l}{\textit{Transolver3}} \\
+Uniform & N/A & $\begin{gathered}1.0000\\[-2pt]\pm 0.0000\end{gathered}$ \\
+PI & N/A & $\begin{gathered}0.6711\\[-2pt]\pm 0.0075\end{gathered}$ \\
+CPG & N/A & $\begin{gathered}\mathbf{0.5293}\\[-2pt]\pm 0.0067\end{gathered}$ \\
+CA & N/A & $\begin{gathered}\underline{0.5632}\\[-2pt]\pm 0.0073\end{gathered}$ \\
+\midrule
+\multicolumn{3}{l}{\textit{LinearNO (point-temp)}} \\
+Uniform & N/A & $\begin{gathered}1.0000\\[-2pt]\pm 0.0000\end{gathered}$ \\
+PI & N/A & $\begin{gathered}0.6806\\[-2pt]\pm 0.0308\end{gathered}$ \\
+CPG & N/A & $\begin{gathered}\mathbf{0.5593}\\[-2pt]\pm 0.0211\end{gathered}$ \\
+CA & N/A & $\begin{gathered}\underline{0.5900}\\[-2pt]\pm 0.0259\end{gathered}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "case_ids": [
+    0,
+    1
+  ],
+  "device": "CPU",
+  "checks": [
+    {
+      "backbone": "Transolver3",
+      "conv": false,
+      "loss": 2.1497440338134766,
+      "field_loss": 1.251891016960144,
+      "derivative_loss": 8.978529930114746,
+      "used_parameter_tensors": 153,
+      "unused_official_conditional_parameters": []
+    },
+    {
+      "backbone": "LinearNO",
+      "conv": false,
+      "loss": 2.131174325942993,
+      "field_loss": 1.2093126773834229,
+      "derivative_loss": 9.218616485595703,
+      "used_parameter_tensors": 144,
+      "unused_official_conditional_parameters": [
+        "placeholder"
+      ]
+    },
+    {
+      "backbone": "LinearNO",
+      "conv": true,
+      "loss": 2.035936117172241,
+      "field_loss": 1.0777134895324707,
+      "derivative_loss": 9.582225799560547,
+      "used_parameter_tensors": 160,
+      "unused_official_conditional_parameters": [
+        "placeholder"
+      ]
+    }
+  ]
+}

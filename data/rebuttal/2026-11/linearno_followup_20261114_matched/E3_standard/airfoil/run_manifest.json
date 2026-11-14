@@ -1,0 +1,19 @@
+{
+  "task": "Airfoil followup",
+  "execution_status": "running",
+  "evidence_status": "pending",
+  "primary_architectures": [
+    "t3",
+    "linearno"
+  ],
+  "supplemental_architectures": [
+    "linearno_conv_fullgrid"
+  ],
+  "normalizer_training_cases": 900,
+  "validation_cases": 100,
+  "primary_test_cases": 110,
+  "training_epochs": 1000,
+  "head_epochs": 200,
+  "reconstruction_gate": "config/evaluation_gate.json",
+  "remote_push": false
+}

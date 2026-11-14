@@ -1,0 +1,8 @@
+# Preserve the exact scientific-record bytes covered by snapshot_manifest.json.
+* -text
+# CSV writers use CRLF; generated SVG paths and unified patch context preserve
+# their native formatting rather than changing the recorded source snapshots.
+*.csv whitespace=cr-at-eol
+*.svg -whitespace
+*.patch -whitespace
+E3_standard/airfoil/code/request.py whitespace=-blank-at-eof

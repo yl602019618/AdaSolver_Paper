@@ -1,0 +1,26 @@
+[
+  {
+    "architecture": "t3",
+    "training_pid": 1136426,
+    "process_start_epoch": 1794655992.35,
+    "process_start_utc": "2026-11-14T11:33:12.350000+00:00",
+    "source": "/proc/PID/stat starttime plus /proc/stat btime",
+    "clock_ticks_per_second": 100
+  },
+  {
+    "architecture": "linearno",
+    "training_pid": 1136425,
+    "process_start_epoch": 1794655992.34,
+    "process_start_utc": "2026-11-14T11:33:12.340000+00:00",
+    "source": "/proc/PID/stat starttime plus /proc/stat btime",
+    "clock_ticks_per_second": 100
+  },
+  {
+    "architecture": "linearno_conv",
+    "training_pid": 1136424,
+    "process_start_epoch": 1794655992.32,
+    "process_start_utc": "2026-11-14T11:33:12.320000+00:00",
+    "source": "/proc/PID/stat starttime plus /proc/stat btime",
+    "clock_ticks_per_second": 100
+  }
+]

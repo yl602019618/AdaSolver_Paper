@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "old_source_sha256": "50814303b0934aa41c1cd815fb2f428216f284e11734c76c0caf53bb97f8b5cc",
+  "new_source_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+  "implementation_version": "1.1",
+  "numerical_maps_identical": true,
+  "cpu_and_gpu_apply_functions_unchanged": true,
+  "new_default": "profile=False; no stage clocks or explicit CUDA synchronization in plan construction",
+  "profile_true": "separate instrumentation only",
+  "created_at_utc": "2026-11-14T12:00:48.595118+00:00"
+}
