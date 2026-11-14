@@ -2,11 +2,11 @@
   "schema_version": 1,
   "status": "PARTIAL",
   "first_gate_complete": true,
-  "audited_at_utc": "2026-11-14T14:22:54.564131+00:00",
+  "audited_at_utc": "2026-11-14T14:50:15.356051+00:00",
   "fixed_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
   "elasticity_ancestor": "487fab2d87642c735ddacfe6d6ce13de7ec4999c",
   "target_branch": "rebuttal/20261114-linearno-seeds",
-  "internal_audit_sha256": "f02ae98ccb3a06c7b3281a181251cac70a45f3f48f9491b472095f58388548b1",
+  "internal_audit_sha256": "c092271feb0ffad0989f77454ff3ec3d8a7da83fbdee596a94d01497da32928c",
   "matching_files": 9689,
   "searched_scopes": [
     "active workspace",
@@ -78,9 +78,9 @@
     {
       "id": "seed_08",
       "task": "Airfoil Transolver3 and LinearNO seed0",
-      "status": "RUNNING_IN_OTHER_SESSION",
+      "status": "PARTIAL",
       "skip_execution": true,
-      "reason": "Backbones finished1000 epochs; preliminary evaluation/head/final matrix pending"
+      "reason": "Backbones, own heads and complete accuracy finished and independently verified; formal complete-output latency remains owned by the existing postprocess workflow."
     },
     {
       "id": "seed_09",
@@ -130,6 +130,20 @@
       "status": "STALE_OR_CONFLICT",
       "skip_execution": true,
       "reason": "1000/200 historical normalized-loss cohort differs from900/100 physical-loss followup; preserve as alternative and do not pool."
+    },
+    {
+      "id": "airfoil_Transolver3_seed0_accuracy",
+      "task": "airfoil_Transolver3_seed0_accuracy",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "110 released cases,5060 requests,40480 metric rows per model; independent raw binding and rAUEC replay passed. One training seed only."
+    },
+    {
+      "id": "airfoil_LinearNO_seed0_accuracy",
+      "task": "airfoil_LinearNO_seed0_accuracy",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "110 released cases,5060 requests,40480 metric rows per model; independent raw binding and rAUEC replay passed. One training seed only."
     }
   ]
 }

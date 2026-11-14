@@ -1,0 +1,10 @@
+{
+  "python": "3.10.12",
+  "libraries": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "matplotlib": "3.10.8",
+    "Pillow": "12.1.1"
+  },
+  "scope": "CPU numerical validation and plot rendering; training environments remain in source receipts"
+}

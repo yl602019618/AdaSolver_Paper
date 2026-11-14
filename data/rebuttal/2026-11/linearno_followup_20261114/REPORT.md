@@ -2,8 +2,15 @@
 
 This package rechecks existing ShapeNet-Car E5/E3 results from paper release
 `91c1fa7cc81b8c1cb61a43618296c1c892d818c0`. The requested three-dataset follow-up
-is **partial**. New Darcy/Airfoil cohorts, missing Car LinearNO seeds and heads,
+is **partial**. Full Darcy/Airfoil three-training-seed cohorts, missing Car LinearNO seeds and heads,
 and the final old/new complete-output latency matrix are pending.
+
+An additional independent audit includes the newly completed Airfoil seed0
+accuracy for both backbones: each has its own trained head,5,060 requests and
+40,480 metric rows over the published110-case population. The116 total rAUEC
+rows in this combined package include36 Car rows and80 Airfoil rows. Airfoil
+seed1/2 and formal latency are still pending; its uncertainty is sampling SD.
+See airfoil_seed0_audit.json and airfoil_seed0_README.md.
 
 The local audit indexed9,689 relevant files and checked existing experiment
 controllers before scheduling new work. Three E5 Transolver3 model/head pairs
@@ -55,13 +62,14 @@ zero-cost reconstruction result. The full requested package is not yet complete.
 
 CSV row counts:
 
-- `backbone_absolute_errors.csv`: 118
+- `backbone_absolute_errors.csv`: 374
 - `backbone_accuracy_latency.csv`: 40
-- `backbone_rauec.csv`: 36
-- `checkpoint_registry.csv`: 4
+- `backbone_rauec.csv`: 116
+- `checkpoint_registry.csv`: 6
 - `native_e3_latency.csv`: 40
+- `parity_record_index.csv`: 9900
 - `raw_records_index.csv`: 33
-- `reconstruction_parity.csv`: 108
+- `reconstruction_parity.csv`: 10008
 - `reconstruction_summary.csv`: 0
-- `sampling_variability.csv`: 334
+- `sampling_variability.csv`: 1070
 - `training_seed_summary.csv`: 34

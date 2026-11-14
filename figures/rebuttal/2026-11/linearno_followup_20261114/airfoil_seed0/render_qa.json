@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "figures": [
+    {
+      "figure": "airfoil_seed0_rauec",
+      "png_decode": "passed",
+      "size": [
+        2110,
+        850
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 8
+    },
+    {
+      "figure": "airfoil_seed0_absolute_error",
+      "png_decode": "passed",
+      "size": [
+        2110,
+        880
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 26
+    },
+    {
+      "figure": "airfoil_seed0_rauec_table",
+      "png_decode": "passed",
+      "size": [
+        1570,
+        580
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 8
+    }
+  ],
+  "PDF_render": "3/3 passed via pdftoppm",
+  "visual_inspection": "All3 rendered PDFs inspected via contact sheet; no clipped labels or cells; CA results and sampling uncertainty preserved; one training seed explicitly stated in captions."
+}

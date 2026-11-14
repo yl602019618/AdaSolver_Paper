@@ -1,0 +1,147 @@
+{
+  "figures": [
+    {
+      "figure": "car_training_seed_rauec",
+      "png_size": [
+        1390,
+        880
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 4
+    },
+    {
+      "figure": "car_training_seed_absolute_error",
+      "png_size": [
+        1390,
+        880
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 13
+    },
+    {
+      "figure": "car_backbone_rauec",
+      "png_size": [
+        2110,
+        850
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 6
+    },
+    {
+      "figure": "car_backbone_absolute_error",
+      "png_size": [
+        2110,
+        880
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 20
+    },
+    {
+      "figure": "car_absolute_error_latency",
+      "png_size": [
+        2110,
+        880
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 20
+    },
+    {
+      "figure": "reconstruction_fixed_prediction_parity",
+      "png_size": [
+        1510,
+        880
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 108
+    },
+    {
+      "figure": "car_training_seed_rauec_table",
+      "png_size": [
+        1990,
+        565
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decode": "passed",
+      "source_rows": 4
+    }
+  ],
+  "renderer": "3.10.8",
+  "pdf_fonttype": 42,
+  "svg_text": "editable",
+  "status": "passed",
+  "pdf_render_checks": [
+    {
+      "pdf": "car_absolute_error_latency.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     21  0\n"
+    },
+    {
+      "pdf": "car_backbone_absolute_error.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     21  0\n"
+    },
+    {
+      "pdf": "car_backbone_rauec.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     15  0\n"
+    },
+    {
+      "pdf": "car_training_seed_absolute_error.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     19  0\n"
+    },
+    {
+      "pdf": "car_training_seed_rauec.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     19  0\n"
+    },
+    {
+      "pdf": "car_training_seed_rauec_table.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nEVICAO+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     15  0\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     22  0\n"
+    },
+    {
+      "pdf": "reconstruction_fixed_prediction_parity.pdf",
+      "render": "passed",
+      "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     19  0\n"
+    }
+  ],
+  "visual_inspection": {
+    "contact_sheet": "../figure_contact_sheet.png",
+    "status": "passed",
+    "observations": [
+      "All7 PDFs rendered with pdftoppm and inspected at once.",
+      "No clipped labels, legends or table cells.",
+      "All108 reconstruction source rows appear in their4 dataset/backbone groups.",
+      "E3 latency plots retain slower CPG complete-field requests and Full references.",
+      "Three-rule table numerical entries match the verified field CSV."
+    ]
+  }
+}

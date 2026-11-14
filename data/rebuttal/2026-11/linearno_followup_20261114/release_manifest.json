@@ -1,0 +1,683 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL",
+  "created_at_utc": "2026-11-14T14:54:03.931156+00:00",
+  "fixed_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "files": [
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/CLAIM_CARD.md",
+      "bytes": 671,
+      "sha256": "8ae6b68907c9939e1a23d3a389a679f6f3f588b722a692634eb81917265fda56",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/README.md",
+      "bytes": 3766,
+      "sha256": "69634cea4c2594c505d700cf651e01db4e7d5049e39c3cd129f629e6842058ab",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/REPORT.md",
+      "bytes": 4153,
+      "sha256": "b14f310894362079cda92733fc5eb73fbe1b2e05a61586fb5f37f42103286326",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0_README.md",
+      "bytes": 2178,
+      "sha256": "37c64ca0044ad82511f2cefcc6b75c7025190a358a5bc793b2b52fe7bf251840",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0_audit.json",
+      "bytes": 97266,
+      "sha256": "7f2009f21a07debd2676a9bd436a47fa7a3f66f7855e8639a2364f7721790331",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/backbone_absolute_errors.csv",
+      "bytes": 133958,
+      "sha256": "b75205b7de3750092da10c9ad49260e5bcf835ed2be27129abb18110b58569de",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/backbone_accuracy_latency.csv",
+      "bytes": 18524,
+      "sha256": "e0ef93f678edc8483e9c48f6102b00a8f8da28439039dccc8b4b9c8342b5fba9",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/backbone_rauec.csv",
+      "bytes": 52302,
+      "sha256": "35e65273642cc36ed2547e45dbd14921c939ee649b81bb67b122c74b93ee15a6",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/checkpoint_registry.csv",
+      "bytes": 6678,
+      "sha256": "0481d349024485e2f84993a6f040f1a188670536a6edb1504cce03c1204711c9",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/native_e3_latency.csv",
+      "bytes": 12778,
+      "sha256": "0cd9c397fa48f2040df67871bf64d270f31a2e1ba70ae625fe15e918b2d967e3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/parity_record_index.csv",
+      "bytes": 3227022,
+      "sha256": "a3c1847b70f60c1ed6af0ab0432347cb045c3eb6b132569df8266e3e3258b858",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/pending.json",
+      "bytes": 792,
+      "sha256": "fc96114eafc77785b020aa3c6a0e4b55e9ae7fbbb7d1aed32a96d76abe1a0f75",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/protocol.md",
+      "bytes": 5011,
+      "sha256": "dbd5771cae0105d4adeb987e8f00d44cd8fc11a0730f24b06f81b2496effef0f",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/protocol_differences.md",
+      "bytes": 1540,
+      "sha256": "66f1b907798acba0bd23eac12730e4ead6a8752245c798bdf09d1ff0601c43cd",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/raw_records_index.csv",
+      "bytes": 19558,
+      "sha256": "46cfbbd6e867401d9e9c4483ed867b6e418b2a551aa7e0b8481ea98091a83957",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/read.me",
+      "bytes": 183,
+      "sha256": "226d800a2ca8d04de46c8ba16fad9d27dd667b67c3a631060b8083e033cd9160",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/reconstruction_parity.csv",
+      "bytes": 3690311,
+      "sha256": "4a50663343eeac844f1c42fd1c4584acb314b9bc1528a3555a991579e682e8a0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/reconstruction_summary.csv",
+      "bytes": 183,
+      "sha256": "8f83e8086b77dda083ceb515103ec2f16253ba98a1bf5c3b90d04d6205aa49b2",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/reuse_audit.json",
+      "bytes": 6548,
+      "sha256": "35074436eb7d049f4e8e67ee3536304bf9ca02b9df979cc9cbbb4275f1081b2d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/sampling_variability.csv",
+      "bytes": 409106,
+      "sha256": "714741e87709ac2a6d8509f8aaf41a692075af0d6341c668b81f3363d4460ae0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/training_seed_summary.csv",
+      "bytes": 8759,
+      "sha256": "0063720ac4347375e2dbf36c4e47549ac60cc48a35ba9eba66005b1a44bcaf63",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/verified_reuse.json",
+      "bytes": 33075,
+      "sha256": "4e55f498d35f57fbe7fdaafda1798f3fe3bb16dbcd16bcecc5e8cf96934d7447",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error.pdf",
+      "bytes": 17411,
+      "sha256": "aff6df66e2a92c57b07ddffe7b731f3eef4aa6ee6e9547f8d5144dabcebe7155",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error.png",
+      "bytes": 153574,
+      "sha256": "40b4f6f6d33aa20477deb1b8f42d4c06f490260c6e57b0189f9b888760ac8ddf",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error.svg",
+      "bytes": 34655,
+      "sha256": "f5016246b296321914e90b76cc614c6f7cf366ff63188ef4a97a50055d963cc7",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error_source.csv",
+      "bytes": 9415,
+      "sha256": "1355e9c2f827b41f41dd4fc39201df274bf8f900a0c5adeedc9563dfc43dd636",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec.pdf",
+      "bytes": 13724,
+      "sha256": "0d9baa9beac801bcac4625759244fcbfd6f19ca59c72fbb8201a6773210c2cf2",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec.png",
+      "bytes": 57657,
+      "sha256": "01d3bbda69b64e6018793f51706245a954f3cffc39f34febff4db0cd3eb318c1",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec.svg",
+      "bytes": 21944,
+      "sha256": "5bba328957da89c52ceaeb5b1f6d86e2ec39b6ac313134e4d3e92ba61473bb91",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_source.csv",
+      "bytes": 3894,
+      "sha256": "cc2fb0c7519707e2baf77935d55f8450d781ff16670499bd4c410fc9f8e0005d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.pdf",
+      "bytes": 16227,
+      "sha256": "a8ca0c71cc735510881a950403edbba52eab5088637ebfb93b911e1de1b1125d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.png",
+      "bytes": 59219,
+      "sha256": "68c0a7a0f3a4300bef70fe712a8627e1414ef98d15ae8556bdc961c94b76955e",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.svg",
+      "bytes": 7719,
+      "sha256": "1940a477fcd2fd70e859c7cab2c83a100ff53188340f3458ec94976eb73c04ae",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.tex",
+      "bytes": 306,
+      "sha256": "9898877d29acf7a629152a443a3461f91463fbdc705dd8531ebddacb5a25f923",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table_source.csv",
+      "bytes": 3894,
+      "sha256": "cc2fb0c7519707e2baf77935d55f8450d781ff16670499bd4c410fc9f8e0005d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/captions.md",
+      "bytes": 1000,
+      "sha256": "1396616788efe790de0af5c0602219323c44aa702fa63444bc5805bd4a1d0565",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/render_qa.json",
+      "bytes": 946,
+      "sha256": "4f496be6394c65b1b4187cd4b65523c42609ce66368fd6a67232f75d6bff436a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/captions.md",
+      "bytes": 2415,
+      "sha256": "b855b2bd2868a080759c0bdf0dc09eed5a4398d6d5949d3c2e81ac9b9218103b",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency.pdf",
+      "bytes": 15979,
+      "sha256": "4a0e259f3fa862fed037ddae280122e617227fcd233bdc86b50438463de575c5",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency.png",
+      "bytes": 120962,
+      "sha256": "a830fc916c4994f585e49c3284c1cf7bd508a16d9f0199681069d86a971b37c0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency.svg",
+      "bytes": 24292,
+      "sha256": "470baa2313386a83bea89c6abf0957e920074b084d0fd22c8e6996a820593da6",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency_source.csv",
+      "bytes": 9378,
+      "sha256": "750a3e1b85d0df260af0c7c64dd8b09a3b79d6e3770bfef0f42e35662bd1d938",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error.pdf",
+      "bytes": 16327,
+      "sha256": "ac7b72621b7f71df0784a5d626f4bfe3aa36b65a1fbdf725314fbfd82c04dcb3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error.png",
+      "bytes": 148722,
+      "sha256": "354988a3ef141d68b2caac9981191bd7b39d9a7c9662546bcd730502058e7f9c",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error.svg",
+      "bytes": 31558,
+      "sha256": "f419407e1940d3f6f7acf587996dd91f5ae0b50a2aa38c70507c8aa28187ad72",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error_source.csv",
+      "bytes": 6754,
+      "sha256": "2a64fc8ade5ca0b34fd586ab63ae05ca1392c3e561d8e39f57b5620ecf95afd0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec.pdf",
+      "bytes": 13631,
+      "sha256": "050e24e84377206677f66d9bb9cb7b0340870b4a113624a9c36ac72833430029",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec.png",
+      "bytes": 56650,
+      "sha256": "bbd6edab18488d3e9cf77b6f1205a558d1b4b0779af786dcd00aaed2dea86bea",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec.svg",
+      "bytes": 18850,
+      "sha256": "5b5c46fd00b35a9dc3cf8e748ed293912bd26797eb08f8dc1fd91aa8ad756a8c",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec_source.csv",
+      "bytes": 2818,
+      "sha256": "edf64f09ef66a36826591f6555fd658da61b9ea0586f8091486934f7eb79e1fa",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error.pdf",
+      "bytes": 15895,
+      "sha256": "dbe456b4e4f2f375df202c6746909c8401369e6c79823ff65f58460f8d15f38a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error.png",
+      "bytes": 114430,
+      "sha256": "8fb65639439082ed7e9342523d54825ce986f1e598ee72c24c29218cbea9d381",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error.svg",
+      "bytes": 22069,
+      "sha256": "796d77cd989b11b4467410d1295745d98024063ea59f4faad2d2e681d817a65a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error_source.csv",
+      "bytes": 3421,
+      "sha256": "0c8e937e48d1c8e8992827574a984b341fa61a17c80a6a47027193017001f03d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec.pdf",
+      "bytes": 14529,
+      "sha256": "d6ac53c316ba0030f151bda782ab43d1451ae5159f8700d2cd68ebc2fb4d3a4c",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec.png",
+      "bytes": 60735,
+      "sha256": "99cc3658af8c8a6646d9d2e087d0ce1333cf09216857007b12f40421a1999853",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec.svg",
+      "bytes": 16204,
+      "sha256": "8f6e8eba243d52d6cfd6928c9175c69e7a19e5f6001077aa3a8cd122bf25b9a6",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_source.csv",
+      "bytes": 1108,
+      "sha256": "f6bbe1947dcae2226027b9bc960deeb802f940736eec8522c25a534286466a4d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.pdf",
+      "bytes": 16783,
+      "sha256": "c30c0df795420f5b8e6a387c2e47bf2242fe936af06fab9b8154b9b1c9b8d2a4",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.png",
+      "bytes": 62508,
+      "sha256": "745da154169f68c536363530d058e63e2187356605cdc834b3a71ba80729e2bc",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.svg",
+      "bytes": 12110,
+      "sha256": "e156b7b65df0029623e136b3c5aa52bd585ce154a40001426abf2998e49beff3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.tex",
+      "bytes": 353,
+      "sha256": "f18b3723ff965f480ea4c2a7a3b0aa2fa8f11a8f38cf15fca97fefb136a57789",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table_source.csv",
+      "bytes": 1108,
+      "sha256": "f6bbe1947dcae2226027b9bc960deeb802f940736eec8522c25a534286466a4d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity.pdf",
+      "bytes": 14086,
+      "sha256": "22b8eeee8bf3a1690d8b625c2650a62859ed0bd6a984b4206eacbf0a22cb46e8",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity.png",
+      "bytes": 79514,
+      "sha256": "a6cc60e6de1c93134637282a3fcab8f3bff2330e4d243af049a377e41e02a7b9",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity.svg",
+      "bytes": 25170,
+      "sha256": "f70b6db36f866aa59d871c4c64915c4897e7bfa65f2733d427ee62fc43585a09",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity_source.csv",
+      "bytes": 42241,
+      "sha256": "c2c8ab3f7383bbc761c82d562e91a1a5b5424534e7ab7161ab1275fd6e10ad32",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/render_qa.json",
+      "bytes": 5070,
+      "sha256": "caecab29bd2259181a0026eee544337318ce9dfa1f9a3881d9de5230c4629400",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/README.md",
+      "bytes": 195,
+      "sha256": "d55aa02ed17ee41c0b5bc032d773a972c3a022e26f81c33b228c1805c783ff3f",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/environment.json",
+      "bytes": 251,
+      "sha256": "85fce61fd22bda7688d677360e7aad4e4f6c56e0ff519bfdf1b02f1fa7f3d770",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/plot_airfoil_seed0.py",
+      "bytes": 6747,
+      "sha256": "90255d76c6938585a5dc55dd794c507f02b421690bb0be9be65b7e1cd97dbf1a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/plot_reuse.py",
+      "bytes": 13095,
+      "sha256": "874587d8f53f589e763d2987ae5c18b5c78f5faa61a5626b24656ff43996be30",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/requirements.txt",
+      "bytes": 61,
+      "sha256": "c71e904a4639ce80dc720885c1e0be79f723d874f527820e5430b1d0bf6eacbd",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/validate_release.py",
+      "bytes": 4129,
+      "sha256": "987528636d271230814ede3de1a7b224e62134511a6d2df4e97a750e6ccc8af3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    }
+  ],
+  "excluded": [
+    "weights",
+    "raw fields",
+    "long logs",
+    "private conversations",
+    "personal absolute paths"
+  ],
+  "missing": "pending.json",
+  "manifest_self_hash": "excluded to avoid self-reference"
+}
