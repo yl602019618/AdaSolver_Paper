@@ -1,0 +1,3 @@
+Run the published source validator against your external original experiment workspace with `CUDA_VISIBLE_DEVICES='' python3 validate_score_portable.py --workspace "$ADASOLVER_WORKSPACE" --airfoil-data "$ADASOLVER_AIRFOIL_DATA" --manifest path/to/score_manifest.json --output portable_qa.json`; the same paths can be supplied through the named environment variables, and `--contract` selects the accompanying `qa_contract.json` if stored elsewhere.
+
+The external workspace supplies the original hash-bound source, checkpoints, normalizers and archived records; their manifest asset locators must resolve. ShapeNet-Car geometry follows the original manifest or the existing `SHAPENET_CAR_DATA` environment override. Omit `--airfoil-data` for Car-only checks.

@@ -1,0 +1,81 @@
+{
+  "schema_version": "score-independent-qa-v1",
+  "created_at_utc": "2026-11-14T15:37:51.925183+00:00",
+  "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "paper_source": {
+    "path": "sections/density_policy_design.tex",
+    "sha256": "e4323aa421b35ff4609408b837dcad98f4f595a6aedb231d54b01b489d502bee",
+    "anchors": [
+      "eq:app_target_density",
+      "eq:app_coverage_correction",
+      "eq:app_pi_airfoil_density",
+      "eq:app_pi_car_density",
+      "eq:app_cpg_car_scores",
+      "eq:app_density_car",
+      "eq:app_density_airfoil_ratio",
+      "eq:app_ca_airfoil_density",
+      "eq:app_ca_car_density"
+    ]
+  },
+  "scope": "Source-bound score/density/selected-point visualization; CPU inspection only; no training, new sampling experiment, GPU request or source-data edits",
+  "overall_statuses": [
+    "VERIFIED_COMPLETE",
+    "PARTIAL",
+    "STALE_OR_CONFLICT",
+    "NOT_FOUND"
+  ],
+  "checks": {
+    "coordinates": "Every point has one immutable native index and original physical coordinate; CSV rows cover exactly0..N-1. Coordinate dtype/space retained; no jitter, remeshing or unrecorded smoothing.",
+    "selection": "Original archived selected/coarse arrays and ordered hashes are authoritative. Plotted selected masks must equal original sets; stored ordered lists must equal source arrays exactly. CPU replay never replaces saved selected points.",
+    "csv_npz": "Every exported numerical field agrees with its underlying captured array after the declared dtype conversion, or with its explicitly declared deterministic derived transform (ordered rank, normalized design/quota measure, native feature norm/mean/population SD). Missing values preserve NaN/blank; no zero-filling undefined density. Descriptive feature summaries are not labelled acquisition scores.",
+    "score_lineage": "Raw physical signal, normalized score, sampling weight, proposal probability, quota/allocation ratio, selected compensation density and realized-retention diagnostics stay separately named with source function/hash, domain and transformation.",
+    "normalization": "Check only the actual implemented normalization on its declared support. A proposal probability on eligible residual points has sum1; a density relative to uniform reference measure has mean1; selectionrate/allocationratio is not forced to either.",
+    "paper_formula": "eq:app_target_density is lambda=t/mean_rho(t), so mean(lambda)=1 for uniform reference nodes; p=lambda/N has sum1. Selected-support normalization, regional quotas, anchors and FPS cannot silently stand in for this full-domain target. Missing numerical mapping to the pinned equation makes formula consistency PARTIAL.",
+    "truth_boundary": "Truth may appear only in a separate diagnostic branch. Distinguish loader possession from score consumption. Check actual source references/inputs and any target-access denial receipt; truth/error arrays must not feed rawscore, normalization, density or selection.",
+    "features": "Coarse and head features retain native point-index alignment, channel width, checkpoint/normalizer/head binding. Head standardized output and physical decoding are distinct. No arbitrary feature averages are labelled learned acquisition score.",
+    "timing": "Preserve original raw-record online stage timings and separately measured CPU observer wall time. Source identity, stage boundary, units, execution device and whether synchronization is certified must be explicit. Missing online timing remains PARTIAL; observer wall time is not GPU end-to-end latency.",
+    "parity": "CPU replay vs archived GPU scores uses abs(new-old)<=1e-6+1e-5*abs(old). Report maximum error and violation count; never loosen tolerance or overwrite original score. A failed auxiliary replay leaves raw-replay lineage PARTIAL while exact archived score can still pass its own checks."
+  },
+  "field_semantics": {
+    "proposal_probability": {
+      "domain": "declared eligible candidate points",
+      "expected_normalization": "sum1 on that domain",
+      "not_equivalent_to": "final without-replacement inclusion probability"
+    },
+    "target_reference_density": {
+      "domain": "full reference measure or explicitly stated submeasure",
+      "expected_normalization": "reference-measure weighted mean1"
+    },
+    "selection_rate": {
+      "domain": "points or regions",
+      "expected_normalization": "none; may sumK when extended per point"
+    },
+    "stratum_allocation_ratio": {
+      "definition": "selected_count[stratum]/reference_count[stratum]",
+      "expected_normalization": "sum over full pointcloud=K",
+      "not_equivalent_to": "individual FPS inclusion probability"
+    },
+    "native_selected_density": {
+      "domain": "archived selected indices only",
+      "expected_normalization": "source-specific, may sum1,1/N,or unnormalized allocationratio"
+    },
+    "compensation": {
+      "domain": "selected indices only",
+      "expected_normalization": "source-specific inverse/tempered coverage; verify archived values exactly"
+    },
+    "realized_selection_rate_diagnostic": {
+      "domain": "fixed native neighborhoods or bins",
+      "expected_normalization": "none; never used to generate acquisition"
+    }
+  },
+  "method_exceptions": {
+    "Uniform": "No model-derived raw or normalized acquisition score required; constant geometric baseline is explicitly a prior.",
+    "ShapeNetCar_PI": "Native two-stage hard-shell policy has no continuous exponential pressure score and no implemented global normalized density in the archived path; mark absent quantities not_applicable and paper-target mapping PARTIAL.",
+    "CPG_CA": "Raw/normalized signal must derive from the appropriate frozen coarse model or own-backbone features/head. Archived and CPU-replayed values must remain distinguished."
+  },
+  "discovery_sources": [
+    "car_reuse_audit.json",
+    "twod_reuse_audit.json"
+  ],
+  "inputs": "A score_manifest.json containing per-method perpoint_csv and npz/source_npz, column mappings, hashes, semantics/support, source-function hashes and capture/timing/truth provenance. Validator reports missing metadata as PARTIAL instead of guessing."
+}
