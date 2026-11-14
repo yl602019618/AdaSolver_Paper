@@ -1,5 +1,16 @@
 # AdaSolver paper
 
+<!-- completed-training-index -->
+## Verified follow-up results
+
+[Completed training inventory](data/rebuttal/2026-11/linearno_followup_20261114/completed_training/README.md) · [Accuracy, timing and figures](data/rebuttal/2026-11/linearno_followup_20261114/README.md)
+
+The training inventory records 9 completed backbones and five matching trained heads.
+It identifies the historical Darcy cohort separately and distinguishes completed training from pending evaluation.
+The full three-training-seed follow-up remains partial.
+<!-- /completed-training-index -->
+
+
 [Compiled paper](paper.pdf) · [LaTeX source](iclr2027_conference.tex)
 
 Build with TeX Live (`latexmk`, `pdflatex`, BibTeX), Python 3, and Poppler

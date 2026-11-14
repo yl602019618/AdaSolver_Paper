@@ -1,0 +1,648 @@
+{
+  "audited_at_utc": "2026-11-14T15:17:54.846083+00:00",
+  "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "scope": "Newly completed training assets only; previously published E5/E3 and Airfoil backbones not reprocessed",
+  "limitations": [
+    "No test accuracy or timing is accepted by this training-completion audit.",
+    "Darcy1000/200 training is a legacy/alternative cohort for900/100 comparisons.",
+    "Training source Git commits were not saved by the standard training runner; observed source SHA is recorded without inventing commit provenance.",
+    "Head optimizer-update count is source-derived, not read from persisted optimizer counters."
+  ],
+  "completed_assets": [
+    {
+      "asset_id": "darcy_T3_seed0_backbone",
+      "status": "VERIFIED_COMPLETE",
+      "scope": "training completion and provenance only",
+      "row": {
+        "asset_id": "darcy_T3_seed0_backbone",
+        "dataset": "darcy",
+        "backbone": "Transolver3",
+        "asset_type": "backbone",
+        "training_seed": 0,
+        "head_seed": "",
+        "protocol_id": "E5_standard_darcy_1000train_200validation",
+        "protocol_group": "legacy_alternative_to_matched900",
+        "include_matched900_comparison": false,
+        "model_class": "adasolver.models.adapter.Transolver3Adapter",
+        "parameters": 977089,
+        "train_cases": 1000,
+        "validation_cases": 200,
+        "test_cases": 200,
+        "epochs_requested": 1000,
+        "epochs_completed": 1000,
+        "optimizer_updates": 250000,
+        "optimizer_update_evidence": "all persisted optimizer parameter step counters and scheduler verified",
+        "checkpoint_sha256": "141c4efd4a6058d4c9d182d2ebd7deac4c652242b1445f7bb234b8451dc3e17a",
+        "backbone_checkpoint_sha256": "141c4efd4a6058d4c9d182d2ebd7deac4c652242b1445f7bb234b8451dc3e17a",
+        "head_sha256": "",
+        "normalizer_sha256": "528ff2491a88cdfa67615781b770507a017a527d63459696cb8a19778bdcf0ce",
+        "split_sha256": "2b4dc79d3a58e336dc67cb6c27c52733d393bb3a5d4643226d595cb74d7275c7",
+        "split_hash_definition": "canonical JSON sort_keys=True separators comma/colon of manifest split",
+        "selection_rule": "minimum full-input validation physical relative L2",
+        "best_epoch": 752,
+        "epoch_indexing": "1-based",
+        "validation_metric": "physical_relative_L2",
+        "validation_score": 0.010843439027667046,
+        "training_wall_seconds": 10744.788887880743,
+        "cost_scope": "source elapsed_seconds includes setup training validation and checkpoint I/O; GPU busy time unmeasured",
+        "feature_bank_seconds": "",
+        "head_training_call_seconds": "",
+        "code_commit": "not_recorded_by_training_source",
+        "observed_train_source_sha256": "e1b82b90220e64e728db0710aa3b845e1e9dd53b673fd015df8f35c7d85c46bc",
+        "source_record_id": "darcy_T3_seed0_backbone",
+        "source_manifest": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/manifest.json",
+        "source_log": "rebuttal_20261114_standard_seeds/logs/darcy_seed0_backbone.log",
+        "source_log_sha256": "2c1d3ed1445925b638ad29d05bab1b4f718a829de7564f78c50c942f93edd06c",
+        "training_verified": true,
+        "allowed_public": true,
+        "accuracy_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "latency_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+        "weights_in_git": false,
+        "native_model_class": "adasolver.models.transolver3.Model",
+        "model_spec_class": "adasolver.models.adapter.Transolver3ModelSpec"
+      },
+      "file_hashes": [
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/manifest.json",
+          "sha256": "88bc8bbcec1299f3dc3eeac2f0df02e604a71358fa6746bccf73253fa284f4d9",
+          "bytes": 17365
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/best.pt",
+          "sha256": "141c4efd4a6058d4c9d182d2ebd7deac4c652242b1445f7bb234b8451dc3e17a",
+          "bytes": 3955184
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/last.pt",
+          "sha256": "06a4f18a116f3ea64e82110724ab1001a70240eb97a02b14d2b54bd51bb0a053",
+          "bytes": 3955184
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/history.jsonl",
+          "sha256": "e08762b75eeabd02f1a27fe2bccada765998f87ec15226ed6237e52b472cc09c",
+          "bytes": 347678
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/data/darcy/normalizer.npz",
+          "sha256": "528ff2491a88cdfa67615781b770507a017a527d63459696cb8a19778bdcf0ce",
+          "bytes": 1002
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/resume.pt",
+          "sha256": "798ec17574e1737545f2bdbe5168bdc170890a3045ffdf40588405489b1a2ace",
+          "bytes": 11938041
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/config/darcy.json",
+          "sha256": "8e97125037e17b73057b7c88c1426500ecbcb988c68c57777e722c22d23c33a7",
+          "bytes": 17166
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/logs/darcy_seed0_backbone.log",
+          "sha256": "2c1d3ed1445925b638ad29d05bab1b4f718a829de7564f78c50c942f93edd06c",
+          "bytes": 69996
+        }
+      ],
+      "checks": {
+        "optimizer_parameter_step_values": [
+          250000
+        ],
+        "optimizer_state_entries": 153,
+        "resume_equals_last_state": true,
+        "strict_model_load": true,
+        "full_history_verified": true,
+        "validation_selection_replayed": true,
+        "normalizer_target_fit_recomputed": true,
+        "source_environment": {
+          "python": "3.10.12",
+          "torch": "2.10.0+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA H20",
+          "allow_tf32": false,
+          "physical_gpu": 0
+        },
+        "protocol_difference": "Darcy1000smooth1/200smooth2 validation and normalized loss; not pooled with900/100 physical+derivative-loss cohort",
+        "execution_source_commit_unrecorded": true
+      }
+    },
+    {
+      "asset_id": "darcy_T3_seed1_backbone",
+      "status": "VERIFIED_COMPLETE",
+      "scope": "training completion and provenance only",
+      "row": {
+        "asset_id": "darcy_T3_seed1_backbone",
+        "dataset": "darcy",
+        "backbone": "Transolver3",
+        "asset_type": "backbone",
+        "training_seed": 1,
+        "head_seed": "",
+        "protocol_id": "E5_standard_darcy_1000train_200validation",
+        "protocol_group": "legacy_alternative_to_matched900",
+        "include_matched900_comparison": false,
+        "model_class": "adasolver.models.adapter.Transolver3Adapter",
+        "parameters": 977089,
+        "train_cases": 1000,
+        "validation_cases": 200,
+        "test_cases": 200,
+        "epochs_requested": 1000,
+        "epochs_completed": 1000,
+        "optimizer_updates": 250000,
+        "optimizer_update_evidence": "all persisted optimizer parameter step counters and scheduler verified",
+        "checkpoint_sha256": "beeb1ce9debdd2bcb1f5d9a7f7f901fcbbad69c084ab7e9806eb216af48a1038",
+        "backbone_checkpoint_sha256": "beeb1ce9debdd2bcb1f5d9a7f7f901fcbbad69c084ab7e9806eb216af48a1038",
+        "head_sha256": "",
+        "normalizer_sha256": "528ff2491a88cdfa67615781b770507a017a527d63459696cb8a19778bdcf0ce",
+        "split_sha256": "2b4dc79d3a58e336dc67cb6c27c52733d393bb3a5d4643226d595cb74d7275c7",
+        "split_hash_definition": "canonical JSON sort_keys=True separators comma/colon of manifest split",
+        "selection_rule": "minimum full-input validation physical relative L2",
+        "best_epoch": 812,
+        "epoch_indexing": "1-based",
+        "validation_metric": "physical_relative_L2",
+        "validation_score": 0.010868197306990623,
+        "training_wall_seconds": 10762.195123918355,
+        "cost_scope": "source elapsed_seconds includes setup training validation and checkpoint I/O; GPU busy time unmeasured",
+        "feature_bank_seconds": "",
+        "head_training_call_seconds": "",
+        "code_commit": "not_recorded_by_training_source",
+        "observed_train_source_sha256": "e1b82b90220e64e728db0710aa3b845e1e9dd53b673fd015df8f35c7d85c46bc",
+        "source_record_id": "darcy_T3_seed1_backbone",
+        "source_manifest": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/manifest.json",
+        "source_log": "rebuttal_20261114_standard_seeds/logs/darcy_seed1_backbone.log",
+        "source_log_sha256": "9609b78f228e353786d6fe7c3b7258cfe31c2e2c694d63647d729face98f3648",
+        "training_verified": true,
+        "allowed_public": true,
+        "accuracy_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "latency_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+        "weights_in_git": false,
+        "native_model_class": "adasolver.models.transolver3.Model",
+        "model_spec_class": "adasolver.models.adapter.Transolver3ModelSpec"
+      },
+      "file_hashes": [
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/manifest.json",
+          "sha256": "21cb20127b1f2e189177771c33e7c6e9aeecbdc59412332f4d0d8539540a9727",
+          "bytes": 17365
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/best.pt",
+          "sha256": "beeb1ce9debdd2bcb1f5d9a7f7f901fcbbad69c084ab7e9806eb216af48a1038",
+          "bytes": 3955184
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/last.pt",
+          "sha256": "266710dd40045db5bf7d695d75d488c3c5b42d2dd95fb844d2b4f23a552c51d0",
+          "bytes": 3955184
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/history.jsonl",
+          "sha256": "33d22c5e3243bd38e2d58ae9f213491fb9d0712ac7bacb805edab046ec69e175",
+          "bytes": 347644
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/data/darcy/normalizer.npz",
+          "sha256": "528ff2491a88cdfa67615781b770507a017a527d63459696cb8a19778bdcf0ce",
+          "bytes": 1002
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/resume.pt",
+          "sha256": "bf45b88d2373056b6783638326ac30265ae54b4198065e2f1a26ec0b046156bd",
+          "bytes": 11938105
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/config/darcy.json",
+          "sha256": "8e97125037e17b73057b7c88c1426500ecbcb988c68c57777e722c22d23c33a7",
+          "bytes": 17166
+        },
+        {
+          "source_id": "rebuttal_20261114_standard_seeds/logs/darcy_seed1_backbone.log",
+          "sha256": "9609b78f228e353786d6fe7c3b7258cfe31c2e2c694d63647d729face98f3648",
+          "bytes": 69996
+        }
+      ],
+      "checks": {
+        "optimizer_parameter_step_values": [
+          250000
+        ],
+        "optimizer_state_entries": 153,
+        "resume_equals_last_state": true,
+        "strict_model_load": true,
+        "full_history_verified": true,
+        "validation_selection_replayed": true,
+        "normalizer_target_fit_recomputed": true,
+        "source_environment": {
+          "python": "3.10.12",
+          "torch": "2.10.0+cu128",
+          "cuda": "12.8",
+          "gpu": "NVIDIA H20",
+          "allow_tf32": false,
+          "physical_gpu": 1
+        },
+        "protocol_difference": "Darcy1000smooth1/200smooth2 validation and normalized loss; not pooled with900/100 physical+derivative-loss cohort",
+        "execution_source_commit_unrecorded": true
+      }
+    },
+    {
+      "asset_id": "airfoil_t3_seed0_head0",
+      "status": "VERIFIED_COMPLETE",
+      "scope": "training completion and provenance only",
+      "row": {
+        "asset_id": "airfoil_t3_seed0_head0",
+        "dataset": "airfoil2d",
+        "backbone": "Transolver3",
+        "asset_type": "CA_head",
+        "training_seed": 0,
+        "head_seed": 0,
+        "protocol_id": "airfoil_matched_pressure_20261114_v1",
+        "protocol_group": "matched900_seed0_own_backbone_head",
+        "include_matched900_comparison": true,
+        "model_class": "adasolver.inference.ca.airfoil2d.PressureMLP",
+        "parameters": 1353,
+        "train_cases": 900,
+        "validation_cases": 100,
+        "test_cases": 110,
+        "epochs_requested": 200,
+        "epochs_completed": 200,
+        "optimizer_updates": 9400,
+        "optimizer_update_evidence": "derived from complete200epoch history and source loop over3042000points; no persisted optimizer counter",
+        "checkpoint_sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+        "backbone_checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+        "head_sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+        "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+        "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+        "split_hash_definition": "exact shared split_manifest.json file bytes",
+        "selection_rule": "validation Huber improvement >1e-7; exact source rule replayed",
+        "best_epoch": 169,
+        "epoch_indexing": "0-based",
+        "validation_metric": "standardized_pressure_Huber",
+        "validation_score": 0.17293290793895721,
+        "training_wall_seconds": 10.895529597997665,
+        "cost_scope": "head training loop with validation; feature construction and enclosing call reported separately; GPU busy time unmeasured",
+        "feature_bank_seconds": 44.21850200742483,
+        "head_training_call_seconds": 15.857469588518143,
+        "code_commit": "official_LinearNO_3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269;local_head_driver_sha256",
+        "observed_train_source_sha256": "56713bb1320c3c20a385a506f5154c7282de2ea5b571f0e996d5578e0211e5f8",
+        "source_record_id": "airfoil_t3_seed0_head0",
+        "source_manifest": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/head/manifest.json",
+        "source_log": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/t3_head.log",
+        "source_log_sha256": "47a5025b701becdc966687d0a31bd876d9604a769d47452d270402317af56d6b",
+        "training_verified": true,
+        "allowed_public": true,
+        "accuracy_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "latency_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+        "weights_in_git": false
+      },
+      "file_hashes": [
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/head/manifest.json",
+          "sha256": "660b1d079c03e875fcaf91200eaefa0469e15cb60e784281889b3afd08df1c27",
+          "bytes": 37413
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/t3_head/manifest.json",
+          "sha256": "8f3a8744f8c73c7b66c27350447dfe09adcce1bfa52b29da5a0414b5fd212ad5",
+          "bytes": 334934
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/head/pressure_d8_best.pt",
+          "sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+          "bytes": 8641
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/best.pt",
+          "sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+          "bytes": 3966060
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/normalizer.npz",
+          "sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+          "bytes": 7964
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/results/t3_head_acceptance.json",
+          "sha256": "e18d53b6bb9f8a0def6ec46df2fba534ebef668a472f2beae39ca319947be179",
+          "bytes": 1814
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/t3_head/train_cf0.05_indices.npy",
+          "sha256": "97714729f4879446435f9aa2e30e3502dbd1c7edfafe88a2d5c22ab3cb1fcb03",
+          "bytes": 8107328
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/t3_head/train_cf0.1_indices.npy",
+          "sha256": "4c6475456573b4832b81595837dd242202e7faf46e24b63c0f45dfc8c14b9a8f",
+          "bytes": 16228928
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/t3_head/validation_cf0.05_indices.npy",
+          "sha256": "f9ffb77d2882d6b881e0d0867a5ed5fe92a34ccae7269cbbfd750d81bcd9bc45",
+          "bytes": 900928
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/t3_head/validation_cf0.1_indices.npy",
+          "sha256": "cb4a858adc87cb90b2ccbccd2f4537f059f87f59675a08974b326dbc3a41ce1b",
+          "bytes": 1803328
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/runtime/t3_head_substages.json",
+          "sha256": "12a49bfdc86a52076fc42607b0ffd4cc63bfd01d771c8d0f6cfa1596f0793579",
+          "bytes": 1650
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/config/head_execution_sources/56713bb1320c3c20a385a506f5154c7282de2ea5b571f0e996d5578e0211e5f8/train_head.py",
+          "sha256": "56713bb1320c3c20a385a506f5154c7282de2ea5b571f0e996d5578e0211e5f8",
+          "bytes": 8161
+        }
+      ],
+      "checks": {
+        "training_history_epochs_verified": 200,
+        "selection_replayed": true,
+        "own_backbone_feature_bank_bound": true,
+        "strict_head_load": true,
+        "original4000bank_row_acceptance_rehashed": true,
+        "derived_optimizer_updates": 9400,
+        "training_points": 3042000
+      }
+    },
+    {
+      "asset_id": "airfoil_linearno_seed0_head0",
+      "status": "VERIFIED_COMPLETE",
+      "scope": "training completion and provenance only",
+      "row": {
+        "asset_id": "airfoil_linearno_seed0_head0",
+        "dataset": "airfoil2d",
+        "backbone": "LinearNO_point_temp",
+        "asset_type": "CA_head",
+        "training_seed": 0,
+        "head_seed": 0,
+        "protocol_id": "airfoil_matched_pressure_20261114_v1",
+        "protocol_group": "matched900_seed0_own_backbone_head",
+        "include_matched900_comparison": true,
+        "model_class": "adasolver.inference.ca.airfoil2d.PressureMLP",
+        "parameters": 1353,
+        "train_cases": 900,
+        "validation_cases": 100,
+        "test_cases": 110,
+        "epochs_requested": 200,
+        "epochs_completed": 200,
+        "optimizer_updates": 9400,
+        "optimizer_update_evidence": "derived from complete200epoch history and source loop over3042000points; no persisted optimizer counter",
+        "checkpoint_sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0",
+        "backbone_checkpoint_sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+        "head_sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0",
+        "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+        "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+        "split_hash_definition": "exact shared split_manifest.json file bytes",
+        "selection_rule": "validation Huber improvement >1e-7; exact source rule replayed",
+        "best_epoch": 157,
+        "epoch_indexing": "0-based",
+        "validation_metric": "standardized_pressure_Huber",
+        "validation_score": 0.17391462624073029,
+        "training_wall_seconds": 11.970330595970154,
+        "cost_scope": "head training loop with validation; feature construction and enclosing call reported separately; GPU busy time unmeasured",
+        "feature_bank_seconds": 28.015901505947113,
+        "head_training_call_seconds": 16.4286330640316,
+        "code_commit": "official_LinearNO_3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269;local_head_driver_sha256",
+        "observed_train_source_sha256": "56713bb1320c3c20a385a506f5154c7282de2ea5b571f0e996d5578e0211e5f8",
+        "source_record_id": "airfoil_linearno_seed0_head0",
+        "source_manifest": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/head/manifest.json",
+        "source_log": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/linearno_head.log",
+        "source_log_sha256": "d63efd801ce9464693aba1c97216623176bf0716e1ae47dca584288419ac0001",
+        "training_verified": true,
+        "allowed_public": true,
+        "accuracy_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "latency_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+        "weights_in_git": false
+      },
+      "file_hashes": [
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/head/manifest.json",
+          "sha256": "eab2100f8c5d04dc98c0c5624aa46759d8eb4a85581bd2103afc460a3d2739a7",
+          "bytes": 37443
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/linearno_head/manifest.json",
+          "sha256": "0a5869d7242028bbe692dd7b9201869729b730483e89b37b72515cc4ea681cb8",
+          "bytes": 334958
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/head/pressure_d8_best.pt",
+          "sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0",
+          "bytes": 8641
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/best.pt",
+          "sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+          "bytes": 2394484
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/normalizer.npz",
+          "sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+          "bytes": 7964
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/results/linearno_head_acceptance.json",
+          "sha256": "a9ee8d36d6beb0b5381825f8a79c4d8b4c93ae944aace07eac1fb87cd2766e53",
+          "bytes": 1820
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/linearno_head/train_cf0.05_indices.npy",
+          "sha256": "97714729f4879446435f9aa2e30e3502dbd1c7edfafe88a2d5c22ab3cb1fcb03",
+          "bytes": 8107328
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/linearno_head/train_cf0.1_indices.npy",
+          "sha256": "4c6475456573b4832b81595837dd242202e7faf46e24b63c0f45dfc8c14b9a8f",
+          "bytes": 16228928
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/linearno_head/validation_cf0.05_indices.npy",
+          "sha256": "f9ffb77d2882d6b881e0d0867a5ed5fe92a34ccae7269cbbfd750d81bcd9bc45",
+          "bytes": 900928
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/linearno_head/validation_cf0.1_indices.npy",
+          "sha256": "cb4a858adc87cb90b2ccbccd2f4537f059f87f59675a08974b326dbc3a41ce1b",
+          "bytes": 1803328
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/runtime/linearno_head_substages.json",
+          "sha256": "dbbd758f31dea7c1fe704b1aa7fc20b0d6c57951ade2633c8a40d718ee92d942",
+          "bytes": 1667
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/config/head_execution_sources/56713bb1320c3c20a385a506f5154c7282de2ea5b571f0e996d5578e0211e5f8/train_head.py",
+          "sha256": "56713bb1320c3c20a385a506f5154c7282de2ea5b571f0e996d5578e0211e5f8",
+          "bytes": 8161
+        }
+      ],
+      "checks": {
+        "training_history_epochs_verified": 200,
+        "selection_replayed": true,
+        "own_backbone_feature_bank_bound": true,
+        "strict_head_load": true,
+        "original4000bank_row_acceptance_rehashed": true,
+        "derived_optimizer_updates": 9400,
+        "training_points": 3042000
+      }
+    },
+    {
+      "asset_id": "airfoil_linearno_conv_seed0_backbone",
+      "status": "VERIFIED_COMPLETE",
+      "scope": "completed supplementary official convolution training only",
+      "row": {
+        "asset_id": "airfoil_linearno_conv_seed0_backbone",
+        "dataset": "airfoil2d",
+        "backbone": "LinearNO_conv_temp_fullgrid",
+        "asset_type": "backbone",
+        "training_seed": 0,
+        "head_seed": "",
+        "protocol_id": "airfoil_matched_pressure_20261114_v1_conv_fullgrid",
+        "protocol_group": "supplementary_full_only_official_convolution",
+        "include_matched900_comparison": false,
+        "model_class": "common.LinearNOAdapter",
+        "native_model_class": "airfoil_official_linearno.LinearAttentionNeuralOperator",
+        "model_spec_class": "",
+        "native_attention_class": "airfoil_official_linearno.LinearNO_Conv_temp",
+        "parameters": 1765889,
+        "train_cases": 900,
+        "validation_cases": 100,
+        "test_cases": 110,
+        "epochs_requested": 1000,
+        "epochs_completed": 1000,
+        "optimizer_updates": 113000,
+        "optimizer_update_evidence": "all persisted optimizer parameter step counters and scheduler verified",
+        "checkpoint_sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+        "backbone_checkpoint_sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+        "head_sha256": "",
+        "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+        "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+        "split_hash_definition": "exact shared split_manifest.json file bytes",
+        "selection_rule": "minimum full-point physical relativeL2 on fixed100 validation cases",
+        "best_epoch": 962,
+        "epoch_indexing": "0-based",
+        "validation_metric": "physical_pressure_relative_L2",
+        "validation_score": 0.002768508162116632,
+        "training_wall_seconds": 13738.318615630269,
+        "cost_scope": "training-loop wall time includes validation and checkpoint I/O; source start excludes one-time data/model preparation; GPU busy time unmeasured",
+        "feature_bank_seconds": "",
+        "head_training_call_seconds": "",
+        "code_commit": "3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269",
+        "observed_train_source_sha256": "6d4afb2c9205d66dc5a12e8f7305aa8ed64925fc6873d92454fa66fe3d0d7b1f",
+        "source_record_id": "airfoil_linearno_conv_seed0_backbone",
+        "source_manifest": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/manifest.json",
+        "source_log": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/linearno_conv_train.log",
+        "source_log_sha256": "f856fea5a1892cebaa1632ed5023e9f793e4cffb83dde761d82a7f408af535bb",
+        "training_verified": true,
+        "allowed_public": true,
+        "accuracy_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "latency_status": "NOT_ACCEPTED_BY_THIS_TRAINING_AUDIT",
+        "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+        "weights_in_git": false,
+        "variable_point_support": false,
+        "full_only": true,
+        "precision_note": "networkFP32; matmulTF32disabled; unchangedPyTorchcuDNNdefault permitsTF32convolution; actualkernelTF32useunmeasured"
+      },
+      "file_hashes": [
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/manifest.json",
+          "sha256": "f29543c607e691b5cec20714ac7c68c34349f68767a168e2be44fdda377d90d1",
+          "bytes": 15058
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/best.pt",
+          "sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+          "bytes": 7122852
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/last.pt",
+          "sha256": "a61e8049f059ee0ee7edbc482b19c763b175e4f7649cc951549cbf478c800a0b",
+          "bytes": 7112968
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/resume.pt",
+          "sha256": "7b541f1c586d79fc4e64d958d6dda07aca86e6e620dbc2fe48d85f3d36417854",
+          "bytes": 21392855
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/history.jsonl",
+          "sha256": "f856fea5a1892cebaa1632ed5023e9f793e4cffb83dde761d82a7f408af535bb",
+          "bytes": 332687
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/linearno_conv_train.log",
+          "sha256": "f856fea5a1892cebaa1632ed5023e9f793e4cffb83dde761d82a7f408af535bb",
+          "bytes": 332687
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/normalizer.npz",
+          "sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+          "bytes": 7964
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/split_manifest.json",
+          "sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+          "bytes": 26573
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/code/common.py",
+          "sha256": "eba482f6c99104a8657b42e938e13777e9885610f764a1c455d44981ef18ca44",
+          "bytes": 5700
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/config/execution_sources/train.py",
+          "sha256": "6d4afb2c9205d66dc5a12e8f7305aa8ed64925fc6873d92454fa66fe3d0d7b1f",
+          "bytes": 7645
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/results/linearno_conv_identity_validation.json",
+          "sha256": "c61628b044d7b279a28bd46aed2dbf9d9489675f5b7ed1e72146d51ff8765c97",
+          "bytes": 859
+        },
+        {
+          "source_id": "linearno_followup_20261114/standard_benchmarks/airfoil/config/precision_observation.json",
+          "sha256": "a06eddbefb939a7243eec540efc162e3bfb10e86c6a2f85027d041a0bc6b5bb0",
+          "bytes": 723
+        }
+      ],
+      "checks": {
+        "full_history_verified": true,
+        "epochs": 1000,
+        "updates": 113000,
+        "all_optimizer_parameter_steps": [
+          113000
+        ],
+        "optimizer_state_entries": 161,
+        "scheduler_last_epoch": 113000,
+        "resume_matches_last_state": true,
+        "strict_model_load": true,
+        "all_training_point_counts": 11271,
+        "full_only": true,
+        "split_ids_and_normalizer_training_ids_verified": true,
+        "validation_only_selection_replayed": true,
+        "best_epoch": 962,
+        "log_equals_complete_history": true,
+        "training_source_snapshot_hash_matches": true,
+        "existing_identity_receipt_rehashed": true,
+        "precision": {
+          "training_source": "config/execution_sources/train.py",
+          "running_training_code_changed": false,
+          "network_tensor_dtype": "float32",
+          "matmul_allow_tf32": false,
+          "cudnn_allow_tf32": "PyTorch2.10 default True; not overridden by training source",
+          "affected_model": "only supplementary conv-temp may use cuDNN convolution kernels; main point models use linear projections",
+          "kernel_execution_claim": "TF32 convolution permitted, not proof that a specific kernel used it",
+          "final_evaluation_and_latency": {
+            "matmul_allow_tf32": false,
+            "cudnn_allow_tf32": false
+          },
+          "checkpoint_selection": "validation only; supplementary conv-temp validation uses the same allowed precision setting as its training"
+        }
+      }
+    }
+  ],
+  "additional_audit_utc": "2026-11-14T15:24:13.878476+00:00"
+}

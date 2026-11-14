@@ -1,5 +1,7 @@
 # Verified reuse subset of the three-training-seed follow-up
 
+[Completed training inventory](completed_training/README.md) provides the model/head status, training configurations and source-file hashes.
+
 This package rechecks existing ShapeNet-Car E5/E3 results from paper release
 `91c1fa7cc81b8c1cb61a43618296c1c892d818c0`. The requested three-dataset follow-up
 is **partial**. Full Darcy/Airfoil three-training-seed cohorts, missing Car LinearNO seeds and heads,

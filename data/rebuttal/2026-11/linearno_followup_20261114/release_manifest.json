@@ -5,6 +5,15 @@
   "fixed_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
   "files": [
     {
+      "path": "README.md",
+      "bytes": 2501,
+      "sha256": "d67349856fc5e02973c593ff8c18bb13b9288c3a62db992ba8b2327a90eb6633",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/CLAIM_CARD.md",
       "bytes": 671,
       "sha256": "8ae6b68907c9939e1a23d3a389a679f6f3f588b722a692634eb81917265fda56",
@@ -15,8 +24,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/README.md",
-      "bytes": 3766,
-      "sha256": "69634cea4c2594c505d700cf651e01db4e7d5049e39c3cd129f629e6842058ab",
+      "bytes": 3908,
+      "sha256": "015ce9cbd7edf8849f6e218d7cecfc10463016000e336bceda060f532c8f286a",
       "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
       "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
       "status": "VERIFIED_COMPLETE",
@@ -82,6 +91,69 @@
       "sha256": "0481d349024485e2f84993a6f040f1a188670536a6edb1504cce03c1204711c9",
       "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
       "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/README.md",
+      "bytes": 2955,
+      "sha256": "cf99b81608e5fec3f4fb6b636539797b58ab8d26fdc1d7351e543f0f05f230ad",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/model_configurations.json",
+      "bytes": 8977,
+      "sha256": "0fccb2af85cd83cccf34f2bac6987b46499ea0373697f6854b5e88c7185ebdc8",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/model_index.csv",
+      "bytes": 9471,
+      "sha256": "bf8f846b4d60cf58e483ba32cf79e9d911e78f5fd7663437ef9f207d1fb3d2f6",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/pending.json",
+      "bytes": 2067,
+      "sha256": "41fae9628d8df9d0f2aa3402805e3ac56650781c389c7bbd3b5870af49bcb453",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/read.me",
+      "bytes": 284,
+      "sha256": "dc4f4303df2ea591f704e4e8ac4f9b3025826ac58e19f2a51fcf00013403fc29",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/source_files.json",
+      "bytes": 16977,
+      "sha256": "b3744c84b6d9f8d824fdab5c6375172fc875ee23501d8540e5a22e4d58d952e6",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/training_evidence.json",
+      "bytes": 32864,
+      "sha256": "021998a90b5a210db7d737d4a773005b01ede4bb36e8334e61e8f82ff753d186",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true
     },
@@ -663,8 +735,8 @@
     },
     {
       "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/validate_release.py",
-      "bytes": 4129,
-      "sha256": "987528636d271230814ede3de1a7b224e62134511a6d2df4e97a750e6ccc8af3",
+      "bytes": 5880,
+      "sha256": "c265ae1348b87d11d5ff358a9fd20d17f1bd37c90c1018ac5405c094a59410db",
       "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
       "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
       "status": "VERIFIED_COMPLETE",
@@ -679,5 +751,9 @@
     "personal absolute paths"
   ],
   "missing": "pending.json",
-  "manifest_self_hash": "excluded to avoid self-reference"
+  "manifest_self_hash": "excluded to avoid self-reference",
+  "completed_training_inventory": "completed_training/model_index.csv",
+  "completed_backbones": 9,
+  "completed_matching_heads": 5,
+  "updated_at_utc": "2026-11-14T15:27:52.296369+00:00"
 }

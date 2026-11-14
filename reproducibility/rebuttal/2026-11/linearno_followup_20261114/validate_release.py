@@ -62,6 +62,30 @@ def main():
     for r in manifest['files']:
         f=root/r['path'];assert f.is_file() and f.stat().st_size==r['bytes']
         assert hashlib.sha256(f.read_bytes()).hexdigest()==r['sha256'],str(f)
+    completed=data/'completed_training'
+    if completed.exists():
+        model_rows=rows(completed/'model_index.csv')
+        assert len({r['checkpoint_sha256'] for r in model_rows})==len(model_rows)
+        published={r['checkpoint_hash']:r for r in rows(data/'checkpoint_registry.csv')}
+        extra=json.loads((completed/'training_evidence.json').read_text())
+        verified={a['row']['checkpoint_sha256']:a['row'] for a in extra['completed_assets'] if a['row']['asset_type']=='backbone'}
+        assert set(r['checkpoint_sha256'] for r in model_rows)==set(published)|set(verified)
+        for r in model_rows:
+            assert r['training_status']=='VERIFIED_COMPLETE' and r['weights_in_git'].lower()=='false'
+            if r['checkpoint_sha256'] in published:
+                original=published[r['checkpoint_sha256']]
+                assert r['head_sha256']==original['head_hash']
+                assert r['normalizer_sha256']==original['normalizer_hash']
+            else:
+                original=verified[r['checkpoint_sha256']]
+                assert original['training_verified'] and original['allowed_public']
+                assert int(r['epochs_completed'])==original['epochs_requested']==original['epochs_completed']
+                assert int(r['optimizer_updates'])==original['optimizer_updates']
+                close(r['validation_score'],original['validation_score'])
+                assert r['accuracy_status']=='PENDING' and r['latency_status']=='PENDING'
+            if r['dataset']=='darcy':assert r['protocol_group']=='legacy_alternative_to_matched900'
+        assert len(model_rows)==manifest['completed_backbones']
+        assert sum(bool(r['head_sha256']) for r in model_rows)==manifest['completed_matching_heads']
     from PIL import Image
     figure_root=root/'figures/rebuttal/2026-11/linearno_followup_20261114'
     for f in figure_root.rglob('*.png'):

@@ -1,0 +1,383 @@
+{
+  "scope": "Relative paths locate external workspace records; hashes identify their original bytes.",
+  "models": [
+    {
+      "model_id": "shapenet_car_Transolver3_seed0",
+      "source_files": [
+        {
+          "role": "backbone_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/shapenet_car_t3_ddp2_e400_trainingseed0_manifest.json",
+          "bytes": 3244,
+          "sha256": "609e5103d9839586e5100c7ebbec5dcab8cecb079592a9b5356167b438b06d79",
+          "payload_published": false
+        },
+        {
+          "role": "training_log",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/logs/seed0_train.log",
+          "bytes": 77445,
+          "sha256": "f151f6a1603a08a10d73bc5328a72804d19a2947d8ff130e298656cc79634e56",
+          "payload_published": false
+        },
+        {
+          "role": "head_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/head/ca_pressure_trainingseed0_headseed0_manifest.json",
+          "bytes": 60253,
+          "sha256": "04dbeda85acb2ba340270cf9c4b899e804023acca93b9289cfb91ffcd2b4b703",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "b03337d03ce394d7e72d41add537782663754bde",
+      "new_training_run": false
+    },
+    {
+      "model_id": "shapenet_car_Transolver3_seed1",
+      "source_files": [
+        {
+          "role": "backbone_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed1/shapenet_car_t3_ddp2_e400_trainingseed1_manifest.json",
+          "bytes": 3245,
+          "sha256": "e04b8cb764d7c7a7b0aea5ce5a6b9dcc6bc652b68ae994b9741542b385f3f5b9",
+          "payload_published": false
+        },
+        {
+          "role": "training_log",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/logs/seed1_train.log",
+          "bytes": 77415,
+          "sha256": "c3fcf6e2eba4c9cec04ea948d92dedbe1b01f8e83ee391a433bd1762c3186ca7",
+          "payload_published": false
+        },
+        {
+          "role": "head_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed1/head/ca_pressure_trainingseed1_headseed1_manifest.json",
+          "bytes": 60221,
+          "sha256": "75208a72047cbb33e3215094929e6b077b6537b85e1709461b5b541b7ad4eaea",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "b03337d03ce394d7e72d41add537782663754bde",
+      "new_training_run": false
+    },
+    {
+      "model_id": "shapenet_car_Transolver3_seed2",
+      "source_files": [
+        {
+          "role": "backbone_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed2/shapenet_car_t3_ddp2_e400_trainingseed2_manifest.json",
+          "bytes": 3244,
+          "sha256": "301e99d008a2637aad2f339c4e1bf2f629c91cfb082b97177c780dce67034645",
+          "payload_published": false
+        },
+        {
+          "role": "training_log",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/logs/seed2_train.log",
+          "bytes": 77425,
+          "sha256": "a1da8e949937ce651e16408c6f036ef0304f5b95e568167e9b95d930c314f71e",
+          "payload_published": false
+        },
+        {
+          "role": "head_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed2/head/ca_pressure_trainingseed2_headseed2_manifest.json",
+          "bytes": 60264,
+          "sha256": "26c49447e10140eb01753bb8bcf32f8257f200aa34f6665960f9f4183a523a42",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "b03337d03ce394d7e72d41add537782663754bde",
+      "new_training_run": false
+    },
+    {
+      "model_id": "shapenet_car_LinearNO_seed0",
+      "source_files": [
+        {
+          "role": "backbone_manifest",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E3_backbones/checkpoints/seed0/shapenet_car_linearno_ddp2_e400_trainingseed0_manifest.json",
+          "bytes": 3177,
+          "sha256": "61d65fd892440b41d09cc6ab3dd1827ed2b32607e46180fdb41fd318274481e2",
+          "payload_published": false
+        },
+        {
+          "role": "training_log",
+          "workspace_relative_path": "rebuttal_20261112/experiments/E3_backbones/logs/train.log",
+          "bytes": 77553,
+          "sha256": "c6fab0ac7d67d33b6d9ab194ea1e64a87a06fca5165e942fe078db9f6affe803",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "b03337d03ce394d7e72d41add537782663754bde",
+      "new_training_run": false
+    },
+    {
+      "model_id": "airfoil2d_Transolver3_seed0",
+      "source_files": [
+        {
+          "role": "backbone_manifest",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/manifest.json",
+          "bytes": 15206,
+          "sha256": "62eb067653e3b03efd3908d9e8dd6f400f3cd23a6987c0bbc96365060a8768d6",
+          "payload_published": false
+        },
+        {
+          "role": "training_log",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/t3_train.log",
+          "bytes": 339874,
+          "sha256": "a3e2e2fb7891dfa5bb7e2f9601527b939ae0a2a72b2b9d9e207d4d065b980c1c",
+          "payload_published": false
+        },
+        {
+          "role": "head_manifest",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/head/manifest.json",
+          "bytes": 37413,
+          "sha256": "660b1d079c03e875fcaf91200eaefa0469e15cb60e784281889b3afd08df1c27",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "b03337d03ce394d7e72d41add537782663754bde",
+      "new_training_run": false
+    },
+    {
+      "model_id": "airfoil2d_LinearNO_seed0",
+      "source_files": [
+        {
+          "role": "backbone_manifest",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/manifest.json",
+          "bytes": 15229,
+          "sha256": "1dd62ae0e679ec9f8c24faa9b13cb0dedfe9a084a92deea0af09b605285e101c",
+          "payload_published": false
+        },
+        {
+          "role": "training_log",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/linearno_train.log",
+          "bytes": 339765,
+          "sha256": "69a9c2d30ab62a6d5e1a72ec2b552ef1860a3879e6ec9f13fa2c103ce42ad70f",
+          "payload_published": false
+        },
+        {
+          "role": "head_manifest",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/head/manifest.json",
+          "bytes": 37443,
+          "sha256": "eab2100f8c5d04dc98c0c5624aa46759d8eb4a85581bd2103afc460a3d2739a7",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "b03337d03ce394d7e72d41add537782663754bde",
+      "new_training_run": false
+    },
+    {
+      "model_id": "darcy_T3_seed0_backbone",
+      "source_files": [
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/manifest.json",
+          "bytes": 17365,
+          "sha256": "88bc8bbcec1299f3dc3eeac2f0df02e604a71358fa6746bccf73253fa284f4d9",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/best.pt",
+          "bytes": 3955184,
+          "sha256": "141c4efd4a6058d4c9d182d2ebd7deac4c652242b1445f7bb234b8451dc3e17a",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/last.pt",
+          "bytes": 3955184,
+          "sha256": "06a4f18a116f3ea64e82110724ab1001a70240eb97a02b14d2b54bd51bb0a053",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/history.jsonl",
+          "bytes": 347678,
+          "sha256": "e08762b75eeabd02f1a27fe2bccada765998f87ec15226ed6237e52b472cc09c",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/data/darcy/normalizer.npz",
+          "bytes": 1002,
+          "sha256": "528ff2491a88cdfa67615781b770507a017a527d63459696cb8a19778bdcf0ce",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed0/backbone/resume.pt",
+          "bytes": 11938041,
+          "sha256": "798ec17574e1737545f2bdbe5168bdc170890a3045ffdf40588405489b1a2ace",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/config/darcy.json",
+          "bytes": 17166,
+          "sha256": "8e97125037e17b73057b7c88c1426500ecbcb988c68c57777e722c22d23c33a7",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/logs/darcy_seed0_backbone.log",
+          "bytes": 69996,
+          "sha256": "2c1d3ed1445925b638ad29d05bab1b4f718a829de7564f78c50c942f93edd06c",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "training_evidence.json#darcy_T3_seed0_backbone",
+      "new_training_run": true
+    },
+    {
+      "model_id": "darcy_T3_seed1_backbone",
+      "source_files": [
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/manifest.json",
+          "bytes": 17365,
+          "sha256": "21cb20127b1f2e189177771c33e7c6e9aeecbdc59412332f4d0d8539540a9727",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/best.pt",
+          "bytes": 3955184,
+          "sha256": "beeb1ce9debdd2bcb1f5d9a7f7f901fcbbad69c084ab7e9806eb216af48a1038",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/last.pt",
+          "bytes": 3955184,
+          "sha256": "266710dd40045db5bf7d695d75d488c3c5b42d2dd95fb844d2b4f23a552c51d0",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/history.jsonl",
+          "bytes": 347644,
+          "sha256": "33d22c5e3243bd38e2d58ae9f213491fb9d0712ac7bacb805edab046ec69e175",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/data/darcy/normalizer.npz",
+          "bytes": 1002,
+          "sha256": "528ff2491a88cdfa67615781b770507a017a527d63459696cb8a19778bdcf0ce",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed1/backbone/resume.pt",
+          "bytes": 11938105,
+          "sha256": "bf45b88d2373056b6783638326ac30265ae54b4198065e2f1a26ec0b046156bd",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/config/darcy.json",
+          "bytes": 17166,
+          "sha256": "8e97125037e17b73057b7c88c1426500ecbcb988c68c57777e722c22d23c33a7",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "rebuttal_20261114_standard_seeds/logs/darcy_seed1_backbone.log",
+          "bytes": 69996,
+          "sha256": "9609b78f228e353786d6fe7c3b7258cfe31c2e2c694d63647d729face98f3648",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "training_evidence.json#darcy_T3_seed1_backbone",
+      "new_training_run": true
+    },
+    {
+      "model_id": "airfoil_linearno_conv_seed0_backbone",
+      "source_files": [
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/manifest.json",
+          "bytes": 15058,
+          "sha256": "f29543c607e691b5cec20714ac7c68c34349f68767a168e2be44fdda377d90d1",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/best.pt",
+          "bytes": 7122852,
+          "sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/last.pt",
+          "bytes": 7112968,
+          "sha256": "a61e8049f059ee0ee7edbc482b19c763b175e4f7649cc951549cbf478c800a0b",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/resume.pt",
+          "bytes": 21392855,
+          "sha256": "7b541f1c586d79fc4e64d958d6dda07aca86e6e620dbc2fe48d85f3d36417854",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno_conv/history.jsonl",
+          "bytes": 332687,
+          "sha256": "f856fea5a1892cebaa1632ed5023e9f793e4cffb83dde761d82a7f408af535bb",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/logs/linearno_conv_train.log",
+          "bytes": 332687,
+          "sha256": "f856fea5a1892cebaa1632ed5023e9f793e4cffb83dde761d82a7f408af535bb",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/cache/normalizer.npz",
+          "bytes": 7964,
+          "sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/split_manifest.json",
+          "bytes": 26573,
+          "sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/common.py",
+          "bytes": 5700,
+          "sha256": "eba482f6c99104a8657b42e938e13777e9885610f764a1c455d44981ef18ca44",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/config/execution_sources/train.py",
+          "bytes": 7645,
+          "sha256": "6d4afb2c9205d66dc5a12e8f7305aa8ed64925fc6873d92454fa66fe3d0d7b1f",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/results/linearno_conv_identity_validation.json",
+          "bytes": 859,
+          "sha256": "c61628b044d7b279a28bd46aed2dbf9d9489675f5b7ed1e72146d51ff8765c97",
+          "payload_published": false
+        },
+        {
+          "role": "training_evidence",
+          "workspace_relative_path": "linearno_followup_20261114/standard_benchmarks/airfoil/config/precision_observation.json",
+          "bytes": 723,
+          "sha256": "a06eddbefb939a7243eec540efc162e3bfb10e86c6a2f85027d041a0bc6b5bb0",
+          "payload_published": false
+        }
+      ],
+      "verification_origin": "training_evidence.json#airfoil_linearno_conv_seed0_backbone",
+      "new_training_run": true
+    }
+  ]
+}

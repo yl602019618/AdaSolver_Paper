@@ -1,0 +1,56 @@
+{
+  "snapshot_utc": "2026-11-14T15:17:54.846083+00:00",
+  "items": [
+    {
+      "asset_id": "darcy_T3_seed2_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 412,
+      "epochs_requested": 1000,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/darcy/seed2/backbone"
+    },
+    {
+      "asset_id": "elasticity_T3_seed0_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 212,
+      "epochs_requested": 500,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/elasticity/seed0/backbone"
+    },
+    {
+      "asset_id": "elasticity_T3_seed1_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 122,
+      "epochs_requested": 500,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/elasticity/seed1/backbone"
+    },
+    {
+      "asset_id": "elasticity_T3_seed2_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 122,
+      "epochs_requested": 500,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/elasticity/seed2/backbone"
+    },
+    {
+      "asset_id": "pipe_T3_seed0_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 808,
+      "epochs_requested": 1000,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/pipe/seed0/backbone"
+    },
+    {
+      "asset_id": "pipe_T3_seed1_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 808,
+      "epochs_requested": 1000,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/pipe/seed1/backbone"
+    },
+    {
+      "asset_id": "pipe_T3_seed2_backbone",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "epochs_completed": 807,
+      "epochs_requested": 1000,
+      "path": "rebuttal_20261114_standard_seeds/checkpoints/pipe/seed2/backbone"
+    }
+  ],
+  "scope": "Observations at the audit time; incomplete training is not in model_index.csv",
+  "later_completion": "Airfoil LinearNO_conv training completed after this pending snapshot; its verified Full-only model is now in model_index.csv."
+}

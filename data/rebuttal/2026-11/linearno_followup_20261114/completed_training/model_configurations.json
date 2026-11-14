@@ -1,0 +1,309 @@
+[
+  {
+    "model_id": "shapenet_car_Transolver3_seed0",
+    "source_manifest_sha256": "609e5103d9839586e5100c7ebbec5dcab8cecb079592a9b5356167b438b06d79",
+    "model_configuration": {
+      "architecture": "Transolver3",
+      "model": {
+        "space_dim": 3,
+        "fun_dim": 7,
+        "out_dim": 4,
+        "hidden_dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "mlp_ratio": 2,
+        "slices": 32,
+        "dropout": 0.0,
+        "activation": "gelu",
+        "ref": 8
+      }
+    },
+    "training_configuration": {
+      "epochs": 400,
+      "batch_size": 2,
+      "global_batch_size": 2,
+      "world_size": 2,
+      "optimizer": "AdamW",
+      "scheduler": "OneCycleLR",
+      "nfull": 32186,
+      "nmin_fraction": 0.4,
+      "nmin_count": 12874,
+      "max_grad_norm": 0.1
+    },
+    "source_environment": {}
+  },
+  {
+    "model_id": "shapenet_car_Transolver3_seed1",
+    "source_manifest_sha256": "e04b8cb764d7c7a7b0aea5ce5a6b9dcc6bc652b68ae994b9741542b385f3f5b9",
+    "model_configuration": {
+      "architecture": "Transolver3",
+      "model": {
+        "space_dim": 3,
+        "fun_dim": 7,
+        "out_dim": 4,
+        "hidden_dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "mlp_ratio": 2,
+        "slices": 32,
+        "dropout": 0.0,
+        "activation": "gelu",
+        "ref": 8
+      }
+    },
+    "training_configuration": {
+      "epochs": 400,
+      "batch_size": 2,
+      "global_batch_size": 2,
+      "world_size": 2,
+      "optimizer": "AdamW",
+      "scheduler": "OneCycleLR",
+      "nfull": 32186,
+      "nmin_fraction": 0.4,
+      "nmin_count": 12874,
+      "max_grad_norm": 0.1
+    },
+    "source_environment": {}
+  },
+  {
+    "model_id": "shapenet_car_Transolver3_seed2",
+    "source_manifest_sha256": "301e99d008a2637aad2f339c4e1bf2f629c91cfb082b97177c780dce67034645",
+    "model_configuration": {
+      "architecture": "Transolver3",
+      "model": {
+        "space_dim": 3,
+        "fun_dim": 7,
+        "out_dim": 4,
+        "hidden_dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "mlp_ratio": 2,
+        "slices": 32,
+        "dropout": 0.0,
+        "activation": "gelu",
+        "ref": 8
+      }
+    },
+    "training_configuration": {
+      "epochs": 400,
+      "batch_size": 2,
+      "global_batch_size": 2,
+      "world_size": 2,
+      "optimizer": "AdamW",
+      "scheduler": "OneCycleLR",
+      "nfull": 32186,
+      "nmin_fraction": 0.4,
+      "nmin_count": 12874,
+      "max_grad_norm": 0.1
+    },
+    "source_environment": {}
+  },
+  {
+    "model_id": "shapenet_car_LinearNO_seed0",
+    "source_manifest_sha256": "61d65fd892440b41d09cc6ab3dd1827ed2b32607e46180fdb41fd318274481e2",
+    "model_configuration": {
+      "architecture": "LinearNO",
+      "model": {
+        "space_dim": 3,
+        "fun_dim": 7,
+        "out_dim": 4,
+        "hidden_dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "mlp_ratio": 2,
+        "key_ratio": 1,
+        "dropout": 0.0
+      }
+    },
+    "training_configuration": {
+      "epochs": 400,
+      "batch_size": 2,
+      "global_batch_size": 2,
+      "world_size": 2,
+      "optimizer": "AdamW",
+      "scheduler": "OneCycleLR",
+      "nfull": 32186,
+      "nmin_fraction": 0.4,
+      "nmin_count": 12874,
+      "max_grad_norm": 0.1
+    },
+    "source_environment": {}
+  },
+  {
+    "model_id": "airfoil2d_Transolver3_seed0",
+    "source_manifest_sha256": "62eb067653e3b03efd3908d9e8dd6f400f3cd23a6987c0bbc96365060a8768d6",
+    "model_configuration": {
+      "architecture": "Transolver3",
+      "model_class": "Transolver3Adapter",
+      "architecture_variant": "t3",
+      "native_model_class": "Model",
+      "native_attention_class": "Physics_Attention_Irregular_Mesh"
+    },
+    "training_configuration": {
+      "epochs_requested": 1000,
+      "epochs_completed": 1000,
+      "batch_size": 8,
+      "nfull": 11271,
+      "nmin_fraction": 0.4,
+      "nmin_count": 4508,
+      "max_grad_norm": 0.1,
+      "validation_criterion": "minimum full-point physical relativeL2 on fixed100 validation cases"
+    },
+    "source_environment": {
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "device": "NVIDIA H20"
+    }
+  },
+  {
+    "model_id": "airfoil2d_LinearNO_seed0",
+    "source_manifest_sha256": "1dd62ae0e679ec9f8c24faa9b13cb0dedfe9a084a92deea0af09b605285e101c",
+    "model_configuration": {
+      "architecture": "LinearNO",
+      "model_class": "LinearNOAdapter",
+      "architecture_variant": "linearno",
+      "native_model_class": "LinearAttentionNeuralOperator",
+      "native_attention_class": "LinearNO_temp"
+    },
+    "training_configuration": {
+      "epochs_requested": 1000,
+      "epochs_completed": 1000,
+      "batch_size": 8,
+      "nfull": 11271,
+      "nmin_fraction": 0.4,
+      "nmin_count": 4508,
+      "max_grad_norm": 1.0,
+      "validation_criterion": "minimum full-point physical relativeL2 on fixed100 validation cases"
+    },
+    "source_environment": {
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "device": "NVIDIA H20"
+    }
+  },
+  {
+    "model_id": "darcy_T3_seed0_backbone",
+    "source_manifest_sha256": "88bc8bbcec1299f3dc3eeac2f0df02e604a71358fa6746bccf73253fa284f4d9",
+    "model_configuration": {
+      "space_dim": 2,
+      "fun_dim": 1,
+      "out_dim": 1,
+      "hidden_dim": 128,
+      "heads": 8,
+      "layers": 8,
+      "mlp_ratio": 2,
+      "slices": 64,
+      "dropout": 0.0,
+      "activation": "gelu",
+      "ref": 8
+    },
+    "training_configuration": {
+      "epochs": 1000,
+      "batch_size": 4,
+      "nmin_fraction": 1.0,
+      "nmin_count": 7225,
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 1e-05,
+      "max_grad_norm": 0.1,
+      "scheduler": "OneCycleLR",
+      "pct_start": 0.3,
+      "checkpoint_selection": "minimum full-input validation physical relative L2",
+      "precision": "float32",
+      "optimizer_implementation": "fused_cuda"
+    },
+    "source_environment": {
+      "python": "3.10.12",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "gpu": "NVIDIA H20",
+      "allow_tf32": false,
+      "physical_gpu": 0
+    },
+    "historical_test_visibility": true
+  },
+  {
+    "model_id": "darcy_T3_seed1_backbone",
+    "source_manifest_sha256": "21cb20127b1f2e189177771c33e7c6e9aeecbdc59412332f4d0d8539540a9727",
+    "model_configuration": {
+      "space_dim": 2,
+      "fun_dim": 1,
+      "out_dim": 1,
+      "hidden_dim": 128,
+      "heads": 8,
+      "layers": 8,
+      "mlp_ratio": 2,
+      "slices": 64,
+      "dropout": 0.0,
+      "activation": "gelu",
+      "ref": 8
+    },
+    "training_configuration": {
+      "epochs": 1000,
+      "batch_size": 4,
+      "nmin_fraction": 1.0,
+      "nmin_count": 7225,
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 1e-05,
+      "max_grad_norm": 0.1,
+      "scheduler": "OneCycleLR",
+      "pct_start": 0.3,
+      "checkpoint_selection": "minimum full-input validation physical relative L2",
+      "precision": "float32",
+      "optimizer_implementation": "fused_cuda"
+    },
+    "source_environment": {
+      "python": "3.10.12",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "gpu": "NVIDIA H20",
+      "allow_tf32": false,
+      "physical_gpu": 1
+    },
+    "historical_test_visibility": true
+  },
+  {
+    "model_id": "airfoil_linearno_conv_seed0_backbone",
+    "source_manifest_sha256": "f29543c607e691b5cec20714ac7c68c34349f68767a168e2be44fdda377d90d1",
+    "model_configuration": {
+      "architecture": "LinearNO",
+      "architecture_variant": "linearno_conv",
+      "model_class": "LinearNOAdapter",
+      "native_model_class": "LinearAttentionNeuralOperator",
+      "native_attention_class": "LinearNO_Conv_temp"
+    },
+    "training_configuration": {
+      "epochs_requested": 1000,
+      "epochs_completed": 1000,
+      "batch_size": 8,
+      "nfull": 11271,
+      "nmin_count": 11271,
+      "point_schedule": {
+        "minimum": 11271,
+        "maximum": 11271,
+        "distribution": "full_grid"
+      }
+    },
+    "source_environment": {
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "device": "NVIDIA H20",
+      "precision_observation": {
+        "training_source": "config/execution_sources/train.py",
+        "running_training_code_changed": false,
+        "network_tensor_dtype": "float32",
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": "PyTorch2.10 default True; not overridden by training source",
+        "affected_model": "only supplementary conv-temp may use cuDNN convolution kernels; main point models use linear projections",
+        "kernel_execution_claim": "TF32 convolution permitted, not proof that a specific kernel used it",
+        "final_evaluation_and_latency": {
+          "matmul_allow_tf32": false,
+          "cudnn_allow_tf32": false
+        },
+        "checkpoint_selection": "validation only; supplementary conv-temp validation uses the same allowed precision setting as its training"
+      }
+    },
+    "historical_test_visibility": true
+  }
+]
