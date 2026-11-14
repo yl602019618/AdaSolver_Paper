@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL",
+  "first_gate_complete": true,
+  "audited_at_utc": "2026-11-14T14:22:54.564131+00:00",
+  "fixed_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "elasticity_ancestor": "487fab2d87642c735ddacfe6d6ce13de7ec4999c",
+  "target_branch": "rebuttal/20261114-linearno-seeds",
+  "internal_audit_sha256": "f02ae98ccb3a06c7b3281a181251cac70a45f3f48f9491b472095f58388548b1",
+  "matching_files": 9689,
+  "searched_scopes": [
+    "active workspace",
+    "historical E1/E3/E5",
+    "paper worktrees and branches",
+    "remote heads",
+    "local experiment controllers and manifests"
+  ],
+  "unavailable_search_roots": [
+    "historical macOS workspace was not mounted on this Linux host"
+  ],
+  "subtasks": [
+    {
+      "id": "seed_00",
+      "task": "ShapeNet-Car Transolver3 backbones+heads seeds0/1/2",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "Checkpoint/head/normalizer and 24 raw logs rehashed; 22200 metric rows and rAUEC/train sample SD independently recomputed"
+    },
+    {
+      "id": "seed_01",
+      "task": "ShapeNet-Car Transolver3 beta1 main evidence",
+      "status": "PARTIAL",
+      "skip_execution": true,
+      "reason": "E5 Cd production CPG/CA is beta0.75; beta1 Cd seeds1/2 CPG and all CA beta1 require separate assessment if requested; preserve beta0.75 rows"
+    },
+    {
+      "id": "seed_02",
+      "task": "ShapeNet-Car LinearNO backbone seed0",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "400 epochs,142000 updates; checkpoint and normalizer match independently verified raw/metric evidence"
+    },
+    {
+      "id": "seed_03",
+      "task": "ShapeNet-Car LinearNO backbones seeds1/2",
+      "status": "NOT_FOUND",
+      "skip_execution": false,
+      "reason": "See scoped reuse receipt."
+    },
+    {
+      "id": "seed_04",
+      "task": "ShapeNet-Car LinearNO CA heads seeds0/1/2 and PI/CA evaluation",
+      "status": "NOT_FOUND",
+      "skip_execution": false,
+      "reason": "E3 has no head hash and only Full/Uniform/CPG beta0/1; reconstruction/car workflow concerns inference only"
+    },
+    {
+      "id": "seed_05",
+      "task": "Darcy900/100 Transolver3 and LinearNO seed0",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "skip_execution": true,
+      "reason": "Persistent workflow controllers waiting for occupied GPUs; do not create duplicate queued jobs"
+    },
+    {
+      "id": "seed_06",
+      "task": "Darcy900/100 Transolver3 and LinearNO seeds1/2",
+      "status": "NOT_FOUND",
+      "skip_execution": false,
+      "reason": "Current matched-cohort protocol and all train/head code hardcode seed0"
+    },
+    {
+      "id": "seed_07",
+      "task": "Darcy standard_seeds Transolver3 seeds0/1/2",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "skip_execution": true,
+      "reason": "See scoped reuse receipt."
+    },
+    {
+      "id": "seed_08",
+      "task": "Airfoil Transolver3 and LinearNO seed0",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "skip_execution": true,
+      "reason": "Backbones finished1000 epochs; preliminary evaluation/head/final matrix pending"
+    },
+    {
+      "id": "seed_09",
+      "task": "Airfoil Transolver3 and LinearNO seeds1/2",
+      "status": "NOT_FOUND",
+      "skip_execution": false,
+      "reason": "Current locked protocol and train/head code hardcode seed0"
+    },
+    {
+      "id": "E1_existing_original_checkpoint_latency",
+      "task": "E1_existing_original_checkpoint_latency",
+      "status": "PARTIAL",
+      "skip_execution": true,
+      "reason": "Existing original-checkpoint matrix is numerically replayed and hash-verified. Reusable only under original checkpoint/protocol and published populations. This does not complete the requested new-model/old-new reconstruction matrix; umbrella manifest remains pending."
+    },
+    {
+      "id": "E3_existing_seed0_ControlledLatency",
+      "task": "E3_existing_seed0_ControlledLatency",
+      "status": "PARTIAL",
+      "skip_execution": true,
+      "reason": "Saved 276-condition CPU->CPU complete-field seed0 matrix is independently replayed and artifact hashes match; reusable within original Full/Uniform/CPG beta0/beta1 scope. Missing PI/CA and training seeds1/2; umbrella evidence pending and training git_revision_at_start null."
+    },
+    {
+      "id": "accepted_reconstruction_api_v1p1_parity",
+      "task": "accepted_reconstruction_api_v1p1_parity",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "Implementation numerical-equivalence gate only; final per-checkpoint request validation is separate."
+    },
+    {
+      "id": "Car_final_reconstruction_accuracy_latency",
+      "task": "Car_final_reconstruction_accuracy_latency",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "skip_execution": true,
+      "reason": "Controller alive, waiting for GPU6 owned by another training run. New instructions expand PI/CA/training-seed scope beyond this existing queue; add only missing work after coordination."
+    },
+    {
+      "id": "legacy_GPU_sparse_apply_benchmark",
+      "task": "legacy_GPU_sparse_apply_benchmark",
+      "status": "PARTIAL",
+      "skip_execution": true,
+      "reason": "756 fixed-map comparisons pass saved parity but 30 repeats (map preparation3) and frozen-map application boundary differ from requested20/100 complete request boundary. Preserve and cite separately; do not assign these times to new-model error."
+    },
+    {
+      "id": "standard_darcy_protocol_comparison",
+      "task": "standard_darcy_protocol_comparison",
+      "status": "STALE_OR_CONFLICT",
+      "skip_execution": true,
+      "reason": "1000/200 historical normalized-loss cohort differs from900/100 physical-loss followup; preserve as alternative and do not pool."
+    }
+  ]
+}

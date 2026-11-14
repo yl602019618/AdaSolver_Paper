@@ -1,0 +1,16 @@
+{
+  "reason": "Missing measurements are omitted; the existing Car and standard-task controllers own these runs.",
+  "reconstruction_summary.csv": "Final20/100 old-new complete request A/B/C matrix pending in other session.",
+  "missing_training_cohorts": [
+    "ShapeNet-Car LinearNO seeds1/2 and matching heads",
+    "Darcy both backbones3 training seeds",
+    "Airfoil both backbones3 training seeds"
+  ],
+  "missing_measurements": [
+    "LinearNO Car PI/CA",
+    "actual GPU busy time where absent",
+    "training code Git revision where null"
+  ],
+  "legacy": "E5 Cd-target CPG/CA beta0.75 rows are explicitly legacy; not primary beta1 evidence.",
+  "statistical_scope": "E5 and E3 Transolver3 seed0 overlap. They are separate provenance views and never additional independent models."
+}
