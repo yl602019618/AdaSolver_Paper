@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "input_directory_contains_only_csv": true,
+  "input_csv_count": 8,
+  "model_or_raw_cfd_required": false,
+  "command": [
+    "python3",
+    "plot_scores.py",
+    "--data-dir",
+    "offline_csv_replay",
+    "--output-dir",
+    "figures"
+  ],
+  "figure_families": 6,
+  "plot_script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+  "last_replay": "CSV-only offline source directory; six figure families redrawn successfully"
+}

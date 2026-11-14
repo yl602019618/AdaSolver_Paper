@@ -1,0 +1,798 @@
+{
+  "status": "PARTIAL",
+  "checked_at_utc": "2026-11-14T15:58:34.976869+00:00",
+  "dataset": "airfoil",
+  "case_id": 1001,
+  "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+  "manifest_sha256": "6e2025fccbc1764b927ca7e23adb9bd2e69c7effff6d7b9e9f7a4083a8ef8de5",
+  "validator_sha256": "1641e4424b8083d4d9060f34b3a2cd8a0a1e6b1bcecf8a9094ff6871935bcffb",
+  "contract_sha256": "ab6a93688a89081dfec58adb2250ac6171c8831ba703b19041d8346d51ae9dc9",
+  "gpu_used": false,
+  "model_forward_executed": false,
+  "source_data_modified": false,
+  "failed_checks": 0,
+  "partial_checks": 6,
+  "checks": [
+    {
+      "check": "source_identity",
+      "status": "PASS",
+      "source_files": 7,
+      "capture_current_sha256": "308e651bab45be7f57bd3559a02f71500e623dcb29a687f2767029dcd33ce1d3"
+    },
+    {
+      "check": "uniform.native_point_identity",
+      "status": "PASS",
+      "points": 11271,
+      "selected": 5636,
+      "coarse": 0,
+      "coarse_retained": 0,
+      "csv_fields_exact": 21,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "fce26462a2e03f4df76e96d264f2c17984c20180faee434c1f21b707116ed810"
+    },
+    {
+      "check": "uniform.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "LSQ coarse-pressure gradient norm lifted to all native points by the original nearest-coarse assignment"
+        },
+        "normalized_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "q95",
+          "meaning": "max(raw_score,0)/max(q95,1e-12); not clipped"
+        },
+        "geometry_prior": {
+          "support": "full",
+          "applicable": [
+            "pi"
+          ],
+          "normalization": "none",
+          "meaning": "1 + amp*exp(-physical surface distance/ell)"
+        },
+        "sampling_weight": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "none",
+          "meaning": "actual pre-normalization proposal weight; CPG/CA=(floor+normalized_score)^gamma; PI=geometry prior; Uniform=implicit equal weight1"
+        },
+        "proposal_probability": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "sum1",
+          "meaning": "actual initial rng.choice probability on remaining eligible points; zero on already-forced base; not marginal inclusion probability"
+        },
+        "reported_sampling_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "unmodified SamplingResult.sampling_density; this differs from gamma-powered proposal probability"
+        },
+        "realized_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "mean represented Voronoi mass / represented mass; not a mean-one density over selected samples; Uniform not applicable"
+        },
+        "compensation": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "actual retained-point measure weights passed to final inference; Uniform ones"
+        },
+        "normalized_prior": {
+          "support": "full",
+          "applicable": [
+            "uniform",
+            "pi"
+          ],
+          "normalization": "sum1",
+          "meaning": "PI geometry_prior/sum_full_grid geometry_prior, or Uniform1/N; matches reported selected-point target density, not eligible-only extra-point proposal"
+        },
+        "coarse_feature_l2": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_l2 across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_mean": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_mean across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_std": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_std across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "ca_standardized_output": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "actual pressure-head scalar before decoding; standardized pressure, not final acquisition score"
+        }
+      }
+    },
+    {
+      "check": "uniform.model_score",
+      "status": "NOT_APPLICABLE",
+      "reason": "No model refinement score for this native sampler"
+    },
+    {
+      "check": "uniform.density_normalization",
+      "status": "PASS",
+      "eligible_count": 11150,
+      "proposal_sum": 1.0,
+      "meaning": "initial conditional proposal on eligible residual candidates; not final inclusion probability or selected coverage density"
+    },
+    {
+      "check": "uniform.online_generation_cost",
+      "status": "PARTIAL",
+      "CPU_observer_wall_seconds": 0.0010921433568000793,
+      "reason": "Only instrumented CPU capture; no native online/GPU request timing claimed"
+    },
+    {
+      "check": "uniform.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "pi.native_point_identity",
+      "status": "PASS",
+      "points": 11271,
+      "selected": 5636,
+      "coarse": 0,
+      "coarse_retained": 0,
+      "csv_fields_exact": 21,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "043e875b85394d7e0b8eabf6485ea0f74656ae1159cd2beb62b40d64bbf6ddfc"
+    },
+    {
+      "check": "pi.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "LSQ coarse-pressure gradient norm lifted to all native points by the original nearest-coarse assignment"
+        },
+        "normalized_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "q95",
+          "meaning": "max(raw_score,0)/max(q95,1e-12); not clipped"
+        },
+        "geometry_prior": {
+          "support": "full",
+          "applicable": [
+            "pi"
+          ],
+          "normalization": "none",
+          "meaning": "1 + amp*exp(-physical surface distance/ell)"
+        },
+        "sampling_weight": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "none",
+          "meaning": "actual pre-normalization proposal weight; CPG/CA=(floor+normalized_score)^gamma; PI=geometry prior; Uniform=implicit equal weight1"
+        },
+        "proposal_probability": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "sum1",
+          "meaning": "actual initial rng.choice probability on remaining eligible points; zero on already-forced base; not marginal inclusion probability"
+        },
+        "reported_sampling_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "unmodified SamplingResult.sampling_density; this differs from gamma-powered proposal probability"
+        },
+        "realized_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "mean represented Voronoi mass / represented mass; not a mean-one density over selected samples; Uniform not applicable"
+        },
+        "compensation": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "actual retained-point measure weights passed to final inference; Uniform ones"
+        },
+        "normalized_prior": {
+          "support": "full",
+          "applicable": [
+            "uniform",
+            "pi"
+          ],
+          "normalization": "sum1",
+          "meaning": "PI geometry_prior/sum_full_grid geometry_prior, or Uniform1/N; matches reported selected-point target density, not eligible-only extra-point proposal"
+        },
+        "coarse_feature_l2": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_l2 across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_mean": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_mean across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_std": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_std across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "ca_standardized_output": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "actual pressure-head scalar before decoding; standardized pressure, not final acquisition score"
+        }
+      }
+    },
+    {
+      "check": "pi.model_score",
+      "status": "NOT_APPLICABLE",
+      "reason": "No model refinement score for this native sampler"
+    },
+    {
+      "check": "pi.paper_prior_formula",
+      "status": "PASS",
+      "anchor": "eq:app_pi_airfoil_density",
+      "same_unnormalized_weight": true
+    },
+    {
+      "check": "pi.density_normalization",
+      "status": "PASS",
+      "eligible_count": 11150,
+      "proposal_sum": 1.0,
+      "meaning": "initial conditional proposal on eligible residual candidates; not final inclusion probability or selected coverage density"
+    },
+    {
+      "check": "pi.online_generation_cost",
+      "status": "PARTIAL",
+      "CPU_observer_wall_seconds": 0.012956425547599792,
+      "reason": "Only instrumented CPU capture; no native online/GPU request timing claimed"
+    },
+    {
+      "check": "pi.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "cpg.native_point_identity",
+      "status": "PASS",
+      "points": 11271,
+      "selected": 5636,
+      "coarse": 1127,
+      "coarse_retained": 619,
+      "csv_fields_exact": 21,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "37fadb8088235f7485b82e1a354f3b81f7a8ef1943616824d85876490b62ef40"
+    },
+    {
+      "check": "cpg.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "LSQ coarse-pressure gradient norm lifted to all native points by the original nearest-coarse assignment"
+        },
+        "normalized_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "q95",
+          "meaning": "max(raw_score,0)/max(q95,1e-12); not clipped"
+        },
+        "geometry_prior": {
+          "support": "full",
+          "applicable": [
+            "pi"
+          ],
+          "normalization": "none",
+          "meaning": "1 + amp*exp(-physical surface distance/ell)"
+        },
+        "sampling_weight": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "none",
+          "meaning": "actual pre-normalization proposal weight; CPG/CA=(floor+normalized_score)^gamma; PI=geometry prior; Uniform=implicit equal weight1"
+        },
+        "proposal_probability": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "sum1",
+          "meaning": "actual initial rng.choice probability on remaining eligible points; zero on already-forced base; not marginal inclusion probability"
+        },
+        "reported_sampling_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "unmodified SamplingResult.sampling_density; this differs from gamma-powered proposal probability"
+        },
+        "realized_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "mean represented Voronoi mass / represented mass; not a mean-one density over selected samples; Uniform not applicable"
+        },
+        "compensation": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "actual retained-point measure weights passed to final inference; Uniform ones"
+        },
+        "normalized_prior": {
+          "support": "full",
+          "applicable": [
+            "uniform",
+            "pi"
+          ],
+          "normalization": "sum1",
+          "meaning": "PI geometry_prior/sum_full_grid geometry_prior, or Uniform1/N; matches reported selected-point target density, not eligible-only extra-point proposal"
+        },
+        "coarse_feature_l2": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_l2 across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_mean": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_mean across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_std": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_std across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "ca_standardized_output": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "actual pressure-head scalar before decoding; standardized pressure, not final acquisition score"
+        }
+      }
+    },
+    {
+      "check": "cpg.paper_score_weight_formula",
+      "status": "PASS",
+      "anchor": "eq:app_density_airfoil_ratio",
+      "weight_formula_match": true,
+      "eligible_conditional_probability_match": true
+    },
+    {
+      "check": "cpg.paper_coarse_retention",
+      "status": "PARTIAL",
+      "coarse_points": 1127,
+      "retained": 619,
+      "reason": "Native weighted configuration retains mandatory surface only; fixed paper prose says S0 is retained"
+    },
+    {
+      "check": "cpg.density_normalization",
+      "status": "PASS",
+      "eligible_count": 11150,
+      "proposal_sum": 1.0,
+      "meaning": "initial conditional proposal on eligible residual candidates; not final inclusion probability or selected coverage density"
+    },
+    {
+      "check": "cpg.online_generation_cost",
+      "status": "PARTIAL",
+      "CPU_observer_wall_seconds": 0.08261919766664505,
+      "reason": "Only instrumented CPU capture; no native online/GPU request timing claimed"
+    },
+    {
+      "check": "cpg.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "ca.native_point_identity",
+      "status": "PASS",
+      "points": 11271,
+      "selected": 5636,
+      "coarse": 1127,
+      "coarse_retained": 1127,
+      "csv_fields_exact": 21,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "8d44d502490ff380878cf017b16f4d29fd3a6b47c85d46e68452643270158873"
+    },
+    {
+      "check": "ca.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "LSQ coarse-pressure gradient norm lifted to all native points by the original nearest-coarse assignment"
+        },
+        "normalized_score": {
+          "support": "full",
+          "applicable": [
+            "cpg",
+            "ca"
+          ],
+          "normalization": "q95",
+          "meaning": "max(raw_score,0)/max(q95,1e-12); not clipped"
+        },
+        "geometry_prior": {
+          "support": "full",
+          "applicable": [
+            "pi"
+          ],
+          "normalization": "none",
+          "meaning": "1 + amp*exp(-physical surface distance/ell)"
+        },
+        "sampling_weight": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "none",
+          "meaning": "actual pre-normalization proposal weight; CPG/CA=(floor+normalized_score)^gamma; PI=geometry prior; Uniform=implicit equal weight1"
+        },
+        "proposal_probability": {
+          "support": "eligible",
+          "mask": "eligible",
+          "normalization": "sum1",
+          "meaning": "actual initial rng.choice probability on remaining eligible points; zero on already-forced base; not marginal inclusion probability"
+        },
+        "reported_sampling_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "unmodified SamplingResult.sampling_density; this differs from gamma-powered proposal probability"
+        },
+        "realized_density": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "mean represented Voronoi mass / represented mass; not a mean-one density over selected samples; Uniform not applicable"
+        },
+        "compensation": {
+          "support": "selected",
+          "mask": "selected",
+          "normalization": "none",
+          "meaning": "actual retained-point measure weights passed to final inference; Uniform ones"
+        },
+        "normalized_prior": {
+          "support": "full",
+          "applicable": [
+            "uniform",
+            "pi"
+          ],
+          "normalization": "sum1",
+          "meaning": "PI geometry_prior/sum_full_grid geometry_prior, or Uniform1/N; matches reported selected-point target density, not eligible-only extra-point proposal"
+        },
+        "coarse_feature_l2": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_l2 across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_mean": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_mean across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "coarse_feature_std": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "coarse_feature_std across the actual128 first-block channels; std usesddof0 and is not training uncertainty"
+        },
+        "ca_standardized_output": {
+          "support": "coarse",
+          "mask": "coarse",
+          "applicable": [
+            "ca"
+          ],
+          "normalization": "none",
+          "meaning": "actual pressure-head scalar before decoding; standardized pressure, not final acquisition score"
+        }
+      }
+    },
+    {
+      "check": "ca.paper_score_weight_formula",
+      "status": "PASS",
+      "anchor": "eq:app_ca_airfoil_density",
+      "weight_formula_match": true,
+      "eligible_conditional_probability_match": true
+    },
+    {
+      "check": "ca.paper_coarse_retention",
+      "status": "PASS",
+      "coarse_points": 1127,
+      "retained": 1127
+    },
+    {
+      "check": "ca.feature_head_lineage",
+      "status": "PASS",
+      "feature_shape": [
+        1,
+        1127,
+        128
+      ],
+      "bottleneck_shape": [
+        1,
+        1127,
+        8
+      ],
+      "bottleneck_semantics": "raw first linear-layer output, before GELU",
+      "decoded_pressure_checked": true
+    },
+    {
+      "check": "ca.density_normalization",
+      "status": "PASS",
+      "eligible_count": 10144,
+      "proposal_sum": 0.9999999999999999,
+      "meaning": "initial conditional proposal on eligible residual candidates; not final inclusion probability or selected coverage density"
+    },
+    {
+      "check": "ca.online_generation_cost",
+      "status": "PARTIAL",
+      "CPU_observer_wall_seconds": 0.02779100090265274,
+      "reason": "Only instrumented CPU capture; no native online/GPU request timing claimed"
+    },
+    {
+      "check": "ca.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "truth_boundary_source_review",
+      "status": "PASS",
+      "truth_used_for_score": false,
+      "denial_tests": 3,
+      "actual_score_access_attempts": 0,
+      "error_phase_after_score_persistence": true,
+      "diagnostic_arrays_separate": true
+    },
+    {
+      "check": "declared_paper_consistency_status",
+      "status": "PARTIAL",
+      "reason": "PARTIAL"
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/score_manifest.json",
+      "sha256": "6e2025fccbc1764b927ca7e23adb9bd2e69c7effff6d7b9e9f7a4083a8ef8de5",
+      "bytes": 24068
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/public_data_manifest.json",
+      "sha256": "79204aeb554a7c15eb48100752edea176feaff9d88f97cc3db1e07634d50bd21",
+      "bytes": 3753
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/common.py",
+      "sha256": "eba482f6c99104a8657b42e938e13777e9885610f764a1c455d44981ef18ca44",
+      "bytes": 5700
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/runtime.py",
+      "sha256": "44633069a743f424deecaafd8f927f897dfbb3f26755d3b286dc16574d2de175",
+      "bytes": 4558
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/vendor/adasolver/evaluation/airfoil2d.py",
+      "sha256": "24a1e914b3d16b80c329e812650df026213c2e6f8322b187d262879cbf6e7593",
+      "bytes": 23025
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/vendor/adasolver/inference/cpg/airfoil2d_features.py",
+      "sha256": "db79d3da9c52a3fce0c1a1e609ac9a773a115538c562977d9df3de5e45241aaa",
+      "bytes": 3476
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/vendor/adasolver/inference/cpg/airfoil2d_single_feature.py",
+      "sha256": "b1d5c024358c2e59522c22434c1557f1740118ac0960e34842045d642a79db38",
+      "bytes": 7377
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/vendor/adasolver/inference/pi/airfoil2d.py",
+      "sha256": "94df3cb83934d24ace8e6e9e1dd2001aa63959c7a8317a8985b4a39d6cff606b",
+      "bytes": 5849
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/code/vendor/adasolver/inference/uniform/airfoil2d.py",
+      "sha256": "e54905475fb817ccf3dcc890c302e4182b281381dbbf0a789c6eea730f3a1fa6",
+      "bytes": 1570
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/capture_scores.py",
+      "sha256": "308e651bab45be7f57bd3559a02f71500e623dcb29a687f2767029dcd33ce1d3",
+      "bytes": 20493
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/uniform_score_arrays.npz",
+      "sha256": "76041a5383c40b6f4c94e00b6a3b8aa5546d0799745dae485a5d19d5de2117a0",
+      "bytes": 139152
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/case1001_s0_b0.5_uniform.npz",
+      "sha256": "30241686057dafc9113e1c63b1c9a8ea764f050120432752ac06b87825a74fab",
+      "bytes": 33986
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/uniform_points.csv",
+      "sha256": "5bd01671443d3828e9af3473f46a7b4f184ae5ab097b4770d491cd403b63b1af",
+      "bytes": 1263068
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/pi_score_arrays.npz",
+      "sha256": "b74612e1280fab8760ce5610d28beeff1e80331f15754e4500181592428d53b7",
+      "bytes": 505296
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/case1001_s0_b0.5_pi.npz",
+      "sha256": "a11adf01237745f173b2cd465ae1ccfc8c315758fd6cb1c4212c7c5da99cdaa8",
+      "bytes": 37330
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/pi_points.csv",
+      "sha256": "f8528f455122518a37fe400df3291e42244ea63bc019c8c43d027bbdd7ce6b31",
+      "bytes": 1808279
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/cpg_score_arrays.npz",
+      "sha256": "d456ff0eb74ac17274d843d397a44cbb559e40d6f93b7ed153639289415b44a9",
+      "bytes": 234670
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/case1001_s0_b0.5_cpg.npz",
+      "sha256": "184abd8f6367d87aa10250f7d6315af2d4086ecbcacbcc7e1c1eedadab85c583",
+      "bytes": 39940
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/cpg_points.csv",
+      "sha256": "6a4ca75c74b2884ddd01add64b6e993a4feff3029fcd434a80cfdedd4153a3cc",
+      "bytes": 1875931
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/ca_score_arrays.npz",
+      "sha256": "1c48cb3036778b5ffe410a09a1d26ea63e0ce8d1cd7fd1da16ab8954a454412e",
+      "bytes": 820806
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_ca/case1001_s0_b0.5_ca.npz",
+      "sha256": "98bf9ed1cce4dd6b1a77102f51c6f9bb3b498045c82d900f004c36103888a49c",
+      "bytes": 39573
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/ca_points.csv",
+      "sha256": "b3939b8db8ce6fb38b435189243151ce8842721e929598fcc4a8e6433049f0f1",
+      "bytes": 1926608
+    },
+    {
+      "path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/head/pressure_d8_best.pt",
+      "sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+      "bytes": 8641
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/truth_isolation.json",
+      "sha256": "ca512034a8468fa6b22db9f5452349246e56edd88ec07a77a79b2ae92fd1b5e3",
+      "bytes": 1173
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/uniform_error_only.npz",
+      "sha256": "9147bd171dfdfe6cf233045fd06cda1700cafe2dadf137293b3be9075e83f90e",
+      "bytes": 117505
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/uniform_error_points.csv",
+      "sha256": "8643f620faf94b49c54d4a2f7946dfefa2b0deaafa87418b0f11ec827e5d8675",
+      "bytes": 555990
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/pi_error_only.npz",
+      "sha256": "489c602c30e53bb2126dad676d7a8aa209043653eb2a3ec7844d9485b7043bef",
+      "bytes": 121035
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/pi_error_points.csv",
+      "sha256": "321594171e30cd4decdf4273c8464737792ad5f720c5e53f49d7af24e4e75b65",
+      "bytes": 557469
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/cpg_error_only.npz",
+      "sha256": "12282e8cdccded7499b672002480cf327605440a4355b2ac090f560e32f272d4",
+      "bytes": 121455
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/cpg_error_points.csv",
+      "sha256": "cfedf8200a6545f5e4a0be6abab70d33d0046fbb478065ffec0a6c8ae74fb750",
+      "bytes": 557585
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/ca_error_only.npz",
+      "sha256": "c8af0ded47fee5fd3e2837265bbed83a2786a64a9bbefae03ada7ac5cb6d8095",
+      "bytes": 123442
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/ca_error_points.csv",
+      "sha256": "47b00ca0fd5f8c8d0436a1c55277fb2e86719bf1c88262903ae3f23f28a6f628",
+      "bytes": 557284
+    }
+  ]
+}

@@ -1,0 +1,735 @@
+{
+  "status": "PARTIAL",
+  "checked_at_utc": "2026-11-14T15:58:11.819936+00:00",
+  "dataset": "ShapeNet-Car",
+  "case_id": "param0/100715345ee54d7ae38b52b4ee9d36a3",
+  "checkpoint_sha256": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+  "manifest_sha256": "ccb2f559c72009dac26604719d06d90b1f0f6668e771bba9d2f76c910227f980",
+  "validator_sha256": "1641e4424b8083d4d9060f34b3a2cd8a0a1e6b1bcecf8a9094ff6871935bcffb",
+  "contract_sha256": "ab6a93688a89081dfec58adb2250ac6171c8831ba703b19041d8346d51ae9dc9",
+  "gpu_used": false,
+  "model_forward_executed": false,
+  "source_data_modified": false,
+  "failed_checks": 0,
+  "partial_checks": 2,
+  "checks": [
+    {
+      "check": "capture_execution_identity",
+      "status": "PARTIAL",
+      "reason": "Current source hash verified; pre-execution capture-script hash was not recorded",
+      "source_identity": {
+        "path": "capture.py",
+        "sha256": "6ff62b21e34401570102d6fce671411e577c3187d02e3a02d7cd29b8ab4035d7",
+        "status": "observed_current_after_metadata_only_edits",
+        "executed_source_file_hash": "not_captured_before_run",
+        "note": "Acquisition code unchanged; subsequent edits added field semantic metadata only. No claim of a pre-execution script hash."
+      }
+    },
+    {
+      "check": "source_identity",
+      "status": "PASS",
+      "source_files": 10,
+      "capture_current_sha256": "6ff62b21e34401570102d6fce671411e577c3187d02e3a02d7cd29b8ab4035d7"
+    },
+    {
+      "check": "uniform.native_point_identity",
+      "status": "PASS",
+      "points": 32186,
+      "selected": 16093,
+      "coarse": 0,
+      "coarse_retained": 0,
+      "csv_fields_exact": 17,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "4a1a5ec64af202dbd6b7936b4f7e12eb4848ffb56f116ca37bebd7dbd1947e9b"
+    },
+    {
+      "check": "uniform.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_prior": {
+          "support": "full",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "full",
+          "semantic_type": "selection_rate",
+          "normalization_rule": "none; sum over full reference cloud=K"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "constant1/N"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "constant1"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "full",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "full",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      }
+    },
+    {
+      "check": "uniform.model_score",
+      "status": "NOT_APPLICABLE",
+      "reason": "Only explicitly named prior is present"
+    },
+    {
+      "check": "uniform.designed_paper_target",
+      "status": "PASS",
+      "sum_probability": 1.0000000000000004,
+      "mean_reference_ratio": 1.0,
+      "formula": "t/sum(t) and N*t/sum(t)",
+      "source": "uniform prior",
+      "actual_FPS_or_fallback_inclusion_probability_claimed": false
+    },
+    {
+      "check": "uniform.generation_cost",
+      "status": "PASS",
+      "source": "original native raw-record stage seconds",
+      "stage_seconds": {
+        "coarse_seconds": 0.0,
+        "feature_head_seconds": 0.0,
+        "score_seconds": 0.0,
+        "refinement_seconds": 0.0003613904118537903
+      },
+      "CPU_observer_wall_seconds": 1.0957017466425896,
+      "limitation": "Native stage boundaries only; no claim of isolated GPU busy time or repeated request latency"
+    },
+    {
+      "check": "uniform.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "pi.native_point_identity",
+      "status": "PASS",
+      "points": 32186,
+      "selected": 16093,
+      "coarse": 0,
+      "coarse_retained": 0,
+      "csv_fields_exact": 17,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "f81fb520abaa59f65eb769c40e0a54476a7636b76becf861bbbb1913b30d2af2"
+    },
+    {
+      "check": "pi.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_prior": {
+          "support": "full",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "not_applicable",
+          "semantic_type": "stratum_allocation_ratio",
+          "normalization_rule": "not_defined_by_native_algorithm"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "selected weights/sum(selected weights)"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "native shell weight^(-beta), with fallback assignments"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "not_applicable",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "not_applicable",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability",
+          "provenance": "derived from frozen frac_extra/r and locked paper mixture formula; this full array is not computed by the native PI selector"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      }
+    },
+    {
+      "check": "pi.model_score",
+      "status": "NOT_APPLICABLE",
+      "reason": "Only explicitly named prior is present"
+    },
+    {
+      "check": "pi.designed_paper_target",
+      "status": "PASS",
+      "sum_probability": 1.0000000000000004,
+      "mean_reference_ratio": 1.0000000000000002,
+      "formula": "t/sum(t) and N*t/sum(t)",
+      "source": "frozen hard-shell mixture; explicit design distribution",
+      "actual_FPS_or_fallback_inclusion_probability_claimed": false
+    },
+    {
+      "check": "pi.generation_cost",
+      "status": "PASS",
+      "source": "original native raw-record stage seconds",
+      "stage_seconds": {
+        "coarse_seconds": 0.0,
+        "feature_head_seconds": 0.0,
+        "score_seconds": 0.0,
+        "refinement_seconds": 0.029380671679973602
+      },
+      "CPU_observer_wall_seconds": 1.0634634867310524,
+      "limitation": "Native stage boundaries only; no claim of isolated GPU busy time or repeated request latency"
+    },
+    {
+      "check": "pi.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "cpg.native_point_identity",
+      "status": "PASS",
+      "points": 32186,
+      "selected": 16093,
+      "coarse": 3218,
+      "coarse_retained": 3218,
+      "csv_fields_exact": 17,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "e4945eedf802fc8bde7a7590a14b075a5c99e3caacfc2969e9500e7e0b2a60f4"
+    },
+    {
+      "check": "cpg.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_prior": {
+          "support": "not_applicable",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "full",
+          "semantic_type": "stratum_allocation_ratio",
+          "normalization_rule": "none; sum over full reference cloud=K"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "stratum_selected_count/stratum_reference_count; none"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "allocation_density^(-beta)"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "full",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "full",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      }
+    },
+    {
+      "check": "cpg.CPU_replay_parity",
+      "status": "PASS",
+      "violations": 0,
+      "max_absolute_difference": 0.0003258118300664137,
+      "relative_norm_difference": 1.7571941114630562e-06,
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "archived_score_preserved": true
+    },
+    {
+      "check": "cpg.paper_priority_formula",
+      "status": "PASS",
+      "anchor": "eq:app_density_car",
+      "unnormalized_weight_match": true
+    },
+    {
+      "check": "cpg.derived_quota_measure",
+      "status": "PASS",
+      "sum_p": 1.0000000000000002,
+      "mean_reference_ratio": 1.0,
+      "inverse_correction_global_factor": 0.5,
+      "interpretation": "derived from realized integer quotas; not equivalent to priority t/mean(t) or independent point inclusion probabilities",
+      "model_global_scale_forward_tested": false
+    },
+    {
+      "check": "cpg.designed_paper_target",
+      "status": "PASS",
+      "sum_probability": 1.0,
+      "mean_reference_ratio": 1.0,
+      "formula": "t/sum(t) and N*t/sum(t)",
+      "source": "native wall-and-score priority from archived score",
+      "actual_FPS_or_fallback_inclusion_probability_claimed": false
+    },
+    {
+      "check": "cpg.generation_cost",
+      "status": "PASS",
+      "source": "original native raw-record stage seconds",
+      "stage_seconds": {
+        "coarse_seconds": 0.014473289251327515,
+        "feature_head_seconds": 0.0,
+        "score_seconds": 0.026870816946029663,
+        "refinement_seconds": 0.153463713824749
+      },
+      "CPU_observer_wall_seconds": 1.315690517425537,
+      "limitation": "Native stage boundaries only; no claim of isolated GPU busy time or repeated request latency"
+    },
+    {
+      "check": "cpg.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "ca.native_point_identity",
+      "status": "PASS",
+      "points": 32186,
+      "selected": 16093,
+      "coarse": 3218,
+      "coarse_retained": 3218,
+      "csv_fields_exact": 17,
+      "coordinate_dtype": "float32",
+      "selected_ordered_sha256": "36f5c126e79a812101b9e65d1b80093c6c213ab4332836e816fdca32316a4af4"
+    },
+    {
+      "check": "ca.field_semantics",
+      "status": "PASS",
+      "fields": {
+        "raw_prior": {
+          "support": "not_applicable",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "full",
+          "semantic_type": "stratum_allocation_ratio",
+          "normalization_rule": "none; sum over full reference cloud=K"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "stratum_selected_count/stratum_reference_count; none"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "allocation_density^(-beta)"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "full",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "full",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      }
+    },
+    {
+      "check": "ca.CPU_replay_parity",
+      "status": "PARTIAL",
+      "violations": 154,
+      "max_absolute_difference": 0.00040551702618785157,
+      "relative_norm_difference": 3.6220993592896356e-06,
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "archived_score_preserved": true
+    },
+    {
+      "check": "ca.paper_priority_formula",
+      "status": "PASS",
+      "anchor": "eq:app_ca_car_density",
+      "unnormalized_weight_match": true
+    },
+    {
+      "check": "ca.feature_head_lineage",
+      "status": "PASS",
+      "feature_shape": [
+        3218,
+        256
+      ],
+      "physical_decode_checked": true,
+      "head_sha256": "79e295c57dc48c9bad7b6828d8768515b94815870d84b887af3b49e63a4c87f5"
+    },
+    {
+      "check": "ca.derived_quota_measure",
+      "status": "PASS",
+      "sum_p": 1.0,
+      "mean_reference_ratio": 1.0,
+      "inverse_correction_global_factor": 0.5,
+      "interpretation": "derived from realized integer quotas; not equivalent to priority t/mean(t) or independent point inclusion probabilities",
+      "model_global_scale_forward_tested": false
+    },
+    {
+      "check": "ca.designed_paper_target",
+      "status": "PASS",
+      "sum_probability": 0.9999999999999999,
+      "mean_reference_ratio": 0.9999999999999998,
+      "formula": "t/sum(t) and N*t/sum(t)",
+      "source": "native wall-and-score priority from archived score",
+      "actual_FPS_or_fallback_inclusion_probability_claimed": false
+    },
+    {
+      "check": "ca.generation_cost",
+      "status": "PASS",
+      "source": "original native raw-record stage seconds",
+      "stage_seconds": {
+        "coarse_seconds": 0.0,
+        "feature_head_seconds": 0.0005245059728622437,
+        "score_seconds": 0.026939161121845245,
+        "refinement_seconds": 0.15464713424444199
+      },
+      "CPU_observer_wall_seconds": 1.4149298444390297,
+      "limitation": "Native stage boundaries only; no claim of isolated GPU busy time or repeated request latency"
+    },
+    {
+      "check": "ca.complete_checks",
+      "status": "PASS"
+    },
+    {
+      "check": "truth_boundary_source_review",
+      "status": "PASS",
+      "truth_loaded": true,
+      "truth_used_for_score": false,
+      "scope": "source main accesses native geometry, normalized model input and predictions/head output; loader truth presence disclosed; no live denial guard in Car"
+    },
+    {
+      "check": "independent_CPU_CA_diagnostic",
+      "status": "PASS",
+      "own_CPU_chain_artifacts_consistent": true,
+      "own_field_error": 0.06765647300494018,
+      "truth_used_only_in_diagnostic": true,
+      "archived_GPU_used_only_after_own_prediction": true,
+      "archived_GPU_score_violations": 154,
+      "ordered_selected_indices_equal": true,
+      "diagnostic_wall_seconds": 1.7833369821310043,
+      "formal_timing": false
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/score_manifest.json",
+      "sha256": "ccb2f559c72009dac26604719d06d90b1f0f6668e771bba9d2f76c910227f980",
+      "bytes": 37184
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/data/shapenet_car_runtime.py",
+      "sha256": "1c7fb77b906fbba7d24dddee13de5528f372b29727aed14061b1baf83b2da1eb",
+      "bytes": 4178
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/data/shapenet_car.py",
+      "sha256": "1eb7c443b5401f37b5837d3f06757e2c2e57bd0c515a4cb5403fcaf723604bd8",
+      "bytes": 13091
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/models/adapter.py",
+      "sha256": "6f60e1555ae72b99e9f1b7f71deb26d00a577b5d251dd3025eccb5e9dda467e1",
+      "bytes": 1425
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/models/transolver3.py",
+      "sha256": "2dc6476d64613b66e0da285e676bd87ffd6110b49ff4c2d53ed4e9013309562c",
+      "bytes": 12665
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/pi/shapenet_car.py",
+      "sha256": "b86fe7fc6e1fb24bcc0378b899166ebefb440299ff4085d2c2658f083b887180",
+      "bytes": 6846
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/cpg/shapenet_car.py",
+      "sha256": "b376089a3d9cf3e9836c40d44e8abcc41447dae6b39f13b6fcfca8cea4a2584b",
+      "bytes": 16251
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/cpg/shapenet_car_stratified.py",
+      "sha256": "c8c201c30e372ce34a00b37b45cbef6c11cd3e440936d8d7705a7fa8619a9e6b",
+      "bytes": 6525
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/ca/shapenet_car.py",
+      "sha256": "493765e0179a8291fcb7676fdaf94c45fedc56514233337b9b02fcd271e580eb",
+      "bytes": 5713
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/shapenet_car_contract.py",
+      "sha256": "273f8760ca59a25ffcc4db547bf6fef86c7708b38d3a95e00ac34742d9577c8a",
+      "bytes": 8174
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/layers/block0_cache.py",
+      "sha256": "58efda9999b837eecc74f81b23eb306884a8d9e1b54db6fc39da1839e3040b24",
+      "bytes": 6192
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/capture.py",
+      "sha256": "6ff62b21e34401570102d6fce671411e577c3187d02e3a02d7cd29b8ab4035d7",
+      "bytes": 20257
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/uniform.npz",
+      "sha256": "922ba435d30c26b45a2ee9a5f5c47e1adb6ccb66f27b527010326c19af43d1bc",
+      "bytes": 720031
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "sha256": "876b400b4ef48d98b7945b19b444806282a99d613af724657db469bf93617a28",
+      "bytes": 45376
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/run_manifest.json",
+      "sha256": "e65790dfb05f69148ef5140531051db26d78206f0c3a378478ba7655731d3653",
+      "bytes": 8966
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/uniform_perpoint.csv",
+      "sha256": "0f7a07db069e3b5d0fabc2d477afc878870e875d8bcdb25f1808353eda17053e",
+      "bytes": 4129371
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/raw.jsonl",
+      "sha256": "87730ff1a737a9a034ce2357c19ffd65372ff5bb668503eb3c5dfe448752d602",
+      "bytes": 1742163
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/pi.npz",
+      "sha256": "44c1c657ae1b8ae6a510bdf135eb2f02b1e0e1b6f9181163b7ac73dfa3610375",
+      "bytes": 735106
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "sha256": "5205b2e061949f0b1f217b5c8cfa2299224a09ea731c2855ad52f0d27e27de5b",
+      "bytes": 43840
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/run_manifest.json",
+      "sha256": "990510c619d6b7b1e6332648de991f71fee1f31d518ebc77c5f529cd5bc645d5",
+      "bytes": 9077
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/pi_perpoint.csv",
+      "sha256": "e4500f54ca394450a6a4810e62c01927bda31718261421dc98c829d7b5563b74",
+      "bytes": 3916254
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/raw.jsonl",
+      "sha256": "23fe5ec278cd9391b3981506eec72646daf3dcb2408e5d5cec6e44a243686273",
+      "bytes": 1880767
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/cpg.npz",
+      "sha256": "918664d609b89189cc2a550826330d3386fb28c36c0544513ed3408c63ceb9a5",
+      "bytes": 1853461
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "sha256": "7919f77132e7710d234ef6f480020eae3e885ede5a4ff333ca761cd657292c48",
+      "bytes": 82938
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/run_manifest.json",
+      "sha256": "c7713f79b751284b666fc139d1169534f062be7d627dcb942c8bcde5ae2d97d1",
+      "bytes": 9412
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/cpg_perpoint.csv",
+      "sha256": "d192b29a3156c347f172a281358d8faa7cad63fe30f57e7276b190da101aacd5",
+      "bytes": 6086766
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/raw.jsonl",
+      "sha256": "a53824fe631c5be8c7344cba31a1dc5a0f693a10b0956dbff841348776ec0d62",
+      "bytes": 2291805
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/ca.npz",
+      "sha256": "a0fa4cd56736e584579bde630015d64a92777eac1e028323ef453ea2e0ac9800",
+      "bytes": 4841447
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "sha256": "9a91f5b961f85c5e3a6a2f6ab5764dda68c8cc566b8e42e7a26976dc4132702f",
+      "bytes": 82488
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/run_manifest.json",
+      "sha256": "ac0cf022ac2606ca5cd3c3057ff0daad63d2e0809213aa3dcfa51b6c81ec5612",
+      "bytes": 9647
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/ca_perpoint.csv",
+      "sha256": "2aedf211cd81ef42d76074c2df9a31ee175b4b7bb68625e2a9b0cce0af44918b",
+      "bytes": 6082288
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/raw.jsonl",
+      "sha256": "1d6764a87ffdb3c7ca80330d131e2f5888ec21ca784b14ea44bd7df89ad97e04",
+      "bytes": 2292465
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/ca_cpu_diagnostic/run_manifest.json",
+      "sha256": "d284c8e65a41ec6335a6e90138b64e3681b2934a669b9dcf9ea6ef52843fc404",
+      "bytes": 5052
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/ca_cpu_diagnostic/trace.npz",
+      "sha256": "b69d106ed53076e78bf0eb2b6eb398e602ebdb3f918831d5adabbda372a08b32",
+      "bytes": 4981638
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/ca_cpu_diagnostic/perpoint.csv",
+      "sha256": "b3e5e6587f810e45a29c2cea11d279b8d7b6bed2a602cb74630b10019fb92459",
+      "bytes": 6404982
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/score_visualization/car/cpu_ca_run.py",
+      "sha256": "d53f2be29f37b0438d7d732852aec75daff58c37ec1609545e6bb2ba0f2883f5",
+      "bytes": 9896
+    }
+  ]
+}

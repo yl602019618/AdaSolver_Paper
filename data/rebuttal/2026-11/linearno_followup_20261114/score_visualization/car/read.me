@@ -1,0 +1,11 @@
+Car score visualization status
+
+Reuse audit was written before capture in ../car_reuse_audit.json. Exact existing selected indices, compensation, densities and CPG/CA scores were reused; no training or GPU experiment was repeated.
+
+CPU-only capture filled missing PI prior and model/head intermediates. CPG strict archived-score parity passed. CA retained154 violations and is still partial for archived-GPU raw tracing. A separate native CPU CA run completed its entire own-score/selection/prediction/error chain and uses its own error.
+
+Actual full allocation quota ratios, their normalized measures, paper-designed priority/mixture target density, native selected compensation density, and actual weights are separately named. The per-point public CSVs preserve selected/coarse order and real feature summaries. No CFD truth field or full feature NPZ is designated public.
+
+Plot commands are in README.md. Both primary visuals are generated from CSV and exported as PDF, SVG and300dpi PNG. GPU raw replay is only a prepared command, not a queued or running process. Independent QA receipts and final render checks are separate from this activity record.
+
+The independent score audit passed29 checks with no failures. Original capture pre-execution hash and strictCA GPU/CPU parity remained two explicit partial findings. A later isolated CPU replay saved170 hashes before execution, verified all170 afterward, and reproduced89 base arrays exactly. Original receipts and arrays were preserved. The independent CPU CA chain includes real256-channel feature summaries, raw head output, its own final field and its own error in a separate8-panel CSV-only figure.

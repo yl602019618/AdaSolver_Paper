@@ -1,0 +1,11 @@
+{
+  "python": "3.10.12",
+  "execution_scope": "CPU score capture, numerical QA and figure rendering; not formal GPU timing",
+  "libraries": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "torch": "2.10.0+cu128",
+    "matplotlib": "3.10.8",
+    "Pillow": "12.1.1"
+  }
+}

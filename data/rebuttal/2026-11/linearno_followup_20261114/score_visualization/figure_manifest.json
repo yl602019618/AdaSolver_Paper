@@ -1,0 +1,988 @@
+{
+  "figures": [
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.pdf",
+      "sha256": "a87268d9b7e3cb300cb4e5a22a3a908922caf47dcc2c5936537a8bf2b3759653",
+      "bytes": 121881,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.png",
+      "sha256": "1d5db08804eeae830961f836f11aeff3d2a031b4b55ebc644b9de81f4f95e946",
+      "bytes": 818654,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.svg",
+      "sha256": "387a3c94995898a2ed7269ee37a25a462b89878956f22cbcdbffa1f455c34a72",
+      "bytes": 645156,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.pdf",
+      "sha256": "b45f5ac70474bd7c383b4a0ccf6bd93aa9f02a7f7873d3107790f52ec0e575bb",
+      "bytes": 42116,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.png",
+      "sha256": "3d0df4c6b167af1b1d6ae95c0d4d29172df46b76a6af9542740f0e38cd95fb99",
+      "bytes": 231211,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.svg",
+      "sha256": "268c86930b2095c009d00ba3304ff020a45796d3f84e07f657cded5a4b58f207",
+      "bytes": 150622,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.pdf",
+      "sha256": "cd1e76a692cf6a43feb6114ea52b2e582792e539fc19841139d8031e8ad24a58",
+      "bytes": 224421,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.png",
+      "sha256": "4026088ede6a914f94de5725dc4922c9599b607a9972c78b7651d15052bcaee0",
+      "bytes": 1187472,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.svg",
+      "sha256": "202344174e1600802b8fbc616f6dde2d7766bbb15e0e799db0e64cabbee41e8f",
+      "bytes": 1971636,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.pdf",
+      "sha256": "07e61828d660986b4c1baa626b3483ba552649c3b90e67c3d26417e1fb05d1ea",
+      "bytes": 644297,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.png",
+      "sha256": "0675257116a8463794887a76c4d0f643d46fb23e83ecd43601d0e283f5c114b6",
+      "bytes": 3029174,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.svg",
+      "sha256": "45a5deab8454a77474cee2100abaddac0411fddee5157ad81c0cc6e6fd5f12a0",
+      "bytes": 5149299,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.pdf",
+      "sha256": "b401c313abc40d435357c4a08bebed566850b013b49725c58d56e3aeb1755303",
+      "bytes": 348518,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.png",
+      "sha256": "33756297490118d5f46e8ab3de6a70ec09e1716305516ea530ce108f7001b543",
+      "bytes": 3344523,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.svg",
+      "sha256": "b5181996ce8cac64f6ee7d077da4a7c1e085473d00d1994f007a4a81f25d6ddc",
+      "bytes": 2939378,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.pdf",
+      "sha256": "f989f56945d3393375abbde711f218d748126f264e80f7d54f39529c49a3af04",
+      "bytes": 25321,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.png",
+      "sha256": "096b25d574f047fb04a2599ede81f7cbf7743dc40f624950df5e593ab6dc802a",
+      "bytes": 433632,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.svg",
+      "sha256": "853951124a756fbd031ec0810f1eeb435b293044eb2a796007b42a9433fae181",
+      "bytes": 77629,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+          "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+          "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+          "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+          "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+          "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+          "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+          "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+          "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.pdf",
+      "sha256": "b346e56210926d4d75058e46a10df2baddf992cebab4975e6ecde20d0d164bd1",
+      "bytes": 937193,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot.py",
+      "script_sha256": "bd0a80f9dfdc74cab90a1b4a1972f33c9ec675f995cd4eddc4e66f47c90af0e3",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/ca_perpoint.csv",
+          "sha256": "627346151bc4c7730c28151d80820655d1b7095811edffa9130fd6aec42e04ed"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+          "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/pi_perpoint.csv",
+          "sha256": "24f45d1481ee4ee12b1b73ac0f7dbfe7a99986293056c1fa1b6cec7dba29297d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/uniform_perpoint.csv",
+          "sha256": "a95b064f177123ea83cbfe47aa94a8d70d8a521bec9d53ae629594635e21cd2c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.png",
+      "sha256": "f550c70a49c1754595a4c9332e146ac7fae4ee3dba8ffaf1c9fb2553eee457cf",
+      "bytes": 1211337,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot.py",
+      "script_sha256": "bd0a80f9dfdc74cab90a1b4a1972f33c9ec675f995cd4eddc4e66f47c90af0e3",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/ca_perpoint.csv",
+          "sha256": "627346151bc4c7730c28151d80820655d1b7095811edffa9130fd6aec42e04ed"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+          "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/pi_perpoint.csv",
+          "sha256": "24f45d1481ee4ee12b1b73ac0f7dbfe7a99986293056c1fa1b6cec7dba29297d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/uniform_perpoint.csv",
+          "sha256": "a95b064f177123ea83cbfe47aa94a8d70d8a521bec9d53ae629594635e21cd2c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.svg",
+      "sha256": "a59f59f7eca7bea2d628901d4e37fe80b04719daa91edec9e243da781f86ca5a",
+      "bytes": 7658183,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot.py",
+      "script_sha256": "bd0a80f9dfdc74cab90a1b4a1972f33c9ec675f995cd4eddc4e66f47c90af0e3",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/ca_perpoint.csv",
+          "sha256": "627346151bc4c7730c28151d80820655d1b7095811edffa9130fd6aec42e04ed"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+          "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/pi_perpoint.csv",
+          "sha256": "24f45d1481ee4ee12b1b73ac0f7dbfe7a99986293056c1fa1b6cec7dba29297d"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/uniform_perpoint.csv",
+          "sha256": "a95b064f177123ea83cbfe47aa94a8d70d8a521bec9d53ae629594635e21cd2c"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.pdf",
+      "sha256": "fbe67cabe8c2bdc1c9a8ad544f6da16a0bfa7a4aeed5489166ee8dbafac491c8",
+      "bytes": 556985,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_cpu_ca.py",
+      "script_sha256": "2fd6f224d57c564e1f8995662f4b22fbf38eb03704dd1b174e1e3f23ee6ffc51",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/ca_cpu_diagnostic/perpoint.csv",
+          "sha256": "df23c3851961b3bcc49cf7ec0fc2e14734ae1dbbb05361ff4d987a7ae47b9caf"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.png",
+      "sha256": "29d8c716ef897137c5df6c9dc23ffa91cede6a15d5aa61f83e7e125323f02436",
+      "bytes": 1078433,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_cpu_ca.py",
+      "script_sha256": "2fd6f224d57c564e1f8995662f4b22fbf38eb03704dd1b174e1e3f23ee6ffc51",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/ca_cpu_diagnostic/perpoint.csv",
+          "sha256": "df23c3851961b3bcc49cf7ec0fc2e14734ae1dbbb05361ff4d987a7ae47b9caf"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.svg",
+      "sha256": "dc26ea5545292c763d9726e975d011c7209f15a4b74888362d9596c2d81d7b6d",
+      "bytes": 3739726,
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_cpu_ca.py",
+      "script_sha256": "2fd6f224d57c564e1f8995662f4b22fbf38eb03704dd1b174e1e3f23ee6ffc51",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/ca_cpu_diagnostic/perpoint.csv",
+          "sha256": "df23c3851961b3bcc49cf7ec0fc2e14734ae1dbbb05361ff4d987a7ae47b9caf"
+        }
+      ],
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.pdf",
+      "bytes": 214755,
+      "sha256": "185dd249fb8b4ee7d3fcad0df3e2f4f12fe79696eee4f190ae2b23d89692d8ea",
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_coarse_trace.py",
+      "script_sha256": "210fd24e7f0400f98f003c33904a27527cc8796cd6c2cddd1886743c776606cf",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/cpg_coarse_trace.csv",
+          "sha256": "ffdf199691b391798afbd1d9412482d0cd1fe962f428370fa386c4c5b74af7c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+          "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789"
+        }
+      ],
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.png",
+      "bytes": 490834,
+      "sha256": "4392bebc9922debe587c831e5d0d576a34b272feae766ae01177761a2b0dd703",
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_coarse_trace.py",
+      "script_sha256": "210fd24e7f0400f98f003c33904a27527cc8796cd6c2cddd1886743c776606cf",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/cpg_coarse_trace.csv",
+          "sha256": "ffdf199691b391798afbd1d9412482d0cd1fe962f428370fa386c4c5b74af7c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+          "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789"
+        }
+      ],
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.svg",
+      "bytes": 1391932,
+      "sha256": "63ed3a23a0fdd47a2a7fde8a412e2d2cffcc882fbb38767675f5bed0f378e57c",
+      "script": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_coarse_trace.py",
+      "script_sha256": "210fd24e7f0400f98f003c33904a27527cc8796cd6c2cddd1886743c776606cf",
+      "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "sources": [
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/cpg_coarse_trace.csv",
+          "sha256": "ffdf199691b391798afbd1d9412482d0cd1fe962f428370fa386c4c5b74af7c5"
+        },
+        {
+          "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+          "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789"
+        }
+      ],
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    }
+  ]
+}

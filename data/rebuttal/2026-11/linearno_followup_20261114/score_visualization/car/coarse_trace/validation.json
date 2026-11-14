@@ -1,0 +1,51 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "scope": "CPU coarse-prediction-to-score trace; no new forward and no GPU",
+  "coarse_csv_sha256": "e4e54514ed1a8fd6a46654f53afefe90f737a4a1810dc6bd34807d95736ec6c6",
+  "perpoint_csv_sha256": "d192b29a3156c347f172a281358d8faa7cad63fe30f57e7276b190da101aacd5",
+  "script_sha256": "210fd24e7f0400f98f003c33904a27527cc8796cd6c2cddd1886743c776606cf",
+  "coarse_ordered_hash": "c895fc4d0b119efdb158a82c2ec04c8866e7749c23aa85de7483c75ae82a9a9f",
+  "coarse_points": 3218,
+  "coarse_surface_points": 355,
+  "coordinates_exact": true,
+  "raw_score_from_exported_prediction_max_difference": 0.0,
+  "normalized_score_max_difference": 0.0,
+  "raw_and_normalized_score_exact": true,
+  "truth_input": false,
+  "archived_GPU_raw_claim": false,
+  "panels": [
+    {
+      "title": "A \u00b7 Coarse predicted pressure (CPU)",
+      "source_field": "predicted_pressure",
+      "shown_points": 355
+    },
+    {
+      "title": "B \u00b7 Raw gradient acquisition score",
+      "source_field": "raw_score_cpu",
+      "shown_points": 4682
+    },
+    {
+      "title": "C \u00b7 q95-normalized score (CPU)",
+      "source_field": "normalized_score_cpu",
+      "shown_points": 4682
+    }
+  ],
+  "render": {
+    "PNG_decode": "passed",
+    "size": [
+      3292,
+      1092
+    ],
+    "dpi": [
+      299.9994,
+      299.9994
+    ],
+    "PDF_render": "passed",
+    "redraw_bytes_identical": true
+  },
+  "artifact_sha256": {
+    "car_cpg_cpu_coarse_trace.pdf": "185dd249fb8b4ee7d3fcad0df3e2f4f12fe79696eee4f190ae2b23d89692d8ea",
+    "car_cpg_cpu_coarse_trace.svg": "1358174d88fa90d8e4ee92d802a9182bd8a3163120dea11019b31537e875ed31",
+    "car_cpg_cpu_coarse_trace.png": "4392bebc9922debe587c831e5d0d576a34b272feae766ae01177761a2b0dd703"
+  }
+}

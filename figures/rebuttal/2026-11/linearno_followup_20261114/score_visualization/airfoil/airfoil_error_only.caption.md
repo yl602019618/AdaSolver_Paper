@@ -1,0 +1,1 @@
+Post-hoc absolute pressure errors, using ground truth only after all score and sampling artifacts had been written. Predictions reuse the saved verified native outputs because selected indices and compensation match exactly. Error values and ground truth are kept in separate error-only artifacts and do not enter acquisition, normalization or sampling.

@@ -1,0 +1,76 @@
+{
+  "status": "PARTIAL",
+  "FZ2_status": "PARTIAL",
+  "FZ2_have_revised_allowed": false,
+  "script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+  "failed_numerical_checks": 0,
+  "coverage": [
+    "ShapeNet-Car case param0/100715345ee54d7ae38b52b4ee9d36a3",
+    "Airfoil case1001"
+  ],
+  "methods": [
+    "Uniform",
+    "PI",
+    "CPG",
+    "CA"
+  ],
+  "checks": {
+    "image_decode": "9/9 PNG decoded and pixel-identical on public CSV replay",
+    "coordinate_alignment": "passed",
+    "selected_index_check": "passed against ordered archived arrays",
+    "truth_access_check": "passed for score computation; separate truth-based error diagnostics disclosed",
+    "colorbar_unit_check": "manually inspected; raw/normalized/density/field/error labels separated",
+    "PDF_render": "9/9 PDFs rendered"
+  },
+  "datasets": {
+    "car": "qa/portable_car_qa.json",
+    "airfoil": "qa/portable_airfoil_qa.json"
+  },
+  "remaining": [
+    "Airfoil native GPU online cost is not supplied by CPU observer timing",
+    "Airfoil weighted CPG retains619/1127 coarse points; pinned paper text generically says all S0 retained",
+    "Archived Car GPU CA vs CPU replay has154 elements outside original tolerance; independent CPU chain is separate",
+    "Darcy legacy display fields are not current native score evidence"
+  ],
+  "raw_to_public_text_transform": "CSV/JSON line endings canonicalized toLF; original capture hashes remain in source receipts; published file hashes are in release_manifest",
+  "score_input_files": [
+    {
+      "path": "score_fields/car_uniform_b050_s0.npz",
+      "sha256": "cb6e9aea5571e0772577a329b790bf7e11417e0151ef5980615295e4cf4ab985"
+    },
+    {
+      "path": "score_fields/car_pi_b050_s0.npz",
+      "sha256": "dcc3ea6becdb7fcd2396b4e10e657f5a968af0cf13e3039db12358292660b1e7"
+    },
+    {
+      "path": "score_fields/car_cpg_b050_s0.npz",
+      "sha256": "4884ee8a12be932f2ba2b5c5e1d0b3f06fb2926bc1ff174d41a5ed06b5af28ad"
+    },
+    {
+      "path": "score_fields/car_ca_b050_s0.npz",
+      "sha256": "030f7ecdf05b0bed9fe2f09f980423c3fc581a23a63ce6e8a8ea2dbdf1d076b9"
+    },
+    {
+      "path": "score_fields/airfoil_uniform_b050_s0.npz",
+      "sha256": "8e614c5755c6db3fb6dc636015a9d4e002c0da42e9fa965e938a90e6bd16f9f4"
+    },
+    {
+      "path": "score_fields/airfoil_pi_b050_s0.npz",
+      "sha256": "5a5fc1bcb200b04deed562d9f002f11faa86e6960cfeae3230a191323331c2bc"
+    },
+    {
+      "path": "score_fields/airfoil_cpg_b050_s0.npz",
+      "sha256": "749888abfa3ee478d32b30e9283b1ce598025c00b313f2ae0b41f7e3234b8244"
+    },
+    {
+      "path": "score_fields/airfoil_ca_b050_s0.npz",
+      "sha256": "1e3655a2107aa799123ca3edcf05ed349bf5743a4d9d0fb103e5afa8840661cb"
+    },
+    {
+      "path": "score_fields/car_cpu_ca_ca_b050_s0.npz",
+      "sha256": "21b230863031ca4aa171ce73778c91d533d6de93f81870fbb2f1a2eab6bc1767"
+    }
+  ],
+  "public_release_replay": "public_release_render_qa.json",
+  "CPG_coarse_trace": "car/coarse_trace/validation.json"
+}

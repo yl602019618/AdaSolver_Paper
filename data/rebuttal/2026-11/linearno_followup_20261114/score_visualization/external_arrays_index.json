@@ -1,0 +1,102 @@
+{
+  "files": [
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/ca_error_only.npz",
+      "bytes": 123442,
+      "sha256": "c8af0ded47fee5fd3e2837265bbed83a2786a64a9bbefae03ada7ac5cb6d8095",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/ca_score_arrays.npz",
+      "bytes": 820806,
+      "sha256": "1c48cb3036778b5ffe410a09a1d26ea63e0ce8d1cd7fd1da16ab8954a454412e",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/cpg_error_only.npz",
+      "bytes": 121455,
+      "sha256": "12282e8cdccded7499b672002480cf327605440a4355b2ac090f560e32f272d4",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/cpg_score_arrays.npz",
+      "bytes": 234670,
+      "sha256": "d456ff0eb74ac17274d843d397a44cbb559e40d6f93b7ed153639289415b44a9",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/density_bins.npz",
+      "bytes": 9213,
+      "sha256": "cb705631aa9efb4cd211cd0907cb9777a1d4e3375c89503421fca8fc5ad687e4",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/pi_error_only.npz",
+      "bytes": 121035,
+      "sha256": "489c602c30e53bb2126dad676d7a8aa209043653eb2a3ec7844d9485b7043bef",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/pi_score_arrays.npz",
+      "bytes": 505296,
+      "sha256": "b74612e1280fab8760ce5610d28beeff1e80331f15754e4500181592428d53b7",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/uniform_error_only.npz",
+      "bytes": 117505,
+      "sha256": "9147bd171dfdfe6cf233045fd06cda1700cafe2dadf137293b3be9075e83f90e",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/uniform_score_arrays.npz",
+      "bytes": 139152,
+      "sha256": "76041a5383c40b6f4c94e00b6a3b8aa5546d0799745dae485a5d19d5de2117a0",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/car/ca_cpu_diagnostic/trace.npz",
+      "bytes": 4981638,
+      "sha256": "b69d106ed53076e78bf0eb2b6eb398e602ebdb3f918831d5adabbda372a08b32",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/ca.npz",
+      "bytes": 4841447,
+      "sha256": "a0fa4cd56736e584579bde630015d64a92777eac1e028323ef453ea2e0ac9800",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/cpg.npz",
+      "bytes": 1853461,
+      "sha256": "918664d609b89189cc2a550826330d3386fb28c36c0544513ed3408c63ceb9a5",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/pi.npz",
+      "bytes": 735106,
+      "sha256": "44c1c657ae1b8ae6a510bdf135eb2f02b1e0e1b6f9181163b7ac73dfa3610375",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    },
+    {
+      "workspace_relative_path": "linearno_followup_20261114/reuse_review/score_visualization/car/data/uniform.npz",
+      "bytes": 720031,
+      "sha256": "922ba435d30c26b45a2ee9a5f5c47e1adb6ccb66f27b527010326c19af43d1bc",
+      "public_payload": false,
+      "reason": "native/full-feature/original-error source; compact scalar score fields published separately"
+    }
+  ]
+}

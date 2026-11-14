@@ -1,0 +1,324 @@
+{
+  "created_at_utc": "2026-11-14T15:29:45.994932+00:00",
+  "scope": "2D score visualization reuse audit before any model evaluation",
+  "search_roots": [
+    "07_current",
+    "appendix_figures/density_visualization",
+    "appendix_figures/more_visualizations",
+    "fig2",
+    "fig3",
+    "fig4",
+    "AdaSolver_official",
+    "linearno_followup_20261114/standard_benchmarks/airfoil/records"
+  ],
+  "search_terms": [
+    "score_visualization",
+    "refinement_score",
+    "density_map",
+    "selected_points",
+    "score_manifest",
+    "FZ2",
+    "Darcy",
+    "Airfoil"
+  ],
+  "dedicated_existing_score_bundle": "NOT_FOUND in searched paths; rendered legacy density panels and native prediction/selection arrays are partial inputs",
+  "running_duplicate_score_jobs": [],
+  "process_scan_note": "Only the audit rg/ps commands matched score keywords; no GPU query or GPU allocation was made",
+  "subtasks": [
+    {
+      "subtask": "airfoil2d_legacy_density_panels",
+      "status": "PARTIAL",
+      "path": "appendix_figures/density_visualization",
+      "manifest": {
+        "path": "appendix_figures/density_visualization/manifest.json",
+        "bytes": 7482,
+        "mtime_utc": "2026-09-23T14:40:02+00:00",
+        "sha256": "4855d0438035ea36d73608afeecf44e58f4acd3f8cab1d5c6c1d167d74aebd41"
+      },
+      "case_id": 1103,
+      "budget": 0.375,
+      "sampling_seed": 0,
+      "available": [
+        "existing rendered Uniform/PI/CPG/CA selected/native fraction panels"
+      ],
+      "missing": [
+        "full raw refinement score",
+        "normalized score",
+        "model/head feature outputs",
+        "same requested checkpoint and budget binding"
+      ],
+      "decision": "preserve legacy panels; do not relabel density as acquisition score"
+    },
+    {
+      "subtask": "darcy_legacy_density_panels",
+      "status": "PARTIAL",
+      "path": "appendix_figures/density_visualization",
+      "manifest": {
+        "path": "appendix_figures/density_visualization/manifest.json",
+        "bytes": 7482,
+        "mtime_utc": "2026-09-23T14:40:02+00:00",
+        "sha256": "4855d0438035ea36d73608afeecf44e58f4acd3f8cab1d5c6c1d167d74aebd41"
+      },
+      "case_id": 1056,
+      "budget": 0.375,
+      "sampling_seed": 0,
+      "available": [
+        "existing rendered Uniform/PI/CPG/CA selected/native fraction panels"
+      ],
+      "missing": [
+        "full raw refinement score",
+        "normalized score",
+        "model/head feature outputs",
+        "same requested checkpoint and budget binding"
+      ],
+      "decision": "preserve legacy panels; do not relabel density as acquisition score"
+    },
+    {
+      "subtask": "airfoil_t3_seed0_case1001_b050_s0_scores",
+      "status": "PARTIAL",
+      "dataset": "airfoil",
+      "case_id": 1001,
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget": 0.5,
+      "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "head_sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "available": [
+        "native actual selected indices",
+        "coarse indices for CPG/CA",
+        "sampling compensation",
+        "selected-point physical predictions",
+        "raw metric/manifests"
+      ],
+      "saved_arrays": [
+        {
+          "method": "uniform",
+          "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/case1001_s0_b0.5_uniform.npz",
+          "bytes": 33986,
+          "mtime_utc": "2026-11-14T14:05:27+00:00",
+          "sha256": "30241686057dafc9113e1c63b1c9a8ea764f050120432752ac06b87825a74fab",
+          "arrays": {
+            "indices": {
+              "shape": [
+                5636
+              ],
+              "dtype": "int64"
+            },
+            "coarse_indices": {
+              "shape": [
+                0
+              ],
+              "dtype": "float64"
+            },
+            "compensation": {
+              "shape": [
+                5636
+              ],
+              "dtype": "float64"
+            },
+            "prediction": {
+              "shape": [
+                5636,
+                1
+              ],
+              "dtype": "float32"
+            }
+          }
+        },
+        {
+          "method": "pi",
+          "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/case1001_s0_b0.5_pi.npz",
+          "bytes": 37330,
+          "mtime_utc": "2026-11-14T14:05:27+00:00",
+          "sha256": "a11adf01237745f173b2cd465ae1ccfc8c315758fd6cb1c4212c7c5da99cdaa8",
+          "arrays": {
+            "indices": {
+              "shape": [
+                5636
+              ],
+              "dtype": "int64"
+            },
+            "coarse_indices": {
+              "shape": [
+                0
+              ],
+              "dtype": "float64"
+            },
+            "compensation": {
+              "shape": [
+                5636
+              ],
+              "dtype": "float64"
+            },
+            "prediction": {
+              "shape": [
+                5636,
+                1
+              ],
+              "dtype": "float32"
+            }
+          }
+        },
+        {
+          "method": "cpg",
+          "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_preliminary/case1001_s0_b0.5_cpg.npz",
+          "bytes": 39940,
+          "mtime_utc": "2026-11-14T14:05:28+00:00",
+          "sha256": "184abd8f6367d87aa10250f7d6315af2d4086ecbcacbcc7e1c1eedadab85c583",
+          "arrays": {
+            "indices": {
+              "shape": [
+                5636
+              ],
+              "dtype": "int64"
+            },
+            "coarse_indices": {
+              "shape": [
+                1127
+              ],
+              "dtype": "int64"
+            },
+            "compensation": {
+              "shape": [
+                5636
+              ],
+              "dtype": "float64"
+            },
+            "prediction": {
+              "shape": [
+                5636,
+                1
+              ],
+              "dtype": "float32"
+            }
+          }
+        },
+        {
+          "method": "ca",
+          "path": "linearno_followup_20261114/standard_benchmarks/airfoil/records/t3/test_ca/case1001_s0_b0.5_ca.npz",
+          "bytes": 39573,
+          "mtime_utc": "2026-11-14T14:20:24+00:00",
+          "sha256": "98bf9ed1cce4dd6b1a77102f51c6f9bb3b498045c82d900f004c36103888a49c",
+          "arrays": {
+            "indices": {
+              "shape": [
+                5636
+              ],
+              "dtype": "int64"
+            },
+            "coarse_indices": {
+              "shape": [
+                1127
+              ],
+              "dtype": "int64"
+            },
+            "compensation": {
+              "shape": [
+                5636
+              ],
+              "dtype": "float64"
+            },
+            "prediction": {
+              "shape": [
+                5636,
+                1
+              ],
+              "dtype": "float32"
+            }
+          }
+        }
+      ],
+      "missing": [
+        "raw/refinement score fields",
+        "normalized score fields",
+        "full sampling proposal density",
+        "coarse prediction values",
+        "CA feature and standardized/decoded head outputs"
+      ],
+      "decision": "reuse frozen checkpoint/configs and existing arrays; capture missing score stages on CPU only using original method implementation, then compare actual selected sets and compensation with saved native arrays",
+      "truth_access_for_score_graph": false,
+      "truth_for_errors": "load only after all score/sampling capture is complete; write separate error artifact"
+    }
+  ],
+  "selected_action": "CPU capture Airfoil Transolver3 seed0, case1001, budget0.5, sampling seed0; no retraining or evaluation-matrix rerun",
+  "fixed_publication_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "darcy_late_discovery": {
+    "status": "PARTIAL",
+    "classification": "legacy diagnostic only; not the new900/100 matched cohort",
+    "case_id": 1056,
+    "budget": 0.375,
+    "sampling_seed": 0,
+    "source_files": [
+      {
+        "path": "appendix_figures/more_visualizations/data/darcy/candidates/1056/features.npz",
+        "bytes": 31730,
+        "sha256": "2463a7a4fb2fb1119e10c82e67b98bad875addb592903a4560cb4eb8c94498cd",
+        "mtime_utc": "2026-09-22T10:45:37+00:00"
+      },
+      {
+        "path": "appendix_figures/more_visualizations/data/darcy/candidates/1056/metadata.json",
+        "bytes": 11915,
+        "sha256": "146cb868501d1435ae6ddb46693469cbc118185d846f47e574f8086f27e84cb3",
+        "mtime_utc": "2026-09-22T10:45:37+00:00"
+      },
+      {
+        "path": "appendix_figures/more_visualizations/data/darcy/candidates/1056/b0.375.npz",
+        "bytes": 202596,
+        "sha256": "acfb22b741393d23b8a18a29c3f4a4fb1a6ac19fa23d28ff3c7d6ae939f557de",
+        "mtime_utc": "2026-09-22T10:45:37+00:00"
+      },
+      {
+        "path": "appendix_figures/data/darcy/metadata.json",
+        "bytes": 5460,
+        "sha256": "04574b83021e645cd895098a501a8a86a9047dd5162532a158544a7440b50737",
+        "mtime_utc": "2026-09-20T04:38:53+00:00"
+      },
+      {
+        "path": "figure_tools/more_visualizations/prepare_standard.py",
+        "bytes": 13695,
+        "sha256": "e58bcb7416f46dd5308c611b480132aefd45705223b2c0c20fd01cab064ad888",
+        "mtime_utc": "2026-09-23T14:42:14+00:00"
+      },
+      {
+        "path": "figure_tools/more_visualizations/common.py",
+        "bytes": 3951,
+        "sha256": "00626e3c04e99c671db69e2dc75783671c646965d349ba21a99c7f6ab2aa2584",
+        "mtime_utc": "2026-09-23T14:42:14+00:00"
+      }
+    ],
+    "available_arrays": [
+      "raw_pi",
+      "raw_cpg",
+      "raw_ca",
+      "feature_pi",
+      "feature_cpg",
+      "feature_ca",
+      "actual selected points and predictions"
+    ],
+    "display_normalization": "feature_* = clip((raw_*-min)/(q99-min),0,1); this is display-only and must not be called native policy normalization",
+    "historical_operator_sha256": "5c8a7fa3d24a9ead213144e8a9a1ca3a932bd5c8265e504e92c4d7120175c1fb",
+    "historical_head_sha256": "c801be81c1aef10f1db64736cedf30e5c44ffb5ec6bad0a3cad6f36889898ff9",
+    "test_visibility": "historical fullmesh operator selected using smooth2 test diagnostic; not a sealed holdout",
+    "case_selection": "historical shortlist ranked relative-L2 improvement before visual selection; not a newly fixed unbiased diagnostic case",
+    "missing": [
+      "matched new frozen backbone/head",
+      "native scalar normalization trace",
+      "coarse values and own-head stage trace",
+      "actual proposal/patch allocation trace for the selected new cohort"
+    ],
+    "action": "Preserve only as an indexed legacy candidate; no old model replay or old figure rerender in this turn"
+  },
+  "followup_capture": {
+    "dataset": "airfoil",
+    "case_id": 1001,
+    "budget": 0.5,
+    "sampling_seed": 0,
+    "training_seed": 0,
+    "data_source_status": "VERIFIED_COMPLETE",
+    "paper_consistency_status": "PARTIAL",
+    "path": "airfoil/score_manifest.json",
+    "native_selected_and_compensation_exact_match": true,
+    "note": "ActualCPG retained619/1127coarse; CA1127/1127. Frozen selectors preserved."
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "status": "rendered_decode_passed",
+  "figures": [
+    {
+      "figure": "airfoil_score_stages",
+      "png_dimensions": [
+        3484,
+        1544
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decoded": true,
+      "source": [
+        "cpg_points.csv",
+        "ca_points.csv"
+      ]
+    },
+    {
+      "figure": "airfoil_sampling_comparison",
+      "png_dimensions": [
+        3484,
+        2877
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decoded": true,
+      "source": [
+        "uniform_points.csv",
+        "pi_points.csv",
+        "cpg_points.csv",
+        "ca_points.csv",
+        "density_bins.csv"
+      ]
+    },
+    {
+      "figure": "airfoil_acquisition_inputs",
+      "png_dimensions": [
+        3484,
+        726
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decoded": true,
+      "source": [
+        "pi_points.csv",
+        "cpg_points.csv",
+        "ca_points.csv"
+      ]
+    },
+    {
+      "figure": "airfoil_error_only",
+      "png_dimensions": [
+        3633,
+        689
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decoded": true,
+      "source": [
+        "uniform_error_points.csv",
+        "pi_error_points.csv",
+        "cpg_error_points.csv",
+        "ca_error_points.csv"
+      ]
+    },
+    {
+      "figure": "airfoil_surface_curves",
+      "png_dimensions": [
+        3094,
+        1834
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decoded": true,
+      "source": [
+        "uniform_points.csv",
+        "pi_points.csv",
+        "cpg_points.csv",
+        "ca_points.csv",
+        "surface_curves.csv"
+      ]
+    },
+    {
+      "figure": "airfoil_ca_feature_and_head",
+      "png_dimensions": [
+        2494,
+        757
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "decoded": true,
+      "source": [
+        "ca_points.csv"
+      ]
+    }
+  ],
+  "physical_window": {
+    "x": [
+      -0.3,
+      1.3
+    ],
+    "y": [
+      -0.45,
+      0.45
+    ]
+  },
+  "full_point_count": 11271,
+  "visible_point_count": 3458,
+  "script_sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+  "files": [
+    {
+      "path": "airfoil_acquisition_inputs.caption.md",
+      "bytes": 479,
+      "sha256": "415da0887890c5c64b19f3f5f37c63ce7f2ed939bb8b36821b4d55691dfd6f3f"
+    },
+    {
+      "path": "airfoil_acquisition_inputs.pdf",
+      "bytes": 121881,
+      "sha256": "a87268d9b7e3cb300cb4e5a22a3a908922caf47dcc2c5936537a8bf2b3759653"
+    },
+    {
+      "path": "airfoil_acquisition_inputs.png",
+      "bytes": 818654,
+      "sha256": "1d5db08804eeae830961f836f11aeff3d2a031b4b55ebc644b9de81f4f95e946"
+    },
+    {
+      "path": "airfoil_acquisition_inputs.svg",
+      "bytes": 645610,
+      "sha256": "8ee087ac947f1529e551c8ed80d5d077b68ac5469c0f7f0dffdf9d00b99067d5"
+    },
+    {
+      "path": "airfoil_ca_feature_and_head.caption.md",
+      "bytes": 673,
+      "sha256": "15ecd46ea50cf60477b5e4a924a7349f2851138de60ea235873656a39917b0f8"
+    },
+    {
+      "path": "airfoil_ca_feature_and_head.pdf",
+      "bytes": 42116,
+      "sha256": "b45f5ac70474bd7c383b4a0ccf6bd93aa9f02a7f7873d3107790f52ec0e575bb"
+    },
+    {
+      "path": "airfoil_ca_feature_and_head.png",
+      "bytes": 231211,
+      "sha256": "3d0df4c6b167af1b1d6ae95c0d4d29172df46b76a6af9542740f0e38cd95fb99"
+    },
+    {
+      "path": "airfoil_ca_feature_and_head.svg",
+      "bytes": 150930,
+      "sha256": "a4dbc6dd760100421f4d6d04d537114dc3b41019e0279c5707370e42fbc4b780"
+    },
+    {
+      "path": "airfoil_error_only.caption.md",
+      "bytes": 354,
+      "sha256": "c10c1c164840e37d5cf09a629b64156332d41fe5f42977590a8d365432c194f8"
+    },
+    {
+      "path": "airfoil_error_only.pdf",
+      "bytes": 224421,
+      "sha256": "cd1e76a692cf6a43feb6114ea52b2e582792e539fc19841139d8031e8ad24a58"
+    },
+    {
+      "path": "airfoil_error_only.png",
+      "bytes": 1187472,
+      "sha256": "4026088ede6a914f94de5725dc4922c9599b607a9972c78b7651d15052bcaee0"
+    },
+    {
+      "path": "airfoil_error_only.svg",
+      "bytes": 1972205,
+      "sha256": "085a9db7c95ca5b43d5d4a7753c2e6cf2c9fa69b261601b0d8a1be0994547556"
+    },
+    {
+      "path": "airfoil_sampling_comparison.caption.md",
+      "bytes": 785,
+      "sha256": "77b9e2dcd222b1707457da2bd567587a9c030c056f48e645ed56387a5a358944"
+    },
+    {
+      "path": "airfoil_sampling_comparison.pdf",
+      "bytes": 644297,
+      "sha256": "07e61828d660986b4c1baa626b3483ba552649c3b90e67c3d26417e1fb05d1ea"
+    },
+    {
+      "path": "airfoil_sampling_comparison.png",
+      "bytes": 3029174,
+      "sha256": "0675257116a8463794887a76c4d0f643d46fb23e83ecd43601d0e283f5c114b6"
+    },
+    {
+      "path": "airfoil_sampling_comparison.svg",
+      "bytes": 5174053,
+      "sha256": "da274e9edf3489c509df9b8e4d76bb9a17edf7377784d0372b3fc112d613c4f1"
+    },
+    {
+      "path": "airfoil_score_stages.caption.md",
+      "bytes": 496,
+      "sha256": "849fc8b59973182291517850816a1a1d3be2d698ccfc0e9763f410029dd86c26"
+    },
+    {
+      "path": "airfoil_score_stages.pdf",
+      "bytes": 348518,
+      "sha256": "b401c313abc40d435357c4a08bebed566850b013b49725c58d56e3aeb1755303"
+    },
+    {
+      "path": "airfoil_score_stages.png",
+      "bytes": 3344523,
+      "sha256": "33756297490118d5f46e8ab3de6a70ec09e1716305516ea530ce108f7001b543"
+    },
+    {
+      "path": "airfoil_score_stages.svg",
+      "bytes": 2940278,
+      "sha256": "9a7615a1a638862e3c476ca9e97c1a25af5d0f086556182b95e9f36bf84c9ac8"
+    },
+    {
+      "path": "airfoil_surface_curves.caption.md",
+      "bytes": 697,
+      "sha256": "196539f17f83839ce25155e9f365eab37e9854baa3f88e696c7a0a55c78d9f33"
+    },
+    {
+      "path": "airfoil_surface_curves.pdf",
+      "bytes": 25321,
+      "sha256": "f989f56945d3393375abbde711f218d748126f264e80f7d54f39529c49a3af04"
+    },
+    {
+      "path": "airfoil_surface_curves.png",
+      "bytes": 433632,
+      "sha256": "096b25d574f047fb04a2599ede81f7cbf7743dc40f624950df5e593ab6dc802a"
+    },
+    {
+      "path": "airfoil_surface_curves.svg",
+      "bytes": 79237,
+      "sha256": "5d37a355f032ddc50349ac324c4dadc66a43f59cf69f7a7fdc08914a708cb135"
+    },
+    {
+      "path": "contact_sheet.png",
+      "bytes": 3315394,
+      "sha256": "66ef3cc74c0ea604231288ca15bfce8c2605ae9ce58d187fa33c50e4cab6ee0e"
+    },
+    {
+      "path": "density_bins.csv",
+      "bytes": 126077,
+      "sha256": "85b3eaf699d447081ea2ea3083c1850d8c75fc62d996c6fc82f13e38f1a868c1"
+    },
+    {
+      "path": "surface_curves.csv",
+      "bytes": 35340,
+      "sha256": "f96072e3918b10383111977363514952a2e209e9ffbafc081fd0c6cc49e100ed"
+    }
+  ]
+}

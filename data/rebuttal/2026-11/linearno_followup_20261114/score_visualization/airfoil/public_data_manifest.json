@@ -1,0 +1,104 @@
+{
+  "public_scalar_csvs": [
+    {
+      "path": "uniform_points.csv",
+      "bytes": 1263068,
+      "sha256": "5bd01671443d3828e9af3473f46a7b4f184ae5ab097b4770d491cd403b63b1af"
+    },
+    {
+      "path": "uniform_error_points.csv",
+      "bytes": 555990,
+      "sha256": "8643f620faf94b49c54d4a2f7946dfefa2b0deaafa87418b0f11ec827e5d8675"
+    },
+    {
+      "path": "pi_points.csv",
+      "bytes": 1808279,
+      "sha256": "f8528f455122518a37fe400df3291e42244ea63bc019c8c43d027bbdd7ce6b31"
+    },
+    {
+      "path": "pi_error_points.csv",
+      "bytes": 557469,
+      "sha256": "321594171e30cd4decdf4273c8464737792ad5f720c5e53f49d7af24e4e75b65"
+    },
+    {
+      "path": "cpg_points.csv",
+      "bytes": 1875931,
+      "sha256": "6a4ca75c74b2884ddd01add64b6e993a4feff3029fcd434a80cfdedd4153a3cc"
+    },
+    {
+      "path": "cpg_error_points.csv",
+      "bytes": 557585,
+      "sha256": "cfedf8200a6545f5e4a0be6abab70d33d0046fbb478065ffec0a6c8ae74fb750"
+    },
+    {
+      "path": "ca_points.csv",
+      "bytes": 1926608,
+      "sha256": "b3939b8db8ce6fb38b435189243151ce8842721e929598fcc4a8e6433049f0f1"
+    },
+    {
+      "path": "ca_error_points.csv",
+      "bytes": 557284,
+      "sha256": "47b00ca0fd5f8c8d0436a1c55277fb2e86719bf1c88262903ae3f23f28a6f628"
+    }
+  ],
+  "external_artifacts": [
+    {
+      "artifact_id": "local:airfoil-score-case1001/uniform_score_arrays.npz",
+      "bytes": 139152,
+      "sha256": "76041a5383c40b6f4c94e00b6a3b8aa5546d0799745dae485a5d19d5de2117a0",
+      "public": false,
+      "reason": "full CA128D feature tensor and intermediate arrays remain external"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/uniform_error_only.npz",
+      "bytes": 117505,
+      "sha256": "9147bd171dfdfe6cf233045fd06cda1700cafe2dadf137293b3be9075e83f90e",
+      "public": false,
+      "reason": "contains CFD ground-truth field; external only"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/pi_score_arrays.npz",
+      "bytes": 505296,
+      "sha256": "b74612e1280fab8760ce5610d28beeff1e80331f15754e4500181592428d53b7",
+      "public": false,
+      "reason": "full CA128D feature tensor and intermediate arrays remain external"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/pi_error_only.npz",
+      "bytes": 121035,
+      "sha256": "489c602c30e53bb2126dad676d7a8aa209043653eb2a3ec7844d9485b7043bef",
+      "public": false,
+      "reason": "contains CFD ground-truth field; external only"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/cpg_score_arrays.npz",
+      "bytes": 234670,
+      "sha256": "d456ff0eb74ac17274d843d397a44cbb559e40d6f93b7ed153639289415b44a9",
+      "public": false,
+      "reason": "full CA128D feature tensor and intermediate arrays remain external"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/cpg_error_only.npz",
+      "bytes": 121455,
+      "sha256": "12282e8cdccded7499b672002480cf327605440a4355b2ac090f560e32f272d4",
+      "public": false,
+      "reason": "contains CFD ground-truth field; external only"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/ca_score_arrays.npz",
+      "bytes": 820806,
+      "sha256": "1c48cb3036778b5ffe410a09a1d26ea63e0ce8d1cd7fd1da16ab8954a454412e",
+      "public": false,
+      "reason": "full CA128D feature tensor and intermediate arrays remain external"
+    },
+    {
+      "artifact_id": "local:airfoil-score-case1001/ca_error_only.npz",
+      "bytes": 123442,
+      "sha256": "c8af0ded47fee5fd3e2837265bbed83a2786a64a9bbefae03ada7ac5cb6d8095",
+      "public": false,
+      "reason": "contains CFD ground-truth field; external only"
+    }
+  ],
+  "plot_inputs": "Only the public scalar CSVs are required by plot_scores.py",
+  "ground_truth_in_public_csv": false
+}

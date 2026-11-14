@@ -1,0 +1,73 @@
+[
+  {
+    "method": "uniform",
+    "functions_observed": [
+      "sample_airfoil_uniform"
+    ],
+    "extra_array_shapes": {}
+  },
+  {
+    "method": "pi",
+    "functions_observed": [
+      "sample_airfoil_pi_voronoi"
+    ],
+    "extra_array_shapes": {
+      "surface_distance": [
+        11271
+      ]
+    }
+  },
+  {
+    "method": "cpg",
+    "functions_observed": [
+      "sample_airfoil_uniform",
+      "pressure_gradient",
+      "pressure_acquisition",
+      "normalize_single_feature",
+      "sample_airfoil_cpg_single_feature"
+    ],
+    "extra_array_shapes": {
+      "coarse_raw_gradient_score": [
+        1127
+      ],
+      "coarse_pressure": [
+        1127,
+        1
+      ]
+    }
+  },
+  {
+    "method": "ca",
+    "functions_observed": [
+      "sample_airfoil_uniform",
+      "pressure_gradient",
+      "pressure_acquisition",
+      "normalize_single_feature",
+      "sample_airfoil_cpg_single_feature"
+    ],
+    "extra_array_shapes": {
+      "coarse_raw_gradient_score": [
+        1127
+      ],
+      "coarse_pressure": [
+        1127,
+        1
+      ],
+      "ca_features": [
+        1,
+        1127,
+        128
+      ],
+      "ca_bottleneck": [
+        1,
+        1127,
+        8
+      ],
+      "ca_standardized_output": [
+        1,
+        1127,
+        1
+      ]
+    }
+  }
+]

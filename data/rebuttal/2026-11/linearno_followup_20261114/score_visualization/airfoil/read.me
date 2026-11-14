@@ -1,0 +1,11 @@
+Airfoil score diagnostic completed from a frozen, independently verified seed0 checkpoint/head.
+Case1001; budget0.5; sampling seed0;221x51=11271 native points.
+Uniform/PI/CPG/CA actual5636-point selections and compensation exactly match their saved native NPZs. CPG/CA coarse sets have1127points.
+Raw acquisition and normalization were observed in original scientific functions on CPU; no CUDA device was visible and no model was trained.
+Three negative controls rejected target(), q and the CFD truth file; actual score-capture truth-access attempts=0. Post-hoc error data were written only afterward.
+Public plot inputs:8 scalar CSVs in public_data_manifest.json. Full feature tensors and raw truth NPZs are external-only indexed assets. Offline plot replay from a CSV-only directory passed.
+Six figure families: score stages, sampling comparison, acquisition inputs, separate error maps,121-point surface-arclength curves, CA latent-feature/headraw maps; each PDF/SVG/300dpiPNG.
+Paper consistency is PARTIAL: weightedCPG keeps619/1127coarse; weighted_nestedCA keeps1127/1127. Actual retained and omitted coarse points are marked differently. The selector and manuscript were not changed.
+Darcy old1056/b0.375 features are indexed as PARTIAL legacy in ../twod_reuse_audit.json; no new Darcy inference was run.
+
+Independent data QA complete:23PASS/0FAIL/6PARTIAL; receipt ../qa/airfoil_validation_final.json. Partial items are online generation-cost scope and paper-consistency mapping. Six plotted PDF/PNG artifacts were rendered and inspected.

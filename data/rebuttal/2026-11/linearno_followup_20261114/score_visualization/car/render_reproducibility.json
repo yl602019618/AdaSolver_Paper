@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "two_render_rounds_identical": true,
+  "all_five_source_csv_unchanged": true,
+  "artifacts": {
+    "figures/car_score_density_selected.pdf": "b346e56210926d4d75058e46a10df2baddf992cebab4975e6ecde20d0d164bd1",
+    "figures/car_score_density_selected.svg": "992ada2870ae2d6ff5b159f83a655504cd0f96eed2cf7714dc68012d723fbff0",
+    "figures/car_score_density_selected.png": "f550c70a49c1754595a4c9332e146ac7fae4ee3dba8ffaf1c9fb2553eee457cf",
+    "ca_cpu_diagnostic/figures/car_ca_cpu_complete_chain.pdf": "fbe67cabe8c2bdc1c9a8ad544f6da16a0bfa7a4aeed5489166ee8dbafac491c8",
+    "ca_cpu_diagnostic/figures/car_ca_cpu_complete_chain.svg": "22e043267517c6bffcb4be9e2020df26470d156b5ffc21db5f77f4918019741f",
+    "ca_cpu_diagnostic/figures/car_ca_cpu_complete_chain.png": "29d8c716ef897137c5df6c9dc23ffa91cede6a15d5aa61f83e7e125323f02436"
+  },
+  "PDF_renders": [
+    {
+      "figure": "car_score_density_selected",
+      "PDF_render": "passed",
+      "dimensions": [
+        1421,
+        929
+      ]
+    },
+    {
+      "figure": "car_ca_cpu_complete_chain",
+      "PDF_render": "passed",
+      "dimensions": [
+        1481,
+        776
+      ]
+    }
+  ],
+  "visual_inspection": "geometry, labels, true selected/coarse support, feature/head/score units and density semantics inspected; final8-panel source uses only CPU run values"
+}

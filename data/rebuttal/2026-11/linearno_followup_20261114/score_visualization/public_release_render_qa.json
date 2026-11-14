@@ -1,0 +1,97 @@
+{
+  "status": "passed_render_and_public_scalar_replay",
+  "PNG_checks": [
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_byte_equal": true,
+      "public_CSV_replay_pixel_equal": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.png",
+      "PNG_decode": "passed",
+      "public_CSV_replay_pixel_equal": true
+    }
+  ],
+  "PDF_checks": [
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.pdf",
+      "render": "passed"
+    },
+    {
+      "PDF": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.pdf",
+      "render": "passed"
+    }
+  ],
+  "FZ2_acceptance": "PARTIAL (see numerical/source/protocol QA)"
+}

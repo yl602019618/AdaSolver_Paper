@@ -1,0 +1,769 @@
+{
+  "status": "PARTIAL",
+  "created_at_utc": "2026-11-14T15:33:44.763183+00:00",
+  "case_id": "param0/100715345ee54d7ae38b52b4ee9d36a3",
+  "dataset": "ShapeNet-Car",
+  "backbone": "Transolver3",
+  "training_seed": 0,
+  "head_seed": 0,
+  "sampling_seed": 0,
+  "budget": 0.5,
+  "points": 32186,
+  "surface_points": 3682,
+  "checkpoint_sha256": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+  "head_sha256": "79e295c57dc48c9bad7b6828d8768515b94815870d84b887af3b49e63a4c87f5",
+  "normalizer_sha256": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+  "split_hash": "2765f40af68c35d5ccbda9608dddb092ddd52bc8c7f53f0882aabfe7be500f13",
+  "coordinate_space": "native physical xyz; no jitter, smoothing or coordinate remeshing",
+  "truth_loaded_by_dataset_loader": true,
+  "truth_read_by_capture_or_score": false,
+  "truth_boundary": "CarRuntime.sample loads the target as part of its dataset object. This script never accesses target_phys or target_norm; score functions receive coordinates, surface mask and predictions/own-head outputs only.",
+  "methods": {
+    "uniform": {
+      "perpoint_csv": "data/uniform_perpoint.csv",
+      "npz": "data/uniform.npz",
+      "columns": {
+        "index": "index",
+        "xyz": [
+          "x",
+          "y",
+          "z"
+        ],
+        "selected": "selected",
+        "coarse": "coarse",
+        "rawscore": "raw_prior",
+        "normalizedscore": null,
+        "density": "allocation_density",
+        "native_selected_density": "compensation_density_selected",
+        "normalized_allocation_density": "normalized_allocation_density",
+        "target_density": "target_density",
+        "selected_order": "selected_order",
+        "coarse_order": "coarse_order"
+      },
+      "definitions": {
+        "native_compensation_density": "recorded sampling_density on selected indices only; no values imputed outside its support",
+        "selected": "exact archived ordered selected indices; no rerun or filtering",
+        "normalized_score_native": "N/A: uniform sampler does not compute a normalized score",
+        "raw_prior": "constant equal-weight baseline; no model score evaluated",
+        "allocation_density": "uniform inclusion probability K/N; not native1/N sampling_density",
+        "normalized_allocation_density": "Explicitly derived normalized allocation measure. Native quota/FPS policy is unchanged; not presented as the native random proposal distribution."
+      },
+      "configuration": {
+        "method": "uniform",
+        "selection_target": "field"
+      },
+      "source_npz": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "source_npz_sha256": "876b400b4ef48d98b7945b19b444806282a99d613af724657db469bf93617a28",
+      "source_manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/run_manifest.json",
+      "source_manifest_sha256": "e65790dfb05f69148ef5140531051db26d78206f0c3a378478ba7655731d3653",
+      "actual_selected_ordered_sha256": "4a1a5ec64af202dbd6b7936b4f7e12eb4848ffb56f116ca37bebd7dbd1947e9b",
+      "actual_coarse_ordered_sha256": null,
+      "selected_count": 16093,
+      "coarse_count": 0,
+      "surface_selected_count": 1883,
+      "native_online_generation_seconds": {
+        "coarse_seconds": 0.0,
+        "feature_head_seconds": 0.0,
+        "score_seconds": 0.0,
+        "refinement_seconds": 0.0003613904118537903
+      },
+      "cpu_trace_seconds": 1.0957017466425896,
+      "missing": [],
+      "field_semantics": {
+        "raw_prior": {
+          "support": "full",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "full",
+          "semantic_type": "selection_rate",
+          "normalization_rule": "none; sum over full reference cloud=K"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "constant1/N"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "constant1"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "full",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "full",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      },
+      "allocation_measure_validation": {
+        "sum_rate": 16093.0,
+        "sum_normalized_allocation_density": 1.0000000000000004,
+        "mean_target_reference_ratio": 1.0
+      },
+      "target_design_formula": "equal full-domain target; p_i=1/N",
+      "target_design_normalization_check": {
+        "sum_probability_mass": 1.0000000000000004,
+        "mean_reference_density": 1.0,
+        "source": "actual frozen configuration and native priority/prior; no truth input"
+      },
+      "coarse_retention": {
+        "coarse_total": 0,
+        "coarse_selected_intersection": 0,
+        "all_coarse_retained": null,
+        "scope": "actual saved sets, not an assumed policy"
+      }
+    },
+    "pi": {
+      "perpoint_csv": "data/pi_perpoint.csv",
+      "npz": "data/pi.npz",
+      "columns": {
+        "index": "index",
+        "xyz": [
+          "x",
+          "y",
+          "z"
+        ],
+        "selected": "selected",
+        "coarse": "coarse",
+        "rawscore": "raw_prior",
+        "normalizedscore": null,
+        "density": null,
+        "native_selected_density": "compensation_density_selected",
+        "normalized_allocation_density": null,
+        "target_density": "target_density",
+        "selected_order": "selected_order",
+        "coarse_order": "coarse_order"
+      },
+      "definitions": {
+        "native_compensation_density": "selected shell-mass weights divided by sum of selected weights; fallback points can receive shell weight; not full-cloud proposal/inclusion probability",
+        "selected": "exact archived ordered selected indices; no rerun or filtering",
+        "normalized_score_native": "N/A: historical two-stage PI computes no global normalized score",
+        "raw_prior": "hard-shell membership: distance_to_surface < 0.1; true native PI prior",
+        "allocation_density": "N/A: native two-stage code defines no full-cloud density; selected compensation density remains separate",
+        "normalized_allocation_density": "Explicitly derived normalized allocation measure. Native quota/FPS policy is unchanged; not presented as the native random proposal distribution."
+      },
+      "configuration": {
+        "method": "pi",
+        "selection_target": "field",
+        "strategy": "two_stage",
+        "r": 0.1,
+        "frac_extra": 0.5,
+        "beta": 0.5,
+        "amp": 8.0,
+        "ell": 0.05
+      },
+      "source_npz": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "source_npz_sha256": "5205b2e061949f0b1f217b5c8cfa2299224a09ea731c2855ad52f0d27e27de5b",
+      "source_manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/run_manifest.json",
+      "source_manifest_sha256": "990510c619d6b7b1e6332648de991f71fee1f31d518ebc77c5f529cd5bc645d5",
+      "actual_selected_ordered_sha256": "f81fb520abaa59f65eb769c40e0a54476a7636b76becf861bbbb1913b30d2af2",
+      "actual_coarse_ordered_sha256": null,
+      "selected_count": 16093,
+      "coarse_count": 0,
+      "surface_selected_count": 3682,
+      "native_online_generation_seconds": {
+        "coarse_seconds": 0.0,
+        "feature_head_seconds": 0.0,
+        "score_seconds": 0.0,
+        "refinement_seconds": 0.029380671679973602
+      },
+      "cpu_trace_seconds": 1.0634634867310524,
+      "missing": [
+        "native normalized score",
+        "native full-cloud sampling distribution"
+      ],
+      "field_semantics": {
+        "raw_prior": {
+          "support": "full",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "not_applicable",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "not_applicable",
+          "semantic_type": "stratum_allocation_ratio",
+          "normalization_rule": "not_defined_by_native_algorithm"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "selected weights/sum(selected weights)"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "native shell weight^(-beta), with fallback assignments"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "not_applicable",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "not_applicable",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability",
+          "provenance": "derived from frozen frac_extra/r and locked paper mixture formula; this full array is not computed by the native PI selector"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      },
+      "mixture_implementation": {
+        "configured_alpha": 0.5,
+        "configured_shell_fraction": 0.165693158516125,
+        "shell_points": 5333,
+        "actual_base_count": 8047,
+        "actual_extra_count": 8046,
+        "actual_base_fraction_of_budget": 0.5000310694090598,
+        "fallback_non_shell_points": 4041,
+        "distinction": "design mixture target; actual selection is without replacement after a fixed uniform base, with nearest nonshell fallback; not independent point inclusion probabilities"
+      },
+      "target_design_formula": "lambda=alpha+(1-alpha)*I_H/rho(H); p_i=lambda_i/N; alpha=1-frac_extra",
+      "target_design_normalization_check": {
+        "sum_probability_mass": 1.0000000000000004,
+        "mean_reference_density": 1.0000000000000002,
+        "source": "actual frozen configuration and native priority/prior; no truth input"
+      },
+      "coarse_retention": {
+        "coarse_total": 0,
+        "coarse_selected_intersection": 0,
+        "all_coarse_retained": null,
+        "scope": "actual saved sets, not an assumed policy"
+      }
+    },
+    "cpg": {
+      "perpoint_csv": "data/cpg_perpoint.csv",
+      "npz": "data/cpg.npz",
+      "columns": {
+        "index": "index",
+        "xyz": [
+          "x",
+          "y",
+          "z"
+        ],
+        "selected": "selected",
+        "coarse": "coarse",
+        "rawscore": "raw_score_cpu",
+        "normalizedscore": "normalized_score_native",
+        "density": "allocation_density",
+        "native_selected_density": "compensation_density_selected",
+        "normalized_allocation_density": "normalized_allocation_density",
+        "target_density": "target_density",
+        "selected_order": "selected_order",
+        "coarse_order": "coarse_order"
+      },
+      "definitions": {
+        "native_compensation_density": "recorded sampling_density on selected indices only; no values imputed outside its support",
+        "selected": "exact archived ordered selected indices; no rerun or filtering",
+        "normalized_score_native": "archived GPU score: max(raw/q95(raw),0.1)^1 on full native cloud; copied without alteration",
+        "raw_score_cpu": "CPU replay: mean squared coarse-surface pressure difference divided by neighbor distance squared (k4); nearest lift to surface, then exp(-surface_distance/0.1)",
+        "normalized_score_cpu": "separate CPU replay with frozen checkpoint; parity result reported; not substituted for archived score",
+        "allocation_density": "native stratum quota/reference count, extended to each original point in that stratum; sum is K, not1; FPS plus anchors makes it an allocation ratio, not point inclusion probability",
+        "allocation_priority": "(1+64*exp(-distance/0.1))*(1+2*clip(saved_score/q95(surface_saved_score),0,1))",
+        "normalized_allocation_density": "Explicitly derived normalized allocation measure. Native quota/FPS policy is unchanged; not presented as the native random proposal distribution."
+      },
+      "configuration": {
+        "method": "cpg",
+        "selection_target": "field",
+        "coarse_fraction": 0.1,
+        "feature": "gradient",
+        "signal": "pressure",
+        "patch_count": 24,
+        "neighborhood": 4,
+        "normalization": "q95",
+        "score_floor": 0.1,
+        "score_power": 1.0,
+        "kappa": 4.0,
+        "beta": 1.0,
+        "placement": "fps",
+        "surface_band": 0.1,
+        "cd_weight": false,
+        "strategy": "surface_stratified",
+        "wall_scale": 0.1,
+        "wall_amplitude": 64.0,
+        "physics_strength": 2.0,
+        "score_bins": 4
+      },
+      "source_npz": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "source_npz_sha256": "7919f77132e7710d234ef6f480020eae3e885ede5a4ff333ca761cd657292c48",
+      "source_manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/run_manifest.json",
+      "source_manifest_sha256": "c7713f79b751284b666fc139d1169534f062be7d627dcb942c8bcde5ae2d97d1",
+      "actual_selected_ordered_sha256": "e4945eedf802fc8bde7a7590a14b075a5c99e3caacfc2969e9500e7e0b2a60f4",
+      "actual_coarse_ordered_sha256": "c895fc4d0b119efdb158a82c2ec04c8866e7749c23aa85de7483c75ae82a9a9f",
+      "selected_count": 16093,
+      "coarse_count": 3218,
+      "surface_selected_count": 3682,
+      "native_online_generation_seconds": {
+        "coarse_seconds": 0.014473289251327515,
+        "feature_head_seconds": 0.0,
+        "score_seconds": 0.026870816946029663,
+        "refinement_seconds": 0.153463713824749
+      },
+      "cpu_trace_seconds": 1.315690517425537,
+      "missing": [],
+      "field_semantics": {
+        "raw_prior": {
+          "support": "not_applicable",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "full",
+          "semantic_type": "stratum_allocation_ratio",
+          "normalization_rule": "none; sum over full reference cloud=K"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "stratum_selected_count/stratum_reference_count; none"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "allocation_density^(-beta)"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "full",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "full",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      },
+      "allocation_measure_validation": {
+        "sum_rate": 16093.0,
+        "sum_normalized_allocation_density": 1.0000000000000002,
+        "mean_target_reference_ratio": 1.0,
+        "native_to_reference_compensation_factor": 0.5,
+        "weight_relation_max_absolute_difference": 1.9073486345888568e-07,
+        "weight_relation_pass": true,
+        "relation": "lambda^(-beta)=(K/N)^beta*native_compensation, using lambda=N*allocation_rate/K",
+        "attention_or_model_output_scale_parity": "not_tested; no output-invariance claim"
+      },
+      "target_design_formula": "lambda=N[(1+64*exp(-d/0.1))*(1+2*clip(saved_score/q95(surface_saved_score),0,1))]; N[.] means full-reference mean normalization",
+      "target_design_normalization_check": {
+        "sum_probability_mass": 1.0,
+        "mean_reference_density": 1.0,
+        "source": "actual frozen configuration and native priority/prior; no truth input"
+      },
+      "coarse_retention": {
+        "coarse_total": 3218,
+        "coarse_selected_intersection": 3218,
+        "all_coarse_retained": true,
+        "scope": "actual saved sets, not an assumed policy"
+      }
+    },
+    "ca": {
+      "perpoint_csv": "data/ca_perpoint.csv",
+      "npz": "data/ca.npz",
+      "columns": {
+        "index": "index",
+        "xyz": [
+          "x",
+          "y",
+          "z"
+        ],
+        "selected": "selected",
+        "coarse": "coarse",
+        "rawscore": "raw_score_cpu",
+        "normalizedscore": "normalized_score_native",
+        "density": "allocation_density",
+        "native_selected_density": "compensation_density_selected",
+        "normalized_allocation_density": "normalized_allocation_density",
+        "target_density": "target_density",
+        "selected_order": "selected_order",
+        "coarse_order": "coarse_order"
+      },
+      "definitions": {
+        "native_compensation_density": "recorded sampling_density on selected indices only; no values imputed outside its support",
+        "selected": "exact archived ordered selected indices; no rerun or filtering",
+        "normalized_score_native": "archived GPU score: max(raw/q95(raw),0.1)^1 on full native cloud; copied without alteration",
+        "raw_score_cpu": "CPU replay: mean squared coarse-surface pressure difference divided by neighbor distance squared (k4); nearest lift to surface, then exp(-surface_distance/0.1)",
+        "normalized_score_cpu": "separate CPU replay with frozen checkpoint; parity result reported; not substituted for archived score",
+        "allocation_density": "native stratum quota/reference count, extended to each original point in that stratum; sum is K, not1; FPS plus anchors makes it an allocation ratio, not point inclusion probability",
+        "allocation_priority": "(1+64*exp(-distance/0.1))*(1+2*clip(saved_score/q95(surface_saved_score),0,1))",
+        "normalized_allocation_density": "Explicitly derived normalized allocation measure. Native quota/FPS policy is unchanged; not presented as the native random proposal distribution."
+      },
+      "configuration": {
+        "method": "ca",
+        "selection_target": "field",
+        "coarse_fraction": 0.1,
+        "feature": "gradient",
+        "signal": "pressure",
+        "patch_count": 24,
+        "neighborhood": 4,
+        "normalization": "q95",
+        "score_floor": 0.1,
+        "score_power": 1.0,
+        "kappa": 4.0,
+        "beta": 1.0,
+        "placement": "fps",
+        "surface_band": 0.1,
+        "cd_weight": false,
+        "strategy": "surface_stratified",
+        "wall_scale": 0.1,
+        "wall_amplitude": 64.0,
+        "physics_strength": 2.0,
+        "score_bins": 4
+      },
+      "source_npz": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "source_npz_sha256": "9a91f5b961f85c5e3a6a2f6ab5764dda68c8cc566b8e42e7a26976dc4132702f",
+      "source_manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/run_manifest.json",
+      "source_manifest_sha256": "ac0cf022ac2606ca5cd3c3057ff0daad63d2e0809213aa3dcfa51b6c81ec5612",
+      "actual_selected_ordered_sha256": "36f5c126e79a812101b9e65d1b80093c6c213ab4332836e816fdca32316a4af4",
+      "actual_coarse_ordered_sha256": "c895fc4d0b119efdb158a82c2ec04c8866e7749c23aa85de7483c75ae82a9a9f",
+      "selected_count": 16093,
+      "coarse_count": 3218,
+      "surface_selected_count": 3682,
+      "native_online_generation_seconds": {
+        "coarse_seconds": 0.0,
+        "feature_head_seconds": 0.0005245059728622437,
+        "score_seconds": 0.026939161121845245,
+        "refinement_seconds": 0.15464713424444199
+      },
+      "cpu_trace_seconds": 1.4149298444390297,
+      "missing": [],
+      "field_semantics": {
+        "raw_prior": {
+          "support": "not_applicable",
+          "semantic_type": "prior",
+          "normalization_rule": "none"
+        },
+        "raw_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "none",
+          "execution": "separate CPU trace"
+        },
+        "normalized_score_native": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "max(raw/q95(raw),0.1)^1; not sum1 or mean1",
+          "execution": "archived GPU output"
+        },
+        "normalized_score_cpu": {
+          "support": "full",
+          "semantic_type": "score",
+          "normalization_rule": "same native q95 rule; separately recomputed on CPU"
+        },
+        "allocation_density": {
+          "support": "full",
+          "semantic_type": "stratum_allocation_ratio",
+          "normalization_rule": "none; sum over full reference cloud=K"
+        },
+        "compensation_density_selected": {
+          "support": "selected",
+          "semantic_type": "native_selected_density",
+          "normalization_rule": "stratum_selected_count/stratum_reference_count; none"
+        },
+        "compensation_weight_selected": {
+          "support": "selected",
+          "semantic_type": "compensation",
+          "normalization_rule": "allocation_density^(-beta)"
+        },
+        "realized_local_retained_fraction": {
+          "support": "full",
+          "semantic_type": "realized_selection_rate_diagnostic",
+          "normalization_rule": "selected_count/64 on same nearest64 native neighbors; never used for acquisition"
+        },
+        "normalized_allocation_density": {
+          "support": "full",
+          "semantic_type": "derived_normalized_quota_measure",
+          "normalization_rule": "allocation_rate/sum_full_reference(allocation_rate)=allocation_rate/K",
+          "probabilistic_interpretation": "not independent point inclusion probabilities; FPS and mandatory anchors retained"
+        },
+        "target_to_uniform_reference_ratio": {
+          "support": "full",
+          "semantic_type": "derived_quota_reference_density_ratio",
+          "normalization_rule": "N*normalized_allocation_density; full-reference mean1"
+        },
+        "target_density": {
+          "support": "full",
+          "semantic_type": "designed_target_probability_mass",
+          "normalization_rule": "target_weight/sum_full_reference(target_weight)",
+          "not": "independent inclusion probability"
+        },
+        "target_reference_ratio": {
+          "support": "full",
+          "semantic_type": "target_reference_density",
+          "normalization_rule": "N*target_density; mean1 under uniform reference"
+        }
+      },
+      "allocation_measure_validation": {
+        "sum_rate": 16093.0,
+        "sum_normalized_allocation_density": 1.0,
+        "mean_target_reference_ratio": 1.0,
+        "native_to_reference_compensation_factor": 0.5,
+        "weight_relation_max_absolute_difference": 1.9073486345888568e-07,
+        "weight_relation_pass": true,
+        "relation": "lambda^(-beta)=(K/N)^beta*native_compensation, using lambda=N*allocation_rate/K",
+        "attention_or_model_output_scale_parity": "not_tested; no output-invariance claim"
+      },
+      "target_design_formula": "lambda=N[(1+64*exp(-d/0.1))*(1+2*clip(saved_score/q95(surface_saved_score),0,1))]; N[.] means full-reference mean normalization",
+      "target_design_normalization_check": {
+        "sum_probability_mass": 0.9999999999999999,
+        "mean_reference_density": 0.9999999999999998,
+        "source": "actual frozen configuration and native priority/prior; no truth input"
+      },
+      "coarse_retention": {
+        "coarse_total": 3218,
+        "coarse_selected_intersection": 3218,
+        "all_coarse_retained": true,
+        "scope": "actual saved sets, not an assumed policy"
+      }
+    }
+  },
+  "checks": [
+    {
+      "method": "uniform",
+      "selected_hash_match": true,
+      "native_density_hash": "4b52dc7fe7707b939d95455a3e32d0d1bd8c7ab4ef87073b4ed0db007d0c1964",
+      "native_compensation_hash": "eda05f686c845386a38054363436aff6d13516b2241434f8414bdd1a29157144",
+      "cpu_trace_seconds": 1.0957017466425896
+    },
+    {
+      "method": "pi",
+      "selected_hash_match": true,
+      "native_density_hash": "ac6a6f560b6ecebab74ee9224d018a78411cbcdeeb4172999eb44c35938dc7f9",
+      "native_compensation_hash": "3930ed6e3e88dc6ff12514edc449baecd25a104fe503c1043cc59f1302438d16",
+      "pi_native_replay_equal": true,
+      "cpu_trace_seconds": 1.0634634867310524
+    },
+    {
+      "method": "cpg",
+      "selected_hash_match": true,
+      "native_density_hash": "8feff736556c974b71e67ab2656b08a8e3f6b5198d71e26f98b30fa0248fe1ab",
+      "native_compensation_hash": "9b7e8de33af4b238209c8fa40c24e7d2a7b6fd1d724cf76de0c7509f61b7f4f5",
+      "cpu_score_replay_max_abs": 0.0003258118300664137,
+      "cpu_score_replay_relative_norm": 1.7571941114630556e-06,
+      "cpu_score_replay_violations": 0,
+      "cpu_score_replay_atol": 1e-06,
+      "cpu_score_replay_rtol": 1e-05,
+      "cpu_score_replay_pass": true,
+      "stratum_counts_match_archived": true,
+      "full_allocation_matches_selected_density": true,
+      "cpu_trace_seconds": 1.315690517425537
+    },
+    {
+      "method": "ca",
+      "selected_hash_match": true,
+      "native_density_hash": "53359ee518bd3b1ff88857ada4cf8be281568435a39755c4f9bf141ec80e2ace",
+      "native_compensation_hash": "751d447056dbbf967d3217332ecea080127a74e1ea8cb8355b6c11688df69a0b",
+      "cpu_score_replay_max_abs": 0.00040551702618785157,
+      "cpu_score_replay_relative_norm": 3.622099359289635e-06,
+      "cpu_score_replay_violations": 154,
+      "cpu_score_replay_atol": 1e-06,
+      "cpu_score_replay_rtol": 1e-05,
+      "cpu_score_replay_pass": false,
+      "stratum_counts_match_archived": true,
+      "full_allocation_matches_selected_density": true,
+      "cpu_trace_seconds": 1.4149298444390297
+    }
+  ],
+  "source_functions_sha256": {
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/data/shapenet_car_runtime.py": "1c7fb77b906fbba7d24dddee13de5528f372b29727aed14061b1baf83b2da1eb",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/data/shapenet_car.py": "1eb7c443b5401f37b5837d3f06757e2c2e57bd0c515a4cb5403fcaf723604bd8",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/models/adapter.py": "6f60e1555ae72b99e9f1b7f71deb26d00a577b5d251dd3025eccb5e9dda467e1",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/models/transolver3.py": "2dc6476d64613b66e0da285e676bd87ffd6110b49ff4c2d53ed4e9013309562c",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/pi/shapenet_car.py": "b86fe7fc6e1fb24bcc0378b899166ebefb440299ff4085d2c2658f083b887180",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/cpg/shapenet_car.py": "b376089a3d9cf3e9836c40d44e8abcc41447dae6b39f13b6fcfca8cea4a2584b",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/cpg/shapenet_car_stratified.py": "c8c201c30e372ce34a00b37b45cbef6c11cd3e440936d8d7705a7fa8619a9e6b",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/ca/shapenet_car.py": "493765e0179a8291fcb7676fdaf94c45fedc56514233337b9b02fcd271e580eb",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/inference/shapenet_car_contract.py": "273f8760ca59a25ffcc4db547bf6fef86c7708b38d3a95e00ac34742d9577c8a",
+    "rebuttal_20261112/experiments/E5_training_seeds/code/vendor/adasolver/layers/block0_cache.py": "58efda9999b837eecc74f81b23eb306884a8d9e1b54db6fc39da1839e3040b24"
+  },
+  "total_cpu_trace_seconds": 5.310277946293354,
+  "GPU_execution": false,
+  "density_caveat": "Allocation ratios, uniform inclusion probability, native selected compensation density, and realized local retention are distinct quantities; none is relabeled as a common normalized probability.",
+  "files": {
+    "data/ca.npz": {
+      "bytes": 4841447,
+      "sha256": "a0fa4cd56736e584579bde630015d64a92777eac1e028323ef453ea2e0ac9800",
+      "allow_public": false,
+      "reason": "large feature/field cache remains internal"
+    },
+    "data/ca_perpoint.csv": {
+      "bytes": 6082288,
+      "sha256": "2aedf211cd81ef42d76074c2df9a31ee175b4b7bb68625e2a9b0cce0af44918b",
+      "allow_public": true,
+      "reason": "user-authorized per-point figure source"
+    },
+    "data/cpg.npz": {
+      "bytes": 1853461,
+      "sha256": "918664d609b89189cc2a550826330d3386fb28c36c0544513ed3408c63ceb9a5",
+      "allow_public": false,
+      "reason": "large feature/field cache remains internal"
+    },
+    "data/cpg_perpoint.csv": {
+      "bytes": 6086766,
+      "sha256": "d192b29a3156c347f172a281358d8faa7cad63fe30f57e7276b190da101aacd5",
+      "allow_public": true,
+      "reason": "user-authorized per-point figure source"
+    },
+    "data/pi.npz": {
+      "bytes": 735106,
+      "sha256": "44c1c657ae1b8ae6a510bdf135eb2f02b1e0e1b6f9181163b7ac73dfa3610375",
+      "allow_public": false,
+      "reason": "large feature/field cache remains internal"
+    },
+    "data/pi_perpoint.csv": {
+      "bytes": 3916254,
+      "sha256": "e4500f54ca394450a6a4810e62c01927bda31718261421dc98c829d7b5563b74",
+      "allow_public": true,
+      "reason": "user-authorized per-point figure source"
+    },
+    "data/uniform.npz": {
+      "bytes": 720031,
+      "sha256": "922ba435d30c26b45a2ee9a5f5c47e1adb6ccb66f27b527010326c19af43d1bc",
+      "allow_public": false,
+      "reason": "large feature/field cache remains internal"
+    },
+    "data/uniform_perpoint.csv": {
+      "bytes": 4129371,
+      "sha256": "0f7a07db069e3b5d0fabc2d477afc878870e875d8bcdb25f1808353eda17053e",
+      "allow_public": true,
+      "reason": "user-authorized per-point figure source"
+    }
+  },
+  "paper_formula_status": "VERIFIED_COMPLETE",
+  "paper_formula_reason": "The full-domain designed target matches the locked paper formula from the real hard-shell mixture and native CPG/CA priority. Integer quotas, mandatory surface/coarse anchors, FPS and PI fallback determine actual selection. Those quantities and actual compensation are preserved separately. PI has no separate native normalized-score array. CA archived-GPU raw replay remains partial; its exact saved score defines the archived target. No model-level global-scale-invariance claim is made.",
+  "coordinate_binding": {
+    "source": "SHAPENET_CAR_DATA/preprocessed_data/param0/100715345ee54d7ae38b52b4ee9d36a3/pos.npy",
+    "source_file_sha256": "d1caa0dc9c1ad6a57609fbd7d158e3a8d03e86336701fc228b41ea73ac712acc",
+    "source_array_sha256": "cec7b8d5729bd70b41eda225f2b50fa69903d0137bfd7fb2712112c23bfc5ea9",
+    "native_dtype": "float32",
+    "equal": true
+  },
+  "capture_source_identity": {
+    "path": "capture.py",
+    "sha256": "6ff62b21e34401570102d6fce671411e577c3187d02e3a02d7cd29b8ab4035d7",
+    "status": "observed_current_after_metadata_only_edits",
+    "executed_source_file_hash": "not_captured_before_run",
+    "note": "Acquisition code unchanged; subsequent edits added field semantic metadata only. No claim of a pre-execution script hash."
+  },
+  "allocation_derivation_source": {
+    "path": "derive_allocation.py",
+    "sha256": "1669ba5796fd3e179ec02152ca63675a8da2b9891a64d5704f0c346cdf054b11",
+    "status": "executed_current"
+  },
+  "paper_formula_scope": "Designed target-density mapping only; separate from actual inclusion probabilities and native selected compensation.",
+  "paper_formula_source": {
+    "commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+    "file": "sections/density_policy_design.tex",
+    "sha256": "e4323aa421b35ff4609408b837dcad98f4f595a6aedb231d54b01b489d502bee",
+    "equations": [
+      "app_pi_car_density",
+      "app_density_car",
+      "app_ca_car_density"
+    ]
+  },
+  "public_source_preparation_sha256": "383b9b4a1ed9a39a927a89962e29397bd9d7810607f33e03c025ef8620d8015c"
+}

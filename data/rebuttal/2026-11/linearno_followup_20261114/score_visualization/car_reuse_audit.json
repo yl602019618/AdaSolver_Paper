@@ -1,0 +1,261 @@
+{
+  "created_at_utc": "2026-11-14T15:27:38.848406+00:00",
+  "search_paths": [
+    "fig1",
+    "fig3",
+    "fig4",
+    "AdaSolver_official",
+    "rebuttal_20261112",
+    "linearno_followup_20261114",
+    "appendix_figures/data/shapenet_car"
+  ],
+  "search_terms": [
+    "score_visualization",
+    "refinement_score",
+    "density_map",
+    "selected_points",
+    "score_manifest",
+    "FZ2"
+  ],
+  "matching_running_processes": [],
+  "fixed_before_capture": {
+    "dataset": "ShapeNet-Car",
+    "backbone": "E5 Transolver3",
+    "training_seed": 0,
+    "head_seed": 0,
+    "case_id": "param0/100715345ee54d7ae38b52b4ee9d36a3",
+    "case_rule": "first case in locked published fold0 test order",
+    "budget": 0.5,
+    "sampling_seed": 0
+  },
+  "subtasks": [
+    {
+      "subtask": "uniform",
+      "status": "PARTIAL",
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "mtime_utc": "2026-11-11T20:47:35+00:00",
+      "bytes": 45376,
+      "sha256": "876b400b4ef48d98b7945b19b444806282a99d613af724657db469bf93617a28",
+      "manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/uniform_field_26ccb3fbd7ed/run_manifest.json",
+      "checkpoint_hash": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+      "normalizer_hash": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+      "head_hash": null,
+      "source_hash": "2c18017b5ebf7f7e3caa7deee1ef1b90344b0e1365e302f9233d4a412dc95a5c",
+      "selected_hash_verified": true,
+      "arrays": {
+        "indices": {
+          "shape": [
+            16093
+          ],
+          "dtype": "int64"
+        },
+        "compensation": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float64"
+        },
+        "sampling_density": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float64"
+        }
+      },
+      "skip_experiment": true,
+      "reuse": [
+        "actual selected indices",
+        "selected sampling density",
+        "actual compensation weights"
+      ],
+      "missing": [
+        "visualization protocol/script/QA",
+        "full-cloud expected sampling density"
+      ],
+      "action": "Reuse immutable arrays; CPU trace only missing native intermediates. Do not start training or GPU evaluation."
+    },
+    {
+      "subtask": "pi",
+      "status": "PARTIAL",
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "mtime_utc": "2026-11-11T20:47:35+00:00",
+      "bytes": 43840,
+      "sha256": "5205b2e061949f0b1f217b5c8cfa2299224a09ea731c2855ad52f0d27e27de5b",
+      "manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/pi_field_0a7a08b11413/run_manifest.json",
+      "checkpoint_hash": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+      "normalizer_hash": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+      "head_hash": null,
+      "source_hash": "2c18017b5ebf7f7e3caa7deee1ef1b90344b0e1365e302f9233d4a412dc95a5c",
+      "selected_hash_verified": true,
+      "arrays": {
+        "indices": {
+          "shape": [
+            16093
+          ],
+          "dtype": "int64"
+        },
+        "compensation": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float32"
+        },
+        "sampling_density": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float64"
+        }
+      },
+      "skip_experiment": true,
+      "reuse": [
+        "actual selected indices",
+        "selected sampling density",
+        "actual compensation weights"
+      ],
+      "missing": [
+        "visualization protocol/script/QA",
+        "full-cloud expected sampling density",
+        "full-cloud PI prior"
+      ],
+      "action": "Reuse immutable arrays; CPU trace only missing native intermediates. Do not start training or GPU evaluation."
+    },
+    {
+      "subtask": "cpg",
+      "status": "PARTIAL",
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "mtime_utc": "2026-11-11T20:47:36+00:00",
+      "bytes": 82938,
+      "sha256": "7919f77132e7710d234ef6f480020eae3e885ede5a4ff333ca761cd657292c48",
+      "manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/cpg_field_6a0eb5f218c2/run_manifest.json",
+      "checkpoint_hash": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+      "normalizer_hash": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+      "head_hash": null,
+      "source_hash": "2c18017b5ebf7f7e3caa7deee1ef1b90344b0e1365e302f9233d4a412dc95a5c",
+      "selected_hash_verified": true,
+      "arrays": {
+        "indices": {
+          "shape": [
+            16093
+          ],
+          "dtype": "int64"
+        },
+        "compensation": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float32"
+        },
+        "sampling_density": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float64"
+        },
+        "coarse_indices": {
+          "shape": [
+            3218
+          ],
+          "dtype": "int64"
+        },
+        "score": {
+          "shape": [
+            32186
+          ],
+          "dtype": "float64"
+        }
+      },
+      "skip_experiment": true,
+      "reuse": [
+        "actual selected indices",
+        "selected sampling density",
+        "actual compensation weights",
+        "native full-cloud final score",
+        "coarse indices"
+      ],
+      "missing": [
+        "visualization protocol/script/QA",
+        "full-cloud expected sampling density",
+        "raw acquisition signal and intermediate score",
+        "matching coarse prediction or own-head output"
+      ],
+      "action": "Reuse immutable arrays; CPU trace only missing native intermediates. Do not start training or GPU evaluation."
+    },
+    {
+      "subtask": "ca",
+      "status": "PARTIAL",
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/arrays/param0_100715345ee54d7ae38b52b4ee9d36a3_s0_b0.500.npz",
+      "mtime_utc": "2026-11-11T20:47:38+00:00",
+      "bytes": 82488,
+      "sha256": "9a91f5b961f85c5e3a6a2f6ab5764dda68c8cc566b8e42e7a26976dc4132702f",
+      "manifest": "rebuttal_20261112/experiments/E5_training_seeds/records/seed0/adaptive/ca_field_99d5b859e461/run_manifest.json",
+      "checkpoint_hash": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+      "normalizer_hash": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279",
+      "head_hash": "79e295c57dc48c9bad7b6828d8768515b94815870d84b887af3b49e63a4c87f5",
+      "source_hash": "2c18017b5ebf7f7e3caa7deee1ef1b90344b0e1365e302f9233d4a412dc95a5c",
+      "selected_hash_verified": true,
+      "arrays": {
+        "indices": {
+          "shape": [
+            16093
+          ],
+          "dtype": "int64"
+        },
+        "compensation": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float32"
+        },
+        "sampling_density": {
+          "shape": [
+            16093
+          ],
+          "dtype": "float64"
+        },
+        "coarse_indices": {
+          "shape": [
+            3218
+          ],
+          "dtype": "int64"
+        },
+        "score": {
+          "shape": [
+            32186
+          ],
+          "dtype": "float64"
+        }
+      },
+      "skip_experiment": true,
+      "reuse": [
+        "actual selected indices",
+        "selected sampling density",
+        "actual compensation weights",
+        "native full-cloud final score",
+        "coarse indices"
+      ],
+      "missing": [
+        "visualization protocol/script/QA",
+        "full-cloud expected sampling density",
+        "raw acquisition signal and intermediate score",
+        "matching coarse prediction or own-head output"
+      ],
+      "action": "Reuse immutable arrays; CPU trace only missing native intermediates. Do not start training or GPU evaluation."
+    }
+  ],
+  "historical_alternatives": [
+    {
+      "path": "fig4/cases/shapenet_car/manifest.json",
+      "status": "STALE_OR_CONFLICT",
+      "reason": "different case165aec\u2026 and old checkpoint; existing pressure/error and local realized retention views do not provide all true model scores or PI priors",
+      "preserve": true
+    },
+    {
+      "path": "fig1/raw/driverml",
+      "status": "STALE_OR_CONFLICT",
+      "reason": "DrivAerML is a different dataset from ShapeNet-Car; do not relabel or transfer its score maps",
+      "preserve": true
+    }
+  ],
+  "next_action": "Only CPU capture of missing raw native intermediates against frozen native source; fixed saved score/selected/density/weights are authoritative and retained."
+}

@@ -1,0 +1,63 @@
+{
+  "run_id": "car_ca_cpu_score_diagnostic_v1",
+  "source_csv_sha256": "b3e5e6587f810e45a29c2cea11d279b8d7b6bed2a602cb74630b10019fb92459",
+  "plot_script_sha256": "2fd6f224d57c564e1f8995662f4b22fbf38eb03704dd1b174e1e3f23ee6ffc51",
+  "panels": [
+    {
+      "title": "A \u00b7 Own-backbone feature summary",
+      "field": "coarse_feature_l2",
+      "support_points": 355
+    },
+    {
+      "title": "B \u00b7 Own-head raw output",
+      "field": "coarse_head_output_raw",
+      "support_points": 355
+    },
+    {
+      "title": "C \u00b7 Raw gradient acquisition score",
+      "field": "raw_score",
+      "support_points": 4682
+    },
+    {
+      "title": "D \u00b7 Normalized acquisition score",
+      "field": "normalized_score",
+      "support_points": 4682
+    },
+    {
+      "title": "E \u00b7 Designed target density",
+      "field": "target_density",
+      "support_points": 4682
+    },
+    {
+      "title": "F \u00b7 Actual selected points",
+      "field": null,
+      "support_points": 4131
+    },
+    {
+      "title": "G \u00b7 Own complete-field prediction",
+      "field": "predicted_surface_pressure",
+      "support_points": 3682
+    },
+    {
+      "title": "H \u00b7 Own-prediction error diagnostic",
+      "field": "surface_pressure_absolute_error",
+      "support_points": 3682
+    }
+  ],
+  "all_values_from_same_CPU_run": true,
+  "archived_GPU_values_used_for_display": false,
+  "QA": {
+    "PNG_decode": "passed",
+    "size": [
+      4036,
+      2112
+    ],
+    "dpi": [
+      299.9994,
+      299.9994
+    ],
+    "PDF_render": "passed",
+    "redraw_bytes_identical": true,
+    "source_csv_unchanged": true
+  }
+}

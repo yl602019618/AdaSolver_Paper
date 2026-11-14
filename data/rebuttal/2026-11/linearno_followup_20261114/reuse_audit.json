@@ -6,7 +6,7 @@
   "fixed_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
   "elasticity_ancestor": "487fab2d87642c735ddacfe6d6ce13de7ec4999c",
   "target_branch": "rebuttal/20261114-linearno-seeds",
-  "internal_audit_sha256": "c092271feb0ffad0989f77454ff3ec3d8a7da83fbdee596a94d01497da32928c",
+  "internal_audit_sha256": "2b59028cca194276cb4dcb2ea24e9c0dc0fc4e91f3beb474b2f57952104e533a",
   "matching_files": 9689,
   "searched_scopes": [
     "active workspace",
@@ -145,5 +145,19 @@
       "skip_execution": true,
       "reason": "110 released cases,5060 requests,40480 metric rows per model; independent raw binding and rAUEC replay passed. One training seed only."
     }
-  ]
+  ],
+  "score_visualization": {
+    "status": "PARTIAL",
+    "audits": [
+      "score_visualization/car_reuse_audit.json",
+      "score_visualization/twod_reuse_audit.json"
+    ],
+    "source_numerical_checks": "passed; unresolved protocol and cost scope recorded",
+    "covered": [
+      "ShapeNet-Car",
+      "Airfoil"
+    ],
+    "Darcy": "PARTIAL legacy reference only",
+    "GPU_jobs_started": 0
+  }
 }

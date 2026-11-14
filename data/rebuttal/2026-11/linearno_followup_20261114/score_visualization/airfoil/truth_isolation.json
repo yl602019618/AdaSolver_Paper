@@ -1,0 +1,51 @@
+{
+  "score_graph_truth_access": false,
+  "negative_control_rejections": [
+    {
+      "phase": "negative_control",
+      "kind": "target_method",
+      "case_id": 1001
+    },
+    {
+      "phase": "negative_control",
+      "kind": "q_attribute"
+    },
+    {
+      "phase": "negative_control",
+      "kind": "truth_file",
+      "path": "NACA_Cylinder_Q.npy"
+    }
+  ],
+  "actual_capture_truth_access_attempts": 0,
+  "score_capture_file_accesses": [
+    {
+      "phase": "score_capture",
+      "file": "NACA_Cylinder_X.npy"
+    },
+    {
+      "phase": "score_capture",
+      "file": "NACA_Cylinder_Y.npy"
+    },
+    {
+      "phase": "score_capture",
+      "file": "normalizer.npz"
+    },
+    {
+      "phase": "score_capture",
+      "file": "case1001_s0_b0.5_uniform.npz"
+    },
+    {
+      "phase": "score_capture",
+      "file": "case1001_s0_b0.5_pi.npz"
+    },
+    {
+      "phase": "score_capture",
+      "file": "case1001_s0_b0.5_cpg.npz"
+    },
+    {
+      "phase": "score_capture",
+      "file": "case1001_s0_b0.5_ca.npz"
+    }
+  ],
+  "separation": "All score CSV/NPZ captures were persisted before the error phase; GeometryOnlyData permanently rejects target() and q"
+}

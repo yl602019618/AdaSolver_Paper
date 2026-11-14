@@ -1,5 +1,7 @@
 # Verified reuse subset of the three-training-seed follow-up
 
+[Score and density evidence](score_visualization/README.md) includes the fixed Airfoil and ShapeNet-Car cases, actual-point data and the unresolved FZ2 checks.
+
 [Completed training inventory](completed_training/README.md) provides the model/head status, training configurations and source-file hashes.
 
 This package rechecks existing ShapeNet-Car E5/E3 results from paper release

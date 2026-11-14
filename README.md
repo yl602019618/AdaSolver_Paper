@@ -3,7 +3,7 @@
 <!-- completed-training-index -->
 ## Verified follow-up results
 
-[Completed training inventory](data/rebuttal/2026-11/linearno_followup_20261114/completed_training/README.md) · [Accuracy, timing and figures](data/rebuttal/2026-11/linearno_followup_20261114/README.md)
+[Completed training inventory](data/rebuttal/2026-11/linearno_followup_20261114/completed_training/README.md) · [Accuracy, timing and figures](data/rebuttal/2026-11/linearno_followup_20261114/README.md) · [Score and density evidence](data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/README.md)
 
 The training inventory records 9 completed backbones and five matching trained heads.
 It identifies the historical Darcy cohort separately and distinguishes completed training from pending evaluation.

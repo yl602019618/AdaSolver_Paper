@@ -1,0 +1,19 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "scope": "Independent inspection of new prehashed isolated CPU replay; original pre-execution receipt remains missing historically",
+  "checked_at_utc": "2026-11-14T16:05:09.497337+00:00",
+  "before_receipt_sha256": "4bba9abed8167b5b7d33ad902073a1a11b1ea26e9f442beee67304ee35d0a28b",
+  "after_receipt_sha256": "005b8bd1d20c077c9b0b3697e6f89190b9ac910be79bd17518133db6749988b8",
+  "source_hashes_verified_unchanged": 170,
+  "replayed_base_arrays_equal_to_current_main": 89,
+  "per_method_arrays": {
+    "uniform": 17,
+    "pi": 19,
+    "cpg": 26,
+    "ca": 27
+  },
+  "CPU_replay_execution_performed_by_this_validator": false,
+  "GPU_used": false,
+  "data_modified": false,
+  "interpretation": "Current code/weight/normalizer binding now has a pre-execution reproducibility receipt and reproduces89base arrays exactly. This supplements rather than rewrites the first-run history. CA GPU-vs-CPU score154elementwise violations still remain."
+}

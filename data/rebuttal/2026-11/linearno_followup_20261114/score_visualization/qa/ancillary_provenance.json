@@ -1,0 +1,66 @@
+{
+  "created_at_utc": "2026-11-14T16:02:54.585916+00:00",
+  "surface_curves": {
+    "status": "VERIFIED_COMPLETE",
+    "source": "linearno_followup_20261114/reuse_review/score_visualization/airfoil/figures/surface_curves.csv",
+    "sha256": "f96072e3918b10383111977363514952a2e209e9ffbafc081fd0c6cc49e100ed",
+    "surface_nodes": 121,
+    "physical_arc_length_recomputed": true,
+    "maximum_arc_difference": 0.0,
+    "four_method_scalar_columns_match_point_csv": true,
+    "forced_surface_extra_proposal_is_zero": true
+  },
+  "darcy_legacy": {
+    "status": "PARTIAL",
+    "case": 1056,
+    "budget": 0.375,
+    "sampling_seed": 0,
+    "source_hashes_verified": [
+      {
+        "path": "appendix_figures/more_visualizations/data/darcy/candidates/1056/features.npz",
+        "sha256": "2463a7a4fb2fb1119e10c82e67b98bad875addb592903a4560cb4eb8c94498cd"
+      },
+      {
+        "path": "appendix_figures/more_visualizations/data/darcy/candidates/1056/metadata.json",
+        "sha256": "146cb868501d1435ae6ddb46693469cbc118185d846f47e574f8086f27e84cb3"
+      },
+      {
+        "path": "appendix_figures/more_visualizations/data/darcy/candidates/1056/b0.375.npz",
+        "sha256": "acfb22b741393d23b8a18a29c3f4a4fb1a6ac19fa23d28ff3c7d6ae939f557de"
+      },
+      {
+        "path": "appendix_figures/data/darcy/metadata.json",
+        "sha256": "04574b83021e645cd895098a501a8a86a9047dd5162532a158544a7440b50737"
+      },
+      {
+        "path": "figure_tools/more_visualizations/prepare_standard.py",
+        "sha256": "e58bcb7416f46dd5308c611b480132aefd45705223b2c0c20fd01cab064ad888"
+      },
+      {
+        "path": "figure_tools/more_visualizations/common.py",
+        "sha256": "00626e3c04e99c671db69e2dc75783671c646965d349ba21a99c7f6ab2aa2584"
+      }
+    ],
+    "display_transform_checks": [
+      {
+        "method": "pi",
+        "display_q99_normalization_exact": true,
+        "native_policy_normalization_claimed": false
+      },
+      {
+        "method": "cpg",
+        "display_q99_normalization_exact": true,
+        "native_policy_normalization_claimed": false
+      },
+      {
+        "method": "ca",
+        "display_q99_normalization_exact": true,
+        "native_policy_normalization_claimed": false
+      }
+    ],
+    "selection_scope": "historical shortlist sorted by observed relative-L2 improvement; source common.py explicitly records this",
+    "reuse_rule": "legacy diagnostic only; never pooled with900/100 matched cohort or presented as native policy normalization"
+  },
+  "gpu_used": false,
+  "experiment_data_modified": false
+}

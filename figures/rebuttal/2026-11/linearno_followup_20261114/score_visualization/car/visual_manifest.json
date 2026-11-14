@@ -1,0 +1,83 @@
+{
+  "case_rule": "first locked fold0 test case; no favorable-case selection",
+  "budget": 0.5,
+  "sampling_seed": 0,
+  "display_rule": "all native surface points plus one fixed central slab of native volume points; abs(native_x-mid_x)<=0.03*full_x_extent",
+  "display_mask_sha256": "072204cbabbc51559ee07df805f3e6b36ff5689d2a1ca3e0e8f14de78c00cc18",
+  "coordinate_permutation": [
+    2,
+    0,
+    1
+  ],
+  "coordinates_unchanged": true,
+  "camera": {
+    "elevation": 18,
+    "azimuth": -62,
+    "projection": "orthographic"
+  },
+  "score_source": "CPG/CA use exact archived normalized_score_native; CPU score/head traces are not plotted",
+  "density_source": "Full-reference designed target from native CPG/CA priority, actual PI hard-shell mixture configuration, and Uniform equal weights. Actual quota/FPS allocation and selected compensation density remain separate CSV columns.",
+  "limits": {
+    "q95_score_log_min": 0.1,
+    "q95_score_log_max": 175.58018756727773
+  },
+  "drawn": [
+    {
+      "method": "uniform",
+      "displayed_domain_points": 4682,
+      "displayed_selected_points": 2399,
+      "total_selected_points": 16093,
+      "native_surface_retained": 1883,
+      "coarse_total": 0,
+      "coarse_retained": 0
+    },
+    {
+      "method": "pi",
+      "displayed_domain_points": 4682,
+      "displayed_selected_points": 4132,
+      "total_selected_points": 16093,
+      "native_surface_retained": 3682,
+      "coarse_total": 0,
+      "coarse_retained": 0
+    },
+    {
+      "method": "cpg",
+      "displayed_domain_points": 4682,
+      "displayed_selected_points": 4133,
+      "total_selected_points": 16093,
+      "native_surface_retained": 3682,
+      "coarse_total": 3218,
+      "coarse_retained": 3218
+    },
+    {
+      "method": "ca",
+      "displayed_domain_points": 4682,
+      "displayed_selected_points": 4131,
+      "total_selected_points": 16093,
+      "native_surface_retained": 3682,
+      "coarse_total": 3218,
+      "coarse_retained": 3218
+    }
+  ],
+  "plot_script_sha256": "bd0a80f9dfdc74cab90a1b4a1972f33c9ec675f995cd4eddc4e66f47c90af0e3",
+  "source_csvs": {
+    "uniform_perpoint.csv": "0f7a07db069e3b5d0fabc2d477afc878870e875d8bcdb25f1808353eda17053e",
+    "pi_perpoint.csv": "e4500f54ca394450a6a4810e62c01927bda31718261421dc98c829d7b5563b74",
+    "cpg_perpoint.csv": "d192b29a3156c347f172a281358d8faa7cad63fe30f57e7276b190da101aacd5",
+    "ca_perpoint.csv": "2aedf211cd81ef42d76074c2df9a31ee175b4b7bb68625e2a9b0cce0af44918b"
+  },
+  "QA": {
+    "png_decode": "passed",
+    "png_size": [
+      3873,
+      2530
+    ],
+    "dpi": [
+      299.9994,
+      299.9994
+    ],
+    "PDF_render": "passed",
+    "redraw_bytes_identical": true,
+    "source_csv_unchanged": true
+  }
+}

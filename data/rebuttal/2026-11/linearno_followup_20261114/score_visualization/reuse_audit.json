@@ -1,0 +1,18 @@
+{
+  "status": "PARTIAL",
+  "source_audits": [
+    "car_reuse_audit.json",
+    "twod_reuse_audit.json"
+  ],
+  "reused": [
+    "E5 Car saved GPU scores and actual selections",
+    "Airfoil verified native selected/coarse/compensation records"
+  ],
+  "newly_computed": [
+    "CPU intermediate-score captures",
+    "independent CPU CA full chain",
+    "CSV-derived score figures"
+  ],
+  "duplicate_GPU_jobs_started": 0,
+  "Darcy": "PARTIAL legacy only; current matched-model score capture pending"
+}

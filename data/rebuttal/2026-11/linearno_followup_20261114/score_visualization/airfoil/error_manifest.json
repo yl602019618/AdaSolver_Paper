@@ -1,0 +1,40 @@
+{
+  "scope": "post-hoc error only; never supplied to the score graph",
+  "truth_access": true,
+  "truth_case": 1001,
+  "truth_channel": 3,
+  "methods": [
+    {
+      "method": "uniform",
+      "field_relative_l2": 0.007510936142205513,
+      "prediction_source": "reused verified native GPU selected predictions, exact selected/weight match",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "truth_access": true,
+      "artifact": "uniform_error_only.npz"
+    },
+    {
+      "method": "pi",
+      "field_relative_l2": 0.005282375005354083,
+      "prediction_source": "reused verified native GPU selected predictions, exact selected/weight match",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "truth_access": true,
+      "artifact": "pi_error_only.npz"
+    },
+    {
+      "method": "cpg",
+      "field_relative_l2": 0.0043388540955775125,
+      "prediction_source": "reused verified native GPU selected predictions, exact selected/weight match",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "truth_access": true,
+      "artifact": "cpg_error_only.npz"
+    },
+    {
+      "method": "ca",
+      "field_relative_l2": 0.004128424188549879,
+      "prediction_source": "reused verified native GPU selected predictions, exact selected/weight match",
+      "reconstruction_id": "grid_scipy_linear_nearest_native_v1",
+      "truth_access": true,
+      "artifact": "ca_error_only.npz"
+    }
+  ]
+}
