@@ -19,3 +19,11 @@ the Airfoil capture retains its original workspace layout, so run it from
 external workspace. Capturing raw inference is separate from CSV-only plotting.
 Weights, original CFD truth and full feature tensors are external, with hashes
 and relative acquisition locators in the source manifests.
+
+The CPG coarse trace also redraws directly from scalar CSVs and independently recomputes the raw and normalized scores:
+
+```sh
+python3 reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_coarse_trace.py --coarse-csv data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/cpg_coarse_trace.csv --perpoint-csv data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv --output-dir /tmp/car_cpg_trace
+```
+
+Install this folder's requirements.txt for all plot and public-scalar checks. Full native captures additionally require the external frozen runtime and its PyTorch dependencies; observed versions are in the score data package environment.json.
