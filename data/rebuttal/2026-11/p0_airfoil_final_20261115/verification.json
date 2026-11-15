@@ -1,17 +1,17 @@
 {
-  "status": "PARTIAL",
-  "complete": false,
+  "status": "VERIFIED_COMPLETE",
+  "complete": true,
   "counts": {
-    "models": 2,
-    "heads": 2,
-    "training_seeds": 1,
-    "accuracy_requests": 10120,
-    "physical_conditions": 1638,
-    "formal_repeats": 163800,
-    "warmups": 32760,
-    "memory_conditions": 1638,
-    "parity_pairs": 9900,
-    "full_reference_requests": 220
+    "models": 6,
+    "heads": 6,
+    "training_seeds": 3,
+    "accuracy_requests": 30360,
+    "physical_conditions": 4914,
+    "formal_repeats": 491400,
+    "warmups": 98280,
+    "memory_conditions": 4914,
+    "parity_pairs": 29700,
+    "full_reference_requests": 660
   },
   "expected_counts": {
     "models": 6,
@@ -26,15 +26,16 @@
     "full_reference_requests": 660
   },
   "accepted_training_seeds": [
-    0
+    0,
+    1,
+    2
   ],
   "accuracy_training_seeds": [
-    0
+    0,
+    1,
+    2
   ],
-  "missing": [
-    "training_seed1: no accepted data-file index",
-    "training_seed2: no accepted data-file index"
-  ],
+  "missing": [],
   "seed_components": {
     "0": {
       "status": "VERIFIED_COMPLETE",
@@ -48,22 +49,26 @@
       "accuracy_requests": 10120
     },
     "1": {
-      "status": "NOT_FOUND",
+      "status": "VERIFIED_COMPLETE",
       "existing_verified_conditions": 0,
-      "beta0_conditions_verified": 0,
+      "beta0_conditions_verified": 324,
       "expected_conditions": 1638,
-      "physical_conditions": 0,
-      "physical_gpus": [],
-      "accuracy_requests": 0
+      "physical_conditions": 1638,
+      "physical_gpus": [
+        2
+      ],
+      "accuracy_requests": 10120
     },
     "2": {
-      "status": "NOT_FOUND",
+      "status": "VERIFIED_COMPLETE",
       "existing_verified_conditions": 0,
-      "beta0_conditions_verified": 0,
+      "beta0_conditions_verified": 324,
       "expected_conditions": 1638,
-      "physical_conditions": 0,
-      "physical_gpus": [],
-      "accuracy_requests": 0
+      "physical_conditions": 1638,
+      "physical_gpus": [
+        3
+      ],
+      "accuracy_requests": 10120
     }
   },
   "source_acceptances": {
@@ -106,6 +111,90 @@
         "timing_repeats.csv.gz": {
           "bytes": 2551501,
           "sha256": "b9ee7028b3c8a5e31e3c1a9e5bbd8b0f31f374671d420d474917845049accf5b"
+        }
+      }
+    },
+    "1": {
+      "source_kind": "P0_seed_acceptance",
+      "acceptance_sha256": "eb20fb708babc8cd29642ec1cf8e2667a1370a5c3489fd19104c0da71a5a7640",
+      "data_files": {
+        "accuracy_records.csv.gz": {
+          "bytes": 819313,
+          "sha256": "7a3da85f64913527443342f7ed3f9dab0bf6a322bb422bb1f33d9be133e8393b"
+        },
+        "cache_reuse.csv": {
+          "bytes": 1070783,
+          "sha256": "7b359752f7d693f64278bd9d56eebf9d2667e7afa662a24151dbe4453f19ba79"
+        },
+        "case_sampling_means.csv": {
+          "bytes": 176712,
+          "sha256": "d5a379e9eef5f6dda7cc35f5ec28b1fa450a410a10da037d69633f6e6d3a4d98"
+        },
+        "checkpoint_registry.csv": {
+          "bytes": 5135,
+          "sha256": "bcb7fc658ce4c60971b0e8f6c8c88a3a0c0c77fa4bcec3ace9883e758eca6ba6"
+        },
+        "latency_conditions.csv": {
+          "bytes": 3123117,
+          "sha256": "e10b3c646fb3f29f5c29ae6dde636454893865c6d9a2ef83ffa3d12a9942410c"
+        },
+        "latency_grouped.csv": {
+          "bytes": 16681,
+          "sha256": "6c11a8f511b425b82fd6b89e8d7f8bb690272bc341a56ff0e49be9e196b40aeb"
+        },
+        "reconstruction_parity.csv.gz": {
+          "bytes": 476464,
+          "sha256": "7769f6e17252ed5b9f79e9e3067c171b44395c3880f4f5fd000fb2f9eb7c4943"
+        },
+        "stage_profiles.csv.gz": {
+          "bytes": 1277269,
+          "sha256": "999e1fba3ecdeba33d9c9f16f7e658e6be074152954b01aaec70e50ed671e205"
+        },
+        "timing_repeats.csv.gz": {
+          "bytes": 2544903,
+          "sha256": "c0e01cbf6be70ec5a1f49d1a3e8e7f934b4bb9be7072aac00f8707a1b4009436"
+        }
+      }
+    },
+    "2": {
+      "source_kind": "P0_seed_acceptance",
+      "acceptance_sha256": "2f197b64dc9fad3e42092458b57ee9014db40cfbf7946fe26f126a15a2640385",
+      "data_files": {
+        "accuracy_records.csv.gz": {
+          "bytes": 820240,
+          "sha256": "91832d971fdc293c7986d59b2fea0dd6b1a2bfc59ae85ce2bb78bc5f490fce46"
+        },
+        "cache_reuse.csv": {
+          "bytes": 1070864,
+          "sha256": "2ad88d2737b04cc800795b0fb18c0355761a8ffb112eb4494cb08f43a1c627e8"
+        },
+        "case_sampling_means.csv": {
+          "bytes": 176752,
+          "sha256": "8c50f7c24f0f77dd38e5076626d6f607233c571137b67848c91e5911f7285ad3"
+        },
+        "checkpoint_registry.csv": {
+          "bytes": 5132,
+          "sha256": "f8d20e783c026e865be245b24a779e6a5f403ba9aa866751312450f7ae03a21d"
+        },
+        "latency_conditions.csv": {
+          "bytes": 3123205,
+          "sha256": "9adb636e5d7bb8e590f41ed8a24116bf4d0d6f2bac91c9c84f9e586e334682e3"
+        },
+        "latency_grouped.csv": {
+          "bytes": 16684,
+          "sha256": "bb42974823fa473f469638e9bbc6ccecd89424ec63c0f7343b2f290c8805b16d"
+        },
+        "reconstruction_parity.csv.gz": {
+          "bytes": 477175,
+          "sha256": "dfd5f9e50a40c6afde2f7c007fab3fbb396ca5f10e5b89908249e57f941b7008"
+        },
+        "stage_profiles.csv.gz": {
+          "bytes": 1278270,
+          "sha256": "161a33a50bc69de55b5b6ea3882c769f91bf2a02561d3dae9740e6410048f411"
+        },
+        "timing_repeats.csv.gz": {
+          "bytes": 2540313,
+          "sha256": "5c720bbc584b51280b95c8452fe9db621f134de7314d2132d5ce982f2c6e00aa"
         }
       }
     }

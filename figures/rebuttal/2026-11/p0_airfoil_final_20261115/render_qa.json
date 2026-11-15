@@ -36,13 +36,13 @@
       "PNG_decode": "passed",
       "size": [
         2590,
-        955
+        2845
       ],
       "dpi": [
         299.9994,
         299.9994
       ],
-      "source_rows": 32,
+      "source_rows": 96,
       "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
       "PDF_render": "passed"
     },
@@ -51,13 +51,13 @@
       "PNG_decode": "passed",
       "size": [
         2590,
-        925
+        2755
       ],
       "dpi": [
         299.9994,
         299.9994
       ],
-      "source_rows": 20,
+      "source_rows": 60,
       "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
       "PDF_render": "passed"
     },
@@ -66,13 +66,13 @@
       "PNG_decode": "passed",
       "size": [
         2590,
-        940
+        2800
       ],
       "dpi": [
         299.9994,
         299.9994
       ],
-      "source_rows": 1260,
+      "source_rows": 3780,
       "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
       "PDF_render": "passed"
     },
@@ -92,6 +92,6 @@
       "PDF_render": "passed"
     }
   ],
-  "data_status": "PARTIAL",
+  "data_status": "VERIFIED_COMPLETE",
   "no_cross_GPU_pooling": true
 }

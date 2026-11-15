@@ -1,0 +1,73 @@
+{
+  "checked_at_utc": "2026-11-15T16:12:03.811916+00:00",
+  "scope": "P0-A cross-task reuse inventory; no additional Darcy experiment is scheduled",
+  "status": "VERIFIED_COMPLETE",
+  "verified_scope": "published matched Darcy training-seed0 accuracy, reconstruction and A/B/C timing only",
+  "source_commit": "a6365fb4131d81ce31dbf78b4179d4db9e5953e8",
+  "validator_result": {
+    "passed": true,
+    "accuracy_rows": 37200,
+    "rAUEC_rows_recomputed": 20,
+    "timing_conditions_recomputed": 1323,
+    "formal_repeats": 132300,
+    "manifest_files": 61,
+    "training_seeds_per_model": 1
+  },
+  "models": [
+    {
+      "backbone": "Transolver3",
+      "training_seed": "0",
+      "checkpoint_hash": "649be60a2d6ba161f3387fe5e04fe62c58e2d4d5491436a60e5d879e796728a9",
+      "head_hash": "de5fc1eadef6012f7fbcffd966ad2a994673a7db5027e31715f8a5d7fdb55a91",
+      "normalizer_hash": "5a2b073849d5b7d2e968f05f1492737a7646ccbd78baaacc3d662db6aca36251"
+    },
+    {
+      "backbone": "LinearNO_point_temp",
+      "training_seed": "0",
+      "checkpoint_hash": "5bb9aa8d46fa6f806a2233f671fdc623d337dcce3b1d9be6e38d35dd434db5c8",
+      "head_hash": "6c090540456d58b54b88338a73b53b3f63c755c75c05d11c7ce66a4fe3a22c79",
+      "normalizer_hash": "5a2b073849d5b7d2e968f05f1492737a7646ccbd78baaacc3d662db6aca36251"
+    },
+    {
+      "backbone": "LinearNO_conv_temp",
+      "training_seed": "0",
+      "checkpoint_hash": "92836c1d17980ed1a03b45d8e2833787bd6f7ecf9c1778fb0636dd6607dec619",
+      "head_hash": "",
+      "normalizer_hash": "5a2b073849d5b7d2e968f05f1492737a7646ccbd78baaacc3d662db6aca36251"
+    }
+  ],
+  "files": [
+    {
+      "path": "linearno_followup_20261114/reuse_review/paper/data/rebuttal/2026-11/current_results_20261115/darcy/reconstruction_summary.csv",
+      "bytes": 403079,
+      "sha256": "37c6a24f035bb94e31ec4e9f862f43fd43bfba2792a8861d95aee803dfab3326"
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/paper/data/rebuttal/2026-11/current_results_20261115/darcy/metrics_records.csv",
+      "bytes": 21500320,
+      "sha256": "f0b809f9e9ffe73162f9d4c7da5b8ff6cb2b90699254c2fa65c39c696d0d39b2"
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/paper/data/rebuttal/2026-11/current_results_20261115/darcy/latency_raw_repeats.csv.gz",
+      "bytes": 2193231,
+      "sha256": "d82428ee6d80339a34588564fb27c1c31905a397851b6f79c55e76e1ee77f3c4"
+    },
+    {
+      "path": "linearno_followup_20261114/reuse_review/paper/data/rebuttal/2026-11/current_results_20261115/darcy/release_manifest.json",
+      "bytes": 13132,
+      "sha256": "e8b6a0bf1eeb38b60bb89f18b17742d9585ebf3a2ade6a385a7d826ee4cd4ebe"
+    }
+  ],
+  "completed_counts": {
+    "backbones": 3,
+    "adaptive_heads": 2,
+    "accuracy_requests": 18600,
+    "metric_rows": 37200,
+    "timing_conditions": 1323,
+    "formal_repeats": 132300
+  },
+  "pending_within_verified_seed0_scope": 0,
+  "three_training_seed_scope": "PARTIAL; matched Darcy seeds1/2 remain outside this Airfoil P0 priority; historical1000/200 models are not substituted",
+  "skip_reason": "Existing published complete seed0 scope independently revalidated; do not repeat training/inference/timing",
+  "GPU_work_started": false
+}

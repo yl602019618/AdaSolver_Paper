@@ -1,18 +1,18 @@
 {
-  "status": "PARTIAL",
-  "mode": "snapshot",
-  "complete_primary_result_matrix": false,
+  "status": "VERIFIED_COMPLETE",
+  "mode": "final",
+  "complete_primary_result_matrix": true,
   "counts": {
-    "models": 2,
-    "heads": 2,
-    "training_seeds": 1,
-    "accuracy_requests": 10120,
-    "physical_conditions": 1638,
-    "formal_repeats": 163800,
-    "warmups": 32760,
-    "memory_conditions": 1638,
-    "parity_pairs": 9900,
-    "full_reference_requests": 220
+    "models": 6,
+    "heads": 6,
+    "training_seeds": 3,
+    "accuracy_requests": 30360,
+    "physical_conditions": 4914,
+    "formal_repeats": 491400,
+    "warmups": 98280,
+    "memory_conditions": 4914,
+    "parity_pairs": 29700,
+    "full_reference_requests": 660
   },
   "expected_counts": {
     "models": 6,
@@ -39,31 +39,32 @@
       "accuracy_requests": 10120
     },
     "1": {
-      "status": "NOT_FOUND",
+      "status": "VERIFIED_COMPLETE",
       "existing_verified_conditions": 0,
-      "beta0_conditions_verified": 0,
+      "beta0_conditions_verified": 324,
       "expected_conditions": 1638,
-      "physical_conditions": 0,
-      "physical_gpus": [],
-      "accuracy_requests": 0
+      "physical_conditions": 1638,
+      "physical_gpus": [
+        2
+      ],
+      "accuracy_requests": 10120
     },
     "2": {
-      "status": "NOT_FOUND",
+      "status": "VERIFIED_COMPLETE",
       "existing_verified_conditions": 0,
-      "beta0_conditions_verified": 0,
+      "beta0_conditions_verified": 324,
       "expected_conditions": 1638,
-      "physical_conditions": 0,
-      "physical_gpus": [],
-      "accuracy_requests": 0
+      "physical_conditions": 1638,
+      "physical_gpus": [
+        3
+      ],
+      "accuracy_requests": 10120
     }
   },
-  "missing": [
-    "training_seed1: no accepted data-file index",
-    "training_seed2: no accepted data-file index"
-  ],
+  "missing": [],
   "training_progress": {
-    "backbones_completed": 3,
-    "heads_completed": 3,
+    "backbones_completed": 6,
+    "heads_completed": 6,
     "expected_backbones": 6,
     "expected_heads": 6,
     "scope": "hash-checked training completion only; statistical acceptance is separate",
@@ -98,20 +99,29 @@
       {
         "training_seed": 1,
         "architecture": "linearno",
-        "backbone_completed": false,
-        "head_completed": false
+        "backbone_completed": true,
+        "head_completed": true,
+        "checkpoint_sha256": "ae58653ac55fa7492faa16ac59c7682b345a29f52fcd300a13d4a35d67cf92de",
+        "epochs_completed": 1000,
+        "head_sha256": "7edebb70889376e16b8a5285972fbe0ee20ede3118085cb67ab3100560bf61d4"
       },
       {
         "training_seed": 2,
         "architecture": "t3",
-        "backbone_completed": false,
-        "head_completed": false
+        "backbone_completed": true,
+        "head_completed": true,
+        "checkpoint_sha256": "63640045628cc0ee9f3f73b454cfa7677a180d8a0e6c83d0da9d3b08c0294a70",
+        "epochs_completed": 1000,
+        "head_sha256": "1818ea9be8261bf5679ea0b0ba7c8a396c3f92f3c1267a517e4387a7b1658a73"
       },
       {
         "training_seed": 2,
         "architecture": "linearno",
-        "backbone_completed": false,
-        "head_completed": false
+        "backbone_completed": true,
+        "head_completed": true,
+        "checkpoint_sha256": "998a6dd7d22f789475134096d4a4b88262cd8d8dd03ab7bab991247afe09b652",
+        "epochs_completed": 1000,
+        "head_sha256": "cccd2743fdd9927f38b97649721e34a776cb2a4cf683e1e89ab6b08a6de32f62"
       }
     ]
   },
@@ -264,8 +274,20 @@
         "value": 200
       },
       {
+        "field": "models[2].accepted_accuracy_requests",
+        "value": 5060
+      },
+      {
+        "field": "models[2].accepted_accuracy_metric_rows",
+        "value": 40480
+      },
+      {
         "field": "models[2].backbone_manifest",
         "value": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/checkpoints/t3/manifest.json"
+      },
+      {
+        "field": "models[2].accuracy_receipt",
+        "value": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/results/t3_accuracy_acceptance.json"
       },
       {
         "field": "models[3].training_seed",
@@ -277,15 +299,15 @@
       },
       {
         "field": "models[3].backbone_execution_status",
-        "value": "running"
+        "value": "completed"
       },
       {
         "field": "models[3].epochs_completed",
-        "value": 549
+        "value": 1000
       },
       {
         "field": "models[3].updates_completed",
-        "value": 62037
+        "value": 113000
       },
       {
         "field": "models[3].epochs_requested",
@@ -297,19 +319,7 @@
       },
       {
         "field": "models[3].head_execution_status",
-        "value": "NOT_STARTED"
-      },
-      {
-        "field": "models[3].backbone_manifest",
-        "value": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/checkpoints/linearno/manifest.json"
-      },
-      {
-        "field": "models[4].training_seed",
-        "value": 2
-      },
-      {
-        "field": "models[4].backbone",
-        "value": "t3"
+        "value": "completed"
       }
     ],
     "scope": "execution observations; paired measurements may precede memory and independent acceptance"
