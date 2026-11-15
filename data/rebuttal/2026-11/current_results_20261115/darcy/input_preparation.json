@@ -1,0 +1,2000 @@
+[
+  {
+    "group_id": "B_case1199_cpg_s1_b0.375",
+    "setup_ms": 1.64090096950531,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s1_b0.375",
+    "setup_ms": 31.313098967075348,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s1_b0.500",
+    "setup_ms": 27.396254241466522,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s1_b0.375",
+    "setup_ms": 30.55991232395172,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s2_b0.750",
+    "setup_ms": 29.779896140098572,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s0_b0.375",
+    "setup_ms": 33.73689949512482,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s2_b0.500",
+    "setup_ms": 38.875266909599304,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s1_b0.375",
+    "setup_ms": 38.80610316991806,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s0_b0.750",
+    "setup_ms": 31.808428466320038,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s1_b0.750",
+    "setup_ms": 33.35917741060257,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s0_b0.750",
+    "setup_ms": 34.250251948833466,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s2_b0.500",
+    "setup_ms": 31.175605952739716,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_full",
+    "setup_ms": 31.491950154304504,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "C_case1199_ca_s1_b0.375",
+    "setup_ms": 29.87019717693329,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s1_b0.375",
+    "setup_ms": 41.63963347673416,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s1_b0.750",
+    "setup_ms": 39.2276793718338,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s2_b0.500",
+    "setup_ms": 31.053096055984497,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s0_b0.500",
+    "setup_ms": 28.97852659225464,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s2_b0.375",
+    "setup_ms": 29.961831867694855,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s1_b0.500",
+    "setup_ms": 33.0900102853775,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s1_b0.500",
+    "setup_ms": 29.511280357837677,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s2_b0.375",
+    "setup_ms": 27.934744954109192,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s0_b0.375",
+    "setup_ms": 35.73055565357208,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s2_b0.750",
+    "setup_ms": 34.99376028776169,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s1_b0.750",
+    "setup_ms": 31.61492943763733,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s1_b0.500",
+    "setup_ms": 67.62411445379257,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s2_b0.750",
+    "setup_ms": 32.598309218883514,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s2_b0.500",
+    "setup_ms": 32.21439570188522,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s1_b0.500",
+    "setup_ms": 31.60717338323593,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s2_b0.750",
+    "setup_ms": 34.941546618938446,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s2_b0.750",
+    "setup_ms": 33.905595541000366,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s0_b0.375",
+    "setup_ms": 37.51154989004135,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s1_b0.375",
+    "setup_ms": 44.28230971097946,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s1_b0.750",
+    "setup_ms": 38.60290348529816,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s1_b0.375",
+    "setup_ms": 32.54370391368866,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s1_b0.750",
+    "setup_ms": 37.90896385908127,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s2_b0.500",
+    "setup_ms": 39.109401404857635,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s1_b0.500",
+    "setup_ms": 38.85897994041443,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s0_b0.750",
+    "setup_ms": 35.65017879009247,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s0_b0.375",
+    "setup_ms": 28.729654848575592,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s1_b0.375",
+    "setup_ms": 32.879821956157684,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s2_b0.750",
+    "setup_ms": 29.581308364868164,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s0_b0.375",
+    "setup_ms": 38.33524137735367,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s2_b0.375",
+    "setup_ms": 33.6114838719368,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s2_b0.375",
+    "setup_ms": 37.11710125207901,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s2_b0.500",
+    "setup_ms": 31.23362362384796,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s2_b0.375",
+    "setup_ms": 32.56582468748093,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s0_b0.750",
+    "setup_ms": 32.86881744861603,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s2_b0.750",
+    "setup_ms": 40.9323126077652,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s1_b0.750",
+    "setup_ms": 33.217258751392365,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s0_b0.750",
+    "setup_ms": 38.28705847263336,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s1_b0.500",
+    "setup_ms": 36.82772070169449,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s2_b0.500",
+    "setup_ms": 37.15398907661438,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s2_b0.750",
+    "setup_ms": 36.252833902835846,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s0_b0.500",
+    "setup_ms": 34.98256206512451,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s0_b0.375",
+    "setup_ms": 37.73991018533707,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s0_b0.750",
+    "setup_ms": 31.396158039569855,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s1_b0.375",
+    "setup_ms": 31.1131551861763,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s0_b0.750",
+    "setup_ms": 38.75536471605301,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s1_b0.750",
+    "setup_ms": 39.23489153385162,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s0_b0.500",
+    "setup_ms": 43.10626536607742,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s0_b0.375",
+    "setup_ms": 36.53739392757416,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s0_b0.750",
+    "setup_ms": 35.59707850217819,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s1_b0.750",
+    "setup_ms": 41.02778434753418,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s0_b0.500",
+    "setup_ms": 37.53179311752319,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s0_b0.750",
+    "setup_ms": 30.87960183620453,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s2_b0.750",
+    "setup_ms": 31.626641750335693,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s2_b0.375",
+    "setup_ms": 30.940324068069458,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s1_b0.500",
+    "setup_ms": 27.29196846485138,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s0_b0.750",
+    "setup_ms": 26.660367846488953,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s0_b0.500",
+    "setup_ms": 28.138868510723114,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s0_b0.375",
+    "setup_ms": 33.85045379400253,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s2_b0.375",
+    "setup_ms": 30.499346554279327,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s2_b0.500",
+    "setup_ms": 31.594648957252502,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s0_b0.500",
+    "setup_ms": 34.63408350944519,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s0_b0.375",
+    "setup_ms": 30.003376305103302,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s0_b0.500",
+    "setup_ms": 31.61013126373291,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s2_b0.750",
+    "setup_ms": 30.175164341926575,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s1_b0.375",
+    "setup_ms": 32.20413625240326,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s0_b0.750",
+    "setup_ms": 35.12090444564819,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s2_b0.375",
+    "setup_ms": 33.66784751415253,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s0_b0.375",
+    "setup_ms": 35.466380417346954,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s1_b0.500",
+    "setup_ms": 34.662023186683655,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s2_b0.375",
+    "setup_ms": 30.63342720270157,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s2_b0.375",
+    "setup_ms": 43.03029924631119,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s0_b0.500",
+    "setup_ms": 34.50608253479004,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s0_b0.500",
+    "setup_ms": 33.77117216587067,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s1_b0.500",
+    "setup_ms": 25.771677494049072,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s2_b0.500",
+    "setup_ms": 38.96511346101761,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s0_b0.375",
+    "setup_ms": 44.524937868118286,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s1_b0.500",
+    "setup_ms": 38.03793340921402,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s2_b0.375",
+    "setup_ms": 33.174701035022736,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s1_b0.375",
+    "setup_ms": 28.208665549755096,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s2_b0.375",
+    "setup_ms": 28.544433414936066,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s1_b0.500",
+    "setup_ms": 39.62654620409012,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s2_b0.375",
+    "setup_ms": 38.190022110939026,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s2_b0.375",
+    "setup_ms": 36.706067621707916,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s0_b0.375",
+    "setup_ms": 31.13638609647751,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s1_b0.375",
+    "setup_ms": 29.0936678647995,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s1_b0.750",
+    "setup_ms": 33.27171504497528,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s2_b0.750",
+    "setup_ms": 28.845027089118958,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s0_b0.750",
+    "setup_ms": 34.95560586452484,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s1_b0.750",
+    "setup_ms": 37.549711763858795,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s0_b0.375",
+    "setup_ms": 34.48527306318283,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s2_b0.750",
+    "setup_ms": 33.62807631492615,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s2_b0.375",
+    "setup_ms": 35.41995584964752,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s0_b0.750",
+    "setup_ms": 34.87715125083923,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s0_b0.375",
+    "setup_ms": 47.32115566730499,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s0_b0.375",
+    "setup_ms": 27.881868183612823,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s1_b0.500",
+    "setup_ms": 31.032584607601166,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s1_b0.500",
+    "setup_ms": 34.04967486858368,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s2_b0.750",
+    "setup_ms": 25.512278079986572,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s0_b0.500",
+    "setup_ms": 25.39222687482834,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s1_b0.500",
+    "setup_ms": 28.40586006641388,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s1_b0.750",
+    "setup_ms": 29.701203107833862,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s2_b0.750",
+    "setup_ms": 39.556413888931274,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s0_b0.750",
+    "setup_ms": 38.90874236822128,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s2_b0.750",
+    "setup_ms": 38.02923858165741,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s0_b0.375",
+    "setup_ms": 37.068553268909454,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s0_b0.375",
+    "setup_ms": 33.71948003768921,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s2_b0.750",
+    "setup_ms": 38.180164992809296,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s1_b0.750",
+    "setup_ms": 34.99249368906021,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s2_b0.750",
+    "setup_ms": 32.95239061117172,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s2_b0.500",
+    "setup_ms": 29.72986549139023,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s0_b0.750",
+    "setup_ms": 43.50107163190842,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s2_b0.750",
+    "setup_ms": 34.58225727081299,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s1_b0.500",
+    "setup_ms": 33.59074145555496,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s1_b0.500",
+    "setup_ms": 31.474485993385315,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s1_b0.750",
+    "setup_ms": 35.260602831840515,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s0_b0.750",
+    "setup_ms": 38.91921043395996,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s0_b0.375",
+    "setup_ms": 37.08213567733765,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s0_b0.375",
+    "setup_ms": 33.52310508489609,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s1_b0.375",
+    "setup_ms": 31.505852937698364,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s1_b0.500",
+    "setup_ms": 34.09535437822342,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s1_b0.375",
+    "setup_ms": 30.91270476579666,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s0_b0.375",
+    "setup_ms": 31.028129160404205,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_full",
+    "setup_ms": 30.77095001935959,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "A_case1000_ca_s0_b0.500",
+    "setup_ms": 35.65544635057449,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s0_b0.500",
+    "setup_ms": 34.84663367271423,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s2_b0.500",
+    "setup_ms": 31.76114708185196,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s2_b0.500",
+    "setup_ms": 51.31080746650696,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s2_b0.375",
+    "setup_ms": 32.113514840602875,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s1_b0.500",
+    "setup_ms": 30.908584594726562,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s1_b0.375",
+    "setup_ms": 42.05794632434845,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s0_b0.375",
+    "setup_ms": 39.15444761514664,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s0_b0.375",
+    "setup_ms": 35.49618273973465,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s0_b0.375",
+    "setup_ms": 40.01632332801819,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s2_b0.750",
+    "setup_ms": 41.243776679039,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s2_b0.500",
+    "setup_ms": 34.17137265205383,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s1_b0.375",
+    "setup_ms": 33.99946540594101,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s2_b0.375",
+    "setup_ms": 39.03310000896454,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s1_b0.750",
+    "setup_ms": 40.1613786816597,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s0_b0.500",
+    "setup_ms": 31.055599451065063,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s1_b0.500",
+    "setup_ms": 29.213137924671173,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s2_b0.500",
+    "setup_ms": 36.36372089385986,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s1_b0.375",
+    "setup_ms": 34.38294678926468,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s1_b0.750",
+    "setup_ms": 36.03057563304901,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s0_b0.750",
+    "setup_ms": 33.8931530714035,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s2_b0.500",
+    "setup_ms": 28.532981872558594,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s1_b0.500",
+    "setup_ms": 27.533672749996185,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s1_b0.375",
+    "setup_ms": 27.399718761444092,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s1_b0.750",
+    "setup_ms": 27.731195092201233,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s0_b0.750",
+    "setup_ms": 31.295232474803925,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s0_b0.375",
+    "setup_ms": 27.132995426654816,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s1_b0.750",
+    "setup_ms": 40.09728878736496,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s2_b0.500",
+    "setup_ms": 33.09372067451477,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s0_b0.500",
+    "setup_ms": 34.0343713760376,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s2_b0.500",
+    "setup_ms": 34.387581050395966,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s0_b0.750",
+    "setup_ms": 34.29616987705231,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s2_b0.750",
+    "setup_ms": 33.98335725069046,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s2_b0.375",
+    "setup_ms": 33.13833475112915,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s2_b0.500",
+    "setup_ms": 31.13279491662979,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s0_b0.500",
+    "setup_ms": 33.58307480812073,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s1_b0.500",
+    "setup_ms": 32.85863250494003,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s2_b0.375",
+    "setup_ms": 34.06547009944916,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s0_b0.500",
+    "setup_ms": 33.11733901500702,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s2_b0.375",
+    "setup_ms": 30.82343190908432,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s1_b0.375",
+    "setup_ms": 40.74687510728836,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s0_b0.375",
+    "setup_ms": 31.859904527664185,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s1_b0.750",
+    "setup_ms": 32.91585296392441,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s0_b0.375",
+    "setup_ms": 31.338773667812347,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s2_b0.500",
+    "setup_ms": 25.229446589946747,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s2_b0.750",
+    "setup_ms": 26.379399001598358,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s1_b0.750",
+    "setup_ms": 32.552674412727356,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_full",
+    "setup_ms": 28.39145064353943,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "A_case1000_uniform_s0_b0.500",
+    "setup_ms": 26.713348925113678,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s1_b0.375",
+    "setup_ms": 26.19163691997528,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s1_b0.750",
+    "setup_ms": 30.103564262390137,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s1_b0.375",
+    "setup_ms": 28.347037732601166,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_full",
+    "setup_ms": 27.91494131088257,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "A_case1099_cpg_s0_b0.500",
+    "setup_ms": 27.844533324241638,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s0_b0.500",
+    "setup_ms": 28.67228537797928,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s1_b0.375",
+    "setup_ms": 34.624069929122925,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s2_b0.750",
+    "setup_ms": 34.45640951395035,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_full",
+    "setup_ms": 79.97075468301773,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "B_case1000_uniform_s0_b0.750",
+    "setup_ms": 34.64540094137192,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_cpg_s2_b0.750",
+    "setup_ms": 46.15792632102966,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s0_b0.500",
+    "setup_ms": 32.33523666858673,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s2_b0.750",
+    "setup_ms": 51.345095038414,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s2_b0.500",
+    "setup_ms": 36.86688095331192,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s2_b0.375",
+    "setup_ms": 38.65170478820801,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s0_b0.375",
+    "setup_ms": 34.14549678564072,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_uniform_s1_b0.375",
+    "setup_ms": 33.357761800289154,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s2_b0.375",
+    "setup_ms": 49.64479058980942,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s1_b0.500",
+    "setup_ms": 34.341052174568176,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s0_b0.750",
+    "setup_ms": 37.32626140117645,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s1_b0.750",
+    "setup_ms": 34.248821437358856,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s1_b0.375",
+    "setup_ms": 52.60593444108963,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s1_b0.500",
+    "setup_ms": 32.302126288414,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s0_b0.750",
+    "setup_ms": 35.24657338857651,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s0_b0.750",
+    "setup_ms": 37.439532577991486,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s1_b0.750",
+    "setup_ms": 30.03307431936264,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s0_b0.375",
+    "setup_ms": 31.22645616531372,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s0_b0.750",
+    "setup_ms": 37.34566271305084,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s0_b0.750",
+    "setup_ms": 35.185545682907104,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s0_b0.375",
+    "setup_ms": 39.31105136871338,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s2_b0.750",
+    "setup_ms": 26.10240876674652,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s2_b0.375",
+    "setup_ms": 39.22901302576065,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s1_b0.750",
+    "setup_ms": 34.96459126472473,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s1_b0.750",
+    "setup_ms": 43.93099248409271,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s1_b0.500",
+    "setup_ms": 29.973849654197693,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s0_b0.500",
+    "setup_ms": 32.488927245140076,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s2_b0.750",
+    "setup_ms": 41.46255552768707,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s0_b0.500",
+    "setup_ms": 35.852596163749695,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s2_b0.500",
+    "setup_ms": 31.916990876197815,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s0_b0.500",
+    "setup_ms": 29.558278620243073,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s2_b0.375",
+    "setup_ms": 34.33546423912048,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_ca_s2_b0.750",
+    "setup_ms": 36.78922355175018,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s0_b0.375",
+    "setup_ms": 28.67138385772705,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s0_b0.500",
+    "setup_ms": 33.80852937698364,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s2_b0.375",
+    "setup_ms": 31.28698468208313,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s1_b0.500",
+    "setup_ms": 34.029439091682434,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s0_b0.500",
+    "setup_ms": 36.18301451206207,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s2_b0.500",
+    "setup_ms": 33.74134004116058,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s1_b0.375",
+    "setup_ms": 36.176860332489014,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s0_b0.750",
+    "setup_ms": 33.499933779239655,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s1_b0.500",
+    "setup_ms": 35.1332351565361,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_uniform_s2_b0.750",
+    "setup_ms": 36.7361456155777,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s2_b0.750",
+    "setup_ms": 34.76973623037338,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s0_b0.500",
+    "setup_ms": 32.725267112255096,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s2_b0.750",
+    "setup_ms": 34.05441343784332,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s1_b0.500",
+    "setup_ms": 33.739835023880005,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s2_b0.375",
+    "setup_ms": 34.01964157819748,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s2_b0.500",
+    "setup_ms": 33.309437334537506,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s2_b0.375",
+    "setup_ms": 31.72333538532257,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s1_b0.500",
+    "setup_ms": 34.666888415813446,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s0_b0.750",
+    "setup_ms": 36.96680814027786,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s1_b0.750",
+    "setup_ms": 32.656729221343994,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s2_b0.375",
+    "setup_ms": 29.08262610435486,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s2_b0.500",
+    "setup_ms": 37.52954304218292,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s1_b0.750",
+    "setup_ms": 28.946809470653534,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s1_b0.375",
+    "setup_ms": 32.17633813619614,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s1_b0.750",
+    "setup_ms": 30.596934258937836,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_uniform_s1_b0.750",
+    "setup_ms": 29.0537029504776,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s1_b0.750",
+    "setup_ms": 26.848062872886658,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_pi_s2_b0.750",
+    "setup_ms": 30.575215816497803,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s1_b0.750",
+    "setup_ms": 31.125962734222412,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s1_b0.500",
+    "setup_ms": 28.514042496681213,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s2_b0.500",
+    "setup_ms": 41.8611541390419,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s2_b0.500",
+    "setup_ms": 29.274068772792816,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s1_b0.750",
+    "setup_ms": 41.25651717185974,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s1_b0.750",
+    "setup_ms": 40.03798961639404,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_ca_s2_b0.500",
+    "setup_ms": 36.064453423023224,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_pi_s2_b0.500",
+    "setup_ms": 30.840881168842316,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s0_b0.500",
+    "setup_ms": 30.408553779125214,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_ca_s2_b0.375",
+    "setup_ms": 34.86855328083038,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s0_b0.500",
+    "setup_ms": 41.10228270292282,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s1_b0.375",
+    "setup_ms": 40.25101661682129,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s2_b0.750",
+    "setup_ms": 39.23533111810684,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s1_b0.375",
+    "setup_ms": 38.55391591787338,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_ca_s1_b0.375",
+    "setup_ms": 38.477011024951935,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s1_b0.375",
+    "setup_ms": 33.63122045993805,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_full",
+    "setup_ms": 34.56766903400421,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "A_case1000_pi_s1_b0.500",
+    "setup_ms": 33.54797512292862,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s1_b0.750",
+    "setup_ms": 35.202302038669586,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s1_b0.750",
+    "setup_ms": 35.69864481687546,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_pi_s0_b0.750",
+    "setup_ms": 36.20375692844391,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s1_b0.500",
+    "setup_ms": 30.544497072696686,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s2_b0.500",
+    "setup_ms": 38.124509155750275,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s0_b0.750",
+    "setup_ms": 42.15548932552338,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s2_b0.500",
+    "setup_ms": 36.29790246486664,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s1_b0.500",
+    "setup_ms": 31.610064208507538,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_uniform_s1_b0.375",
+    "setup_ms": 39.82298821210861,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s0_b0.500",
+    "setup_ms": 38.971513509750366,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s1_b0.375",
+    "setup_ms": 47.891393303871155,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_uniform_s0_b0.375",
+    "setup_ms": 32.66662359237671,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_full",
+    "setup_ms": 28.84066104888916,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "A_case1000_cpg_s2_b0.750",
+    "setup_ms": 38.98935765028,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_pi_s0_b0.750",
+    "setup_ms": 37.5155434012413,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s0_b0.375",
+    "setup_ms": 39.3066331744194,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s0_b0.500",
+    "setup_ms": 36.13995015621185,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s2_b0.375",
+    "setup_ms": 31.809620559215546,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_cpg_s1_b0.375",
+    "setup_ms": 31.747452914714813,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s0_b0.500",
+    "setup_ms": 32.46936947107315,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s1_b0.375",
+    "setup_ms": 34.72577780485153,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s2_b0.375",
+    "setup_ms": 26.850931346416473,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_full",
+    "setup_ms": 28.051577508449554,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "A_case1199_ca_s2_b0.500",
+    "setup_ms": 27.980424463748932,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s1_b0.750",
+    "setup_ms": 41.53423756361008,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_pi_s0_b0.750",
+    "setup_ms": 39.573609828948975,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_ca_s2_b0.375",
+    "setup_ms": 38.33909332752228,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s1_b0.750",
+    "setup_ms": 39.70371186733246,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_uniform_s0_b0.750",
+    "setup_ms": 33.57134014368057,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s0_b0.500",
+    "setup_ms": 45.65151035785675,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s0_b0.750",
+    "setup_ms": 37.01585531234741,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_cpg_s2_b0.500",
+    "setup_ms": 40.64231365919113,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_ca_s2_b0.500",
+    "setup_ms": 33.859074115753174,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s0_b0.750",
+    "setup_ms": 33.01345556974411,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s2_b0.500",
+    "setup_ms": 35.85854917764664,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_uniform_s0_b0.375",
+    "setup_ms": 34.36245769262314,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_pi_s2_b0.375",
+    "setup_ms": 30.78155219554901,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s2_b0.750",
+    "setup_ms": 29.27512675523758,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1000_pi_s0_b0.500",
+    "setup_ms": 35.88298708200455,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_ca_s2_b0.500",
+    "setup_ms": 35.4430228471756,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_pi_s0_b0.500",
+    "setup_ms": 40.119387209415436,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s2_b0.375",
+    "setup_ms": 39.494745433330536,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s0_b0.375",
+    "setup_ms": 34.84509885311127,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_pi_s0_b0.750",
+    "setup_ms": 39.894796907901764,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s0_b0.500",
+    "setup_ms": 34.918591380119324,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1199_uniform_s1_b0.500",
+    "setup_ms": 31.828641891479492,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s1_b0.375",
+    "setup_ms": 59.89821255207062,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_ca_s2_b0.750",
+    "setup_ms": 32.12784230709076,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "C_case1099_cpg_s0_b0.375",
+    "setup_ms": 29.907777905464172,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1000_cpg_s0_b0.375",
+    "setup_ms": 30.522353947162628,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_full",
+    "setup_ms": 31.01108968257904,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 3
+  },
+  {
+    "group_id": "B_case1199_ca_s1_b0.500",
+    "setup_ms": 31.075283885002136,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1099_cpg_s2_b0.750",
+    "setup_ms": 35.85028648376465,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_cpg_s2_b0.500",
+    "setup_ms": 35.34633666276932,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s0_b0.750",
+    "setup_ms": 34.678131341934204,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1000_cpg_s1_b0.500",
+    "setup_ms": 34.87332910299301,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "A_case1199_ca_s0_b0.500",
+    "setup_ms": 31.99128806591034,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1099_uniform_s2_b0.375",
+    "setup_ms": 33.6403027176857,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  },
+  {
+    "group_id": "B_case1199_cpg_s2_b0.375",
+    "setup_ms": 35.161957144737244,
+    "scope": "CPU array loading/normalization and request-object assembly, plus GPU input residency setup for B; outside model-ready request boundary",
+    "loaded_backbones": 2
+  }
+]

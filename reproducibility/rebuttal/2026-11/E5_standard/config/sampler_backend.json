@@ -1,0 +1,5 @@
+{
+  "backend": "native_fps",
+  "status": "verified",
+  "verification": "checks/sampler_equivalence.json"
+}

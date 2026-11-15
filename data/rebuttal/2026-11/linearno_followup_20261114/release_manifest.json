@@ -6,8 +6,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2613,
-      "sha256": "4e163bd8e9790907b2277da4fbbafba8c011f9d99e78078f01c0191a7b67e85b",
+      "bytes": 4070,
+      "sha256": "207c27ce94780c1c33401fd85e793b9bd668b210a662949331933a07cd0b3e02",
       "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
       "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
       "status": "VERIFIED_COMPLETE",
@@ -24,8 +24,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/README.md",
-      "bytes": 4069,
-      "sha256": "cd31b318de09b0b37dfc30a0524ae102e352be512cbc22b73e13c9c1a38007c4",
+      "bytes": 4219,
+      "sha256": "a8029a8627af4625530717785e510e3185b2211cb6dbe3f862dd4078ba725830",
       "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
       "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
       "status": "VERIFIED_COMPLETE",
@@ -267,8 +267,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/README.md",
-      "bytes": 3184,
-      "sha256": "27f4af0c43c4aec5a29f259f8458b5da675a45afd58d60ebd42a6aa067520746",
+      "bytes": 3447,
+      "sha256": "c6593e247bd60aa738e748cf935aeadec6a446e12a76c117ef10b47f953eb577",
       "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
       "code_commit_scope": "committed score capture/plot/QA scripts",
       "status": "PARTIAL",

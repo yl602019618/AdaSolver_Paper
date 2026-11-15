@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": {
+    "car": {
+      "conditions": 990,
+      "pooled_summary_rows": 114,
+      "formal_repeat_rows": 99000,
+      "cache_rows": 1296,
+      "passed": true
+    },
+    "airfoil": {
+      "conditions": 1323,
+      "pooled_summary_rows": 153,
+      "formal_repeat_rows": 132300,
+      "cache_rows": 3024,
+      "passed": true
+    }
+  },
+  "scope": "CSV-only independent direct-repeat, pooled median/p95, matched rAUEC and cache estimate recomputation"
+}

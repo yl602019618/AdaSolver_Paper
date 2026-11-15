@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-11-15T12:53:21.802099+00:00",
+  "transport": "normal Git over SSH using pre-existing identity; global/system URL rewrites disabled for this invocation only",
+  "target_branch": "rebuttal/20261114-linearno-seeds",
+  "target_observed_sha": "aaa010d5e790e0f24d2707619849db353d364dc4",
+  "other_branch": "rebuttal/20261114-linearno-followup",
+  "other_observed_sha": "bb5d5535496c68c75778991873ae77ec5ae7c9b6",
+  "other_publication_receipt": "local:workspace/linearno_followup_20261114/coordination/publication.json",
+  "other_published_scope": "prior Airfoil point/conv accuracy and numerical reconstruction audits; receipt explicitly lists Darcy matched experiments and formal A/B/C timing as pending",
+  "decision": "Current completed Darcy seed0 accuracy/parity/timing is a new result increment; do not duplicate previous Airfoil exports",
+  "git_mutations_performed": false
+}

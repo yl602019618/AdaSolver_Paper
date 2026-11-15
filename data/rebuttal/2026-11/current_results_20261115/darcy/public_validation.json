@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "accuracy_rows": 37200,
+  "rAUEC_rows_recomputed": 20,
+  "timing_conditions_recomputed": 1323,
+  "formal_repeats": 132300,
+  "warmups": 26460,
+  "training_seeds_per_model": 1,
+  "model_specific_validation_rows": 273,
+  "source_audit_sha256": "06db7477c07090d3df1f68651de35572de6884362498cda4ad6461a4be81e84b",
+  "validator_sha256": "abcc8af7c5dd9989468856eb3e8f3414b5708e9a924e6703a2497da1ebe1c031",
+  "offline_plots_passed": true,
+  "PDFs_rendered": 4,
+  "PNG_decode_passed": true,
+  "manual_visual_inspection": "contact sheet inspected; axes, legends, Full-only reference and separate profiling/direct rows are readable; unfavorable beta0 and slower complete-output conditions retained"
+}

@@ -1,0 +1,1758 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "scope": "completed9Transolver3 backbones+9correspondingheads and frozen3dataset accuracy matrices only",
+  "checked_at_utc": "2026-11-15T12:49:32.971835+00:00",
+  "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "source_prepared_commit": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
+  "counts": {
+    "backbones": 9,
+    "heads": 9,
+    "training_runs_per_dataset": 3,
+    "test_cases_per_run": 200,
+    "raw_records": 66600,
+    "case_mean_groups": 333,
+    "absolute_rows": 39,
+    "rauec_rows": 12,
+    "sampling_rows": 117,
+    "paired_rows": 54,
+    "area_detail_rows": 108,
+    "selection_archive_groups": 81
+  },
+  "numeric_max_absolute_differences": {
+    "validation_selection": 0.0,
+    "training_wall_binding": 0.0,
+    "resume_best": 0.0,
+    "raw_error_ratio": 0.0,
+    "independent_area_identity": 0.0,
+    "training_seed_summary.csv/training_seed0": 1.3877787807814457e-17,
+    "training_seed_summary.csv/training_seed1": 1.3877787807814457e-17,
+    "training_seed_summary.csv/training_seed2": 1.3877787807814457e-17,
+    "training_seed_summary.csv/mean": 1.3877787807814457e-17,
+    "training_seed_summary.csv/training_seed_sd": 8.00276728565863e-18,
+    "training_seed_rauec.csv/training_seed0": 2.220446049250313e-16,
+    "training_seed_rauec.csv/training_seed1": 1.1102230246251565e-16,
+    "training_seed_rauec.csv/training_seed2": 1.1102230246251565e-16,
+    "training_seed_rauec.csv/mean": 1.1102230246251565e-16,
+    "training_seed_rauec.csv/training_seed_sd": 1.1275702593849246e-16,
+    "paired_training_differences.csv/training_seed0_delta": 2.0816681711721685e-17,
+    "paired_training_differences.csv/training_seed1_delta": 2.0816681711721685e-17,
+    "paired_training_differences.csv/training_seed2_delta": 2.0816681711721685e-17,
+    "paired_training_differences.csv/mean_paired_delta": 2.0816681711721685e-17,
+    "paired_training_differences.csv/training_seed_sd": 1.3552527156068805e-17,
+    "sampling_variability.csv/mean_error": 1.3877787807814457e-17,
+    "sampling_variability.csv/sampling_seed0": 2.7755575615628914e-17,
+    "sampling_variability.csv/sampling_seed1": 1.3877787807814457e-17,
+    "sampling_variability.csv/sampling_seed2": 1.3877787807814457e-17,
+    "sampling_variability.csv/sampling_seed_sd": 1.485356976305141e-17
+  },
+  "model_and_head_checks": [
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "head_seed": 0,
+      "stages": {
+        "backbone": {
+          "epochs": 500,
+          "optimizer_updates": 500000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            500000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 496,
+          "validation_value": 0.009549294598400593,
+          "history_rows": 500,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 10390.76048783958,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 976833
+        },
+        "head": {
+          "epochs": 200,
+          "optimizer_updates": 2800,
+          "optimizer_parameter_states": 4,
+          "optimizer_step_values": [
+            2800
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 181,
+          "validation_value": 0.3928755106226084,
+          "history_rows": 200,
+          "training_device": "cpu",
+          "training_wall_seconds": 93.01419833302498,
+          "class_name": "adasolver.inference.ca.elasticity_stress.ElasticityStressHead",
+          "parameter_count": 521
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "50de4653c8596f0cfe251e56abea9a563c79f67b51d784816d7e7529ef279a71",
+      "split_hash": "77e32c411176023bc5cdafb24a07ebdca4ef27a119f88bd70631521e5452b7bb"
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "head_seed": 1,
+      "stages": {
+        "backbone": {
+          "epochs": 500,
+          "optimizer_updates": 500000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            500000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 499,
+          "validation_value": 0.009867259301245213,
+          "history_rows": 500,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 10606.378110080957,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 976833
+        },
+        "head": {
+          "epochs": 200,
+          "optimizer_updates": 2800,
+          "optimizer_parameter_states": 4,
+          "optimizer_step_values": [
+            2800
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 185,
+          "validation_value": 0.41356313948942675,
+          "history_rows": 200,
+          "training_device": "cpu",
+          "training_wall_seconds": 77.87466187775135,
+          "class_name": "adasolver.inference.ca.elasticity_stress.ElasticityStressHead",
+          "parameter_count": 521
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "50de4653c8596f0cfe251e56abea9a563c79f67b51d784816d7e7529ef279a71",
+      "split_hash": "77e32c411176023bc5cdafb24a07ebdca4ef27a119f88bd70631521e5452b7bb"
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "head_seed": 2,
+      "stages": {
+        "backbone": {
+          "epochs": 500,
+          "optimizer_updates": 500000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            500000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 497,
+          "validation_value": 0.008624901995062828,
+          "history_rows": 500,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 10380.784056276083,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 976833
+        },
+        "head": {
+          "epochs": 200,
+          "optimizer_updates": 2800,
+          "optimizer_parameter_states": 4,
+          "optimizer_step_values": [
+            2800
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 173,
+          "validation_value": 0.3890986237489193,
+          "history_rows": 200,
+          "training_device": "cpu",
+          "training_wall_seconds": 81.51157629489899,
+          "class_name": "adasolver.inference.ca.elasticity_stress.ElasticityStressHead",
+          "parameter_count": 521
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "50de4653c8596f0cfe251e56abea9a563c79f67b51d784816d7e7529ef279a71",
+      "split_hash": "77e32c411176023bc5cdafb24a07ebdca4ef27a119f88bd70631521e5452b7bb"
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "head_seed": 0,
+      "stages": {
+        "backbone": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 978,
+          "validation_value": 0.003915129229426384,
+          "history_rows": 1000,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 16524.802193686366,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 977345
+        },
+        "head": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 40,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 991,
+          "validation_value": 0.01904229447245598,
+          "history_rows": 1000,
+          "training_device": "cuda:0",
+          "training_wall_seconds": 4426.55415417999,
+          "class_name": "adasolver.inference.ca.head.TransolverGradientHead",
+          "parameter_count": 236049
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "06d89d3155607da7118d68cfd65fab559746822f6c7fbc4c28cdf8b298cde9b6",
+      "split_hash": "0df2d38aa3a9358999f95bb399d2d3ebb2cc7056477c78d816d18af157e63229"
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "head_seed": 1,
+      "stages": {
+        "backbone": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 977,
+          "validation_value": 0.0034615513868629932,
+          "history_rows": 1000,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 16521.377860702574,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 977345
+        },
+        "head": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 40,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 991,
+          "validation_value": 0.020473364740610123,
+          "history_rows": 1000,
+          "training_device": "cuda:0",
+          "training_wall_seconds": 4441.597028233111,
+          "class_name": "adasolver.inference.ca.head.TransolverGradientHead",
+          "parameter_count": 236049
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "06d89d3155607da7118d68cfd65fab559746822f6c7fbc4c28cdf8b298cde9b6",
+      "split_hash": "0df2d38aa3a9358999f95bb399d2d3ebb2cc7056477c78d816d18af157e63229"
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "head_seed": 2,
+      "stages": {
+        "backbone": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 977,
+          "validation_value": 0.003970887511968613,
+          "history_rows": 1000,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 16532.23527775705,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 977345
+        },
+        "head": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 40,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 970,
+          "validation_value": 0.019168365746736526,
+          "history_rows": 1000,
+          "training_device": "cuda:0",
+          "training_wall_seconds": 4439.428577691317,
+          "class_name": "adasolver.inference.ca.head.TransolverGradientHead",
+          "parameter_count": 236049
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "06d89d3155607da7118d68cfd65fab559746822f6c7fbc4c28cdf8b298cde9b6",
+      "split_hash": "0df2d38aa3a9358999f95bb399d2d3ebb2cc7056477c78d816d18af157e63229"
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "head_seed": 0,
+      "stages": {
+        "backbone": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 752,
+          "validation_value": 0.010843439027667046,
+          "history_rows": 1000,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 10744.788887880743,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 977089
+        },
+        "head": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 40,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 196,
+          "validation_value": 8.658065795898438,
+          "history_rows": 1000,
+          "training_device": "cuda:0",
+          "training_wall_seconds": 1609.8910246267915,
+          "class_name": "adasolver.inference.ca.head.TransolverGradientHead",
+          "parameter_count": 236049
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "06d89d3155607da7118d68cfd65fab559746822f6c7fbc4c28cdf8b298cde9b6",
+      "split_hash": "2b4dc79d3a58e336dc67cb6c27c52733d393bb3a5d4643226d595cb74d7275c7"
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "head_seed": 1,
+      "stages": {
+        "backbone": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 812,
+          "validation_value": 0.010868197306990623,
+          "history_rows": 1000,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 10762.195123918355,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 977089
+        },
+        "head": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 40,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 227,
+          "validation_value": 8.792988777160645,
+          "history_rows": 1000,
+          "training_device": "cuda:0",
+          "training_wall_seconds": 1639.6753119379282,
+          "class_name": "adasolver.inference.ca.head.TransolverGradientHead",
+          "parameter_count": 236049
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "06d89d3155607da7118d68cfd65fab559746822f6c7fbc4c28cdf8b298cde9b6",
+      "split_hash": "2b4dc79d3a58e336dc67cb6c27c52733d393bb3a5d4643226d595cb74d7275c7"
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "head_seed": 2,
+      "stages": {
+        "backbone": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 153,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 772,
+          "validation_value": 0.010327756404876709,
+          "history_rows": 1000,
+          "training_device": "NVIDIA H20",
+          "training_wall_seconds": 10646.646089538932,
+          "class_name": "adasolver.models.adapter.Transolver3Adapter",
+          "parameter_count": 977089
+        },
+        "head": {
+          "epochs": 1000,
+          "optimizer_updates": 250000,
+          "optimizer_parameter_states": 40,
+          "optimizer_step_values": [
+            250000
+          ],
+          "strict_state_load": true,
+          "last_matches_resume": true,
+          "validation_selection_replayed": true,
+          "best_epoch": 217,
+          "validation_value": 8.744451522827148,
+          "history_rows": 1000,
+          "training_device": "cuda:0",
+          "training_wall_seconds": 1651.1028899475932,
+          "class_name": "adasolver.inference.ca.head.TransolverGradientHead",
+          "parameter_count": 236049
+        }
+      },
+      "raw_records": 7400,
+      "case_population_hash": "06d89d3155607da7118d68cfd65fab559746822f6c7fbc4c28cdf8b298cde9b6",
+      "split_hash": "2b4dc79d3a58e336dc67cb6c27c52733d393bb3a5d4643226d595cb74d7275c7"
+    }
+  ],
+  "selection_checks": [
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "elasticity",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "pipe",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 0,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 1,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 0,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 1,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.375,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.5,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    },
+    {
+      "dataset": "darcy",
+      "training_seed": 2,
+      "sampling_seed": 2,
+      "budget_fraction": 0.75,
+      "cases": 200,
+      "methods": 4,
+      "indices_valid": true,
+      "coarse_prefixes_match": true
+    }
+  ],
+  "elasticity_head_recovery": {
+    "status": "VERIFIED_COMPLETE",
+    "failure_type": "GPU/startup flock contention before training",
+    "failure_log": "rebuttal_20261114_standard_seeds/logs/elasticity_seed0_head.log",
+    "failure_log_retained": true,
+    "successful_training_evidence": "complete200epoch CPU history plus best/last/resume state, optimizer counters, runtime and7400completed observations",
+    "successful_training_pid": 1559192,
+    "successful_epochs": 200,
+    "all_three_elasticity_heads_on_cpu": true,
+    "success_stdout_in_original_failure_log": false,
+    "exact_recovery_launch_command": "not_present_in_retained_stage_log"
+  },
+  "prepared_release": {
+    "commit": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
+    "file_count": 53,
+    "manifest_sha256": "e55e815f6ebff2e3b25d3bcc44717924fcb0e5917724879f56cd8481c48f48da",
+    "commit_tree_files": [
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/README.md",
+        "sha256": "cd3ef2cd21f363d218d9c69f25d1e2f944456fa7cfd412d10b31b72f2afc030d",
+        "bytes": 7067,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/checkpoint_registry.csv",
+        "sha256": "49c35c17299abfaef3172273713e4037a5a487bb53663ed6c4d18676d302638c",
+        "bytes": 3895,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": false
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/matrix_checks.csv",
+        "sha256": "60fd0b6d84179e37daebd8c51fa4143a2aa9a95b2ef75c98a4778162f97cabff",
+        "bytes": 295,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": false
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/metrics_records.csv.gz",
+        "sha256": "e46f185955a4064dc766c0d5f770dd92399694694de0e25a50a48f7936b0e06a",
+        "bytes": 1948123,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/paired_training_differences.csv",
+        "sha256": "234fa58fb3655d883f3ecf2c683b25c5efad55927886fb9ccbc4938a9e7f71e4",
+        "bytes": 8898,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": false
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/sampling_variability.csv",
+        "sha256": "f805b0313628bf42f641b0a0cd5e686db99c03dbb2547bd92de171bdc70cfce0",
+        "bytes": 14695,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": false
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/standard_training_seeds.tex",
+        "sha256": "853187c0d5e68bb2130a922908a46e6b4a505f2209f1ddb5833cd6462734c425",
+        "bytes": 704,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/training_seed_rauec.csv",
+        "sha256": "d440ff5f3b6a38615e06a37adb8fa9137265db9cc6e259758b91e174de662472",
+        "bytes": 2434,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": false
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/training_seed_summary.csv",
+        "sha256": "9db30d7cb14ec0559bf2a12785cd80486202651e95b1e2eb30f280238f7467a4",
+        "bytes": 5947,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": false
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/verification.json",
+        "sha256": "6ad7030f3c3dff8c080459dbf6cb8d63351de6382e0585cfc8d22d50817d5700",
+        "bytes": 655,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/common.py",
+        "sha256": "e03ddaf54872827f6ff6aae338b07d68bdc394f8ec77a18faf5b2e1397159508",
+        "bytes": 1125,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/evaluate.py",
+        "sha256": "0e7b4f0b50dfab815173f920ba3b09d4c1105f4ed20cb47a59b218d0f14d993b",
+        "bytes": 13581,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/finalize.py",
+        "sha256": "e75a56a38d9bed7245dfea084d2c476f698d305539516efb1350d8b604087828",
+        "bytes": 14072,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/head_banks.py",
+        "sha256": "5ba0b955dd055b22050bd59c530b6f300d0233acab3b5deceac1b044e559bacc",
+        "bytes": 4764,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/learning.py",
+        "sha256": "4813e69c2259f4f1c4bc67258425db156652804225a3dcc5b32a34e00ef83bd1",
+        "bytes": 1664,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/prepare_data.py",
+        "sha256": "7a3f22df5863991bd6759e108286a8eb4b1bac58de5f666aff7430c0ede95dc9",
+        "bytes": 4524,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/prepare_pipe_targets.py",
+        "sha256": "5e07bb9436a791d4e2b410c660ebfa85c8aba0922f9229c45e11866854049069",
+        "bytes": 2359,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/recompute_tables.py",
+        "sha256": "dfcbda213d8805b49c2a8b8233880013c1a11ba69990e7962bebd44e5d37028f",
+        "bytes": 3547,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/render_results.py",
+        "sha256": "dbfe62358490e42ce5fe7807a570b8fd8d6f64109a1888d60ef863928d52b863",
+        "bytes": 8506,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/sampler_backend.py",
+        "sha256": "fde0e5562f3f0b719dbe3263c93b460d0c7917cf6911d87d06c7db6a7dbb96db",
+        "bytes": 4358,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/supervise.py",
+        "sha256": "5d79274f19d279626d0ff5ee0d74509757f711d7d9e2f282a3aaf85f18b4073e",
+        "bytes": 4357,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/train_backbone.py",
+        "sha256": "050a3e41889c1ef6852b05fc30de68786eb7529a4ca3ec970bd9749b053f6ae6",
+        "bytes": 8638,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/code/train_head.py",
+        "sha256": "a5c9a850f3f6ee11068c859aaec8c2f439d71da003fac4dad75505b353e3ba81",
+        "bytes": 11405,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/config/darcy.json",
+        "sha256": "8e97125037e17b73057b7c88c1426500ecbcb988c68c57777e722c22d23c33a7",
+        "bytes": 17166,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/config/elasticity.json",
+        "sha256": "dfd2874366fc021396b34bcc6f91e52f55f3b9fc92726fa0db5b7e3642b9f3b2",
+        "bytes": 17163,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/config/frozen_methods.json",
+        "sha256": "8ca7320e71081ab983e0305671befba6393fc5d3916bc50609cead9016d141ec",
+        "bytes": 2469,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/config/pipe.json",
+        "sha256": "41f5b04a67f7c2b21921d6ab70e0c63e7721c253ad8957f520128614b16b6cea",
+        "bytes": 17144,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/config/protocol_lock.json",
+        "sha256": "01c7c342a8f8ae08491a7d4524fe958191632589b53c31c52a9447d4fcb64cc9",
+        "bytes": 1645,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/config/sampler_backend.json",
+        "sha256": "922614a1b204a29e759a95c1358f3d29aa5605c8bf43959c4e36c17fbd4d6510",
+        "bytes": 107,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed0_backbone.json",
+        "sha256": "97f55d33a99fa89c0377e75a48361017092afcaf746082aac41a5128acfac4f7",
+        "bytes": 17214,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed0_head.json",
+        "sha256": "d3c3ee484a524b1d8914cd31fea836f98e566ad9e2b424bcc4413c13d17b9d8a",
+        "bytes": 12391,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed1_backbone.json",
+        "sha256": "0579d8bb1806c1e3d1663d51aa2bba81fd5c5a674e95e19713e5af28beb316e9",
+        "bytes": 17215,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed1_head.json",
+        "sha256": "a8d768850fb45eb99708fde97b44f3b81add9ede4ed8286e13fe52f50753a447",
+        "bytes": 12392,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed2_backbone.json",
+        "sha256": "252441139a32f689ff777fb44f9de80105604b13175e22edbe988f9e1d30abae",
+        "bytes": 17215,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed2_head.json",
+        "sha256": "154b47ee06346b6f6eb3a32df1cc632f7b46b4e01cd8cdf30419edf79bcc3be1",
+        "bytes": 12391,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed0_backbone.json",
+        "sha256": "9d29f7334c94100918de35615fdc3bde083ee618c789be355cc176c7c3b19d49",
+        "bytes": 17205,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed0_head.json",
+        "sha256": "7747e7324a55bd53818ee434c4ac4b69a00aa1a14527e45efc8a3206ad5a221d",
+        "bytes": 12326,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed1_backbone.json",
+        "sha256": "02aa951c9e40c55a6714b0e9f5ca550adbf3bd655068272c691a3e0c67f81105",
+        "bytes": 17206,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed1_head.json",
+        "sha256": "21ea57f7b2d17557fb1e488f032c4842fd050dd7c5276dd2a8a6110e7ea0a1ac",
+        "bytes": 12328,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed2_backbone.json",
+        "sha256": "ac105bada5df20c8d3bd24849928848176ac64c769184abed87c6511a98fc20d",
+        "bytes": 17204,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed2_head.json",
+        "sha256": "acc86bed612310229432b6fc9964d12735fca366f2034b3f54ef2f768c95b7d6",
+        "bytes": 12328,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed0_backbone.json",
+        "sha256": "88bc8bbcec1299f3dc3eeac2f0df02e604a71358fa6746bccf73253fa284f4d9",
+        "bytes": 17365,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed0_head.json",
+        "sha256": "1ea19c84e3486c65ab08708edd6607448d73d4e3f8626b0d94140cea8306ffcf",
+        "bytes": 12188,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed1_backbone.json",
+        "sha256": "21cb20127b1f2e189177771c33e7c6e9aeecbdc59412332f4d0d8539540a9727",
+        "bytes": 17365,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed1_head.json",
+        "sha256": "915c710535f8eeb1275aa481680532ba62263130a623b12e9319b0e42bc67bea",
+        "bytes": 12188,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed2_backbone.json",
+        "sha256": "cc188099357fe8edfd8d69bb5e72f09f487cf6077e788491cfa1c0f83d1ab610",
+        "bytes": 17365,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed2_head.json",
+        "sha256": "3ebe13803ac5dd12b5b7948d6ac27cec6bba909f188e913b51c35dfe371c74bc",
+        "bytes": 12188,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/checks/sampler_equivalence.json",
+        "sha256": "6a283c638ea090686a5293565a725747eda8ef0e8d7e038dbec5a8381053db34",
+        "bytes": 514,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/checks/head_execution_check.json",
+        "sha256": "735b0873c0f7cf9a1edf9bf1096071db0231a6e4076ae703c59a04aad769fd75",
+        "bytes": 693,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/checks/canonical_evaluator_check.json",
+        "sha256": "793789ee4dc250e809f35dd661ca91fcdaf6d6b130953e516d416de16947200c",
+        "bytes": 1690,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "reproducibility/rebuttal/2026-11/E5_standard/README.md",
+        "sha256": "cb21441a25851b129de0925a0a9a5ddf37fb1f3d76e94de1de306e4f152a32ad",
+        "bytes": 1543,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "STANDARD_TRAINING_SEEDS.md",
+        "sha256": "a4987d32560be67cfc57e8fbcfcff71b80175e053cdfe9bae1e5e9ff779df4eb",
+        "bytes": 4780,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      },
+      {
+        "path": "README.md",
+        "sha256": "50be37e17188ea14a6484bc5a1bd8b305fa11631e999638c50cf1332e9e5de51",
+        "bytes": 2850,
+        "commit_tree_verified": true,
+        "original_manifest_hash_matches": true
+      }
+    ],
+    "previous_publication_receipt": {
+      "status": "pushed_and_verified",
+      "branch": "rebuttal/20261114-standard-training-seeds",
+      "commit": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
+      "tree": "8ab289a9950d1711481e8a1d06d5f4ad74b3ff80",
+      "remote_file_objects_verified": 54,
+      "labeled_entry_points": [
+        "README.md",
+        "STANDARD_TRAINING_SEEDS.md"
+      ],
+      "index_url": "https://github.com/yl602019618/AdaSolver_Paper/blob/rebuttal/20261114-standard-training-seeds/STANDARD_TRAINING_SEEDS.md",
+      "branch_url": "https://github.com/yl602019618/AdaSolver_Paper/tree/rebuttal/20261114-standard-training-seeds",
+      "published_at_utc": "2026-11-15T12:48:32.511960+00:00",
+      "experiment_status": "completed_and_verified",
+      "backbones": 9,
+      "heads": 9,
+      "records": 66600,
+      "previous_prepared_commit": "8e102921f3335ffe9b44270c18b40a16d0a73cc6",
+      "worktree": "rebuttal_20261114_standard_seeds/paper",
+      "content_labels": "branch homepage and bilingual results/file index"
+    },
+    "remote_state": "not_checked_here; previous authentication failure is historical, parent release owns current remote verification",
+    "status": "STALE_OR_CONFLICT",
+    "manifest_conflicts": [
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/checkpoint_registry.csv",
+        "status": "STALE_OR_CONFLICT",
+        "manifest_sha256": "7a109481a8f290b70fb710d9294449ce53cddc5aa6f571378d7b773b47275ca7",
+        "actual_commit_sha256": "49c35c17299abfaef3172273713e4037a5a487bb53663ed6c4d18676d302638c",
+        "manifest_bytes": 3905,
+        "actual_commit_bytes": 3895,
+        "CRLF_restoration_matches_manifest": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/matrix_checks.csv",
+        "status": "STALE_OR_CONFLICT",
+        "manifest_sha256": "7ed2e89d6aee9ed5e251794c35e3751e23b933927eae933d214e872cbb4f19ed",
+        "actual_commit_sha256": "60fd0b6d84179e37daebd8c51fa4143a2aa9a95b2ef75c98a4778162f97cabff",
+        "manifest_bytes": 305,
+        "actual_commit_bytes": 295,
+        "CRLF_restoration_matches_manifest": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/paired_training_differences.csv",
+        "status": "STALE_OR_CONFLICT",
+        "manifest_sha256": "a0ce08d3b695ddc9b94c0dbf47d365823edb64fde32efabeeb68ba6a8b17136c",
+        "actual_commit_sha256": "234fa58fb3655d883f3ecf2c683b25c5efad55927886fb9ccbc4938a9e7f71e4",
+        "manifest_bytes": 8953,
+        "actual_commit_bytes": 8898,
+        "CRLF_restoration_matches_manifest": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/sampling_variability.csv",
+        "status": "STALE_OR_CONFLICT",
+        "manifest_sha256": "dd8c4fbf22eb3592e314c2e086bae2765c78a32417ef3863add56325beeb5a85",
+        "actual_commit_sha256": "f805b0313628bf42f641b0a0cd5e686db99c03dbb2547bd92de171bdc70cfce0",
+        "manifest_bytes": 14813,
+        "actual_commit_bytes": 14695,
+        "CRLF_restoration_matches_manifest": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/training_seed_rauec.csv",
+        "status": "STALE_OR_CONFLICT",
+        "manifest_sha256": "7681e3c731321281981eedce4e53860738a16c5d805eb22d63cc7f9e5cae0611",
+        "actual_commit_sha256": "d440ff5f3b6a38615e06a37adb8fa9137265db9cc6e259758b91e174de662472",
+        "manifest_bytes": 2447,
+        "actual_commit_bytes": 2434,
+        "CRLF_restoration_matches_manifest": true
+      },
+      {
+        "path": "data/rebuttal/2026-11/E5_standard/training_seed_summary.csv",
+        "status": "STALE_OR_CONFLICT",
+        "manifest_sha256": "b60db20706b2ddf7a21cae7ed251fc49155291e953d472977e4762f4fd0e711e",
+        "actual_commit_sha256": "9db30d7cb14ec0559bf2a12785cd80486202651e95b1e2eb30f280238f7467a4",
+        "manifest_bytes": 5987,
+        "actual_commit_bytes": 5947,
+        "CRLF_restoration_matches_manifest": true
+      }
+    ],
+    "CSV_values_equal_audited_results": true,
+    "action": "Rebuild destination release hashes from final bytes; keep this source-commit conflict receipt"
+  },
+  "protocol_boundaries": {
+    "darcy": "1000smooth1 training/200smooth2 validation/200smooth2 test; normalized-output loss; legacy alternative to the separate900/100matched LinearNO cohort",
+    "pipe": "Frozen policy historically calibrated on first50cases of current200test cases; no retuning in this training-seed study",
+    "elasticity": "Train0..999/validation1000..1199/test1600..1799; all3heads consistently use200epochs CPU FP32 after startup-lock recovery",
+    "checkpoint_selection": "Validation only; normalizers fitted on training; historical test visibility is not relabelled as a sealed holdout",
+    "Full": "One full-reference observation per case/checkpoint, no sampling seed, excluded from rAUEC",
+    "timing": "No formal latency or GPU busy-time result accepted by this audit"
+  },
+  "experiments_modified": false,
+  "GPU_used": false,
+  "model_forward_executed": false
+}

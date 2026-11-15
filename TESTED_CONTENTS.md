@@ -1,0 +1,70 @@
+# 已完成结果与测试内容索引
+
+本次按 **checkpoint SHA256 去重，登记 19 个已完成 backbone 和 16 个对应 CA head**。统计对象是本次跟进已核验的模型；测试分组之间存在结果与 checkpoint 复用，观测条目不合并当作独立样本。
+索引快照：`2026-11-15T13:15:31.511555+00:00`。模型明细见 [model_inventory.csv](data/rebuttal/2026-11/current_results_20261115/model_inventory.csv)，机器可读测试矩阵见 [test_coverage.csv](data/rebuttal/2026-11/current_results_20261115/test_coverage.csv)。
+
+| 模型组 | 去重 backbone / head | 已完成 training seeds | 关键区分 |
+|---|---:|---|---|
+| ShapeNet-Car E5/E3 | 4 / 3 | T3：0、1、2；官方 LinearNO：0 | E3 的 T3 seed0 就是 E5 seed0，同一 checkpoint 只计一次；Car LinearNO head 仍缺 |
+| Elasticity 标准 cohort | 3 / 3 | T3：0、1、2 | 每模型 1000 train / 200 validation / 200 test；三份 head 均完成 CPU FP32 训练 |
+| Pipe 标准 cohort | 3 / 3 | T3：0、1、2 | 同上；保留历史 test-informed 策略 |
+| Darcy 历史 1000/200 cohort | 3 / 3 | T3：0、1、2 | 旧登记的 seed0/1 与本轮 standard 结果按 hash 合并；不重复计数 |
+| Airfoil 新 900/100 cohort | 3 / 2 | 每个变体均仅 0 | T3、LinearNO point-temp、LinearNO conv-temp 是三个变体；conv 仅 Full |
+| Darcy 新 900/100 cohort | 3 / 2 | 每个变体均仅 0 | 两 point backbone 有自身 head；conv 仅 Full |
+
+**新 matched Airfoil 与 Darcy 的三种模型变体不是三个 training seeds。** 两个数据集的每个 point backbone 目前仍只有独立训练 seed0 完成；sampling seeds 0/1/2 只衡量同一模型内采样波动。
+
+## 各组实际测了什么
+
+| 分组 | 数据、模型与 seeds | 预算 / 指标 | 精度覆盖 | 时延覆盖 | 历史测试可见性 / 未测项目 |
+|---|---|---|---|---|---|
+| E5 · Car三训练seed | Car T3 ×3；training 0/1/2，每模型 sampling 0/1/2 | 37.5/50/75%，另 Full100%；Field/Cd、rAUEC、training/sample SD | 100 测试例；19200 原生记录 / 22200 指标记录；原冻结目标配置完整 | seed0 见本轮 Car 重建组；seed1/2 未各自正式计时 | 历史人群；旧 Cd CPG/CA beta0.75 保留；新的 CPG beta0/1 补矩阵尚待整体验收 |
+| E3 · 官方LinearNO对照 | Car T3 seed0 + 官方 LinearNO seed0；sampling 0/1/2 | 三预算 + Full；Field/Cd、CPG beta0/1、各自 rAUEC | 100 例；9200 原生记录 / 11200 指标记录；Full/Uniform/CPG 对照 | 历史E3原生重建：276条件/27600正式重复，含beta0/1；新old/new测试另见Car组 | T3 checkpoint 与 E5 重叠；LinearNO PI/CA 与对应 head、training seeds1/2 仍缺 |
+| 三seed · Elasticity | 972 点 Elasticity；T3 training 0/1/2，sampling 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；每模型7400条，合计22200；Full/Uniform/PI/CPG/CA | 本组这些 checkpoint 的正式完整输出时延未测 | 开发阶段冻结策略；没有本组 LinearNO 对照；CPU head 恢复证据已核验 |
+| 三seed · Pipe | 16641 点 Pipe；T3 training 0/1/2，sampling 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；合计22200条；五方法完整 | 本组这些 checkpoint 的正式完整输出时延未测 | 历史策略用过当前测试集前50例；没有本组 LinearNO 对照 |
+| 三seed · Darcy历史cohort | 85×85；历史1000/200；T3 training 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；合计22200条；五方法完整 | 本组这些 checkpoint 的正式完整输出时延未测 | 历史 test-informed；与新900/100 split/normalizer/loss 分组保留 |
+| 完整输出 · Car | Car 两 backbone 均 training0；sampling0/1/2；T3有PI/CA，LinearNO无 | 三预算 + Full；Field/速度/压力/Cd；old/new parity、direct median/p95、显存 | 100例；7400 old/new对；1800 CPG beta对；field采样策略上的物理量诊断 | 3固定例；A/B/C共990条件、99000正式重复；990显存条件 | 历史人群；beta0只测精度；LinearNO PI/CA/head与多training-seed结论仍未补齐 |
+| 新匹配 · Airfoil | 221×51压力；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；压力L2、Cd/Cl/CdCl误差、rAUEC、parity、完整输出成本 | 固定发布110个Cl>0.02例；point各5060请求，conv110Full，共10230 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | 历史测试可见；point各training1/2及training SD未完成；conv仅Full |
+| 新匹配 · Darcy | 85×85；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；场L2、rAUEC、beta0/1、parity、完整输出成本 | 200例；point各9200请求+conv200Full；37200 old/new指标行；3600 beta对 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | smooth2历史人群；point各training1/2及training SD未完成；旧1000/200三seed不能替代此组 |
+| FZ2 · score可视化 | Car、Airfoil各1个固定例；已有T3 seed0/自身head；sampling0 | 50%；真实feature/head、score、density、selected、后置error诊断 | 逐点来源/hash/计算链核验；Car独立CPU CA闭环单列 | 完整请求时延与profiling现已完成；score捕获专属GPU cost/rawscore绑定尚未单独更新 | 单例可视化；Car CA跨设备score154点超阈保留；Airfoil CPG仅保留619/1127coarse |
+
+## 时延与统计的读法
+
+- **A**：CPU 输入 → 完整 CPU float64 场，batch=1、网络 FP32；每次变点集请求都计入重建映射准备。
+- **B**：GPU-resident 输入 → 完整 GPU float64 场；请求中实际需要的 CPU 几何处理与传输仍计入。
+- **C**：同几何、同顺序 selected set 的映射缓存；重新计算 acquisition/score/selection/model。第一次准备和复用成本分开。
+- 每个正式计时条件有 **20 warmups + 100 formal repeats**，直接测 request wall time，并在 GPU 边界同步；阶段 profiling 不相加替代直接总时延。Full 没有虚构的 sampling seed，old/new Full 视图共享一次物理测量。
+- rAUEC 每个 sampling seed 单独积分三预算曲线，再除以同 checkpoint/backbone/population/reconstruction 的 Uniform 面积。Uniform=1，Full100% 不进入积分；跨 backbone 的 rAUEC 不是绝对精度排名。
+- Standard 和 E5 的误差棒是 **3 个 training runs 的 sample SD**；本轮新 Airfoil/Darcy/Car seed0 对照的误差棒是 **sampling SD**；计时100次的波动另列。
+- 显存覆盖 PyTorch allocator 峰值及记录的 NVML 采样，不包含所有 CPU 分配或所有瞬时外部 GPU 分配。缓存 first+reuse 合成值按其定义作为派生估计保留。
+
+## 仍在补齐的内容
+
+队列快照：`2026-11-15T13:12:15.943169+00:00`，状态 `RUNNING_MISSING_STAGE`。以下状态按该快照记录，完成执行不自动替代独立结果验收：
+
+| 队列任务 | 状态 | 含义 |
+|---|---|---|
+| shapenet_car_t3_trainingseed1_cpg_beta_pairs | COMPLETED | 复用已有 checkpoint 的 CPG beta 配对补评估；不新增模型计数 |
+| shapenet_car_t3_trainingseed2_cpg_beta_pairs | COMPLETED | 复用已有 checkpoint 的 CPG beta 配对补评估；不新增模型计数 |
+| airfoil_t3_trainingseed1_backbone | RUNNING | 新独立 training seed 的 backbone 训练；完成且独立验收后才进入模型清单 |
+
+Car LinearNO 的 PI/CA、对应 head 和独立 training seeds1/2 尚未完成；新 matched Airfoil/Darcy 的 point backbones 各自 training seeds1/2 尚未完成。本次19个模型清单只登记已有完成且审计的 checkpoint。原生 conv-temp 的固定网格 Full-only 限制单列，不通过修改架构伪装为变量点数模型。
+
+已恢复问题也保留来源：Elasticity seed0 head 的启动锁失败后，三份 head 均完成一致的 CPU FP32 训练；Airfoil 原 finalizer 在全部测量后发生重复字典键错误，本轮从原始完整记录恢复报告；Darcy 旧总监控 flag 未读取实际 gate，本轮依据真实完成键和完整矩阵验收。原失败/待验收字符串未被覆盖。
+
+来源与复现：[standard](data/rebuttal/2026-11/current_results_20261115/standard/README.md)、[Car/Airfoil 重建与时延](data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/README.md)、[Darcy 900/100](data/rebuttal/2026-11/current_results_20261115/darcy/README.md)；去重与源 registry hash 见 [inventory_validation.json](data/rebuttal/2026-11/current_results_20261115/inventory_validation.json)。
+
+## 固定基线中已发布的历史测试
+
+以下是提交91c1fa7保留的历史结果入口，按各自README声明的完成范围阅读；不与本轮19模型统计相加，也不把旧snapshot的pending项目自动提升为完成。
+
+| 历史包 | 已发布的测试内容 |
+|---|---|
+| [E0](data/rebuttal/2026-11/E0/README.md) | 同checkpoint Full参照、绝对误差与相对Full误差 |
+| [E1](data/rebuttal/2026-11/E1/README.md) | 历史完整输出计时；三个case、三sampling seeds、20warmups/100repeats |
+| [E2](data/rebuttal/2026-11/E2/README.md) | FPS/空间分层等几何采样基线及同点集测度补偿配对 |
+| [E3](data/rebuttal/2026-11/E3/README.md) | 原ShapeNet-Car T3/官方LinearNO精度与完整输出计时对照 |
+| [E4](data/rebuttal/2026-11/E4/README.md) | Darcy85²/141²/211²观测分辨率迁移、统一评价网格 |
+| [E5](data/rebuttal/2026-11/E5/README.md) | ShapeNet-Car三独立训练种子与各自CA head |
+| [E6](data/rebuttal/2026-11/E6/README.md) | 已发布的Airfoil多起点逆向设计/CFD及SuperWing已完成分项 |
+| [E7](data/rebuttal/2026-11/E7/README.md) | 固定点集beta诊断和已知proposal的合成token实验 |

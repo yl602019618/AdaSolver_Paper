@@ -1,0 +1,26 @@
+{
+  "purpose": "implementation check only; not accuracy evidence",
+  "checks": [
+    {
+      "sampler": "elasticity_cpg",
+      "selected_points": 364,
+      "indices_equal": true
+    },
+    {
+      "sampler": "elasticity_ca",
+      "selected_points": 364,
+      "indices_equal": true
+    },
+    {
+      "sampler": "pipe",
+      "selected_points": 6240,
+      "indices_equal": true
+    },
+    {
+      "sampler": "darcy",
+      "selected_points": 2709,
+      "indices_equal": true
+    }
+  ],
+  "status": "passed"
+}

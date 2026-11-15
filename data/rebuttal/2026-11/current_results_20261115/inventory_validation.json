@@ -1,0 +1,123 @@
+{
+  "generated_at_utc": "2026-11-15T13:15:31.511555+00:00",
+  "unique_backbones": 19,
+  "unique_corresponding_heads": 16,
+  "deduplication_key": "checkpoint_sha256",
+  "head_deduplication_key": "head_sha256",
+  "input_registry_rows": {
+    "previous": 9,
+    "standard": 9,
+    "darcy": 3,
+    "airfoil": 3
+  },
+  "duplicate_registry_rows_merged": 5,
+  "merged_records": [
+    {
+      "checkpoint_sha256": "141c4efd4a6058d4c9d182d2ebd7deac4c652242b1445f7bb234b8451dc3e17a",
+      "new_source": "standard",
+      "alias": "standard_darcy_T3_seed0"
+    },
+    {
+      "checkpoint_sha256": "beeb1ce9debdd2bcb1f5d9a7f7f901fcbbad69c084ab7e9806eb216af48a1038",
+      "new_source": "standard",
+      "alias": "standard_darcy_T3_seed1"
+    },
+    {
+      "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "new_source": "airfoil",
+      "alias": "matched_airfoil_t3_seed0"
+    },
+    {
+      "checkpoint_sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "new_source": "airfoil",
+      "alias": "matched_airfoil_linearno_seed0"
+    },
+    {
+      "checkpoint_sha256": "7750dd330b76f129af21ed54235e1d1d79c3ceabebdda8446acb90579fa118d5",
+      "new_source": "airfoil",
+      "alias": "matched_airfoil_linearno_conv_seed0"
+    }
+  ],
+  "explicit_E3_E5_overlap": {
+    "checkpoint_sha256": "b12ae86b184d3173f71a694d7e519f609951d43512c786a9cd7cc625832aae81",
+    "dataset": "shapenet_car",
+    "backbone": "Transolver3",
+    "training_seed": 0,
+    "model_count": 1,
+    "scopes": [
+      "E5",
+      "E3",
+      "current_Car_reconstruction"
+    ]
+  },
+  "cohort_counts": {
+    "airfoil_matched_900train_100validation": {
+      "backbones": 3,
+      "heads": 2
+    },
+    "car_E5_E3_710train_79validation": {
+      "backbones": 4,
+      "heads": 3
+    },
+    "darcy_matched_900train_100validation": {
+      "backbones": 3,
+      "heads": 2
+    },
+    "darcy_standard_1000train_200validation": {
+      "backbones": 3,
+      "heads": 3
+    },
+    "elasticity_standard_1000train_200validation": {
+      "backbones": 3,
+      "heads": 3
+    },
+    "pipe_standard_1000train_200validation": {
+      "backbones": 3,
+      "heads": 3
+    }
+  },
+  "source_files": {
+    "linearno_followup_20261114/reuse_review/paper/data/rebuttal/2026-11/linearno_followup_20261114/completed_training/model_index.csv": "bf8f846b4d60cf58e483ba32cf79e9d911e78f5fd7663437ef9f207d1fb3d2f6",
+    "linearno_followup_20261114/reuse_review/current_results_20261115/standard/checkpoint_registry.csv": "93abee0416bc1f3098dcb17e05c75c993085d9d11fde75e880a85cc4301669e3",
+    "linearno_followup_20261114/reuse_review/current_results_20261115/darcy/checkpoint_registry.csv": "4644e34ab41e32f13e7ddbabcb6f83ee7aa940d1991c96cee6ce772c2932458d",
+    "linearno_followup_20261114/reuse_review/current_results_20261115/reconstruction_airfoil/airfoil_checkpoint_registry.csv": "913886d5c9d5f1dd69ff7b37e55093c4fc213143ccf5d9a469fb94239ffa58f1",
+    "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed0/head/ca_pressure_trainingseed0_headseed0_manifest.json": "04dbeda85acb2ba340270cf9c4b899e804023acca93b9289cfb91ffcd2b4b703",
+    "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed1/head/ca_pressure_trainingseed1_headseed1_manifest.json": "75208a72047cbb33e3215094929e6b077b6537b85e1709461b5b541b7ad4eaea",
+    "rebuttal_20261112/experiments/E5_training_seeds/checkpoints/seed2/head/ca_pressure_trainingseed2_headseed2_manifest.json": "26c49447e10140eb01753bb8bcf32f8257f200aa34f6665960f9f4183a523a42"
+  },
+  "queue_snapshot": {
+    "execution_status": "RUNNING_MISSING_STAGE",
+    "updated_at_utc": "2026-11-15T13:12:15.943169+00:00",
+    "jobs": [
+      {
+        "job_id": "shapenet_car_t3_trainingseed1_cpg_beta_pairs",
+        "status": "COMPLETED",
+        "started_at_utc": "2026-11-15T12:46:52.695609+00:00",
+        "finished_at_utc": "2026-11-15T12:59:34.807267+00:00"
+      },
+      {
+        "job_id": "shapenet_car_t3_trainingseed2_cpg_beta_pairs",
+        "status": "COMPLETED",
+        "started_at_utc": "2026-11-15T12:59:35.452156+00:00",
+        "finished_at_utc": "2026-11-15T13:12:15.285859+00:00"
+      },
+      {
+        "job_id": "airfoil_t3_trainingseed1_backbone",
+        "status": "RUNNING",
+        "started_at_utc": "2026-11-15T13:12:15.930187+00:00",
+        "finished_at_utc": null
+      }
+    ]
+  },
+  "note": "Statuses enumerate only already-audited result scopes; queued jobs do not add model counts. Counts across test groups are not additive because source observations/models are reused.",
+  "GPU_work": false,
+  "Git_mutations": false,
+  "test_coverage_schema": {
+    "primary_key": "group_id",
+    "count_columns": "integer or empty when not applicable/not measured; count_notes preserves explanatory text",
+    "test_cases": "distinct cases per listed dataset; training-model repeats do not increase this population count",
+    "seeds_and_budgets": "explicit text sets with Full/conv applicability annotations; Full has no sampling seed",
+    "accuracy_observations": "native request/record count as named by each source protocol; not network-forward count and not additive across overlapping groups",
+    "source": "relative package entry or named prior-release evidence; references are not data payloads"
+  }
+}

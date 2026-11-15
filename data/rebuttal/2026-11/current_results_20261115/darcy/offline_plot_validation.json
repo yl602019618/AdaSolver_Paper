@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "input_csvs": 4,
+  "model_or_cfd_inputs": false,
+  "formats": [
+    "PDF",
+    "SVG",
+    "300dpi PNG"
+  ],
+  "command": [
+    "python3",
+    "plot_results.py",
+    "--data-dir",
+    "CSV-only-directory",
+    "--output-dir",
+    "figures"
+  ]
+}

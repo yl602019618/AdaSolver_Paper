@@ -1,0 +1,45 @@
+{
+  "cause": "nvidia-smi utilization includes percent suffix; dispatcher exited before any GPU job",
+  "fix": "request nounits and tolerate percent suffix",
+  "dependency_checks": [
+    {
+      "run": "seed_extension/runs/airfoil/seed1",
+      "verified_files": 226,
+      "status": "passed"
+    },
+    {
+      "run": "seed_extension/runs/airfoil/seed2",
+      "verified_files": 226,
+      "status": "passed"
+    },
+    {
+      "run": "seed_extension/runs/darcy/seed1",
+      "verified_files": 224,
+      "status": "passed"
+    },
+    {
+      "run": "seed_extension/runs/darcy/seed2",
+      "verified_files": 224,
+      "status": "passed"
+    }
+  ],
+  "check_time_utc": "2026-11-15T12:40:53.559422+00:00",
+  "queue_script_sha256": "0a7ccae4748eedbbfae2b8ca9f90b73a5cf9daee7e79620b20dc2ff0521357d1",
+  "old_dispatcher_gpu_stages": 0,
+  "current_state": "RUNNING_MISSING_STAGE",
+  "current_started_stages": 2,
+  "current_jobs": [
+    {
+      "task": "shapenet_car_t3_trainingseed1_cpg_beta_pairs",
+      "status": "COMPLETED",
+      "training_seed": 1
+    },
+    {
+      "task": "shapenet_car_t3_trainingseed2_cpg_beta_pairs",
+      "status": "RUNNING",
+      "training_seed": 2
+    }
+  ],
+  "original_failure_preserved": true,
+  "scope": "Infrastructure recovery, not evidence of finished missing training seeds."
+}

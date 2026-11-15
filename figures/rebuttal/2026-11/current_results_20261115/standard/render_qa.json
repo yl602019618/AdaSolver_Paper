@@ -1,0 +1,32 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "checks": {
+    "source_rows": 12,
+    "CSV_only_reproduction": true,
+    "reproduced_file_hashes_equal": {
+      "pdf": true,
+      "svg": true,
+      "png": true
+    },
+    "PNG_decode": true,
+    "SVG_XML_parse": true,
+    "PDF_rendered_with_pdftoppm": true,
+    "PDF_fonts_embedded": true,
+    "render_visually_inspected": true,
+    "no_clipping_or_overlapping_labels": true,
+    "individual_seeds_and_training_sample_SD_separated": true,
+    "LF_source_CSV": true
+  },
+  "PNG": {
+    "width": 3240,
+    "height": 1110,
+    "dpi": [
+      299.9994,
+      299.9994
+    ]
+  },
+  "PDF_font_report": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nEVICAO+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     27  0\nBMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     34  0\n",
+  "render_note": "Shared y-axis; method palette reused from project style; open seed markers and filled mean/errorbars all visible. Small SD bars are small because the recorded variability is small.",
+  "source_csv_sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e",
+  "plot_script_sha256": "e8b02066747f22364ad7d1753052ae3ea92e1422ee15172860657183f9c890bb"
+}

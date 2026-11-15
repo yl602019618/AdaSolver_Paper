@@ -1,0 +1,373 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "scope": "Published Darcy seed0 scalar data; relocated figures/code have explicit relative paths",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6276,
+      "sha256": "7b7ef34f292507588527b3c5cf4974a0a8113584af99f4bd797f5147b73a25a3",
+      "public": true
+    },
+    {
+      "path": "backbone_absolute_errors.csv",
+      "bytes": 22917,
+      "sha256": "46d26b935cd5e7c862eae4097da1da016297917c133cf8a78e4bdd99fc2dcc85",
+      "public": true
+    },
+    {
+      "path": "backbone_latency_summary.csv",
+      "bytes": 2198931,
+      "sha256": "2a7af3d19a4f778993df84488db62ab4139fa80df4dfc6fcf15fa569ee9c2dd3",
+      "public": true
+    },
+    {
+      "path": "backbone_rauec.csv",
+      "bytes": 8415,
+      "sha256": "d831a8cd6976b7b61fd3b9e16cdaf8a1ee7020264feec6efb7b04403bea528bc",
+      "public": true
+    },
+    {
+      "path": "checkpoint_registry.csv",
+      "bytes": 3111,
+      "sha256": "4b724d568b270d385acda499c8bd73dc3bca674d0a87e2c41f0a7cfd8df89c77",
+      "public": true
+    },
+    {
+      "path": "evaluation_protocol.json",
+      "bytes": 3983,
+      "sha256": "4f6bfbbde2c8fa8b6e0ff6c619759d2b54986da715c295eca0006b0cefd5a88a",
+      "public": true
+    },
+    {
+      "path": "../../../../../reproducibility/rebuttal/2026-11/current_results_20261115/darcy/export_and_audit.py",
+      "bytes": 31421,
+      "sha256": "bc6b1420bb44361f242b06f0bc16b1f37e9f008eb1bb1d7020fca1e6b84edf8d",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/contact_sheet.png",
+      "bytes": 395668,
+      "sha256": "44c8305b0a42c753bdf334a79520efe26965be6a846169a4adab721cce301adb",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.caption.md",
+      "bytes": 399,
+      "sha256": "ec87105bef3c131f48fd84d53bd89baac0518eb3fe6185b33bc74ebbcd6c1368",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.pdf",
+      "bytes": 19490,
+      "sha256": "840f41c704c05d41351b05f1ee51eda97405fb8e13bff580972839aeb589ef81",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.png",
+      "bytes": 232426,
+      "sha256": "6a61fb3023870de6befc719c341a4983ae3cffa9761c4f1c55d5541378fc33f4",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.svg",
+      "bytes": 51447,
+      "sha256": "f6d94fb88638e4e866772aaa3ed0657846263e8f4aacb1373a9eb06819e26f7a",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget_source.csv",
+      "bytes": 11474,
+      "sha256": "7bed3e8543dc288b676f4e5a49a8d095c3ccd7dfb561b9bbacd7eba1a94d7a64",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.caption.md",
+      "bytes": 627,
+      "sha256": "432bdfc0e7ad3b3ea0b29bfb889e9d46533a4855342a4c5e3bbcb5f1210c2668",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.pdf",
+      "bytes": 16891,
+      "sha256": "6522f1a213b9c0b9415b89534c7a86271395c32eb4df2b09f412260bc2326242",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.png",
+      "bytes": 136185,
+      "sha256": "4a4ad44d53c90b9cdbad14fe21f8b2aaafa20f7b20e61a915d2276e6395f88e0",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.svg",
+      "bytes": 29270,
+      "sha256": "1fa66a1c588577943773f853c4087dcfebb052baba7979a458e17edec32a0f60",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency_source.csv",
+      "bytes": 7548,
+      "sha256": "653a9839070735b1d01e232f1c8f666bf3574aaf97a11514bd4c041570282f02",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.caption.md",
+      "bytes": 574,
+      "sha256": "26512bc7cd72fe61bdd61a37135aca033f7bec31578a0fff269ae7fe7d5dcdc8",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.pdf",
+      "bytes": 12999,
+      "sha256": "940349362de63ef7eadda5237a55f21ec98f665fdf45a671ec138c6bdfe4b577",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.png",
+      "bytes": 59497,
+      "sha256": "0fa1d36b16653ddc2f7adf0da48fea947c758522b8de2e638a7956e9811cadbb",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.svg",
+      "bytes": 22218,
+      "sha256": "87b0aad87a9f6c92a300a7f0c34ee2b4336da4e70cec7b3e096a9b8820fcef44",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec_source.csv",
+      "bytes": 4269,
+      "sha256": "dbf3380e2975432ecfcf643d044233d529c78500addefac8db3a67de5ee1a13f",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.caption.md",
+      "bytes": 734,
+      "sha256": "b4db9ac755380c2f7489629940258e2a5498be96a90845594dc9f2948af2cd2c",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.pdf",
+      "bytes": 18926,
+      "sha256": "77954e2c9b988b5eeafaeaabb1fbddf70e80d53e4ae5411a6e45c5c2fb2e6e9d",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.png",
+      "bytes": 195450,
+      "sha256": "a59f62105fdb85a4cc5acd429e248809794727f4dc066b2c50f2878db9b16869",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.svg",
+      "bytes": 78111,
+      "sha256": "0ce517fa7f3d53bbb1ae1aa57a5ec140cd8c61e58e639e33136c3a0c3d1953cc",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost_source.csv",
+      "bytes": 5047,
+      "sha256": "f532b8a0956b8873bc4dfb14e304e4743e299d1b1f4f44f4131d18c40c0cf82e",
+      "public": true
+    },
+    {
+      "path": "../../../../../figures/rebuttal/2026-11/current_results_20261115/darcy/render_qa.json",
+      "bytes": 4492,
+      "sha256": "e0531d9e5acb4411f7461d6f126a7d8e303e8b530cd59b00e81e037b2f84c388",
+      "public": true
+    },
+    {
+      "path": "input_preparation.json",
+      "bytes": 88760,
+      "sha256": "29c2c43448f3522c73d1759833edb05c35b453ca3ebcb64c519b14364a586bba",
+      "public": true
+    },
+    {
+      "path": "latency_first_requests.csv",
+      "bytes": 1386111,
+      "sha256": "8a1a1c8404102d81291f256bb479420d2c069323c8703c29058711ac65b885ee",
+      "public": true
+    },
+    {
+      "path": "latency_overview.csv",
+      "bytes": 36676,
+      "sha256": "915458535f92a79a0958edf31fa6cbff8bc52c8b89d7b863c0377660bbe54599",
+      "public": true
+    },
+    {
+      "path": "latency_profiles.csv.gz",
+      "bytes": 908790,
+      "sha256": "e0486c153323aa08280f4cbadd8496259ab1419c59bdff7eceea75b35c793357",
+      "public": true
+    },
+    {
+      "path": "latency_raw_repeats.csv.gz",
+      "bytes": 2193231,
+      "sha256": "d82428ee6d80339a34588564fb27c1c31905a397851b6f79c55e76e1ee77f3c4",
+      "public": true
+    },
+    {
+      "path": "latency_reuse_costs.csv",
+      "bytes": 3500090,
+      "sha256": "62ca0f2a44cf7f56e26892cad7bddf837d319ededca7f48b1fafb8ab82adfcde",
+      "public": true
+    },
+    {
+      "path": "linearno_conv_training_metadata.json",
+      "bytes": 14019,
+      "sha256": "d27dbb9279ae22aff8ad0c7599e7f523d19a73458c1c80d68c4d445af41025c7",
+      "public": true
+    },
+    {
+      "path": "linearno_training_metadata.json",
+      "bytes": 26435,
+      "sha256": "009529bc8df4db524a2c6a85eec3cb1476da2755c8afef0c31214ad6e6a89964",
+      "public": true
+    },
+    {
+      "path": "memory_conditions.csv",
+      "bytes": 1322704,
+      "sha256": "b81f4102240e418a67af0cd24df32adadecb50b7c7240df858dd3baa53cb5406",
+      "public": true
+    },
+    {
+      "path": "metrics_records.csv",
+      "bytes": 21500320,
+      "sha256": "f0b809f9e9ffe73162f9d4c7da5b8ff6cb2b90699254c2fa65c39c696d0d39b2",
+      "public": true
+    },
+    {
+      "path": "model_validation_parity.csv",
+      "bytes": 51103,
+      "sha256": "bdea0590efa311a5c35b05d5a0d7200089297c4f4aeba6f6bf23404c11fd51e4",
+      "public": true
+    },
+    {
+      "path": "offline_plot_validation.json",
+      "bytes": 267,
+      "sha256": "946ec7c4d918b7f842469a5b30b58564d84ee7a589309db2b35dd9a99ba6e7d0",
+      "public": true
+    },
+    {
+      "path": "pdf_render_qa/darcy_absolute_error_budget.png",
+      "bytes": 85869,
+      "sha256": "3008ccc2269830b1ee44c0ec7fc651cd82eb959320578398a7613b825936f640",
+      "public": true
+    },
+    {
+      "path": "pdf_render_qa/darcy_error_latency.png",
+      "bytes": 66103,
+      "sha256": "b947d5163ed3ade256f602c373009e1155bb991b50b28caf6ede24b1ca52a786",
+      "public": true
+    },
+    {
+      "path": "pdf_render_qa/darcy_rauec.png",
+      "bytes": 35756,
+      "sha256": "e9f01e2ce3751f7bd2c00beebfd5e83345e01d35a83b43ccd3bb57328cc9284c",
+      "public": true
+    },
+    {
+      "path": "pdf_render_qa/darcy_reconstruction_cost.png",
+      "bytes": 88645,
+      "sha256": "88265d197a93395c25ec9aa27923359cd11f61ac0d7620bc095b53fd6572b842",
+      "public": true
+    },
+    {
+      "path": "../../../../../reproducibility/rebuttal/2026-11/current_results_20261115/darcy/plot_results.py",
+      "bytes": 12341,
+      "sha256": "932ff4a220e2d32a532f7d37df15dee116cb14ed539347b6f2f670b35a8833c4",
+      "public": true
+    },
+    {
+      "path": "preparation_setup.json",
+      "bytes": 7126,
+      "sha256": "17822b276ac997c17486b1a487e0730ae1c6fffb924803ecc9b0b7372db40477",
+      "public": true
+    },
+    {
+      "path": "publication_reuse_audit.json",
+      "bytes": 905,
+      "sha256": "907603575a36f73aea62e8a4b54ef54e901dcb4413446df2027beafc0325731f",
+      "public": true
+    },
+    {
+      "path": "rauec_seed_details.csv",
+      "bytes": 12461,
+      "sha256": "3a822ecea6974b722382dadfed60a6d013e605e3cb66716a4be52e278d782f35",
+      "public": true
+    },
+    {
+      "path": "read.me",
+      "bytes": 170,
+      "sha256": "b1a4219e57ef9c8c57a7e629cb7f557a5403185eb4dbdc20e63ec877f5d57c26",
+      "public": true
+    },
+    {
+      "path": "reconstruction_parity.csv",
+      "bytes": 8267499,
+      "sha256": "360aff23b8bc19757d650f579711ff6a496c9bc0419ad1d747910ed44f906635",
+      "public": true
+    },
+    {
+      "path": "reconstruction_summary.csv",
+      "bytes": 403079,
+      "sha256": "37c6a24f035bb94e31ec4e9f862f43fd43bfba2792a8861d95aee803dfab3326",
+      "public": true
+    },
+    {
+      "path": "sampling_variability.csv",
+      "bytes": 41013,
+      "sha256": "a3486100b1ff81f12bc4989f08bf726881c21cd1444165811e2ddd76b6dc1150",
+      "public": true
+    },
+    {
+      "path": "source_audit.json",
+      "bytes": 96628,
+      "sha256": "06db7477c07090d3df1f68651de35572de6884362498cda4ad6461a4be81e84b",
+      "public": true
+    },
+    {
+      "path": "source_record_index.csv",
+      "bytes": 61528,
+      "sha256": "fe1aba51453d4f9250b1c36e8bcbfe3d7d204f363c0c126df99a87a798ad192b",
+      "public": true
+    },
+    {
+      "path": "test_scope.csv",
+      "bytes": 851,
+      "sha256": "455ffb56b85d3ab270e7b14a434673d71e370d2384e3c6f284ce1a9f1e2097d7",
+      "public": true
+    },
+    {
+      "path": "training_history.csv",
+      "bytes": 775572,
+      "sha256": "220334419ad0689fa9cdc14c8f573a6009192679c8d9780b49e90ceafb4f58df",
+      "public": true
+    },
+    {
+      "path": "training_protocol.json",
+      "bytes": 7254,
+      "sha256": "bca52ad8744fc9ff9daf232fc09e5c4e606cb38dd13fd09a5cc1d02473b3ac26",
+      "public": true
+    },
+    {
+      "path": "transolver3_training_metadata.json",
+      "bytes": 26282,
+      "sha256": "6e0a9df090cabfb145d7837ba3d7ffd27827c62af09d08faeabb0c0f8ff4b716",
+      "public": true
+    },
+    {
+      "path": "../../../../../reproducibility/rebuttal/2026-11/current_results_20261115/darcy/validate_public.py",
+      "bytes": 3819,
+      "sha256": "abcc8af7c5dd9989468856eb3e8f3414b5708e9a924e6703a2497da1ebe1c031",
+      "public": true
+    },
+    {
+      "path": "visual-contract.md",
+      "bytes": 1097,
+      "sha256": "7de382979a8a5e460c39bafee84a555a8e708f1868572f43d5da05ace8351f50",
+      "public": true
+    }
+  ],
+  "self_hash_excluded": true
+}

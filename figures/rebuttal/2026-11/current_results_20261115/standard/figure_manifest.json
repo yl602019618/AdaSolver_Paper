@@ -1,0 +1,51 @@
+{
+  "source_csv": "training_seed_rauec.csv",
+  "source_sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e",
+  "backbone": "Transolver3",
+  "training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "sampling_seeds_per_training_run": [
+    0,
+    1,
+    2
+  ],
+  "uncertainty": "sample SD across3independent training runs, ddof1",
+  "formats": [
+    "PDF",
+    "SVG",
+    "PNG300dpi"
+  ],
+  "palette_origin": "existing project figure_tools/style.py",
+  "method_colors": {
+    "uniform": "#666C73",
+    "pi": "#169C9C",
+    "cpg": "#E45D42",
+    "ca": "#7543A8"
+  },
+  "figure_type": "point estimates and error bars with individual runs; common y-axis; no bars from a truncated baseline",
+  "files": {
+    "standard_training_seed_rauec.caption.md": {
+      "bytes": 718,
+      "sha256": "cad094a012821da01836926ea65cdc6d2dfb7dad7d6b96581386c3df5a199d63"
+    },
+    "standard_training_seed_rauec.pdf": {
+      "bytes": 28710,
+      "sha256": "7201ea1e0f44206d8508dd54f29c2f90c652818b19195c68f52910602eb43c56"
+    },
+    "standard_training_seed_rauec.png": {
+      "bytes": 141760,
+      "sha256": "739efb58822a073e9fa53ba47c3cd546d03205cb258a595427626de67b41a3e9"
+    },
+    "standard_training_seed_rauec.svg": {
+      "bytes": 35908,
+      "sha256": "ba4922b04915acaa9c29d4e0ea243fb09658baf68b8bbada1ca9bcf2d332afa1"
+    },
+    "standard_training_seed_rauec_source.csv": {
+      "bytes": 5177,
+      "sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e"
+    }
+  }
+}

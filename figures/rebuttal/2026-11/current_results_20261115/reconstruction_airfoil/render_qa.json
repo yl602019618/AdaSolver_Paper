@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "figures": [
+    {
+      "figure": "field_rauec_seed0",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        1660
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 14
+    },
+    {
+      "figure": "absolute_error_budget",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        1750
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 47
+    },
+    {
+      "figure": "absolute_error_direct_latency",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        1750
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 47
+    },
+    {
+      "figure": "old_new_complete_request_cost",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        1660
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 28
+    },
+    {
+      "figure": "fixed_map_cache_reuse_cost",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        1750
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 1440
+    },
+    {
+      "figure": "field_rauec_table",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        625
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 14
+    },
+    {
+      "figure": "full_reference_table",
+      "PNG_decode": "passed",
+      "size": [
+        2470,
+        625
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 5
+    }
+  ],
+  "PDF_checks": [
+    {
+      "file": "absolute_error_budget.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    },
+    {
+      "file": "absolute_error_direct_latency.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    },
+    {
+      "file": "field_rauec_seed0.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    },
+    {
+      "file": "field_rauec_table.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    },
+    {
+      "file": "fixed_map_cache_reuse_cost.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    },
+    {
+      "file": "full_reference_table.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    },
+    {
+      "file": "old_new_complete_request_cost.pdf",
+      "PDF_render": "passed",
+      "pages": 1
+    }
+  ],
+  "visual_inspection": "All7 figures/tables inspected: no clipping; available methods only; samplingSD labelled; old/new Airfoil slowdowns retained; cache estimates labelled derived."
+}

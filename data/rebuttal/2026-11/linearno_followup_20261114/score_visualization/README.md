@@ -1,5 +1,7 @@
 # Score, density and actual-point evidence
 
+> Later update: complete-request timing and stage profiling are now in [current results](../../current_results_20261115/reconstruction_airfoil/README.md). The original score-capture cost provenance and the listed FZ2 protocol/replay differences remain distinct.
+
 This package covers one fixed 3D ShapeNet-Car case and one fixed 2D Airfoil case,
 both with Transolver3 training seed0, budget0.5 and sampling seed0. Each includes
 Uniform, PI, CPG and its own trained CA head. The independent CPU Car CA chain

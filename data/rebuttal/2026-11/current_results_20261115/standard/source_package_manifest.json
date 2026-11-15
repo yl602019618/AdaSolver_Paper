@@ -1,0 +1,156 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "scope": "Independent standard-cohort scientific audit, CSV summaries and deterministic rAUEC figure; no weight or long-log payloads",
+  "source_result_commit": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
+  "source_release_manifest_status": "STALE_OR_CONFLICT: six CRLF/LF hash entries preserved in audit.json; these are not reused as current package hashes",
+  "file_count": 21,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6549,
+      "sha256": "659b8b529fa4df1536b29cb0f575e91c0190347d1318d7fd33b115e6cf10f28e",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "audit.json",
+      "bytes": 57074,
+      "sha256": "42d2ab8d0ab2e1a5ac39d3819493c7366bd9d3cd795de7399bab3630f84d761a",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "audit_standard_results.py",
+      "bytes": 28454,
+      "sha256": "6611f521a07acbeba870b601fe582b45385809599916d5a84e317e53d6503c81",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "checkpoint_registry.csv",
+      "bytes": 10165,
+      "sha256": "93abee0416bc1f3098dcb17e05c75c993085d9d11fde75e880a85cc4301669e3",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/figure_manifest.json",
+      "bytes": 1499,
+      "sha256": "4099a2f1b9b8a0ad0f25225261912e408de6a87dbd13109066f3c2451f1dd259",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/render_qa.json",
+      "bytes": 1406,
+      "sha256": "59eda16610cc8ed15e94b7d2fd91ba2eae03f5e4df9f08367135fca8bf223230",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/standard_training_seed_rauec.caption.md",
+      "bytes": 718,
+      "sha256": "cad094a012821da01836926ea65cdc6d2dfb7dad7d6b96581386c3df5a199d63",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/standard_training_seed_rauec.pdf",
+      "bytes": 28710,
+      "sha256": "7201ea1e0f44206d8508dd54f29c2f90c652818b19195c68f52910602eb43c56",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/standard_training_seed_rauec.png",
+      "bytes": 141760,
+      "sha256": "739efb58822a073e9fa53ba47c3cd546d03205cb258a595427626de67b41a3e9",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/standard_training_seed_rauec.svg",
+      "bytes": 35908,
+      "sha256": "ba4922b04915acaa9c29d4e0ea243fb09658baf68b8bbada1ca9bcf2d332afa1",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/standard_training_seed_rauec_source.csv",
+      "bytes": 5177,
+      "sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "paired_training_differences.csv",
+      "bytes": 7417,
+      "sha256": "e804e65d390fcec98875408f8d5ae09956be49f0e44c8e3e80a82ee9ff96603c",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "plot_standard_training_seeds.py",
+      "bytes": 5564,
+      "sha256": "e8b02066747f22364ad7d1753052ae3ea92e1422ee15172860657183f9c890bb",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "rauec_per_training_sampling_seed.csv",
+      "bytes": 38314,
+      "sha256": "16235fe69128401d1af20557fae90115979f939f5fe683afbccb8c50495a0a05",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "raw_records_index.csv",
+      "bytes": 32344,
+      "sha256": "8d457334bc67d41c11292a0158928c748794119d765183aca062cedbae3b444d",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "read.me",
+      "bytes": 554,
+      "sha256": "629a266c51bc5167836d44cc7d4b98a81ace0038da0dab33719572dbe8668d46",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "sampling_variability.csv",
+      "bytes": 24421,
+      "sha256": "ee3961fb02e77d7b4cf1475bb36d0a66085dbad6d7fd952af1b7d4356eb7c5d6",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "source_hashes.json",
+      "bytes": 130323,
+      "sha256": "4990f71d44adaa3bb6c6a216434d7f9021b53c3d02ba0c219395c9ed02ca5346",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "training_seed_rauec.csv",
+      "bytes": 5177,
+      "sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "training_seed_summary.csv",
+      "bytes": 13608,
+      "sha256": "dd852a940c7874a8d160b2420ef19d4d444c6e18346c599689ac0b553b5e0bfc",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "visual_contract.json",
+      "bytes": 1419,
+      "sha256": "98a2a84186fc73c30aad55abe6c0c3cbca50f9e7a62ed8b48690bdcc4a0bb227",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    }
+  ]
+}

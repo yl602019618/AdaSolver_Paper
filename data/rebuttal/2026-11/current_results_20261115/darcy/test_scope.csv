@@ -1,0 +1,9 @@
+test,status,coverage
+backbone training,VERIFIED_COMPLETE,3 model variants x1000epochs/225000updates; training seed0
+matching CA heads,VERIFIED_COMPLETE,2 own-feature heads x1000epochs; conv head not applicable
+Full and adaptive accuracy,VERIFIED_COMPLETE,200 cases;9200 requests per point model plus200 convFull;37200 old/new scalar rows
+CPG beta0/1,VERIFIED_COMPLETE,3600 same-coarse/same-selected/same-coarse-prediction pairs
+reconstruction parity,VERIFIED_COMPLETE,"18600 recorded fixed-prediction/point-set old/new pairs, including identity Full aliases"
+A/B/C direct timing,VERIFIED_COMPLETE,"333 groups,1323 conditions,20warmups+100formal each;3 fixed cases; GPU0 H20"
+independent method memory,VERIFIED_COMPLETE,11 separate model/method processes;1323 conditions
+three training seeds,PARTIAL,current matched cohort contains training seed0 only

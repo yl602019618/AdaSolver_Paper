@@ -1,5 +1,7 @@
 # Verified reuse subset of the three-training-seed follow-up
 
+> Historical November14 snapshot. [Current completed tests and results](../current_results_20261115/README.md) supersede the pending statuses below.
+
 [Score and density evidence](score_visualization/README.md) includes the fixed Airfoil and ShapeNet-Car cases, actual-point data and the unresolved FZ2 checks.
 
 [Completed training inventory](completed_training/README.md) provides the model/head status, training configurations and source-file hashes.

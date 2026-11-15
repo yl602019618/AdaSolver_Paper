@@ -1,0 +1,1006 @@
+{
+  "note": "Scientific CSV values are unchanged. Markdown links and generated SVG whitespace may differ from original export bytes.",
+  "files": [
+    {
+      "source_group": "standard",
+      "source_path": "README.md",
+      "source_sha256": "659b8b529fa4df1536b29cb0f575e91c0190347d1318d7fd33b115e6cf10f28e",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/README.md",
+      "published_sha256": "5a411b390d39d890434ba46a39ba77280211e75cb4fa9f33b6c540a6d985e5f3"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "audit.json",
+      "source_sha256": "42d2ab8d0ab2e1a5ac39d3819493c7366bd9d3cd795de7399bab3630f84d761a",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/audit.json",
+      "published_sha256": "42d2ab8d0ab2e1a5ac39d3819493c7366bd9d3cd795de7399bab3630f84d761a"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "audit_standard_results.py",
+      "source_sha256": "6611f521a07acbeba870b601fe582b45385809599916d5a84e317e53d6503c81",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/standard/audit_standard_results.py",
+      "published_sha256": "6611f521a07acbeba870b601fe582b45385809599916d5a84e317e53d6503c81"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "checkpoint_registry.csv",
+      "source_sha256": "93abee0416bc1f3098dcb17e05c75c993085d9d11fde75e880a85cc4301669e3",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/checkpoint_registry.csv",
+      "published_sha256": "93abee0416bc1f3098dcb17e05c75c993085d9d11fde75e880a85cc4301669e3"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/figure_manifest.json",
+      "source_sha256": "4099a2f1b9b8a0ad0f25225261912e408de6a87dbd13109066f3c2451f1dd259",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/figure_manifest.json",
+      "published_sha256": "4099a2f1b9b8a0ad0f25225261912e408de6a87dbd13109066f3c2451f1dd259"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/render_qa.json",
+      "source_sha256": "59eda16610cc8ed15e94b7d2fd91ba2eae03f5e4df9f08367135fca8bf223230",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/render_qa.json",
+      "published_sha256": "59eda16610cc8ed15e94b7d2fd91ba2eae03f5e4df9f08367135fca8bf223230"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/standard_training_seed_rauec.caption.md",
+      "source_sha256": "cad094a012821da01836926ea65cdc6d2dfb7dad7d6b96581386c3df5a199d63",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/standard_training_seed_rauec.caption.md",
+      "published_sha256": "cad094a012821da01836926ea65cdc6d2dfb7dad7d6b96581386c3df5a199d63"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/standard_training_seed_rauec.pdf",
+      "source_sha256": "7201ea1e0f44206d8508dd54f29c2f90c652818b19195c68f52910602eb43c56",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/standard_training_seed_rauec.pdf",
+      "published_sha256": "7201ea1e0f44206d8508dd54f29c2f90c652818b19195c68f52910602eb43c56"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/standard_training_seed_rauec.png",
+      "source_sha256": "739efb58822a073e9fa53ba47c3cd546d03205cb258a595427626de67b41a3e9",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/standard_training_seed_rauec.png",
+      "published_sha256": "739efb58822a073e9fa53ba47c3cd546d03205cb258a595427626de67b41a3e9"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/standard_training_seed_rauec.svg",
+      "source_sha256": "ba4922b04915acaa9c29d4e0ea243fb09658baf68b8bbada1ca9bcf2d332afa1",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/standard_training_seed_rauec.svg",
+      "published_sha256": "5acfa8afba18d61fedc9760a955dff06ba369a304692dbcf54e2b347f2146edb"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "figures/standard_training_seed_rauec_source.csv",
+      "source_sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/standard/standard_training_seed_rauec_source.csv",
+      "published_sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "paired_training_differences.csv",
+      "source_sha256": "e804e65d390fcec98875408f8d5ae09956be49f0e44c8e3e80a82ee9ff96603c",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/paired_training_differences.csv",
+      "published_sha256": "e804e65d390fcec98875408f8d5ae09956be49f0e44c8e3e80a82ee9ff96603c"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "plot_standard_training_seeds.py",
+      "source_sha256": "e8b02066747f22364ad7d1753052ae3ea92e1422ee15172860657183f9c890bb",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/standard/plot_standard_training_seeds.py",
+      "published_sha256": "e8b02066747f22364ad7d1753052ae3ea92e1422ee15172860657183f9c890bb"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "rauec_per_training_sampling_seed.csv",
+      "source_sha256": "16235fe69128401d1af20557fae90115979f939f5fe683afbccb8c50495a0a05",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/rauec_per_training_sampling_seed.csv",
+      "published_sha256": "16235fe69128401d1af20557fae90115979f939f5fe683afbccb8c50495a0a05"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "raw_records_index.csv",
+      "source_sha256": "8d457334bc67d41c11292a0158928c748794119d765183aca062cedbae3b444d",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/raw_records_index.csv",
+      "published_sha256": "8d457334bc67d41c11292a0158928c748794119d765183aca062cedbae3b444d"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "read.me",
+      "source_sha256": "629a266c51bc5167836d44cc7d4b98a81ace0038da0dab33719572dbe8668d46",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/read.me",
+      "published_sha256": "629a266c51bc5167836d44cc7d4b98a81ace0038da0dab33719572dbe8668d46"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "sampling_variability.csv",
+      "source_sha256": "ee3961fb02e77d7b4cf1475bb36d0a66085dbad6d7fd952af1b7d4356eb7c5d6",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/sampling_variability.csv",
+      "published_sha256": "ee3961fb02e77d7b4cf1475bb36d0a66085dbad6d7fd952af1b7d4356eb7c5d6"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "source_hashes.json",
+      "source_sha256": "4990f71d44adaa3bb6c6a216434d7f9021b53c3d02ba0c219395c9ed02ca5346",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/source_hashes.json",
+      "published_sha256": "4990f71d44adaa3bb6c6a216434d7f9021b53c3d02ba0c219395c9ed02ca5346"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "training_seed_rauec.csv",
+      "source_sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/training_seed_rauec.csv",
+      "published_sha256": "021332f1153a6f97b03b554a1777678177ee593dadeba8e8a717182a4bb04a1e"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "training_seed_summary.csv",
+      "source_sha256": "dd852a940c7874a8d160b2420ef19d4d444c6e18346c599689ac0b553b5e0bfc",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/training_seed_summary.csv",
+      "published_sha256": "dd852a940c7874a8d160b2420ef19d4d444c6e18346c599689ac0b553b5e0bfc"
+    },
+    {
+      "source_group": "standard",
+      "source_path": "visual_contract.json",
+      "source_sha256": "98a2a84186fc73c30aad55abe6c0c3cbca50f9e7a62ed8b48690bdcc4a0bb227",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/standard/visual_contract.json",
+      "published_sha256": "98a2a84186fc73c30aad55abe6c0c3cbca50f9e7a62ed8b48690bdcc4a0bb227"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "README.md",
+      "source_sha256": "8ce13af862fb29bea9fe4bcb9673efaf84f5c1ee69243f9a627de5c0a9e50f9c",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/README.md",
+      "published_sha256": "7b7ef34f292507588527b3c5cf4974a0a8113584af99f4bd797f5147b73a25a3"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "backbone_absolute_errors.csv",
+      "source_sha256": "671a5e981c006a55111389b55cae7f219981c60e167f0ddfa83099fd7b7a2bff",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/backbone_absolute_errors.csv",
+      "published_sha256": "46d26b935cd5e7c862eae4097da1da016297917c133cf8a78e4bdd99fc2dcc85"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "backbone_latency_summary.csv",
+      "source_sha256": "603cd3a6af42e939b0751526b7f89a0766552599b91c2f8d9b28b9b5e6612797",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/backbone_latency_summary.csv",
+      "published_sha256": "2a7af3d19a4f778993df84488db62ab4139fa80df4dfc6fcf15fa569ee9c2dd3"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "backbone_rauec.csv",
+      "source_sha256": "967f79deb246bb56ba12777087b3147987479f7abaa9029910e129d385ee9fae",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/backbone_rauec.csv",
+      "published_sha256": "d831a8cd6976b7b61fd3b9e16cdaf8a1ee7020264feec6efb7b04403bea528bc"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "checkpoint_registry.csv",
+      "source_sha256": "4644e34ab41e32f13e7ddbabcb6f83ee7aa940d1991c96cee6ce772c2932458d",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/checkpoint_registry.csv",
+      "published_sha256": "4b724d568b270d385acda499c8bd73dc3bca674d0a87e2c41f0a7cfd8df89c77"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "evaluation_protocol.json",
+      "source_sha256": "4f6bfbbde2c8fa8b6e0ff6c619759d2b54986da715c295eca0006b0cefd5a88a",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/evaluation_protocol.json",
+      "published_sha256": "4f6bfbbde2c8fa8b6e0ff6c619759d2b54986da715c295eca0006b0cefd5a88a"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "export_and_audit.py",
+      "source_sha256": "bc6b1420bb44361f242b06f0bc16b1f37e9f008eb1bb1d7020fca1e6b84edf8d",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/darcy/export_and_audit.py",
+      "published_sha256": "bc6b1420bb44361f242b06f0bc16b1f37e9f008eb1bb1d7020fca1e6b84edf8d"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/contact_sheet.png",
+      "source_sha256": "44c8305b0a42c753bdf334a79520efe26965be6a846169a4adab721cce301adb",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/contact_sheet.png",
+      "published_sha256": "44c8305b0a42c753bdf334a79520efe26965be6a846169a4adab721cce301adb"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_absolute_error_budget.caption.md",
+      "source_sha256": "ec87105bef3c131f48fd84d53bd89baac0518eb3fe6185b33bc74ebbcd6c1368",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.caption.md",
+      "published_sha256": "ec87105bef3c131f48fd84d53bd89baac0518eb3fe6185b33bc74ebbcd6c1368"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_absolute_error_budget.pdf",
+      "source_sha256": "840f41c704c05d41351b05f1ee51eda97405fb8e13bff580972839aeb589ef81",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.pdf",
+      "published_sha256": "840f41c704c05d41351b05f1ee51eda97405fb8e13bff580972839aeb589ef81"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_absolute_error_budget.png",
+      "source_sha256": "6a61fb3023870de6befc719c341a4983ae3cffa9761c4f1c55d5541378fc33f4",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.png",
+      "published_sha256": "6a61fb3023870de6befc719c341a4983ae3cffa9761c4f1c55d5541378fc33f4"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_absolute_error_budget.svg",
+      "source_sha256": "a83d276fdb84a9df8d5f0407cdbed69ec08cd67de01904a245cb7c788f0de475",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget.svg",
+      "published_sha256": "f6d94fb88638e4e866772aaa3ed0657846263e8f4aacb1373a9eb06819e26f7a"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_absolute_error_budget_source.csv",
+      "source_sha256": "92a5f2805ca905e566bc073233d35f9f4d60da360851ed02184c7b062968f9ec",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_absolute_error_budget_source.csv",
+      "published_sha256": "7bed3e8543dc288b676f4e5a49a8d095c3ccd7dfb561b9bbacd7eba1a94d7a64"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_error_latency.caption.md",
+      "source_sha256": "432bdfc0e7ad3b3ea0b29bfb889e9d46533a4855342a4c5e3bbcb5f1210c2668",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.caption.md",
+      "published_sha256": "432bdfc0e7ad3b3ea0b29bfb889e9d46533a4855342a4c5e3bbcb5f1210c2668"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_error_latency.pdf",
+      "source_sha256": "6522f1a213b9c0b9415b89534c7a86271395c32eb4df2b09f412260bc2326242",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.pdf",
+      "published_sha256": "6522f1a213b9c0b9415b89534c7a86271395c32eb4df2b09f412260bc2326242"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_error_latency.png",
+      "source_sha256": "4a4ad44d53c90b9cdbad14fe21f8b2aaafa20f7b20e61a915d2276e6395f88e0",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.png",
+      "published_sha256": "4a4ad44d53c90b9cdbad14fe21f8b2aaafa20f7b20e61a915d2276e6395f88e0"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_error_latency.svg",
+      "source_sha256": "d6fc1504afe187355dbec0323c3d2dd5a4fa4cf0edf22502253c5a34ba5f7f7e",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency.svg",
+      "published_sha256": "1fa66a1c588577943773f853c4087dcfebb052baba7979a458e17edec32a0f60"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_error_latency_source.csv",
+      "source_sha256": "c84e33f84d006dfb1c2e9bbb4386c3eedd2fabd8e66b85e5a5d979a1dfb6de87",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_error_latency_source.csv",
+      "published_sha256": "653a9839070735b1d01e232f1c8f666bf3574aaf97a11514bd4c041570282f02"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_rauec.caption.md",
+      "source_sha256": "26512bc7cd72fe61bdd61a37135aca033f7bec31578a0fff269ae7fe7d5dcdc8",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.caption.md",
+      "published_sha256": "26512bc7cd72fe61bdd61a37135aca033f7bec31578a0fff269ae7fe7d5dcdc8"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_rauec.pdf",
+      "source_sha256": "940349362de63ef7eadda5237a55f21ec98f665fdf45a671ec138c6bdfe4b577",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.pdf",
+      "published_sha256": "940349362de63ef7eadda5237a55f21ec98f665fdf45a671ec138c6bdfe4b577"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_rauec.png",
+      "source_sha256": "0fa1d36b16653ddc2f7adf0da48fea947c758522b8de2e638a7956e9811cadbb",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.png",
+      "published_sha256": "0fa1d36b16653ddc2f7adf0da48fea947c758522b8de2e638a7956e9811cadbb"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_rauec.svg",
+      "source_sha256": "c4fbea5c38e9462d3452c819429d6507dfbd8ac3d406399c6ae0f7742fb3f380",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec.svg",
+      "published_sha256": "87b0aad87a9f6c92a300a7f0c34ee2b4336da4e70cec7b3e096a9b8820fcef44"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_rauec_source.csv",
+      "source_sha256": "0418bb87f681eeaeb125122838f37a8d0d094262485c0e8c41d8bed0ce536af0",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_rauec_source.csv",
+      "published_sha256": "dbf3380e2975432ecfcf643d044233d529c78500addefac8db3a67de5ee1a13f"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_reconstruction_cost.caption.md",
+      "source_sha256": "b4db9ac755380c2f7489629940258e2a5498be96a90845594dc9f2948af2cd2c",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.caption.md",
+      "published_sha256": "b4db9ac755380c2f7489629940258e2a5498be96a90845594dc9f2948af2cd2c"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_reconstruction_cost.pdf",
+      "source_sha256": "77954e2c9b988b5eeafaeaabb1fbddf70e80d53e4ae5411a6e45c5c2fb2e6e9d",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.pdf",
+      "published_sha256": "77954e2c9b988b5eeafaeaabb1fbddf70e80d53e4ae5411a6e45c5c2fb2e6e9d"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_reconstruction_cost.png",
+      "source_sha256": "a59f62105fdb85a4cc5acd429e248809794727f4dc066b2c50f2878db9b16869",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.png",
+      "published_sha256": "a59f62105fdb85a4cc5acd429e248809794727f4dc066b2c50f2878db9b16869"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_reconstruction_cost.svg",
+      "source_sha256": "b7cabfb9d1ed5c419c09d68621e2b3298cc19880f57c3d552bad02956ff1dbc8",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost.svg",
+      "published_sha256": "0ce517fa7f3d53bbb1ae1aa57a5ec140cd8c61e58e639e33136c3a0c3d1953cc"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/darcy_reconstruction_cost_source.csv",
+      "source_sha256": "58ca3a7cb56060477ea41511920b38768c68e8f38047300163723846fcfc3a49",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/darcy_reconstruction_cost_source.csv",
+      "published_sha256": "f532b8a0956b8873bc4dfb14e304e4743e299d1b1f4f44f4131d18c40c0cf82e"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "figures/render_qa.json",
+      "source_sha256": "e0531d9e5acb4411f7461d6f126a7d8e303e8b530cd59b00e81e037b2f84c388",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/darcy/render_qa.json",
+      "published_sha256": "e0531d9e5acb4411f7461d6f126a7d8e303e8b530cd59b00e81e037b2f84c388"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "input_preparation.json",
+      "source_sha256": "29c2c43448f3522c73d1759833edb05c35b453ca3ebcb64c519b14364a586bba",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/input_preparation.json",
+      "published_sha256": "29c2c43448f3522c73d1759833edb05c35b453ca3ebcb64c519b14364a586bba"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "latency_first_requests.csv",
+      "source_sha256": "0cae65bc431d01ca152ab976eeb65725112f3b3fe211b811494980397630e2c2",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/latency_first_requests.csv",
+      "published_sha256": "8a1a1c8404102d81291f256bb479420d2c069323c8703c29058711ac65b885ee"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "latency_overview.csv",
+      "source_sha256": "f079d2362881c56845f16f95e5656d2a5b399d99fa52149051807811869128eb",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/latency_overview.csv",
+      "published_sha256": "915458535f92a79a0958edf31fa6cbff8bc52c8b89d7b863c0377660bbe54599"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "latency_profiles.csv.gz",
+      "source_sha256": "e0486c153323aa08280f4cbadd8496259ab1419c59bdff7eceea75b35c793357",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/latency_profiles.csv.gz",
+      "published_sha256": "e0486c153323aa08280f4cbadd8496259ab1419c59bdff7eceea75b35c793357"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "latency_raw_repeats.csv.gz",
+      "source_sha256": "d82428ee6d80339a34588564fb27c1c31905a397851b6f79c55e76e1ee77f3c4",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/latency_raw_repeats.csv.gz",
+      "published_sha256": "d82428ee6d80339a34588564fb27c1c31905a397851b6f79c55e76e1ee77f3c4"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "latency_reuse_costs.csv",
+      "source_sha256": "13f492d1c42e8a6528eba6e611e7982ac10450d0699cca38592b960657104400",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/latency_reuse_costs.csv",
+      "published_sha256": "62ca0f2a44cf7f56e26892cad7bddf837d319ededca7f48b1fafb8ab82adfcde"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "linearno_conv_training_metadata.json",
+      "source_sha256": "d27dbb9279ae22aff8ad0c7599e7f523d19a73458c1c80d68c4d445af41025c7",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/linearno_conv_training_metadata.json",
+      "published_sha256": "d27dbb9279ae22aff8ad0c7599e7f523d19a73458c1c80d68c4d445af41025c7"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "linearno_training_metadata.json",
+      "source_sha256": "009529bc8df4db524a2c6a85eec3cb1476da2755c8afef0c31214ad6e6a89964",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/linearno_training_metadata.json",
+      "published_sha256": "009529bc8df4db524a2c6a85eec3cb1476da2755c8afef0c31214ad6e6a89964"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "memory_conditions.csv",
+      "source_sha256": "e81965e8453eb98fdfc9eaec425f933fcd06cb08cc56d0d3d199f1bfa416bbf9",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/memory_conditions.csv",
+      "published_sha256": "b81f4102240e418a67af0cd24df32adadecb50b7c7240df858dd3baa53cb5406"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "metrics_records.csv",
+      "source_sha256": "a26e8d35203b24e3295e7fed43e555373bcaf6b6c34fdf1070e3024ea81d5d0b",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/metrics_records.csv",
+      "published_sha256": "f0b809f9e9ffe73162f9d4c7da5b8ff6cb2b90699254c2fa65c39c696d0d39b2"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "model_validation_parity.csv",
+      "source_sha256": "d3e0cdfe39f394f5f2ea5a44564ee4ffe9e15fdef3d9f1f65b3573be7438308a",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/model_validation_parity.csv",
+      "published_sha256": "bdea0590efa311a5c35b05d5a0d7200089297c4f4aeba6f6bf23404c11fd51e4"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "offline_plot_validation.json",
+      "source_sha256": "946ec7c4d918b7f842469a5b30b58564d84ee7a589309db2b35dd9a99ba6e7d0",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/offline_plot_validation.json",
+      "published_sha256": "946ec7c4d918b7f842469a5b30b58564d84ee7a589309db2b35dd9a99ba6e7d0"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "pdf_render_qa/darcy_absolute_error_budget.png",
+      "source_sha256": "3008ccc2269830b1ee44c0ec7fc651cd82eb959320578398a7613b825936f640",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/pdf_render_qa/darcy_absolute_error_budget.png",
+      "published_sha256": "3008ccc2269830b1ee44c0ec7fc651cd82eb959320578398a7613b825936f640"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "pdf_render_qa/darcy_error_latency.png",
+      "source_sha256": "b947d5163ed3ade256f602c373009e1155bb991b50b28caf6ede24b1ca52a786",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/pdf_render_qa/darcy_error_latency.png",
+      "published_sha256": "b947d5163ed3ade256f602c373009e1155bb991b50b28caf6ede24b1ca52a786"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "pdf_render_qa/darcy_rauec.png",
+      "source_sha256": "e9f01e2ce3751f7bd2c00beebfd5e83345e01d35a83b43ccd3bb57328cc9284c",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/pdf_render_qa/darcy_rauec.png",
+      "published_sha256": "e9f01e2ce3751f7bd2c00beebfd5e83345e01d35a83b43ccd3bb57328cc9284c"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "pdf_render_qa/darcy_reconstruction_cost.png",
+      "source_sha256": "88265d197a93395c25ec9aa27923359cd11f61ac0d7620bc095b53fd6572b842",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/pdf_render_qa/darcy_reconstruction_cost.png",
+      "published_sha256": "88265d197a93395c25ec9aa27923359cd11f61ac0d7620bc095b53fd6572b842"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "plot_results.py",
+      "source_sha256": "932ff4a220e2d32a532f7d37df15dee116cb14ed539347b6f2f670b35a8833c4",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/darcy/plot_results.py",
+      "published_sha256": "932ff4a220e2d32a532f7d37df15dee116cb14ed539347b6f2f670b35a8833c4"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "preparation_setup.json",
+      "source_sha256": "17822b276ac997c17486b1a487e0730ae1c6fffb924803ecc9b0b7372db40477",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/preparation_setup.json",
+      "published_sha256": "17822b276ac997c17486b1a487e0730ae1c6fffb924803ecc9b0b7372db40477"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "publication_reuse_audit.json",
+      "source_sha256": "907603575a36f73aea62e8a4b54ef54e901dcb4413446df2027beafc0325731f",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/publication_reuse_audit.json",
+      "published_sha256": "907603575a36f73aea62e8a4b54ef54e901dcb4413446df2027beafc0325731f"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "rauec_seed_details.csv",
+      "source_sha256": "88d26fc18d866b7076f68271d1464c1f44fcd1f78249d41cb6f43cf0a8e74b8c",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/rauec_seed_details.csv",
+      "published_sha256": "3a822ecea6974b722382dadfed60a6d013e605e3cb66716a4be52e278d782f35"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "read.me",
+      "source_sha256": "b1a4219e57ef9c8c57a7e629cb7f557a5403185eb4dbdc20e63ec877f5d57c26",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/read.me",
+      "published_sha256": "b1a4219e57ef9c8c57a7e629cb7f557a5403185eb4dbdc20e63ec877f5d57c26"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "reconstruction_parity.csv",
+      "source_sha256": "79361d67776d122df62d02a37cd619996ccb52395929e9b301742e6481939a8c",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/reconstruction_parity.csv",
+      "published_sha256": "360aff23b8bc19757d650f579711ff6a496c9bc0419ad1d747910ed44f906635"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "reconstruction_summary.csv",
+      "source_sha256": "7954c52f4d745f29ea7f8a43ada84709312eacc3a36cb6a3f303381e88a8f9bf",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/reconstruction_summary.csv",
+      "published_sha256": "37c6a24f035bb94e31ec4e9f862f43fd43bfba2792a8861d95aee803dfab3326"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "sampling_variability.csv",
+      "source_sha256": "8b0118e49bcd4792e389df8d765163ed1741c171b559c1433eccbc955925fdba",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/sampling_variability.csv",
+      "published_sha256": "a3486100b1ff81f12bc4989f08bf726881c21cd1444165811e2ddd76b6dc1150"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "source_audit.json",
+      "source_sha256": "06db7477c07090d3df1f68651de35572de6884362498cda4ad6461a4be81e84b",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/source_audit.json",
+      "published_sha256": "06db7477c07090d3df1f68651de35572de6884362498cda4ad6461a4be81e84b"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "source_record_index.csv",
+      "source_sha256": "83f8f179cd16e15a13347b124710079f8ba365f3f4f3968b0e46545477184cff",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/source_record_index.csv",
+      "published_sha256": "fe1aba51453d4f9250b1c36e8bcbfe3d7d204f363c0c126df99a87a798ad192b"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "test_scope.csv",
+      "source_sha256": "aa82fd652ac31189e00990da4a549130f70b35eebbc13a403526adfaed6b6f3d",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/test_scope.csv",
+      "published_sha256": "455ffb56b85d3ab270e7b14a434673d71e370d2384e3c6f284ce1a9f1e2097d7"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "training_history.csv",
+      "source_sha256": "510631edf55466f1eea88d2ff41413570d24a8d5f8c149717d56490bb7a3e0d5",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/training_history.csv",
+      "published_sha256": "220334419ad0689fa9cdc14c8f573a6009192679c8d9780b49e90ceafb4f58df"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "training_protocol.json",
+      "source_sha256": "bca52ad8744fc9ff9daf232fc09e5c4e606cb38dd13fd09a5cc1d02473b3ac26",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/training_protocol.json",
+      "published_sha256": "bca52ad8744fc9ff9daf232fc09e5c4e606cb38dd13fd09a5cc1d02473b3ac26"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "transolver3_training_metadata.json",
+      "source_sha256": "6e0a9df090cabfb145d7837ba3d7ffd27827c62af09d08faeabb0c0f8ff4b716",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/transolver3_training_metadata.json",
+      "published_sha256": "6e0a9df090cabfb145d7837ba3d7ffd27827c62af09d08faeabb0c0f8ff4b716"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "validate_public.py",
+      "source_sha256": "abcc8af7c5dd9989468856eb3e8f3414b5708e9a924e6703a2497da1ebe1c031",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/darcy/validate_public.py",
+      "published_sha256": "abcc8af7c5dd9989468856eb3e8f3414b5708e9a924e6703a2497da1ebe1c031"
+    },
+    {
+      "source_group": "darcy",
+      "source_path": "visual-contract.md",
+      "source_sha256": "7de382979a8a5e460c39bafee84a555a8e708f1868572f43d5da05ace8351f50",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/darcy/visual-contract.md",
+      "published_sha256": "7de382979a8a5e460c39bafee84a555a8e708f1868572f43d5da05ace8351f50"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "README.md",
+      "source_sha256": "d4aa3e75c4634c787b229de87883236379f03efb84984e54cfd62963df699e0b",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/README.md",
+      "published_sha256": "1fedbf1dcd06b829d872c124140d68dd810a9271b7ea5ea02ec0a0bfd4507590"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "accuracy_latency_summary.csv",
+      "source_sha256": "c3b8be5a039510fbf8c77b8a2419edae9150f390e92b5afdb5d37ece98f7d5da",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/accuracy_latency_summary.csv",
+      "published_sha256": "c3b8be5a039510fbf8c77b8a2419edae9150f390e92b5afdb5d37ece98f7d5da"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_accuracy_budget.csv",
+      "source_sha256": "4039c208557e6e88945c34a9678ab52065a86caae024f4a9d7b15ae059075f75",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_accuracy_budget.csv",
+      "published_sha256": "4039c208557e6e88945c34a9678ab52065a86caae024f4a9d7b15ae059075f75"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_cache_reuse_costs.csv",
+      "source_sha256": "80b21117b52596c0ea0e058497dc291f51f47d166a2b2c4a31080918d9697cde",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_cache_reuse_costs.csv",
+      "published_sha256": "80b21117b52596c0ea0e058497dc291f51f47d166a2b2c4a31080918d9697cde"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_checkpoint_registry.csv",
+      "source_sha256": "913886d5c9d5f1dd69ff7b37e55093c4fc213143ccf5d9a469fb94239ffa58f1",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_checkpoint_registry.csv",
+      "published_sha256": "913886d5c9d5f1dd69ff7b37e55093c4fc213143ccf5d9a469fb94239ffa58f1"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_latency_grouped.csv",
+      "source_sha256": "6808ef126006a3ab74aa42a872b2f64e8d4147a9c4aa90ea04040c9775ea1a54",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_latency_grouped.csv",
+      "published_sha256": "6808ef126006a3ab74aa42a872b2f64e8d4147a9c4aa90ea04040c9775ea1a54"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_old_new_speedups.csv",
+      "source_sha256": "603d8fe32409ae57b486d9d64ab3da9b83dcf3b0b0a2a1d0ea2d79385795a168",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_old_new_speedups.csv",
+      "published_sha256": "603d8fe32409ae57b486d9d64ab3da9b83dcf3b0b0a2a1d0ea2d79385795a168"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_rauec.csv",
+      "source_sha256": "e3b8489367e1bbb0f088d7e44823eb05cda271a3ea41d2aa53ff07d1e50485ae",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_rauec.csv",
+      "published_sha256": "e3b8489367e1bbb0f088d7e44823eb05cda271a3ea41d2aa53ff07d1e50485ae"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_raw_timing_repeats.csv.gz",
+      "source_sha256": "8a711afdbe598eb6f0fd00637e5295535a4cf01fa28360cbf0187c5415e67d4d",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_raw_timing_repeats.csv.gz",
+      "published_sha256": "8a711afdbe598eb6f0fd00637e5295535a4cf01fa28360cbf0187c5415e67d4d"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_reconstruction_conditions.csv",
+      "source_sha256": "941dc52ae096d38081fa0ffceae640f25aecec040dbb1e0f49b64ef0fcbefbed",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_reconstruction_conditions.csv",
+      "published_sha256": "941dc52ae096d38081fa0ffceae640f25aecec040dbb1e0f49b64ef0fcbefbed"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_reconstruction_parity.csv",
+      "source_sha256": "01757bc798dce97eaadba3a1d5f2bd1f8bb564d35e1b5f6703ff522f34b8e16f",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_reconstruction_parity.csv",
+      "published_sha256": "01757bc798dce97eaadba3a1d5f2bd1f8bb564d35e1b5f6703ff522f34b8e16f"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_sampling_seed_errors.csv",
+      "source_sha256": "7e10f6b5764f4907d6cb6a092e66d11913025f055eb78afcecc3ee1225d6af8b",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_sampling_seed_errors.csv",
+      "published_sha256": "7e10f6b5764f4907d6cb6a092e66d11913025f055eb78afcecc3ee1225d6af8b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "airfoil_stage_profiles.csv.gz",
+      "source_sha256": "67aa0a64789b0d8c2b42c6493e2d04c84c0f127bf7b0519e87f4bfcda35dcc94",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/airfoil_stage_profiles.csv.gz",
+      "published_sha256": "67aa0a64789b0d8c2b42c6493e2d04c84c0f127bf7b0519e87f4bfcda35dcc94"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "audit.json",
+      "source_sha256": "732fe48f9855687cb49c06b0ba6aabe24f9fbeab79eb22e0dc0d1d91e9e442ee",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/audit.json",
+      "published_sha256": "732fe48f9855687cb49c06b0ba6aabe24f9fbeab79eb22e0dc0d1d91e9e442ee"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "audit_export.py",
+      "source_sha256": "784ce299eafe4b080b16f978d4c3965927db6dd6b61e860ccbdc197a4ca0e61c",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/audit_export.py",
+      "published_sha256": "784ce299eafe4b080b16f978d4c3965927db6dd6b61e860ccbdc197a4ca0e61c"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_accuracy_budget.csv",
+      "source_sha256": "2219940c1b6fce1dd491a21c3452e68c38bfd4b520d9d81764b1247c7065c3c2",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_accuracy_budget.csv",
+      "published_sha256": "2219940c1b6fce1dd491a21c3452e68c38bfd4b520d9d81764b1247c7065c3c2"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_latency_grouped.csv",
+      "source_sha256": "fa5532c59509d08c40a5778d4cd06956946dd1144652c7b45e1bbe92c929107e",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_latency_grouped.csv",
+      "published_sha256": "fa5532c59509d08c40a5778d4cd06956946dd1144652c7b45e1bbe92c929107e"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_old_new_speedups.csv",
+      "source_sha256": "dbcb244eddd4c1db52b84a00ae827bb1746804f3625cd1cec69ad72fa2466756",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_old_new_speedups.csv",
+      "published_sha256": "dbcb244eddd4c1db52b84a00ae827bb1746804f3625cd1cec69ad72fa2466756"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_rauec.csv",
+      "source_sha256": "12812a7b27163c486470eb4f8e88904ec1f71534f667a64900f25e4593c48bf5",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_rauec.csv",
+      "published_sha256": "12812a7b27163c486470eb4f8e88904ec1f71534f667a64900f25e4593c48bf5"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_raw_timing_repeats.csv.gz",
+      "source_sha256": "dd36f0c482220adf79fde1b9edeb7c9f509231df93df6492b87cc6185cec964c",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_raw_timing_repeats.csv.gz",
+      "published_sha256": "dd36f0c482220adf79fde1b9edeb7c9f509231df93df6492b87cc6185cec964c"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_reconstruction_conditions.csv",
+      "source_sha256": "c69fffb776d2d6971d48d0d72b8275577c3611ba48bf904af6c661ee1e86fca2",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_reconstruction_conditions.csv",
+      "published_sha256": "c69fffb776d2d6971d48d0d72b8275577c3611ba48bf904af6c661ee1e86fca2"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_reconstruction_parity.csv",
+      "source_sha256": "93f3ae2dcaca25929d824bfe05174b801e4339c74241ede93a94ce3860ea6e0a",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_reconstruction_parity.csv",
+      "published_sha256": "93f3ae2dcaca25929d824bfe05174b801e4339c74241ede93a94ce3860ea6e0a"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_reuse_costs.csv",
+      "source_sha256": "43e5ba4d1c14a9e9b1039deeb19063de368be59d9114e72af07119b21c85328e",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_reuse_costs.csv",
+      "published_sha256": "43e5ba4d1c14a9e9b1039deeb19063de368be59d9114e72af07119b21c85328e"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "car_sampling_seed_errors.csv",
+      "source_sha256": "89c28adda50b29a20f1d53fc986748a7d8cc1f02c6ce7854ca4dbba024c87a6b",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/car_sampling_seed_errors.csv",
+      "published_sha256": "89c28adda50b29a20f1d53fc986748a7d8cc1f02c6ce7854ca4dbba024c87a6b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "compression_manifest.json",
+      "source_sha256": "5efdfb8881f7451596e7af60dba33f357e4afdd64f7353b5d222ef49bc238bde",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/compression_manifest.json",
+      "published_sha256": "5efdfb8881f7451596e7af60dba33f357e4afdd64f7353b5d222ef49bc238bde"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "export_validation.json",
+      "source_sha256": "4f32dfb557722e5423e42814c137aa12982fb932049aae53eddcce9cd790c0cb",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/export_validation.json",
+      "published_sha256": "4f32dfb557722e5423e42814c137aa12982fb932049aae53eddcce9cd790c0cb"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_budget.pdf",
+      "source_sha256": "bd77eabaa0203efc896972dc32b6d04067bcf9041b63fb696d3a31aecdda8bfa",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_budget.pdf",
+      "published_sha256": "bd77eabaa0203efc896972dc32b6d04067bcf9041b63fb696d3a31aecdda8bfa"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_budget.png",
+      "source_sha256": "91c52293e13d26b52b565fe5e5114268bc025e26bd37d682c228efaf89dd34ec",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_budget.png",
+      "published_sha256": "91c52293e13d26b52b565fe5e5114268bc025e26bd37d682c228efaf89dd34ec"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_budget.svg",
+      "source_sha256": "f711ca831e78e3b3ff0af6e55e7bee352cfa3b311731b672ede69bc2d37f92cf",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_budget.svg",
+      "published_sha256": "b273e8cc950be7141b037feb6ba5969d2745ff09cba232d79993c63f99b4203b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_budget_source.csv",
+      "source_sha256": "857d40a0b8dcb739ba62f71ba211ed9c1756456214da5f288b58a09f48de6217",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_budget_source.csv",
+      "published_sha256": "857d40a0b8dcb739ba62f71ba211ed9c1756456214da5f288b58a09f48de6217"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_direct_latency.pdf",
+      "source_sha256": "b5e446d5c2d33cfb19972204162a60aef4e71029aceb9f5f3aae5e28035f3b47",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_direct_latency.pdf",
+      "published_sha256": "b5e446d5c2d33cfb19972204162a60aef4e71029aceb9f5f3aae5e28035f3b47"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_direct_latency.png",
+      "source_sha256": "319ddf6fc334a52abdc9b15e55248969ff3c05c57bc5450455a2df63f2a6f38b",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_direct_latency.png",
+      "published_sha256": "319ddf6fc334a52abdc9b15e55248969ff3c05c57bc5450455a2df63f2a6f38b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_direct_latency.svg",
+      "source_sha256": "5627ff02e51d8f75f6c854fe6490346a7f40afca867b47584a4b2d888f698326",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_direct_latency.svg",
+      "published_sha256": "c80726a99c1aa7505f3054264f3690b56d11536eca8b374877b103088362e508"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/absolute_error_direct_latency_source.csv",
+      "source_sha256": "e60dce2f9c81716bd8f72432c9e6a1097e32df826855d91b236594603dce9d69",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/absolute_error_direct_latency_source.csv",
+      "published_sha256": "e60dce2f9c81716bd8f72432c9e6a1097e32df826855d91b236594603dce9d69"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/captions.md",
+      "source_sha256": "256bbd4979add037c3ca010831da1acd16aeab7f6034379c019867e82ce69e5e",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/captions.md",
+      "published_sha256": "256bbd4979add037c3ca010831da1acd16aeab7f6034379c019867e82ce69e5e"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_seed0.pdf",
+      "source_sha256": "105c6ef5766fd398fccd48fa5975d96787972e91749a7c0d454cb4f24f4d1688",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_seed0.pdf",
+      "published_sha256": "105c6ef5766fd398fccd48fa5975d96787972e91749a7c0d454cb4f24f4d1688"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_seed0.png",
+      "source_sha256": "7cfb5da4c0f0570f4cb1bc6955c7e398fbeebbb0e93bf051399cdcc8c4a49d39",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_seed0.png",
+      "published_sha256": "7cfb5da4c0f0570f4cb1bc6955c7e398fbeebbb0e93bf051399cdcc8c4a49d39"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_seed0.svg",
+      "source_sha256": "80ff045abe1111568fd2565c77c97d67ab955c8033e617f4ba2b447ee074393a",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_seed0.svg",
+      "published_sha256": "b3d558e2cfd824aa75fc8c4f570350470ebc927f3588c7879e466886558c87bc"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_seed0_source.csv",
+      "source_sha256": "152920cc1eb0419ba6d63f472fbbd93e7460bc39507a02c92cde4e732ed0fa5b",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_seed0_source.csv",
+      "published_sha256": "152920cc1eb0419ba6d63f472fbbd93e7460bc39507a02c92cde4e732ed0fa5b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_table.pdf",
+      "source_sha256": "a4340bab58530920caed8ef5b84140cbad1434e098807047cd6aeb8f95a30be2",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_table.pdf",
+      "published_sha256": "a4340bab58530920caed8ef5b84140cbad1434e098807047cd6aeb8f95a30be2"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_table.png",
+      "source_sha256": "d5cbbadccc6d2965d1fd8be4fd82f5fe147ca25b7286773ce5cc9610fe713c0c",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_table.png",
+      "published_sha256": "d5cbbadccc6d2965d1fd8be4fd82f5fe147ca25b7286773ce5cc9610fe713c0c"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_table.svg",
+      "source_sha256": "53cf1940cc48be73b75db523279f89a72cf6ee1f6b234f0c42d226a900289f51",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_table.svg",
+      "published_sha256": "d46c08372daac70d7b7a1ed9c1059ecf8fd7d5cd2cea2fff8f4582cac34084d4"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/field_rauec_table_source.csv",
+      "source_sha256": "152920cc1eb0419ba6d63f472fbbd93e7460bc39507a02c92cde4e732ed0fa5b",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/field_rauec_table_source.csv",
+      "published_sha256": "152920cc1eb0419ba6d63f472fbbd93e7460bc39507a02c92cde4e732ed0fa5b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/fixed_map_cache_reuse_cost.pdf",
+      "source_sha256": "98872f337b345a6219bef3e23d6d6c4dacccaf1f20244aa09bc8516f0109e21b",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/fixed_map_cache_reuse_cost.pdf",
+      "published_sha256": "98872f337b345a6219bef3e23d6d6c4dacccaf1f20244aa09bc8516f0109e21b"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/fixed_map_cache_reuse_cost.png",
+      "source_sha256": "4319ccb373bbd24703240f8f54b3b11cfabec5c4a1606cc9b09521a511ae6287",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/fixed_map_cache_reuse_cost.png",
+      "published_sha256": "4319ccb373bbd24703240f8f54b3b11cfabec5c4a1606cc9b09521a511ae6287"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/fixed_map_cache_reuse_cost.svg",
+      "source_sha256": "f55cd0bf150794830cb07f94ce1fb0ea875ac967ed8302d3b8352b2f3812676d",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/fixed_map_cache_reuse_cost.svg",
+      "published_sha256": "4218b31bda1c1f9bc60d20191862fddfb38290862043f3cf994d775a0975cff6"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/fixed_map_cache_reuse_cost_source.csv",
+      "source_sha256": "33724ea8be77d3bde3bc3f7fa485457985f374481ed8b7ae35463dbbf15255d4",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/fixed_map_cache_reuse_cost_source.csv",
+      "published_sha256": "33724ea8be77d3bde3bc3f7fa485457985f374481ed8b7ae35463dbbf15255d4"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/full_reference_table.csv",
+      "source_sha256": "e0965f6c8234bb805e6616212d5a59a278e1df52c6e5c26cbd4469c4a4bdd146",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/full_reference_table.csv",
+      "published_sha256": "e0965f6c8234bb805e6616212d5a59a278e1df52c6e5c26cbd4469c4a4bdd146"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/full_reference_table.pdf",
+      "source_sha256": "77cc214a23ea94d80fbd25ad5556463797fdb49a828b71210a8f72703efca33a",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/full_reference_table.pdf",
+      "published_sha256": "77cc214a23ea94d80fbd25ad5556463797fdb49a828b71210a8f72703efca33a"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/full_reference_table.png",
+      "source_sha256": "d23bacdf250a91c14543d18d23df4417ff1808a9896d5a0b9eb5dbd366e6d6d1",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/full_reference_table.png",
+      "published_sha256": "d23bacdf250a91c14543d18d23df4417ff1808a9896d5a0b9eb5dbd366e6d6d1"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/full_reference_table.svg",
+      "source_sha256": "a5356388b44a7d503ae8ec68a29d67906273b951e2fb3e093ce8403685316254",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/full_reference_table.svg",
+      "published_sha256": "33d6027a2c25afe62402c7899d54c3406149f1cfaaa5b504c8e55ca2e20b9ae3"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/full_reference_table_source.csv",
+      "source_sha256": "e0965f6c8234bb805e6616212d5a59a278e1df52c6e5c26cbd4469c4a4bdd146",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/full_reference_table_source.csv",
+      "published_sha256": "e0965f6c8234bb805e6616212d5a59a278e1df52c6e5c26cbd4469c4a4bdd146"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/old_new_complete_request_cost.pdf",
+      "source_sha256": "5c390fcb9a92588cfa895855a6c3605e55b1996fc145f48637b2e4b066fdd626",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/old_new_complete_request_cost.pdf",
+      "published_sha256": "5c390fcb9a92588cfa895855a6c3605e55b1996fc145f48637b2e4b066fdd626"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/old_new_complete_request_cost.png",
+      "source_sha256": "5c13cb562e55f3f5b59c8ffce67adc9c547d7560d662ca4b756cad5e60623c78",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/old_new_complete_request_cost.png",
+      "published_sha256": "5c13cb562e55f3f5b59c8ffce67adc9c547d7560d662ca4b756cad5e60623c78"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/old_new_complete_request_cost.svg",
+      "source_sha256": "b647f0f979a44759a9aea907a7071f3e7dab9f5dd3cf81078b16541ce074a085",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/old_new_complete_request_cost.svg",
+      "published_sha256": "1719ee4ff66529659321ca4e3a96f82cd9cc5fd8eb09d2a095f23c40c5987ec4"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/old_new_complete_request_cost_source.csv",
+      "source_sha256": "c7dcae6a46ba250d42858a1b63b033ce8a7a4f8a4c7762e2299c872591e68404",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/old_new_complete_request_cost_source.csv",
+      "published_sha256": "c7dcae6a46ba250d42858a1b63b033ce8a7a4f8a4c7762e2299c872591e68404"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "figures/render_qa.json",
+      "source_sha256": "6c5edcf09029413a3f9aa4152918a3fc50a4d9a078ec10969e421a63bdf5b232",
+      "published_path": "figures/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/render_qa.json",
+      "published_sha256": "6c5edcf09029413a3f9aa4152918a3fc50a4d9a078ec10969e421a63bdf5b232"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "plot_results.py",
+      "source_sha256": "f713e2ef63c3b78c392c7e12174194541b3c36513569c4f8bd2ef73b8c2a5eaa",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/plot_results.py",
+      "published_sha256": "f713e2ef63c3b78c392c7e12174194541b3c36513569c4f8bd2ef73b8c2a5eaa"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "read.me",
+      "source_sha256": "1c90f67289c85ef5c27fd5a0b4a30f40479260b2b81887fadcc281cda61a91cf",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/read.me",
+      "published_sha256": "1c90f67289c85ef5c27fd5a0b4a30f40479260b2b81887fadcc281cda61a91cf"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "source_index.csv",
+      "source_sha256": "f9249c6efd254e37551f4378d91860d5bf711ebc2c0b9897a908f9a739ee6e9f",
+      "published_path": "data/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/source_index.csv",
+      "published_sha256": "f9249c6efd254e37551f4378d91860d5bf711ebc2c0b9897a908f9a739ee6e9f"
+    },
+    {
+      "source_group": "reconstruction_airfoil",
+      "source_path": "verify_export.py",
+      "source_sha256": "7b5e271ad0657f4f63df15ce93c32fa2f992833945238695cd6aebcd28ad9db2",
+      "published_path": "reproducibility/rebuttal/2026-11/current_results_20261115/reconstruction_airfoil/verify_export.py",
+      "published_sha256": "7b5e271ad0657f4f63df15ce93c32fa2f992833945238695cd6aebcd28ad9db2"
+    }
+  ]
+}

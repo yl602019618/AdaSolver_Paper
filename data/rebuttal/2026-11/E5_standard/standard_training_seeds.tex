@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & Uniform & PI & CPG & CA \\
+\midrule
+Elasticity & $1.0000\pm0.0000$ & $0.7264\pm0.0022$ & $0.4670\pm0.0012$ & $0.5601\pm0.0106$ \\
+Pipe & $1.0000\pm0.0000$ & $0.8557\pm0.0127$ & $0.6544\pm0.0101$ & $0.6923\pm0.0094$ \\
+Darcy & $1.0000\pm0.0000$ & $0.9960\pm0.0028$ & $0.6393\pm0.0159$ & $0.6394\pm0.0164$ \\
+\bottomrule
+\end{tabular}
+\caption{Standard benchmarks across three independent training runs. Entries are mean $\pm$ sample SD of rAUEC over three separately trained backbones and their matching CA heads. Each run uses 200 test cases and three inference sampling seeds.}
+\label{tab:standard_training_seeds}
+\end{table}

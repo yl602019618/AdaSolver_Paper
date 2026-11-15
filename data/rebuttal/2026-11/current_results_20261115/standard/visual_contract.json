@@ -1,0 +1,16 @@
+{
+  "artifact": "Three-dataset standard-cohort training-seed rAUEC figure",
+  "destination": "Paper-style quantitative supplementary result figure",
+  "source": "training_seed_rauec.csv independently recomputed from66600 native observations",
+  "question": "How do the frozen sampling methods and their variability compare across three independent Transolver3 training runs?",
+  "evidence_layer": "training-randomness robustness",
+  "panels": ["Elasticity", "Pipe", "Darcy"],
+  "methods": ["Uniform", "PI", "CPG", "CA"],
+  "statistics": "Three model-level rAUECs; filled marker mean and sample SD ddof1; small open markers are training seeds0/1/2",
+  "within_model_aggregation": "Case means per sampling seed; three-budget trapezoidal area divided by matched Uniform area; then average three sampling ratios",
+  "Full": "Excluded from rAUEC; its absolute full-field result is available in the accompanying CSV",
+  "palette": "Reuse project method colors from figure_tools/style.py; method labels and marker placement remain readable without color",
+  "layout": "Three panels with a common y-axis and Uniform reference line; no result-driven reordering",
+  "caption_scope": "Transolver3 only; historical1000/200Darcy cohort is distinct from matched900/100LinearNO; retain Pipe/Darcy policy test-visibility history",
+  "outputs": ["PDF", "editable-text SVG", "300dpi PNG", "source CSV", "plotting script", "render QA"]
+}

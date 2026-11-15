@@ -1,0 +1,12 @@
+Current result export completed for Car reconstruction and Airfoil.
+
+Car:7400 accuracy pairs;990 physical timing and memory conditions;99000 formal repeats plus19800 warmups.
+Airfoil:10230 accuracy requests including Full-only conv-temp;1323 timing and memory conditions;132300 formal repeats plus26460 warmups.
+
+Original Airfoil finalizer failed after measurement completion due to a repeated reuse_assumption keyword. This new independent aggregator recovered summary tables from the complete raw groups; original files, failure log and status were preserved.
+
+Frozen source/asset hashes, same-prediction old/new parity, case/seed/budget coverage, timing output alignment, per-condition and pooled direct median/p95, reconstruction profiles, memory matching, rAUEC and cache estimates were checked. The independent CSV-only verifier passed. Slower Airfoil rows were retained.
+
+README.md explains exactly which protocols were tested and which remain outside this package. Raw repeats and wide scalar profile tables have deterministic gzip copies with both compressed and LF-uncompressed hashes. No weights, raw CFD arrays, or original long logs are designated public.
+
+Seven figure/table families and captions were generated from CSV. Root owns the authorized Git commit/push and final remote verification; this worker performed no Git mutations.

@@ -1,0 +1,49 @@
+{
+  "model_loading_seconds": 1.7725841328501701,
+  "kernel_warmup_seconds": {
+    "Transolver3": 0.2961413115262985,
+    "LinearNO_point_temp": 0.141424298286438,
+    "LinearNO_conv_temp": 0.13449659943580627
+  },
+  "source_files": {
+    "benchmark.py": "8618fecb27c48eaaa6e8e8fbb5d9d07bcdca54051a083718e73dfcfe6e8cafeb",
+    "benchmark_core.py": "1a802535f5f87fdd5a12e79478613f6caa547a00d8006e288164c869700558b8",
+    "inference.py": "523fd7044ef1ace79711a5b40b10ed58a095c2e8f0be09c872c730e07336a98d",
+    "common.py": "d893c29e27373f0e82563816245563e4a7c419a29d5c3f6f159b684f2a9b76ca"
+  },
+  "reconstruction_version": "1.1",
+  "reconstruction_sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17",
+  "timing_helper_sha256": "ac786c8851a2d2f360ad537bdd3a4ab3f6ddd9cbaae7a73cf7fe2f91b6e3a085",
+  "environment": {
+    "python": "3.10.12",
+    "torch": "2.10.0+cu128",
+    "scipy": "1.15.3",
+    "numpy": "2.2.6",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "gpu_index": 0,
+    "gpu": "uuid, name, driver_version, memory.total [MiB]\nGPU-041b5d9a-0cc1-b9ad-2249-9289d952e8e5, NVIDIA H20, 570.86.10, 97871 MiB",
+    "cpu": "Architecture:                       x86_64\nCPU op-mode(s):                     32-bit, 64-bit\nAddress sizes:                      52 bits physical, 57 bits virtual\nByte Order:                         Little Endian\nCPU(s):                             192\nOn-line CPU(s) list:                0-191\nVendor ID:                          GenuineIntel\nModel name:                         Intel(R) Xeon(R) Platinum 8457C\nCPU family:                         6\nModel:                              143\nThread(s) per core:                 2\nCore(s) per socket:                 48\nSocket(s):                          2\nStepping:                           8\nCPU max MHz:                        3800.0000\nCPU min MHz:                        800.0000\nBogoMIPS:                           5200.00\nFlags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 invpcid_single intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nVirtualization:                     VT-x\nL1d cache:                          4.5 MiB (96 instances)\nL1i cache:                          3 MiB (96 instances)\nL2 cache:                           192 MiB (96 instances)\nL3 cache:                           195 MiB (2 instances)\nNUMA node(s):                       2\nNUMA node0 CPU(s):                  0-47,96-143\nNUMA node1 CPU(s):                  48-95,144-191\nVulnerability Gather data sampling: Not affected\nVulnerability Itlb multihit:        Not affected\nVulnerability L1tf:                 Not affected\nVulnerability Mds:                  Not affected\nVulnerability Meltdown:             Not affected\nVulnerability Mmio stale data:      Not affected\nVulnerability Retbleed:             Not affected\nVulnerability Spec rstack overflow: Not affected\nVulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl and seccomp\nVulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:           Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence\nVulnerability Srbds:                Not affected\nVulnerability Tsx async abort:      Not affected",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cpu_threads": 4,
+    "cpu_load_average": [
+      2.818359375,
+      3.10888671875,
+      4.4140625
+    ],
+    "processes": "PID PSR %CPU %MEM COMMAND\n1995953 133  105  0.0 python3\n2140022   6 78.6  0.0 python3\n1048014 123  1.4  0.0 codex\n1061459 171  1.4  0.0 codex\n1718235  38  0.9  0.0 MainThread\n1047205  31  0.8  0.0 mish\n1034032  83  0.2  0.0 MainThread\n1050063  83  0.2  0.0 mish\n2794049  81  0.2  0.0 claude\n4185350  63  0.2  0.0 claude\n 228888 149  0.1  0.0 tmux: server\n1033997  49  0.1  0.0 MainThread\n2831044   6  0.1  0.0 codex\n      1 148  0.0  0.0 supervisord\n   5033  71  0.0  0.0 start-sshd.sh\n   5034  78  0.0  0.0 start-code-serv\n   5035 157  0.0  0.0 bash\n   5340 147  0.0  0.0 node\n   5358  49  0.0  0.0 node\n   5379  35  0.0  0.0 sshd\n   5402  42  0.0  0.0 .jupyter-lab-wr\n   5403 157  0.0  0.0 tee\n 103506  52  0.0  0.0 code-7debcd0e2a\n 315385  54  0.0  0.0 zsh\n 511957  65  0.0  0.0 python\n 814557 113  0.0  0.0 code-6a44c352bd\n1033993   7  0.0  0.0 sh\n1035005  46  0.0  0.0 mish\n1035026  46  0.0  0.0 bash\n1035150 180  0.0  0.0 mish\n1035179 180  0.0  0.0 bash\n1047226 126  0.0  0.0 bash\n1048003  42  0.0  0.0 node\n1050084 143  0.0  0.0 bash\n1052231  56  0.0  0.0 codex-code-mode\n1061111 180  0.0  0.0 tmux: client\n1061112  90  0.0  0.0 zsh\n1061448 156  0.0  0.0 node\n1066726  57  0.0  0.0 codex-code-mode\n1192893   6  0.0  0.0 python3\n1197515  38  0.0  0.0 python3\n1239425 107  0.0  0.0 node\n1239449 107  0.0  0.0 codex\n1348753 174  0.0  0.0 python\n1375091   0  0.0  0.0 mish\n1375119  21  0.0  0.0 bash\n1387724  53  0.0  0.0 python3\n1420563 183  0.0  0.0 python3\n1420564  58  0.0  0.0 python3\n1423365 136  0.0  0.0 python\n1588948   0  0.0  0.0 zsh\n1644786  68  0.0  0.0 python3\n1718030  75  0.0  0.0 mish\n1718071 173  0.0  0.0 bash\n1719222 178  0.0  0.0 mish\n1719264  80  0.0  0.0 bash\n2140090 119  0.0  0.0 bash\n2140094  29  0.0  0.0 sleep\n2140176   7  0.0  0.0 ps\n2641881  15  0.0  0.0 zsh\n2643071 114  0.0  0.0 node\n2643082 138  0.0  0.0 codex\n2646306 164  0.0  0.0 codex-code-mode\n2664003  42  0.0  0.0 zsh\n2785079 163  0.0  0.0 zsh\n2831033  19  0.0  0.0 node\n2831573  29  0.0  0.0 codex-code-mode\n3003836   8  0.0  0.0 zsh\n3006396 123  0.0  0.0 node\n3006407  43  0.0  0.0 codex\n3015629  45  0.0  0.0 codex-code-mode\n3362018 119  0.0  0.0 zsh\n3557138 185  0.0  0.0 python3\n4185157  99  0.0  0.0 zsh",
+    "fp32_network": true,
+    "tf32": false,
+    "mode": "eager",
+    "memory_statistics": "separate per-model/method subprocess"
+  }
+}

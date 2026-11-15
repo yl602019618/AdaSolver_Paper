@@ -1,0 +1,35 @@
+[
+  {
+    "source_csv": "car_raw_timing_repeats.csv",
+    "original_uncompressed_sha256": "3f0a3774ba6b4e4468b9b4f6c55aa45922dc8f7debf10f591de36cdae1b334b5",
+    "uncompressed_bytes": 16308111,
+    "compressed_file": "car_raw_timing_repeats.csv.gz",
+    "compressed_sha256": "dd36f0c482220adf79fde1b9edeb7c9f509231df93df6492b87cc6185cec964c",
+    "compressed_bytes": 1812031,
+    "newline": "LF",
+    "gzip_mtime": 0,
+    "publish_uncompressed": false
+  },
+  {
+    "source_csv": "airfoil_raw_timing_repeats.csv",
+    "original_uncompressed_sha256": "65b5d9b462dab3063c442d16c910edc4279b6c13364a7b1c9b0e3620c25b362a",
+    "uncompressed_bytes": 15995570,
+    "compressed_file": "airfoil_raw_timing_repeats.csv.gz",
+    "compressed_sha256": "8a711afdbe598eb6f0fd00637e5295535a4cf01fa28360cbf0187c5415e67d4d",
+    "compressed_bytes": 2208537,
+    "newline": "LF",
+    "gzip_mtime": 0,
+    "publish_uncompressed": false
+  },
+  {
+    "source_csv": "airfoil_stage_profiles.csv",
+    "original_uncompressed_sha256": "83a71813e9f126fd3202bbc6a3f4312bac99ba77a69af6e779f781b3e0e3e97c",
+    "uncompressed_bytes": 81740468,
+    "compressed_file": "airfoil_stage_profiles.csv.gz",
+    "compressed_sha256": "67aa0a64789b0d8c2b42c6493e2d04c84c0f127bf7b0519e87f4bfcda35dcc94",
+    "compressed_bytes": 1635050,
+    "newline": "LF",
+    "gzip_mtime": 0,
+    "publish_uncompressed": false
+  }
+]
