@@ -1,5 +1,13 @@
 # AdaSolver paper
 
+<!-- airfoil-p0-final-evidence -->
+## Airfoil P0 final evidence
+
+[Latest accepted P0 results and actual pending counts](data/rebuttal/2026-11/p0_airfoil_final_20261115/README.md) · [Reuse gate](data/rebuttal/2026-11/p0_airfoil_final_20261115/reuse_audit_final.json)
+
+This controlled workflow adds Airfoil training seeds 1/2 and the CPG beta0 complete-output timing extension. Its linked result page distinguishes accepted data, observed running progress and remaining requirements; it updates after validation.
+<!-- /airfoil-p0-final-evidence -->
+
 ## 当前结果与测试范围 / Current results
 
 [本分支具体测试了什么](TESTED_CONTENTS.md) · [最新结果包](data/rebuttal/2026-11/current_results_20261115/README.md) · [模型与 head 清单](data/rebuttal/2026-11/current_results_20261115/model_inventory.csv)

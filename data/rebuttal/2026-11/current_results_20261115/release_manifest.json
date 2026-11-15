@@ -7,8 +7,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 4070,
-      "sha256": "207c27ce94780c1c33401fd85e793b9bd668b210a662949331933a07cd0b3e02",
+      "bytes": 4619,
+      "sha256": "41211b0a5f9cadad3a5d150e3f9d9302c93c4fa3fca50681b15abe25b64a580e",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
@@ -1313,7 +1313,7 @@
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
       "bytes": 88994,
-      "sha256": "ae4abb3f336db4f70a88b4f6324a6f0dba8a1d8c0f0053d771d49844de66fffa",
+      "sha256": "412020b8ae1cee946ec58e2054feae2c84d9f66b2519b3f5eb483c88deedd9a6",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
@@ -3284,7 +3284,7 @@
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
       "bytes": 17625,
-      "sha256": "aa0c7c49af376b480c4d692fccc6724e785c03a50f03a27c39c053078652850f",
+      "sha256": "7628f6b3ddf7c643b071d2e3219b0251f0c3b9aee4c260d64d0315b59ab48760",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
