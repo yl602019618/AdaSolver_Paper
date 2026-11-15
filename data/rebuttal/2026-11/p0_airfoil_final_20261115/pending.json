@@ -7,10 +7,10 @@
     "heads": 2,
     "training_seeds": 1,
     "accuracy_requests": 10120,
-    "physical_conditions": 1314,
-    "formal_repeats": 131400,
-    "warmups": 26280,
-    "memory_conditions": 1314,
+    "physical_conditions": 1638,
+    "formal_repeats": 163800,
+    "warmups": 32760,
+    "memory_conditions": 1638,
     "parity_pairs": 9900,
     "full_reference_requests": 220
   },
@@ -28,11 +28,11 @@
   },
   "seed_components": {
     "0": {
-      "status": "PARTIAL",
+      "status": "VERIFIED_COMPLETE",
       "existing_verified_conditions": 1314,
-      "beta0_conditions_verified": 0,
+      "beta0_conditions_verified": 324,
       "expected_conditions": 1638,
-      "physical_conditions": 1314,
+      "physical_conditions": 1638,
       "physical_gpus": [
         2
       ],
@@ -58,7 +58,6 @@
     }
   },
   "missing": [
-    "training_seed0: 1314/1638 latency+memory conditions",
     "training_seed1: no accepted data-file index",
     "training_seed2: no accepted data-file index"
   ],
@@ -282,11 +281,11 @@
       },
       {
         "field": "models[3].epochs_completed",
-        "value": 385
+        "value": 549
       },
       {
         "field": "models[3].updates_completed",
-        "value": 43505
+        "value": 62037
       },
       {
         "field": "models[3].epochs_requested",
@@ -316,6 +315,6 @@
     "scope": "execution observations; paired measurements may precede memory and independent acceptance"
   },
   "seed0_legacy_formal_status": "VERIFIED_COMPLETE",
-  "seed0_beta0_conditions_verified": 0,
+  "seed0_beta0_conditions_verified": 324,
   "seed0_beta0_conditions_required": 324
 }

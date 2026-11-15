@@ -42,7 +42,7 @@
         299.9994,
         299.9994
       ],
-      "source_rows": 26,
+      "source_rows": 32,
       "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
       "PDF_render": "passed"
     },
@@ -57,7 +57,7 @@
         299.9994,
         299.9994
       ],
-      "source_rows": 16,
+      "source_rows": 20,
       "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
       "PDF_render": "passed"
     },
@@ -72,7 +72,7 @@
         299.9994,
         299.9994
       ],
-      "source_rows": 1008,
+      "source_rows": 1260,
       "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
       "PDF_render": "passed"
     },

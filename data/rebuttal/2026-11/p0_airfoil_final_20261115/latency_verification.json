@@ -6,10 +6,10 @@
     "heads": 2,
     "training_seeds": 1,
     "accuracy_requests": 10120,
-    "physical_conditions": 1314,
-    "formal_repeats": 131400,
-    "warmups": 26280,
-    "memory_conditions": 1314,
+    "physical_conditions": 1638,
+    "formal_repeats": 163800,
+    "warmups": 32760,
+    "memory_conditions": 1638,
     "parity_pairs": 9900,
     "full_reference_requests": 220
   },
@@ -27,11 +27,11 @@
   },
   "seed_components": {
     "0": {
-      "status": "PARTIAL",
+      "status": "VERIFIED_COMPLETE",
       "existing_verified_conditions": 1314,
-      "beta0_conditions_verified": 0,
+      "beta0_conditions_verified": 324,
       "expected_conditions": 1638,
-      "physical_conditions": 1314,
+      "physical_conditions": 1638,
       "physical_gpus": [
         2
       ],

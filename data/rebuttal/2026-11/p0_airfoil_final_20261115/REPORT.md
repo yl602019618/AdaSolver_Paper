@@ -2,7 +2,7 @@
 
 Publication status: **PARTIAL**. This package contains checked scalar results and reproducibility material for the two point backbones on the locked110-case Airfoil population. Statistical result acceptance and training progress are separate.
 
-The already published seed0 point-model formal timing is complete: 1314/1314 legacy conditions are reused. The9 Full-only convolution conditions remain in the earlier supplementary release, outside this primary point-model matrix. Seed0 CPG beta0 is the new timing requirement: 0/324 additional conditions are currently accepted. Existing seed0 formal latency is not described as running or unavailable.
+The already published seed0 point-model formal timing is complete: 1314/1314 legacy conditions are reused. The9 Full-only convolution conditions remain in the earlier supplementary release, outside this primary point-model matrix. Seed0 CPG beta0 is the new timing requirement: 324/324 additional conditions are currently accepted. Existing seed0 formal latency is not described as running or unavailable.
 
 Current accepted primary counts:
 
@@ -12,14 +12,14 @@ Current accepted primary counts:
 | heads | 2 | 6 |
 | training seeds | 1 | 3 |
 | accuracy requests | 10120 | 30360 |
-| physical conditions | 1314 | 4914 |
-| formal repeats | 131400 | 491400 |
-| warmups | 26280 | 98280 |
-| memory conditions | 1314 | 4914 |
+| physical conditions | 1638 | 4914 |
+| formal repeats | 163800 | 491400 |
+| warmups | 32760 | 98280 |
+| memory conditions | 1638 | 4914 |
 | parity pairs | 9900 | 29700 |
 | full reference requests | 220 | 660 |
 
-Completed training receipts currently show 3/6 backbones and 3/6 matching heads. These receipt counts do not fill missing accuracy, parity or timing cells. Training seeds complete against the expanded P0 accuracy-and-timing matrix are []; seed0's independently verified legacy scope remains valid.
+Completed training receipts currently show 3/6 backbones and 3/6 matching heads. These receipt counts do not fill missing accuracy, parity or timing cells. Training seeds complete against the expanded P0 accuracy-and-timing matrix are [0]; seed0's independently verified legacy scope remains valid.
 
 Full uses no sampling seed and is outside rAUEC. Each checkpoint averages cases and sampling runs before across-training-seed summaries; sampling SD, training sampleSD and timing-repeat SD stay separate. The final target has4914 primary conditions:1638 for each training seed, including both CPG beta0 and beta1. The historical110-case positive-lift test population is not relabelled a new sealed holdout.
 
@@ -79,8 +79,8 @@ Observed execution progress is recorded separately in [execution_progress.json](
 | models[3].training_seed | 1 |
 | models[3].backbone | linearno |
 | models[3].backbone_execution_status | running |
-| models[3].epochs_completed | 385 |
-| models[3].updates_completed | 43505 |
+| models[3].epochs_completed | 549 |
+| models[3].updates_completed | 62037 |
 | models[3].epochs_requested | 1000 |
 | models[3].recorded_physical_gpu | 1 |
 | models[3].head_execution_status | NOT_STARTED |
@@ -106,11 +106,11 @@ python3 reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/plot_final.py
 
 # Airfoil P0 results
 
-Status: PARTIAL. Accepted complete training seeds: [].
+Status: PARTIAL. Accepted complete training seeds: [0].
 
 The required study has two point models, training seeds0/1/2, their own heads,110 historical positive-lift test cases, and budgets37.5%,50%,75%. Full100% has no sampling seed. Accuracy and timing include Uniform, PI, CPG beta0/beta1 and CA. Each seed's complete timing matrix has414 groups and1,638 physical conditions over scopesA/B/C, with20 warmups and100 formal repeats. Seed0 reuses1,314 verified point-model conditions and adds only324 beta0 conditions; legacy conv-temp Full-only observations are excluded from the primary three-training-seed totals.
 
-Observed counts: {"accuracy_requests": 10120, "formal_repeats": 131400, "full_reference_requests": 220, "heads": 2, "memory_conditions": 1314, "models": 2, "parity_pairs": 9900, "physical_conditions": 1314, "training_seeds": 1, "warmups": 26280}.
+Observed counts: {"accuracy_requests": 10120, "formal_repeats": 163800, "full_reference_requests": 220, "heads": 2, "memory_conditions": 1638, "models": 2, "parity_pairs": 9900, "physical_conditions": 1638, "training_seeds": 1, "warmups": 32760}.
 
 Accuracy aggregation first averages cases within a sampling seed, then sampling results within one checkpoint, then calculates mean and sampleSD across three independently trained models. Each rAUEC uses its own checkpoint/population/reconstruction matched Uniform denominator per sampling seed before aggregation. No training SD is filled when fewer than three models are available. Old and new reconstruction remain separate groups; the primary accuracy group is grid_qhull_sparse_apply_v1p1.
 
@@ -118,7 +118,7 @@ Latency preserves each checkpoint and physical GPU. ScopeA is CPU input to compl
 
 The benchmark uses three fixed timing cases1001/1094/1198, three sampling seeds for adaptive methods, FP32 networks and complete float64 fields. Memory is measured in separate model/method processes. First-plus-steady cache costs are derived estimates, not contiguous request wall times. backbone_latency_summary.csv retains genuine pooled formal wall-time median/p95 within each checkpoint/training-seed/GPU. latency_summary.csv is the condition table. latency_repeats.csv.gz is a lossless gzip-compressed CSV containing the requested latency_repeats.csv scalar observations.
 
-Pending: ["training_seed0: 1314/1638 latency+memory conditions", "training_seed1: no accepted data-file index", "training_seed2: no accepted data-file index"].
+Pending: ["training_seed1: no accepted data-file index", "training_seed2: no accepted data-file index"].
 
 All numeric tables contain observed results only. Verification requires6 model/head pairs,30,360 accuracy requests,4,914 timing/memory conditions and491,400 formal repetitions before final status. Complete CFD truth, weights, feature caches and long logs are not published.
 

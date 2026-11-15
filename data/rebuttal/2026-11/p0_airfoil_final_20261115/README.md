@@ -2,7 +2,7 @@
 
 Publication status: **PARTIAL**. This package contains checked scalar results and reproducibility material for the two point backbones on the locked110-case Airfoil population. Statistical result acceptance and training progress are separate.
 
-The already published seed0 point-model formal timing is complete: 1314/1314 legacy conditions are reused. The9 Full-only convolution conditions remain in the earlier supplementary release, outside this primary point-model matrix. Seed0 CPG beta0 is the new timing requirement: 0/324 additional conditions are currently accepted. Existing seed0 formal latency is not described as running or unavailable.
+The already published seed0 point-model formal timing is complete: 1314/1314 legacy conditions are reused. The9 Full-only convolution conditions remain in the earlier supplementary release, outside this primary point-model matrix. Seed0 CPG beta0 is the new timing requirement: 324/324 additional conditions are currently accepted. Existing seed0 formal latency is not described as running or unavailable.
 
 Current accepted primary counts:
 
@@ -12,14 +12,14 @@ Current accepted primary counts:
 | heads | 2 | 6 |
 | training seeds | 1 | 3 |
 | accuracy requests | 10120 | 30360 |
-| physical conditions | 1314 | 4914 |
-| formal repeats | 131400 | 491400 |
-| warmups | 26280 | 98280 |
-| memory conditions | 1314 | 4914 |
+| physical conditions | 1638 | 4914 |
+| formal repeats | 163800 | 491400 |
+| warmups | 32760 | 98280 |
+| memory conditions | 1638 | 4914 |
 | parity pairs | 9900 | 29700 |
 | full reference requests | 220 | 660 |
 
-Completed training receipts currently show 3/6 backbones and 3/6 matching heads. These receipt counts do not fill missing accuracy, parity or timing cells. Training seeds complete against the expanded P0 accuracy-and-timing matrix are []; seed0's independently verified legacy scope remains valid.
+Completed training receipts currently show 3/6 backbones and 3/6 matching heads. These receipt counts do not fill missing accuracy, parity or timing cells. Training seeds complete against the expanded P0 accuracy-and-timing matrix are [0]; seed0's independently verified legacy scope remains valid.
 
 Full uses no sampling seed and is outside rAUEC. Each checkpoint averages cases and sampling runs before across-training-seed summaries; sampling SD, training sampleSD and timing-repeat SD stay separate. The final target has4914 primary conditions:1638 for each training seed, including both CPG beta0 and beta1. The historical110-case positive-lift test population is not relabelled a new sealed holdout.
 
@@ -79,8 +79,8 @@ Observed execution progress is recorded separately in [execution_progress.json](
 | models[3].training_seed | 1 |
 | models[3].backbone | linearno |
 | models[3].backbone_execution_status | running |
-| models[3].epochs_completed | 385 |
-| models[3].updates_completed | 43505 |
+| models[3].epochs_completed | 549 |
+| models[3].updates_completed | 62037 |
 | models[3].epochs_requested | 1000 |
 | models[3].recorded_physical_gpu | 1 |
 | models[3].head_execution_status | NOT_STARTED |

@@ -128,9 +128,7 @@
       "stage": "accuracy",
       "gpu": 0,
       "dependencies": [
-        "airfoil_t3_trainingseed1_head",
-        "airfoil_t3_trainingseed1_backbone",
-        "airfoil_linearno_trainingseed1_backbone"
+        "airfoil_t3_trainingseed1_head"
       ],
       "seed_root": "workspace:linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1",
       "command": [
@@ -159,9 +157,7 @@
       "stage": "accuracy",
       "gpu": 1,
       "dependencies": [
-        "airfoil_linearno_trainingseed1_head",
-        "airfoil_t3_trainingseed1_backbone",
-        "airfoil_linearno_trainingseed1_backbone"
+        "airfoil_linearno_trainingseed1_head"
       ],
       "seed_root": "workspace:linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1",
       "command": [
@@ -332,9 +328,7 @@
       "stage": "accuracy",
       "gpu": 6,
       "dependencies": [
-        "airfoil_t3_trainingseed2_head",
-        "airfoil_t3_trainingseed2_backbone",
-        "airfoil_linearno_trainingseed2_backbone"
+        "airfoil_t3_trainingseed2_head"
       ],
       "seed_root": "workspace:linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2",
       "command": [
@@ -363,9 +357,7 @@
       "stage": "accuracy",
       "gpu": 7,
       "dependencies": [
-        "airfoil_linearno_trainingseed2_head",
-        "airfoil_t3_trainingseed2_backbone",
-        "airfoil_linearno_trainingseed2_backbone"
+        "airfoil_linearno_trainingseed2_head"
       ],
       "seed_root": "workspace:linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2",
       "command": [
@@ -1463,5 +1455,54 @@
     }
   ],
   "deadline_utc": "2026-11-16T01:00:00+00:00",
-  "rule": "Every seed uses one physical H20 for all methods/backbones/old-new timings; do not pool latency across differently assigned GPUs. Training/head/accuracy invoke the unchanged original run_stage."
+  "rule": "Every seed uses one physical H20 for all methods/backbones/old-new timings; do not pool latency across differently assigned GPUs. Training/head/accuracy invoke the unchanged original run_stage.",
+  "scheduling_amendment": {
+    "reason": "Per-model accuracy needs only its own completed model/head; cross-model timing still waits for both accepted models. No scientific source changed.",
+    "changes": [
+      {
+        "id": "airfoil_t3_trainingseed1_accuracy",
+        "before": [
+          "airfoil_t3_trainingseed1_head",
+          "airfoil_t3_trainingseed1_backbone",
+          "airfoil_linearno_trainingseed1_backbone"
+        ],
+        "after": [
+          "airfoil_t3_trainingseed1_head"
+        ]
+      },
+      {
+        "id": "airfoil_linearno_trainingseed1_accuracy",
+        "before": [
+          "airfoil_linearno_trainingseed1_head",
+          "airfoil_t3_trainingseed1_backbone",
+          "airfoil_linearno_trainingseed1_backbone"
+        ],
+        "after": [
+          "airfoil_linearno_trainingseed1_head"
+        ]
+      },
+      {
+        "id": "airfoil_t3_trainingseed2_accuracy",
+        "before": [
+          "airfoil_t3_trainingseed2_head",
+          "airfoil_t3_trainingseed2_backbone",
+          "airfoil_linearno_trainingseed2_backbone"
+        ],
+        "after": [
+          "airfoil_t3_trainingseed2_head"
+        ]
+      },
+      {
+        "id": "airfoil_linearno_trainingseed2_accuracy",
+        "before": [
+          "airfoil_linearno_trainingseed2_head",
+          "airfoil_t3_trainingseed2_backbone",
+          "airfoil_linearno_trainingseed2_backbone"
+        ],
+        "after": [
+          "airfoil_linearno_trainingseed2_head"
+        ]
+      }
+    ]
+  }
 }

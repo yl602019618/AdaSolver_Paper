@@ -1,7 +1,7 @@
 # P0 evidence scope
 
 - Publication status: PARTIAL; accepted rows and their identities are listed in verification.json.
-- Seed0's existing point formal matrix is already complete and reused. Its beta0 extension is separately counted (0/324).
+- Seed0's existing point formal matrix is already complete and reused. Its beta0 extension is separately counted (324/324).
 - Training completion alone is not a completed accuracy/latency result. Missing cells remain in pending.json.
 - Across-training sampleSD requires the independent checkpoint count shown in each table; sampling runs are not extra training models.
 - rAUEC normalizes against each checkpoint's matched Uniform curve and does not provide an absolute cross-backbone ranking.
