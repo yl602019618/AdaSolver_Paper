@@ -1,0 +1,786 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-11-15T14:42:30.957301+00:00",
+  "first_gate_complete": true,
+  "scope": "P0-A discovery, identity and scoped reuse gate before new GPU launch",
+  "allowed_statuses": [
+    "NOT_FOUND",
+    "PARTIAL",
+    "RUNNING_IN_OTHER_SESSION",
+    "STALE_OR_CONFLICT",
+    "VERIFIED_COMPLETE"
+  ],
+  "remote_commits": {
+    "rebuttal/20261114-standard-training-seeds": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
+    "rebuttal/20261114-linearno-followup": "bb5d5535496c68c75778991873ae77ec5ae7c9b6",
+    "rebuttal/20261114-linearno-seeds": "a6365fb4131d81ce31dbf78b4179d4db9e5953e8"
+  },
+  "source_audits": [
+    {
+      "path": "seed_reuse_audit.json",
+      "sha256": "3af6beb99d6a7d806b4c43003526ed6300bafa233ba287730ce480314f06344f"
+    },
+    {
+      "path": "git_seed0_reuse_audit.json",
+      "sha256": "434bc8e8b262e37d78809085756f67e862f03572715d157903eb1c5f5da86faa"
+    }
+  ],
+  "subtasks": [
+    {
+      "task": "airfoil_t3_trainingseed0",
+      "status": "VERIFIED_COMPLETE",
+      "skip_training": true,
+      "skip_existing_accuracy": true,
+      "skip_existing_timing": true,
+      "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+      "head_sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce",
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "training_epochs": 1000,
+      "training_updates": 113000,
+      "head_epochs": 200,
+      "test_cases": 110,
+      "accuracy_requests": 5060,
+      "verified_scope": "Backbone/head and Full/Uniform/PI/CPGbeta0/1/CA accuracy; existing Full/Uniform/PI/CPGbeta1/CA A/B/C latency and memory. Beta0 latency is a separate missing supplement.",
+      "manifest": {
+        "path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/manifest.json",
+        "sha256": "62eb067653e3b03efd3908d9e8dd6f400f3cd23a6987c0bbc96365060a8768d6",
+        "bytes": 15206,
+        "mtime_utc": "2026-11-14T14:04:23+00:00"
+      },
+      "head_manifest": {
+        "path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/head/manifest.json",
+        "sha256": "660b1d079c03e875fcaf91200eaefa0469e15cb60e784281889b3afd08df1c27",
+        "bytes": 37413,
+        "mtime_utc": "2026-11-14T14:20:06+00:00"
+      },
+      "accuracy_acceptance": {
+        "path": "linearno_followup_20261114/standard_benchmarks/airfoil/results/t3_accuracy_acceptance.json",
+        "sha256": "5591a6bd67d232cf5382c6098b8a5a50205edcf8757e0759378c5b48d28c0442",
+        "bytes": 1483,
+        "mtime_utc": "2026-11-14T14:26:06+00:00"
+      },
+      "audit_source": "training"
+    },
+    {
+      "task": "airfoil_linearno_trainingseed0",
+      "status": "VERIFIED_COMPLETE",
+      "skip_training": true,
+      "skip_existing_accuracy": true,
+      "skip_existing_timing": true,
+      "checkpoint_sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+      "head_sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0",
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "training_epochs": 1000,
+      "training_updates": 113000,
+      "head_epochs": 200,
+      "test_cases": 110,
+      "accuracy_requests": 5060,
+      "verified_scope": "Backbone/head and Full/Uniform/PI/CPGbeta0/1/CA accuracy; existing Full/Uniform/PI/CPGbeta1/CA A/B/C latency and memory. Beta0 latency is a separate missing supplement.",
+      "manifest": {
+        "path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/manifest.json",
+        "sha256": "1dd62ae0e679ec9f8c24faa9b13cb0dedfe9a084a92deea0af09b605285e101c",
+        "bytes": 15229,
+        "mtime_utc": "2026-11-14T14:03:54+00:00"
+      },
+      "head_manifest": {
+        "path": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/head/manifest.json",
+        "sha256": "eab2100f8c5d04dc98c0c5624aa46759d8eb4a85581bd2103afc460a3d2739a7",
+        "bytes": 37443,
+        "mtime_utc": "2026-11-14T14:20:26+00:00"
+      },
+      "accuracy_acceptance": {
+        "path": "linearno_followup_20261114/standard_benchmarks/airfoil/results/linearno_accuracy_acceptance.json",
+        "sha256": "7b6547ca8b30d0f261fcf24c9eb9261adf9a0cc19b4d2df522e72cadf2015d07",
+        "bytes": 1507,
+        "mtime_utc": "2026-11-14T14:26:59+00:00"
+      },
+      "audit_source": "training"
+    },
+    {
+      "task": "airfoil_t3_trainingseed1",
+      "status": "RUNNING_IN_OTHER_SESSION",
+      "skip_training": true,
+      "reason": "Adopt existing live backbone; never relaunch or terminate its child",
+      "training_seed": 1,
+      "head_seed": 1,
+      "expected_epochs": 1000,
+      "expected_updates": 113000,
+      "expected_head_epochs": 200,
+      "training_ids": 900,
+      "validation_ids": 100,
+      "test_ids": 110,
+      "epochs_completed": 547,
+      "updates_completed": 61811,
+      "checkpoint_sha256": null,
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+      "root": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1",
+      "head_status": "NOT_FOUND",
+      "accuracy_status": "NOT_FOUND",
+      "timing_status": "NOT_FOUND",
+      "task_ids": [
+        "airfoil_t3_trainingseed1_backbone",
+        "airfoil_t3_trainingseed1_head",
+        "airfoil_t3_trainingseed1_accuracy",
+        "airfoil_both_trainingseed1_accuracy_acceptance",
+        "airfoil_both_trainingseed1_paired_latency",
+        "airfoil_t3_trainingseed1_memory_full",
+        "airfoil_t3_trainingseed1_memory_uniform",
+        "airfoil_t3_trainingseed1_memory_pi",
+        "airfoil_t3_trainingseed1_memory_cpg",
+        "airfoil_t3_trainingseed1_memory_ca",
+        "airfoil_both_trainingseed1_latency_acceptance"
+      ],
+      "nonseed_training_protocol_exactly_matches_seed0": true,
+      "local_source_hash_checks": 24,
+      "local_sources": [
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/aggregate.py",
+          "sha256": "3c7a1552b9d6f9a205c16c853b7dbef744846eb746fc8616c44b0a85f8c8f9c7"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/audit_training_sampling.py",
+          "sha256": "8c08cc1c5a16f5d88ec40aefc4bf419248dce101fde063111466e6193db6e158"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/benchmark.py",
+          "sha256": "c289df28d0856bbc84f2884faade3646ca8637b9016106c988f9243c9f758a2d"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/benchmark_core.py",
+          "sha256": "425e8adf4bae0c978774f1c172db94407314f5b9cc89ff05a567145ccc0be894"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/common.py",
+          "sha256": "fed237b48fe217b52bbe62d87bf22a31612787c5a1a6efff1c59a96177863a14"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/evaluate.py",
+          "sha256": "895568bad87fb02d4ecac543304781814518e4bbfdba2b8b5108aee2889c59b0"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/finalize_latency.py",
+          "sha256": "a4dda0d3c97d373ec21fae7fe682467bd16613784b679f810bcb300ab57ad38f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/inherited_gpu_monitor.py",
+          "sha256": "101ed9bb9363231e38db28507f50b0df811f62a04bbd1f9d437ff4a1fc386d04"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/request.py",
+          "sha256": "89fc153a66180abef03dc9a53a8b71d72cffebd460f1b018f72d0e837407361f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/runtime.py",
+          "sha256": "14f0c3ff6832d85da266f7d704c9a489892a281c25f4970d4e5c28987a0727b9"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/seed_context.py",
+          "sha256": "b26e0a235772e70dbe5d58edb1ed86efacf692c2b3767d25fd15e726813a72a4"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/train_head.py",
+          "sha256": "2897473d42db3ee18ee76dc86295fbe42ce584a96bfb3ea865d7e8de31ceef22"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/update_registry.py",
+          "sha256": "0dd9b8462a212e6748695860d698f9857f6605c19606b96b3b98afc5af41636e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/validate_accuracy.py",
+          "sha256": "b31fcd50793518e1b4e9276f660ff1e8422d81093ab36232a4295a40d115340f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/validate_head.py",
+          "sha256": "ebaa1a4e2d8ed981cd904ef21a90d3a002c7ffeddc1e711844a921487aa62843"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/evaluation_gate.json",
+          "sha256": "4cbc3758a6e8a55154c7b252a22d2659c80c12a7a1751493e18c3b1ac103a108"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/execution_sources/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/frozen_field_policies.json",
+          "sha256": "ea1581b4fb57f1b9cc63173be1efd64e5e0ed2017f9d4fd015fd32603c09b13c"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/protocol_lock.json",
+          "sha256": "92a8832cb356ca75f2f3095baf4fc599fbf198278eeadb2441c45ed95501981c"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/seed0_protocol_lock.json",
+          "sha256": "3fbd5af0c76992ab166847f53ad8571a48025b26eadcd08fa56c1eef7cc87b81"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/seed_extension.json",
+          "sha256": "84b094eef3a75ae3b9f4209dd9fff43c7c228eb0593fecfac0e2b72cdf736faf"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/source_manifest.json",
+          "sha256": "b591cfd2c761c7c12d93c5dc79469b604b2b1d70a38272c116c9b3cd1d070f9e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/split_manifest.json",
+          "sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f"
+        }
+      ],
+      "protocol": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/protocol_lock.json",
+        "sha256": "92a8832cb356ca75f2f3095baf4fc599fbf198278eeadb2441c45ed95501981c",
+        "bytes": 3275,
+        "mtime_utc": "2026-11-14T14:24:30+00:00"
+      },
+      "dependency_lock": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/dependency_lock.json",
+        "sha256": "26226b3f6b2721a937d17ebd0b863b502fedb873b722608ec16e0dcd698c04fc",
+        "bytes": 65143,
+        "mtime_utc": "2026-11-14T14:34:09+00:00"
+      },
+      "runtime": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/runtime/t3_backbone_launch.json",
+        "sha256": "969bccee0c1b7f795431a2a2d84726dc1067d71676e030a6d76f2033d6364a45",
+        "bytes": 3529,
+        "mtime_utc": "2026-11-15T13:12:18+00:00"
+      },
+      "audit_source": "training"
+    },
+    {
+      "task": "airfoil_linearno_trainingseed1",
+      "status": "NOT_FOUND",
+      "skip_training": false,
+      "reason": "Prepared isolated protocol exists; no completed/running backbone checkpoint found",
+      "training_seed": 1,
+      "head_seed": 1,
+      "expected_epochs": 1000,
+      "expected_updates": 113000,
+      "expected_head_epochs": 200,
+      "training_ids": 900,
+      "validation_ids": 100,
+      "test_ids": 110,
+      "epochs_completed": 0,
+      "updates_completed": 0,
+      "checkpoint_sha256": null,
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+      "root": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1",
+      "head_status": "NOT_FOUND",
+      "accuracy_status": "NOT_FOUND",
+      "timing_status": "NOT_FOUND",
+      "task_ids": [
+        "airfoil_linearno_trainingseed1_backbone",
+        "airfoil_linearno_trainingseed1_head",
+        "airfoil_linearno_trainingseed1_accuracy",
+        "airfoil_both_trainingseed1_accuracy_acceptance",
+        "airfoil_both_trainingseed1_paired_latency",
+        "airfoil_linearno_trainingseed1_memory_full",
+        "airfoil_linearno_trainingseed1_memory_uniform",
+        "airfoil_linearno_trainingseed1_memory_pi",
+        "airfoil_linearno_trainingseed1_memory_cpg",
+        "airfoil_linearno_trainingseed1_memory_ca",
+        "airfoil_both_trainingseed1_latency_acceptance"
+      ],
+      "nonseed_training_protocol_exactly_matches_seed0": true,
+      "local_source_hash_checks": 24,
+      "local_sources": [
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/aggregate.py",
+          "sha256": "3c7a1552b9d6f9a205c16c853b7dbef744846eb746fc8616c44b0a85f8c8f9c7"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/audit_training_sampling.py",
+          "sha256": "8c08cc1c5a16f5d88ec40aefc4bf419248dce101fde063111466e6193db6e158"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/benchmark.py",
+          "sha256": "c289df28d0856bbc84f2884faade3646ca8637b9016106c988f9243c9f758a2d"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/benchmark_core.py",
+          "sha256": "425e8adf4bae0c978774f1c172db94407314f5b9cc89ff05a567145ccc0be894"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/common.py",
+          "sha256": "fed237b48fe217b52bbe62d87bf22a31612787c5a1a6efff1c59a96177863a14"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/evaluate.py",
+          "sha256": "895568bad87fb02d4ecac543304781814518e4bbfdba2b8b5108aee2889c59b0"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/finalize_latency.py",
+          "sha256": "a4dda0d3c97d373ec21fae7fe682467bd16613784b679f810bcb300ab57ad38f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/inherited_gpu_monitor.py",
+          "sha256": "101ed9bb9363231e38db28507f50b0df811f62a04bbd1f9d437ff4a1fc386d04"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/request.py",
+          "sha256": "89fc153a66180abef03dc9a53a8b71d72cffebd460f1b018f72d0e837407361f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/runtime.py",
+          "sha256": "14f0c3ff6832d85da266f7d704c9a489892a281c25f4970d4e5c28987a0727b9"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/seed_context.py",
+          "sha256": "b26e0a235772e70dbe5d58edb1ed86efacf692c2b3767d25fd15e726813a72a4"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/train_head.py",
+          "sha256": "2897473d42db3ee18ee76dc86295fbe42ce584a96bfb3ea865d7e8de31ceef22"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/update_registry.py",
+          "sha256": "0dd9b8462a212e6748695860d698f9857f6605c19606b96b3b98afc5af41636e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/validate_accuracy.py",
+          "sha256": "b31fcd50793518e1b4e9276f660ff1e8422d81093ab36232a4295a40d115340f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/code/validate_head.py",
+          "sha256": "ebaa1a4e2d8ed981cd904ef21a90d3a002c7ffeddc1e711844a921487aa62843"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/evaluation_gate.json",
+          "sha256": "4cbc3758a6e8a55154c7b252a22d2659c80c12a7a1751493e18c3b1ac103a108"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/execution_sources/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/frozen_field_policies.json",
+          "sha256": "ea1581b4fb57f1b9cc63173be1efd64e5e0ed2017f9d4fd015fd32603c09b13c"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/protocol_lock.json",
+          "sha256": "92a8832cb356ca75f2f3095baf4fc599fbf198278eeadb2441c45ed95501981c"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/seed0_protocol_lock.json",
+          "sha256": "3fbd5af0c76992ab166847f53ad8571a48025b26eadcd08fa56c1eef7cc87b81"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/seed_extension.json",
+          "sha256": "84b094eef3a75ae3b9f4209dd9fff43c7c228eb0593fecfac0e2b72cdf736faf"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/source_manifest.json",
+          "sha256": "b591cfd2c761c7c12d93c5dc79469b604b2b1d70a38272c116c9b3cd1d070f9e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/split_manifest.json",
+          "sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f"
+        }
+      ],
+      "protocol": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/protocol_lock.json",
+        "sha256": "92a8832cb356ca75f2f3095baf4fc599fbf198278eeadb2441c45ed95501981c",
+        "bytes": 3275,
+        "mtime_utc": "2026-11-14T14:24:30+00:00"
+      },
+      "dependency_lock": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/config/dependency_lock.json",
+        "sha256": "26226b3f6b2721a937d17ebd0b863b502fedb873b722608ec16e0dcd698c04fc",
+        "bytes": 65143,
+        "mtime_utc": "2026-11-14T14:34:09+00:00"
+      },
+      "runtime": null,
+      "audit_source": "training"
+    },
+    {
+      "task": "airfoil_t3_trainingseed2",
+      "status": "NOT_FOUND",
+      "skip_training": false,
+      "reason": "Prepared isolated protocol exists; no completed/running backbone checkpoint found",
+      "training_seed": 2,
+      "head_seed": 2,
+      "expected_epochs": 1000,
+      "expected_updates": 113000,
+      "expected_head_epochs": 200,
+      "training_ids": 900,
+      "validation_ids": 100,
+      "test_ids": 110,
+      "epochs_completed": 0,
+      "updates_completed": 0,
+      "checkpoint_sha256": null,
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+      "root": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2",
+      "head_status": "NOT_FOUND",
+      "accuracy_status": "NOT_FOUND",
+      "timing_status": "NOT_FOUND",
+      "task_ids": [
+        "airfoil_t3_trainingseed2_backbone",
+        "airfoil_t3_trainingseed2_head",
+        "airfoil_t3_trainingseed2_accuracy",
+        "airfoil_both_trainingseed2_accuracy_acceptance",
+        "airfoil_both_trainingseed2_paired_latency",
+        "airfoil_t3_trainingseed2_memory_full",
+        "airfoil_t3_trainingseed2_memory_uniform",
+        "airfoil_t3_trainingseed2_memory_pi",
+        "airfoil_t3_trainingseed2_memory_cpg",
+        "airfoil_t3_trainingseed2_memory_ca",
+        "airfoil_both_trainingseed2_latency_acceptance"
+      ],
+      "nonseed_training_protocol_exactly_matches_seed0": true,
+      "local_source_hash_checks": 24,
+      "local_sources": [
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/aggregate.py",
+          "sha256": "3c7a1552b9d6f9a205c16c853b7dbef744846eb746fc8616c44b0a85f8c8f9c7"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/audit_training_sampling.py",
+          "sha256": "8c08cc1c5a16f5d88ec40aefc4bf419248dce101fde063111466e6193db6e158"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/benchmark.py",
+          "sha256": "c289df28d0856bbc84f2884faade3646ca8637b9016106c988f9243c9f758a2d"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/benchmark_core.py",
+          "sha256": "425e8adf4bae0c978774f1c172db94407314f5b9cc89ff05a567145ccc0be894"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/common.py",
+          "sha256": "fed237b48fe217b52bbe62d87bf22a31612787c5a1a6efff1c59a96177863a14"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/evaluate.py",
+          "sha256": "895568bad87fb02d4ecac543304781814518e4bbfdba2b8b5108aee2889c59b0"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/finalize_latency.py",
+          "sha256": "a4dda0d3c97d373ec21fae7fe682467bd16613784b679f810bcb300ab57ad38f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/inherited_gpu_monitor.py",
+          "sha256": "101ed9bb9363231e38db28507f50b0df811f62a04bbd1f9d437ff4a1fc386d04"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/request.py",
+          "sha256": "89fc153a66180abef03dc9a53a8b71d72cffebd460f1b018f72d0e837407361f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/runtime.py",
+          "sha256": "14f0c3ff6832d85da266f7d704c9a489892a281c25f4970d4e5c28987a0727b9"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/seed_context.py",
+          "sha256": "b26e0a235772e70dbe5d58edb1ed86efacf692c2b3767d25fd15e726813a72a4"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/train_head.py",
+          "sha256": "2897473d42db3ee18ee76dc86295fbe42ce584a96bfb3ea865d7e8de31ceef22"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/update_registry.py",
+          "sha256": "0dd9b8462a212e6748695860d698f9857f6605c19606b96b3b98afc5af41636e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/validate_accuracy.py",
+          "sha256": "b31fcd50793518e1b4e9276f660ff1e8422d81093ab36232a4295a40d115340f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/validate_head.py",
+          "sha256": "ebaa1a4e2d8ed981cd904ef21a90d3a002c7ffeddc1e711844a921487aa62843"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/evaluation_gate.json",
+          "sha256": "4cbc3758a6e8a55154c7b252a22d2659c80c12a7a1751493e18c3b1ac103a108"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/execution_sources/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/frozen_field_policies.json",
+          "sha256": "ea1581b4fb57f1b9cc63173be1efd64e5e0ed2017f9d4fd015fd32603c09b13c"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/protocol_lock.json",
+          "sha256": "d1594155ee044de52eba15fca65ad05d147259b482d730147eb577b9e6295145"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/seed0_protocol_lock.json",
+          "sha256": "3fbd5af0c76992ab166847f53ad8571a48025b26eadcd08fa56c1eef7cc87b81"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/seed_extension.json",
+          "sha256": "67572ad5e007cd41301fccacdf81f7f9fba748b1da71fc2590889a47b20ddc40"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/source_manifest.json",
+          "sha256": "b591cfd2c761c7c12d93c5dc79469b604b2b1d70a38272c116c9b3cd1d070f9e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/split_manifest.json",
+          "sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f"
+        }
+      ],
+      "protocol": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/protocol_lock.json",
+        "sha256": "d1594155ee044de52eba15fca65ad05d147259b482d730147eb577b9e6295145",
+        "bytes": 3275,
+        "mtime_utc": "2026-11-14T14:24:31+00:00"
+      },
+      "dependency_lock": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/dependency_lock.json",
+        "sha256": "1a8a56c090405d57cd2e067d72cb47d07f026d25edd4e5dbb4cb6d151ee1dc3e",
+        "bytes": 65143,
+        "mtime_utc": "2026-11-14T14:34:11+00:00"
+      },
+      "runtime": null,
+      "audit_source": "training"
+    },
+    {
+      "task": "airfoil_linearno_trainingseed2",
+      "status": "NOT_FOUND",
+      "skip_training": false,
+      "reason": "Prepared isolated protocol exists; no completed/running backbone checkpoint found",
+      "training_seed": 2,
+      "head_seed": 2,
+      "expected_epochs": 1000,
+      "expected_updates": 113000,
+      "expected_head_epochs": 200,
+      "training_ids": 900,
+      "validation_ids": 100,
+      "test_ids": 110,
+      "epochs_completed": 0,
+      "updates_completed": 0,
+      "checkpoint_sha256": null,
+      "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+      "split_sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f",
+      "root": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2",
+      "head_status": "NOT_FOUND",
+      "accuracy_status": "NOT_FOUND",
+      "timing_status": "NOT_FOUND",
+      "task_ids": [
+        "airfoil_linearno_trainingseed2_backbone",
+        "airfoil_linearno_trainingseed2_head",
+        "airfoil_linearno_trainingseed2_accuracy",
+        "airfoil_both_trainingseed2_accuracy_acceptance",
+        "airfoil_both_trainingseed2_paired_latency",
+        "airfoil_linearno_trainingseed2_memory_full",
+        "airfoil_linearno_trainingseed2_memory_uniform",
+        "airfoil_linearno_trainingseed2_memory_pi",
+        "airfoil_linearno_trainingseed2_memory_cpg",
+        "airfoil_linearno_trainingseed2_memory_ca",
+        "airfoil_both_trainingseed2_latency_acceptance"
+      ],
+      "nonseed_training_protocol_exactly_matches_seed0": true,
+      "local_source_hash_checks": 24,
+      "local_sources": [
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/aggregate.py",
+          "sha256": "3c7a1552b9d6f9a205c16c853b7dbef744846eb746fc8616c44b0a85f8c8f9c7"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/audit_training_sampling.py",
+          "sha256": "8c08cc1c5a16f5d88ec40aefc4bf419248dce101fde063111466e6193db6e158"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/benchmark.py",
+          "sha256": "c289df28d0856bbc84f2884faade3646ca8637b9016106c988f9243c9f758a2d"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/benchmark_core.py",
+          "sha256": "425e8adf4bae0c978774f1c172db94407314f5b9cc89ff05a567145ccc0be894"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/common.py",
+          "sha256": "fed237b48fe217b52bbe62d87bf22a31612787c5a1a6efff1c59a96177863a14"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/evaluate.py",
+          "sha256": "895568bad87fb02d4ecac543304781814518e4bbfdba2b8b5108aee2889c59b0"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/finalize_latency.py",
+          "sha256": "a4dda0d3c97d373ec21fae7fe682467bd16613784b679f810bcb300ab57ad38f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/inherited_gpu_monitor.py",
+          "sha256": "101ed9bb9363231e38db28507f50b0df811f62a04bbd1f9d437ff4a1fc386d04"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/request.py",
+          "sha256": "89fc153a66180abef03dc9a53a8b71d72cffebd460f1b018f72d0e837407361f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/runtime.py",
+          "sha256": "14f0c3ff6832d85da266f7d704c9a489892a281c25f4970d4e5c28987a0727b9"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/seed_context.py",
+          "sha256": "b26e0a235772e70dbe5d58edb1ed86efacf692c2b3767d25fd15e726813a72a4"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/train_head.py",
+          "sha256": "2897473d42db3ee18ee76dc86295fbe42ce584a96bfb3ea865d7e8de31ceef22"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/update_registry.py",
+          "sha256": "0dd9b8462a212e6748695860d698f9857f6605c19606b96b3b98afc5af41636e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/validate_accuracy.py",
+          "sha256": "b31fcd50793518e1b4e9276f660ff1e8422d81093ab36232a4295a40d115340f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/code/validate_head.py",
+          "sha256": "ebaa1a4e2d8ed981cd904ef21a90d3a002c7ffeddc1e711844a921487aa62843"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/evaluation_gate.json",
+          "sha256": "4cbc3758a6e8a55154c7b252a22d2659c80c12a7a1751493e18c3b1ac103a108"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/execution_sources/train.py",
+          "sha256": "3242680968d5be828de9b5c1f46491fb3ba55ea81d0094dd5c236768f9c8c26f"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/frozen_field_policies.json",
+          "sha256": "ea1581b4fb57f1b9cc63173be1efd64e5e0ed2017f9d4fd015fd32603c09b13c"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/protocol_lock.json",
+          "sha256": "d1594155ee044de52eba15fca65ad05d147259b482d730147eb577b9e6295145"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/seed0_protocol_lock.json",
+          "sha256": "3fbd5af0c76992ab166847f53ad8571a48025b26eadcd08fa56c1eef7cc87b81"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/seed_extension.json",
+          "sha256": "67572ad5e007cd41301fccacdf81f7f9fba748b1da71fc2590889a47b20ddc40"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/source_manifest.json",
+          "sha256": "b591cfd2c761c7c12d93c5dc79469b604b2b1d70a38272c116c9b3cd1d070f9e"
+        },
+        {
+          "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/split_manifest.json",
+          "sha256": "ea32f4a5dee31f016fc6260170b8829708906dd8f286b25ca83c7bea587e012f"
+        }
+      ],
+      "protocol": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/protocol_lock.json",
+        "sha256": "d1594155ee044de52eba15fca65ad05d147259b482d730147eb577b9e6295145",
+        "bytes": 3275,
+        "mtime_utc": "2026-11-14T14:24:31+00:00"
+      },
+      "dependency_lock": {
+        "path": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed2/config/dependency_lock.json",
+        "sha256": "1a8a56c090405d57cd2e067d72cb47d07f026d25edd4e5dbb4cb6d151ee1dc3e",
+        "bytes": 65143,
+        "mtime_utc": "2026-11-14T14:34:11+00:00"
+      },
+      "runtime": null,
+      "audit_source": "training"
+    },
+    {
+      "task": "airfoil_seed0_CPG_beta0_formal_latency_and_memory",
+      "status": "NOT_FOUND",
+      "skip_training": true,
+      "expected_groups": 81,
+      "expected_conditions": 324,
+      "formal_repeats": 32400,
+      "warmups": 6480,
+      "reason": "Existing seed0 formal timing omittedCPGbeta0; supplement only those missing conditions on originalGPU2, reuse verified1314point conditions",
+      "audit_source": "training"
+    },
+    {
+      "id": "seed0_frozen_models_heads_normalizer",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "Rehashed three existing checkpoints, shared normalizer and two corresponding heads; convFull has no head task.",
+      "audit_source": "git_seed0"
+    },
+    {
+      "id": "seed0_accuracy_old_scope",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "Published110-case population, five adaptive method variants including CPG beta0 accuracy; public matched rAUEC replay passed.",
+      "audit_source": "git_seed0"
+    },
+    {
+      "id": "seed0_formal_latency_old_scope",
+      "status": "VERIFIED_COMPLETE",
+      "skip_execution": true,
+      "reason": "1323 conditions including9 convFull;20warmups/100formal; public direct/pooled statistic replay passed. It is complete, not running.",
+      "audit_source": "git_seed0"
+    },
+    {
+      "id": "P0_seed0_beta0_formal_latency_gap",
+      "status": "PARTIAL",
+      "skip_execution": false,
+      "found_conditions": 0,
+      "required_additional_conditions": 324,
+      "required_additional_formal_repetitions": 32400,
+      "required_additional_warmups": 6480,
+      "reason": "Old formal point scope times Uniform/PI/CPG beta1/CA only. P0 explicitly adds CPG beta0; its existing accuracy does not substitute for timing.",
+      "audit_source": "git_seed0"
+    }
+  ],
+  "counts": {
+    "point_backbones_expected": 6,
+    "point_backbones_completed": 2,
+    "point_backbones_running": 1,
+    "point_backbones_not_started": 3,
+    "point_heads_expected": 6,
+    "point_heads_completed": 2,
+    "point_heads_pending": 4,
+    "complete_accuracy_models": 2,
+    "accuracy_models_pending": 4,
+    "P0_point_timing_expected_conditions_all_three_training_seeds": 4914,
+    "verified_reused_point_timing_conditions": 1314,
+    "pending_timing_conditions": 3600,
+    "seed0_beta0_missing_conditions": 324,
+    "each_new_seed_expected_conditions": 1638,
+    "formal_repeats_per_condition": 100,
+    "warmups_per_condition": 20,
+    "conv_seed0_conditions_excluded_from_point_matrix": 9
+  },
+  "actions": {
+    "seed0": "reuse checkpoint/head/normalizer/accuracy and1314existing point timing conditions; no retraining or repeated old timing",
+    "t3_seed1": "adopt PID2435153/2435173 onGPU0; never start a second backbone",
+    "new_training": "only LinearNOseed1,T3seed2,LinearNOseed2 after controlled dispatcher handoff",
+    "timing": "beta0 extension and each new-checkpoint matrix measured independently with fixed protocol; no substitution from seed0",
+    "reconstruction": "grid_scipy_linear_nearest_native_v1 and grid_qhull_sparse_apply_v1p1; parity required before acceptance"
+  },
+  "deadline": {
+    "fallback_snapshot_utc": "2026-11-16T01:00:00+00:00",
+    "timezone": "Asia/Shanghai",
+    "source": "default09:00 requested clarification; pending user override",
+    "incomplete_work": "retain PARTIAL; do not terminate running training or invent results"
+  },
+  "publication": {
+    "repository": "yl602019618/AdaSolver_Paper",
+    "branch": "rebuttal/20261114-linearno-seeds",
+    "no_main_push": true,
+    "no_weights_or_private_logs": true
+  }
+}

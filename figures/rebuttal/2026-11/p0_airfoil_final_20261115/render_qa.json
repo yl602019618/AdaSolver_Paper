@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "figures": [
+    {
+      "figure": "training_seed_rauec",
+      "PNG_decode": "passed",
+      "size": [
+        2560,
+        985
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 10,
+      "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "PDF_render": "passed"
+    },
+    {
+      "figure": "training_seed_error_budget",
+      "PNG_decode": "passed",
+      "size": [
+        2560,
+        985
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 32,
+      "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "PDF_render": "passed"
+    },
+    {
+      "figure": "checkpoint_error_latency",
+      "PNG_decode": "passed",
+      "size": [
+        2590,
+        955
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 26,
+      "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "PDF_render": "passed"
+    },
+    {
+      "figure": "old_new_checkpoint_cost",
+      "PNG_decode": "passed",
+      "size": [
+        2590,
+        925
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 16,
+      "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "PDF_render": "passed"
+    },
+    {
+      "figure": "checkpoint_cache_reuse",
+      "PNG_decode": "passed",
+      "size": [
+        2590,
+        940
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 1008,
+      "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "PDF_render": "passed"
+    },
+    {
+      "figure": "training_seed_rauec_table",
+      "PNG_decode": "passed",
+      "size": [
+        2170,
+        625
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "source_rows": 10,
+      "script_sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "PDF_render": "passed"
+    }
+  ],
+  "data_status": "PARTIAL",
+  "no_cross_GPU_pooling": true
+}

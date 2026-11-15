@@ -1,0 +1,116 @@
+{
+  "status": "PARTIAL",
+  "complete": false,
+  "counts": {
+    "models": 2,
+    "heads": 2,
+    "training_seeds": 1,
+    "accuracy_requests": 10120,
+    "physical_conditions": 1314,
+    "formal_repeats": 131400,
+    "warmups": 26280,
+    "memory_conditions": 1314,
+    "parity_pairs": 9900,
+    "full_reference_requests": 220
+  },
+  "expected_counts": {
+    "models": 6,
+    "heads": 6,
+    "training_seeds": 3,
+    "accuracy_requests": 30360,
+    "physical_conditions": 4914,
+    "formal_repeats": 491400,
+    "warmups": 98280,
+    "memory_conditions": 4914,
+    "parity_pairs": 29700,
+    "full_reference_requests": 660
+  },
+  "accepted_training_seeds": [],
+  "accuracy_training_seeds": [
+    0
+  ],
+  "missing": [
+    "training_seed0: 1314/1638 latency+memory conditions",
+    "training_seed1: no accepted data-file index",
+    "training_seed2: no accepted data-file index"
+  ],
+  "seed_components": {
+    "0": {
+      "status": "PARTIAL",
+      "existing_verified_conditions": 1314,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 1314,
+      "physical_gpus": [
+        2
+      ],
+      "accuracy_requests": 10120
+    },
+    "1": {
+      "status": "NOT_FOUND",
+      "existing_verified_conditions": 0,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 0,
+      "physical_gpus": [],
+      "accuracy_requests": 0
+    },
+    "2": {
+      "status": "NOT_FOUND",
+      "existing_verified_conditions": 0,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 0,
+      "physical_gpus": [],
+      "accuracy_requests": 0
+    }
+  },
+  "source_acceptances": {
+    "0": {
+      "source_kind": "P0_seed_acceptance",
+      "acceptance_sha256": "4caf34830d7b72f33f4d3bddcb2c34a61256aecd53d3bcef9dd1b9e9827ab791",
+      "data_files": {
+        "accuracy_records.csv.gz": {
+          "bytes": 820435,
+          "sha256": "72894d16d2ab0ccd5ea87f5e5d427410c993b3a22025ecf2e6cb68a5d470f104"
+        },
+        "cache_reuse.csv": {
+          "bytes": 853525,
+          "sha256": "afda3647a1d55596e3bca5b27a9f56c5a02a4b1a63a6ab54a95db0e539786d0d"
+        },
+        "case_sampling_means.csv": {
+          "bytes": 176669,
+          "sha256": "20656960eb6e3c34f8fd5c8fc3ca7c23971431e0691acbbda58888da182e5e9a"
+        },
+        "checkpoint_registry.csv": {
+          "bytes": 4049,
+          "sha256": "58340e4cca689eb472415b924e1b2f2bf61e1063a399aafefa1b210b846fc5ba"
+        },
+        "latency_conditions.csv": {
+          "bytes": 2212681,
+          "sha256": "b5c99a3ea83833e048779127846aa7f39f763350c40e44939a80796a1b8447f3"
+        },
+        "latency_grouped.csv": {
+          "bytes": 13341,
+          "sha256": "7bbd552ed50f259b4db21ac8a368861b40d1496f4ddde19c186c32007b9c0d42"
+        },
+        "reconstruction_parity.csv.gz": {
+          "bytes": 476346,
+          "sha256": "e0cc817ec3c7005f02ea440020c428d4e5dc45e3b69b1c4799506254da84b369"
+        },
+        "stage_profiles.csv.gz": {
+          "bytes": 1005028,
+          "sha256": "1c838b523aef786e2043ffc63be0ba333be6ac30ee0c14464d177728604d0ca0"
+        },
+        "timing_repeats.csv.gz": {
+          "bytes": 2044731,
+          "sha256": "116ae8e2955c16afc6b088c32c25a30c3d2b566c42261d7c160a715496c5485c"
+        }
+      }
+    }
+  },
+  "latency_pooling": "never across training seed or physical GPU; compare checkpoint/GPU blocks explicitly",
+  "primary_reconstruction_id": "grid_qhull_sparse_apply_v1p1",
+  "old_control_group": "grid_scipy_linear_nearest_native_v1",
+  "executed_aggregator_sha256": "173fc084683b644e839153f5e266e5326671e4a9a018bb8608dead6436bc768c"
+}

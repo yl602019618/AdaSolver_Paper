@@ -1,0 +1,645 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL",
+  "mode": "snapshot",
+  "branch": "rebuttal/20261114-linearno-seeds",
+  "baseline_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "counts": {
+    "models": 2,
+    "heads": 2,
+    "training_seeds": 1,
+    "accuracy_requests": 10120,
+    "physical_conditions": 1314,
+    "formal_repeats": 131400,
+    "warmups": 26280,
+    "memory_conditions": 1314,
+    "parity_pairs": 9900,
+    "full_reference_requests": 220
+  },
+  "complete_primary_matrix": false,
+  "files": [
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/CLAIM_CARD.md",
+      "bytes": 799,
+      "sha256": "27be0c2f72bad434d0a428e5a4deb4258626098c7275e28ca2cb69cb997c9482",
+      "origin": "publisher-generated dynamic scope summary",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/README.md",
+      "bytes": 6700,
+      "sha256": "635db17af15652270a310fa565b20a4af63e5e1f5901a1182dcdb6dcbe869a9d",
+      "origin": "publisher-generated dynamic scope summary",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/REPORT.md",
+      "bytes": 9805,
+      "sha256": "9bc6271220c4a00790c77e23f43045a2c995e5b65199c30d06823ea9ad9d75ab",
+      "origin": "publisher-generated dynamic scope summary",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/RESULTS_DETAIL.md",
+      "bytes": 3103,
+      "sha256": "acfd935e07bfa5a0a9b76ee2a1ab2cc89f58f2562f2b8e62f1794bcb93c55cbd",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/accuracy_records.csv.gz",
+      "bytes": 820435,
+      "sha256": "72894d16d2ab0ccd5ea87f5e5d427410c993b3a22025ecf2e6cb68a5d470f104",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/backbone_absolute_errors.csv",
+      "bytes": 82528,
+      "sha256": "2da868622ae2e8b0fd42c16b0349e96d2e98bf5c00bdf61de10c9518c5e31967",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/backbone_accuracy_latency.csv",
+      "bytes": 52726,
+      "sha256": "4507ad7cfd935c8689ece6668e477ae7d63484993c35a9dfaad2377e903ea063",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/backbone_latency_summary.csv",
+      "bytes": 43307,
+      "sha256": "4a45c7634ca113257c820ff4fc25fc64c3a49a1ba3df7c8903865ab2d744e9c9",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/backbone_rauec.csv",
+      "bytes": 33435,
+      "sha256": "fb6c89e540285a1a6ae3f2cf9847a06fdc7ecd12d460e658e16f5a0d3016094e",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/cache_reuse.csv",
+      "bytes": 853525,
+      "sha256": "afda3647a1d55596e3bca5b27a9f56c5a02a4b1a63a6ab54a95db0e539786d0d",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_registry.csv",
+      "bytes": 4049,
+      "sha256": "58340e4cca689eb472415b924e1b2f2bf61e1063a399aafefa1b210b846fc5ba",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/execution_progress.json",
+      "bytes": 11481,
+      "sha256": "afabb3ef8e4f73aa7c9d767f4cbd18aca2f6e2f344dd8780b4a8b32ee1e7b5e3",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/latency_checkpoint_summary.csv",
+      "bytes": 40527,
+      "sha256": "564a4f8c5742a973c9687c953a3635e00bbaa30dcf8143bea4ecd1ea0aeff339",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/latency_grouped.csv",
+      "bytes": 28685,
+      "sha256": "0a962755510ebfeffe969b0273a52f85893b4326ce9b53fa1779ecae40f7ebfe",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/latency_repeats.csv.gz",
+      "bytes": 2044731,
+      "sha256": "116ae8e2955c16afc6b088c32c25a30c3d2b566c42261d7c160a715496c5485c",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/latency_summary.csv",
+      "bytes": 2212681,
+      "sha256": "b5c99a3ea83833e048779127846aa7f39f763350c40e44939a80796a1b8447f3",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/latency_verification.json",
+      "bytes": 1537,
+      "sha256": "e417579b7658cf628153c197c9acb7cb6a029e9c34522d0af1e881fd8c724ab8",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/memory_summary.csv",
+      "bytes": 502808,
+      "sha256": "f2697fd4cc4e6c5d73ed77999df1bfaf9df6753399ce170429d30dba8dd33c8e",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/pending.json",
+      "bytes": 8650,
+      "sha256": "b3bfeefc97712fbefdec7f94be832b6f4bbcdebe6b04316385d26583aa6da2b1",
+      "origin": "publisher-generated dynamic scope summary",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/protocol.md",
+      "bytes": 4293,
+      "sha256": "3159d0b131cd183d4b3735483260fe9d9a1b11944614e67ee8be38dbf42420b9",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/read.me",
+      "bytes": 243,
+      "sha256": "2115ce9d37bed50b36460d78b83c25bb2b7e71a34bab7a7cd099c8eb9b065bf8",
+      "origin": "publisher-generated dynamic scope summary",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/reconstruction_parity.csv.gz",
+      "bytes": 476346,
+      "sha256": "e0cc817ec3c7005f02ea440020c428d4e5dc45e3b69b1c4799506254da84b369",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/reconstruction_summary.csv",
+      "bytes": 378501,
+      "sha256": "cff656e4e16f195d2317e098ab0d2c39da08320e2fff6bedf34f7c65bcb647a0",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/resource_plan.json",
+      "bytes": 44792,
+      "sha256": "e9e9cb46e75ceba2d3fbb6fafacba922dbbd688929e9a49e661c839df8bf12d3",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/reuse_audit_final.json",
+      "bytes": 39457,
+      "sha256": "50fcf44c3c36f1f8fb14a841deddf70fc4e1ba8af897d1c867f00339baeed0ee",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/sampling_variability.csv",
+      "bytes": 239071,
+      "sha256": "9469c6815681860092a6eca62521f1f91345044a62243b452ae2db6c336d0fce",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/source_input_index.csv",
+      "bytes": 128813,
+      "sha256": "da977117d9e68bd6fcf898bf7d7989239b44a6b753f8e94c9422ef163ae49f1b",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/stage_profiles.csv.gz",
+      "bytes": 1005028,
+      "sha256": "1c838b523aef786e2043ffc63be0ba333be6ac30ee0c14464d177728604d0ca0",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_summary.csv",
+      "bytes": 89344,
+      "sha256": "39b1192ed9b16f52d671f3727a1332368fc7435ad939df3dea8024eaa833c4a9",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/verification.json",
+      "bytes": 3678,
+      "sha256": "5bd51dcab984269ec72ea55fa4d9e92274d9c3f721427f593be1cfb77f402bd7",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/captions.md",
+      "bytes": 2218,
+      "sha256": "fd2203a5c581e9c0db8db9c15b60aada4023692454d5ecdfddb336a70e44d0d3",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_cache_reuse.pdf",
+      "bytes": 20734,
+      "sha256": "9772f4f1a09ed0502fa76f712c68a9b01524fe2ad1a875b3a92e7444d0780b4e",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_cache_reuse.png",
+      "bytes": 236265,
+      "sha256": "f14d2ee814070d676a23235fd45f969a36d612e8ebdb1ecaf2a7040c93808547",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_cache_reuse.svg",
+      "bytes": 48581,
+      "sha256": "714197b8d550437252893f2e6dacd2122ed7136750e7a80f259c38d3fd4e406b",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_cache_reuse_source.csv",
+      "bytes": 283215,
+      "sha256": "209accd39ca3913f52efb42585544f4894fc1c676f4c12a5223dffaff605ea8e",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_error_latency.pdf",
+      "bytes": 18392,
+      "sha256": "3e94160e1adb2be2cd576f2f2f9ab0db5a3cfc3771efd1a35f760e8d88bc2f4a",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_error_latency.png",
+      "bytes": 207261,
+      "sha256": "aa2bd8223609570f81c5745ef441caa9c30e5c504698c1ff7654f7971deb5c33",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_error_latency.svg",
+      "bytes": 35013,
+      "sha256": "38f3cf4b0ddc75fde48f8b54fecd563a5cae5a2dd5de6a261920c5e47fc463d5",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_error_latency_source.csv",
+      "bytes": 9151,
+      "sha256": "b0aabc6e0df6bbd9eecaa18f4269c5b34d28c916c90dacaeb80f0d138bf1aa0d",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/old_new_checkpoint_cost.pdf",
+      "bytes": 15140,
+      "sha256": "61affe892b2909b73e5ba9fcd950a2b87aee382f1d9e7c179e5e688b92eddc20",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/old_new_checkpoint_cost.png",
+      "bytes": 76254,
+      "sha256": "ffdc6e6917552580dc143817287eb728a80105cb1f15bc6285904f4f5c72a166",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/old_new_checkpoint_cost.svg",
+      "bytes": 21710,
+      "sha256": "a82346e899dacbe1587a67f47a59da7c86784d9ee4bd17bc3b8c7521c36d8421",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/old_new_checkpoint_cost_source.csv",
+      "bytes": 5763,
+      "sha256": "6784048956598fd26461351a1e967c11149576eeb050690ec7013593010c6807",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/render_qa.json",
+      "bytes": 2153,
+      "sha256": "dde9fc9969a5fb68f60cfeb8236923f580e92760f66d02c03e94fc33fdf75e57",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_error_budget.pdf",
+      "bytes": 17547,
+      "sha256": "4b61977e812f629d90aa9a0f033b2087416af493d54fcd5dfac936fb0b9196d5",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_error_budget.png",
+      "bytes": 190154,
+      "sha256": "4e602badf8a9593965b8967ba866dbef187e6c51b6bfc46a9eef41f8de651b50",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_error_budget.svg",
+      "bytes": 30543,
+      "sha256": "a468535eadb2d636940d7a8c5756b1dfafdcb3a9add3a9138a7b7852d768048d",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_error_budget_source.csv",
+      "bytes": 8750,
+      "sha256": "c7baf024fc7cc307ff30b3d752830d4d7031606c3a7b354a0cb443b78bbbe560",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec.pdf",
+      "bytes": 15192,
+      "sha256": "38ea836a25e11d0047fc411c11c194fd84e616bd498937962de7c255420e04ff",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec.png",
+      "bytes": 63910,
+      "sha256": "2d72f1d41ce056ad8b50e0cd5564f2ecc38a6e16bece9c7aff0c35d704eca519",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec.svg",
+      "bytes": 25046,
+      "sha256": "14189825c44099536c670b189ad18cd67c54b30f2fead7e1e357b10dad20905b",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec_source.csv",
+      "bytes": 2774,
+      "sha256": "75893b64f4306198dfbc3f31607e0c716763380eead103e353bc7863f9be1098",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec_table.pdf",
+      "bytes": 18773,
+      "sha256": "d7917edb5656fc730058ee355572d7d0ab6530a18d29d2dc0a00ab258b3e931f",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec_table.png",
+      "bytes": 95252,
+      "sha256": "2728b11e8098a492141148c2ee34cfc12849b4c68d2fbc12c0c442fd5a25a31a",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec_table.svg",
+      "bytes": 9019,
+      "sha256": "d6c2a6b76f68e5af11e45ebe513383a4923f389af74b07f0e59e651518a77f0d",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/training_seed_rauec_table_source.csv",
+      "bytes": 2774,
+      "sha256": "75893b64f4306198dfbc3f31607e0c716763380eead103e353bc7863f9be1098",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/aggregate_three_seeds.py",
+      "bytes": 19734,
+      "sha256": "173fc084683b644e839153f5e266e5326671e4a9a018bb8608dead6436bc768c",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/benchmark_adapter.py",
+      "bytes": 10422,
+      "sha256": "92dded9850bc9bad20a90cb589773f56a4e045c00a92243903132d5d7dff5ae4",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/gpu_monitor.py",
+      "bytes": 4011,
+      "sha256": "101ed9bb9363231e38db28507f50b0df811f62a04bbd1f9d437ff4a1fc386d04",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/independent_accept.py",
+      "bytes": 26864,
+      "sha256": "09613dbc198cf207976186260ce83b1c6a35dc623c19b8d78e84214943195a0f",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/plot_final.py",
+      "bytes": 12471,
+      "sha256": "53405c1f55be596136aa7f3615962cacb0cee4c5352d479f8a71d2bab48e6db2",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/p0_airfoil_final_20261115/validate_results.py",
+      "bytes": 11910,
+      "sha256": "84c5855628c39fe50569bd7333ab99857644a133d10adcb54d994b46ef09d084",
+      "origin": "hash-checked aggregator allowlist",
+      "public": true,
+      "status": "PARTIAL",
+      "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    }
+  ],
+  "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
+  "code_commit_scope": "real commit containing the source scripts; not the historical paper baseline",
+  "self_hash": "excluded to avoid self-reference"
+}

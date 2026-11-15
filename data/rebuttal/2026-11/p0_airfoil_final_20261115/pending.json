@@ -1,0 +1,321 @@
+{
+  "status": "PARTIAL",
+  "mode": "snapshot",
+  "complete_primary_result_matrix": false,
+  "counts": {
+    "models": 2,
+    "heads": 2,
+    "training_seeds": 1,
+    "accuracy_requests": 10120,
+    "physical_conditions": 1314,
+    "formal_repeats": 131400,
+    "warmups": 26280,
+    "memory_conditions": 1314,
+    "parity_pairs": 9900,
+    "full_reference_requests": 220
+  },
+  "expected_counts": {
+    "models": 6,
+    "heads": 6,
+    "training_seeds": 3,
+    "accuracy_requests": 30360,
+    "physical_conditions": 4914,
+    "formal_repeats": 491400,
+    "warmups": 98280,
+    "memory_conditions": 4914,
+    "parity_pairs": 29700,
+    "full_reference_requests": 660
+  },
+  "seed_components": {
+    "0": {
+      "status": "PARTIAL",
+      "existing_verified_conditions": 1314,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 1314,
+      "physical_gpus": [
+        2
+      ],
+      "accuracy_requests": 10120
+    },
+    "1": {
+      "status": "NOT_FOUND",
+      "existing_verified_conditions": 0,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 0,
+      "physical_gpus": [],
+      "accuracy_requests": 0
+    },
+    "2": {
+      "status": "NOT_FOUND",
+      "existing_verified_conditions": 0,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 0,
+      "physical_gpus": [],
+      "accuracy_requests": 0
+    }
+  },
+  "missing": [
+    "training_seed0: 1314/1638 latency+memory conditions",
+    "training_seed1: no accepted data-file index",
+    "training_seed2: no accepted data-file index"
+  ],
+  "training_progress": {
+    "backbones_completed": 3,
+    "heads_completed": 3,
+    "expected_backbones": 6,
+    "expected_heads": 6,
+    "scope": "hash-checked training completion only; statistical acceptance is separate",
+    "models": [
+      {
+        "training_seed": 0,
+        "architecture": "t3",
+        "backbone_completed": true,
+        "head_completed": true,
+        "checkpoint_sha256": "02ebac3c09ca65122fe9617e348f0c34bfd20a7251ccbe657a67e86cdf58ac5c",
+        "epochs_completed": 1000,
+        "head_sha256": "9f8bb05c3b907dc9687b0747572e410b1f4ae7567ca6fcf384a214405ea115ce"
+      },
+      {
+        "training_seed": 0,
+        "architecture": "linearno",
+        "backbone_completed": true,
+        "head_completed": true,
+        "checkpoint_sha256": "3cbaf227e2f3d0a3526c1e2923c475b42a70a1acf50920c4354f251d6b659d15",
+        "epochs_completed": 1000,
+        "head_sha256": "0ab46dda8e805161ae672d9a714ce23a3f148c96192c25af24720eb00d6308f0"
+      },
+      {
+        "training_seed": 1,
+        "architecture": "t3",
+        "backbone_completed": true,
+        "head_completed": true,
+        "checkpoint_sha256": "a222ad21d992ea53f8353318c79005e4608512a518722d8028cbea4d64153a01",
+        "epochs_completed": 1000,
+        "head_sha256": "d235d602b787779d092dddf49931a2d74387e021a1586b7a95ec8e5ef518fab0"
+      },
+      {
+        "training_seed": 1,
+        "architecture": "linearno",
+        "backbone_completed": false,
+        "head_completed": false
+      },
+      {
+        "training_seed": 2,
+        "architecture": "t3",
+        "backbone_completed": false,
+        "head_completed": false
+      },
+      {
+        "training_seed": 2,
+        "architecture": "linearno",
+        "backbone_completed": false,
+        "head_completed": false
+      }
+    ]
+  },
+  "observed_execution_progress": {
+    "available": true,
+    "source": "execution_progress.json",
+    "observed_fields": [
+      {
+        "field": "controller_execution_status",
+        "value": "RUNNING"
+      },
+      {
+        "field": "models[0].training_seed",
+        "value": 0
+      },
+      {
+        "field": "models[0].backbone",
+        "value": "t3"
+      },
+      {
+        "field": "models[0].backbone_execution_status",
+        "value": "completed"
+      },
+      {
+        "field": "models[0].epochs_completed",
+        "value": 1000
+      },
+      {
+        "field": "models[0].updates_completed",
+        "value": 113000
+      },
+      {
+        "field": "models[0].epochs_requested",
+        "value": 1000
+      },
+      {
+        "field": "models[0].recorded_physical_gpu",
+        "value": "2"
+      },
+      {
+        "field": "models[0].head_execution_status",
+        "value": "completed"
+      },
+      {
+        "field": "models[0].head_epochs_completed",
+        "value": 200
+      },
+      {
+        "field": "models[0].accepted_accuracy_requests",
+        "value": 5060
+      },
+      {
+        "field": "models[0].accepted_accuracy_metric_rows",
+        "value": 40480
+      },
+      {
+        "field": "models[0].backbone_manifest",
+        "value": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/t3/manifest.json"
+      },
+      {
+        "field": "models[0].accuracy_receipt",
+        "value": "linearno_followup_20261114/standard_benchmarks/airfoil/results/t3_accuracy_acceptance.json"
+      },
+      {
+        "field": "models[1].training_seed",
+        "value": 0
+      },
+      {
+        "field": "models[1].backbone",
+        "value": "linearno"
+      },
+      {
+        "field": "models[1].backbone_execution_status",
+        "value": "completed"
+      },
+      {
+        "field": "models[1].epochs_completed",
+        "value": 1000
+      },
+      {
+        "field": "models[1].updates_completed",
+        "value": 113000
+      },
+      {
+        "field": "models[1].epochs_requested",
+        "value": 1000
+      },
+      {
+        "field": "models[1].recorded_physical_gpu",
+        "value": "3"
+      },
+      {
+        "field": "models[1].head_execution_status",
+        "value": "completed"
+      },
+      {
+        "field": "models[1].head_epochs_completed",
+        "value": 200
+      },
+      {
+        "field": "models[1].accepted_accuracy_requests",
+        "value": 5060
+      },
+      {
+        "field": "models[1].accepted_accuracy_metric_rows",
+        "value": 40480
+      },
+      {
+        "field": "models[1].backbone_manifest",
+        "value": "linearno_followup_20261114/standard_benchmarks/airfoil/checkpoints/linearno/manifest.json"
+      },
+      {
+        "field": "models[1].accuracy_receipt",
+        "value": "linearno_followup_20261114/standard_benchmarks/airfoil/results/linearno_accuracy_acceptance.json"
+      },
+      {
+        "field": "models[2].training_seed",
+        "value": 1
+      },
+      {
+        "field": "models[2].backbone",
+        "value": "t3"
+      },
+      {
+        "field": "models[2].backbone_execution_status",
+        "value": "completed"
+      },
+      {
+        "field": "models[2].epochs_completed",
+        "value": 1000
+      },
+      {
+        "field": "models[2].updates_completed",
+        "value": 113000
+      },
+      {
+        "field": "models[2].epochs_requested",
+        "value": 1000
+      },
+      {
+        "field": "models[2].recorded_physical_gpu",
+        "value": 0
+      },
+      {
+        "field": "models[2].head_execution_status",
+        "value": "completed"
+      },
+      {
+        "field": "models[2].head_epochs_completed",
+        "value": 200
+      },
+      {
+        "field": "models[2].backbone_manifest",
+        "value": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/checkpoints/t3/manifest.json"
+      },
+      {
+        "field": "models[3].training_seed",
+        "value": 1
+      },
+      {
+        "field": "models[3].backbone",
+        "value": "linearno"
+      },
+      {
+        "field": "models[3].backbone_execution_status",
+        "value": "running"
+      },
+      {
+        "field": "models[3].epochs_completed",
+        "value": 385
+      },
+      {
+        "field": "models[3].updates_completed",
+        "value": 43505
+      },
+      {
+        "field": "models[3].epochs_requested",
+        "value": 1000
+      },
+      {
+        "field": "models[3].recorded_physical_gpu",
+        "value": 1
+      },
+      {
+        "field": "models[3].head_execution_status",
+        "value": "NOT_STARTED"
+      },
+      {
+        "field": "models[3].backbone_manifest",
+        "value": "linearno_followup_20261114/reuse_review/seed_extension/runs/airfoil/seed1/checkpoints/linearno/manifest.json"
+      },
+      {
+        "field": "models[4].training_seed",
+        "value": 2
+      },
+      {
+        "field": "models[4].backbone",
+        "value": "t3"
+      }
+    ],
+    "scope": "execution observations; paired measurements may precede memory and independent acceptance"
+  },
+  "seed0_legacy_formal_status": "VERIFIED_COMPLETE",
+  "seed0_beta0_conditions_verified": 0,
+  "seed0_beta0_conditions_required": 324
+}

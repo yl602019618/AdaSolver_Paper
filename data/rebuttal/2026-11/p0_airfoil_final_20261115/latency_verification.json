@@ -1,0 +1,60 @@
+{
+  "status": "PARTIAL",
+  "complete": false,
+  "counts": {
+    "models": 2,
+    "heads": 2,
+    "training_seeds": 1,
+    "accuracy_requests": 10120,
+    "physical_conditions": 1314,
+    "formal_repeats": 131400,
+    "warmups": 26280,
+    "memory_conditions": 1314,
+    "parity_pairs": 9900,
+    "full_reference_requests": 220
+  },
+  "expected_counts": {
+    "models": 6,
+    "heads": 6,
+    "training_seeds": 3,
+    "accuracy_requests": 30360,
+    "physical_conditions": 4914,
+    "formal_repeats": 491400,
+    "warmups": 98280,
+    "memory_conditions": 4914,
+    "parity_pairs": 29700,
+    "full_reference_requests": 660
+  },
+  "seed_components": {
+    "0": {
+      "status": "PARTIAL",
+      "existing_verified_conditions": 1314,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 1314,
+      "physical_gpus": [
+        2
+      ],
+      "accuracy_requests": 10120
+    },
+    "1": {
+      "status": "NOT_FOUND",
+      "existing_verified_conditions": 0,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 0,
+      "physical_gpus": [],
+      "accuracy_requests": 0
+    },
+    "2": {
+      "status": "NOT_FOUND",
+      "existing_verified_conditions": 0,
+      "beta0_conditions_verified": 0,
+      "expected_conditions": 1638,
+      "physical_conditions": 0,
+      "physical_gpus": [],
+      "accuracy_requests": 0
+    }
+  },
+  "latency_pooling": "never across training seed or physical GPU; compare checkpoint/GPU blocks explicitly"
+}
