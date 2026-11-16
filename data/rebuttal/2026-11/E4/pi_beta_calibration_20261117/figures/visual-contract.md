@@ -1,0 +1,3 @@
+# PI beta calibration visuals
+
+Quantitative figures distinguish validation-only beta selection, final-test comparison, and paired changes from the original exponent. Calibration uses100 cases, final testing200 cases; all results come from one frozen training model and three sampling seeds. All predeclared candidates, including beta>1, remain in the calibration curve. Unfavorable final means and uncertainty bars above1 remain visible. Primary shared beta and secondary per-resolution beta keep distinct colors, markers and labels. The plots never choose a test-best beta. Source CSVs are exported beside PDF, editable SVG and300dpiPNG. Selection/protocol byte preservation and input hashes are in render_manifest.json.

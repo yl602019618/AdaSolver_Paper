@@ -1,5 +1,9 @@
 # 已完成结果与测试内容索引
 
+<!-- darcy-pi-beta-calibration-20261117 -->
+**Darcy PI calibration is complete.** [Package](data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md): one frozen E4 checkpoint,100 disjoint calibration cases,200 historical test cases,32,700 calibration rows and22,200 test rows. Shared beta1 gives three means below1, with the85² regression and seed-level values retained. Original fixed-beta E4,900/100 matched Darcy and three-training-seed Darcy remain distinct scopes.
+<!-- /darcy-pi-beta-calibration-20261117 -->
+
 <!-- darcy-resolution-analysis-20261117 -->
 **Current E4 analysis, 2026-11-17.** [Darcy observation-resolution report](data/rebuttal/2026-11/E4/README.md) replaces the previous brief explanation. The same27,000 requests remain the evidence base. New derived rAUEC, fixed5419 coarse composition and region error-energy tables are independently checked; no new training, inference or formal timing is claimed. This is a single85²-trained checkpoint, distinct from both Darcy three-training-seed and900/100 matched cohorts.
 <!-- /darcy-resolution-analysis-20261117 -->

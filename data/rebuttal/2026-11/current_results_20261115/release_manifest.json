@@ -7,14 +7,15 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 6200,
-      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
+      "bytes": 6775,
+      "sha256": "1fd34d6d4352432e5483ee53e3d0d30c1bf52ac0d1862788eee2051ccfa7adf8",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved.",
-      "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d"
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
+      "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40"
     },
     {
       "path": "STANDARD_TRAINING_SEEDS.md",
@@ -27,14 +28,15 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 11751,
-      "sha256": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f",
+      "bytes": 12276,
+      "sha256": "d183b4e5655c9e1103893641dbe548dd7158eb67826fa76f7d53181e052e4b9c",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved.",
-      "previous_sha256_before_E4_20261117": "511dce64102caae3345698631a8d58db14f4680415bac409749d14eab9b9696c"
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "previous_sha256_before_E4_20261117": "511dce64102caae3345698631a8d58db14f4680415bac409749d14eab9b9696c",
+      "previous_sha256_before_PI_beta_calibration_20261117": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f"
     },
     {
       "path": "data/rebuttal/2026-11/E5_standard/README.md",
@@ -299,14 +301,15 @@
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/TESTED_CONTENTS.md",
-      "bytes": 9340,
-      "sha256": "99b32907d659dc41f660a19af298e065e0eacbaf585827109f12240b20e97564",
+      "bytes": 9698,
+      "sha256": "72be34612ed11a59684ae4e5d26d1836c65cac0029ed4ba812da6d9b645d6a5f",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
       "previous_sha256_before_E4_20261117": "f5ceb3ff2360f32c6244eecd27031fbea2b1e33e763f359b8b799b6734c263a7",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "99b32907d659dc41f660a19af298e065e0eacbaf585827109f12240b20e97564"
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/darcy/README.md",
@@ -1318,14 +1321,15 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
-      "bytes": 90258,
-      "sha256": "8457f060bb4ccf63249458918e5a16c56fcfdaa375877202eae2ca476377432d",
+      "bytes": 91127,
+      "sha256": "5e28b87520f3d484bcc8ee0bd6ab8ae69adb8b26991935a46aa16ae054dba25c",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
       "previous_sha256_before_E4_20261117": "412020b8ae1cee946ec58e2054feae2c84d9f66b2519b3f5eb483c88deedd9a6",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "8457f060bb4ccf63249458918e5a16c56fcfdaa375877202eae2ca476377432d"
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/reuse_audit.json",
@@ -3291,14 +3295,15 @@
     },
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
-      "bytes": 18884,
-      "sha256": "3df0ecdfab5e03f0a1e360740bda90714c2a38a81d997cec983984136de2af79",
+      "bytes": 19753,
+      "sha256": "41c4a007bba12180026a7431c3397d7e9ad9ef68129b93201d38bd91ad60b84c",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
       "previous_sha256_before_E4_20261117": "7628f6b3ddf7c643b071d2e3219b0251f0c3b9aee4c260d64d0315b59ab48760",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "3df0ecdfab5e03f0a1e360740bda90714c2a38a81d997cec983984136de2af79"
     },
     {
       "path": "reproducibility/rebuttal/2026-11/E5_standard/README.md",
@@ -3828,5 +3833,22 @@
     "original_numeric_csv_unchanged": true,
     "validation": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
     "current_analysis_manifest": "data/rebuttal/2026-11/E4/release_manifest.json"
+  },
+  "pi_beta_calibration_update": {
+    "updated_at_utc": "2026-11-16T22:16:52.408817+00:00",
+    "package": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117",
+    "report": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md",
+    "manifest": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
+    "experiment_type": "PI compensation-exponent calibration",
+    "calibration_rows": 32700,
+    "test_rows": 22200,
+    "shared_beta": 1.0,
+    "three_mean_rauecs_below_one": true,
+    "all_individual_sampling_seeds_below_one": false,
+    "calibration_case_count": 100,
+    "test_case_count": 200,
+    "new_backbone_training_runs": 0,
+    "original_frozen_beta0p5_data_retained": true,
+    "formal_latency": false
   }
 }

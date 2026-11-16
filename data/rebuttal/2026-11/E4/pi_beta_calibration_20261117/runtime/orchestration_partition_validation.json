@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "runtime_prediction_sampling_reconstruction_class_AST_unchanged": true,
+  "shards_disjoint": true,
+  "all200case_ids_covered": true,
+  "preserved_completed_cases": 250,
+  "selection_unchanged": true
+}

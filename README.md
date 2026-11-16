@@ -1,5 +1,11 @@
 # AdaSolver paper
 
+<!-- darcy-pi-beta-calibration-20261117 -->
+**Darcy PI β 校准结果，2026-11-17。** [完整数据、配置、图表与下载](data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md) · [当前E4入口](data/rebuttal/2026-11/E4/README.md)
+
+共享β=1在85²/141²/211²上的测试mean rAUEC为0.998995/0.971548/0.969888。共32,700条校准记录和22,200条测试记录完成独立核验。85²仍接近Uniform、略差于原β0.5且仅1/3sampling seeds低于1；旧固定β结果与新校准版本分开标注。
+<!-- /darcy-pi-beta-calibration-20261117 -->
+
 <!-- darcy-resolution-analysis-20261117 -->
 **Darcy 观测分辨率结果更新，2026-11-17。** [当前E4结果与完整分析](data/rebuttal/2026-11/E4/README.md) · [本次修改](data/rebuttal/2026-11/E4/UPDATE_20261117.md) · [分析图](figures/rebuttal/2026-11/E4/resolution_analysis.pdf)
 

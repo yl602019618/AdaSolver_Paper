@@ -1,0 +1,39 @@
+{
+  "validation_figures_complete": true,
+  "final_figures_complete": true,
+  "paired_difference_rows": 6,
+  "input_sha256": {
+    "results/validation_rauec.csv": "311322fdb43cbed0c8f53c85af5a26715fcb5cf36927bc51b217038a946b5bf1",
+    "selection.json": "fa8d4f43cfc8b2a617865abeb6aa13cb4e4e5b5c0413fe686731833c26a4db08",
+    "protocol.json": "965da495c0ce60f3de5044a4de38f82f0af2c3719f941e3896b05709cf9b8f96",
+    "results/test_rauec.csv": "bfbbfa35b65512a6f04abd96befed74d92b02b63f99eeeafb988d44b15d415e3",
+    "results/selected_beta_comparison.csv": "6d346495c157ad4117cb558b810f567c2d6c556ee8a697a5b7cebcb05eea01c8"
+  },
+  "plot_code_sha256": "684891e26ebb412fce9b4ce703954f2b0e8eadea138b29feb9bec62b8752b949",
+  "statistics_code_sha256_at_selection": "b8c758cfa1e9071127ba8f005534c71d1d8e19bca3913d93b76632adeb91f908",
+  "selection_unchanged": true,
+  "protocol_unchanged": true,
+  "training_models": 1,
+  "sampling_seeds": 3,
+  "unfavorable_values_preserved": true,
+  "test_best_beta_selected": false,
+  "render_qa": "passed; see render_qa.json",
+  "files": [
+    "figures/paired_beta_change.csv",
+    "figures/paired_beta_change.pdf",
+    "figures/paired_beta_change.png",
+    "figures/paired_beta_change.svg",
+    "figures/test_beta_comparison.csv",
+    "figures/test_beta_comparison.pdf",
+    "figures/test_beta_comparison.png",
+    "figures/test_beta_comparison.svg",
+    "figures/validation_beta_curves.csv",
+    "figures/validation_beta_curves.pdf",
+    "figures/validation_beta_curves.png",
+    "figures/validation_beta_curves.svg",
+    "figures/validation_shared_objective.csv",
+    "figures/validation_shared_objective.pdf",
+    "figures/validation_shared_objective.png",
+    "figures/validation_shared_objective.svg"
+  ]
+}

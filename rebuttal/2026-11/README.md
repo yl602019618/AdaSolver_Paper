@@ -8,7 +8,7 @@ This branch publishes derived experiment tables, compact per-case metrics, scien
 | [E1](../../data/rebuttal/2026-11/E1/README.md) | Complete-output latency: completed groups | completed groups; full task ongoing |
 | [E2](../../data/rebuttal/2026-11/E2/README.md) | Geometry sampling baselines | verified completed component |
 | [E3](../../data/rebuttal/2026-11/E3/README.md) | Matched Transolver3 and LinearNO | verified completed component |
-| [E4](../../data/rebuttal/2026-11/E4/README.md) | Darcy observation-resolution transfer; current derived analysis updated2026-11-17 | original requests and derived analysis verified |
+| [E4](../../data/rebuttal/2026-11/E4/README.md) | Darcy observation-resolution transfer and separately labelled PI beta calibration, updated2026-11-17 | original requests and derived analysis verified |
 | [E5](../../data/rebuttal/2026-11/E5/README.md) | Independent training seeds | verified completed component |
 | [E6](../../data/rebuttal/2026-11/E6/README.md) | Inverse design: completed components | Airfoil CFD and Wing surrogate complete; Wing CFD ongoing |
 | [E7](../../data/rebuttal/2026-11/E7/README.md) | Measure-correction diagnostics: verified subset | verified subset; historical selection audit ongoing |

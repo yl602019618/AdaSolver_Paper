@@ -1,0 +1,1 @@
+The predeclared shared-beta objective is the maximum of the three resolution-specific calibration mean rAUECs. This maximum of means has no sampling-SD bar attached; the underlying sampling SDs appear in validation_beta_curves. The selected marker is read from immutable selection.json. The plot performs no selection and uses no final-test values.

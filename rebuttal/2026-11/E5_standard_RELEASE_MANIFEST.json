@@ -421,13 +421,14 @@
     {
       "path": "README.md",
       "category": "release_index",
-      "size_bytes": 6200,
-      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
+      "size_bytes": 6775,
+      "sha256": "1fd34d6d4352432e5483ee53e3d0d30c1bf52ac0d1862788eee2051ccfa7adf8",
       "evidence_status": "verified",
       "publication_status": "approved",
       "annotation": "2026-11-17: root index includes original Airfoil Cd/Cl correction; E5 standard numeric results unchanged.",
       "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40"
     }
   ],
   "file_count": 53,
@@ -452,5 +453,22 @@
     "original_numeric_csv_unchanged": true,
     "validation": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
     "current_analysis_manifest": "data/rebuttal/2026-11/E4/release_manifest.json"
+  },
+  "pi_beta_calibration_update": {
+    "updated_at_utc": "2026-11-16T22:16:52.408817+00:00",
+    "package": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117",
+    "report": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md",
+    "manifest": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
+    "experiment_type": "PI compensation-exponent calibration",
+    "calibration_rows": 32700,
+    "test_rows": 22200,
+    "shared_beta": 1.0,
+    "three_mean_rauecs_below_one": true,
+    "all_individual_sampling_seeds_below_one": false,
+    "calibration_case_count": 100,
+    "test_case_count": 200,
+    "new_backbone_training_runs": 0,
+    "original_frozen_beta0p5_data_retained": true,
+    "formal_latency": false
   }
 }

@@ -1,5 +1,9 @@
 # 已完成结果与测试内容索引
 
+<!-- darcy-pi-beta-calibration-20261117 -->
+**Later supplement, 2026-11-17.** [Darcy PI beta calibration](../E4/pi_beta_calibration_20261117/README.md) is complete:32,700 calibration rows and22,200 test rows, one frozen checkpoint. This does not add independent training seeds to the historical inventory below.
+<!-- /darcy-pi-beta-calibration-20261117 -->
+
 本次按 **checkpoint SHA256 去重，登记 19 个已完成 backbone 和 16 个对应 CA head**。统计对象是本次跟进已核验的模型；测试分组之间存在结果与 checkpoint 复用，观测条目不合并当作独立样本。
 索引快照：`2026-11-15T13:15:31.511555+00:00`。模型明细见 [model_inventory.csv](model_inventory.csv)，机器可读测试矩阵见 [test_coverage.csv](test_coverage.csv)。
 
