@@ -1,9 +1,15 @@
 # AdaSolver paper
 
+<!-- original-cdcl-correction-20261117 -->
+**Original Airfoil Cd/Cl correction, 2026-11-17.** [Corrected results and protocol](data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md) · [Current numerical summary](RESULTS_DETAIL.md) · [English reviewer reply](reviews/airfoil-original-cdcl-training-seeds-response.md) · [Run and verification status](read.me)
+
+Transolver3 training seeds 0/1/2 are reevaluated with their matching CA heads, the original 110-case population and the original Cd/Cl-specific PI/CPG/CA policies. All **11,880 new case records** are complete. The separate original-checkpoint control reproduces **3,960/3,960** original case errors exactly. The earlier P0 Cd/Cl rows are retained **field-policy diagnostics**, superseded for comparison with original Table 1. The corrected package supplies every active three-training-seed Cd/Cl summary.
+<!-- /original-cdcl-correction-20261117 -->
+
 <!-- airfoil-p0-final-evidence -->
 ## Airfoil P0 final evidence
 
-[Latest accepted P0 results and actual pending counts](data/rebuttal/2026-11/p0_airfoil_final_20261115/README.md) · [Reuse gate](data/rebuttal/2026-11/p0_airfoil_final_20261115/reuse_audit_final.json)
+[P0 field-policy accuracy and timing; archived Cd/Cl diagnostics](data/rebuttal/2026-11/p0_airfoil_final_20261115/README.md) · [Reuse gate](data/rebuttal/2026-11/p0_airfoil_final_20261115/reuse_audit_final.json)
 
 This controlled workflow adds Airfoil training seeds 1/2 and the CPG beta0 complete-output timing extension. Its linked result page distinguishes accepted data, observed running progress and remaining requirements; it updates after validation.
 <!-- /airfoil-p0-final-evidence -->

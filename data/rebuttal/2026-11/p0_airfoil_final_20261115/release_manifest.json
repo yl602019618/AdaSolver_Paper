@@ -20,43 +20,47 @@
   "files": [
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/CLAIM_CARD.md",
-      "bytes": 811,
-      "sha256": "dbb781f31a5d5a1d5f576d2249a06548940a9839ce2c58f3d18d0f606355e3d9",
+      "bytes": 1528,
+      "sha256": "ec61592e3a8a96a100966046bffd6dea4372e3498824bc01716b4796a39cfa5e",
       "origin": "publisher-generated dynamic scope summary",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/README.md",
-      "bytes": 6769,
-      "sha256": "69c9730b77f2838c9ea462b96c14180f3f721a97f60d3263ac470679cf32f570",
+      "bytes": 7486,
+      "sha256": "466caf9de6e904c1032f95520e3cf20b81e386491cb2bd97bb670b0cfb66eabd",
       "origin": "publisher-generated dynamic scope summary",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/REPORT.md",
-      "bytes": 9745,
-      "sha256": "e9f1b463d97ebf21232ee432f235bb5e3acdadee5c02bbdcf884a5cee4d19742",
+      "bytes": 10462,
+      "sha256": "06d1a84b6f78f9e4ad7fc6d6c7d6c1ac412cc804e9ca9004b873ae36b52852f8",
       "origin": "publisher-generated dynamic scope summary",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/RESULTS_DETAIL.md",
-      "bytes": 2974,
-      "sha256": "3b031872afadd2fa5ad8671af6ab497e1db2cf4a5e94038b024e68daab4d24b3",
+      "bytes": 3691,
+      "sha256": "89fbfd81dcb944d81444d21b036aee026225155e7f5be377c6a91fc280a64552",
       "origin": "hash-checked aggregator allowlist",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/accuracy_records.csv.gz",
@@ -210,23 +214,25 @@
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/protocol.md",
-      "bytes": 4574,
-      "sha256": "8621eace39f018d8aaddbea110a769657bc4147e9a6929ebacb5471e1f5921a6",
+      "bytes": 5291,
+      "sha256": "baf83ae6e4639629f6e38fceccfd78d8f3b7f9943515d2fc79609fdc05f398fa",
       "origin": "hash-checked aggregator allowlist",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/read.me",
-      "bytes": 252,
-      "sha256": "bf4202602f472adac81d03fae54b200e9c62fff3154e030b25b32bffd1fda138",
+      "bytes": 969,
+      "sha256": "6476db81146da8dbb9b1d55961cab78984c014732e0c4d615262724e9062eeaa",
       "origin": "publisher-generated dynamic scope summary",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/reconstruction_parity.csv.gz",
@@ -330,13 +336,14 @@
     },
     {
       "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/captions.md",
-      "bytes": 1996,
-      "sha256": "5f79109c31f7fadc761b509ad5eacf66b62a943f41f32e27f314dae45c941e22",
+      "bytes": 2346,
+      "sha256": "68e7c3ede3010d186f839675d1f03d5a86c5c3f11390e46c05034c5a2b74ebc9",
       "origin": "hash-checked aggregator allowlist",
       "public": true,
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
-      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+      "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward",
+      "annotation": "Cd/Cl scope annotation added on 2026-11-17; historical numerical values are unchanged."
     },
     {
       "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/checkpoint_cache_reuse.pdf",
@@ -647,9 +654,25 @@
       "status": "VERIFIED_COMPLETE",
       "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
       "code_commit_scope": "commit containing the published analysis/reproducibility scripts; generated data are committed afterward"
+    },
+    {
+      "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/provenance/release_manifest_before_cdcl_correction_20261117.json",
+      "bytes": 33658,
+      "sha256": "5bd85840b5494c61630dae65d98144833999af07193c22ee37630eff0940e2c6",
+      "origin": "exact pre-correction release manifest; paths and hashes describe historical commit 507bca1",
+      "public": true,
+      "status": "historical_provenance"
     }
   ],
   "code_commit": "d6847602ea8fed642b49c399b53ceaa38a9af936",
   "code_commit_scope": "real commit containing the source scripts; not the historical paper baseline",
-  "self_hash": "excluded to avoid self-reference"
+  "self_hash": "excluded to avoid self-reference",
+  "cdcl_result_scope": {
+    "role": "field_policy_diagnostic",
+    "comparable_to_original_table1_cdcl": false,
+    "superseded_for_original_cdcl_by": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117",
+    "raw_numeric_files_preserved": true,
+    "historical_release_commit": "507bca1ca42c15fa156583b697adfb58047b650f",
+    "historical_manifest": "data/rebuttal/2026-11/p0_airfoil_final_20261115/provenance/release_manifest_before_cdcl_correction_20261117.json"
+  }
 }

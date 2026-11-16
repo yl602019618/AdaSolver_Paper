@@ -1,0 +1,1269 @@
+{
+  "snapshot_id": "20261112-verified-batch1",
+  "created_at_utc": "2026-11-12T04:03:02.437232+00:00",
+  "publication_scope": "verified derived data and scientific figures",
+  "branch": "rebuttal/20261112-package",
+  "files": [
+    {
+      "target_path": "data/rebuttal/2026-11/E0/same_checkpoint_reference.csv",
+      "category": "verified_summary",
+      "size_bytes": 164462,
+      "sha256": "3c9e86e8ba9e348b532f9b16955d90ba4119ab5958816a14cf2d87780bcb351a",
+      "source_sha256": "4d94bc91f4f6c8b6d4f81242ca3ceb8dacb2b10bc47b26ddab16f8d85ba377f2",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/checkpoint_map.csv",
+      "category": "verified_summary",
+      "size_bytes": 1976,
+      "sha256": "da5cb53a3507466b9005df04d45f3e9338f2437834947b2cba4b0d07c441b1cd",
+      "source_sha256": "9d4d4caa961be3aadc1b3616d6f73523a8d42151ab41d412d007832f6adc5b4d",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/model_asset_registry.csv",
+      "category": "verified_summary",
+      "size_bytes": 7319,
+      "sha256": "4bc7f2f9e4392d73de2bead8b24c215ad08d8c055d37f0f735c25c5523f46fc6",
+      "source_sha256": "d9dc91c51b51432db31efd6e600cc96dd7ba7c2dc6f7a730107ecceb3014b901",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/cpg_ca_low_budget_comparison.csv",
+      "category": "verified_summary",
+      "size_bytes": 53776,
+      "sha256": "dc8bd2fe114727f62b5b16499d7e4118e6282228833f509da2adac9b6fe5f176",
+      "source_sha256": "e2adde66ef8af903b42444639c5cf91e7bbea71422018c844f7a0a26b5a5a8bb",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/latency_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 23315,
+      "sha256": "8325524b01ef82b7d44a1f71924627934823f4679e2d7050e658ef82ef45ed13",
+      "source_sha256": "513cc71f0a09e3ecf8150d29c31f56d299cc4ac541f1bcfae0ecdc652abf233e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/E6_low_budget_metric_alignment.csv",
+      "category": "verified_summary",
+      "size_bytes": 27269,
+      "sha256": "de286a74072fc724d63badcc511ef150a939aaeb737f24087cbe2cc23fedef3c",
+      "source_sha256": "7694924ad993c4b3c653259027613692198301e5463712e57509b324b0b13f20",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/latency_repeats.csv",
+      "category": "verified_summary",
+      "size_bytes": 18603035,
+      "sha256": "913e782a3c28e552d85dfbbc6f3b8cf467aabfa3d53ca3d08fd6af45237f22bd",
+      "source_sha256": "0b51bc62a6b999ded894373e99cbc4b9b1f46c44ec4dcb899620e724017f0046",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/stages.csv",
+      "category": "verified_summary",
+      "size_bytes": 3592211,
+      "sha256": "8864e93f48ee14e9047c4448e529356d76113767ee19429bc3f242812f407cbd",
+      "source_sha256": "b4877e7322055f64a5885e52f15eb5609a39fbccdb66a81051f52ac5d06d064e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/accuracy.csv",
+      "category": "verified_summary",
+      "size_bytes": 339844,
+      "sha256": "6065604fb6d1d01d770d6a3867959ee2972f950093597ef7a213569a306c1246",
+      "source_sha256": "26395219441e4711fbf679a4be31003bcd20c8910903969d616607f7358a9916",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/baseline_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 17429,
+      "sha256": "132fd0721be7157eefa514a844656d164073a362792f27959bdf18bc3f31f0e3",
+      "source_sha256": "024033f28ef6547d910b7668a92a00b799e2b8862c49781e003bbb604ee91c38",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/rauec.csv",
+      "category": "verified_summary",
+      "size_bytes": 2658,
+      "sha256": "3f3e6e363d665e0d3d355e6aa73405cd251f869304d411dddbf27ec308a8c503",
+      "source_sha256": "ccecc9ff5c73f0753af9d05d1c162bb6a9fe12d0692bf2a8b6cc51e1b7aea134",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/metrics_records.csv",
+      "category": "verified_summary",
+      "size_bytes": 7611479,
+      "sha256": "32adcf91cfcfb8797fc72c8cb76b56900bd1ee348a66712d005e7a88a9d2a2c0",
+      "source_sha256": "202cd7758af684bf037f404f5e87965f1522e45848403588baf6685d62f678eb",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 11666,
+      "sha256": "bc9d2786896978a8ea952af26ff65c2dfb93e5c4ed5074f7fd2840bda235730b",
+      "source_sha256": "db6d65a4057da8fae8ea0b0aea53952ade8e9fce571d8d8ee3b980ce1ae118a8",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_rauec.csv",
+      "category": "verified_summary",
+      "size_bytes": 1322,
+      "sha256": "fef5ed17b2efb8e3da5d5d372cd31eac1040b1f8b0dc8771d22be1743f515baa",
+      "source_sha256": "f827d18829a49822b49aab7327d64de43efafaed1bcc19c77d190c4d7f8c6c66",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_accuracy_latency.csv",
+      "category": "verified_summary",
+      "size_bytes": 11666,
+      "sha256": "bc9d2786896978a8ea952af26ff65c2dfb93e5c4ed5074f7fd2840bda235730b",
+      "source_sha256": "db6d65a4057da8fae8ea0b0aea53952ade8e9fce571d8d8ee3b980ce1ae118a8",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_latency_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 11041,
+      "sha256": "feab265b9009cfc02a0f595eb7c9a22e5219781656b5fba8671a5ec24e73f1fb",
+      "source_sha256": "9ee86e372fe2fe108ea9c4ac9c4da47c9eb8648bf26edc90429a60da38341616",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/backbone_training_cost.csv",
+      "category": "verified_summary",
+      "size_bytes": 620,
+      "sha256": "056ed9e98b4890c0687d70245ef37819d1f71af5cad4d3c045eaafef4fed3a61",
+      "source_sha256": "4423707595d1695506fd179b915290988c6ec1155485444f179557f195557cea",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/checkpoint_registry.csv",
+      "category": "verified_summary",
+      "size_bytes": 1319,
+      "sha256": "0e6b1d70c4db97be6e190dc7ca72e7458caf513277923d78f07aeb63a3f72b6e",
+      "source_sha256": "9d2b9e828d77c86317959c7f01405caeee6b3493692bac406c18e73bb7b8e1aa",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/isolated_memory.csv",
+      "category": "verified_summary",
+      "size_bytes": 40667,
+      "sha256": "953805b9ff05da7739720e9df3f8328f253622717f81bf807befe7a5c6c7efc6",
+      "source_sha256": "1c52e4d9e69602b0ebad5182fd8c2db86c68d72b9d95c810c41b1ead41a42648",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/metrics_records.csv",
+      "category": "verified_summary",
+      "size_bytes": 4148770,
+      "sha256": "ea1fa7dfb17b4ddf07713500c73af803c94a698ee7b4f8e24c277f6f01725b4d",
+      "source_sha256": "f5e5c86b549dd8a08699772b79f646ad0329c066f26e4ad9d9eb5a53b8c12752",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/controlled_latency_repeats.csv",
+      "category": "verified_summary",
+      "size_bytes": 6891232,
+      "sha256": "5355cc224a54714993ffe290ceb338e574dacbd068bfcb44f06bd13477770842",
+      "source_sha256": "c29ab1887b6ac256c7d98b5e0495ee00e9e839c50e6903d6a32be61792771b32",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/resolution_budget.csv",
+      "category": "verified_summary",
+      "size_bytes": 9239,
+      "sha256": "ff7e643544b99ab8b6cb80b5ec90cca82b5edcb4667343a721bad36ae04cff93",
+      "source_sha256": "d53ebada524d00ef5ec4022706dd457ebf95d5611897a5d87f4f7ce102e28700",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/fixed_points.csv",
+      "category": "verified_summary",
+      "size_bytes": 3028,
+      "sha256": "02e9111777c81cb4dd2ef36b58cd5f0fd305aadd93c94cc9ca8d8e5befd44fbd",
+      "source_sha256": "1b26784051cbb6a7a00729ea2c3386c293bf68a2c7dd953c0b23296c6ce94f57",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/region_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 13392,
+      "sha256": "5a741a8cacdc30abc6e52723c49efa0a789b10dabc6fc88ce04b2702131c881f",
+      "source_sha256": "f1f9f5e2f90796bcc00c7b4de45ec2ff2493a68c88b326e9566b101fa3f9a60b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/metrics_records.csv",
+      "category": "verified_summary",
+      "size_bytes": 15399189,
+      "sha256": "ec5fba7eae89d86a157c8594887063480ecf20c9dddd407da5d4ab4924dd725d",
+      "source_sha256": "8afb1aae32579aa9c600ebe2ce42c472b708300d0581a0418926219789eddb22",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/training_seed_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 3443,
+      "sha256": "3edfca75620c72a708c1501556151898c5f6f4d8f54e5787810a32fd099947f8",
+      "source_sha256": "e92656797aa2d7bbc00c5ef8fc0750fa96052debdda29976234e6f1039ee5d6b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/training_seed_rauec.csv",
+      "category": "verified_summary",
+      "size_bytes": 1545,
+      "sha256": "eda5c98579b7bec2883d5abf0fad4fa6bea1465d806671be26bc45db981cde4c",
+      "source_sha256": "373f4aba1c1661aa010482199b919d2216f3494cbcbf2b6c1b4a5783eca3ee13",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/sampling_variability.csv",
+      "category": "verified_summary",
+      "size_bytes": 5121,
+      "sha256": "359434340aa5416a6880202880ef47994403060a648ccde7a259e438120ad6d7",
+      "source_sha256": "1e409b5361e5e9b4358fc791e6770e92a3e8e9b77c55ac834871328b593e7c63",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/paired_training_differences.csv",
+      "category": "verified_summary",
+      "size_bytes": 2973,
+      "sha256": "501bee86e9c1bc285690344759fc8fdf5d2b803779e5c01d199ef33864ea63b3",
+      "source_sha256": "e63b6e3cf2633fb0215a0a9603e9c7f0f976699dc77a679e89d3dcc86249b27b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/checkpoint_registry.csv",
+      "category": "verified_summary",
+      "size_bytes": 2923,
+      "sha256": "fecc98053aa25e3af31cb04bad13b9949185e45e70534b86acc47736dbe05046",
+      "source_sha256": "16a8af1a9b4d3021f4a9744f9175c57e73d93558e38daed4bec881422c40b2ff",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/metrics_records.csv",
+      "category": "verified_summary",
+      "size_bytes": 8308939,
+      "sha256": "75aec8b0dd7ab3ba8a76b74800438db64b9db695a4859819352337748cf17d53",
+      "source_sha256": "515f0cad69e1cf2200a2c3a4cd9bac5b32ea5de61d12cceaca2fb208b083fd53",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/paired_case_differences.csv",
+      "category": "verified_summary",
+      "size_bytes": 2170289,
+      "sha256": "b1b935bdeb72fcb321ab614d34a73a08606e9fc27f566064e7ecb00fcff58c05",
+      "source_sha256": "decc792e9c23437a528ec2d1e9621e71af58f964ce8bf87e4b2af4accab1dddf",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/static_18p75_table.csv",
+      "category": "verified_summary",
+      "size_bytes": 3799,
+      "sha256": "8427447f9956b47d9188bb48bd5b0108f9b0f929ad006467b1529c04b1186e89",
+      "source_sha256": "5d16233442cc82d54777e4206eeb653650f87217e960b8113e35d29d035ab60b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/static_18p75.csv",
+      "category": "verified_summary",
+      "size_bytes": 2398,
+      "sha256": "15308049959bd4c5e36146afa099fe17466edf83f664e59c5679df87f97b6208",
+      "source_sha256": "203522b1dddb66d8a08805a2684edacfba42e77d7fc22c64494c9f4bbc01a2ce",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_surrogate_design_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 20401,
+      "sha256": "7a335caf13e4a5f2e3df5dc87e0783dbf63dc96b13842c96d945ac81e6d84bce",
+      "source_sha256": "c387278ce1c4e2c3ae5a0a699d9f422e5c1905e3eca7fbc835e9f1eaf04a2c2a",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_surrogate_equal_calls.csv",
+      "category": "verified_summary",
+      "size_bytes": 8274,
+      "sha256": "8b4a643a3544173cf34f26309ca1c25fdd9f914da4e67f0bb85a60042ec606b0",
+      "source_sha256": "0bd514c9cc7709974946b9c435698ce923cd1e6c75d5e905c228756f5603c627",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_method_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 31002,
+      "sha256": "caf20b3677c76edacfa7a2318e1c9fab3bb77bf19ac25256b2616f3c8f15fdf2",
+      "source_sha256": "72eec298339dc132245fc61179dec0ccd0b3d3b3303526026d9b320ae43965b7",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/wing_curve_data.csv",
+      "category": "verified_summary",
+      "size_bytes": 770813,
+      "sha256": "5bf357b337f8be7a507c77047db08617d70ef3697a24ab6a3d9e3414eba1f8d7",
+      "source_sha256": "f14b9d8f1704388326b488d525b8673894382ac3f4eac8afdbdba8b2c5b1195d",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_curve_data.csv",
+      "category": "verified_summary",
+      "size_bytes": 190183,
+      "sha256": "6289f5ade1943192cd0ae3c9ca62cc281874918628ed74e5a36670d796ade4f3",
+      "source_sha256": "f81742210d0cd70797a8189e8f4e9a88c7c4891d844e8199ea5503c724cf6b8c",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_cfd_plot_data.csv",
+      "category": "verified_summary",
+      "size_bytes": 4635,
+      "sha256": "4326ddb4541f6f13e5ce7eaf02c58be022caf4ec3af4a9c3b829246d05fd09ac",
+      "source_sha256": "b402c05c58b299aeb3c97d7c4efb5c834aa71e1eca6f49f0815b0022b805e33e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/beta_default_comparison.csv",
+      "category": "verified_summary",
+      "size_bytes": 8037,
+      "sha256": "a19d66873866a69a1c6d62651646eaa5567f969f98f626078aa7579add41a29e",
+      "source_sha256": "f9bb1914680b025aa49b50073ae3ad53a0c5836e20d347079b7c2df530612c2e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/token_synthetic.csv",
+      "category": "verified_summary",
+      "size_bytes": 14301,
+      "sha256": "e8a7ae8d85e06a75d3ec45a72a88bde8881c2ad9045893a872a56a77ef94c485",
+      "source_sha256": "540ae79a9a156a71e45fc06aa1b504b3ae2145d582b0af26638fccafe7c5cedf",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_design_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 7120,
+      "sha256": "a34ffeda0e06f6a3c11e4ff0940df7a399a150b0b8dbbce35b92bebc31843406",
+      "source_sha256": "d0138baac39389ebd17ebe80e620564f9031bfb4fc155578d9bfb46f2a33fc62",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_design_equal_calls.csv",
+      "category": "verified_summary",
+      "size_bytes": 5516,
+      "sha256": "f2d279f6614785951cb89dce23b420b78ba0916ab187a5339bd8af6a55c320b9",
+      "source_sha256": "7322619a7c20ec419b0d9e708992c0063c0b3b9e6bc9bf82b2413ae901fb4add",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_design_equal_wall.csv",
+      "category": "verified_summary",
+      "size_bytes": 6079,
+      "sha256": "4b9a33b9a28568a2c5b0cacb3e6e4fdf26bd11fb9c209b31670ec5c78100efc1",
+      "source_sha256": "d902c6c1d387b075291ca0ea4e3b9f8631a6a9c8288e65ae39c08a7ee1742880",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_method_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 6572,
+      "sha256": "e1bcf52b93e7f64efde5be0a66516038a7c2b8d795e38b1f390ca3a24ca3fb58",
+      "source_sha256": "cf1f025b6dd44ac99ccf60d17bd573dedbd319038bb3b26b18f3351f81c91c09",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/airfoil_cfd_endpoints.csv",
+      "category": "verified_summary",
+      "size_bytes": 13993,
+      "sha256": "7e810f2c2f53fb9ca361a84a94818e9912b49afe96de101ab712b4364c4eaeac",
+      "source_sha256": "6b3eb19348a315aebf9d5e90c7915d00f9d48144fc7e6ab495b9f85107ee6f86",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/overview_figure_scope.json",
+      "category": "verified_summary",
+      "size_bytes": 484,
+      "sha256": "6f66e74f20606ef03571e628b84feb66d8fa060b7623214c3786375b1ddca5c1",
+      "source_sha256": "6f66e74f20606ef03571e628b84feb66d8fa060b7623214c3786375b1ddca5c1",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/example_array_source_manifest.json",
+      "category": "verified_summary",
+      "size_bytes": 10725,
+      "sha256": "ae9f2a106b26eb783c921c6f1580e6759cb39d0c76982473b913e7a7a7ee6596",
+      "source_sha256": "ae9f2a106b26eb783c921c6f1580e6759cb39d0c76982473b913e7a7a7ee6596",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/synthetic_protocol.json",
+      "category": "verified_summary",
+      "size_bytes": 955,
+      "sha256": "3a50c327ea830d4900b6a70e7184efc51e39133a27f56bd84338699f8c8609dd",
+      "source_sha256": "3a50c327ea830d4900b6a70e7184efc51e39133a27f56bd84338699f8c8609dd",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/synthetic_reference.npz",
+      "category": "verified_summary",
+      "size_bytes": 257992,
+      "sha256": "c34ae095c07ed753b946711481289f1f6af35adb92aba1224b4455d9ab39ee6f",
+      "source_sha256": "c34ae095c07ed753b946711481289f1f6af35adb92aba1224b4455d9ab39ee6f",
+      "evidence_scope": "generated fixed reference functions and exact tokens, not physical dataset fields",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/accuracy_latency.pdf",
+      "category": "verified_figure",
+      "size_bytes": 27515,
+      "sha256": "8f36483467c81f779837b46239bb56c4a555c84fd552f7cf227cab826c0be679",
+      "source_sha256": "8f36483467c81f779837b46239bb56c4a555c84fd552f7cf227cab826c0be679",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/accuracy_latency.png",
+      "category": "verified_figure",
+      "size_bytes": 188316,
+      "sha256": "3521986ae8d09b42f5f254d5f48e54a01ebe4177641ba38da4761b9ee9cc0087",
+      "source_sha256": "3521986ae8d09b42f5f254d5f48e54a01ebe4177641ba38da4761b9ee9cc0087",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/accuracy_latency.svg",
+      "category": "verified_figure",
+      "size_bytes": 115631,
+      "sha256": "a17fdb34d95112838da28f127f5f0a0682dc7a0f9b27f07f6a87e4ff00c95d73",
+      "source_sha256": "a17fdb34d95112838da28f127f5f0a0682dc7a0f9b27f07f6a87e4ff00c95d73",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/elasticity_accuracy_latency.pdf",
+      "category": "verified_figure",
+      "size_bytes": 20471,
+      "sha256": "8d5b85d5809129b005571ff7c202a051b7aaa730719a39d8157a172438a2d935",
+      "source_sha256": "8d5b85d5809129b005571ff7c202a051b7aaa730719a39d8157a172438a2d935",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/elasticity_accuracy_latency.png",
+      "category": "verified_figure",
+      "size_bytes": 110136,
+      "sha256": "1f3963fa499b9cafb654c40be634e870ff173140e921057a14c437e05e6b7fd2",
+      "source_sha256": "1f3963fa499b9cafb654c40be634e870ff173140e921057a14c437e05e6b7fd2",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/elasticity_accuracy_latency.svg",
+      "category": "verified_figure",
+      "size_bytes": 62404,
+      "sha256": "dcb78f9e54b7d44ddad11145d4bc9f9b4930dcea4597147a7fc927036d9f1179",
+      "source_sha256": "dcb78f9e54b7d44ddad11145d4bc9f9b4930dcea4597147a7fc927036d9f1179",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/elasticity_stage_profiles.pdf",
+      "category": "verified_figure",
+      "size_bytes": 15346,
+      "sha256": "582a0715923858dd4fc47ad36dd40f655722dc78b35edb038706859c211ec607",
+      "source_sha256": "582a0715923858dd4fc47ad36dd40f655722dc78b35edb038706859c211ec607",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/elasticity_stage_profiles.png",
+      "category": "verified_figure",
+      "size_bytes": 79957,
+      "sha256": "8f1a41c86f2ce103cb06e11e8659adb7484bb3eee355e8ded58bbf1ed8ff5f77",
+      "source_sha256": "8f1a41c86f2ce103cb06e11e8659adb7484bb3eee355e8ded58bbf1ed8ff5f77",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E1/elasticity_stage_profiles.svg",
+      "category": "verified_figure",
+      "size_bytes": 14807,
+      "sha256": "4613f532e8abc84d81545903b6735cd9ed4fb35f239e698b823e86390c9c5172",
+      "source_sha256": "4613f532e8abc84d81545903b6735cd9ed4fb35f239e698b823e86390c9c5172",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E2/accuracy_latency.pdf",
+      "category": "verified_figure",
+      "size_bytes": 18487,
+      "sha256": "9a1902c64ec09a13624a9a5c5724a94093be3a56c29eeba8be98e428b8bfbb24",
+      "source_sha256": "9a1902c64ec09a13624a9a5c5724a94093be3a56c29eeba8be98e428b8bfbb24",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E2/accuracy_latency.png",
+      "category": "verified_figure",
+      "size_bytes": 228388,
+      "sha256": "fa035470735db4977bebf25b0187f8e9dd315add813e2c1fe3640194f8974343",
+      "source_sha256": "fa035470735db4977bebf25b0187f8e9dd315add813e2c1fe3640194f8974343",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E2/accuracy_latency.svg",
+      "category": "verified_figure",
+      "size_bytes": 47187,
+      "sha256": "f4004979dd6b9fd21250bb0b1dd9934d0f23dd17c93a48d346e1c3241694a957",
+      "source_sha256": "f4004979dd6b9fd21250bb0b1dd9934d0f23dd17c93a48d346e1c3241694a957",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E2/error_budget.pdf",
+      "category": "verified_figure",
+      "size_bytes": 30770,
+      "sha256": "5a613b51220739e3fd6f3036ccdb1811c152d3e3580e1f6465d5a052d5295c45",
+      "source_sha256": "5a613b51220739e3fd6f3036ccdb1811c152d3e3580e1f6465d5a052d5295c45",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E2/error_budget.png",
+      "category": "verified_figure",
+      "size_bytes": 632722,
+      "sha256": "53ec4cfe0b96ea267c5e1eda5e60e528fcc7af69340cd627b65346ea47f3300f",
+      "source_sha256": "53ec4cfe0b96ea267c5e1eda5e60e528fcc7af69340cd627b65346ea47f3300f",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E2/error_budget.svg",
+      "category": "verified_figure",
+      "size_bytes": 102591,
+      "sha256": "f236d864fa2b3d9085de83bf4dd93a1a64e36708699e53e8ee9a80de48730dba",
+      "source_sha256": "f236d864fa2b3d9085de83bf4dd93a1a64e36708699e53e8ee9a80de48730dba",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E3/backbone_accuracy_latency.pdf",
+      "category": "verified_figure",
+      "size_bytes": 20427,
+      "sha256": "660afa77f86c8bcb02b12db73bd8745d4b52b0a11f8fb62028d628dc25219727",
+      "source_sha256": "660afa77f86c8bcb02b12db73bd8745d4b52b0a11f8fb62028d628dc25219727",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E3/backbone_accuracy_latency.png",
+      "category": "verified_figure",
+      "size_bytes": 142625,
+      "sha256": "ab1589905077afd9cdc207f58e2932d8f2dab0cebf6de082427dc22b71d40b89",
+      "source_sha256": "ab1589905077afd9cdc207f58e2932d8f2dab0cebf6de082427dc22b71d40b89",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E3/backbone_accuracy_latency.svg",
+      "category": "verified_figure",
+      "size_bytes": 34311,
+      "sha256": "1fd7a913e527261257a81eae26fa61fcac552cb76c80c2c2f5c65f20293fbae7",
+      "source_sha256": "1fd7a913e527261257a81eae26fa61fcac552cb76c80c2c2f5c65f20293fbae7",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/fixed_points.pdf",
+      "category": "verified_figure",
+      "size_bytes": 14608,
+      "sha256": "d6ae84a32b133ec3520de4afcd6c935ab518af39b1e28324a6aa084266ba1e7c",
+      "source_sha256": "d6ae84a32b133ec3520de4afcd6c935ab518af39b1e28324a6aa084266ba1e7c",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/fixed_points.png",
+      "category": "verified_figure",
+      "size_bytes": 147131,
+      "sha256": "bc21bd0c322e9941545bf2cbbd937b661f7f5d1e2b2e80bfc5b89a71a6ab628d",
+      "source_sha256": "bc21bd0c322e9941545bf2cbbd937b661f7f5d1e2b2e80bfc5b89a71a6ab628d",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/fixed_points.svg",
+      "category": "verified_figure",
+      "size_bytes": 25396,
+      "sha256": "96220aa22d30bc6ea3fe5fbcf5089f30b67b96778aba5c9a7b5bbfa29982a847",
+      "source_sha256": "96220aa22d30bc6ea3fe5fbcf5089f30b67b96778aba5c9a7b5bbfa29982a847",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/resolution_budget.pdf",
+      "category": "verified_figure",
+      "size_bytes": 19055,
+      "sha256": "13e6e1ab673dab514f88b97bc20897df67728be6e85db6cc115fe9371b9f0150",
+      "source_sha256": "13e6e1ab673dab514f88b97bc20897df67728be6e85db6cc115fe9371b9f0150",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/resolution_budget.png",
+      "category": "verified_figure",
+      "size_bytes": 403122,
+      "sha256": "618a1f1f0d17daaf320c120d8b350b2d7a25480212c5d8b5da1b6d942c44c93b",
+      "source_sha256": "618a1f1f0d17daaf320c120d8b350b2d7a25480212c5d8b5da1b6d942c44c93b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/resolution_budget.svg",
+      "category": "verified_figure",
+      "size_bytes": 44895,
+      "sha256": "926cabd350f4c5487462f10abefd797417fdc427dbb2f37996fee9ef0f903e54",
+      "source_sha256": "926cabd350f4c5487462f10abefd797417fdc427dbb2f37996fee9ef0f903e54",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_uniform.pdf",
+      "category": "verified_figure",
+      "size_bytes": 946380,
+      "sha256": "35ee1f2c5a14987eaf8ab4ffdf92db490b46b7a1af0244fccb60be3c87fb84ab",
+      "source_sha256": "35ee1f2c5a14987eaf8ab4ffdf92db490b46b7a1af0244fccb60be3c87fb84ab",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_uniform.png",
+      "category": "verified_figure",
+      "size_bytes": 1619554,
+      "sha256": "e610e37f100f5ea6093648b087209d97e89388e9ccb3494c43ff0709dc634b9f",
+      "source_sha256": "e610e37f100f5ea6093648b087209d97e89388e9ccb3494c43ff0709dc634b9f",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_uniform.svg",
+      "category": "verified_figure",
+      "size_bytes": 1580773,
+      "sha256": "6a927a2d24f4a7d66a3c48957c2778806ac42abe6a7ab4d77caf52fd728bfb3e",
+      "source_sha256": "6a927a2d24f4a7d66a3c48957c2778806ac42abe6a7ab4d77caf52fd728bfb3e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_pi.pdf",
+      "category": "verified_figure",
+      "size_bytes": 1051670,
+      "sha256": "c4207ef9dd4a63d1153835ce1aa32faa4a178ab84853b9214c68b412b7495911",
+      "source_sha256": "c4207ef9dd4a63d1153835ce1aa32faa4a178ab84853b9214c68b412b7495911",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_pi.png",
+      "category": "verified_figure",
+      "size_bytes": 1772775,
+      "sha256": "83af99d29c55373d0bd8f386134ec20e59d744549a10604a99e313161c562e39",
+      "source_sha256": "83af99d29c55373d0bd8f386134ec20e59d744549a10604a99e313161c562e39",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_pi.svg",
+      "category": "verified_figure",
+      "size_bytes": 1732191,
+      "sha256": "38d40e58afec6b1e3f204605efe76352e2a714c2b8ad6a6db1b73088d61a1173",
+      "source_sha256": "38d40e58afec6b1e3f204605efe76352e2a714c2b8ad6a6db1b73088d61a1173",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_cpg.pdf",
+      "category": "verified_figure",
+      "size_bytes": 1036288,
+      "sha256": "5664f6d8181fdc7d8f2edb5cb9782e20dbd8f22a81b6db5f4f4f923bb18c4423",
+      "source_sha256": "5664f6d8181fdc7d8f2edb5cb9782e20dbd8f22a81b6db5f4f4f923bb18c4423",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_cpg.png",
+      "category": "verified_figure",
+      "size_bytes": 1708050,
+      "sha256": "5232c48cc12ae0a0fd007e633971e36734e51fbc319303909c0dcf99f565caeb",
+      "source_sha256": "5232c48cc12ae0a0fd007e633971e36734e51fbc319303909c0dcf99f565caeb",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_cpg.svg",
+      "category": "verified_figure",
+      "size_bytes": 1702886,
+      "sha256": "eeb8c03ba171ffd99e5a729135c9f24f6f62b62b36438c67f93ca25e9fd4ed7b",
+      "source_sha256": "eeb8c03ba171ffd99e5a729135c9f24f6f62b62b36438c67f93ca25e9fd4ed7b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_ca.pdf",
+      "category": "verified_figure",
+      "size_bytes": 1034537,
+      "sha256": "8bf8d8095d5a6338b43d924ad4ecdee65b039955f6d3fb2d459c4b5a28faf517",
+      "source_sha256": "8bf8d8095d5a6338b43d924ad4ecdee65b039955f6d3fb2d459c4b5a28faf517",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_ca.png",
+      "category": "verified_figure",
+      "size_bytes": 1711885,
+      "sha256": "7e6c64f56924d108cd870d2e04f60061779041cc325848c54829e7b3e34314ec",
+      "source_sha256": "7e6c64f56924d108cd870d2e04f60061779041cc325848c54829e7b3e34314ec",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1000_ca.svg",
+      "category": "verified_figure",
+      "size_bytes": 1706982,
+      "sha256": "05cfb30f6bf01d9a50c98fc3a658c70d9a95f459b9169fb3e318ecd8e8d0f021",
+      "source_sha256": "05cfb30f6bf01d9a50c98fc3a658c70d9a95f459b9169fb3e318ecd8e8d0f021",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_uniform.pdf",
+      "category": "verified_figure",
+      "size_bytes": 812794,
+      "sha256": "30f2cef6b0872f5488c3f1920fbb514fe1d0bad80a3206a5a0e557e9ba8fd52a",
+      "source_sha256": "30f2cef6b0872f5488c3f1920fbb514fe1d0bad80a3206a5a0e557e9ba8fd52a",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_uniform.png",
+      "category": "verified_figure",
+      "size_bytes": 1465973,
+      "sha256": "6ea5458fa1ecff5961327f2fcd434d4628b3ea86a35fdc31e218fb6bc09e8e11",
+      "source_sha256": "6ea5458fa1ecff5961327f2fcd434d4628b3ea86a35fdc31e218fb6bc09e8e11",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_uniform.svg",
+      "category": "verified_figure",
+      "size_bytes": 1390273,
+      "sha256": "6365c8dbaa8eab012a013552f62da22bc143dbfd3fea05406916c8f753fa1955",
+      "source_sha256": "6365c8dbaa8eab012a013552f62da22bc143dbfd3fea05406916c8f753fa1955",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_pi.pdf",
+      "category": "verified_figure",
+      "size_bytes": 850288,
+      "sha256": "c7b61d01ee3552d70ca36f04b1290c276c07a3408520a2d637343934eae75cc1",
+      "source_sha256": "c7b61d01ee3552d70ca36f04b1290c276c07a3408520a2d637343934eae75cc1",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_pi.png",
+      "category": "verified_figure",
+      "size_bytes": 1529423,
+      "sha256": "c8fb0b522fc5c2bb5ae22b2650420fa3d462b78adbaee058bc63279f9c82e624",
+      "source_sha256": "c8fb0b522fc5c2bb5ae22b2650420fa3d462b78adbaee058bc63279f9c82e624",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_pi.svg",
+      "category": "verified_figure",
+      "size_bytes": 1473642,
+      "sha256": "cf07f35ce05947f9d83061d92b772566be9bd5e9fb52fa0d676dc7cca16caf21",
+      "source_sha256": "cf07f35ce05947f9d83061d92b772566be9bd5e9fb52fa0d676dc7cca16caf21",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_cpg.pdf",
+      "category": "verified_figure",
+      "size_bytes": 845822,
+      "sha256": "13758f43a55ee9bcbbaf59650c521b7fa4053b2ed58945e0eeede49ba67a26e5",
+      "source_sha256": "13758f43a55ee9bcbbaf59650c521b7fa4053b2ed58945e0eeede49ba67a26e5",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_cpg.png",
+      "category": "verified_figure",
+      "size_bytes": 1507605,
+      "sha256": "3cdbb5fc8dfab729ad0f1878a40b53fe12979baab08035f8b7da241ebd8a5ea5",
+      "source_sha256": "3cdbb5fc8dfab729ad0f1878a40b53fe12979baab08035f8b7da241ebd8a5ea5",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_cpg.svg",
+      "category": "verified_figure",
+      "size_bytes": 1480029,
+      "sha256": "872c534cfe9cfca128e239de1719a07c3ffa13ca46806c6bd6cdd015b6198296",
+      "source_sha256": "872c534cfe9cfca128e239de1719a07c3ffa13ca46806c6bd6cdd015b6198296",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_ca.pdf",
+      "category": "verified_figure",
+      "size_bytes": 880528,
+      "sha256": "ff08bd5b5c2e26b8d78cd755e76591ab80a90ac3363565279b43e1d788c1db4c",
+      "source_sha256": "ff08bd5b5c2e26b8d78cd755e76591ab80a90ac3363565279b43e1d788c1db4c",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_ca.png",
+      "category": "verified_figure",
+      "size_bytes": 1510767,
+      "sha256": "8eabd8583331ff869f702e37a66f57bbc35c5a7e5d53e9683833126c93cdc219",
+      "source_sha256": "8eabd8583331ff869f702e37a66f57bbc35c5a7e5d53e9683833126c93cdc219",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1099_ca.svg",
+      "category": "verified_figure",
+      "size_bytes": 1494705,
+      "sha256": "8f9ee65d52572cbc336db55fa00c99e4b756f29c34fd915a83142d05cc27a955",
+      "source_sha256": "8f9ee65d52572cbc336db55fa00c99e4b756f29c34fd915a83142d05cc27a955",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_uniform.pdf",
+      "category": "verified_figure",
+      "size_bytes": 916900,
+      "sha256": "2d43d19fb2d696ef5972136ac1d86207ba3ebaa7b97eebd2f29dd438dd36eb70",
+      "source_sha256": "2d43d19fb2d696ef5972136ac1d86207ba3ebaa7b97eebd2f29dd438dd36eb70",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_uniform.png",
+      "category": "verified_figure",
+      "size_bytes": 1589866,
+      "sha256": "7029543809966d08612453568d2d804a9f7cc376f75470fcb4dfae8f360c7fcd",
+      "source_sha256": "7029543809966d08612453568d2d804a9f7cc376f75470fcb4dfae8f360c7fcd",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_uniform.svg",
+      "category": "verified_figure",
+      "size_bytes": 1541816,
+      "sha256": "02bdddebfcfb7fdaef60fd579218989d9e42207f168ff996e7462f852aa50a67",
+      "source_sha256": "02bdddebfcfb7fdaef60fd579218989d9e42207f168ff996e7462f852aa50a67",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_pi.pdf",
+      "category": "verified_figure",
+      "size_bytes": 969568,
+      "sha256": "56e7e3bf421fbdfafb93614ae0ba9f1e0565c5f0b13e1a2c98e796fb1b752676",
+      "source_sha256": "56e7e3bf421fbdfafb93614ae0ba9f1e0565c5f0b13e1a2c98e796fb1b752676",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_pi.png",
+      "category": "verified_figure",
+      "size_bytes": 1680031,
+      "sha256": "95c2ed0c9adc27a14532ea80f4889f750e03c490a4bb0df29c033a452fe3bd83",
+      "source_sha256": "95c2ed0c9adc27a14532ea80f4889f750e03c490a4bb0df29c033a452fe3bd83",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_pi.svg",
+      "category": "verified_figure",
+      "size_bytes": 1644914,
+      "sha256": "ae7cd276b62230ee450e288cc9d0e25b6e51727c2244468317b9a258bfbf3f15",
+      "source_sha256": "ae7cd276b62230ee450e288cc9d0e25b6e51727c2244468317b9a258bfbf3f15",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_cpg.pdf",
+      "category": "verified_figure",
+      "size_bytes": 998118,
+      "sha256": "6e6760758fc0be66bc596d568e2b8011b89ea3b0b1b9e1d7fc606158c95702e3",
+      "source_sha256": "6e6760758fc0be66bc596d568e2b8011b89ea3b0b1b9e1d7fc606158c95702e3",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_cpg.png",
+      "category": "verified_figure",
+      "size_bytes": 1642237,
+      "sha256": "ff91166ef534856820af964a93d683d266678fe899baa7a80fb01c5bf6eade04",
+      "source_sha256": "ff91166ef534856820af964a93d683d266678fe899baa7a80fb01c5bf6eade04",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_cpg.svg",
+      "category": "verified_figure",
+      "size_bytes": 1657551,
+      "sha256": "47bf9ff2e7df348e1eeac501737e145655c26833176233860993dfcabd545384",
+      "source_sha256": "47bf9ff2e7df348e1eeac501737e145655c26833176233860993dfcabd545384",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_ca.pdf",
+      "category": "verified_figure",
+      "size_bytes": 992311,
+      "sha256": "67e132bb0225a51d05e7b2581263aab668dd2b52a48394e0ffa20ee385df467b",
+      "source_sha256": "67e132bb0225a51d05e7b2581263aab668dd2b52a48394e0ffa20ee385df467b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_ca.png",
+      "category": "verified_figure",
+      "size_bytes": 1639979,
+      "sha256": "2d738f228a2ae6c58aaf4e0966611959801e68372b65da460d1ae1bf83b74c95",
+      "source_sha256": "2d738f228a2ae6c58aaf4e0966611959801e68372b65da460d1ae1bf83b74c95",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E4/examples/case1199_ca.svg",
+      "category": "verified_figure",
+      "size_bytes": 1656456,
+      "sha256": "bd91ab5434a7ffa7317e9c396625366ac11d505a075c79b6d25f2b293cf58f23",
+      "source_sha256": "bd91ab5434a7ffa7317e9c396625366ac11d505a075c79b6d25f2b293cf58f23",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E5/training_seed_variation.pdf",
+      "category": "verified_figure",
+      "size_bytes": 22251,
+      "sha256": "7b216e6f244924b7f9973a6d725bb8e6db3e5dee74289eaaecbfe55c5254347e",
+      "source_sha256": "7b216e6f244924b7f9973a6d725bb8e6db3e5dee74289eaaecbfe55c5254347e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E5/training_seed_variation.png",
+      "category": "verified_figure",
+      "size_bytes": 127872,
+      "sha256": "a73d9b0ace5ba640c62137183224bb6f6f764938731b53585e3c901ebe45922b",
+      "source_sha256": "a73d9b0ace5ba640c62137183224bb6f6f764938731b53585e3c901ebe45922b",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_cfd_endpoints.pdf",
+      "category": "verified_figure",
+      "size_bytes": 21352,
+      "sha256": "19c9ac8662d4a6497da19cea0cac76e7fa13c6ac2ff5aa5940dac49534866276",
+      "source_sha256": "19c9ac8662d4a6497da19cea0cac76e7fa13c6ac2ff5aa5940dac49534866276",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_cfd_endpoints.png",
+      "category": "verified_figure",
+      "size_bytes": 69683,
+      "sha256": "175bafd0a9a4b1cb8763900b492637ac88add363cb9b8a6cec63ba2f2915f4d7",
+      "source_sha256": "175bafd0a9a4b1cb8763900b492637ac88add363cb9b8a6cec63ba2f2915f4d7",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_cfd_endpoints.svg",
+      "category": "verified_figure",
+      "size_bytes": 39928,
+      "sha256": "332ae4ecf6561085c18065a609dd4d6de871d3953972326937e975325afa0228",
+      "source_sha256": "332ae4ecf6561085c18065a609dd4d6de871d3953972326937e975325afa0228",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_cfd_efficiency.pdf",
+      "category": "verified_figure",
+      "size_bytes": 20711,
+      "sha256": "f0504c1a5fc02296329fc5753a982d09eb777cd6315938394f9588992c73a77e",
+      "source_sha256": "f0504c1a5fc02296329fc5753a982d09eb777cd6315938394f9588992c73a77e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_cfd_efficiency.png",
+      "category": "verified_figure",
+      "size_bytes": 72051,
+      "sha256": "61b9c2e9e1e2c3a317d21d6c91eb2352005b20fecd3bd8815b5f66ec3c0a4b7d",
+      "source_sha256": "61b9c2e9e1e2c3a317d21d6c91eb2352005b20fecd3bd8815b5f66ec3c0a4b7d",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_cfd_efficiency.svg",
+      "category": "verified_figure",
+      "size_bytes": 32830,
+      "sha256": "7dd13a819b867b46dad3f9f771adac3837ef41d3ecf61465959c66a90003b059",
+      "source_sha256": "7dd13a819b867b46dad3f9f771adac3837ef41d3ecf61465959c66a90003b059",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_surrogate_trajectories.pdf",
+      "category": "verified_figure",
+      "size_bytes": 70225,
+      "sha256": "4c8c1760f3f5773afe41d8a9b09d795181f6554b1f911cc55be9aa7e9b55355e",
+      "source_sha256": "4c8c1760f3f5773afe41d8a9b09d795181f6554b1f911cc55be9aa7e9b55355e",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_surrogate_trajectories.png",
+      "category": "verified_figure",
+      "size_bytes": 100071,
+      "sha256": "c190fdca76b8b9e6857eb80e354e813075d4ddda4255114bca237dbdecc9ca4f",
+      "source_sha256": "c190fdca76b8b9e6857eb80e354e813075d4ddda4255114bca237dbdecc9ca4f",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/airfoil_surrogate_trajectories.svg",
+      "category": "verified_figure",
+      "size_bytes": 313004,
+      "sha256": "4144226e4bca40220b7c0e02b01c0ed1f349870ff65d4d6d6fb0677f1b386c22",
+      "source_sha256": "4144226e4bca40220b7c0e02b01c0ed1f349870ff65d4d6d6fb0677f1b386c22",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/wing_surrogate_endpoints.pdf",
+      "category": "verified_figure",
+      "size_bytes": 31194,
+      "sha256": "5c7b2b82e8d4a339705a8a8804b0f147c086353e877eadc6d915492e78ae58a6",
+      "source_sha256": "5c7b2b82e8d4a339705a8a8804b0f147c086353e877eadc6d915492e78ae58a6",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/wing_surrogate_endpoints.png",
+      "category": "verified_figure",
+      "size_bytes": 145823,
+      "sha256": "b3362504b3fe81707d5797f0832206a21db92d9322b439f81ad7185227e8674d",
+      "source_sha256": "b3362504b3fe81707d5797f0832206a21db92d9322b439f81ad7185227e8674d",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/wing_surrogate_endpoints.svg",
+      "category": "verified_figure",
+      "size_bytes": 71643,
+      "sha256": "fb4af3d029fed1c95b6f1f0f446462be762320d04bc7c53e76138f7e5195a0f0",
+      "source_sha256": "fb4af3d029fed1c95b6f1f0f446462be762320d04bc7c53e76138f7e5195a0f0",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/wing_surrogate_trajectories.pdf",
+      "category": "verified_figure",
+      "size_bytes": 163687,
+      "sha256": "d71db8a7c2c85161ccf17897e8d1383a2d88056fce8f952e9aae068eec2b5ca0",
+      "source_sha256": "d71db8a7c2c85161ccf17897e8d1383a2d88056fce8f952e9aae068eec2b5ca0",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/wing_surrogate_trajectories.png",
+      "category": "verified_figure",
+      "size_bytes": 285106,
+      "sha256": "957a80e8cc60efc078d7035ecc3ba39c16c400ec5caadb1f7bacc43b3d6f7a4d",
+      "source_sha256": "957a80e8cc60efc078d7035ecc3ba39c16c400ec5caadb1f7bacc43b3d6f7a4d",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/E6/wing_surrogate_trajectories.svg",
+      "category": "verified_figure",
+      "size_bytes": 1019361,
+      "sha256": "67ccd5b648133d54c443ff887a0fd5535e8cfbf4103d25f89e64c6b2838a22cf",
+      "source_sha256": "67ccd5b648133d54c443ff887a0fd5535e8cfbf4103d25f89e64c6b2838a22cf",
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "figures/rebuttal/2026-11/FIGURE_MANIFEST.csv",
+      "category": "release_index",
+      "size_bytes": 6679,
+      "sha256": "8b89b778c4fd863cd082dc6b735d63e6924802a3ea0573bf01f5259c7c030203",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E0/README.md",
+      "category": "release_index",
+      "size_bytes": 1047,
+      "sha256": "a79d23e29092f8a5ff8bc5bf43ad06b72b12e51e7ada3018960c846c4b301afe",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E1/README.md",
+      "category": "release_index",
+      "size_bytes": 1332,
+      "sha256": "abf1fe250236e808d869fb4b99b1724082c8fb58effd93186f8984e99dbb7d1d",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E2/README.md",
+      "category": "release_index",
+      "size_bytes": 974,
+      "sha256": "238f603dbc97afa9fe01bf6f6185813c58de86144b56808a95512dda8579564c",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E3/README.md",
+      "category": "release_index",
+      "size_bytes": 1647,
+      "sha256": "78371e26cfe9e31cb0afd9983c4170c9878811dc86cda7b496dcb8fe9a1b68cb",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/README.md",
+      "category": "release_index",
+      "size_bytes": 1178,
+      "sha256": "16b0217ed75e4816fc5dbbfaf0634de5148515dc2cfd386dc39dca1228a82769",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E5/README.md",
+      "category": "release_index",
+      "size_bytes": 1134,
+      "sha256": "dc622ffa15ee896c219f700011efce10c2ea15b5866280d432cf06e4825263cc",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E6/README.md",
+      "category": "release_index",
+      "size_bytes": 2303,
+      "sha256": "a1bd8a8eb2a90b8def2d1ae33d5f88c9326dd1bb0e1796425c0d1c22119f4cba",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E7/README.md",
+      "category": "release_index",
+      "size_bytes": 1359,
+      "sha256": "c479607183ff1089dd09e5442f9e2b015a344d824e18a6d0ac9dca934efbc2f9",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "rebuttal/2026-11/README.md",
+      "category": "release_index",
+      "size_bytes": 2541,
+      "sha256": "e450aefeab3ba1620c154136ba60a16bf4188aa939edf098ffe0dc5ad3e8ef1c",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "rebuttal/2026-11/RESULTS_INDEX.md",
+      "category": "release_index",
+      "size_bytes": 3031,
+      "sha256": "9901d3c3b8571fd16413f5c2940decd569545a9dee222b600740447387e9b410",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    },
+    {
+      "target_path": "rebuttal/2026-11/VALIDATION.json",
+      "category": "release_index",
+      "size_bytes": 8662,
+      "sha256": "9d04e364d01f0eba7679a4159b0c6db023ec1b928e22f19305773603b303c5c6",
+      "source_sha256": null,
+      "evidence_scope": "verified within stated component scope",
+      "publication_status": "approved"
+    }
+  ],
+  "self_manifest_excluded_from_its_own_hash_list": true
+}

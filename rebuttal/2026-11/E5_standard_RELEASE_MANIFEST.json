@@ -421,15 +421,21 @@
     {
       "path": "README.md",
       "category": "release_index",
-      "size_bytes": 4619,
-      "sha256": "41211b0a5f9cadad3a5d150e3f9d9302c93c4fa3fca50681b15abe25b64a580e",
+      "size_bytes": 5553,
+      "sha256": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
       "evidence_status": "verified",
-      "publication_status": "approved"
+      "publication_status": "approved",
+      "annotation": "2026-11-17: root index includes original Airfoil Cd/Cl correction; E5 standard numeric results unchanged."
     }
   ],
   "file_count": 53,
   "scope": "Completed three-training-seed Elasticity, Pipe and Darcy supplement with labeled branch entry points.",
   "source_branch": "rebuttal/20261114-standard-training-seeds",
   "source_result_commit": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
-  "publication_correction": "Rehashed actual destination bytes after LF normalization and merged navigation; original stale manifest preserved in current_results_20261115/standard."
+  "publication_correction": "Rehashed actual destination bytes after LF normalization and merged navigation; original stale manifest preserved in current_results_20261115/standard.",
+  "airfoil_cdcl_correction": {
+    "package": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117",
+    "old_P0_cdcl_role": "field_policy_diagnostic",
+    "previous_manifest": "rebuttal/2026-11/provenance/E5_standard_RELEASE_MANIFEST_before_original_cdcl_20261117.json"
+  }
 }

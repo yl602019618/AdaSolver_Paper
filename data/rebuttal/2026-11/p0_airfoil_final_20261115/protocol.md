@@ -1,5 +1,9 @@
 # P0 Airfoil final evidence protocol
 
+<!-- original-cdcl-correction-20261117 -->
+**Cd/Cl scope correction, 2026-11-17.** The Cd/Cl rows and panels in this P0 package are **field-policy force diagnostics**. They cannot be compared with the original Table 1 Cd/Cl metric-specific policies. The active Transolver3 three-training-seed Cd/Cl result is the [corrected original-policy package](../p0_airfoil_original_cdcl_20261117/README.md). Current Cd/Cl summaries and the reviewer response cite that package. The P0 raw numerical files, field accuracy, reconstruction parity and timing remain preserved under their original policies. The correction does not establish an original-policy Cd/Cl result for LinearNO.
+<!-- /original-cdcl-correction-20261117 -->
+
 The paper evidence baseline remains91c1fa7cc81b8c1cb61a43618296c1c892d818c0. P0-A is recorded in reuse_audit_final.json before new GPU work. Seed0 training, heads, complete accuracy and the existing four-adaptive-method timing matrix are reused; the active Transolver3 training seed1 is adopted without restart.
 
 Airfoil uses the locked900 training/100 validation split,900-only normalizer, published110 positive-lift test IDs,221×51 grid,1000 backbone epochs and113000 updates. Only training and head seeds vary across0/1/2. Every CA head consumes its own frozen backbone features. Checkpoint and head selection use validation only. The test population has historical exposure and is not relabelled an untouched holdout.

@@ -7,12 +7,13 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 4619,
-      "sha256": "41211b0a5f9cadad3a5d150e3f9d9302c93c4fa3fca50681b15abe25b64a580e",
+      "bytes": 5553,
+      "sha256": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
-      "public": true
+      "public": true,
+      "documentation_annotation": "2026-11-17: current root documentation points to corrected original Cd/Cl results; the underlying historical experiment data are unchanged."
     },
     {
       "path": "STANDARD_TRAINING_SEEDS.md",
@@ -25,12 +26,13 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 9703,
-      "sha256": "b3cd35219b9a804e997794c691cf82c09e64e0d2d526879c19a275418d9f974b",
+      "bytes": 11112,
+      "sha256": "511dce64102caae3345698631a8d58db14f4680415bac409749d14eab9b9696c",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
-      "public": true
+      "public": true,
+      "documentation_annotation": "2026-11-17: current root documentation points to corrected original Cd/Cl results; the underlying historical experiment data are unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/E5_standard/README.md",
@@ -3798,5 +3800,12 @@
   "file_count": 421,
   "self_hash_excluded": true,
   "test_scope": "TESTED_CONTENTS.md",
-  "model_inventory": "model_inventory.csv"
+  "model_inventory": "model_inventory.csv",
+  "original_cdcl_correction": {
+    "package": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117",
+    "prior_P0_cdcl_role": "field_policy_diagnostic",
+    "prior_P0_comparable_to_original_table1_cdcl": false,
+    "previous_manifest": "data/rebuttal/2026-11/current_results_20261115/provenance/release_manifest_before_original_cdcl_20261117.json",
+    "historical_experiment_results_unchanged": true
+  }
 }

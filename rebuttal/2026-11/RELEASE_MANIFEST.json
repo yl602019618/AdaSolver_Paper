@@ -1249,11 +1249,12 @@
     {
       "target_path": "rebuttal/2026-11/RESULTS_INDEX.md",
       "category": "release_index",
-      "size_bytes": 3031,
-      "sha256": "9901d3c3b8571fd16413f5c2940decd569545a9dee222b600740447387e9b410",
+      "size_bytes": 4020,
+      "sha256": "2ac4591d6a46f76912e30f5c57fd2e29f2c8c17cbfb015bc7b3a0c3c7174d811",
       "source_sha256": null,
       "evidence_scope": "verified within stated component scope",
-      "publication_status": "approved"
+      "publication_status": "approved",
+      "annotation": "Updated original-Cd/Cl correction scope; historical release manifest preserved at rebuttal/2026-11/provenance/RELEASE_MANIFEST_before_original_cdcl_20261117.json"
     },
     {
       "target_path": "rebuttal/2026-11/VALIDATION.json",
@@ -1265,5 +1266,15 @@
       "publication_status": "approved"
     }
   ],
-  "self_manifest_excluded_from_its_own_hash_list": true
+  "self_manifest_excluded_from_its_own_hash_list": true,
+  "later_metric_corrections": [
+    {
+      "package": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117",
+      "scope": "Transolver3 Airfoil original Cd/Cl policies, training seeds0/1/2",
+      "supersedes": "P0 field-policy Cd/Cl diagnostics for original Table1 comparison",
+      "verification": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/verification.json",
+      "original_E0_E7_numeric_files_unchanged": true
+    }
+  ],
+  "historical_manifest_before_20261117_correction": "rebuttal/2026-11/provenance/RELEASE_MANIFEST_before_original_cdcl_20261117.json"
 }

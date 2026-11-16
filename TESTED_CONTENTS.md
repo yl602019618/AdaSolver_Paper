@@ -1,5 +1,16 @@
 # 已完成结果与测试内容索引
 
+<!-- original-cdcl-correction-20261117 -->
+**Latest Airfoil update, 2026-11-17.** The current original-Cd/Cl-policy result is [p0_airfoil_original_cdcl_20261117](data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md).
+
+| Current scope | Independent training coverage | Evidence | Cd/Cl interpretation |
+|---|---|---|---|
+| Corrected Transolver3 original Cd/Cl protocol | Seeds 0/1/2; three matching CA heads | 11,880 fresh records; 110 cases, three sampling seeds, three budgets, four methods; original control 3,960 records reproduced exactly | Active original-policy result; training SD and sampling SD are separate |
+| P0 Airfoil field accuracy and formal timing | T3 and LinearNO each seeds 0/1/2; six models and six heads | Existing P0 verification: 30,360 requests, 4,914 timing/memory conditions | P0 Cd/Cl rows are field-target diagnostics and cannot be compared with original Table 1 |
+
+The 19-model inventory and seed0-only tables below preserve the **2026-11-15 historical snapshot**. Later Airfoil completion is recorded above. For current Cd/Cl numerical values use [RESULTS_DETAIL.md](RESULTS_DETAIL.md) and the corrected package.
+<!-- /original-cdcl-correction-20261117 -->
+
 本次按 **checkpoint SHA256 去重，登记 19 个已完成 backbone 和 16 个对应 CA head**。统计对象是本次跟进已核验的模型；测试分组之间存在结果与 checkpoint 复用，观测条目不合并当作独立样本。
 索引快照：`2026-11-15T13:15:31.511555+00:00`。模型明细见 [model_inventory.csv](data/rebuttal/2026-11/current_results_20261115/model_inventory.csv)，机器可读测试矩阵见 [test_coverage.csv](data/rebuttal/2026-11/current_results_20261115/test_coverage.csv)。
 
@@ -12,7 +23,7 @@
 | Airfoil 新 900/100 cohort | 3 / 2 | 每个变体均仅 0 | T3、LinearNO point-temp、LinearNO conv-temp 是三个变体；conv 仅 Full |
 | Darcy 新 900/100 cohort | 3 / 2 | 每个变体均仅 0 | 两 point backbone 有自身 head；conv 仅 Full |
 
-**新 matched Airfoil 与 Darcy 的三种模型变体不是三个 training seeds。** 两个数据集的每个 point backbone 目前仍只有独立训练 seed0 完成；sampling seeds 0/1/2 只衡量同一模型内采样波动。
+**新 matched Airfoil 与 Darcy 的三种模型变体不是三个 training seeds。** 这份 11 月 15 日历史快照只列出两个数据集的独立训练 seed0；其 sampling seeds 0/1/2 衡量同一模型内采样波动。Airfoil 后续三独立训练 seed 的完成情况及本次 Cd/Cl 修正见上方。
 
 ## 各组实际测了什么
 
@@ -24,7 +35,7 @@
 | 三seed · Pipe | 16641 点 Pipe；T3 training 0/1/2，sampling 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；合计22200条；五方法完整 | 本组这些 checkpoint 的正式完整输出时延未测 | 历史策略用过当前测试集前50例；没有本组 LinearNO 对照 |
 | 三seed · Darcy历史cohort | 85×85；历史1000/200；T3 training 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；合计22200条；五方法完整 | 本组这些 checkpoint 的正式完整输出时延未测 | 历史 test-informed；与新900/100 split/normalizer/loss 分组保留 |
 | 完整输出 · Car | Car 两 backbone 均 training0；sampling0/1/2；T3有PI/CA，LinearNO无 | 三预算 + Full；Field/速度/压力/Cd；old/new parity、direct median/p95、显存 | 100例；7400 old/new对；1800 CPG beta对；field采样策略上的物理量诊断 | 3固定例；A/B/C共990条件、99000正式重复；990显存条件 | 历史人群；beta0只测精度；LinearNO PI/CA/head与多training-seed结论仍未补齐 |
-| 新匹配 · Airfoil | 221×51压力；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；压力L2、Cd/Cl/CdCl误差、rAUEC、parity、完整输出成本 | 固定发布110个Cl>0.02例；point各5060请求，conv110Full，共10230 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | 历史测试可见；point各training1/2及training SD未完成；conv仅Full |
+| 新匹配 · Airfoil | 221×51压力；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；压力L2、Cd/Cl/CdCl误差、rAUEC、parity、完整输出成本 | 固定发布110个Cl>0.02例；point各5060请求，conv110Full，共10230 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | 历史测试可见；本历史快照只含seed0；后续P0已补齐三training seeds，original Cd/Cl另见本次corrected package；conv仅Full |
 | 新匹配 · Darcy | 85×85；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；场L2、rAUEC、beta0/1、parity、完整输出成本 | 200例；point各9200请求+conv200Full；37200 old/new指标行；3600 beta对 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | smooth2历史人群；point各training1/2及training SD未完成；旧1000/200三seed不能替代此组 |
 | FZ2 · score可视化 | Car、Airfoil各1个固定例；已有T3 seed0/自身head；sampling0 | 50%；真实feature/head、score、density、selected、后置error诊断 | 逐点来源/hash/计算链核验；Car独立CPU CA闭环单列 | 完整请求时延与profiling现已完成；score捕获专属GPU cost/rawscore绑定尚未单独更新 | 单例可视化；Car CA跨设备score154点超阈保留；Airfoil CPG仅保留619/1127coarse |
 
@@ -48,7 +59,7 @@
 | shapenet_car_t3_trainingseed2_cpg_beta_pairs | COMPLETED | 复用已有 checkpoint 的 CPG beta 配对补评估；不新增模型计数 |
 | airfoil_t3_trainingseed1_backbone | RUNNING | 新独立 training seed 的 backbone 训练；完成且独立验收后才进入模型清单 |
 
-Car LinearNO 的 PI/CA、对应 head 和独立 training seeds1/2 尚未完成；新 matched Airfoil/Darcy 的 point backbones 各自 training seeds1/2 尚未完成。本次19个模型清单只登记已有完成且审计的 checkpoint。原生 conv-temp 的固定网格 Full-only 限制单列，不通过修改架构伪装为变量点数模型。
+Car LinearNO 的 PI/CA、对应 head 和独立 training seeds1/2 尚未完成；这份历史快照未包含新 matched Airfoil/Darcy 的 point backbones training seeds1/2；Airfoil 的后续完成与 Cd/Cl 修正见上方。本次19个模型清单只登记已有完成且审计的 checkpoint。原生 conv-temp 的固定网格 Full-only 限制单列，不通过修改架构伪装为变量点数模型。
 
 已恢复问题也保留来源：Elasticity seed0 head 的启动锁失败后，三份 head 均完成一致的 CPU FP32 训练；Airfoil 原 finalizer 在全部测量后发生重复字典键错误，本轮从原始完整记录恢复报告；Darcy 旧总监控 flag 未读取实际 gate，本轮依据真实完成键和完整矩阵验收。原失败/待验收字符串未被覆盖。
 

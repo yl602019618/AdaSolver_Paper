@@ -1,0 +1,435 @@
+{
+  "experiment": "E5_standard_training_seeds",
+  "branch": "rebuttal/20261114-linearno-seeds",
+  "files": [
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/README.md",
+      "category": "verified_summary",
+      "size_bytes": 7067,
+      "sha256": "cd3ef2cd21f363d218d9c69f25d1e2f944456fa7cfd412d10b31b72f2afc030d",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/checkpoint_registry.csv",
+      "category": "verified_summary",
+      "size_bytes": 3895,
+      "sha256": "49c35c17299abfaef3172273713e4037a5a487bb53663ed6c4d18676d302638c",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/matrix_checks.csv",
+      "category": "verified_summary",
+      "size_bytes": 295,
+      "sha256": "60fd0b6d84179e37daebd8c51fa4143a2aa9a95b2ef75c98a4778162f97cabff",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/metrics_records.csv.gz",
+      "category": "verified_summary",
+      "size_bytes": 1948123,
+      "sha256": "e46f185955a4064dc766c0d5f770dd92399694694de0e25a50a48f7936b0e06a",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/paired_training_differences.csv",
+      "category": "verified_summary",
+      "size_bytes": 8898,
+      "sha256": "234fa58fb3655d883f3ecf2c683b25c5efad55927886fb9ccbc4938a9e7f71e4",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/sampling_variability.csv",
+      "category": "verified_summary",
+      "size_bytes": 14695,
+      "sha256": "f805b0313628bf42f641b0a0cd5e686db99c03dbb2547bd92de171bdc70cfce0",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/standard_training_seeds.tex",
+      "category": "verified_summary",
+      "size_bytes": 704,
+      "sha256": "853187c0d5e68bb2130a922908a46e6b4a505f2209f1ddb5833cd6462734c425",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/training_seed_rauec.csv",
+      "category": "verified_summary",
+      "size_bytes": 2434,
+      "sha256": "d440ff5f3b6a38615e06a37adb8fa9137265db9cc6e259758b91e174de662472",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/training_seed_summary.csv",
+      "category": "verified_summary",
+      "size_bytes": 5947,
+      "sha256": "9db30d7cb14ec0559bf2a12785cd80486202651e95b1e2eb30f280238f7467a4",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/verification.json",
+      "category": "verified_summary",
+      "size_bytes": 655,
+      "sha256": "6ad7030f3c3dff8c080459dbf6cb8d63351de6382e0585cfc8d22d50817d5700",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/common.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 1125,
+      "sha256": "e03ddaf54872827f6ff6aae338b07d68bdc394f8ec77a18faf5b2e1397159508",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/evaluate.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 13581,
+      "sha256": "0e7b4f0b50dfab815173f920ba3b09d4c1105f4ed20cb47a59b218d0f14d993b",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/finalize.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 14072,
+      "sha256": "e75a56a38d9bed7245dfea084d2c476f698d305539516efb1350d8b604087828",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/head_banks.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 4764,
+      "sha256": "5ba0b955dd055b22050bd59c530b6f300d0233acab3b5deceac1b044e559bacc",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/learning.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 1664,
+      "sha256": "4813e69c2259f4f1c4bc67258425db156652804225a3dcc5b32a34e00ef83bd1",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/prepare_data.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 4524,
+      "sha256": "7a3f22df5863991bd6759e108286a8eb4b1bac58de5f666aff7430c0ede95dc9",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/prepare_pipe_targets.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 2359,
+      "sha256": "5e07bb9436a791d4e2b410c660ebfa85c8aba0922f9229c45e11866854049069",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/recompute_tables.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 3547,
+      "sha256": "dfcbda213d8805b49c2a8b8233880013c1a11ba69990e7962bebd44e5d37028f",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/render_results.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 8506,
+      "sha256": "dbfe62358490e42ce5fe7807a570b8fd8d6f64109a1888d60ef863928d52b863",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/sampler_backend.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 4358,
+      "sha256": "fde0e5562f3f0b719dbe3263c93b460d0c7917cf6911d87d06c7db6a7dbb96db",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/supervise.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 4357,
+      "sha256": "5d79274f19d279626d0ff5ee0d74509757f711d7d9e2f282a3aaf85f18b4073e",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/train_backbone.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 8638,
+      "sha256": "050a3e41889c1ef6852b05fc30de68786eb7529a4ca3ec970bd9749b053f6ae6",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/code/train_head.py",
+      "category": "approved_reproducibility",
+      "size_bytes": 11405,
+      "sha256": "a5c9a850f3f6ee11068c859aaec8c2f439d71da003fac4dad75505b353e3ba81",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/config/darcy.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 17166,
+      "sha256": "8e97125037e17b73057b7c88c1426500ecbcb988c68c57777e722c22d23c33a7",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/config/elasticity.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 17163,
+      "sha256": "dfd2874366fc021396b34bcc6f91e52f55f3b9fc92726fa0db5b7e3642b9f3b2",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/config/frozen_methods.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 2469,
+      "sha256": "8ca7320e71081ab983e0305671befba6393fc5d3916bc50609cead9016d141ec",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/config/pipe.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 17144,
+      "sha256": "41f5b04a67f7c2b21921d6ab70e0c63e7721c253ad8957f520128614b16b6cea",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/config/protocol_lock.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 1645,
+      "sha256": "01c7c342a8f8ae08491a7d4524fe958191632589b53c31c52a9447d4fcb64cc9",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/config/sampler_backend.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 107,
+      "sha256": "922614a1b204a29e759a95c1358f3d29aa5605c8bf43959c4e36c17fbd4d6510",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed0_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17214,
+      "sha256": "97f55d33a99fa89c0377e75a48361017092afcaf746082aac41a5128acfac4f7",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed0_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12391,
+      "sha256": "d3c3ee484a524b1d8914cd31fea836f98e566ad9e2b424bcc4413c13d17b9d8a",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed1_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17215,
+      "sha256": "0579d8bb1806c1e3d1663d51aa2bba81fd5c5a674e95e19713e5af28beb316e9",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed1_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12392,
+      "sha256": "a8d768850fb45eb99708fde97b44f3b81add9ede4ed8286e13fe52f50753a447",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed2_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17215,
+      "sha256": "252441139a32f689ff777fb44f9de80105604b13175e22edbe988f9e1d30abae",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/elasticity/seed2_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12391,
+      "sha256": "154b47ee06346b6f6eb3a32df1cc632f7b46b4e01cd8cdf30419edf79bcc3be1",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed0_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17205,
+      "sha256": "9d29f7334c94100918de35615fdc3bde083ee618c789be355cc176c7c3b19d49",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed0_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12326,
+      "sha256": "7747e7324a55bd53818ee434c4ac4b69a00aa1a14527e45efc8a3206ad5a221d",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed1_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17206,
+      "sha256": "02aa951c9e40c55a6714b0e9f5ca550adbf3bd655068272c691a3e0c67f81105",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed1_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12328,
+      "sha256": "21ea57f7b2d17557fb1e488f032c4842fd050dd7c5276dd2a8a6110e7ea0a1ac",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed2_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17204,
+      "sha256": "ac105bada5df20c8d3bd24849928848176ac64c769184abed87c6511a98fc20d",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/pipe/seed2_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12328,
+      "sha256": "acc86bed612310229432b6fc9964d12735fca366f2034b3f54ef2f768c95b7d6",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed0_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17365,
+      "sha256": "88bc8bbcec1299f3dc3eeac2f0df02e604a71358fa6746bccf73253fa284f4d9",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed0_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12188,
+      "sha256": "1ea19c84e3486c65ab08708edd6607448d73d4e3f8626b0d94140cea8306ffcf",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed1_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17365,
+      "sha256": "21cb20127b1f2e189177771c33e7c6e9aeecbdc59412332f4d0d8539540a9727",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed1_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12188,
+      "sha256": "915c710535f8eeb1275aa481680532ba62263130a623b12e9319b0e42bc67bea",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed2_backbone.json",
+      "category": "verified_summary",
+      "size_bytes": 17365,
+      "sha256": "cc188099357fe8edfd8d69bb5e72f09f487cf6077e788491cfa1c0f83d1ab610",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E5_standard/manifests/darcy/seed2_head.json",
+      "category": "verified_summary",
+      "size_bytes": 12188,
+      "sha256": "3ebe13803ac5dd12b5b7948d6ac27cec6bba909f188e913b51c35dfe371c74bc",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/checks/sampler_equivalence.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 514,
+      "sha256": "6a283c638ea090686a5293565a725747eda8ef0e8d7e038dbec5a8381053db34",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/checks/head_execution_check.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 693,
+      "sha256": "735b0873c0f7cf9a1edf9bf1096071db0231a6e4076ae703c59a04aad769fd75",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/checks/canonical_evaluator_check.json",
+      "category": "approved_reproducibility",
+      "size_bytes": 1690,
+      "sha256": "793789ee4dc250e809f35dd661ca91fcdaf6d6b130953e516d416de16947200c",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E5_standard/README.md",
+      "category": "release_index",
+      "size_bytes": 1543,
+      "sha256": "cb21441a25851b129de0925a0a9a5ddf37fb1f3d76e94de1de306e4f152a32ad",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "STANDARD_TRAINING_SEEDS.md",
+      "category": "release_index",
+      "size_bytes": 4780,
+      "sha256": "a4987d32560be67cfc57e8fbcfcff71b80175e053cdfe9bae1e5e9ff779df4eb",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    },
+    {
+      "path": "README.md",
+      "category": "release_index",
+      "size_bytes": 4619,
+      "sha256": "41211b0a5f9cadad3a5d150e3f9d9302c93c4fa3fca50681b15abe25b64a580e",
+      "evidence_status": "verified",
+      "publication_status": "approved"
+    }
+  ],
+  "file_count": 53,
+  "scope": "Completed three-training-seed Elasticity, Pipe and Darcy supplement with labeled branch entry points.",
+  "source_branch": "rebuttal/20261114-standard-training-seeds",
+  "source_result_commit": "3ef2190d2393ff4a6c2af9d2675a9385651e2d6a",
+  "publication_correction": "Rehashed actual destination bytes after LF normalization and merged navigation; original stale manifest preserved in current_results_20261115/standard."
+}

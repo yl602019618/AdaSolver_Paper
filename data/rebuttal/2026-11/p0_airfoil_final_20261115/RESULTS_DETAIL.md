@@ -1,5 +1,9 @@
 # Airfoil P0 results
 
+<!-- original-cdcl-correction-20261117 -->
+**Cd/Cl scope correction, 2026-11-17.** The Cd/Cl rows and panels in this P0 package are **field-policy force diagnostics**. They cannot be compared with the original Table 1 Cd/Cl metric-specific policies. The active Transolver3 three-training-seed Cd/Cl result is the [corrected original-policy package](../p0_airfoil_original_cdcl_20261117/README.md). Current Cd/Cl summaries and the reviewer response cite that package. The P0 raw numerical files, field accuracy, reconstruction parity and timing remain preserved under their original policies. The correction does not establish an original-policy Cd/Cl result for LinearNO.
+<!-- /original-cdcl-correction-20261117 -->
+
 Status: VERIFIED_COMPLETE. Accepted complete training seeds: [0, 1, 2].
 
 The required study has two point models, training seeds0/1/2, their own heads,110 historical positive-lift test cases, and budgets37.5%,50%,75%. Full100% has no sampling seed. Accuracy and timing include Uniform, PI, CPG beta0/beta1 and CA. Each seed's complete timing matrix has414 groups and1,638 physical conditions over scopesA/B/C, with20 warmups and100 formal repeats. Seed0 reuses1,314 verified point-model conditions and adds only324 beta0 conditions; legacy conv-temp Full-only observations are excluded from the primary three-training-seed totals.

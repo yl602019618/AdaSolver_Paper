@@ -1,0 +1,1887 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL",
+  "created_at_utc": "2026-11-14T14:54:03.931156+00:00",
+  "fixed_paper_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4619,
+      "sha256": "41211b0a5f9cadad3a5d150e3f9d9302c93c4fa3fca50681b15abe25b64a580e",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/CLAIM_CARD.md",
+      "bytes": 671,
+      "sha256": "8ae6b68907c9939e1a23d3a389a679f6f3f588b722a692634eb81917265fda56",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/README.md",
+      "bytes": 4219,
+      "sha256": "a8029a8627af4625530717785e510e3185b2211cb6dbe3f862dd4078ba725830",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/REPORT.md",
+      "bytes": 4153,
+      "sha256": "b14f310894362079cda92733fc5eb73fbe1b2e05a61586fb5f37f42103286326",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0_README.md",
+      "bytes": 2178,
+      "sha256": "37c64ca0044ad82511f2cefcc6b75c7025190a358a5bc793b2b52fe7bf251840",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0_audit.json",
+      "bytes": 97266,
+      "sha256": "7f2009f21a07debd2676a9bd436a47fa7a3f66f7855e8639a2364f7721790331",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/backbone_absolute_errors.csv",
+      "bytes": 133958,
+      "sha256": "b75205b7de3750092da10c9ad49260e5bcf835ed2be27129abb18110b58569de",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/backbone_accuracy_latency.csv",
+      "bytes": 18524,
+      "sha256": "e0ef93f678edc8483e9c48f6102b00a8f8da28439039dccc8b4b9c8342b5fba9",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/backbone_rauec.csv",
+      "bytes": 52302,
+      "sha256": "35e65273642cc36ed2547e45dbd14921c939ee649b81bb67b122c74b93ee15a6",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/checkpoint_registry.csv",
+      "bytes": 6678,
+      "sha256": "0481d349024485e2f84993a6f040f1a188670536a6edb1504cce03c1204711c9",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/README.md",
+      "bytes": 2955,
+      "sha256": "cf99b81608e5fec3f4fb6b636539797b58ab8d26fdc1d7351e543f0f05f230ad",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/model_configurations.json",
+      "bytes": 8977,
+      "sha256": "0fccb2af85cd83cccf34f2bac6987b46499ea0373697f6854b5e88c7185ebdc8",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/model_index.csv",
+      "bytes": 9471,
+      "sha256": "bf8f846b4d60cf58e483ba32cf79e9d911e78f5fd7663437ef9f207d1fb3d2f6",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/pending.json",
+      "bytes": 2067,
+      "sha256": "41fae9628d8df9d0f2aa3402805e3ac56650781c389c7bbd3b5870af49bcb453",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/read.me",
+      "bytes": 284,
+      "sha256": "dc4f4303df2ea591f704e4e8ac4f9b3025826ac58e19f2a51fcf00013403fc29",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/source_files.json",
+      "bytes": 16977,
+      "sha256": "b3744c84b6d9f8d824fdab5c6375172fc875ee23501d8540e5a22e4d58d952e6",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/completed_training/training_evidence.json",
+      "bytes": 32864,
+      "sha256": "021998a90b5a210db7d737d4a773005b01ede4bb36e8334e61e8f82ff753d186",
+      "code_commit": "b03337d03ce394d7e72d41add537782663754bde",
+      "code_commit_scope": "preceding evidence release; source training commits are recorded separately",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/native_e3_latency.csv",
+      "bytes": 12778,
+      "sha256": "0cd9c397fa48f2040df67871bf64d270f31a2e1ba70ae625fe15e918b2d967e3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/parity_record_index.csv",
+      "bytes": 3227022,
+      "sha256": "a3c1847b70f60c1ed6af0ab0432347cb045c3eb6b132569df8266e3e3258b858",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/pending.json",
+      "bytes": 792,
+      "sha256": "fc96114eafc77785b020aa3c6a0e4b55e9ae7fbbb7d1aed32a96d76abe1a0f75",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/protocol.md",
+      "bytes": 5011,
+      "sha256": "dbd5771cae0105d4adeb987e8f00d44cd8fc11a0730f24b06f81b2496effef0f",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/protocol_differences.md",
+      "bytes": 1540,
+      "sha256": "66f1b907798acba0bd23eac12730e4ead6a8752245c798bdf09d1ff0601c43cd",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/raw_records_index.csv",
+      "bytes": 19558,
+      "sha256": "46cfbbd6e867401d9e9c4483ed867b6e418b2a551aa7e0b8481ea98091a83957",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/read.me",
+      "bytes": 183,
+      "sha256": "226d800a2ca8d04de46c8ba16fad9d27dd667b67c3a631060b8083e033cd9160",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/reconstruction_parity.csv",
+      "bytes": 3690311,
+      "sha256": "4a50663343eeac844f1c42fd1c4584acb314b9bc1528a3555a991579e682e8a0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/reconstruction_summary.csv",
+      "bytes": 183,
+      "sha256": "8f83e8086b77dda083ceb515103ec2f16253ba98a1bf5c3b90d04d6205aa49b2",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/reuse_audit.json",
+      "bytes": 6948,
+      "sha256": "350dc548fc82b358c2f04731bcffa1263574d9f30607208c931660d91d4a0c3d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/sampling_variability.csv",
+      "bytes": 409106,
+      "sha256": "714741e87709ac2a6d8509f8aaf41a692075af0d6341c668b81f3363d4460ae0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/FZ2_score_evidence.md",
+      "bytes": 964,
+      "sha256": "dc54bcb4edefd91b3260fafb7733ea4634d43bc629020fe930a5bb617dacc8e5",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/README.md",
+      "bytes": 3447,
+      "sha256": "c6593e247bd60aa738e748cf935aeadec6a446e12a76c117ef10b47f953eb577",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/README.md",
+      "bytes": 3068,
+      "sha256": "6e827fd15caed91c9ea139277a2f2410454b203feb845642ff942967c98693af",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_error_points.csv",
+      "bytes": 546012,
+      "sha256": "b90665f1ed5900b012727260ecf40d0af9ff29230ff4cf15ea5f41fc85448360",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/ca_points.csv",
+      "bytes": 1915336,
+      "sha256": "dc2e5e233490bbe5121cee137e451b04a01cdd2fbb059e03d6acf8f86abdce9d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/capture_trace.json",
+      "bytes": 1293,
+      "sha256": "4f155ca81c1e01bb2886ef0def041524e6679d7440043c0007e4099274a25a6e",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_error_points.csv",
+      "bytes": 546313,
+      "sha256": "f4c5dfd29a10bec1a7aaa05a9c051099bb04e4e54391a17b790d1949c400a201",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/cpg_points.csv",
+      "bytes": 1864659,
+      "sha256": "3ef4271aae11736d3c1f8afb1a32359c0edc7d7480c930f0109e09dba479b4c5",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/error_manifest.json",
+      "bytes": 1464,
+      "sha256": "4b3f991879f923e61681a3c2d737e3dbcf7755c2b87a6e21a5800738e3b20208",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/figure_data/density_bins.csv",
+      "bytes": 124924,
+      "sha256": "4f11450f9dad11cec1d4266ba86695762b079d3cb31b7f88d1dd1b96d0140595",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/figure_data/surface_curves.csv",
+      "bytes": 35218,
+      "sha256": "7f37b6bb9ea198b17750ed958c9c6e22aec20928d76dd7015aa2a73e0a4caf38",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/offline_replay_validation.json",
+      "bytes": 475,
+      "sha256": "e778d1c2475d7210ce6eadc88588da88f388448cdb51c371dddea634191e1157",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_error_points.csv",
+      "bytes": 546197,
+      "sha256": "819cd8bbc029a9c01bf93904048178251e83417b203cc59dbc5d2724b0054a36",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/pi_points.csv",
+      "bytes": 1797007,
+      "sha256": "2ce1e3a1fe30ed340ef4f721437304579b1a8384385a44a2e885032b343241dd",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/protocol_differences.md",
+      "bytes": 1088,
+      "sha256": "28e7836df03bd3b4df16df175410c8c368b27fe0885efac6e9f41473c958e9b8",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/public_data_manifest.json",
+      "bytes": 3753,
+      "sha256": "79204aeb554a7c15eb48100752edea176feaff9d88f97cc3db1e07634d50bd21",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/read.me",
+      "bytes": 1547,
+      "sha256": "c4ba04474ca99f3782146218239574984580128550a0aee8625396357bf35f2a",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/score_manifest.json",
+      "bytes": 23956,
+      "sha256": "d0adad32965ead5b493029f37db899bf8e0215e8c285c4e15332620c78da6ab8",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/truth_isolation.json",
+      "bytes": 1173,
+      "sha256": "ca512034a8468fa6b22db9f5452349246e56edd88ec07a77a79b2ae92fd1b5e3",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_error_points.csv",
+      "bytes": 544718,
+      "sha256": "80a471edbec2783c97ad98a3df7d4ba1025d5b645e296d9040788aff0c4f7891",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/uniform_points.csv",
+      "bytes": 1251796,
+      "sha256": "15b0600931a78c55f5b88f5394357e43c82f40766b02d553466faedf292aad0c",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/README.md",
+      "bytes": 5116,
+      "sha256": "5e2364ed49dcdf13e316f9c07eb1f4f4dadc3d9fede01fcfa6bfa8df91df0be7",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/ca_cpu_diagnostic/perpoint.csv",
+      "bytes": 6372795,
+      "sha256": "df23c3851961b3bcc49cf7ec0fc2e14734ae1dbbb05361ff4d987a7ae47b9caf",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/ca_cpu_diagnostic/run_manifest.json",
+      "bytes": 5052,
+      "sha256": "d284c8e65a41ec6335a6e90138b64e3681b2934a669b9dcf9ea6ef52843fc404",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/coarse_trace/README.md",
+      "bytes": 1532,
+      "sha256": "cbe1c9fd4dc29a09f14c891af374dd2305544d0ecca57ae58d5f7d15c51a0456",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/coarse_trace/caption.md",
+      "bytes": 679,
+      "sha256": "a0ccf08075c92032c8d4bfeb83262e97c1e49cdcbd64704108fbbaa9ae967937",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "published CPG trace renderer",
+      "status": "VERIFIED_COMPLETE",
+      "public": true,
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/coarse_trace/public_replay_validation.json",
+      "bytes": 1345,
+      "sha256": "06b9fda0121666cb73c68f884a015680d4877b002042318056a17347d04fffc6"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/coarse_trace/source_manifest.json",
+      "bytes": 1632,
+      "sha256": "0e76240072256186051d9098ef85006c0c2a0625c22bd1d534ac6ff50c91c82c",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/coarse_trace/validation.json",
+      "bytes": 1748,
+      "sha256": "4120a04575de7b6dffec0413ab98eeb873d31f2794d6dd7347f92e511dd50811",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/cpg_coarse_trace.csv",
+      "bytes": 263556,
+      "sha256": "ffdf199691b391798afbd1d9412482d0cd1fe962f428370fa386c4c5b74af7c5",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/ca_perpoint.csv",
+      "bytes": 6050101,
+      "sha256": "627346151bc4c7730c28151d80820655d1b7095811edffa9130fd6aec42e04ed",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/cpg_perpoint.csv",
+      "bytes": 6054579,
+      "sha256": "70adf065f4a01945fff172cbd799cb14e036d6f1875b4fb1ae179eb4f59cd789",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/pi_perpoint.csv",
+      "bytes": 3884067,
+      "sha256": "24f45d1481ee4ee12b1b73ac0f7dbfe7a99986293056c1fa1b6cec7dba29297d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/data/uniform_perpoint.csv",
+      "bytes": 4097184,
+      "sha256": "a95b064f177123ea83cbfe47aa94a8d70d8a521bec9d53ae629594635e21cd2c",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/read.me",
+      "bytes": 1662,
+      "sha256": "7efb2046ee344894608fa7626f3024c5bb5fe09a60f1407309d4e9e182e9b455",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/render_reproducibility.json",
+      "bytes": 1350,
+      "sha256": "abb95d1e4ec6c02ba9d7765ce2697607dd8d07c46d5b3dade05998aeac9b28d3",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/score_manifest.json",
+      "bytes": 37184,
+      "sha256": "ccb2f559c72009dac26604719d06d90b1f0f6668e771bba9d2f76c910227f980",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_reuse_audit.json",
+      "bytes": 9024,
+      "sha256": "00869ae13a5bed59df787e959346621ef1fb9c098fa5f8f4feb0dc525671904d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/environment.json",
+      "bytes": 273,
+      "sha256": "ab95a13ec29bdd243ae4ad1aab8ee16b797fe1f50f5be7833206aedadf089957",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/external_arrays_index.json",
+      "bytes": 5374,
+      "sha256": "3659fbd203c31207a55227d89ad4cf965b6fa19e2b3eff3c8bbcd019f353502a",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/figure_manifest.json",
+      "bytes": 53322,
+      "sha256": "92dcfd338039052d72eec585a8c19a9760fd1338c09a3cc8d6cc0cc13a579864",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/public_release_render_qa.json",
+      "bytes": 3911,
+      "sha256": "aad1050a737713877acb08f35749412458c25a69db8f78e955a5f9aec458c346",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/airfoil_validation.json",
+      "bytes": 22620,
+      "sha256": "e1aad1618b946eb6fcaff1764e2c000df630f4799763311dea29f05a4b204dac",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/airfoil_validation_final.json",
+      "bytes": 29511,
+      "sha256": "bf414764447293f116b976c71eadb98ee86dc05f289f0540a293725411fb42b7",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/ancillary_provenance.json",
+      "bytes": 2559,
+      "sha256": "0c371f67c227a55be5b765491ec7125592aa8dc7e100bff1b5dc18efbd7ecd58",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/car_validation.json",
+      "bytes": 24938,
+      "sha256": "7554bb4da566d973c6659084f7048d03c18b7eb3b027d778cfdb208c51001cbe",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/car_validation_final.json",
+      "bytes": 29651,
+      "sha256": "5543488b6bb920acd457d1f9e093c22382617c6d5896b1c2e7370c7ebdede209",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/car_validation_v2.json",
+      "bytes": 28907,
+      "sha256": "6a994bfebc3d9e0f83bb9c0a2154c3114c506dc3b140d6d3aa22e62846ad61a1",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/current_car_replay_provenance.json",
+      "bytes": 977,
+      "sha256": "caa6dbe9c7cabbdf465861adef10e0f4485475f0466a3b0b67d7e5856b6c2bbb",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/portable_airfoil_qa.json",
+      "bytes": 29511,
+      "sha256": "9f9a3d8f1ac5d401d48577c55471a86cc4a1216f290aaa5d9b919dfe29879e24",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa/portable_car_qa.json",
+      "bytes": 29651,
+      "sha256": "2806a79787069f4021989c4f3b6ad544e253746814a2a1c4e30080479496f089",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa_contract.json",
+      "bytes": 6165,
+      "sha256": "ab6a93688a89081dfec58adb2250ac6171c8831ba703b19041d8346d51ae9dc9",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/read.me",
+      "bytes": 208,
+      "sha256": "ca9cfa38f1ffa273f4c9c171eb0bf32ca1b514558fa8be9035516a754e9e6532",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/reuse_audit.json",
+      "bytes": 496,
+      "sha256": "85e634a98c5702e15bffbf88c595df94b5d252f3aed79186746df2a3ae32f6ae",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/airfoil_ca_b050_s0.npz",
+      "bytes": 250257,
+      "sha256": "1e3655a2107aa799123ca3edcf05ed349bf5743a4d9d0fb103e5afa8840661cb",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/airfoil_cpg_b050_s0.npz",
+      "bytes": 248781,
+      "sha256": "749888abfa3ee478d32b30e9283b1ce598025c00b313f2ae0b41f7e3234b8244",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/airfoil_pi_b050_s0.npz",
+      "bytes": 430680,
+      "sha256": "5a5fc1bcb200b04deed562d9f002f11faa86e6960cfeae3230a191323331c2bc",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/airfoil_uniform_b050_s0.npz",
+      "bytes": 203134,
+      "sha256": "8e614c5755c6db3fb6dc636015a9d4e002c0da42e9fa965e938a90e6bd16f9f4",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/car_ca_b050_s0.npz",
+      "bytes": 1189409,
+      "sha256": "030f7ecdf05b0bed9fe2f09f980423c3fc581a23a63ce6e8a8ea2dbdf1d076b9",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/car_cpg_b050_s0.npz",
+      "bytes": 1189876,
+      "sha256": "4884ee8a12be932f2ba2b5c5e1d0b3f06fb2926bc1ff174d41a5ed06b5af28ad",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/car_cpu_ca_ca_b050_s0.npz",
+      "bytes": 1189333,
+      "sha256": "21b230863031ca4aa171ce73778c91d533d6de93f81870fbb2f1a2eab6bc1767",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/car_pi_b050_s0.npz",
+      "bytes": 701494,
+      "sha256": "dcc3ea6becdb7fcd2396b4e10e657f5a968af0cf13e3039db12358292660b1e7",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields/car_uniform_b050_s0.npz",
+      "bytes": 704907,
+      "sha256": "cb6e9aea5571e0772577a329b790bf7e11417e0151ef5980615295e4cf4ab985",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_fields_index.csv",
+      "bytes": 4227,
+      "sha256": "e705c73570fbcd9cb68e9aac12a52b973d45c3c2b5bed054bc047cb3aa75f585",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_summary.csv",
+      "bytes": 2119,
+      "sha256": "50f52f7472fcbe9d33ff99b134af911c7d3f989b9d1730124f7909cbb3e1aa9d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_visualization_manifest.csv",
+      "bytes": 7297,
+      "sha256": "e304cf85ab06034dc8d4ca26b37d9c140b6627d9db9e338240396825c469f7ed",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/score_visualization_qa.json",
+      "bytes": 2981,
+      "sha256": "8a7614b12f1aa4bf6de1722ff9b7c11306659b26ec444c352e519d26ad488717",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/score_visualization/twod_reuse_audit.json",
+      "bytes": 11368,
+      "sha256": "c96fda72fdeea2a47a8178b602de23a8348df4778829daf13d6a095ac51428c6",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/training_seed_summary.csv",
+      "bytes": 8759,
+      "sha256": "0063720ac4347375e2dbf36c4e47549ac60cc48a35ba9eba66005b1a44bcaf63",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_followup_20261114/verified_reuse.json",
+      "bytes": 33075,
+      "sha256": "4e55f498d35f57fbe7fdaafda1798f3fe3bb16dbcd16bcecc5e8cf96934d7447",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error.pdf",
+      "bytes": 17411,
+      "sha256": "aff6df66e2a92c57b07ddffe7b731f3eef4aa6ee6e9547f8d5144dabcebe7155",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error.png",
+      "bytes": 153574,
+      "sha256": "40b4f6f6d33aa20477deb1b8f42d4c06f490260c6e57b0189f9b888760ac8ddf",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error.svg",
+      "bytes": 34655,
+      "sha256": "f5016246b296321914e90b76cc614c6f7cf366ff63188ef4a97a50055d963cc7",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_absolute_error_source.csv",
+      "bytes": 9415,
+      "sha256": "1355e9c2f827b41f41dd4fc39201df274bf8f900a0c5adeedc9563dfc43dd636",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec.pdf",
+      "bytes": 13724,
+      "sha256": "0d9baa9beac801bcac4625759244fcbfd6f19ca59c72fbb8201a6773210c2cf2",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec.png",
+      "bytes": 57657,
+      "sha256": "01d3bbda69b64e6018793f51706245a954f3cffc39f34febff4db0cd3eb318c1",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec.svg",
+      "bytes": 21944,
+      "sha256": "5bba328957da89c52ceaeb5b1f6d86e2ec39b6ac313134e4d3e92ba61473bb91",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_source.csv",
+      "bytes": 3894,
+      "sha256": "cc2fb0c7519707e2baf77935d55f8450d781ff16670499bd4c410fc9f8e0005d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.pdf",
+      "bytes": 16227,
+      "sha256": "a8ca0c71cc735510881a950403edbba52eab5088637ebfb93b911e1de1b1125d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.png",
+      "bytes": 59219,
+      "sha256": "68c0a7a0f3a4300bef70fe712a8627e1414ef98d15ae8556bdc961c94b76955e",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.svg",
+      "bytes": 7719,
+      "sha256": "1940a477fcd2fd70e859c7cab2c83a100ff53188340f3458ec94976eb73c04ae",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table.tex",
+      "bytes": 306,
+      "sha256": "9898877d29acf7a629152a443a3461f91463fbdc705dd8531ebddacb5a25f923",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/airfoil_seed0_rauec_table_source.csv",
+      "bytes": 3894,
+      "sha256": "cc2fb0c7519707e2baf77935d55f8450d781ff16670499bd4c410fc9f8e0005d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/captions.md",
+      "bytes": 1000,
+      "sha256": "1396616788efe790de0af5c0602219323c44aa702fa63444bc5805bd4a1d0565",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/airfoil_seed0/render_qa.json",
+      "bytes": 946,
+      "sha256": "4f496be6394c65b1b4187cd4b65523c42609ce66368fd6a67232f75d6bff436a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/captions.md",
+      "bytes": 2415,
+      "sha256": "b855b2bd2868a080759c0bdf0dc09eed5a4398d6d5949d3c2e81ac9b9218103b",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency.pdf",
+      "bytes": 15979,
+      "sha256": "4a0e259f3fa862fed037ddae280122e617227fcd233bdc86b50438463de575c5",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency.png",
+      "bytes": 120962,
+      "sha256": "a830fc916c4994f585e49c3284c1cf7bd508a16d9f0199681069d86a971b37c0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency.svg",
+      "bytes": 24292,
+      "sha256": "470baa2313386a83bea89c6abf0957e920074b084d0fd22c8e6996a820593da6",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_absolute_error_latency_source.csv",
+      "bytes": 9378,
+      "sha256": "750a3e1b85d0df260af0c7c64dd8b09a3b79d6e3770bfef0f42e35662bd1d938",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error.pdf",
+      "bytes": 16327,
+      "sha256": "ac7b72621b7f71df0784a5d626f4bfe3aa36b65a1fbdf725314fbfd82c04dcb3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error.png",
+      "bytes": 148722,
+      "sha256": "354988a3ef141d68b2caac9981191bd7b39d9a7c9662546bcd730502058e7f9c",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error.svg",
+      "bytes": 31558,
+      "sha256": "f419407e1940d3f6f7acf587996dd91f5ae0b50a2aa38c70507c8aa28187ad72",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_absolute_error_source.csv",
+      "bytes": 6754,
+      "sha256": "2a64fc8ade5ca0b34fd586ab63ae05ca1392c3e561d8e39f57b5620ecf95afd0",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec.pdf",
+      "bytes": 13631,
+      "sha256": "050e24e84377206677f66d9bb9cb7b0340870b4a113624a9c36ac72833430029",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec.png",
+      "bytes": 56650,
+      "sha256": "bbd6edab18488d3e9cf77b6f1205a558d1b4b0779af786dcd00aaed2dea86bea",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec.svg",
+      "bytes": 18850,
+      "sha256": "5b5c46fd00b35a9dc3cf8e748ed293912bd26797eb08f8dc1fd91aa8ad756a8c",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_backbone_rauec_source.csv",
+      "bytes": 2818,
+      "sha256": "edf64f09ef66a36826591f6555fd658da61b9ea0586f8091486934f7eb79e1fa",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error.pdf",
+      "bytes": 15895,
+      "sha256": "dbe456b4e4f2f375df202c6746909c8401369e6c79823ff65f58460f8d15f38a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error.png",
+      "bytes": 114430,
+      "sha256": "8fb65639439082ed7e9342523d54825ce986f1e598ee72c24c29218cbea9d381",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error.svg",
+      "bytes": 22069,
+      "sha256": "796d77cd989b11b4467410d1295745d98024063ea59f4faad2d2e681d817a65a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_absolute_error_source.csv",
+      "bytes": 3421,
+      "sha256": "0c8e937e48d1c8e8992827574a984b341fa61a17c80a6a47027193017001f03d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec.pdf",
+      "bytes": 14529,
+      "sha256": "d6ac53c316ba0030f151bda782ab43d1451ae5159f8700d2cd68ebc2fb4d3a4c",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec.png",
+      "bytes": 60735,
+      "sha256": "99cc3658af8c8a6646d9d2e087d0ce1333cf09216857007b12f40421a1999853",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec.svg",
+      "bytes": 16204,
+      "sha256": "8f6e8eba243d52d6cfd6928c9175c69e7a19e5f6001077aa3a8cd122bf25b9a6",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_source.csv",
+      "bytes": 1108,
+      "sha256": "f6bbe1947dcae2226027b9bc960deeb802f940736eec8522c25a534286466a4d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.pdf",
+      "bytes": 16783,
+      "sha256": "c30c0df795420f5b8e6a387c2e47bf2242fe936af06fab9b8154b9b1c9b8d2a4",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.png",
+      "bytes": 62508,
+      "sha256": "745da154169f68c536363530d058e63e2187356605cdc834b3a71ba80729e2bc",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.svg",
+      "bytes": 12110,
+      "sha256": "e156b7b65df0029623e136b3c5aa52bd585ce154a40001426abf2998e49beff3",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table.tex",
+      "bytes": 353,
+      "sha256": "f18b3723ff965f480ea4c2a7a3b0aa2fa8f11a8f38cf15fca97fefb136a57789",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/car_training_seed_rauec_table_source.csv",
+      "bytes": 1108,
+      "sha256": "f6bbe1947dcae2226027b9bc960deeb802f940736eec8522c25a534286466a4d",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity.pdf",
+      "bytes": 14086,
+      "sha256": "22b8eeee8bf3a1690d8b625c2650a62859ed0bd6a984b4206eacbf0a22cb46e8",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity.png",
+      "bytes": 79514,
+      "sha256": "a6cc60e6de1c93134637282a3fcab8f3bff2330e4d243af049a377e41e02a7b9",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity.svg",
+      "bytes": 25170,
+      "sha256": "f70b6db36f866aa59d871c4c64915c4897e7bfa65f2733d427ee62fc43585a09",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/reconstruction_fixed_prediction_parity_source.csv",
+      "bytes": 42241,
+      "sha256": "c2c8ab3f7383bbc761c82d562e91a1a5b5424534e7ab7161ab1275fd6e10ad32",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/render_qa.json",
+      "bytes": 5070,
+      "sha256": "caecab29bd2259181a0026eee544337318ce9dfa1f9a3881d9de5230c4629400",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.caption.md",
+      "bytes": 479,
+      "sha256": "415da0887890c5c64b19f3f5f37c63ce7f2ed939bb8b36821b4d55691dfd6f3f",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.pdf",
+      "bytes": 121881,
+      "sha256": "a87268d9b7e3cb300cb4e5a22a3a908922caf47dcc2c5936537a8bf2b3759653",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.png",
+      "bytes": 818654,
+      "sha256": "1d5db08804eeae830961f836f11aeff3d2a031b4b55ebc644b9de81f4f95e946",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_acquisition_inputs.svg",
+      "bytes": 645156,
+      "sha256": "387a3c94995898a2ed7269ee37a25a462b89878956f22cbcdbffa1f455c34a72",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.caption.md",
+      "bytes": 673,
+      "sha256": "15ecd46ea50cf60477b5e4a924a7349f2851138de60ea235873656a39917b0f8",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.pdf",
+      "bytes": 42116,
+      "sha256": "b45f5ac70474bd7c383b4a0ccf6bd93aa9f02a7f7873d3107790f52ec0e575bb",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.png",
+      "bytes": 231211,
+      "sha256": "3d0df4c6b167af1b1d6ae95c0d4d29172df46b76a6af9542740f0e38cd95fb99",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_ca_feature_and_head.svg",
+      "bytes": 150622,
+      "sha256": "268c86930b2095c009d00ba3304ff020a45796d3f84e07f657cded5a4b58f207",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.caption.md",
+      "bytes": 354,
+      "sha256": "c10c1c164840e37d5cf09a629b64156332d41fe5f42977590a8d365432c194f8",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.pdf",
+      "bytes": 224421,
+      "sha256": "cd1e76a692cf6a43feb6114ea52b2e582792e539fc19841139d8031e8ad24a58",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.png",
+      "bytes": 1187472,
+      "sha256": "4026088ede6a914f94de5725dc4922c9599b607a9972c78b7651d15052bcaee0",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_error_only.svg",
+      "bytes": 1971636,
+      "sha256": "202344174e1600802b8fbc616f6dde2d7766bbb15e0e799db0e64cabbee41e8f",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.caption.md",
+      "bytes": 785,
+      "sha256": "77b9e2dcd222b1707457da2bd567587a9c030c056f48e645ed56387a5a358944",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.pdf",
+      "bytes": 644297,
+      "sha256": "07e61828d660986b4c1baa626b3483ba552649c3b90e67c3d26417e1fb05d1ea",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.png",
+      "bytes": 3029174,
+      "sha256": "0675257116a8463794887a76c4d0f643d46fb23e83ecd43601d0e283f5c114b6",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_sampling_comparison.svg",
+      "bytes": 5149299,
+      "sha256": "45a5deab8454a77474cee2100abaddac0411fddee5157ad81c0cc6e6fd5f12a0",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.caption.md",
+      "bytes": 496,
+      "sha256": "849fc8b59973182291517850816a1a1d3be2d698ccfc0e9763f410029dd86c26",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.pdf",
+      "bytes": 348518,
+      "sha256": "b401c313abc40d435357c4a08bebed566850b013b49725c58d56e3aeb1755303",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.png",
+      "bytes": 3344523,
+      "sha256": "33756297490118d5f46e8ab3de6a70ec09e1716305516ea530ce108f7001b543",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_score_stages.svg",
+      "bytes": 2939378,
+      "sha256": "b5181996ce8cac64f6ee7d077da4a7c1e085473d00d1994f007a4a81f25d6ddc",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.caption.md",
+      "bytes": 697,
+      "sha256": "196539f17f83839ce25155e9f365eab37e9854baa3f88e696c7a0a55c78d9f33",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.pdf",
+      "bytes": 25321,
+      "sha256": "f989f56945d3393375abbde711f218d748126f264e80f7d54f39529c49a3af04",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.png",
+      "bytes": 433632,
+      "sha256": "096b25d574f047fb04a2599ede81f7cbf7743dc40f624950df5e593ab6dc802a",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/airfoil_surface_curves.svg",
+      "bytes": 77629,
+      "sha256": "853951124a756fbd031ec0810f1eeb435b293044eb2a796007b42a9433fae181",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/density_bins.csv",
+      "bytes": 124924,
+      "sha256": "4f11450f9dad11cec1d4266ba86695762b079d3cb31b7f88d1dd1b96d0140595",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/render_qa.json",
+      "bytes": 6667,
+      "sha256": "58293c94c364685f261ba5827109973a35ee7ecc713b94688387d3ecb8b11dbb",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/surface_curves.csv",
+      "bytes": 35218,
+      "sha256": "7f37b6bb9ea198b17750ed958c9c6e22aec20928d76dd7015aa2a73e0a4caf38",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/caption.md",
+      "bytes": 1322,
+      "sha256": "4a9d47efe33275b8575747e00d99c544cdaf01674fdf79de5cc911a4d7a82c75",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.pdf",
+      "bytes": 937193,
+      "sha256": "b346e56210926d4d75058e46a10df2baddf992cebab4975e6ecde20d0d164bd1",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.png",
+      "bytes": 1211337,
+      "sha256": "f550c70a49c1754595a4c9332e146ac7fae4ee3dba8ffaf1c9fb2553eee457cf",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/car_score_density_selected.svg",
+      "bytes": 7658183,
+      "sha256": "a59f59f7eca7bea2d628901d4e37fe80b04719daa91edec9e243da781f86ca5a",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/visual_manifest.json",
+      "bytes": 2715,
+      "sha256": "cda5af5eea7fe02520aea8e43aa795da8e577ba750af917cf076a80da3072642",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.pdf",
+      "bytes": 214755,
+      "sha256": "185dd249fb8b4ee7d3fcad0df3e2f4f12fe79696eee4f190ae2b23d89692d8ea",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.png",
+      "bytes": 490834,
+      "sha256": "4392bebc9922debe587c831e5d0d576a34b272feae766ae01177761a2b0dd703",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpg_trace/car_cpg_cpu_coarse_trace.svg",
+      "bytes": 1391932,
+      "sha256": "63ed3a23a0fdd47a2a7fde8a412e2d2cffcc882fbb38767675f5bed0f378e57c",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/caption.md",
+      "bytes": 937,
+      "sha256": "78b172119a300ea0295acfbef98c54d0d197a6947ab104bc29a1348e383520f2",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.pdf",
+      "bytes": 556985,
+      "sha256": "fbe67cabe8c2bdc1c9a8ad544f6da16a0bfa7a4aeed5489166ee8dbafac491c8",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.png",
+      "bytes": 1078433,
+      "sha256": "29d8c716ef897137c5df6c9dc23ffa91cede6a15d5aa61f83e7e125323f02436",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/car_ca_cpu_complete_chain.svg",
+      "bytes": 3739726,
+      "sha256": "dc26ea5545292c763d9726e975d011c7209f15a4b74888362d9596c2d81d7b6d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "figures/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car_cpu_ca/visual_manifest.json",
+      "bytes": 1631,
+      "sha256": "007cf45444928e3c883edb93372436500be50855e52e6d0001c0b39a31bac12d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/README.md",
+      "bytes": 195,
+      "sha256": "d55aa02ed17ee41c0b5bc032d773a972c3a022e26f81c33b228c1805c783ff3f",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/environment.json",
+      "bytes": 251,
+      "sha256": "85fce61fd22bda7688d677360e7aad4e4f6c56e0ff519bfdf1b02f1fa7f3d770",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/plot_airfoil_seed0.py",
+      "bytes": 6747,
+      "sha256": "90255d76c6938585a5dc55dd794c507f02b421690bb0be9be65b7e1cd97dbf1a",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/plot_reuse.py",
+      "bytes": 13095,
+      "sha256": "874587d8f53f589e763d2987ae5c18b5c78f5faa61a5626b24656ff43996be30",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/requirements.txt",
+      "bytes": 61,
+      "sha256": "c71e904a4639ce80dc720885c1e0be79f723d874f527820e5430b1d0bf6eacbd",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/PORTABLE_QA.md",
+      "bytes": 758,
+      "sha256": "56331e8422325707a6affbf1a7e1cb7c4a7176ff83045baa05ca7614ecaa0e89",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/README.md",
+      "bytes": 2529,
+      "sha256": "c1329e51187f3a9ba6f748b91696ede16bec855190626fdb18cf088b81301746",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/capture_scores.py",
+      "bytes": 20493,
+      "sha256": "308e651bab45be7f57bd3559a02f71500e623dcb29a687f2767029dcd33ce1d3",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/plot_scores.py",
+      "bytes": 17482,
+      "sha256": "527622e9958f7e42b885855faa31eda40294be5f4bb46f81af6368ba41ce97fb",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/airfoil/prepare_public_data.py",
+      "bytes": 4099,
+      "sha256": "88300f75b110ba80fd36183804f9a64d85c2a4e5a7433389abc379e637ced1ee",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/capture.py",
+      "bytes": 20257,
+      "sha256": "6ff62b21e34401570102d6fce671411e577c3187d02e3a02d7cd29b8ab4035d7",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/cpu_ca_run.py",
+      "bytes": 9896,
+      "sha256": "d53f2be29f37b0438d7d732852aec75daff58c37ec1609545e6bb2ba0f2883f5",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/derive_allocation.py",
+      "bytes": 9623,
+      "sha256": "1669ba5796fd3e179ec02152ca63675a8da2b9891a64d5704f0c346cdf054b11",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/gpu_raw_replay.py",
+      "bytes": 3695,
+      "sha256": "a568a32ca6e2376c932920ded20799e99039f79dce52c21b843d360d0f22f324",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot.py",
+      "bytes": 8768,
+      "sha256": "bd0a80f9dfdc74cab90a1b4a1972f33c9ec675f995cd4eddc4e66f47c90af0e3",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_coarse_trace.py",
+      "bytes": 5719,
+      "sha256": "210fd24e7f0400f98f003c33904a27527cc8796cd6c2cddd1886743c776606cf",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/plot_cpu_ca.py",
+      "bytes": 5708,
+      "sha256": "2fd6f224d57c564e1f8995662f4b22fbf38eb03704dd1b174e1e3f23ee6ffc51",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/car/prepare_public_sources.py",
+      "bytes": 6226,
+      "sha256": "383b9b4a1ed9a39a927a89962e29397bd9d7810607f33e03c025ef8620d8015c",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/qa_contract.json",
+      "bytes": 6165,
+      "sha256": "ab6a93688a89081dfec58adb2250ac6171c8831ba703b19041d8346d51ae9dc9",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/requirements.txt",
+      "bytes": 61,
+      "sha256": "3ca693d5c7a535d1853d06324dcc31c6f33f2a9afe1f2373be5bb740a3357ddf",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/validate_score_portable.py",
+      "bytes": 41032,
+      "sha256": "44673648c0c40df66879c216f00761961256165d8b1e6a6fd0a5ef31982529c7",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/score_visualization/validate_score_public.py",
+      "bytes": 2463,
+      "sha256": "a777966dce70fc7b4e015363d1d23a7dd753eab7c3ce0ac0e6e6f4687e513d2d",
+      "code_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b",
+      "code_commit_scope": "committed score capture/plot/QA scripts",
+      "status": "PARTIAL",
+      "public": true
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_followup_20261114/validate_release.py",
+      "bytes": 5880,
+      "sha256": "c265ae1348b87d11d5ff358a9fd20d17f1bd37c90c1018ac5405c094a59410db",
+      "code_commit": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+      "code_commit_scope": "paper evidence baseline; new export scripts identified by SHA256",
+      "status": "VERIFIED_COMPLETE",
+      "public": true
+    }
+  ],
+  "excluded": [
+    "weights",
+    "raw fields",
+    "long logs",
+    "private conversations",
+    "personal absolute paths"
+  ],
+  "missing": "pending.json",
+  "manifest_self_hash": "excluded to avoid self-reference",
+  "completed_training_inventory": "completed_training/model_index.csv",
+  "completed_backbones": 9,
+  "completed_matching_heads": 5,
+  "updated_at_utc": "2026-11-14T16:23:41.364565+00:00",
+  "score_visualization_manifest": "score_visualization/score_visualization_manifest.csv",
+  "score_visualization_status": "PARTIAL",
+  "score_visualization_script_commit": "76c28a6d7f001abd88ffa8a38858161a69ebec2b"
+}

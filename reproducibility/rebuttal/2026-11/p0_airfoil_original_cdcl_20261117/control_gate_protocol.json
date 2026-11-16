@@ -1,0 +1,46 @@
+{
+  "created_before_execution_utc": "2026-11-16T18:39:45.220156+00:00",
+  "expected": {
+    "uniform": {
+      "rauec_mean": 1.0,
+      "rauec_std": 0.0,
+      "per_seed_rauec": {
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0
+      }
+    },
+    "pi": {
+      "rauec_mean": 0.21740789812807265,
+      "rauec_std": 0.16875299674582236,
+      "per_seed_rauec": {
+        "0": 0.22116170942041027,
+        "1": 0.04680931163951278,
+        "2": 0.3842526733242949
+      }
+    },
+    "cpg": {
+      "rauec_mean": 0.23794918587952682,
+      "rauec_std": 0.1781006455931864,
+      "per_seed_rauec": {
+        "0": 0.27706584155108105,
+        "1": 0.04354162185006604,
+        "2": 0.3932400942374334
+      }
+    },
+    "ca": {
+      "rauec_mean": 0.2452788171035873,
+      "rauec_std": 0.1779119428110042,
+      "per_seed_rauec": {
+        "0": 0.30980828329807963,
+        "1": 0.04410694860562329,
+        "2": 0.381921219407059
+      }
+    }
+  },
+  "mean_sd_absolute_tolerance": 0.0005,
+  "per_sampling_seed_absolute_tolerance": 0.001,
+  "require_complete_3960_rows": true,
+  "require_no_nonfinite": true,
+  "entrypoint_resolution": "The supplied official script is an archived 25% single-feature candidate. Table1 data were generated with scripts/airfoil2d/run_budget10.py and aggregated by airfoil_pi_tuning/analyze.py; their original functions are used unchanged."
+}

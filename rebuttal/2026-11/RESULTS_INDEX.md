@@ -1,5 +1,11 @@
 # Result tables and figures
 
+<!-- original-cdcl-correction-20261117 -->
+**2026-11-17: corrected original Airfoil Cd/Cl.** [Results](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md) · [Training-seed table](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/training_seed_cdcl_summary.csv) · [Verification](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/verification.json) · [Reviewer reply](../../reviews/airfoil-original-cdcl-training-seeds-response.md).
+
+Transolver3 training seeds0/1/2, their matching heads, all 110 original cases, three sampling seeds and three budgets are complete. The original frozen-checkpoint control reproduces all original per-case errors. This is the active original-Cd/Cl result. The previous P0 Cd/Cl rows are retained field-policy diagnostics and cannot be compared with original Table1; their numeric files remain provenance. Other experiment groups below retain their own stated scope.
+<!-- /original-cdcl-correction-20261117 -->
+
 ## E0: Same-checkpoint references
 
 [Data and scope](../../data/rebuttal/2026-11/E0/README.md)

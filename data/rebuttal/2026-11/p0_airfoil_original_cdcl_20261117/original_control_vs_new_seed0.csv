@@ -1,0 +1,5 @@
+method,original_control_sampling_mean,original_control_sampling_sd,P0_seed0_sampling_mean,P0_seed0_sampling_sd,comparison_scope
+Uniform,1.0,0.0,1.0,0.0,different checkpoints and fitted normalizers; no paired delta
+PI,0.21740789812807265,0.16875299674582236,2.1104583643002006,0.7462138900407802,different checkpoints and fitted normalizers; no paired delta
+CPG,0.23794918587952682,0.1781006455931864,3.383230044269202,2.4388505879673708,different checkpoints and fitted normalizers; no paired delta
+CA,0.24527881710358732,0.17791194281100423,2.041772800523895,0.9064198872622853,different checkpoints and fitted normalizers; no paired delta

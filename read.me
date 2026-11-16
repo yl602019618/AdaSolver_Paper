@@ -1,0 +1,27 @@
+2026-11-17 — Original Airfoil Cd/Cl correction
+
+Published branch target: rebuttal/20261114-linearno-seeds
+Original protocol: data/airfoil_pressure/protocol.json and cdcl_configs.json.
+Corrected package: data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/
+
+Transolver3 independent training seeds 0/1/2 and their own CA heads are covered.
+Each checkpoint has exactly 110 original cases, sampling seeds 0/1/2, budgets
+0.375/0.50/0.75, and Uniform/PI/CPG/CA: 3,960 records per model, 11,880 total.
+PI/CPG use no CA head. CPG uses original 10% coarse sampling; CA uses original 5%.
+The original frozen-checkpoint control has 3,960 fresh records and reproduces
+all original per-case Cd/Cl errors exactly. Full100% is outside rAUEC.
+
+Verification: VERIFIED_COMPLETE; control reproduction passed; CSV-only
+recomputation passed; no NaN/Inf, missing case, additional outlier removal,
+checkpoint/head mismatch or mixed reconstruction. Case1007/1059/1198 are retained.
+Training mean/sample SD and within-model sampling SD are separate.
+
+Current numerical results: RESULTS_DETAIL.md and the corrected package only.
+The previous P0 Cd/Cl rows are field-policy diagnostics, retained as provenance;
+they cannot be compared with original Table1 Cd/Cl and are superseded for that use.
+English reviewer reply: reviews/airfoil-original-cdcl-training-seeds-response.md.
+
+No required item remains pending for this corrected Transolver3 accuracy package.
+Outside this completion: Plasticity three-training-seed experiments, LinearNO
+original-Cd/Cl-policy reevaluation, and new formal latency for the Cd/Cl policies.
+Existing P0 field-policy timing is not reassigned to the corrected policies.

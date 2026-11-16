@@ -1,3 +1,5 @@
+**Archived Cd/Cl panels.** Any Cd/Cl rows or panels in these P0 figures are force diagnostics from field-target policies. They are superseded for original Table1 comparisons by the [corrected original-Cd/Cl package](../../../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md). The original figure and source values are preserved.
+
 **training_seed_rauec.** Dots are individual training-model rAUECs after each model aggregates its three matched sampling-seed area ratios. Black marks show the mean; sample-SD bars are drawn only after three independent training models exist. Beta1 is primary and beta0 is the paired compensation ablation. All three independent training seeds are included.
 
 **training_seed_error_budget.** Case means and sampling means are computed within each checkpoint before averaging independent training models. Error bars are the sample SD across three models when complete. The dotted Full reference uses the same independently trained checkpoints at100% points. All three independent training seeds are included.
