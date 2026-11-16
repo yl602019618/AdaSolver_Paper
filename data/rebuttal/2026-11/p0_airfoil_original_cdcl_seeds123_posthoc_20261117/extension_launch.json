@@ -1,0 +1,9 @@
+{
+  "pid": 3434056,
+  "physical_gpu": 0,
+  "started_at_utc": "2026-11-16T19:26:57.131747+00:00",
+  "fixed_training_seed": 3,
+  "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/pipeline.log",
+  "scope": "train seed3 once, own head, original Cd/Cl evaluation; post-hoc subset display seeds1/2/3 with seed0 evidence retained",
+  "run_pipeline_sha256": "0e0a03f365220d9b9b1a27a4b51fecabc3ea005a132eb84f7b1901dc5e6d33fc"
+}

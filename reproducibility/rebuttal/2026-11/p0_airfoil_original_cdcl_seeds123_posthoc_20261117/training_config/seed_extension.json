@@ -1,0 +1,16 @@
+{
+  "benchmark": "airfoil",
+  "training_seed": 3,
+  "head_seed": 3,
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "working_root": "/mnt/ai-material-data/iclr2027_adatransolver/07_current",
+  "source_seed0_root": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/airfoil",
+  "baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "output_root": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/run",
+  "policy": "Fixed new seed3; original training parameters; post-hoc subset seeds1/2/3 with original seed0 evidence preserved",
+  "defer_evaluation_until_heads": true
+}

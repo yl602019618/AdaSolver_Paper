@@ -1,0 +1,82 @@
+{
+  "pid": 3434056,
+  "physical_gpu": 0,
+  "fixed_training_seed": 3,
+  "analysis_status": "post_hoc_exploratory_subset",
+  "display_training_seeds": [
+    1,
+    2,
+    3
+  ],
+  "excluded_training_seed": 0,
+  "original_seed0_evidence_preserved": true,
+  "started_at_utc": "2026-11-16T19:26:59.082173+00:00",
+  "execution_status": "completed",
+  "stages": {
+    "backbone": {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-u",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/run/code/train.py",
+        "--architecture",
+        "t3"
+      ],
+      "status": "completed",
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/run/logs/backbone.log",
+      "started_at_utc": "2026-11-16T19:26:59.143764+00:00",
+      "pid": 3434062,
+      "returncode": 0,
+      "wall_seconds": 9095.890206500888,
+      "finished_at_utc": "2026-11-16T21:58:35.033986+00:00"
+    },
+    "head": {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-u",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/run/code/train_head.py",
+        "--architecture",
+        "t3"
+      ],
+      "status": "completed",
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/run/logs/head.log",
+      "started_at_utc": "2026-11-16T21:58:35.130379+00:00",
+      "pid": 3551862,
+      "returncode": 0,
+      "wall_seconds": 75.28273319453001,
+      "finished_at_utc": "2026-11-16T21:59:50.413131+00:00"
+    },
+    "original_cdcl_evaluation": {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-u",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/evaluation/run_evaluation.py",
+        "--cohort",
+        "training",
+        "--training-seed",
+        "3",
+        "--shard",
+        "0",
+        "--shards",
+        "1",
+        "--physical-gpu",
+        "0"
+      ],
+      "status": "completed",
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_seed3_posthoc_20261117/run/logs/original_cdcl_evaluation.log",
+      "started_at_utc": "2026-11-16T21:59:50.579508+00:00",
+      "pid": 3552776,
+      "returncode": 0,
+      "wall_seconds": 439.35761404037476,
+      "finished_at_utc": "2026-11-16T22:07:09.937137+00:00"
+    }
+  },
+  "protocol_sha256": "adfac4c1a9ce14e46e6899079947533cfb2de15097ed157e0c832592aaa0b0c3",
+  "active_stage": null,
+  "finished_at_utc": "2026-11-16T22:07:09.997055+00:00",
+  "artifact_verification_status": "VERIFIED_EXPLORATORY_SUBSET",
+  "artifact_verification_at_utc": "2026-11-16T22:14:42.271879+00:00",
+  "original_execution_status": "execution_complete_evidence_pending"
+}

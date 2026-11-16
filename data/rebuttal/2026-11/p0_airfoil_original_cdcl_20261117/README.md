@@ -1,5 +1,9 @@
 # Airfoil Transolver3: original Cd/Cl policies across three training seeds
 
+<!-- airfoil-seeds123-posthoc -->
+A later [exploratory seeds 1/2/3 display](../p0_airfoil_original_cdcl_seeds123_posthoc_20261117/README.md) excludes the valid P0 seed 0 after observing its result. The complete original012 records and statistics in this package remain unchanged.
+<!-- /airfoil-seeds123-posthoc -->
+
 Status: **VERIFIED_COMPLETE**. This corrected package contains fresh evaluations of the three P0 Transolver3 checkpoints and their corresponding CA heads under the original Table 1 **Cd/Cl metric-specific policies**. It supersedes the Cd/Cl interpretation of the earlier P0 field-policy diagnostics. The earlier P0 numeric files remain available as provenance and retain their field-accuracy and timing scope.
 
 The three new evaluation cohorts use independent training seeds **0, 1, 2**. Each contains the same **110 original cases × 3 sampling seeds × 3 budgets × 4 methods = 3,960 records**; the package contains **11,880 new records**, plus **3,960 fresh original-checkpoint control records**. PI and CPG use no CA head. CA uses the head trained for its own backbone.

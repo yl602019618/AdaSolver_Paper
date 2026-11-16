@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "analysis_design": "post_hoc_exploratory_subset",
+  "excluded_training_seed": 0,
+  "unselected_three_seed_stability_validation": false,
+  "training_records": 11880,
+  "control_records": 3960,
+  "independent_training_checkpoints": 3,
+  "matching_heads": 3,
+  "sampling_seeds_per_checkpoint": 3,
+  "budgets": 3,
+  "cases_per_condition": 110,
+  "uniform_denominators": 9,
+  "max_control_per_case_error_difference": 0.0,
+  "max_force_ratio_error_identity_difference": 0.0,
+  "all_exported_statistics_recomputed": true,
+  "nan_inf_or_missing_records": 0,
+  "special_case_records": 324,
+  "mixed_reconstruction": false
+}

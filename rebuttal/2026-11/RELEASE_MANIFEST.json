@@ -1255,14 +1255,14 @@
     {
       "target_path": "rebuttal/2026-11/RESULTS_INDEX.md",
       "category": "release_index",
-      "size_bytes": 4515,
-      "sha256": "fbfc52fd393a7923ce35c4360871de47fc37e290551e26fc1473b2b446a2f001",
+      "size_bytes": 5046,
+      "sha256": "d54fb8945b13365d1b4b7c14316c4f38d9685d54127a3a938341953b84e5959f",
       "source_sha256": null,
       "evidence_scope": "verified within stated component scope",
       "publication_status": "approved",
       "annotation": "Updated original-Cd/Cl correction scope; historical release manifest preserved at rebuttal/2026-11/provenance/RELEASE_MANIFEST_before_original_cdcl_20261117.json",
       "previous_sha256_before_E4_20261117": "2ac4591d6a46f76912e30f5c57fd2e29f2c8c17cbfb015bc7b3a0c3c7174d811",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     },
     {
       "target_path": "rebuttal/2026-11/VALIDATION.json",
@@ -1275,11 +1275,11 @@
     },
     {
       "target_path": "data/rebuttal/2026-11/E4/release_manifest.json",
-      "size_bytes": 9200,
-      "sha256": "aa4af000259e42975f0e5736a13267436ca8c184002fc9c02ec162b8a6786414",
+      "size_bytes": 9629,
+      "sha256": "8a458e62f84b0e97048ee7111fef5f283191000cafeb132afd7cbbf3d1598d64",
       "category": "E4_derived_analysis_manifest",
       "previous_sha256_before_E4_20261117": "7d37ca523bc9112964c87026970d3c5b636dea0f3577808b628a4e8bfe4f9b03",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     }
   ],
   "self_manifest_excluded_from_its_own_hash_list": true,

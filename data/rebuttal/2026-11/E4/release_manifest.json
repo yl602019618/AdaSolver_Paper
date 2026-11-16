@@ -44,13 +44,15 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 6200,
-      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40"
+      "bytes": 6713,
+      "sha256": "74806688564bdd34fdd89800a4ea3c4b20a313b62d43bc1fc128fec16ab82b4b",
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 11751,
-      "sha256": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f"
+      "bytes": 12264,
+      "sha256": "b05865a19a8d00bd4efa55281dddf1f1e98f4157bb089eae14ea792348dff8ba",
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     },
     {
       "path": "data/rebuttal/2026-11/E4/.gitattributes",
@@ -209,8 +211,9 @@
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
-      "bytes": 4515,
-      "sha256": "fbfc52fd393a7923ce35c4360871de47fc37e290551e26fc1473b2b446a2f001"
+      "bytes": 5046,
+      "sha256": "d54fb8945b13365d1b4b7c14316c4f38d9685d54127a3a938341953b84e5959f",
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     },
     {
       "path": "reproducibility/rebuttal/2026-11/E4/.gitattributes",

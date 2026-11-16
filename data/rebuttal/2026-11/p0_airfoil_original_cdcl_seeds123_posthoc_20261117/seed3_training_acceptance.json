@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "training_seed": 3,
+  "epochs": 1000,
+  "updates": 113000,
+  "training_history_rows_verified": 1000,
+  "selected_epoch": 974,
+  "selected_validation_pressure_relative_l2": 0.005373584910994395,
+  "checkpoint_sha256": "e5999b4f922b0d078ad996c5d200eb3932840007780b3b76b82340dbb99e7c42",
+  "native_execution_status": "completed",
+  "native_evidence_status": "pending",
+  "acceptance_scope": "Complete finite history, exact update counts, validation-selected epoch, checkpoint/source hash and own-head binding."
+}

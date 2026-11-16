@@ -1,5 +1,9 @@
 # 已完成结果与测试内容索引
 
+<!-- airfoil-seeds123-posthoc -->
+**Exploratory display: training seeds 1/2/3.** Seed 0 was excluded after its test performance was observed, while its valid original data remain preserved. [Subset results](data/rebuttal/2026-11/p0_airfoil_original_cdcl_seeds123_posthoc_20261117/README.md) · [Displayed values](RESULTS_DETAIL.md) · [English response](reviews/airfoil-seeds123-posthoc-response.md). This selected display is not an unselected three-seed stability validation.
+<!-- /airfoil-seeds123-posthoc -->
+
 <!-- darcy-resolution-analysis-20261117 -->
 **Current E4 analysis, 2026-11-17.** [Darcy observation-resolution report](data/rebuttal/2026-11/E4/README.md) replaces the previous brief explanation. The same27,000 requests remain the evidence base. New derived rAUEC, fixed5419 coarse composition and region error-energy tables are independently checked; no new training, inference or formal timing is claimed. This is a single85²-trained checkpoint, distinct from both Darcy three-training-seed and900/100 matched cohorts.
 <!-- /darcy-resolution-analysis-20261117 -->

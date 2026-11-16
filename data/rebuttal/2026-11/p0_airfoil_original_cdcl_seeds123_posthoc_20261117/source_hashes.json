@@ -1,0 +1,18 @@
+{
+  "parent_corrected_records": {
+    "path": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/p0_airfoil_original_cdcl_20261117/paper/data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/per_case_records.csv.gz",
+    "sha256": "9b6ca15a46bccf733d240c9845469260929219e3c2e39294657b5156de50b609"
+  },
+  "new_model_manifest_sha256": "cc58910d64b4cc8458974c8b75cfce195074d54866f67fa603cf1711b0e111b4",
+  "new_head_manifest_sha256": "b776fa87e0844a785ca6f145f09476ff8df51b6a3bf8210be56e74e426d63af2",
+  "frozen_extension_protocol_sha256": "adfac4c1a9ce14e46e6899079947533cfb2de15097ed157e0c832592aaa0b0c3",
+  "training_source_manifest_sha256": "24bf2d808443a38d2d60ee21749fa5b8d9a9ba285558ab9e831212812cafccbe",
+  "finalizer_sha256": "5eea8c993b3fd8335c03ca8ef671a57dbd33f61dd19c5478664d38da22f071c1",
+  "published_analysis": {
+    "finalize_results.py": "5eea8c993b3fd8335c03ca8ef671a57dbd33f61dd19c5478664d38da22f071c1",
+    "refresh_manifests.py": "a3b4ea755e7b5ed195870c9b621f06aaa34a50b7b816528646ec983f45571ec2",
+    "run_pipeline.py": "0e0a03f365220d9b9b1a27a4b51fecabc3ea005a132eb84f7b1901dc5e6d33fc",
+    "verify_posthoc.py": "3dcecbccf1284c96df34f0cb69d56c620089fa8f2b11452f983aec0ca8f61fb3",
+    "write_publication.py": "8b3ae977c01c25e6a8f3e848210d9afef3edf8ef2234c6246324cdd653ad44bd"
+  }
+}

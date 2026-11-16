@@ -1,0 +1,38 @@
+{
+  "fixed_at_utc": "2026-11-16T19:22:36.741370+00:00",
+  "parent_corrected_commit": "ef967867c979134b2b3ff9fec78f9544f09d48b8",
+  "new_training_seed": 3,
+  "head_seed": 3,
+  "new_seeds_to_try": [
+    3
+  ],
+  "training_epochs": 1000,
+  "training_updates": 113000,
+  "head_epochs": 200,
+  "display_training_seeds": [
+    1,
+    2,
+    3
+  ],
+  "excluded_training_seed": 0,
+  "analysis_status": "post_hoc_exploratory_subset",
+  "exclusion_reason": "user-requested exclusion after seeing seed0 test performance; no objective execution failure established",
+  "retain_original_seed0_records": true,
+  "retain_original_012_summary": true,
+  "test_filter_unchanged": true,
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "evaluation_policy_source": "p0_airfoil_original_cdcl_20261117/reference/cdcl_configs.json",
+  "reconstruction_id": "original_index_grid_linear_nearest",
+  "further_outcome_based_seed_selection": false,
+  "new_seed3_outcome_status": "not_observed",
+  "execution_status": "prepared"
+}

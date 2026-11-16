@@ -25,8 +25,9 @@
   "files": [
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md",
-      "bytes": 6961,
-      "sha256": "53440e2465cd5ec4673ae9619c7bf7f72b5b477f6d77a678f9f11447794c458b"
+      "bytes": 7277,
+      "sha256": "e20779d315080fe10826f41fb17c6942067cdc2b3a793f9b69ac85d45d93628e",
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/RESULTS_DETAIL.md",

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "training_seed": 3,
+  "head_seed": 3,
+  "parameters": 977345,
+  "training_cases": 900,
+  "validation_cases": 100,
+  "test_cases": 110,
+  "torch": "2.10.0+cu128",
+  "cuda": "12.8",
+  "normalizer_sha256": "2c0e1217c82e250b25bf5efc936dc72e6a013ba56f86b5a862f97f6a912d02d6",
+  "initial_state_sha256": "98188fb47e6586063f38ca66a01654fd37ccb095f5ba0e6a26eca4cb3a31a444",
+  "new_model_and_test_predictions_not_evaluated": true
+}

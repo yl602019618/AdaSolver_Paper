@@ -421,13 +421,13 @@
     {
       "path": "README.md",
       "category": "release_index",
-      "size_bytes": 6200,
-      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
+      "size_bytes": 6713,
+      "sha256": "74806688564bdd34fdd89800a4ea3c4b20a313b62d43bc1fc128fec16ab82b4b",
       "evidence_status": "verified",
       "publication_status": "approved",
       "annotation": "2026-11-17: root index includes original Airfoil Cd/Cl correction; E5 standard numeric results unchanged.",
       "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
-      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
+      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
     }
   ],
   "file_count": 53,

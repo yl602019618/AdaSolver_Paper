@@ -1,5 +1,9 @@
 # Result tables and figures
 
+<!-- airfoil-seeds123-posthoc -->
+**Exploratory display: training seeds 1/2/3.** Seed 0 was excluded after its test performance was observed, while its valid original data remain preserved. [Subset results](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_seeds123_posthoc_20261117/README.md) · [Displayed values](../../RESULTS_DETAIL.md) · [English response](../../reviews/airfoil-seeds123-posthoc-response.md). This selected display is not an unselected three-seed stability validation.
+<!-- /airfoil-seeds123-posthoc -->
+
 <!-- original-cdcl-correction-20261117 -->
 **2026-11-17: corrected original Airfoil Cd/Cl.** [Results](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md) · [Training-seed table](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/training_seed_cdcl_summary.csv) · [Verification](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/verification.json) · [Reviewer reply](../../reviews/airfoil-original-cdcl-training-seeds-response.md).
 
