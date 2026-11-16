@@ -38,6 +38,8 @@ Transolver3 training seeds0/1/2, their matching heads, all 110 original cases, t
 
 ## E4: Darcy observation-resolution transfer
 
+- [New calibrated PI beta results and full download](../../data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md) — shared beta1; original beta0.5 data retained; calibration and test are separate.
+
 **Current analysis updated2026-11-17.** One frozen85²-trained model; same200cases and27,000 original requests. Fixed-K controls final point count but not coarse context. See the updated report for limits, sampling SD and region-error decomposition.
 
 - [Current analysis figure](../../figures/rebuttal/2026-11/E4/resolution_analysis.pdf)

@@ -1,0 +1,21 @@
+{
+  "checkpoint_sha256": "5c8a7fa3d24a9ead213144e8a9a1ca3a932bd5c8265e504e92c4d7120175c1fb",
+  "normalizer_id": "72b841a23d46e83d41430d365f0b57c73b5ed87864acda3cb7efd800ed64b16e",
+  "observation_resolutions": [
+    85,
+    141,
+    211
+  ],
+  "evaluation_resolution": 211,
+  "sampler": "sample_darcy_pi",
+  "prior": "interface_distance",
+  "prior_implementation": "unchanged original flattened-mask EDT",
+  "amp": 0.25,
+  "ell": 0.023809523809523808,
+  "selection_source": "disjoint100-case calibration, smooth2 rows400:499",
+  "selection_sha256": "fa8d4f43cfc8b2a617865abeb6aa13cb4e4e5b5c0413fe686731833c26a4db08",
+  "scope": "new calibrated PI protocol; old frozen-beta E4 results retained",
+  "variant": "PI_shared_beta_calibrated_20261117",
+  "beta": 1.0,
+  "policy_role": "predeclared primary shared calibration choice"
+}

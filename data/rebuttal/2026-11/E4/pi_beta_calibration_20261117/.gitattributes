@@ -1,0 +1,5 @@
+* -text
+*.csv whitespace=cr-at-eol
+*.svg -whitespace
+*.py -whitespace
+*.zip -filter

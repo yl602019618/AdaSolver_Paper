@@ -1,0 +1,155 @@
+{
+  "passed": true,
+  "scope": "fixed baseline0.5 and old full-field artifacts; no candidate selection",
+  "checks": [
+    {
+      "case_id": 1000,
+      "method": "full",
+      "retained_points": 7225,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1000,
+      "method": "uniform",
+      "retained_points": 2709,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1000,
+      "method": "pi",
+      "retained_points": 2709,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1000,
+      "method": "uniform",
+      "retained_points": 3612,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1000,
+      "method": "pi",
+      "retained_points": 3612,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1000,
+      "method": "uniform",
+      "retained_points": 5419,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1000,
+      "method": "pi",
+      "retained_points": 5419,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "full",
+      "retained_points": 7225,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "uniform",
+      "retained_points": 2709,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "pi",
+      "retained_points": 2709,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "uniform",
+      "retained_points": 3612,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "pi",
+      "retained_points": 3612,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "uniform",
+      "retained_points": 5419,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1099,
+      "method": "pi",
+      "retained_points": 5419,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "full",
+      "retained_points": 7225,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "uniform",
+      "retained_points": 2709,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "pi",
+      "retained_points": 2709,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "uniform",
+      "retained_points": 3612,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "pi",
+      "retained_points": 3612,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "uniform",
+      "retained_points": 5419,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    },
+    {
+      "case_id": 1199,
+      "method": "pi",
+      "retained_points": 5419,
+      "max_field_difference": 0.0,
+      "relative_field_difference": 0.0
+    }
+  ],
+  "max_legacy_metric_difference": 0.0,
+  "baseline_requests": 21
+}

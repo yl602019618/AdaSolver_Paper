@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "scope": "Full, Uniform, PIbeta0.5 all200testcases; selected index hash also checked by runner",
+  "rows": [
+    {
+      "resolution": 85,
+      "reference_requests_checked": 3800,
+      "max_absolute_metric_difference": 0.0
+    },
+    {
+      "resolution": 141,
+      "reference_requests_checked": 3800,
+      "max_absolute_metric_difference": 0.0
+    },
+    {
+      "resolution": 211,
+      "reference_requests_checked": 3800,
+      "max_absolute_metric_difference": 0.0
+    }
+  ]
+}

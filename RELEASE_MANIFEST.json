@@ -17,8 +17,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 6713,
-      "sha256": "74806688564bdd34fdd89800a4ea3c4b20a313b62d43bc1fc128fec16ab82b4b"
+      "bytes": 7288,
+      "sha256": "d25f5a1542db6149f8d056452deea167f67ab8e4622dad005f79a8de8c61008a"
     },
     {
       "path": "RESULTS_DETAIL.md",
@@ -27,13 +27,18 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 12264,
-      "sha256": "b05865a19a8d00bd4efa55281dddf1f1e98f4157bb089eae14ea792348dff8ba"
+      "bytes": 12789,
+      "sha256": "f27f536ce99db12c02796047141a6984df05cd8fd291cfbecb5d880f668c7239"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
+      "bytes": 40041,
+      "sha256": "612848389d7cddae2f658338388b98cb56fadc2d1f0c184c04d7236803be5be1"
     },
     {
       "path": "data/rebuttal/2026-11/E4/release_manifest.json",
-      "bytes": 9629,
-      "sha256": "8a458e62f84b0e97048ee7111fef5f283191000cafeb132afd7cbbf3d1598d64"
+      "bytes": 12712,
+      "sha256": "7ce7508f6fd833dc12499e177f436e7959b64431b89301aec5330967ba0659fe"
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -42,8 +47,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/release_manifest.json",
-      "bytes": 201443,
-      "sha256": "316f11269bc62ae62dded493a885e8794550021816f9d3651361576406ba3b4d"
+      "bytes": 202750,
+      "sha256": "22876dab1233d8eb6dc3e62fe973f7a0b93ae5202df3080a0578ab1736998959"
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -52,8 +57,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
-      "bytes": 90255,
-      "sha256": "ab847a54ce1656ad91c330c6679bedf7d75915cc41d6660bf1cf90d32df24885"
+      "bytes": 91127,
+      "sha256": "2f689af42a232083f4f9f4e40b29f54cfaae7dbde3ca7653b1cc6d988141c0e3"
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/CLAIM_CARD.md",
@@ -427,18 +432,18 @@
     },
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
-      "bytes": 18881,
-      "sha256": "94086a49db9e472c2ef752c09ddc15425874efac1738916d75334bbb6287b3ea"
+      "bytes": 19753,
+      "sha256": "2a7ab7517dd8bde745b9a0ecb15d5c51f03e7e902984993e9c5ad8836bb99ef6"
     },
     {
       "path": "rebuttal/2026-11/RELEASE_MANIFEST.json",
-      "bytes": 63015,
-      "sha256": "9d5d5c7e96b857b02dd16761b72205354832d53619bb9380807b33ca09f866f5"
+      "bytes": 64604,
+      "sha256": "ed4f71fd75ef5c0f2a28ea2e79713ba1ed98639c10dff15799a9415fd5fc2c1f"
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
-      "bytes": 5046,
-      "sha256": "d54fb8945b13365d1b4b7c14316c4f38d9685d54127a3a938341953b84e5959f"
+      "bytes": 5256,
+      "sha256": "614b1ef3665e913550b674762c916f5f0fd335a11bdb753dc51d058821df3a10"
     },
     {
       "path": "rebuttal/2026-11/provenance/E5_standard_RELEASE_MANIFEST_before_original_cdcl_20261117.json",
@@ -2355,6 +2360,23 @@
     "validation": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
     "current_analysis_manifest": "data/rebuttal/2026-11/E4/release_manifest.json"
   },
+  "pi_beta_calibration_update": {
+    "updated_at_utc": "2026-11-16T22:16:52.408817+00:00",
+    "package": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117",
+    "report": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md",
+    "manifest": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
+    "experiment_type": "PI compensation-exponent calibration",
+    "calibration_rows": 32700,
+    "test_rows": 22200,
+    "shared_beta": 1.0,
+    "three_mean_rauecs_below_one": true,
+    "all_individual_sampling_seeds_below_one": false,
+    "calibration_case_count": 100,
+    "test_case_count": 200,
+    "new_backbone_training_runs": 0,
+    "original_frozen_beta0p5_data_retained": true,
+    "formal_latency": false
+  },
   "original_complete_012_package": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117",
   "current_display_package": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_seeds123_posthoc_20261117",
   "current_display_training_seeds": [
@@ -2365,5 +2387,7 @@
   "current_display_analysis_design": "post_hoc_exploratory_subset",
   "excluded_seed0_was_valid": true,
   "current_response": "reviews/airfoil-seeds123-posthoc-response.md",
-  "validation_scope": "Record integrity and arithmetic of a disclosed post-hoc subset; not unselected seed robustness."
+  "validation_scope": "Record integrity and arithmetic of a disclosed post-hoc subset; not unselected seed robustness.",
+  "preserved_upstream_commit": "404b30e143e88f28cace4219fdf233a926939424",
+  "airfoil_seed3_result_commit": "62a1d724582d3e8034f56feb1e9af8bf9b2c2183"
 }

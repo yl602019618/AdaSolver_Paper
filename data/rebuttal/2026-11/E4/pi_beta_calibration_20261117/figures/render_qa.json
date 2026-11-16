@@ -1,0 +1,29 @@
+{
+  "status": "passed_for_calibration_and_locked_final_test_plots",
+  "checked_at_utc": "2026-11-16T21:14:00.772296+00:00",
+  "inspected_pngs": [
+    "validation_beta_curves.png",
+    "validation_shared_objective.png",
+    "test_beta_comparison.png",
+    "paired_beta_change.png"
+  ],
+  "plot_code_sha256": "684891e26ebb412fce9b4ce703954f2b0e8eadea138b29feb9bec62b8752b949",
+  "input_sha256": {
+    "results/validation_rauec.csv": "311322fdb43cbed0c8f53c85af5a26715fcb5cf36927bc51b217038a946b5bf1",
+    "selection.json": "fa8d4f43cfc8b2a617865abeb6aa13cb4e4e5b5c0413fe686731833c26a4db08",
+    "protocol.json": "965da495c0ce60f3de5044a4de38f82f0af2c3719f941e3896b05709cf9b8f96",
+    "results/test_rauec.csv": "bfbbfa35b65512a6f04abd96befed74d92b02b63f99eeeafb988d44b15d415e3",
+    "results/selected_beta_comparison.csv": "6d346495c157ad4117cb558b810f567c2d6c556ee8a697a5b7cebcb05eea01c8"
+  },
+  "actual_image_review": true,
+  "clipping_or_legend_overlap": false,
+  "above_one_values_visible": true,
+  "sampling_sd_labeled": true,
+  "one_training_model_disclosed": true,
+  "selection_or_protocol_changed": false,
+  "summarize_py_unchanged": true,
+  "paired_rows_recomputed": 6,
+  "paired_sd_uses_same_sampling_seed_differences": true,
+  "final_test_figures_reviewed": true,
+  "observed_adverse_result_preserved": "85\u00b2 shared beta1 mean remains below1 but is worse than beta0.5; paired mean_delta is positive"
+}

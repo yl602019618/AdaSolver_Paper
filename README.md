@@ -4,6 +4,12 @@
 **Exploratory display: training seeds 1/2/3.** Seed 0 was excluded after its test performance was observed, while its valid original data remain preserved. [Subset results](data/rebuttal/2026-11/p0_airfoil_original_cdcl_seeds123_posthoc_20261117/README.md) · [Displayed values](RESULTS_DETAIL.md) · [English response](reviews/airfoil-seeds123-posthoc-response.md). This selected display is not an unselected three-seed stability validation.
 <!-- /airfoil-seeds123-posthoc -->
 
+<!-- darcy-pi-beta-calibration-20261117 -->
+**Darcy PI β 校准结果，2026-11-17。** [完整数据、配置、图表与下载](data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md) · [当前E4入口](data/rebuttal/2026-11/E4/README.md)
+
+共享β=1在85²/141²/211²上的测试mean rAUEC为0.998995/0.971548/0.969888。共32,700条校准记录和22,200条测试记录完成独立核验。85²仍接近Uniform、略差于原β0.5且仅1/3sampling seeds低于1；旧固定β结果与新校准版本分开标注。
+<!-- /darcy-pi-beta-calibration-20261117 -->
+
 <!-- darcy-resolution-analysis-20261117 -->
 **Darcy 观测分辨率结果更新，2026-11-17。** [当前E4结果与完整分析](data/rebuttal/2026-11/E4/README.md) · [本次修改](data/rebuttal/2026-11/E4/UPDATE_20261117.md) · [分析图](figures/rebuttal/2026-11/E4/resolution_analysis.pdf)
 

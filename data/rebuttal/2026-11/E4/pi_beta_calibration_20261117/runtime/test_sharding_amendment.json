@@ -1,0 +1,28 @@
+{
+  "reason": "Parallelize the remaining fixed test cases across additional unused H20 GPUs; no data-dependent filtering or policy change",
+  "stopped_own_pids": [
+    3498868,
+    3511845,
+    3511846,
+    3511850
+  ],
+  "completed_case_files_preserved": 250,
+  "selection_sha256": "fa8d4f43cfc8b2a617865abeb6aa13cb4e4e5b5c0413fe686731833c26a4db08",
+  "protocol_sha256": "965da495c0ce60f3de5044a4de38f82f0af2c3719f941e3896b05709cf9b8f96",
+  "partition": "Two disjoint case-index parity shards per resolution; concatenate all200 originalcase IDs",
+  "new_test_gpus": {
+    "85": [
+      1,
+      4
+    ],
+    "141": [
+      2,
+      5
+    ],
+    "211": [
+      3,
+      6
+    ]
+  },
+  "numeric_runtime_functions_unchanged": true
+}

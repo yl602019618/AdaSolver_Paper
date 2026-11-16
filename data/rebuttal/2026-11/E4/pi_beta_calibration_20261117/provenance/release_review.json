@@ -1,0 +1,69 @@
+{
+  "status": "passed_source_release_review",
+  "passed": true,
+  "checked_at_utc": "2026-11-16T22:06:59.445706+00:00",
+  "review_scope": "Source release content identity and claim consistency, relying on existing independent numeric audits; no model/GPU/statistical-experiment rerun",
+  "source_manifest_entries_verified": 75,
+  "zip_files_verified": 76,
+  "zip_crc_and_sha256_passed": true,
+  "zip_bytes": 4133680,
+  "zip_sha256": "abd655cbb59a2e6a7e5248a7db109977e4e239a5a3ae36f0e27caf2d4d85d8bc",
+  "protocol_and_selection_unchanged": true,
+  "configs_match_locked_validation_choices": true,
+  "original_statistics_source_unchanged": true,
+  "figure_QA_inputs_and_plot_source_match": true,
+  "all_primary_resolution_means_below_one": true,
+  "all_primary_individual_sampling_seeds_below_one": false,
+  "shared_beta85_regression_explicitly_preserved": true,
+  "resolution_specific_policy_separately_labeled": true,
+  "new_PI211_mean_ranking_and_extra_calibration_disclosed": true,
+  "historical_test_visibility_disclosed": true,
+  "formal_latency_claimed": false,
+  "result_summary": [
+    {
+      "resolution": 85,
+      "original_beta0p5_mean": 0.9966218517535795,
+      "shared_beta1_mean": 0.998994772092401,
+      "shared_sampling_sd": 0.01999321966016817,
+      "individual_sampling_seeds_below_one": 1,
+      "shared_minus_original": 0.002372920338821416
+    },
+    {
+      "resolution": 141,
+      "original_beta0p5_mean": 1.000775870643035,
+      "shared_beta1_mean": 0.971547912876261,
+      "shared_sampling_sd": 0.0032870570789471816,
+      "individual_sampling_seeds_below_one": 3,
+      "shared_minus_original": -0.029227957766774004
+    },
+    {
+      "resolution": 211,
+      "original_beta0p5_mean": 1.0034479928795303,
+      "shared_beta1_mean": 0.96988831408858,
+      "shared_sampling_sd": 0.012661555259539324,
+      "individual_sampling_seeds_below_one": 3,
+      "shared_minus_original": -0.03355967879095034
+    }
+  ],
+  "material_scientific_issues": [],
+  "public_layout_not_yet_checked": true,
+  "publication_adaptations": [
+    "When the six raw CSV files become .csv.gz, publish compressed and uncompressed hashes and keep the original delivery manifest as development/ZIP provenance rather than the current public file list.",
+    "Update copied report raw-record paths and reproduction commands to the public decompression verifier; retain the exact original summarize.py and immutable selection identity."
+  ],
+  "sources": {
+    "REPORT_zh.md": "6110385c0eba48ebf60101631fb3f94dee8263572e225aef42ee97e1675ab63d",
+    "REPORT.md": "c88a914458d4a62c24aeedb21da89f1d09534c0aeaf7c9138e650c4d5b99c262",
+    "protocol.json": "965da495c0ce60f3de5044a4de38f82f0af2c3719f941e3896b05709cf9b8f96",
+    "selection.json": "fa8d4f43cfc8b2a617865abeb6aa13cb4e4e5b5c0413fe686731833c26a4db08",
+    "config/primary_shared_beta1.json": "15b85172888a12970befa7c87fed25c5f1818d9618c3a8d526c2fe508ea054d0",
+    "config/secondary_resolution_beta.json": "ae888475db3d347460855cd0c046e6170e54bc34f40b5f36dd424581bbb931f0",
+    "results/test_rauec.csv": "bfbbfa35b65512a6f04abd96befed74d92b02b63f99eeeafb988d44b15d415e3",
+    "results/selected_beta_comparison.csv": "6d346495c157ad4117cb558b810f567c2d6c556ee8a697a5b7cebcb05eea01c8",
+    "results/paired_beta_differences.csv": "d2ec34e5deae257d1c5eb94a56240d0d04b6ccc91c2cf2d3c659234fd6dcee8d",
+    "results/context_with_frozen_E4.csv": "8fdc6050478f758bb2936fe51d1f33de0af8ed8b1b347071ec938e0de02d7a63",
+    "results/independent_final_audit.json": "5273cc44b2177b30eee3c9eba01a05b824057abcd8c50eb33168a7dddbbd6c7b",
+    "figures/render_qa.json": "4d3abac67c0752dfdbf4083fe938fa19e3857723bf85d889afe7b9c794996202",
+    "delivery_manifest.json": "5d80ab27d693ab8336cea65db6ba15aa5b441ad8f0b42a481471c2ba3a8214cb"
+  }
+}

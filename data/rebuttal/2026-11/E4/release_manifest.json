@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "verified_original_observations_and_derived_analysis",
+  "status": "verified_original_E4_with_separate_PI_calibration_supplement",
   "branch": "rebuttal/20261114-linearno-seeds",
   "base_commit": "424d33cacb1b5e25b5c53069cb84b390e499c375",
   "updated_at_utc": "2026-11-16T19:58:11.254536+00:00",
@@ -8,7 +8,7 @@
   "data_directory": "data/rebuttal/2026-11/E4",
   "report": "data/rebuttal/2026-11/E4/REPORT.md",
   "new_training_runs": 0,
-  "new_inference_requests": 0,
+  "new_inference_requests": 54900,
   "original_requests": 27000,
   "original_metric_rows": 54000,
   "original_numeric_csv_unchanged": true,
@@ -44,15 +44,17 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 6713,
-      "sha256": "74806688564bdd34fdd89800a4ea3c4b20a313b62d43bc1fc128fec16ab82b4b",
-      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
+      "bytes": 7288,
+      "sha256": "d25f5a1542db6149f8d056452deea167f67ab8e4622dad005f79a8de8c61008a",
+      "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 12264,
-      "sha256": "b05865a19a8d00bd4efa55281dddf1f1e98f4157bb089eae14ea792348dff8ba",
-      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
+      "bytes": 12789,
+      "sha256": "f27f536ce99db12c02796047141a6984df05cd8fd291cfbecb5d880f668c7239",
+      "previous_sha256_before_PI_beta_calibration_20261117": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/E4/.gitattributes",
@@ -61,13 +63,17 @@
     },
     {
       "path": "data/rebuttal/2026-11/E4/README.md",
-      "bytes": 5046,
-      "sha256": "25fa59671ca709c9ae197e105877403810b2ba25b946cd11648ac587682d1752"
+      "bytes": 5704,
+      "sha256": "1160c62cdbd963068284a33ae3f62f1bc3d78aec3a133d524986b8aadd0af3cc",
+      "previous_sha256_before_PI_beta_calibration_20261117": "25fa59671ca709c9ae197e105877403810b2ba25b946cd11648ac587682d1752",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/E4/REPORT.md",
-      "bytes": 8492,
-      "sha256": "1bd1d071e24a959d603764361d4573ff37c121e30e12b9d4bbc19c301f888f6c"
+      "bytes": 8861,
+      "sha256": "9c906827091b955265629c9b635767dd11423b80c06ccfaff4df5977cb21fb4e",
+      "previous_sha256_before_PI_beta_calibration_20261117": "1bd1d071e24a959d603764361d4573ff37c121e30e12b9d4bbc19c301f888f6c",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "data/rebuttal/2026-11/E4/UPDATE_20261117.md",
@@ -176,8 +182,10 @@
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/TESTED_CONTENTS.md",
-      "bytes": 9340,
-      "sha256": "99b32907d659dc41f660a19af298e065e0eacbaf585827109f12240b20e97564"
+      "bytes": 9698,
+      "sha256": "72be34612ed11a59684ae4e5d26d1836c65cac0029ed4ba812da6d9b645d6a5f",
+      "previous_sha256_before_PI_beta_calibration_20261117": "99b32907d659dc41f660a19af298e065e0eacbaf585827109f12240b20e97564",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "figures/rebuttal/2026-11/E4/resolution_analysis.caption.md",
@@ -201,19 +209,24 @@
     },
     {
       "path": "figures/rebuttal/2026-11/FIGURE_MANIFEST.csv",
-      "bytes": 7098,
-      "sha256": "b7abab13eb997051ba7947bd02467680deb833acd2d1693abdf462eb438bbd60"
+      "bytes": 9236,
+      "sha256": "dbc13e0a116ce09e2ea56065a4a7939d34df8410fb5e4e28e642f3c9bed546ca",
+      "previous_sha256_before_PI_beta_calibration_20261117": "b7abab13eb997051ba7947bd02467680deb833acd2d1693abdf462eb438bbd60",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "rebuttal/2026-11/README.md",
-      "bytes": 2604,
-      "sha256": "b12233118a2516568aaa9574421ac06c3a703cabc65506a9fa87e1762528cac8"
+      "bytes": 2623,
+      "sha256": "fbdd349cabcc644aa655213399e129b642fc07f2de6f927184cebe7cbc4952d6",
+      "previous_sha256_before_PI_beta_calibration_20261117": "b12233118a2516568aaa9574421ac06c3a703cabc65506a9fa87e1762528cac8",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
-      "bytes": 5046,
-      "sha256": "d54fb8945b13365d1b4b7c14316c4f38d9685d54127a3a938341953b84e5959f",
-      "documentation_annotation": "Current display is a disclosed post-hoc seeds1/2/3 subset; original numerical evidence remains preserved."
+      "bytes": 5256,
+      "sha256": "614b1ef3665e913550b674762c916f5f0fd335a11bdb753dc51d058821df3a10",
+      "previous_sha256_before_PI_beta_calibration_20261117": "fbfc52fd393a7923ce35c4360871de47fc37e290551e26fc1473b2b446a2f001",
+      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "reproducibility/rebuttal/2026-11/E4/.gitattributes",
@@ -249,7 +262,39 @@
       "path": "reproducibility/rebuttal/2026-11/E4/source_workflow/run_resolution.py",
       "bytes": 15708,
       "sha256": "7f911a2fc2c4981ff7ce5bcbc04ab52237efcf5e290df71d4fb41803e454e529"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
+      "bytes": 40041,
+      "sha256": "612848389d7cddae2f658338388b98cb56fadc2d1f0c184c04d7236803be5be1",
+      "category": "PI_beta_calibration_release_manifest"
     }
   ],
-  "self_hash_excluded": true
+  "self_hash_excluded": true,
+  "pi_beta_calibration_update": {
+    "updated_at_utc": "2026-11-16T22:16:52.408817+00:00",
+    "package": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117",
+    "report": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/README.md",
+    "manifest": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
+    "experiment_type": "PI compensation-exponent calibration",
+    "calibration_rows": 32700,
+    "test_rows": 22200,
+    "shared_beta": 1.0,
+    "three_mean_rauecs_below_one": true,
+    "all_individual_sampling_seeds_below_one": false,
+    "calibration_case_count": 100,
+    "test_case_count": 200,
+    "new_backbone_training_runs": 0,
+    "original_frozen_beta0p5_data_retained": true,
+    "formal_latency": false
+  },
+  "prior_derived_analysis_scope": {
+    "status": "verified_original_observations_and_derived_analysis",
+    "analysis_revision": "20261117",
+    "new_training_runs": 0,
+    "new_inference_requests": 0,
+    "original_requests": 27000,
+    "original_metric_rows": 54000
+  },
+  "new_request_count_scope": "Completed unique calibration/test accuracy records in the separate PI study; excludes engineering checks and aborted/replayed work"
 }

@@ -1,0 +1,6 @@
+{
+  "reason": "Observed transient filesystem OSError9 reading status JSON; add retry and adopt running owned workers",
+  "workers_restarted": false,
+  "test_selection_changed": false,
+  "numeric_runner_changed": false
+}
