@@ -17,8 +17,10 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 5553,
-      "sha256": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d"
+      "bytes": 6200,
+      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
+      "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "RESULTS_DETAIL.md",
@@ -27,8 +29,10 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 11112,
-      "sha256": "511dce64102caae3345698631a8d58db14f4680415bac409749d14eab9b9696c"
+      "bytes": 11751,
+      "sha256": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f",
+      "previous_sha256_before_E4_20261117": "511dce64102caae3345698631a8d58db14f4680415bac409749d14eab9b9696c",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -37,8 +41,10 @@
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/release_manifest.json",
-      "bytes": 199921,
-      "sha256": "ff2a29bf9097ff3613a9d56b4d6c9f03f3fdbfd70e5742448207e9a9e9e9bb72"
+      "bytes": 201449,
+      "sha256": "ab009027809503588b230c4272a7f1e5dfecbc271d4f6ee8ad741986a5abc033",
+      "previous_sha256_before_E4_20261117": "ff2a29bf9097ff3613a9d56b4d6c9f03f3fdbfd70e5742448207e9a9e9e9bb72",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -47,8 +53,10 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
-      "bytes": 89585,
-      "sha256": "9b9ddf365b7262f07dc30a82f934e5f108eaf71b6f6784b1db99296028902b9e"
+      "bytes": 90258,
+      "sha256": "8457f060bb4ccf63249458918e5a16c56fcfdaa375877202eae2ca476377432d",
+      "previous_sha256_before_E4_20261117": "9b9ddf365b7262f07dc30a82f934e5f108eaf71b6f6784b1db99296028902b9e",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/CLAIM_CARD.md",
@@ -267,18 +275,24 @@
     },
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
-      "bytes": 18034,
-      "sha256": "a494a0f0a0894c770666f5fe7e7e889e7ce42461b80736462e7edf910da9c199"
+      "bytes": 18884,
+      "sha256": "3df0ecdfab5e03f0a1e360740bda90714c2a38a81d997cec983984136de2af79",
+      "previous_sha256_before_E4_20261117": "a494a0f0a0894c770666f5fe7e7e889e7ce42461b80736462e7edf910da9c199",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "rebuttal/2026-11/RELEASE_MANIFEST.json",
-      "bytes": 60896,
-      "sha256": "3fa3d47973d8203fd245e150c55cd3956077dcf53e7619d6f6433e66bf55c4fa"
+      "bytes": 63021,
+      "sha256": "b01c8e63d371c2fd26ac67bd191d037cf3a1a4f52c5193c87779c0697d1c5aa7",
+      "previous_sha256_before_E4_20261117": "3fa3d47973d8203fd245e150c55cd3956077dcf53e7619d6f6433e66bf55c4fa",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
-      "bytes": 4020,
-      "sha256": "2ac4591d6a46f76912e30f5c57fd2e29f2c8c17cbfb015bc7b3a0c3c7174d811"
+      "bytes": 4515,
+      "sha256": "fbfc52fd393a7923ce35c4360871de47fc37e290551e26fc1473b2b446a2f001",
+      "previous_sha256_before_E4_20261117": "2ac4591d6a46f76912e30f5c57fd2e29f2c8c17cbfb015bc7b3a0c3c7174d811",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     },
     {
       "path": "rebuttal/2026-11/provenance/E5_standard_RELEASE_MANIFEST_before_original_cdcl_20261117.json",
@@ -1224,7 +1238,28 @@
       "path": "reviews/revision-ledger.md",
       "bytes": 1491,
       "sha256": "444bb847e8483a9611ce5c15c74a1455cbb3e26fac3262a510f3e0dbbf61e6cb"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/release_manifest.json",
+      "bytes": 9200,
+      "sha256": "aa4af000259e42975f0e5736a13267436ca8c184002fc9c02ec162b8a6786414",
+      "category": "E4_derived_analysis_manifest",
+      "previous_sha256_before_E4_20261117": "7d37ca523bc9112964c87026970d3c5b636dea0f3577808b628a4e8bfe4f9b03",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     }
   ],
-  "self_hash": "excluded"
+  "self_hash": "excluded",
+  "darcy_resolution_analysis_update": {
+    "updated_at_utc": "2026-11-16T19:58:11.254536+00:00",
+    "analysis_revision": "20261117",
+    "data_directory": "data/rebuttal/2026-11/E4",
+    "report": "data/rebuttal/2026-11/E4/REPORT.md",
+    "new_training_runs": 0,
+    "new_inference_requests": 0,
+    "original_requests": 27000,
+    "original_metric_rows": 54000,
+    "original_numeric_csv_unchanged": true,
+    "validation": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
+    "current_analysis_manifest": "data/rebuttal/2026-11/E4/release_manifest.json"
+  }
 }

@@ -1,0 +1,17 @@
+# E4 protocol lock — 2026-11-12
+
+Evaluate the frozen 85×85-trained Darcy Transolver3 checkpoint on the same 200 physical cases: smooth2 MAT rows 0–199, historical case IDs 1000–1199. The model and sampling development used this historical test population; all outputs remain `historical_test_informed_reevaluation`. No new independent holdout is claimed.
+
+The source has actual 421×421 coefficient/solution fields. Observation grids are exact endpoint-preserving nodal selections: stride 5 gives 85×85, stride 3 gives 141×141, stride 2 gives 211×211. These are point observations; no interpolation, synthetic upsampling or low-pass filtering constructs the inputs. All primary errors are evaluated on the common 211×211 grid, using directly observed stride-2 source truth. Native-grid errors are separately named diagnostics.
+
+Use the original 85×85 training-derived input/output normalizers for every resolution. Checkpoint: AdaSolver_official/checkpoints/darcy/darcy_transolver3_fullmesh_nmin100_s0_best.pt. Training seed 0, 1000 epochs, full-mesh 85×85 training. Reuse the declared Darcy CA head without retraining; its 10% context increases from 722 to 1988 to 4452 points, so higher-resolution CA is explicitly a frozen-head context-size transfer.
+
+Methods: Full, Uniform, frozen PI, frozen CPG, frozen CA. Fractions 0.375/0.5/0.75, sampling seeds 0/1/2, plus a common absolute budget of 5419 points. The 85×85 75% result is also the 5419-point condition, so that identical computation is reused with both labels. Full is deterministic and evaluated once per case/resolution. All other full-field reconstruction uses linear Delaunay interpolation with nearest fallback, consistently evaluated on the common grid. Native-coordinate ordering matches DarcyAdapter.
+
+Sampling settings come from configs/benchmarks/darcy.yaml. PI: interface_distance, amp .25, ell 2/84, beta .5. CPG/CA: coarse fraction .1, 32 patches, kappa 2, beta 1. CPG acquisition grad_lap. Exact native FPS implementation may execute the same declared FPS policy. Keep the actual frozen feature semantics: current PI distance_transform_edt acts on the flattened interface mask; CPG Laplacian uses index increments. These limitations are recorded rather than silently corrected. New measure-corrected policies belong to a separate E7-linked configuration.
+
+Fixed examples are source rows 0,99,199. Regions are defined from coefficient geometry on the shared evaluation grid before prediction: boundary distance≤.02; coefficient-interface distance≤.02 excluding boundary; remaining smooth region. Record each region's sampling fraction and field error. No region depends on a method's prediction error.
+
+Each request starts from host input arrays, computes coarse/head score, point selection, correction and final inference, and reconstructs the full common grid on CPU. Synchronize CUDA around measured requests. The run records one direct wall-time observation per accuracy request, including all these stages, but this is not an E1-style repeated latency benchmark. Global model/file loading and static geometry initialization are reported as preparation. Precision FP32, batch 1, four CPU threads per worker.
+
+Expected unique requests: 27,000 = 600 Full + 21,600 fractional + 4,800 additional fixed-count requests. Each request emits common-grid/native-grid errors and region statistics. Preserve failed combinations and resume by immutable request identity.

@@ -64,7 +64,7 @@ Car LinearNO 的 PI/CA、对应 head 和独立 training seeds1/2 尚未完成；
 | [E1](../E1/README.md) | 历史完整输出计时；三个case、三sampling seeds、20warmups/100repeats |
 | [E2](../E2/README.md) | FPS/空间分层等几何采样基线及同点集测度补偿配对 |
 | [E3](../E3/README.md) | 原ShapeNet-Car T3/官方LinearNO精度与完整输出计时对照 |
-| [E4](../E4/README.md) | Darcy85²/141²/211²观测分辨率迁移、统一评价网格 |
+| [E4](../E4/README.md) | Darcy85²/141²/211²观测分辨率迁移；2026-11-17更新派生统计、固定K混杂与区域误差分析；原27,000请求保留 |
 | [E5](../E5/README.md) | ShapeNet-Car三独立训练种子与各自CA head |
 | [E6](../E6/README.md) | 已发布的Airfoil多起点逆向设计/CFD及SuperWing已完成分项 |
 | [E7](../E7/README.md) | 固定点集beta诊断和已知proposal的合成token实验 |

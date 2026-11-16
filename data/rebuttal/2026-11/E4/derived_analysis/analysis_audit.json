@@ -1,0 +1,226 @@
+{
+  "passed": true,
+  "source_directory": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E4_darcy_resolution",
+  "raw_metric_rows": 54000,
+  "physical_requests": 27000,
+  "condition_seed_groups": 135,
+  "cases_per_group": 200,
+  "training_seeds": [
+    0
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_summary_recompute_difference": 0.0,
+  "full_paired_case_results": [
+    {
+      "observation_resolution": 85,
+      "input_points": 7225,
+      "common_grid_error": 0.009845028324971267,
+      "native_grid_error": 0.009879375074524433,
+      "error_increase_percent_vs85": 0.0,
+      "cases_worse_than85": 0,
+      "test_cases": 200
+    },
+    {
+      "observation_resolution": 141,
+      "input_points": 19881,
+      "common_grid_error": 0.01456040829512957,
+      "native_grid_error": 0.014876028229482472,
+      "error_increase_percent_vs85": 47.896052855409785,
+      "cases_worse_than85": 198,
+      "test_cases": 200
+    },
+    {
+      "observation_resolution": 211,
+      "input_points": 44521,
+      "common_grid_error": 0.018342436444945633,
+      "native_grid_error": 0.018342436444945633,
+      "error_increase_percent_vs85": 86.31166756952082,
+      "cases_worse_than85": 200,
+      "test_cases": 200
+    }
+  ],
+  "grid_nesting": [
+    {
+      "low_grid": 85,
+      "high_grid": 141,
+      "low_is_subset_of_high": false,
+      "shared_2d_nodes": 841,
+      "low_nodes": 7225,
+      "high_nodes": 19881
+    },
+    {
+      "low_grid": 85,
+      "high_grid": 211,
+      "low_is_subset_of_high": false,
+      "shared_2d_nodes": 1849,
+      "low_nodes": 7225,
+      "high_nodes": 44521
+    },
+    {
+      "low_grid": 141,
+      "high_grid": 211,
+      "low_is_subset_of_high": false,
+      "shared_2d_nodes": 5041,
+      "low_nodes": 19881,
+      "high_nodes": 44521
+    }
+  ],
+  "saved_coarse_prefix_checks": [
+    {
+      "case_id": 1000,
+      "resolution": 85,
+      "method": "cpg",
+      "coarse": 722,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1000,
+      "resolution": 85,
+      "method": "ca",
+      "coarse": 722,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1000,
+      "resolution": 141,
+      "method": "cpg",
+      "coarse": 1988,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1000,
+      "resolution": 141,
+      "method": "ca",
+      "coarse": 1988,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1000,
+      "resolution": 211,
+      "method": "cpg",
+      "coarse": 4452,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1000,
+      "resolution": 211,
+      "method": "ca",
+      "coarse": 4452,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1099,
+      "resolution": 85,
+      "method": "cpg",
+      "coarse": 722,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1099,
+      "resolution": 85,
+      "method": "ca",
+      "coarse": 722,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1099,
+      "resolution": 141,
+      "method": "cpg",
+      "coarse": 1988,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1099,
+      "resolution": 141,
+      "method": "ca",
+      "coarse": 1988,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1099,
+      "resolution": 211,
+      "method": "cpg",
+      "coarse": 4452,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1099,
+      "resolution": 211,
+      "method": "ca",
+      "coarse": 4452,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1199,
+      "resolution": 85,
+      "method": "cpg",
+      "coarse": 722,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1199,
+      "resolution": 85,
+      "method": "ca",
+      "coarse": 722,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1199,
+      "resolution": 141,
+      "method": "cpg",
+      "coarse": 1988,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1199,
+      "resolution": 141,
+      "method": "ca",
+      "coarse": 1988,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1199,
+      "resolution": 211,
+      "method": "cpg",
+      "coarse": 4452,
+      "final": 5419,
+      "prefix": true
+    },
+    {
+      "case_id": 1199,
+      "resolution": 211,
+      "method": "ca",
+      "coarse": 4452,
+      "final": 5419,
+      "prefix": true
+    }
+  ],
+  "timing_scope": "single observations attached to accuracy requests; no formal latency inference",
+  "sources": {
+    "rebuttal_20261112/experiments/E4_darcy_resolution/records/metrics_records.csv": "8afb1aae32579aa9c600ebe2ce42c472b708300d0581a0418926219789eddb22",
+    "rebuttal_20261112/experiments/E4_darcy_resolution/results/resolution_budget.csv": "d53ebada524d00ef5ec4022706dd457ebf95d5611897a5d87f4f7ce102e28700",
+    "rebuttal_20261112/experiments/E4_darcy_resolution/results/fixed_points.csv": "1b26784051cbb6a7a00729ea2c3386c293bf68a2c7dd953c0b23296c6ce94f57",
+    "rebuttal_20261112/experiments/E4_darcy_resolution/results/region_summary.csv": "f1f9f5e2f90796bcc00c7b4de45ec2ff2493a68c88b326e9566b101fa3f9a60b",
+    "rebuttal_20261112/experiments/E4_darcy_resolution/protocol.md": "edc4a8736ddd9aa920598d77c5d2bbfe56ad57bb513991b36d2a6f2c3ebbc7d1"
+  }
+}

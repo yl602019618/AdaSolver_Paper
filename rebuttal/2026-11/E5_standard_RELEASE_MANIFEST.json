@@ -421,11 +421,13 @@
     {
       "path": "README.md",
       "category": "release_index",
-      "size_bytes": 5553,
-      "sha256": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
+      "size_bytes": 6200,
+      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
       "evidence_status": "verified",
       "publication_status": "approved",
-      "annotation": "2026-11-17: root index includes original Airfoil Cd/Cl correction; E5 standard numeric results unchanged."
+      "annotation": "2026-11-17: root index includes original Airfoil Cd/Cl correction; E5 standard numeric results unchanged.",
+      "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
+      "documentation_annotation": "2026-11-17 E4 derived-analysis update; original observations and unrelated experiment metrics are preserved."
     }
   ],
   "file_count": 53,
@@ -437,5 +439,18 @@
     "package": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117",
     "old_P0_cdcl_role": "field_policy_diagnostic",
     "previous_manifest": "rebuttal/2026-11/provenance/E5_standard_RELEASE_MANIFEST_before_original_cdcl_20261117.json"
+  },
+  "darcy_resolution_analysis_update": {
+    "updated_at_utc": "2026-11-16T19:58:11.254536+00:00",
+    "analysis_revision": "20261117",
+    "data_directory": "data/rebuttal/2026-11/E4",
+    "report": "data/rebuttal/2026-11/E4/REPORT.md",
+    "new_training_runs": 0,
+    "new_inference_requests": 0,
+    "original_requests": 27000,
+    "original_metric_rows": 54000,
+    "original_numeric_csv_unchanged": true,
+    "validation": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
+    "current_analysis_manifest": "data/rebuttal/2026-11/E4/release_manifest.json"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "inspected": "resolution_analysis.png",
+  "scope": "actual raster inspection; no clipped titles, legends or numeric labels; source numerical checks in analysis_audit.json",
+  "formats": [
+    "PDF",
+    "SVG",
+    "300dpi PNG"
+  ],
+  "data_origin": "existing E4 observations; no new inference"
+}

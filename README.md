@@ -1,5 +1,11 @@
 # AdaSolver paper
 
+<!-- darcy-resolution-analysis-20261117 -->
+**Darcy 观测分辨率结果更新，2026-11-17。** [当前E4结果与完整分析](data/rebuttal/2026-11/E4/README.md) · [本次修改](data/rebuttal/2026-11/E4/UPDATE_20261117.md) · [分析图](figures/rebuttal/2026-11/E4/resolution_analysis.pdf)
+
+同一85²训练模型在85²/141²/211²真实观测上的27,000次请求已重新核验。当前报告补齐固定比例/固定点数收益、coarse预算混杂和区域误差能量分析；原始指标保留。该组为一个training seed和三个sampling seeds，不替代其他Darcy训练cohort。
+<!-- /darcy-resolution-analysis-20261117 -->
+
 <!-- original-cdcl-correction-20261117 -->
 **Original Airfoil Cd/Cl correction, 2026-11-17.** [Corrected results and protocol](data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md) · [Current numerical summary](RESULTS_DETAIL.md) · [English reviewer reply](reviews/airfoil-original-cdcl-training-seeds-response.md) · [Run and verification status](read.me)
 

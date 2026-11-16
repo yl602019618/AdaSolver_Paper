@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "status": "verified_original_observations_and_derived_analysis",
+  "branch": "rebuttal/20261114-linearno-seeds",
+  "base_commit": "424d33cacb1b5e25b5c53069cb84b390e499c375",
+  "updated_at_utc": "2026-11-16T19:58:11.254536+00:00",
+  "analysis_revision": "20261117",
+  "data_directory": "data/rebuttal/2026-11/E4",
+  "report": "data/rebuttal/2026-11/E4/REPORT.md",
+  "new_training_runs": 0,
+  "new_inference_requests": 0,
+  "original_requests": 27000,
+  "original_metric_rows": 54000,
+  "original_numeric_csv_unchanged": true,
+  "validation": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
+  "current_analysis_manifest": "data/rebuttal/2026-11/E4/release_manifest.json",
+  "training_seeds": [
+    0
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "observation_resolutions": [
+    85,
+    141,
+    211
+  ],
+  "evaluation_resolution": 211,
+  "fixed_final_points": 5419,
+  "coarse_counts": [
+    722,
+    1988,
+    4452
+  ],
+  "formal_latency": false,
+  "raw_csv_sha256": {
+    "data/rebuttal/2026-11/E4/fixed_points.csv": "02e9111777c81cb4dd2ef36b58cd5f0fd305aadd93c94cc9ca8d8e5befd44fbd",
+    "data/rebuttal/2026-11/E4/metrics_records.csv": "ec5fba7eae89d86a157c8594887063480ecf20c9dddd407da5d4ab4924dd725d",
+    "data/rebuttal/2026-11/E4/region_summary.csv": "5a741a8cacdc30abc6e52723c49efa0a789b10dabc6fc88ce04b2702131c881f",
+    "data/rebuttal/2026-11/E4/resolution_budget.csv": "ff7e643544b99ab8b6cb80b5ec90cca82b5edcb4667343a721bad36ae04cff93"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6200,
+      "sha256": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40"
+    },
+    {
+      "path": "TESTED_CONTENTS.md",
+      "bytes": 11751,
+      "sha256": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/.gitattributes",
+      "bytes": 35,
+      "sha256": "3e42af38b7ff4ec6da3fc88c2c98928889d91daeff9cc3ff83957a562986a6d6"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/README.md",
+      "bytes": 5046,
+      "sha256": "25fa59671ca709c9ae197e105877403810b2ba25b946cd11648ac587682d1752"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/REPORT.md",
+      "bytes": 8492,
+      "sha256": "1bd1d071e24a959d603764361d4573ff37c121e30e12b9d4bbc19c301f888f6c"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/UPDATE_20261117.md",
+      "bytes": 1527,
+      "sha256": "85f75a4e2de18da967e886af054f2cb0a6adb6202c69ca65b0bb1ae4f526c6e7"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/data_provenance.md",
+      "bytes": 572,
+      "sha256": "a4b57cc2079e7ee89bb5a0dac1e4a2baaca6503be2faf232f6632074f269cb1a"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/analysis_audit.json",
+      "bytes": 5388,
+      "sha256": "90adf421bc33ed017907148a7f3c7df1fa4efaea379a153cdd32c94909f37899"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/derived_rauec.csv",
+      "bytes": 2804,
+      "sha256": "db90a1d37a9d839d96d30bb04a447df62560932c28d67adf3d5fd6ef3da57c2f"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/fixed_budget_composition.csv",
+      "bytes": 285,
+      "sha256": "688b1b9500281450c6715d35f0a8e3fa5b7bce86a38800754db4e54a91428206"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/full_resolution.csv",
+      "bytes": 346,
+      "sha256": "1493702426b7ba749bb0897afcd720798523345e56af01beccd4d4f7cc8b67ad"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/public_recompute_validation.json",
+      "bytes": 1529,
+      "sha256": "1b7c567ac7f1b38f9a49ed1509690e1edafdb8557fd3aa4da7ddeb8001a0dd68"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/publication_review.json",
+      "bytes": 3677,
+      "sha256": "2930488db2a2c08402a9ecf6b560077895e83c37cd0830268010cbe9aaebc1fe"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/region_energy_audit.json",
+      "bytes": 3398,
+      "sha256": "3a63b83903d4d1f5579bad54c6262f0593f6cd049327dac27e5190648e36f185"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/region_energy_inputs.csv",
+      "bytes": 173920,
+      "sha256": "f0f6cf45106167577c26d734eae9619d9098aaf4cd57d015653874d897919cc0"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/region_error_energy.csv",
+      "bytes": 938,
+      "sha256": "609e000a55e8b3b4475b21cfdf1c73cb07f8cd4a0692f6a716b39a2026662be4"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/region_error_energy_per_case.csv",
+      "bytes": 148343,
+      "sha256": "abb7605224e9645643ebae1c51678003c8b2bbefe05f3b8230efeb5670f3e771"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/render_qa.json",
+      "bytes": 318,
+      "sha256": "1bfbfaa2d288e16e686338688eeabe23ba422eb8ba3dd4cd3428434f6add7ea3"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/derived_analysis/strategy_comparisons.csv",
+      "bytes": 5849,
+      "sha256": "2e9ba125a8dab6bde76e7495b935482014cfa45f11bfa2cc9695163611821ec0"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/example_array_source_manifest.json",
+      "bytes": 10725,
+      "sha256": "ae9f2a106b26eb783c921c6f1580e6759cb39d0c76982473b913e7a7a7ee6596"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/fixed_points.csv",
+      "bytes": 3028,
+      "sha256": "02e9111777c81cb4dd2ef36b58cd5f0fd305aadd93c94cc9ca8d8e5befd44fbd"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/metrics_records.csv",
+      "bytes": 15399189,
+      "sha256": "ec5fba7eae89d86a157c8594887063480ecf20c9dddd407da5d4ab4924dd725d"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/protocol.md",
+      "bytes": 3452,
+      "sha256": "edc4a8736ddd9aa920598d77c5d2bbfe56ad57bb513991b36d2a6f2c3ebbc7d1"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/region_summary.csv",
+      "bytes": 13392,
+      "sha256": "5a741a8cacdc30abc6e52723c49efa0a789b10dabc6fc88ce04b2702131c881f"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/resolution_budget.csv",
+      "bytes": 9239,
+      "sha256": "ff7e643544b99ab8b6cb80b5ec90cca82b5edcb4667343a721bad36ae04cff93"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/timing_scope.md",
+      "bytes": 622,
+      "sha256": "7afad323719ef3f01b742302f11bd0da00b5615e2162a2474ffcc6290dcaf6ba"
+    },
+    {
+      "path": "data/rebuttal/2026-11/current_results_20261115/TESTED_CONTENTS.md",
+      "bytes": 9340,
+      "sha256": "99b32907d659dc41f660a19af298e065e0eacbaf585827109f12240b20e97564"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/E4/resolution_analysis.caption.md",
+      "bytes": 615,
+      "sha256": "fd4a17a0635e11c0195095af478bcc796a85c9cc1dd8ba5625f241cd79f72122"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/E4/resolution_analysis.pdf",
+      "bytes": 20286,
+      "sha256": "3248d0c818c48eb76a3e1a818cb84a0349a5824b15d6b4540e93e9aecb033233"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/E4/resolution_analysis.png",
+      "bytes": 311870,
+      "sha256": "61f37e88b38e88843447d10641d386beaf8a2b59df98d851eeee1b5c04f12855"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/E4/resolution_analysis.svg",
+      "bytes": 40753,
+      "sha256": "0b0c483a61beabea9eeab8876829368e59f804aa1d3eddcc16759d16ca7c833b"
+    },
+    {
+      "path": "figures/rebuttal/2026-11/FIGURE_MANIFEST.csv",
+      "bytes": 7098,
+      "sha256": "b7abab13eb997051ba7947bd02467680deb833acd2d1693abdf462eb438bbd60"
+    },
+    {
+      "path": "rebuttal/2026-11/README.md",
+      "bytes": 2604,
+      "sha256": "b12233118a2516568aaa9574421ac06c3a703cabc65506a9fa87e1762528cac8"
+    },
+    {
+      "path": "rebuttal/2026-11/RESULTS_INDEX.md",
+      "bytes": 4515,
+      "sha256": "fbfc52fd393a7923ce35c4360871de47fc37e290551e26fc1473b2b446a2f001"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/.gitattributes",
+      "bytes": 41,
+      "sha256": "406ed2df14d20d9ae662a319f65933a5549bc7504623561cf698d3d9082593e0"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/README.md",
+      "bytes": 1403,
+      "sha256": "653d78f73d2c3df6aa43e8a6a39579d63fa57ef93272f997f6f3594a5251fe49"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/recompute_e4_analysis.py",
+      "bytes": 20206,
+      "sha256": "b8ce4073b4ef07ce7ea3e1848c39b089dabb66d8221da500e7743af643db6d3c"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/requirements.txt",
+      "bytes": 19,
+      "sha256": "12a0a7bc6e1b1254c2f593a250e6ccff4dbd3cf0b27d6819696a9db86f4e530d"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/source_workflow/analyze.py",
+      "bytes": 11316,
+      "sha256": "2379570def96772f015bd216a86d175e4344741bad025d4b3de1813813ab9325"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/source_workflow/region_energy.py",
+      "bytes": 5135,
+      "sha256": "fd8ae0ec34696aec26f2e8bfc2bc035b271b84b5cb32c904a661fd294430dcce"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/E4/source_workflow/run_resolution.py",
+      "bytes": 15708,
+      "sha256": "7f911a2fc2c4981ff7ce5bcbc04ab52237efcf5e290df71d4fb41803e454e529"
+    }
+  ],
+  "self_hash_excluded": true
+}

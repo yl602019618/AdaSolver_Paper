@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "cases": 200,
+  "full_predictions": 600,
+  "definition": "Mean over cases of ||prediction-truth||_region^2 / ||truth||_full^2. Region contributions sum to mean squared relative L2, not mean relative L2.",
+  "derivation": "Stored region relative norms squared, multiplied by same-case cached truth region/full energy ratio.",
+  "rounding": "Original FP32 cached truth norms. Residual expected from stored float32/float64 metric arithmetic; tolerance fixed before execution rtol3e-6 atol1e-12.",
+  "maximum_relative_reconstruction_residual": 3.0961735164345034e-07,
+  "summary": [
+    {
+      "observation_resolution": 85,
+      "region": "boundary",
+      "mean_normalized_squared_error": 1.6996808403360586e-06,
+      "share_of_mean_squared_relative_error": 0.014852749357493747,
+      "share_of_increase_vs85": null,
+      "mean_truth_energy_fraction": 0.0007445807961049961
+    },
+    {
+      "observation_resolution": 85,
+      "region": "interface",
+      "mean_normalized_squared_error": 5.044107948907736e-05,
+      "share_of_mean_squared_relative_error": 0.44078199459173534,
+      "share_of_increase_vs85": null,
+      "mean_truth_energy_fraction": 0.1491867483985079
+    },
+    {
+      "observation_resolution": 85,
+      "region": "smooth",
+      "mean_normalized_squared_error": 6.229467511934465e-05,
+      "share_of_mean_squared_relative_error": 0.5443652560507708,
+      "share_of_increase_vs85": null,
+      "mean_truth_energy_fraction": 0.8500686998853975
+    },
+    {
+      "observation_resolution": 141,
+      "region": "boundary",
+      "mean_normalized_squared_error": 3.5836564526070815e-05,
+      "share_of_mean_squared_relative_error": 0.15872534144905825,
+      "share_of_increase_vs85": 0.30659547374099744,
+      "mean_truth_energy_fraction": 0.0007445807961049961
+    },
+    {
+      "observation_resolution": 141,
+      "region": "interface",
+      "mean_normalized_squared_error": 5.9378684597718006e-05,
+      "share_of_mean_squared_relative_error": 0.2629968054195649,
+      "share_of_increase_vs85": 0.08027180505462289,
+      "mean_truth_energy_fraction": 0.1491867483985079
+    },
+    {
+      "observation_resolution": 141,
+      "region": "smooth",
+      "mean_normalized_squared_error": 0.00013056195947382064,
+      "share_of_mean_squared_relative_error": 0.5782778531313768,
+      "share_of_increase_vs85": 0.6131327212043798,
+      "mean_truth_energy_fraction": 0.8500686998853975
+    },
+    {
+      "observation_resolution": 211,
+      "region": "boundary",
+      "mean_normalized_squared_error": 6.797163977437682e-05,
+      "share_of_mean_squared_relative_error": 0.19431630080964146,
+      "share_of_increase_vs85": 0.28157276830416317,
+      "mean_truth_energy_fraction": 0.0007445807961049961
+    },
+    {
+      "observation_resolution": 211,
+      "region": "interface",
+      "mean_normalized_squared_error": 7.085430095413708e-05,
+      "share_of_mean_squared_relative_error": 0.20255720920611256,
+      "share_of_increase_vs85": 0.0867306077921058,
+      "mean_truth_energy_fraction": 0.1491867483985079
+    },
+    {
+      "observation_resolution": 211,
+      "region": "smooth",
+      "mean_normalized_squared_error": 0.00021097302388277435,
+      "share_of_mean_squared_relative_error": 0.6031265055191278,
+      "share_of_increase_vs85": 0.6316966469917842,
+      "mean_truth_energy_fraction": 0.8500686998853975
+    }
+  ]
+}

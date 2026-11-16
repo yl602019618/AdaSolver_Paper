@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "scope": "Public scalar-record recomputation of existing E4 observations and their derived analysis",
+  "raw_metric_rows": 54000,
+  "physical_requests": 27000,
+  "condition_seed_groups": 135,
+  "cases_per_group": 200,
+  "training_seeds": [
+    0
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "original_resolution_summary_rows": 39,
+  "original_fixed_point_summary_rows": 12,
+  "derived_rauec_rows": 12,
+  "derived_strategy_rows": 36,
+  "full_resolution_rows": 3,
+  "fixed_budget_composition_rows": 3,
+  "region_input_rows": 1800,
+  "full_region_reconstructions": 600,
+  "region_summary_rows": 9,
+  "numeric_checks": 2583,
+  "maximum_numeric_difference": 2.220446049250313e-14,
+  "maximum_relative_region_reconstruction_residual": 3.0961735164345034e-07,
+  "private_array_prefix_checks": "Not rerun by this public scalar verifier; see the separately published original audit receipt",
+  "no_training_or_inference": true,
+  "formal_latency_verified": false,
+  "source_sha256": {
+    "metrics_records.csv": "ec5fba7eae89d86a157c8594887063480ecf20c9dddd407da5d4ab4924dd725d",
+    "resolution_budget.csv": "ff7e643544b99ab8b6cb80b5ec90cca82b5edcb4667343a721bad36ae04cff93",
+    "fixed_points.csv": "02e9111777c81cb4dd2ef36b58cd5f0fd305aadd93c94cc9ca8d8e5befd44fbd",
+    "derived_analysis/region_energy_inputs.csv": "f0f6cf45106167577c26d734eae9619d9098aaf4cd57d015653874d897919cc0",
+    "derived_analysis/region_error_energy.csv": "609e000a55e8b3b4475b21cfdf1c73cb07f8cd4a0692f6a716b39a2026662be4"
+  }
+}

@@ -1,5 +1,9 @@
 # 已完成结果与测试内容索引
 
+<!-- darcy-resolution-analysis-20261117 -->
+**Current E4 analysis, 2026-11-17.** [Darcy observation-resolution report](data/rebuttal/2026-11/E4/README.md) replaces the previous brief explanation. The same27,000 requests remain the evidence base. New derived rAUEC, fixed5419 coarse composition and region error-energy tables are independently checked; no new training, inference or formal timing is claimed. This is a single85²-trained checkpoint, distinct from both Darcy three-training-seed and900/100 matched cohorts.
+<!-- /darcy-resolution-analysis-20261117 -->
+
 <!-- original-cdcl-correction-20261117 -->
 **Latest Airfoil update, 2026-11-17.** The current original-Cd/Cl-policy result is [p0_airfoil_original_cdcl_20261117](data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md).
 
@@ -75,7 +79,7 @@ Car LinearNO 的 PI/CA、对应 head 和独立 training seeds1/2 尚未完成；
 | [E1](data/rebuttal/2026-11/E1/README.md) | 历史完整输出计时；三个case、三sampling seeds、20warmups/100repeats |
 | [E2](data/rebuttal/2026-11/E2/README.md) | FPS/空间分层等几何采样基线及同点集测度补偿配对 |
 | [E3](data/rebuttal/2026-11/E3/README.md) | 原ShapeNet-Car T3/官方LinearNO精度与完整输出计时对照 |
-| [E4](data/rebuttal/2026-11/E4/README.md) | Darcy85²/141²/211²观测分辨率迁移、统一评价网格 |
+| [E4](data/rebuttal/2026-11/E4/README.md) | Darcy85²/141²/211²观测分辨率迁移；2026-11-17更新派生统计、固定K混杂与区域误差分析；原27,000请求保留 |
 | [E5](data/rebuttal/2026-11/E5/README.md) | ShapeNet-Car三独立训练种子与各自CA head |
 | [E6](data/rebuttal/2026-11/E6/README.md) | 已发布的Airfoil多起点逆向设计/CFD及SuperWing已完成分项 |
 | [E7](data/rebuttal/2026-11/E7/README.md) | 固定点集beta诊断和已知proposal的合成token实验 |

@@ -1,0 +1,71 @@
+{
+  "status": "passed_for_E4_derived_analysis_publication",
+  "checked_at_utc": "2026-11-16T19:26:46.523247+00:00",
+  "reviewer": "independent_child_numeric_and_claim_review",
+  "scope": "Existing frozen85-trained Transolver3 E4 observations; analysis update only, no new training or inference",
+  "counts": {
+    "raw_metric_rows": 54000,
+    "unique_accuracy_requests": 27000,
+    "condition_seed_groups": 135,
+    "cases": 200,
+    "training_seeds": 1,
+    "sampling_seeds": 3,
+    "derived_rauec_rows": 12,
+    "strategy_comparison_rows": 36,
+    "full_rows": 3,
+    "nested_coarse_examples": 18,
+    "full_region_cases": 600,
+    "region_summary_rows": 9
+  },
+  "checks": {
+    "raw_matrix_exact": true,
+    "independent_explicit_trapezoid_recompute": true,
+    "per_seed_ratio_then_mean_sd": true,
+    "full_excluded_from_rauec": true,
+    "same_case_benefit_counts": true,
+    "saved_coarse_prefix_exact": true,
+    "independent_float64_truth_energy_reconstruction": true,
+    "region_definition_matches_original": true,
+    "max_scalar_recompute_absolute_difference": 4.440892098500626e-14,
+    "max_relative_region_summary_difference_vs_FP32_norm_export": 4.26076275426473e-08,
+    "max_relative_full_energy_partition_residual": 4.445417798965859e-07
+  },
+  "region_increment_85_to211_independent": {
+    "boundary": 0.2815727592747387,
+    "interface": 0.08673060440608758,
+    "smooth": 0.6316966275794706
+  },
+  "claim_review": {
+    "supported": [
+      "Full common-grid error rises, with198/200 and200/200 paired cases worse",
+      "At50percent, CPG/CA relative gains narrow",
+      "Fixed5419 points retains relative adaptive gains, but changescoarse context and mandatory prefix",
+      "Region energy identifies spatial error distribution, not unique cause"
+    ],
+    "required_boundaries": [
+      "one training seed, three sampling seeds",
+      "no separate high-resolution retraining",
+      "historical test-informed population",
+      "Full regridding paths differ across observation grids",
+      "grid observations are not nested",
+      "old PI flattened EDT and CPG index derivatives remain distinct from new corrected protocols",
+      "single accuracy-request timings do not establish formal speedups",
+      "not a replacement for900/100 LinearNO matched orthree-training-seed Darcy results"
+    ],
+    "blocking_numeric_issues": [],
+    "publication_copy_edits": [
+      "Replace the local-analysis final sentence saying Git branches were unchanged with publication-specific wording",
+      "Relocate source and figure links for the published E4 directory"
+    ]
+  },
+  "sources": {
+    "darcy_resolution_analysis_20261117/REPORT.md": "715cacbbdcd2cd60807f74a3c4370b2398b0b5db57482299154bc9fb47000022",
+    "darcy_resolution_analysis_20261117/analyze.py": "2379570def96772f015bd216a86d175e4344741bad025d4b3de1813813ab9325",
+    "darcy_resolution_analysis_20261117/region_energy.py": "d0dc27248db9496bb759acc7fc3ac2f42f36d866e759f8ffbe37d9dc080272e7",
+    "darcy_resolution_analysis_20261117/derived_rauec.csv": "ebcd61ee6d31d2e8315e6a5db0a2ab64ac4dbd0b4041ae54f28626fcf168e562",
+    "darcy_resolution_analysis_20261117/strategy_comparisons.csv": "cd49f2b3a173dd0371cd9e543d2899c4516c351cc09efea7ae8326066e54bad0",
+    "darcy_resolution_analysis_20261117/region_error_energy.csv": "9a8893c362ed45a68242f31750d99c20ed5bd057fbe08a68ca02dbf6f0dbf793",
+    "rebuttal_20261112/experiments/E4_darcy_resolution/records/metrics_records.csv": "8afb1aae32579aa9c600ebe2ce42c472b708300d0581a0418926219789eddb22",
+    "rebuttal_20261112/experiments/E4_darcy_resolution/protocol.md": "edc4a8736ddd9aa920598d77c5d2bbfe56ad57bb513991b36d2a6f2c3ebbc7d1"
+  }
+}
