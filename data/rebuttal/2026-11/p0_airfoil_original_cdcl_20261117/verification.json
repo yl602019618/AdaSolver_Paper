@@ -650,6 +650,10 @@
     {
       "issue": "Original seed-0 and P0 seed-0 identify different trained checkpoints and normalizers.",
       "resolution": "Original checkpoint is a separate protocol control. P0 training seeds0/1/2 form the new three-model population. Comparisons to the control are descriptive, not paired checkpoint deltas."
+    },
+    {
+      "issue": "The initial reproduction prose used the historical original-checkpoint training version rather than the fresh evaluation environment.",
+      "resolution": "Updated reproduction_command.md to PyTorch2.10.0+cu128 / CUDA12.8 using all ten actual run receipts. Numerical records and their validation are unchanged."
     }
   ],
   "pending_required_items": [],
@@ -766,5 +770,67 @@
       }
     ],
     "all_byte_identical": true
+  },
+  "actual_evaluation_environments": {
+    "control_shard0.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "control_shard1.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "control_shard2.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "control_shard3.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "training_seed0_shard0.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "training_seed0_shard1.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "training_seed1_shard0.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "training_seed1_shard1.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "training_seed2_shard0.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    },
+    "training_seed2_shard1.json": {
+      "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+      "torch": "2.10.0+cu128",
+      "cuda": "12.8",
+      "numpy": "2.2.6"
+    }
   }
 }

@@ -98,7 +98,7 @@
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/RELEASE_MANIFEST.json",
       "bytes": 54263,
-      "sha256": "283db86f5d2b6bb97a47dfd44c5bbb7c604cf78de830bc0f60a94f7f8642481a"
+      "sha256": "ec216d43039d59553e2c9b283f85f3163de08d2eab66ae39a094470fdeff27c3"
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/RESULTS_DETAIL.md",
@@ -172,8 +172,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/reproduction_command.md",
-      "bytes": 3287,
-      "sha256": "7daee51ca2200f9050fb27c9781b9150b766a9e91c5da9dab8016266a0463efc"
+      "bytes": 3347,
+      "sha256": "5f193a6912026c660023252d68e9d11aaf116f2acbff5c4f8783f8f76d242ab0"
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/reviewer_reply.md",
@@ -252,8 +252,8 @@
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/verification.json",
-      "bytes": 17953,
-      "sha256": "f290ddc5c7a452032e1ef27ca0622da2c5a51ed1368064a2436a01363d358829"
+      "bytes": 20199,
+      "sha256": "7126e40bfbbdf1e214a41eba50f7068bde1ee3c46ea1ce3a229480fc67a0a4a6"
     },
     {
       "path": "figures/rebuttal/2026-11/p0_airfoil_final_20261115/captions.md",

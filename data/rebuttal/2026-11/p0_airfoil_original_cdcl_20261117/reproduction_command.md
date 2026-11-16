@@ -8,7 +8,7 @@ python3 reproducibility/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/verif
 
 GPU reruns require the exact external checkpoints, heads, normalizers and NACA arrays listed in `checkpoint_registry.csv` and `runtime_registry.json`. The recorded paths refer to the paper workspace. Mount the same assets at those paths when using these exact commands. The native source snapshot is included; no field-target policy is substituted. Use a fresh checkout or an empty reproduction `runs/` and `launches/` directory: completed runs are protected against overwrite.
 
-Use the recorded Python environment (Python 3.10, PyTorch 2.11.0+cu126). Set the repository location before entering the reproduction directory:
+Use the actual evaluation environment recorded in the run receipts: Python 3.10.12, PyTorch 2.10.0+cu128, CUDA 12.8 and NumPy 2.2.6. Set the repository location before entering the reproduction directory:
 
 ```sh
 export AIRFOIL_CDCL_REPO="$PWD"
