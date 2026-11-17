@@ -1,0 +1,45 @@
+{
+  "status": "completed",
+  "target": "field",
+  "training_seed": 0,
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "warmups": 20,
+  "formal_repeats": 100,
+  "physical_gpu": 4,
+  "cpu_affinity": [
+    48,
+    49,
+    50,
+    51
+  ],
+  "checkpoint_sha256": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+  "head_sha256": "8b7ed68843739d62ea6aea4d7607efe1480808f35e2c2572b4c40ca825cadd5f",
+  "protocol_sha256": "1f96aa9f3eb13bb4dcb5d931147f335654816263e6fc23c6cfb1ba4b47a5e56c",
+  "request_sha256": "348f6846d6a3eb3fc35c3ce71213cd483c7904bf65bef23b8dfbfbbab302caf4",
+  "source_sha256": "288f7802b0908ba96080feb9287a7de077c5cd65de9b8993d9f2d42fdc883bb5",
+  "started_at_utc": "2026-11-17T15:28:00.560992+00:00",
+  "complete_conditions": 111,
+  "complete_groups": 30,
+  "conditions_expected": 111,
+  "memory_claim": "none; all policies share the process",
+  "environment": {
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "numpy": "2.2.6",
+    "device": "NVIDIA H20",
+    "fp32": true,
+    "TF32": false
+  },
+  "execution_status": "completed",
+  "finished_at_utc": "2026-11-17T16:13:30.019680+00:00",
+  "total_observations": 13320
+}

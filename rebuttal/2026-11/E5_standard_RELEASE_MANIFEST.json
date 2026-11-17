@@ -421,8 +421,8 @@
     {
       "path": "README.md",
       "category": "release_index",
-      "size_bytes": 7288,
-      "sha256": "d25f5a1542db6149f8d056452deea167f67ab8e4622dad005f79a8de8c61008a",
+      "size_bytes": 7831,
+      "sha256": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5",
       "evidence_status": "verified",
       "publication_status": "approved",
       "annotation": "2026-11-17: root index includes original Airfoil Cd/Cl correction; E5 standard numeric results unchanged.",

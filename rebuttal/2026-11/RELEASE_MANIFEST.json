@@ -1198,8 +1198,8 @@
     {
       "target_path": "data/rebuttal/2026-11/E3/README.md",
       "category": "release_index",
-      "size_bytes": 1647,
-      "sha256": "78371e26cfe9e31cb0afd9983c4170c9878811dc86cda7b496dcb8fe9a1b68cb",
+      "size_bytes": 2033,
+      "sha256": "5fbb70eb61e570ebaa467c63224617fd8f9ea6394211c79892fbf4d79f831d30",
       "source_sha256": null,
       "evidence_scope": "verified within stated component scope",
       "publication_status": "approved"
@@ -1258,8 +1258,8 @@
     {
       "target_path": "rebuttal/2026-11/RESULTS_INDEX.md",
       "category": "release_index",
-      "size_bytes": 5256,
-      "sha256": "614b1ef3665e913550b674762c916f5f0fd335a11bdb753dc51d058821df3a10",
+      "size_bytes": 5811,
+      "sha256": "09ba24e47fbc661b401181d12083546094bb0a33e5a699633e13847aca1e717c",
       "source_sha256": null,
       "evidence_scope": "verified within stated component scope",
       "publication_status": "approved",
@@ -1280,7 +1280,7 @@
     {
       "target_path": "data/rebuttal/2026-11/E4/release_manifest.json",
       "size_bytes": 12712,
-      "sha256": "7ce7508f6fd833dc12499e177f436e7959b64431b89301aec5330967ba0659fe",
+      "sha256": "9b2dc5d07cdff1d2078f52c66188fb2393dca33fecf763fd2ef0cc5ca5e22873",
       "category": "E4_derived_analysis_manifest",
       "previous_sha256_before_E4_20261117": "7d37ca523bc9112964c87026970d3c5b636dea0f3577808b628a4e8bfe4f9b03",
       "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",

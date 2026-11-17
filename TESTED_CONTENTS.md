@@ -1,5 +1,9 @@
 # 已完成结果与测试内容索引
 
+<!-- linearno-car-pi-ca-20261117 -->
+**ShapeNet-Car LinearNO PI/CA complete (training seed0).** [Results and method scope](data/rebuttal/2026-11/linearno_car_pi_ca_20261117/README.md) · [Summary](LINEARNO_CAR_PI_CA.md). The native official backbone now has geometry-only PI and its own trained CA pressure head, separate Field/Cd policies,100-case accuracy and222 formal complete-CPU-field timing conditions. Error bars here measure sampling variability; independent training seeds1/2 are not included.
+<!-- /linearno-car-pi-ca-20261117 -->
+
 <!-- airfoil-seeds123-posthoc -->
 **Exploratory display: training seeds 1/2/3.** Seed 0 was excluded after its test performance was observed, while its valid original data remain preserved. [Subset results](data/rebuttal/2026-11/p0_airfoil_original_cdcl_seeds123_posthoc_20261117/README.md) · [Displayed values](RESULTS_DETAIL.md) · [English response](reviews/airfoil-seeds123-posthoc-response.md). This selected display is not an unselected three-seed stability validation.
 <!-- /airfoil-seeds123-posthoc -->
@@ -28,7 +32,7 @@ The 19-model inventory and seed0-only tables below preserve the **2026-11-15 his
 
 | 模型组 | 去重 backbone / head | 已完成 training seeds | 关键区分 |
 |---|---:|---|---|
-| ShapeNet-Car E5/E3 | 4 / 3 | T3：0、1、2；官方 LinearNO：0 | E3 的 T3 seed0 就是 E5 seed0，同一 checkpoint 只计一次；Car LinearNO head 仍缺 |
+| ShapeNet-Car E5/E3 | 4 / 3 | T3：0、1、2；官方 LinearNO：0 | E3 的 T3 seed0 就是 E5 seed0，同一 checkpoint 只计一次；本历史清单尚不含后来新增的 LinearNO head；seed0 PI/CA 最新完成情况见上方 |
 | Elasticity 标准 cohort | 3 / 3 | T3：0、1、2 | 每模型 1000 train / 200 validation / 200 test；三份 head 均完成 CPU FP32 训练 |
 | Pipe 标准 cohort | 3 / 3 | T3：0、1、2 | 同上；保留历史 test-informed 策略 |
 | Darcy 历史 1000/200 cohort | 3 / 3 | T3：0、1、2 | 旧登记的 seed0/1 与本轮 standard 结果按 hash 合并；不重复计数 |
@@ -42,11 +46,11 @@ The 19-model inventory and seed0-only tables below preserve the **2026-11-15 his
 | 分组 | 数据、模型与 seeds | 预算 / 指标 | 精度覆盖 | 时延覆盖 | 历史测试可见性 / 未测项目 |
 |---|---|---|---|---|---|
 | E5 · Car三训练seed | Car T3 ×3；training 0/1/2，每模型 sampling 0/1/2 | 37.5/50/75%，另 Full100%；Field/Cd、rAUEC、training/sample SD | 100 测试例；19200 原生记录 / 22200 指标记录；原冻结目标配置完整 | seed0 见本轮 Car 重建组；seed1/2 未各自正式计时 | 历史人群；旧 Cd CPG/CA beta0.75 保留；新的 CPG beta0/1 补矩阵尚待整体验收 |
-| E3 · 官方LinearNO对照 | Car T3 seed0 + 官方 LinearNO seed0；sampling 0/1/2 | 三预算 + Full；Field/Cd、CPG beta0/1、各自 rAUEC | 100 例；9200 原生记录 / 11200 指标记录；Full/Uniform/CPG 对照 | 历史E3原生重建：276条件/27600正式重复，含beta0/1；新old/new测试另见Car组 | T3 checkpoint 与 E5 重叠；LinearNO PI/CA 与对应 head、training seeds1/2 仍缺 |
+| E3 · 官方LinearNO对照 | Car T3 seed0 + 官方 LinearNO seed0；sampling 0/1/2 | 三预算 + Full；Field/Cd、CPG beta0/1、各自 rAUEC | 100 例；9200 原生记录 / 11200 指标记录；Full/Uniform/CPG 对照 | 历史E3原生重建：276条件/27600正式重复，含beta0/1；新old/new测试另见Car组 | T3 checkpoint 与 E5 重叠；本历史 E3 快照仅含 Full/Uniform/CPG；seed0 PI/CA 与 head 已由新补充完成；独立 training seeds1/2 未纳入本包 |
 | 三seed · Elasticity | 972 点 Elasticity；T3 training 0/1/2，sampling 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；每模型7400条，合计22200；Full/Uniform/PI/CPG/CA | 本组这些 checkpoint 的正式完整输出时延未测 | 开发阶段冻结策略；没有本组 LinearNO 对照；CPU head 恢复证据已核验 |
 | 三seed · Pipe | 16641 点 Pipe；T3 training 0/1/2，sampling 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；合计22200条；五方法完整 | 本组这些 checkpoint 的正式完整输出时延未测 | 历史策略用过当前测试集前50例；没有本组 LinearNO 对照 |
 | 三seed · Darcy历史cohort | 85×85；历史1000/200；T3 training 0/1/2 | 三预算 + Full；完整场 L2、rAUEC、training/sample SD | 200 例；合计22200条；五方法完整 | 本组这些 checkpoint 的正式完整输出时延未测 | 历史 test-informed；与新900/100 split/normalizer/loss 分组保留 |
-| 完整输出 · Car | Car 两 backbone 均 training0；sampling0/1/2；T3有PI/CA，LinearNO无 | 三预算 + Full；Field/速度/压力/Cd；old/new parity、direct median/p95、显存 | 100例；7400 old/new对；1800 CPG beta对；field采样策略上的物理量诊断 | 3固定例；A/B/C共990条件、99000正式重复；990显存条件 | 历史人群；beta0只测精度；LinearNO PI/CA/head与多training-seed结论仍未补齐 |
+| 完整输出 · Car | Car 两 backbone 均 training0；sampling0/1/2；本历史 A/B/C 矩阵仅 T3 含 PI/CA；LinearNO 的新完整 CPU 输出组见上方 | 三预算 + Full；Field/速度/压力/Cd；old/new parity、direct median/p95、显存 | 100例；7400 old/new对；1800 CPG beta对；field采样策略上的物理量诊断 | 3固定例；A/B/C共990条件、99000正式重复；990显存条件 | 历史人群；beta0只测精度；本历史 A/B/C 未含 LinearNO PI/CA；新独立 CPU 输出组已补齐；B/C 和多 training seed 不在本次范围 |
 | 新匹配 · Airfoil | 221×51压力；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；压力L2、Cd/Cl/CdCl误差、rAUEC、parity、完整输出成本 | 固定发布110个Cl>0.02例；point各5060请求，conv110Full，共10230 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | 历史测试可见；本历史快照只含seed0；后续P0已补齐三training seeds，original Cd/Cl另见本次corrected package；conv仅Full |
 | 新匹配 · Darcy | 85×85；900/100；T3、point-temp、conv-temp各training0 | 三预算 + Full；场L2、rAUEC、beta0/1、parity、完整输出成本 | 200例；point各9200请求+conv200Full；37200 old/new指标行；3600 beta对 | 3固定例；333组/1323条件；132300正式重复；1323显存条件 | smooth2历史人群；point各training1/2及training SD未完成；旧1000/200三seed不能替代此组 |
 | FZ2 · score可视化 | Car、Airfoil各1个固定例；已有T3 seed0/自身head；sampling0 | 50%；真实feature/head、score、density、selected、后置error诊断 | 逐点来源/hash/计算链核验；Car独立CPU CA闭环单列 | 完整请求时延与profiling现已完成；score捕获专属GPU cost/rawscore绑定尚未单独更新 | 单例可视化；Car CA跨设备score154点超阈保留；Airfoil CPG仅保留619/1127coarse |
@@ -71,7 +75,7 @@ The 19-model inventory and seed0-only tables below preserve the **2026-11-15 his
 | shapenet_car_t3_trainingseed2_cpg_beta_pairs | COMPLETED | 复用已有 checkpoint 的 CPG beta 配对补评估；不新增模型计数 |
 | airfoil_t3_trainingseed1_backbone | RUNNING | 新独立 training seed 的 backbone 训练；完成且独立验收后才进入模型清单 |
 
-Car LinearNO 的 PI/CA、对应 head 和独立 training seeds1/2 尚未完成；这份历史快照未包含新 matched Airfoil/Darcy 的 point backbones training seeds1/2；Airfoil 的后续完成与 Cd/Cl 修正见上方。本次19个模型清单只登记已有完成且审计的 checkpoint。原生 conv-temp 的固定网格 Full-only 限制单列，不通过修改架构伪装为变量点数模型。
+Car LinearNO seed0 的 PI/CA 及对应 head 已完成并单列于新补充；独立 training seeds1/2 未纳入本次完成范围；这份历史快照未包含新 matched Airfoil/Darcy 的 point backbones training seeds1/2；Airfoil 的后续完成与 Cd/Cl 修正见上方。本次19个模型清单只登记已有完成且审计的 checkpoint。原生 conv-temp 的固定网格 Full-only 限制单列，不通过修改架构伪装为变量点数模型。
 
 已恢复问题也保留来源：Elasticity seed0 head 的启动锁失败后，三份 head 均完成一致的 CPU FP32 训练；Airfoil 原 finalizer 在全部测量后发生重复字典键错误，本轮从原始完整记录恢复报告；Darcy 旧总监控 flag 未读取实际 gate，本轮依据真实完成键和完整矩阵验收。原失败/待验收字符串未被覆盖。
 

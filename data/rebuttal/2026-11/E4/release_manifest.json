@@ -44,15 +44,15 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 7288,
-      "sha256": "d25f5a1542db6149f8d056452deea167f67ab8e4622dad005f79a8de8c61008a",
+      "bytes": 7831,
+      "sha256": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5",
       "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
       "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 12789,
-      "sha256": "f27f536ce99db12c02796047141a6984df05cd8fd291cfbecb5d880f668c7239",
+      "bytes": 13652,
+      "sha256": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967",
       "previous_sha256_before_PI_beta_calibration_20261117": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f",
       "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },
@@ -223,8 +223,8 @@
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
-      "bytes": 5256,
-      "sha256": "614b1ef3665e913550b674762c916f5f0fd335a11bdb753dc51d058821df3a10",
+      "bytes": 5811,
+      "sha256": "09ba24e47fbc661b401181d12083546094bb0a33e5a699633e13847aca1e717c",
       "previous_sha256_before_PI_beta_calibration_20261117": "fbfc52fd393a7923ce35c4360871de47fc37e290551e26fc1473b2b446a2f001",
       "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
     },

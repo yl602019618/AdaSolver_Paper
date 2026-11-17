@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checkpoint_sha256": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+  "head_sha256": "8b7ed68843739d62ea6aea4d7607efe1480808f35e2c2572b4c40ca825cadd5f",
+  "head_seed": 0,
+  "epochs": 200,
+  "training_cases": 710,
+  "validation_cases": 39,
+  "mask_groups_checked": 1498,
+  "stored_surface_rows": 550561,
+  "bank_target_max_abs_difference": 0.0,
+  "per_geometry_mask_weight_max_difference": 2.384185791015625e-07,
+  "real_geometry_native_block0_max_difference": 0.0,
+  "saved_checkpoint_validation_mse": 0.05024461820721626,
+  "recorded_best_validation_mse": 0.05024461820721626,
+  "head_source_sha256": "0861aa4cbd42d16b1009a8ac13675bb53355fd4951842896b4b1dd83c6fc213f",
+  "validator_sha256": "a607dc61f64853b77cc8dc48a6ee598f1925230424e3bcdaf33fc43fb4776643",
+  "feature_path": "official LinearNO own native first block, actual10% points"
+}

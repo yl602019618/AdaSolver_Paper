@@ -1,0 +1,180 @@
+{
+  "status": "VERIFIED_COMPLETE",
+  "complete": true,
+  "backbone_training_runs": 1,
+  "new_backbone_training_runs": 0,
+  "new_complete_heads": 1,
+  "head": {
+    "passed": true,
+    "checkpoint_sha256": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+    "head_sha256": "8b7ed68843739d62ea6aea4d7607efe1480808f35e2c2572b4c40ca825cadd5f",
+    "head_seed": 0,
+    "epochs": 200,
+    "training_cases": 710,
+    "validation_cases": 39,
+    "mask_groups_checked": 1498,
+    "stored_surface_rows": 550561,
+    "bank_target_max_abs_difference": 0.0,
+    "per_geometry_mask_weight_max_difference": 2.384185791015625e-07,
+    "real_geometry_native_block0_max_difference": 0.0,
+    "saved_checkpoint_validation_mse": 0.05024461820721626,
+    "recorded_best_validation_mse": 0.05024461820721626,
+    "head_source_sha256": "0861aa4cbd42d16b1009a8ac13675bb53355fd4951842896b4b1dd83c6fc213f",
+    "validator_sha256": "a607dc61f64853b77cc8dc48a6ee598f1925230424e3bcdaf33fc43fb4776643",
+    "feature_path": "official LinearNO own native first block, actual10% points"
+  },
+  "accuracy": {
+    "passed": true,
+    "run_count": 10,
+    "total_native_records": 8200,
+    "details": {
+      "full": {
+        "records": 100,
+        "expected_records": 100,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "cpg_cd_beta0": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "cpg_cd": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "cpg_field": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "cpg_field_beta0": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "uniform": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "ca_cd": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "ca_field": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "pi_cd": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      },
+      "pi_field": {
+        "records": 900,
+        "expected_records": 900,
+        "cases": 100,
+        "errors": [],
+        "invalid_records": []
+      }
+    },
+    "findings": [],
+    "cpg_pairing_failures": [],
+    "test_cases": 100,
+    "training_seeds": [
+      0
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "original_control_reproduction": {
+      "records": 4600,
+      "sources": [
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/records/adaptive/cpg_cd_3379dc754aeb/run_manifest.json",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/records/adaptive/cpg_cd_90cab2d158c7/run_manifest.json",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/records/adaptive/cpg_field_6a0eb5f218c2/run_manifest.json",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/records/adaptive/cpg_field_c0ee65f1bb95/run_manifest.json",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/records/adaptive/uniform_field_26ccb3fbd7ed/run_manifest.json",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E3_backbones/records/full/fullmesh_field_8cb012a85a23/run_manifest.json"
+      ],
+      "maximum_absolute_metric_difference": 0.0,
+      "mismatches": [],
+      "passed": true
+    }
+  },
+  "new_pi_ca_records": 3600,
+  "control_records": 4600,
+  "native_records": 8200,
+  "primary_metric_views": 9200,
+  "inference_timing": {
+    "field": {
+      "passed": true,
+      "conditions": 111,
+      "formal_repetitions": 11100,
+      "warmups": 2220,
+      "summary_max_recompute_difference": 1.7763568394002505e-15,
+      "metric_alignment_conditions": 111,
+      "maximum_native_metric_difference": 2.7755575615628914e-17
+    },
+    "cd": {
+      "passed": true,
+      "conditions": 111,
+      "formal_repetitions": 11100,
+      "warmups": 2220,
+      "summary_max_recompute_difference": 8.881784197001252e-16,
+      "metric_alignment_conditions": 111,
+      "maximum_native_metric_difference": 2.7755575615628914e-17
+    }
+  },
+  "total_formal_conditions": 222,
+  "total_formal_repetitions": 22200,
+  "total_warmups": 4440,
+  "sampling_sd_is_not_training_sd": true,
+  "metric_specific_policies_preserved": true,
+  "field_policy_cd_diagnostics_not_used_as_primary_cd": true,
+  "source_checkpoint_and_normalizer_unchanged": true,
+  "pending_required_items": [],
+  "outside_this_scope": [
+    "LinearNO Car independent training seeds1/2",
+    "B/C reconstruction execution scenarios",
+    "isolated per-method GPU memory"
+  ],
+  "verified_at_utc": "2026-11-17T16:16:04.937795+00:00",
+  "public_numeric_recomputation": {
+    "passed": true,
+    "native_records": 8200,
+    "primary_metric_views": 9200,
+    "training_runs": 1,
+    "sampling_seeds": 3,
+    "accuracy_statistics_recomputed": true,
+    "head_weights_hash_and_selection_verified": true,
+    "formal_conditions": 222,
+    "formal_repetitions": 22200,
+    "warmups": 4440,
+    "latency_statistics_recomputed": true,
+    "field_cd_policy_identity_preserved": true
+  }
+}

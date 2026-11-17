@@ -1,0 +1,22 @@
+[
+  {
+    "method": "pi",
+    "selection_target": "field",
+    "strategy": "two_stage",
+    "r": 0.1,
+    "frac_extra": 0.5,
+    "beta": 0.5,
+    "amp": 8.0,
+    "ell": 0.05
+  },
+  {
+    "method": "pi",
+    "selection_target": "cd",
+    "strategy": "two_stage",
+    "r": 0.1,
+    "frac_extra": 0.375,
+    "beta": 0.5,
+    "amp": 8.0,
+    "ell": 0.05
+  }
+]

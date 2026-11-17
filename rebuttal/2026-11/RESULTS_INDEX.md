@@ -1,5 +1,9 @@
 # Result tables and figures
 
+<!-- linearno-car-pi-ca-20261117 -->
+**ShapeNet-Car LinearNO PI/CA complete (training seed0).** [Results and method scope](../../data/rebuttal/2026-11/linearno_car_pi_ca_20261117/README.md) · [Summary](../../LINEARNO_CAR_PI_CA.md). The native official backbone now has geometry-only PI and its own trained CA pressure head, separate Field/Cd policies,100-case accuracy and222 formal complete-CPU-field timing conditions. Error bars here measure sampling variability; independent training seeds1/2 are not included.
+<!-- /linearno-car-pi-ca-20261117 -->
+
 <!-- airfoil-seeds123-posthoc -->
 **Exploratory display: training seeds 1/2/3.** Seed 0 was excluded after its test performance was observed, while its valid original data remain preserved. [Subset results](../../data/rebuttal/2026-11/p0_airfoil_original_cdcl_seeds123_posthoc_20261117/README.md) · [Displayed values](../../RESULTS_DETAIL.md) · [English response](../../reviews/airfoil-seeds123-posthoc-response.md). This selected display is not an unselected three-seed stability validation.
 <!-- /airfoil-seeds123-posthoc -->

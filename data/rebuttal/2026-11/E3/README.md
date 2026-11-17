@@ -1,5 +1,9 @@
 # E3: Matched Transolver3 and LinearNO
 
+<!-- linearno-car-pi-ca-20261117 -->
+The missing **LinearNO seed0 PI/CA** component is now completed in the [PI/CA supplement](../linearno_car_pi_ca_20261117/README.md), including its own200-epoch head and separate Field/Cd policies. Existing E3 numeric files remain unchanged. The earlier CPG comparison below is preserved as its original scope.
+<!-- /linearno-car-pi-ca-20261117 -->
+
 Each architecture uses a frozen, current-environment 400-epoch DDP2 seed-0 checkpoint, the same 710/79/100 train/validation/test partition and matched training budget. All 100 test cases and three sampling seeds are included. Accuracy, all 276 unique timing conditions, 27,600 formal repetitions, alias views and 276 isolated-memory conditions passed independent checks.
 
 Controlled latency measures CPU input to complete CPU field, using eager FP32 networks; the output container is float64 and force integration is outside the timing boundary. Full median latency is 17.6848 ms for the project's matrix-optimized T3 and 44.6465 ms for the fixed official LinearNO implementation. Every measured CPG pooled median exceeds matched Full. LinearNO Full Field error is lower, but this implementation comparison does not establish architecture-intrinsic speed ordering. Its Field beta=1 rAUEC (0.531376) is slightly above beta=0 (0.527244).

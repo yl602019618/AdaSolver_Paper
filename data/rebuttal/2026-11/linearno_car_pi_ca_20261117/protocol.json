@@ -1,0 +1,89 @@
+{
+  "scope": {
+    "backbone_training_seed": 0,
+    "backbone": "reuse complete E3 400-epoch/142000-update LinearNO checkpoint",
+    "PI_training": "not applicable; geometry-only policy",
+    "new_training": "own LinearNO pressure head, 200 epochs",
+    "accuracy_targets": [
+      "field",
+      "cd"
+    ],
+    "test_cases": 100,
+    "method_policies": "unchanged E5 frozen metric-specific PI/CA; E3 Full/Uniform/CPG controls",
+    "training_seed_statistics": "single trained backbone; sampling SD only",
+    "other_training_seeds": "outside this requested PI/CA completion scope"
+  },
+  "training_seeds": [
+    0
+  ],
+  "head_seed": 0,
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "test_case_count": 100,
+  "head_training_cases": 710,
+  "head_validation_cases": 39,
+  "head_epochs": 200,
+  "statistics": "case means ->trapezoidal budget area ->same checkpoint/sampling Uniform normalization ->sampling mean andsample SD",
+  "training_sd": "not estimated from one training run",
+  "inference_timing": {
+    "protocol_id": "linearno_car_pi_ca_complete_cpu_field_20261117",
+    "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+    "timing_cases": [
+      "param0/100715345ee54d7ae38b52b4ee9d36a3",
+      "param0/173669aeeba92aaec4929b8bd41b8bc6",
+      "param0/1dbb02c20bb93af81c1b3b2ed8d13bf8"
+    ],
+    "case_selection": "unchanged three E3 fixed cases",
+    "training_seeds": [
+      0
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "budgets": [
+      0.375,
+      0.5,
+      0.75
+    ],
+    "warmups": 20,
+    "formal_repeats": 100,
+    "full_sampling_seed": null,
+    "network_precision": "FP32; TF32 off",
+    "parity": {
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "selected_indices": "exact hash equality",
+      "coarse_prediction": "exact byte hash equality"
+    },
+    "native_metric_alignment_atol": 2e-06,
+    "memory_scope": "group process CUDA allocator peak, including all compared maps; isolated per-method memory remains separate",
+    "policy_targets": [
+      "field",
+      "cd"
+    ],
+    "scope": "CPU-resident normalized inputs and mesh influence -> complete physical float64 CPU field; method geometry/scorer setup, acquisition, selection, transfers, full forward, decode and reconstruction included; model/data/mesh-influence loading and force metrics outside",
+    "methods": [
+      "fullmesh",
+      "uniform",
+      "pi",
+      "cpg_beta1",
+      "ca"
+    ],
+    "physical_cases": 3,
+    "frozen_at_utc": "2026-11-17T15:07:25.859496+00:00",
+    "request_sha256": "348f6846d6a3eb3fc35c3ce71213cd483c7904bf65bef23b8dfbfbbab302caf4",
+    "force_error_policy": "separate frozen Field and Cd policies; no substitution of diagnostic rows"
+  },
+  "policy_identity": "existing E5 frozen PI/CA Field/Cd and E3 CPGbeta0/1 controls; no test retuning",
+  "full_reference": "Full100% canonical execution, outside rAUEC"
+}

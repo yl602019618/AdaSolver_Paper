@@ -1,0 +1,1122 @@
+{
+  "run_manifests": {
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/control_full/fullmesh_field_8cb012a85a23/run_manifest.json": "e8b21ae2b5e97d8aede1886a8d270b85fc5b7d3d2fba5be416a02f0eaa180e5c",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/controls/cpg_cd_3379dc754aeb/run_manifest.json": "5ae9daab71e1edad49160eccfb29670dceb4fa802cffbd3e2e8963512a4db78b",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/controls/cpg_cd_90cab2d158c7/run_manifest.json": "07f79daebd18f76e748600d1e294ca75c8b23ab38559060d57abb3d062137f8b",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/controls/cpg_field_6a0eb5f218c2/run_manifest.json": "b723833f140e248443a3b18a9df09151707db462afc5e071d4ae97277b8a2135",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/controls/cpg_field_c0ee65f1bb95/run_manifest.json": "5bb2fe3d34e0c477e87ecdaffb5abd43c89bce01c7f7839477445106465607c7",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/controls/uniform_field_26ccb3fbd7ed/run_manifest.json": "68769ebcbfb5cbbe408d57e2c0ae6dc808f3a82cfb8afccd76073187b3b0e7c1",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/adaptive/ca_cd_b7c21e4232f1/run_manifest.json": "c064bc4c1fff61bfed677f67325281995aca07214b636c3bd68fced3e64868c6",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/adaptive/ca_field_99d5b859e461/run_manifest.json": "effa96475a5356339f8716c61566749b5872d0842d5bdbde68446c7efcd60763",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/adaptive/pi_cd_f924cf940639/run_manifest.json": "a503cde567de80025c224d200c5f583d1290fec9fbf9f67ed02dc92363519bfc",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/reuse_review/car_pi_ca_20261117/records/seed0/adaptive/pi_field_0a7a08b11413/run_manifest.json": "d2a755ac4f2554ef161d6ff858dafa582c1ac182425e5d0c88e050120e05ed67"
+  },
+  "bridge_code": {
+    "accuracy_tools.py": "75cf2dea14bc51185d3f2fc12599f0e24e9c00a33e6589be72f79be296727215",
+    "benchmark_inference.py": "288f7802b0908ba96080feb9287a7de077c5cd65de9b8993d9f2d42fdc883bb5",
+    "bind_splits.py": "62b085b07d4087254470ca8cbf36b1875ae893d67eb4482ba84a141f4bda9337",
+    "common.py": "17603ef5554478ba9e3d48ac25c09d3277b0f6f65a028b34be977b4ab74c2aa7",
+    "evaluate.py": "5b49c899480bb3ce2a17487f26585a0f3aa7980efe58394b3be1611c3d6c6d5a",
+    "formal_timing.py": "0640b595e61ee9ab28586712d558a3b81108abbf34a8430ac85e17e7de6b8145",
+    "inference_request.py": "348f6846d6a3eb3fc35c3ce71213cd483c7904bf65bef23b8dfbfbbab302caf4",
+    "linearno_ca.py": "58b6babd0643e20148947e15135a130ce6fdb3cc9520b7ad056928945aa23e70",
+    "package_results.py": "14f5f1e86eeafe39cf383214f43e002f3fffafcb6696f10b37169c624f577f72",
+    "prepare_head_dataset.py": "8d2916dadbd5ea30bb91666acbd4318d0f4d025e06aa2eb77e6de37fcac5ad74",
+    "refresh_release.py": "be2c8d807d548a20274284582140b9681b0ffef1a2857cb29628419fa8a62be9",
+    "run_backbone.py": "eef5300bd18bf996dbdae8df6ea72a28dafc99d5bfea97dd9f8a5fd573b993bc",
+    "run_stage.py": "96647cb47a13b331d2f0e5a1c9b9785343a3444a8826adbab5023ded4c3aadc3",
+    "train_head.py": "578b40b8e5845fd177e3617860269213f36b06b0c7d68eab2d977790d774833b",
+    "validate_trained_head.py": "a607dc61f64853b77cc8dc48a6ee598f1925230424e3bcdaf33fc43fb4776643",
+    "verify_accuracy.py": "da9e266d801d013a6dce19775410c7a35af0b599cf6a1813429b5605d4b519a2",
+    "verify_interface.py": "7dd3c9ec3fdc1c668c6e4701d886858749bd1f45e37b4689ec75e188a49aea82",
+    "verify_published.py": "85d54d9a6807e6b39479dad76bb0d0c5d352df7e37c0f91e40e0a5fe43c9c812",
+    "verify_timing.py": "b25f23503f82ce169e9d1e5c68dde28cc05f11501b5958cf3332de7e67b2f295",
+    "workflow.py": "3f56971464a934fba0415af336c99de2ac7c1d9a3dfa996c868f7c3a2c750e3b",
+    "write_report.py": "1aedd7f70b5496c03922f303cbb7f4c174cbfc9b4123e9dd16ba7e1c2a68c0a7"
+  },
+  "frozen_inputs": [
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/evaluate_linearno.py",
+      "bytes": 3062,
+      "sha256": "4e8e61ba6bc99ab4c8cb52eb6764c6010294c1f9010d13ec20c7a084abe019b0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/linearno_adapter.py",
+      "bytes": 4667,
+      "sha256": "45596159141706b82a44f7bccb6280e4bcdb32bce4515fc8f5020e69773e728b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/train_linearno.py",
+      "bytes": 20896,
+      "sha256": "48ad50b575292d759a4cb75153f5617db1db3f6d4662a631e74686f358d83c69"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/dataset/dataset.py",
+      "bytes": 13880,
+      "sha256": "596343fd006d14fe0059665191945f98b8ba1570653f09576506828a5b06e32a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/main.py",
+      "bytes": 5635,
+      "sha256": "d29f14ce38c59181fe5b1b13dcb01cb46f996a456cdb9aa6cc4812e5df051d4a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/main_evaluation.py",
+      "bytes": 2892,
+      "sha256": "1397372be9c1de84e5254a061d1b7084260a7109f70d1d9bcda175e402cde362"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/models/GUNet.py",
+      "bytes": 7793,
+      "sha256": "4e3207443cfcc0e5f743d2daa8d026e69f9b389d88a845c2b071acb4463aacca"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/models/GraphSAGE.py",
+      "bytes": 1849,
+      "sha256": "e287caae7bac910cf2e52f7db7bfe230aae61f03ca2bc208dc25e5a09b5928a1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/models/LinearAttnNeuralOperator.py",
+      "bytes": 7494,
+      "sha256": "d7af7b4aa86280789438e3f0bf9db750714d56d6ea8ce912f3ec0d9ca1978ed0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/models/MLP.py",
+      "bytes": 2307,
+      "sha256": "09db639715a8421dfe50b0c6d330c4797fd769923ea62770afb33261da26732d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/models/NN.py",
+      "bytes": 766,
+      "sha256": "b141538020b046b898803c0ce466af128f409d206a1b94742c26fc7e219c1a8f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/models/PointNet.py",
+      "bytes": 1531,
+      "sha256": "44f340a79e821b822c506ffa9b21e529cbc6d64524ef993fa2f471e6dffb23cb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/train.py",
+      "bytes": 16554,
+      "sha256": "50c3acf2470ce5d35f7115a9543cb3990dea20a62d23b79adb59af889ffb977d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/utils/metrics.py",
+      "bytes": 19937,
+      "sha256": "ce5ccb2407b1981813167e4e696f4e5d7ff8a5cf53f3842109abffc5d018606d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/utils/metrics_NACA.py",
+      "bytes": 8055,
+      "sha256": "4f0a71f278d6dc556d0f211e7323064667f2f5a68b87edaf26d469f560c6a151"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/utils/naca_generator.py",
+      "bytes": 4188,
+      "sha256": "bfd0a2eb625e909ae9cc6bc517c1de06c1cc42a0591b636bf4c458989c4a8764"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/AirfRANS/utils/reorganize.py",
+      "bytes": 455,
+      "sha256": "f52b54ee437e05ff6b9aa8c22f4ecd7a8e225bea5bfeb0b07c1085534fbe6e0c"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/dataset/dataset.py",
+      "bytes": 17064,
+      "sha256": "e8555fd430211343ded1495735f0fa9465ed70040a403d0e7f4b9b0f5a9cf0be"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/dataset/load_dataset.py",
+      "bytes": 2221,
+      "sha256": "e7e1238c75dc8d35cdc2d92400628dfb22229fd964613af621df8dab428a48cd"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/main.py",
+      "bytes": 2211,
+      "sha256": "4101382980ce5c806c50595d7fa04364b94dfd2e1b163c3a169aecf4d82edfea"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/main_evaluation.py",
+      "bytes": 4903,
+      "sha256": "6504c919ff244279ab25e585881da792416f79c88c78a2c765fdf6a169f036d1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/models/Embedding.py",
+      "bytes": 3023,
+      "sha256": "e3a4f71c4378b7cce09a43b8c306d6d8a17edb4cd69db5eb069e55a57d2affe2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/models/LinearAttnNeuralOperator.py",
+      "bytes": 9592,
+      "sha256": "8f67b64e4d0372ddbf356124d3dbb88b1c13af670e503f072fce460862278dcd"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/train.py",
+      "bytes": 4475,
+      "sha256": "9a83436e434dc7ca51dbb1969dbddc57bf4c95008952dc54b48167af315c1cfc"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/ShapeNetCar/utils/drag_coefficient.py",
+      "bytes": 8908,
+      "sha256": "a64ea2183d11c00f9fdcd083232d2e0a5f9acf6328680f65acafa18cd75a0854"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/exp_airfoil.py",
+      "bytes": 12221,
+      "sha256": "3259b807a5b89615c98efdac6cfc64329806fcc10d1307047cd3a505cf5c21a1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/exp_darcy.py",
+      "bytes": 12022,
+      "sha256": "28cd6a1179c8d6ee7eb24e0a77c7389be3c78e9fb73cc56ecbb6a6f8635d5c50"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/exp_elas.py",
+      "bytes": 9324,
+      "sha256": "cdabab3b79eb1d201f8e91d8a1782d8dcf8ba99958619cf69ee7a1e7268a3109"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/exp_ns.py",
+      "bytes": 10609,
+      "sha256": "d1661c78aa22356a624958db4b3f07e1107031d5d28280f9578ba2d6eec560ce"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/exp_pipe.py",
+      "bytes": 10782,
+      "sha256": "796ce413fa52392e93da09a1d11890498abcc1a9ddc27defb4ea7bb1ecf02a3c"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/exp_plas.py",
+      "bytes": 12484,
+      "sha256": "74594c30bd024ca699566cf873d06e47822113671d77fab46956dfbee2f7cb48"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/model/Embedding.py",
+      "bytes": 3023,
+      "sha256": "e3a4f71c4378b7cce09a43b8c306d6d8a17edb4cd69db5eb069e55a57d2affe2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/model/LinearAttnNeuralOperator.py",
+      "bytes": 15591,
+      "sha256": "2019eacb9c6b61b3b7ede6a94e4ebfa3acb6ab95b25c1ab22299ab3dcc6c79d6"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/utils/normalizer.py",
+      "bytes": 3558,
+      "sha256": "0d073489639f3ae7aa04b6c23a47bb45fb99d00041f89a5ad11dd98b6c0ba8ae"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Standard_PDE_Benchmark/utils/testloss.py",
+      "bytes": 1338,
+      "sha256": "bb806fd2323a54bb112940c7241a5bbdbd1447f28459ad705ce9015696c251b5"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Super-Resoltion-AppendixE/module/LinearAttentionNeuralOperator.py",
+      "bytes": 9298,
+      "sha256": "54c375829b8b4744b349f77ad8697621f5143c17aef4dfb9070ca42637bd3a8f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Super-Resoltion-AppendixE/module/model.py",
+      "bytes": 15971,
+      "sha256": "25cadc43fa81f71a61d714cd67f00f0f6826f4715dc6f1ddb1d2dbf8d272d559"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Super-Resoltion-AppendixE/module/utils.py",
+      "bytes": 28283,
+      "sha256": "cd724c506381f28b0dda7468c161f30029ddbf5da9f25ea14a8f6b925802e0af"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Super-Resoltion-AppendixE/prepare.py",
+      "bytes": 7407,
+      "sha256": "0e5c67c9371683463ce5fea1f6c90a49ee752a5338ca1cffd313b2d6d1db8f1f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Super-Resoltion-AppendixE/test.py",
+      "bytes": 4877,
+      "sha256": "6bc677e4cacbbd31d9e6bdb3392076e26e3e15eb57bda4ab5623f22f18c82659"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/LinearNO/Super-Resoltion-AppendixE/train.py",
+      "bytes": 10993,
+      "sha256": "c744a2c3615ab21b56c291cfd1b1996c45cdf66821dc500aaaa2984ace5bef73"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/__init__.py",
+      "bytes": 79,
+      "sha256": "905b763c2afd5aac1c81e35860c4d13b1e10afb7aee99dd0e17a1c2726202c88"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/__init__.py",
+      "bytes": 1183,
+      "sha256": "54adb687709d5202f8e1ba1677493f9b56a1ee467a156171f9997bd22e2d755d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/airfoil2d.py",
+      "bytes": 3955,
+      "sha256": "f59a4c2955e32ec7508922601d4f23bdf9eed5f640e18c968c26f42af1a58dfa"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/airfoil2d_runtime.py",
+      "bytes": 2049,
+      "sha256": "60e526c590cc87f147e09fb9c06dff5073a8b00964cef707d68f07189536d053"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/base.py",
+      "bytes": 975,
+      "sha256": "381f31183041a6c63b13b2cfe1c44a5e1d98ddb178189cd9651e4cca8a524543"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/darcy.py",
+      "bytes": 6251,
+      "sha256": "d959d620b8550dcf87e50a6c1a752847aad631bd994c34b8b80cb56e28c025a2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/driverml.py",
+      "bytes": 7751,
+      "sha256": "98131130992e496c753d02dda48bf622513649452ed11ad00fe29d5ba5b414b7"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/driverml_runtime.py",
+      "bytes": 3997,
+      "sha256": "a6871feab62eab1d5db7534d4895b00b12c60d8d27528014406b0ff1d62302fc"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/elasticity.py",
+      "bytes": 4721,
+      "sha256": "4994efd5b79c5f2957f98f5a904c240e857405122a6ca34e5aee604dce4cbfbe"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/pipe.py",
+      "bytes": 4270,
+      "sha256": "e844827eda247eb19a1da6820323969e0f8ea39535ac47b9e1dfd462f63cc2cf"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/plasticity2d.py",
+      "bytes": 8653,
+      "sha256": "985b2ba8db8d294b8a30f799a2a49ca544f6373682ee1f22072acb0b31090a9e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/registry.py",
+      "bytes": 1067,
+      "sha256": "959c64025529c60e2dfd800de870a5990eb8e59dea1d8894d3d86a3377a848b0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/shapenet_car.py",
+      "bytes": 13091,
+      "sha256": "1eb7c443b5401f37b5837d3f06757e2c2e57bd0c515a4cb5403fcaf723604bd8"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/shapenet_car_runtime.py",
+      "bytes": 4178,
+      "sha256": "1c7fb77b906fbba7d24dddee13de5528f372b29727aed14061b1baf83b2da1eb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/superwing.py",
+      "bytes": 6982,
+      "sha256": "dfdd97d0aa502ba17feb6c25a1adc41631a6a2b682f7d91aa97921dcbd200cb0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/data/superwing_runtime.py",
+      "bytes": 3540,
+      "sha256": "d8dc52b6bb6f3f38e76ee297d6021158ccd5d4c1e80a288d20e32ebafb8142f2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/__init__.py",
+      "bytes": 31,
+      "sha256": "809f03b807b5c7a74ffabbe0328877a7eb21d5f7fcb373fdc5069a22db3bb2d9"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/airfoil2d.py",
+      "bytes": 23025,
+      "sha256": "24a1e914b3d16b80c329e812650df026213c2e6f8322b187d262879cbf6e7593"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/airfoil2d_compare.py",
+      "bytes": 766,
+      "sha256": "fcaf411d070b8743b59dcbbb6d426f311b491580cd92468d3e3877a432da2a2b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/airfoil2d_oracle.py",
+      "bytes": 6551,
+      "sha256": "b7f665e0d2fd328ba519ac0b493e3be4a8b6325cbd2c83f338bb6c4fb4a74db1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/audit_pipe.py",
+      "bytes": 2664,
+      "sha256": "101e512688b5bef18d9b9c372c777fd7b1d2deab210783b6f4131a83900c825e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/curve.py",
+      "bytes": 8797,
+      "sha256": "6d75ed8cf98d5d6bf8eadd6dd9811c515eb6df298bf13cdf82ff96b267226fde"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/darcy.py",
+      "bytes": 4219,
+      "sha256": "66bd36cb783ae4b9b702d5a4a4e36927f9c7cc81dde7a2de567832f78b7ae3d4"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/darcy_curve.py",
+      "bytes": 12830,
+      "sha256": "5221a97c60722cd69baab4ca493b5b03dfd2ca25387303205bcb6ab05ee66afc"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/driverml.py",
+      "bytes": 20078,
+      "sha256": "7dc845ce340a08b7426cc3a1ca95bc4066b00a9941eb84405de45fead290d3d0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/driverml_compare.py",
+      "bytes": 5081,
+      "sha256": "75f458db9d714c41fa1e1648fb445bfa4b2d2007c67359c452ec32c3cf63cf6d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/elasticity.py",
+      "bytes": 3323,
+      "sha256": "f579eaedea5d1ff5c34f86c0a1e6fb599257d6dadda2e69082b419b02ee2a9ca"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/elasticity_budget10.py",
+      "bytes": 15900,
+      "sha256": "998a6b446e98f632f0f7ff49d8ea63f5959b37dafc37af20c47a325239c90822"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/elasticity_ca_curve.py",
+      "bytes": 7795,
+      "sha256": "c519478908c1e7f43de7a76f5eae5bd39ee9e241b9fc9fc1e1eab2f7267e7c23"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/elasticity_cpg_curve.py",
+      "bytes": 6713,
+      "sha256": "2d98227bba6ad8d7251384dab8f784b2ab95a3ee9134e8c38b9a15a5ac030f62"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/elasticity_curve.py",
+      "bytes": 8184,
+      "sha256": "d533bb0946ae6b88fa6f12e0dbd3270f156f28e823c69e895f7c31032f33e510"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/fullmesh.py",
+      "bytes": 3167,
+      "sha256": "63fe03a8725be97a80b05380c2107cdd6c2905b147d8af3c8ec5d83fe04fe0d7"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/plasticity2d.py",
+      "bytes": 920,
+      "sha256": "c4299cbb252354279bb33b221114db44eb356b1dc273033ae24ceb9e8b1ecd29"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/plasticity2d_ca_revision.py",
+      "bytes": 5430,
+      "sha256": "f223d790f5910a68ca28582b20d9c8dc1549d710a0c34a20847288c8c32fc7a6"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/plasticity2d_compare.py",
+      "bytes": 6534,
+      "sha256": "6cc5e0ce44db1bdddf1639a5385d318d730cece7975bb317771b153c10eb28f2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/plasticity2d_curve.py",
+      "bytes": 9299,
+      "sha256": "55858218dac62467166e98a96b1cc821b952d1973e2f77b37e064c81d7f1160f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/plasticity2d_full.py",
+      "bytes": 13507,
+      "sha256": "fc067815f09350de75cf00ddc0c2e41c19fcbee42c41c091669862adb7cc0600"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/plasticity2d_fullmesh.py",
+      "bytes": 4549,
+      "sha256": "afc73d0ac78e296a83280b55c07f91f41e075cec477b67bf8b971092798d4299"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/shapenet_car.py",
+      "bytes": 25416,
+      "sha256": "4f25926adfc312e62246f48d49bcf3d96a6a4096f5e853580a47cfe262a0be99"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/shapenet_car_compare.py",
+      "bytes": 6349,
+      "sha256": "2bd9130535aac64d1d2ba87218fa3d9003198b5bebc2f53e04fb89eec94cfaa5"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/shapenet_car_jobs.py",
+      "bytes": 4994,
+      "sha256": "13a2ccff5d33718d9f39691b486d2d097cb4c5b08d270414efdbac8cb6f9109a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/superwing.py",
+      "bytes": 17735,
+      "sha256": "d01eff4cad6f170856373bcb66d5fd47b6a46218af5fb1313f47f5dd147a820d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/superwing_compare.py",
+      "bytes": 3659,
+      "sha256": "8498094ae411a9beb4bd559b7d17537f7817d8b9e559308d21b09f719e37dbee"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/superwing_replay.py",
+      "bytes": 2618,
+      "sha256": "470a36ede02b7ed8ac1d3bbf4067b117385737bd56ed9fb917a236ae4d625306"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/evaluation/tune_ca.py",
+      "bytes": 10312,
+      "sha256": "97f849fe4aab2c552755af29b83f89d0d4d6d3d9f8b192934ea8fc2ec7d21678"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/__init__.py",
+      "bytes": 63,
+      "sha256": "c39f1c878a96caf8e9600b868c05e0a6fa19f5ddcd8ed971f2c345fad247f3f2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/acquisition.py",
+      "bytes": 1262,
+      "sha256": "9fed218882742e36dc9892436e2d4ec759cb6ee0b7969107d145911a615ee374"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/adaptive.py",
+      "bytes": 8935,
+      "sha256": "9b4bd017da82855066893c863d770dbd5c7733518db725dc88c830a43ed34795"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/adaptive_fast.py",
+      "bytes": 7464,
+      "sha256": "14d854c8e61305f99f5459f384e669d9a024b6f30b1b95c1e348b5575a105883"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/airfoil2d_config.py",
+      "bytes": 3604,
+      "sha256": "1c48b3fadc1416f3daec55afcb692ce0ac1dcc234a6aaef32cfbc38266ac4f80"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/airfoil2d_contract.py",
+      "bytes": 1887,
+      "sha256": "e492d92783937b86fa4dbdf7f728eee99195cedc4e1bf057ba309f4887329b47"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/base.py",
+      "bytes": 1392,
+      "sha256": "cda708896cc4c0b5f08306251b7092745ab9bb6ab1eac639b84db1f55313509e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/__init__.py",
+      "bytes": 1032,
+      "sha256": "34b1896570deca5f8572f8f41a10f1896a4accbda29ae5d02ab6d6428064da94"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/airfoil2d.py",
+      "bytes": 14586,
+      "sha256": "b3b57701799972b12ad6b4a68dc47d39648bd2c5a5f58bdff1e0a161533409f0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/darcy.py",
+      "bytes": 7335,
+      "sha256": "10085841fea3eba43dfb12bb092a5f2d57b5a1ab32b6a31cf580cacc987f3c76"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/driverml.py",
+      "bytes": 4785,
+      "sha256": "d39a6ea392d35d1447881a526176cdd76a3b8ad249520b9c74960a363ea56360"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/elasticity.py",
+      "bytes": 5463,
+      "sha256": "b5794ab9540a4258886f85ffe1d18a9355f4a67000763d8bb985d5cd88dea438"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/elasticity_stress.py",
+      "bytes": 4680,
+      "sha256": "f8f6edbedd73e6d4c04d49ecce59c7bceb4b33b1d38e73e3ece2b5aa2c3b4c85"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/head.py",
+      "bytes": 1797,
+      "sha256": "bf44d62299666f382a961d249063bd462f3fe5156bdd6d8fbba4d70e68fb536a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/pipe.py",
+      "bytes": 2330,
+      "sha256": "6b71835148607fd45d79bbb1f8257799a986dc3e6c63e544fa1f1d82422729e5"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/plasticity2d.py",
+      "bytes": 7160,
+      "sha256": "a0843ad8642f4e5d3ccb9cd3f37af128a1800a710e027a7517cc8e06e71c7570"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/plasticity2d_full.py",
+      "bytes": 2240,
+      "sha256": "b7c53334bf6f0ef24d410d86c13c298ad00c1977b0ac38de80a60fef989a48a2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/plasticity2d_revision.py",
+      "bytes": 7758,
+      "sha256": "51dd41812da3bbc7dc94f2d057e03c6a979ee0342a78be6c3fb1bb3f383e8e67"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/shapenet_car.py",
+      "bytes": 5713,
+      "sha256": "493765e0179a8291fcb7676fdaf94c45fedc56514233337b9b02fcd271e580eb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/ca/superwing.py",
+      "bytes": 4649,
+      "sha256": "962f1707ae0f8693ddbb081fecfd5af1fba6d59d978875997382661112f0830c"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/__init__.py",
+      "bytes": 549,
+      "sha256": "b1a107efe3d1ff4fcca16ce6c6285fab894795a273c560310842e3fc2ceece4e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/airfoil2d.py",
+      "bytes": 12290,
+      "sha256": "f515aa558f159b9e5a9159f53266c858eadbea9dd7119e1b17aa06c37b3a7114"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/airfoil2d_features.py",
+      "bytes": 3476,
+      "sha256": "db79d3da9c52a3fce0c1a1e609ac9a773a115538c562977d9df3de5e45241aaa"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/airfoil2d_single_feature.py",
+      "bytes": 7377,
+      "sha256": "b1d5c024358c2e59522c22434c1557f1740118ac0960e34842045d642a79db38"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/darcy.py",
+      "bytes": 5922,
+      "sha256": "962fc38d7e4ce16729fbe7e4495a761e4fe6c9a5f2a5fcee3d32d4087b453410"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/driverml.py",
+      "bytes": 1977,
+      "sha256": "7c5f6bda226a320aba20eb8a524abf244784884291e7a4243e7aa7b0712c5668"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/elasticity.py",
+      "bytes": 3677,
+      "sha256": "91fbcb3577aa4f587d2e3bc8ed3e4f56509f9a7d4a86dafdd1ba7073ccd2efb4"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/pipe.py",
+      "bytes": 2745,
+      "sha256": "25d8ef99291c1826fb59b62daa776ea1726bdd7dfbd2a89f2e786975f2032ce1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/plasticity2d.py",
+      "bytes": 2927,
+      "sha256": "629eeb6550c8468fcbd26d6b1177a74f92363117dc7a02ce4aec6ca4098829dc"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/shapenet_car.py",
+      "bytes": 16251,
+      "sha256": "b376089a3d9cf3e9836c40d44e8abcc41447dae6b39f13b6fcfca8cea4a2584b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/shapenet_car_cd.py",
+      "bytes": 4493,
+      "sha256": "9c0420d451ff7c09ba0e426a0acad8a3960e1a60309f499ebf329daf228362a5"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/shapenet_car_cd_shell.py",
+      "bytes": 5197,
+      "sha256": "c0caf431ad15e1c5f5f6358a78e634408db3b062dc19b8fbb62009557e276f35"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/shapenet_car_stratified.py",
+      "bytes": 6525,
+      "sha256": "c8c201c30e372ce34a00b37b45cbef6c11cd3e440936d8d7705a7fa8619a9e6b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/cpg/superwing.py",
+      "bytes": 4714,
+      "sha256": "25c2b9a5b26aa7a843df4f169f9d0e31a6b1ee08778538fa7bb0d526da9d0785"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/driverml_contract.py",
+      "bytes": 3234,
+      "sha256": "7fce38f76ef7b2b99951c07ccce0e90ce0820792e813b3f393e5c19a0718e7f0"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/driverml_sampling.py",
+      "bytes": 4891,
+      "sha256": "125303cb8eb470a8dda7fc2e4304368951d2546778c01be375d5de3a9c10a410"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/elasticity_contract.py",
+      "bytes": 2063,
+      "sha256": "4a0851b9df2dcfa9047b305dc092d08f23f825bc41713bf41b438b4c32e85def"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/elasticity_density.py",
+      "bytes": 10655,
+      "sha256": "982fb6eb17da6646ec4c38d4eb0b4adaf15de7c1f27a3ab244f0a2886cac5e7d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/native_fps.py",
+      "bytes": 2748,
+      "sha256": "c9f5a438995e2d81f97c29423999408403d4ac9fddffb67a55ead38f872a6884"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/__init__.py",
+      "bytes": 1122,
+      "sha256": "50adf63a581f5745dc9ae2de2d98030c2d729b49d98c3dbe4db0bb9facf90896"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/airfoil2d.py",
+      "bytes": 5849,
+      "sha256": "94df3cb83934d24ace8e6e9e1dd2001aa63959c7a8317a8985b4a39d6cff606b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/darcy.py",
+      "bytes": 9195,
+      "sha256": "6171c4dae9c0a1b26c62ec3bddf6857a61cb5d0288d799d42cebb1ddc97f5e69"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/driverml.py",
+      "bytes": 1707,
+      "sha256": "c62b0901f2b02f0deecb1c47c81f834665515e10883c4ee805d68a75f52bf201"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/elasticity.py",
+      "bytes": 2483,
+      "sha256": "b4abdac09fa86eee3ee294f1b9a2886eca3acc332ab245678984ae997c252f1f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/pipe.py",
+      "bytes": 2421,
+      "sha256": "190ffa36c347b6ce1bf54b6bbe8150ab9b45fb12b615ce9a2a7ace83f4b90fbd"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/plasticity2d.py",
+      "bytes": 2007,
+      "sha256": "6fe8fcef2532899d11b9cea2f247fed0cf041a7cc7ac7cc1d3de3b6719841fe1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/shapenet_car.py",
+      "bytes": 6846,
+      "sha256": "b86fe7fc6e1fb24bcc0378b899166ebefb440299ff4085d2c2658f083b887180"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/pi/superwing.py",
+      "bytes": 1573,
+      "sha256": "39b3947c564798fe7f8209598137a0bdf5bcc4185fd2898392f96f0cac3033e9"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/plasticity2d_contract.py",
+      "bytes": 5552,
+      "sha256": "2d8cd688085687410c1e73ccd20831e1c1c8004b9a1961cbcab3a87538ba87fd"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/plasticity2d_sampling.py",
+      "bytes": 5899,
+      "sha256": "e43e1809a725a45bafbda36d5258c7345fe632302d4ce1ab962bf472506dbb7a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/shapenet_car_contract.py",
+      "bytes": 8174,
+      "sha256": "273f8760ca59a25ffcc4db547bf6fef86c7708b38d3a95e00ac34742d9577c8a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/superwing_cd.py",
+      "bytes": 4771,
+      "sha256": "39a3e3b141a92d5d76d76955d095606d34460852d7bf437769f6cbf166de0ae4"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/superwing_cdcl.py",
+      "bytes": 4489,
+      "sha256": "5acd7611aa5d8294e3fc27b2fe44c518707ca834c285b5fe6dd62ee519301ddd"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/superwing_contract.py",
+      "bytes": 5809,
+      "sha256": "115d4c0e64be44807350160a1a3df014a75754405c5ac4770c6930f34153b8a2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/superwing_density.py",
+      "bytes": 10168,
+      "sha256": "3b2fd9bdfc1bc3feee62cccbded25af296f6d101486802305c6a901a497264b1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/superwing_influence.py",
+      "bytes": 2197,
+      "sha256": "51f6a69b925d4e75fbb1b920c86210f5283fdaf890b48336667f7021244a9fc9"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/superwing_sampling.py",
+      "bytes": 6366,
+      "sha256": "f74e671b82ca53d0f0f881e536cec159f69e972973522b320ddb136d572e6366"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/uniform/__init__.py",
+      "bytes": 138,
+      "sha256": "944a30ef4368813e53ac8e6ea7df2a66336bdcc51741717234696aebf7b6314e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/uniform/airfoil2d.py",
+      "bytes": 1570,
+      "sha256": "e54905475fb817ccf3dcc890c302e4182b281381dbbf0a789c6eea730f3a1fa6"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/inference/uniform/sampler.py",
+      "bytes": 550,
+      "sha256": "a5f14e2db06e4825e1ee06d4b6cc4f42649f4b6c7452a8771b9a2ebc181c8f97"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/layers/__init__.py",
+      "bytes": 127,
+      "sha256": "0fa90ff7a8957873a0051593d5769ff3b6ed9951880eb38390b175a0da2fb65e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/layers/block0_cache.py",
+      "bytes": 6192,
+      "sha256": "58efda9999b837eecc74f81b23eb306884a8d9e1b54db6fc39da1839e3040b24"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/layers/compensation.py",
+      "bytes": 7005,
+      "sha256": "5afdb1a535660cc0c02496aa2535c7153320bf3c21fb43089e99b5ac66bdca3b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/layers/first_block.py",
+      "bytes": 8417,
+      "sha256": "e7988b69507f1c7126798bc5c8857c01cbb01e41e90ad5a786676bdf120a8aed"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/__init__.py",
+      "bytes": 982,
+      "sha256": "4123db5c322e43581b970e30af026d062e6651a5e9c4c1456df299a525b1dd36"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/airfoil2d.py",
+      "bytes": 1985,
+      "sha256": "02279721248a6f52774808945d4c69a28d51ba24a188b9e63e860eed28125d44"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/car_cd.py",
+      "bytes": 14144,
+      "sha256": "791b121a4dcc7beb152e40276e30797b8911399e195146acd1e10411a47ded6b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/darcy.py",
+      "bytes": 940,
+      "sha256": "2409b397f3d27b30be3552e9f3500d0f556caedb3459fd36827f185f786029ff"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/driverml.py",
+      "bytes": 3260,
+      "sha256": "75bef8640427948e5a2d1e74dee06bd7dfdea01413fdebb28fe8d322bb75c8c3"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/field.py",
+      "bytes": 746,
+      "sha256": "11f47fc47889de73c1537e9ec74e74def88d323062a9a59c99e25f26c09800cb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/plasticity2d.py",
+      "bytes": 3566,
+      "sha256": "59194f0545b8eeb9d3d46be725ad1c954b2db66fedb44246bf004954fd287e7c"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/rauec.py",
+      "bytes": 819,
+      "sha256": "e0ac99c8f2cac09558f1eff420a7e7383009e3832dd52fdf23d0f1f03b834b1a"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/shapenet_car.py",
+      "bytes": 6979,
+      "sha256": "abdc797e68e871eb9cca7f1454c445916ebbbcf8907a85d85bafc6fd455a718b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/superwing.py",
+      "bytes": 5563,
+      "sha256": "ec24c9cdee41df6970b6788075e251ae5519b54baa9a7374836942f772deb902"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/metrics/superwing_cdcl.py",
+      "bytes": 1196,
+      "sha256": "232d941aa0191cfd33a3c620f31a630209de80671ace851c2bf4e859e16f0365"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/__init__.py",
+      "bytes": 883,
+      "sha256": "14ec6b27c8fe5bb344a6ec82cb3b373df06e9ef406fa3e223a50fcfef0165ba5"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/adapter.py",
+      "bytes": 1425,
+      "sha256": "6f60e1555ae72b99e9f1b7f71deb26d00a577b5d251dd3025eccb5e9dda467e1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/checkpoint.py",
+      "bytes": 8514,
+      "sha256": "30d8806461e7195a51fca4a9a6d4f3ecadf21362c4b1e3a8448c0f4900577d8f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/driverml.py",
+      "bytes": 3289,
+      "sha256": "8bca943d27cd1ee1fd726e6145c4d018565a6024253bf01340076870fd2b25c4"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/legacy_darcy.py",
+      "bytes": 4547,
+      "sha256": "51aab1b6020fd23a023d6bb4011ecf3b58eea4fa06f4d6bec3568459a03af761"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/legacy_transolver.py",
+      "bytes": 6125,
+      "sha256": "0efb95c4bcbb182b84f805d13b304efebede956eda51aa0d5e1a32112e46d8c2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/plasticity2d.py",
+      "bytes": 5789,
+      "sha256": "a49698ce8d36cc44e1a4ee5d08ae12e96d03ceb9a09d53d678f2f351f7205e40"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/models/transolver3.py",
+      "bytes": 12665,
+      "sha256": "2dc6476d64613b66e0da285e676bd87ffd6110b49ff4c2d53ed4e9013309562c"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/__init__.py",
+      "bytes": 29,
+      "sha256": "1b302fd770f1c39a0adfa8b7c21c2ac471ba81b37f34337d82de5494f8e549bb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/airfoil2d.py",
+      "bytes": 7048,
+      "sha256": "c05d244a1761f01f850ed03993d2bb678a5d454772881d75deb30fa608d88d05"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/airfoil2d_ca.py",
+      "bytes": 17696,
+      "sha256": "728458fdfc9cae08f245325e8c007a4f045031c6b6125894aefe0ed1bddfe70c"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/airfoil2d_ca_dataset.py",
+      "bytes": 5906,
+      "sha256": "d489a8cf1288f3947afaf69092977ea5ae21641acd099b79938e6c87ace6786d"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/airfoil2d_pressure_head.py",
+      "bytes": 7822,
+      "sha256": "8879b6bdf2002ff7ab7a3eafa5a3e77a10b7adfd7034b18921ed9ce00ab35247"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/ca_head.py",
+      "bytes": 6698,
+      "sha256": "866dc6fab9b2d3728f084e0756f244d8e31f91b51f62b59f33ab845f8ba6af27"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/darcy.py",
+      "bytes": 9714,
+      "sha256": "b568c8d85df37ac1f07d30ceaf1cb84686b7b0bf0f6c5e93e499316eb68469c7"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/darcy_ca_head.py",
+      "bytes": 8601,
+      "sha256": "59b92af76761098e50911bd5ac32fb5c3e4403001c24593b452f3f4997c45a42"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/driverml_ca_dataset.py",
+      "bytes": 3511,
+      "sha256": "3d8cbeb320eebd85a52697047928a7f789d73467fe7b603d7ecee59d46ec88f9"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/driverml_ca_head.py",
+      "bytes": 7469,
+      "sha256": "20d1693b8e42d21ec4cc398d1da72d56005e7719796c4e0ee8bbacb6304ee2e4"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/driverml_standard_ddp.py",
+      "bytes": 10037,
+      "sha256": "c14d307530b0afcd6fe59ced189db92a67082af02e883e0dcdc3bb8578a6dfb7"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/elasticity.py",
+      "bytes": 7444,
+      "sha256": "538f59df4fa7fec84011c0382fef97d07ad48cf53c5743e08eec78bacef81907"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/elasticity_ca_dataset.py",
+      "bytes": 4849,
+      "sha256": "b611efa0ae32efa09671611993dcc5bd1d18fb0a815721c1fde943694754d57f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/elasticity_ca_head.py",
+      "bytes": 7305,
+      "sha256": "e87aa41f13d401f1b30f2d541b9e20051c43978b44572e95333bbad54e3f3e72"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/elasticity_stress_head.py",
+      "bytes": 6524,
+      "sha256": "28a899d8f81e3de6fbec627e2024da27ee2b8a0b1c745b04b460ea7072269414"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/pipe.py",
+      "bytes": 8295,
+      "sha256": "3130fe464cd9e09766e7e9c7713e139f107000a73313b52cb20562cae1ab311e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/plasticity2d.py",
+      "bytes": 9213,
+      "sha256": "b9b8d0d4decd3be9fcb96d4762d866f8b92b3222ab80751d98cf5c5477a31d07"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/plasticity2d_ca.py",
+      "bytes": 7904,
+      "sha256": "254c7b0c3fea7e480425137d298c163f3444cbf2c5d9356a749845bd4c397821"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/plasticity2d_ca_dataset.py",
+      "bytes": 5845,
+      "sha256": "7f7e794425642a508f2cc940cc5122d0f42c1b7bf43404ab86b4c6356bbc9bbd"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/plasticity2d_ca_full.py",
+      "bytes": 6855,
+      "sha256": "45ed0a800285e41e32f98ba72bd4819b3e97f9e82f8bb0ff6b270e3127a7e9ad"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/plasticity2d_full.py",
+      "bytes": 12579,
+      "sha256": "1e333a27ee830b6b769506bf69de84e213f3e7bfc19591bab759642276961fbb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/shapenet_car.py",
+      "bytes": 20884,
+      "sha256": "b38302df11283f461cb715df2b913ca34b022470ea867eb5f6137443b1d5ee1f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/shapenet_car_ca_dataset.py",
+      "bytes": 5234,
+      "sha256": "3f98c4aaddc5885bcd21b7277cf8851f23b888967e770e9dbc2b6253891cc041"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/shapenet_car_ca_head.py",
+      "bytes": 6472,
+      "sha256": "c45e4951985e25ba64a4d7bc75a68ae63495f29904646568726da898675bfd94"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/superwing_ca_dataset.py",
+      "bytes": 3635,
+      "sha256": "0cd15bcbba6839bece8d656e891dab6258b1f99b5875a07235ae4d7747c433eb"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/train/superwing_ca_head.py",
+      "bytes": 9033,
+      "sha256": "765e53db5598adddd1201218e5c13ae66c3a80803aa78b9717509045f6e48d15"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/utils/__init__.py",
+      "bytes": 148,
+      "sha256": "beb5554dafe66c3db410522c858b9238f201b8f2a1c75d712d26d9a64a8f40db"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/utils/budget.py",
+      "bytes": 350,
+      "sha256": "6cfacae8fe7ede344918116cd5f827ac6a904d57dd889d18392d92780c742de9"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/utils/interpolation.py",
+      "bytes": 1230,
+      "sha256": "ef9ae24706764d3d1120d3537993dbf30ba2400802fb46beebe14bbef2edb08b"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/utils/seed.py",
+      "bytes": 585,
+      "sha256": "95ac17c213f0f6e2d9feddecc824144b9c2202260a7a09c40e978bd08df68df2"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/utils/surface_reconstruction.py",
+      "bytes": 2183,
+      "sha256": "c7274d0f023ad5446cb0adad2382f57ae0ad18c415cf4d2027e4d1bf81abcb04"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/driverml.py",
+      "bytes": 18987,
+      "sha256": "e6e925052626627c7c6cb02a90ee3ce82acfd914c1a0d7948b1fda623eb0551e"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/driverml_data.py",
+      "bytes": 2310,
+      "sha256": "cb7ff4902435336573296f5d8330dcaac9277fcaea9ee37e29dd7bea7039e691"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/elasticity.py",
+      "bytes": 9549,
+      "sha256": "d3bc9c17500c2394d8b08ab91cd42f804201233d94690a00ae023bb3924bc2b1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/pipe.py",
+      "bytes": 8038,
+      "sha256": "bfda66bc153d30826a709b5465a283c182ca50b4b76e2f65c35011898e9bc9c1"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/plasticity2d.py",
+      "bytes": 10572,
+      "sha256": "41ef1c99ae8dae97f83a41e04967f6fae346399cafc632958a2ef88e79e96f68"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/shapenet_car.py",
+      "bytes": 13108,
+      "sha256": "3d6db2b10eb1cf520d86835066dd201bc12847d24f016b9dd229be70c702b89f"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/code/vendor/adasolver/visualization/superwing.py",
+      "bytes": 14581,
+      "sha256": "ce603c907b6a793e34e89ef11fa254577877157866426d857dccfa98001b7cb6"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E3_backbones/config/protocol_lock.json",
+      "bytes": 3260,
+      "sha256": "25216d2d7d96e7cabff2e53d90800dabeb445acdcaaa4b98b9aed5d0b2666066"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/config/frozen_methods.json",
+      "bytes": 2472,
+      "sha256": "e09a4e69c80d6b0e2684827fef3c52b6f67ca95a50aa3c7e92803b183b711043"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/config/frozen_normalizer.npz",
+      "bytes": 1094,
+      "sha256": "f60f88d3a2235f20f55689d12ab34851365c71b9214083c6f808327f68406279"
+    },
+    {
+      "path": "rebuttal_20261112/experiments/E5_training_seeds/config/sample_ids.json",
+      "bytes": 79235,
+      "sha256": "f3b63572aca320f4c3a467cf42f2204b75065226baf01cafddb2ab17fbd6277f"
+    }
+  ],
+  "official_repository": "https://github.com/HiPRL/LinearNO",
+  "official_commit": "3f2b80df13c17a09e250f2ebe4d4ecdfd4acf269",
+  "official_implementation_bundled": false,
+  "published_reproduction_code": {
+    "accuracy_tools.py": "75cf2dea14bc51185d3f2fc12599f0e24e9c00a33e6589be72f79be296727215",
+    "benchmark_inference.py": "288f7802b0908ba96080feb9287a7de077c5cd65de9b8993d9f2d42fdc883bb5",
+    "bind_splits.py": "62b085b07d4087254470ca8cbf36b1875ae893d67eb4482ba84a141f4bda9337",
+    "common.py": "17603ef5554478ba9e3d48ac25c09d3277b0f6f65a028b34be977b4ab74c2aa7",
+    "evaluate.py": "5b49c899480bb3ce2a17487f26585a0f3aa7980efe58394b3be1611c3d6c6d5a",
+    "evaluate_linearno.py": "4e8e61ba6bc99ab4c8cb52eb6764c6010294c1f9010d13ec20c7a084abe019b0",
+    "formal_timing.py": "0640b595e61ee9ab28586712d558a3b81108abbf34a8430ac85e17e7de6b8145",
+    "inference_request.py": "348f6846d6a3eb3fc35c3ce71213cd483c7904bf65bef23b8dfbfbbab302caf4",
+    "linearno_adapter.py": "45596159141706b82a44f7bccb6280e4bcdb32bce4515fc8f5020e69773e728b",
+    "linearno_ca.py": "58b6babd0643e20148947e15135a130ce6fdb3cc9520b7ad056928945aa23e70",
+    "package_results.py": "14f5f1e86eeafe39cf383214f43e002f3fffafcb6696f10b37169c624f577f72",
+    "prepare_head_dataset.py": "8d2916dadbd5ea30bb91666acbd4318d0f4d025e06aa2eb77e6de37fcac5ad74",
+    "refresh_release.py": "be2c8d807d548a20274284582140b9681b0ffef1a2857cb29628419fa8a62be9",
+    "run_backbone.py": "eef5300bd18bf996dbdae8df6ea72a28dafc99d5bfea97dd9f8a5fd573b993bc",
+    "run_stage.py": "96647cb47a13b331d2f0e5a1c9b9785343a3444a8826adbab5023ded4c3aadc3",
+    "train_head.py": "578b40b8e5845fd177e3617860269213f36b06b0c7d68eab2d977790d774833b",
+    "validate_trained_head.py": "a607dc61f64853b77cc8dc48a6ee598f1925230424e3bcdaf33fc43fb4776643",
+    "verify_accuracy.py": "da9e266d801d013a6dce19775410c7a35af0b599cf6a1813429b5605d4b519a2",
+    "verify_interface.py": "7dd3c9ec3fdc1c668c6e4701d886858749bd1f45e37b4689ec75e188a49aea82",
+    "verify_published.py": "85d54d9a6807e6b39479dad76bb0d0c5d352df7e37c0f91e40e0a5fe43c9c812",
+    "verify_timing.py": "b25f23503f82ce169e9d1e5c68dde28cc05f11501b5958cf3332de7e67b2f295",
+    "workflow.py": "3f56971464a934fba0415af336c99de2ac7c1d9a3dfa996c868f7c3a2c750e3b",
+    "write_report.py": "1aedd7f70b5496c03922f303cbb7f4c174cbfc9b4123e9dd16ba7e1c2a68c0a7"
+  }
+}

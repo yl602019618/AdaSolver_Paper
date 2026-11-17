@@ -1,0 +1,97 @@
+{
+  "protocol_id": "car_linearno_training_seed_complete_field_v1",
+  "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "timing_cases": [
+    "param0/100715345ee54d7ae38b52b4ee9d36a3",
+    "param0/173669aeeba92aaec4929b8bd41b8bc6",
+    "param0/1dbb02c20bb93af81c1b3b2ed8d13bf8"
+  ],
+  "case_selection": "unchanged E3/Car reconstruction protocol fixed cases",
+  "training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "warmups": 20,
+  "formal_repeats": 100,
+  "scopes": {
+    "A": "CPU input -> complete CPU float64 field",
+    "B": "GPU-resident input -> complete GPU float64 field",
+    "C": "CPU input -> complete CPU float64 field with keyed geometry/selected-set map reuse; first-request preparation recorded separately"
+  },
+  "policy_target": "field",
+  "methods_by_training_seed": {
+    "0": [
+      "pi",
+      "ca"
+    ],
+    "1": [
+      "full",
+      "uniform",
+      "pi",
+      "cpg_beta0",
+      "cpg_beta1",
+      "ca"
+    ],
+    "2": [
+      "full",
+      "uniform",
+      "pi",
+      "cpg_beta0",
+      "cpg_beta1",
+      "ca"
+    ]
+  },
+  "seed0_reuse": "Existing E3 and current other-session reconstruction workflow own Full/Uniform/CPG timing; do not repeat them here",
+  "source_files": [
+    {
+      "path": "linearno_followup_20261114/reconstruction/code/car_request.py",
+      "sha256": "37406a4dd758e3d708a1acd1e9ead1115d51c19c9fe839add3f30561eca94a86"
+    },
+    {
+      "path": "linearno_followup_20261114/reconstruction/code/timing_helper.py",
+      "sha256": "ac786c8851a2d2f360ad537bdd3a4ab3f6ddd9cbaae7a73cf7fe2f91b6e3a085"
+    },
+    {
+      "path": "linearno_followup_20261114/reconstruction/code/reconstruct_api.py",
+      "sha256": "39cb025024ce5e3899fb18b435243c2c0a806ba19a360dd9201e805e5c93fa17"
+    },
+    {
+      "path": "linearno_followup_20261114/reconstruction/code/native_car_reference.py",
+      "sha256": "abdc797e68e871eb9cca7f1454c445916ebbbcf8907a85d85bafc6fd455a718b"
+    },
+    {
+      "path": "linearno_followup_20261114/reconstruction/code/native_grid_reference.py",
+      "sha256": "ef9ae24706764d3d1120d3537993dbf30ba2400802fb46beebe14bbef2edb08b"
+    },
+    {
+      "path": "AdaSolver_official/inference_speed/gpu_monitor.py",
+      "sha256": "aa04a881299c4910ad42018fb12b84e03522a2b1aabda5e8ee0953e369fd4d75"
+    },
+    {
+      "path": "AdaSolver_official/inference_speed/nvml.py",
+      "sha256": "482907cf440c2005fb57e8cb57403edcef50432f94eed39abe6b0cc11ac126ee"
+    }
+  ],
+  "full_sampling_seed": null,
+  "network_precision": "FP32; TF32 off",
+  "parity": {
+    "atol": 1e-06,
+    "rtol": 1e-05,
+    "selected_indices": "exact hash equality",
+    "coarse_prediction": "exact byte hash equality"
+  },
+  "native_metric_alignment_atol": 2e-06,
+  "memory_scope": "group process CUDA allocator peak, including all compared maps; isolated per-method memory remains separate",
+  "publication_status": "pending measurements"
+}

@@ -1,0 +1,51 @@
+{
+  "protocol_id": "linearno_car_pi_ca_complete_cpu_field_20261117",
+  "paper_baseline": "91c1fa7cc81b8c1cb61a43618296c1c892d818c0",
+  "timing_cases": [
+    "param0/100715345ee54d7ae38b52b4ee9d36a3",
+    "param0/173669aeeba92aaec4929b8bd41b8bc6",
+    "param0/1dbb02c20bb93af81c1b3b2ed8d13bf8"
+  ],
+  "case_selection": "unchanged three E3 fixed cases",
+  "training_seeds": [
+    0
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    0.375,
+    0.5,
+    0.75
+  ],
+  "warmups": 20,
+  "formal_repeats": 100,
+  "full_sampling_seed": null,
+  "network_precision": "FP32; TF32 off",
+  "parity": {
+    "atol": 1e-06,
+    "rtol": 1e-05,
+    "selected_indices": "exact hash equality",
+    "coarse_prediction": "exact byte hash equality"
+  },
+  "native_metric_alignment_atol": 2e-06,
+  "memory_scope": "group process CUDA allocator peak, including all compared maps; isolated per-method memory remains separate",
+  "policy_targets": [
+    "field",
+    "cd"
+  ],
+  "scope": "CPU-resident normalized inputs and mesh influence -> complete physical float64 CPU field; method geometry/scorer setup, acquisition, selection, transfers, full forward, decode and reconstruction included; model/data/mesh-influence loading and force metrics outside",
+  "methods": [
+    "fullmesh",
+    "uniform",
+    "pi",
+    "cpg_beta1",
+    "ca"
+  ],
+  "physical_cases": 3,
+  "frozen_at_utc": "2026-11-17T15:07:25.859496+00:00",
+  "request_sha256": "348f6846d6a3eb3fc35c3ce71213cd483c7904bf65bef23b8dfbfbbab302caf4",
+  "force_error_policy": "separate frozen Field and Cd policies; no substitution of diagnostic rows"
+}

@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "scope": "CPU interface/development validation, actual seed0 checkpoint and full 8-layer/256-hidden architecture; synthetic point inputs and an explicitly untrained temporary head fixture; no benchmark accuracy or latency claim",
+  "checkpoint_sha256": "25499b1cc3cf99ebeb3023d46afa463f959368d6cd5df798a450561c0be299ce",
+  "device": "cpu",
+  "torch": "2.10.0+cu128",
+  "cases": [
+    {
+      "points": 3,
+      "batch": 2,
+      "feature_channels": 256,
+      "output_channels": 4,
+      "first_block_hook_max_abs_diff": 0.0,
+      "unchanged_prediction_max_abs_diff": 0.0
+    },
+    {
+      "points": 7,
+      "batch": 2,
+      "feature_channels": 256,
+      "output_channels": 4,
+      "first_block_hook_max_abs_diff": 0.0,
+      "unchanged_prediction_max_abs_diff": 0.0
+    },
+    {
+      "points": 17,
+      "batch": 2,
+      "feature_channels": 256,
+      "output_channels": 4,
+      "first_block_hook_max_abs_diff": 0.0,
+      "unchanged_prediction_max_abs_diff": 0.0
+    }
+  ],
+  "patched_official_layers": 8,
+  "unit_compensation_max_abs_diff": 0.0,
+  "ca_final_matches_official_compensated_prediction_max_abs_diff": 0.0,
+  "rejects_head_backbone_mismatch": true,
+  "checkpoint_parameter_names_unchanged": true,
+  "trained_heads_available": 0,
+  "gpu_work_started": false,
+  "source_sha256": {
+    "bind_splits.py": "62b085b07d4087254470ca8cbf36b1875ae893d67eb4482ba84a141f4bda9337",
+    "common.py": "17603ef5554478ba9e3d48ac25c09d3277b0f6f65a028b34be977b4ab74c2aa7",
+    "evaluate.py": "aff64a68f3df2f8a73e4a40c152e61783e94633f7925dc5d47a234472e3420b5",
+    "linearno_ca.py": "58b6babd0643e20148947e15135a130ce6fdb3cc9520b7ad056928945aa23e70",
+    "prepare_head_dataset.py": "8d2916dadbd5ea30bb91666acbd4318d0f4d025e06aa2eb77e6de37fcac5ad74",
+    "run_backbone.py": "eef5300bd18bf996dbdae8df6ea72a28dafc99d5bfea97dd9f8a5fd573b993bc",
+    "run_stage.py": "96647cb47a13b331d2f0e5a1c9b9785343a3444a8826adbab5023ded4c3aadc3",
+    "train_head.py": "578b40b8e5845fd177e3617860269213f36b06b0c7d68eab2d977790d774833b",
+    "verify_interface.py": "7dd3c9ec3fdc1c668c6e4701d886858749bd1f45e37b4689ec75e188a49aea82"
+  },
+  "passed": true,
+  "schema_note": "passed boolean added to existing completed checks; run_stage and Full sentinel are command wrappers, not covered by the numerical feature checks.",
+  "syntax_checked_files": 9
+}

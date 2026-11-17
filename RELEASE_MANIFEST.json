@@ -16,9 +16,14 @@
   },
   "files": [
     {
+      "path": "LINEARNO_CAR_PI_CA.md",
+      "bytes": 737,
+      "sha256": "aea9a361b39e74ee16727f1882b64387b218b787b83f2de7e4ebf336af1fe60c"
+    },
+    {
       "path": "README.md",
-      "bytes": 7288,
-      "sha256": "d25f5a1542db6149f8d056452deea167f67ab8e4622dad005f79a8de8c61008a"
+      "bytes": 7831,
+      "sha256": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5"
     },
     {
       "path": "RESULTS_DETAIL.md",
@@ -27,8 +32,13 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 12789,
-      "sha256": "f27f536ce99db12c02796047141a6984df05cd8fd291cfbecb5d880f668c7239"
+      "bytes": 13652,
+      "sha256": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E3/README.md",
+      "bytes": 2033,
+      "sha256": "5fbb70eb61e570ebaa467c63224617fd8f9ea6394211c79892fbf4d79f831d30"
     },
     {
       "path": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
@@ -38,7 +48,7 @@
     {
       "path": "data/rebuttal/2026-11/E4/release_manifest.json",
       "bytes": 12712,
-      "sha256": "7ce7508f6fd833dc12499e177f436e7959b64431b89301aec5330967ba0659fe"
+      "sha256": "9b2dc5d07cdff1d2078f52c66188fb2393dca33fecf763fd2ef0cc5ca5e22873"
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -48,7 +58,177 @@
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/release_manifest.json",
       "bytes": 202750,
-      "sha256": "22876dab1233d8eb6dc3e62fe973f7a0b93ae5202df3080a0578ab1736998959"
+      "sha256": "6c625fc3bd6e207631205754359efa565459673b8cd2bb0aa7f2394014e388a8"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/.gitattributes",
+      "bytes": 16,
+      "sha256": "cdbe181deee63cd6b76a34f4c3b69bc306a09375c256444c313f7e2e0080521d"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/README.md",
+      "bytes": 6496,
+      "sha256": "191af7e469e3a3ac6af06d8a6e481006edfa45d7ce59a8b9367d1108b5ccaeab"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/RELEASE_MANIFEST.json",
+      "bytes": 14941,
+      "sha256": "69f5666dce8508b2aba8d7290cf8167b59d7819d0bc14e3a42a2f9eedd8b4810"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/RESULTS_DETAIL.md",
+      "bytes": 1306,
+      "sha256": "ba054e06a8d5b3a51e8d01ac1e8f2d40de277d9a033b5b4a2a59736a8c4046b6"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/accuracy_summary.csv",
+      "bytes": 1338,
+      "sha256": "649370a54770a508a35de79f51cc1f40639919fee056362f6612c1391a345097"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/checkpoint_registry.csv",
+      "bytes": 1170,
+      "sha256": "6777862c65ac102e3db795ae607e11d595bc5b96c8a1c4747e0cd892a46677ba"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/frozen_policies.json",
+      "bytes": 3682,
+      "sha256": "b29403d70b97c0bc71afaac0f90b8aaaf05069ef570ec30459bb2dd94cd5d691"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/full_reference.csv",
+      "bytes": 68938,
+      "sha256": "b576dc9219f820f391d49a9453a82e9198ad8769953b047d0cc333d6ab1d624e"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/hardware.json",
+      "bytes": 594,
+      "sha256": "8de9aeabc6b9424a0d3728cc988b8b633ee2f0ecb561bad92748d62516674f43"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/head_acceptance.json",
+      "bytes": 884,
+      "sha256": "1dae809f5ab86da7d309e9c37605a61663af81841a702b21d81ee901793e853a"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/head_inference_manifest.json",
+      "bytes": 60709,
+      "sha256": "df23e360260f0e27a2ed118af6a907d269997955689d76734cd3e9f8b91ac4ef"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/head_training_history.csv",
+      "bytes": 8655,
+      "sha256": "c58acaa58ffa14b189e248b7efb21b4eecb907ab3edd0f14c4ddd60618327e2b"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/head_training_manifest.json",
+      "bytes": 60642,
+      "sha256": "0861aa4cbd42d16b1009a8ac13675bb53355fd4951842896b4b1dd83c6fc213f"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_alignment.json",
+      "bytes": 191212,
+      "sha256": "b3cc2ec58f32bff06297bc781873623627b13f7b7e78199b87cbb4138b2a913f"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_budget_summary.csv",
+      "bytes": 4552,
+      "sha256": "5f61da95b8ee84a54514ab9e3add92bee22b1ce9b06fe861413da43344316a1d"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_cd_gpu_telemetry.json",
+      "bytes": 3395613,
+      "sha256": "9a2f7b8a9b9cb4fa9c79b0cbd93f6ad1f09914737bd8a223b019eb1ce1c70ec4"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_cd_manifest.json",
+      "bytes": 1204,
+      "sha256": "e185f336a383e67d282369300c61d8876c1738aabf634a38c6f0e830c40fa53e"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_conditions.csv",
+      "bytes": 34410,
+      "sha256": "7a20003207772836df92c776c7096ff0694325b7b6d7ee9a7007879e22924705"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_field_gpu_telemetry.json",
+      "bytes": 3323437,
+      "sha256": "7625decdab941e14f18131e210efffb56e6be2f4a8184fee677e1501de76f3d1"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_field_manifest.json",
+      "bytes": 1207,
+      "sha256": "e043f78324b55ed76df9eee8237520469b9d038498118b1fd23b11f5cccae307"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_repeats.csv.gz",
+      "bytes": 354768,
+      "sha256": "a822bd02cd390159fa5ad0590bbd85293447597b0847e3c138da46badba64588"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/linearno_car_pressure_head_seed0.pt",
+      "bytes": 69121,
+      "sha256": "8b7ed68843739d62ea6aea4d7607efe1480808f35e2c2572b4c40ca825cadd5f"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/per_case_records.csv.gz",
+      "bytes": 1165728,
+      "sha256": "6f6331788ae7bcbb8fa86fe7ecb0fef08bc07a9fe91479c3c448c4ac3f58dd2e"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/per_sampling_seed_budget.csv",
+      "bytes": 10981,
+      "sha256": "0cc272c79d921fb9b4f49962ccdcbc24bf33045de219a033f466c014d89664f2"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/primary_metric_records.csv.gz",
+      "bytes": 148497,
+      "sha256": "16b60ccb0c743b81ace33ef8c1af1a7fee1629c3081d9ec7bfa20c019dd0f819"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/protocol.json",
+      "bytes": 2931,
+      "sha256": "98aa8c1007cbcd8bb9b0c5e604d3cdb9a00a37bb6193c9c068b7a0ba75337858"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/public_numeric_verification.json",
+      "bytes": 383,
+      "sha256": "dc6476a5926dba6b370de442efb476b644fbb7474fc9c059c7a7c1fe7badf413"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/reproduction_command.md",
+      "bytes": 2608,
+      "sha256": "0922dd1adc79438529e068e2982be4152ea186c9de5163d254f842839be1476b"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/run_registry.csv",
+      "bytes": 5500,
+      "sha256": "3d6795600a72f10f90268a050ca5de18efc6140d8ac84294d39e1d2369fd8127"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/source_hashes.json",
+      "bytes": 54505,
+      "sha256": "46ace2463738fdf3f32f678a2a5e358617e0093b6adb6d4193e67182b6c2d2ee"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/splits.json",
+      "bytes": 79235,
+      "sha256": "49d5ac6c12329ff5ade44c0750ef4c9d9ea38ff3a9f6fe69a46f6fde85e1b8d8"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/test_cases.csv",
+      "bytes": 4701,
+      "sha256": "ea718a0e2b423c5672cd0db1927cc375f5f7f583644e4f43bdcb961371e72091"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/uniform_denominators.csv",
+      "bytes": 689,
+      "sha256": "f506b8fc3c6143476da79e11cb3288aa625c3c9af705a0f70c0a8f692edb4a75"
+    },
+    {
+      "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/verification.json",
+      "bytes": 5900,
+      "sha256": "dadf4da4b5b4ba5e17371564c99a003b6941feacc94231156147f467b0cee510"
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -58,7 +238,7 @@
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
       "bytes": 91127,
-      "sha256": "2f689af42a232083f4f9f4e40b29f54cfaae7dbde3ca7653b1cc6d988141c0e3"
+      "sha256": "15706dc21aa3ba2ff2625f38e094c4ab31c28c41a393fffa559cdd8babb2f98f"
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/CLAIM_CARD.md",
@@ -427,23 +607,23 @@
     },
     {
       "path": "read.me",
-      "bytes": 2389,
-      "sha256": "5b21570db2a9d0555bb655fe51d3efb3f9e2da1a8a90e730ad0417a99a10d0a8"
+      "bytes": 2988,
+      "sha256": "a4315f3068ce7bfcf5147ba9dbe63035c58a1f20159b21772d8ddeb28fc34247"
     },
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
       "bytes": 19753,
-      "sha256": "2a7ab7517dd8bde745b9a0ecb15d5c51f03e7e902984993e9c5ad8836bb99ef6"
+      "sha256": "bebcad5c872946089b42a15616409c20a5ca0e47daf27e6625695f8491b9040e"
     },
     {
       "path": "rebuttal/2026-11/RELEASE_MANIFEST.json",
       "bytes": 64604,
-      "sha256": "ed4f71fd75ef5c0f2a28ea2e79713ba1ed98639c10dff15799a9415fd5fc2c1f"
+      "sha256": "5134442ffc3ce46e4d387c3fdf4b73e83d5f85b9f68f42c8a81b37184de19701"
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
-      "bytes": 5256,
-      "sha256": "614b1ef3665e913550b674762c916f5f0fd335a11bdb753dc51d058821df3a10"
+      "bytes": 5811,
+      "sha256": "09ba24e47fbc661b401181d12083546094bb0a33e5a699633e13847aca1e717c"
     },
     {
       "path": "rebuttal/2026-11/provenance/E5_standard_RELEASE_MANIFEST_before_original_cdcl_20261117.json",
@@ -454,6 +634,181 @@
       "path": "rebuttal/2026-11/provenance/RELEASE_MANIFEST_before_original_cdcl_20261117.json",
       "bytes": 60128,
       "sha256": "f015502dd2982d1ae4b9fb66c73815ee96b39df90d7bfe7177ca3020eba0c736"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/.gitattributes",
+      "bytes": 16,
+      "sha256": "cdbe181deee63cd6b76a34f4c3b69bc306a09375c256444c313f7e2e0080521d"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/README.md",
+      "bytes": 378,
+      "sha256": "7c255cd0b5e8afecd84adaff0a1a5daaf50b7818cfda0aaff1d779db0afd8982"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/accuracy_tools.py",
+      "bytes": 6615,
+      "sha256": "75cf2dea14bc51185d3f2fc12599f0e24e9c00a33e6589be72f79be296727215"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/benchmark_inference.py",
+      "bytes": 9783,
+      "sha256": "288f7802b0908ba96080feb9287a7de077c5cd65de9b8993d9f2d42fdc883bb5"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/bind_splits.py",
+      "bytes": 1289,
+      "sha256": "62b085b07d4087254470ca8cbf36b1875ae893d67eb4482ba84a141f4bda9337"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/ca_only.json",
+      "bytes": 1027,
+      "sha256": "be2c7841349f396ad9bc760b17d05d63776ccc6e739d6b6b90bebb10419b1c1f"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/common.py",
+      "bytes": 1631,
+      "sha256": "17603ef5554478ba9e3d48ac25c09d3277b0f6f65a028b34be977b4ab74c2aa7"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/controls.json",
+      "bytes": 2119,
+      "sha256": "0766291bb622ab7f17de598a28e27e9fc83a410f1e49204615dd6d24eb42a10e"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/evaluate.py",
+      "bytes": 1852,
+      "sha256": "5b49c899480bb3ce2a17487f26585a0f3aa7980efe58394b3be1611c3d6c6d5a"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/evaluate_linearno.py",
+      "bytes": 3062,
+      "sha256": "4e8e61ba6bc99ab4c8cb52eb6764c6010294c1f9010d13ec20c7a084abe019b0"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/evaluation_methods.json",
+      "bytes": 3496,
+      "sha256": "cdaf1e395806e3cab49dc3bb4f7c90695f6690854971ffac3c25173b7b8d91e4"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/formal_timing.py",
+      "bytes": 20088,
+      "sha256": "0640b595e61ee9ab28586712d558a3b81108abbf34a8430ac85e17e7de6b8145"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_request.py",
+      "bytes": 6083,
+      "sha256": "348f6846d6a3eb3fc35c3ce71213cd483c7904bf65bef23b8dfbfbbab302caf4"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/inference_timing_protocol.json",
+      "bytes": 1603,
+      "sha256": "1f96aa9f3eb13bb4dcb5d931147f335654816263e6fc23c6cfb1ba4b47a5e56c"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/interface_validation.json",
+      "bytes": 2360,
+      "sha256": "a98be6aa76f3bb1ea120310e350145c0ec7827cb75c10e0905e10caf6d57c026"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/linearno_adapter.py",
+      "bytes": 4667,
+      "sha256": "45596159141706b82a44f7bccb6280e4bcdb32bce4515fc8f5020e69773e728b"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/linearno_ca.py",
+      "bytes": 3455,
+      "sha256": "58b6babd0643e20148947e15135a130ce6fdb3cc9520b7ad056928945aa23e70"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/package_results.py",
+      "bytes": 14024,
+      "sha256": "14f5f1e86eeafe39cf383214f43e002f3fffafcb6696f10b37169c624f577f72"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/pi_only.json",
+      "bytes": 356,
+      "sha256": "a06327b78a94e8f60922651dddc98be200c64865aa6c5823eb153aea05019a70"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/prepare_head_dataset.py",
+      "bytes": 1301,
+      "sha256": "8d2916dadbd5ea30bb91666acbd4318d0f4d025e06aa2eb77e6de37fcac5ad74"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/refresh_release.py",
+      "bytes": 4417,
+      "sha256": "be2c8d807d548a20274284582140b9681b0ffef1a2857cb29628419fa8a62be9"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/run_backbone.py",
+      "bytes": 7389,
+      "sha256": "eef5300bd18bf996dbdae8df6ea72a28dafc99d5bfea97dd9f8a5fd573b993bc"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/run_stage.py",
+      "bytes": 5210,
+      "sha256": "96647cb47a13b331d2f0e5a1c9b9785343a3444a8826adbab5023ded4c3aadc3"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/seed0_missing_methods.json",
+      "bytes": 1380,
+      "sha256": "ea1e9330dc05c616ec0e817fd2e6140e23dfbc120ac67d4b7144953de4a8f93f"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/timing_preflight.json",
+      "bytes": 4021,
+      "sha256": "8225701450d418d848e5538af3e64a159bd45d105b12e1faf6c6a8dee5a20539"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/timing_protocol.json",
+      "bytes": 2979,
+      "sha256": "1150ebc491e3554c5bb31ff0acd59a70abfbb4c8b7e017b2b685e0e762f1157e"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/train_head.py",
+      "bytes": 1715,
+      "sha256": "578b40b8e5845fd177e3617860269213f36b06b0c7d68eab2d977790d774833b"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/training_tasks.json",
+      "bytes": 137336,
+      "sha256": "8bb9d11c87b5b7102c4a820232db3e37fb22b4e2b3e96deb9cb7352afe5dbbc8"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/validate_trained_head.py",
+      "bytes": 6657,
+      "sha256": "a607dc61f64853b77cc8dc48a6ee598f1925230424e3bcdaf33fc43fb4776643"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/verify_accuracy.py",
+      "bytes": 2743,
+      "sha256": "da9e266d801d013a6dce19775410c7a35af0b599cf6a1813429b5605d4b519a2"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/verify_interface.py",
+      "bytes": 5005,
+      "sha256": "7dd3c9ec3fdc1c668c6e4701d886858749bd1f45e37b4689ec75e188a49aea82"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/verify_published.py",
+      "bytes": 7389,
+      "sha256": "85d54d9a6807e6b39479dad76bb0d0c5d352df7e37c0f91e40e0a5fe43c9c812"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/verify_timing.py",
+      "bytes": 6030,
+      "sha256": "b25f23503f82ce169e9d1e5c68dde28cc05f11501b5958cf3332de7e67b2f295"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/workflow.py",
+      "bytes": 3891,
+      "sha256": "3f56971464a934fba0415af336c99de2ac7c1d9a3dfa996c868f7c3a2c750e3b"
+    },
+    {
+      "path": "reproducibility/rebuttal/2026-11/linearno_car_pi_ca_20261117/write_report.py",
+      "bytes": 16021,
+      "sha256": "1aedd7f70b5496c03922f303cbb7f4c174cbfc9b4123e9dd16ba7e1c2a68c0a7"
     },
     {
       "path": "reproducibility/rebuttal/2026-11/p0_airfoil_original_cdcl_20261117/README.md",
@@ -2389,5 +2744,20 @@
   "current_response": "reviews/airfoil-seeds123-posthoc-response.md",
   "validation_scope": "Record integrity and arithmetic of a disclosed post-hoc subset; not unselected seed robustness.",
   "preserved_upstream_commit": "404b30e143e88f28cace4219fdf233a926939424",
-  "airfoil_seed3_result_commit": "62a1d724582d3e8034f56feb1e9af8bf9b2c2183"
+  "airfoil_seed3_result_commit": "62a1d724582d3e8034f56feb1e9af8bf9b2c2183",
+  "linearno_car_pi_ca_update": {
+    "data_directory": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117",
+    "status": "VERIFIED_COMPLETE",
+    "training_seeds": [
+      0
+    ],
+    "new_CA_heads": 1,
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "formal_conditions": 222,
+    "independent_training_seeds_1_2_included": false
+  }
 }

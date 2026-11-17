@@ -1,0 +1,27 @@
+target,variant,method,budget,physical_gpu,conditions,mean_condition_median_ms,condition_median_sd_ms,same_gpu_full_mean_median_ms,full_over_method_latency_ratio,aggregation
+field,ca_field,ca,0.375,4,9,191.96273386478424,1.3094243315419904,44.64063917597135,0.2325484654089974,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,ca_field,ca,0.5,4,9,281.9842319521639,5.5106374905917646,44.64063917597135,0.15830899077911645,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,ca_field,ca,0.75,4,9,468.2379095918602,9.132800348363975,44.64063917597135,0.09533751595397814,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,cpg_field,cpg,0.375,4,9,195.4882757531272,1.9547013920295488,44.64063917597135,0.228354559903868,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,cpg_field,cpg,0.5,4,9,284.64728718002635,6.1869581316888,44.64063917597135,0.15682791014178257,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,cpg_field,cpg,0.75,4,9,469.5214637451702,9.280724392184586,44.64063917597135,0.09507688704983203,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,full,fullmesh,1.0,4,3,44.64063917597135,0.0026045143620192597,44.64063917597135,1.0,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,pi_field,pi,0.375,4,9,99.14459370904498,0.43246041916618727,44.64063917597135,0.4502579263875563,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,pi_field,pi,0.5,4,9,106.56939074397087,0.489715063267539,44.64063917597135,0.4188880021207861,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,pi_field,pi,0.75,4,9,120.65263506438997,0.537049876646389,44.64063917597135,0.36999307269292137,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,uniform,uniform,0.375,4,9,67.59514328506258,0.3704376080856398,44.64063917597135,0.6604119320779102,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,uniform,uniform,0.5,4,9,75.32680821087625,0.30620434122432993,44.64063917597135,0.5926261876250029,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+field,uniform,uniform,0.75,4,9,89.77687565816774,0.399667660201379,44.64063917597135,0.4972398387525087,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,ca_cd,ca,0.375,5,9,210.52709511584706,6.214371825637263,44.69617207845052,0.21230603145811466,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,ca_cd,ca,0.5,5,9,298.53879287838936,8.019910233061367,44.69617207845052,0.14971646280038936,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,ca_cd,ca,0.75,5,9,497.22661988602744,8.90733525714209,44.69617207845052,0.08989094769040247,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,cpg_cd,cpg,0.375,5,9,214.47278103894658,6.606563862572045,44.69617207845052,0.20840020753185481,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,cpg_cd,cpg,0.5,5,9,302.24183201789856,9.117354616822071,44.69617207845052,0.1478821504622287,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,cpg_cd,cpg,0.75,5,9,500.7082025210063,11.144470495088733,44.69617207845052,0.08926590747547296,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,full,fullmesh,1.0,5,3,44.69617207845052,0.10346198977790903,44.69617207845052,1.0,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,pi_cd,pi,0.375,5,9,97.83798870113161,0.38666936641050625,44.69617207845052,0.45683862344089216,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,pi_cd,pi,0.5,5,9,105.41506856679916,0.3942840151650983,44.69617207845052,0.4240017360528259,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,pi_cd,pi,0.75,5,9,119.63371063272159,0.46401363246454164,44.69617207845052,0.3736085075189957,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,uniform,uniform,0.375,5,9,67.61392371522055,0.35151827879320413,44.69617207845052,0.6610498196599849,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,uniform,uniform,0.5,5,9,75.38156045807733,0.3106564865416876,44.69617207845052,0.5929324334338745,mean of3Full or9case/sampling condition medians; no crossGPU pooling
+cd,uniform,uniform,0.75,5,9,89.86676525738504,0.3608469516596483,44.69617207845052,0.49736041962161864,mean of3Full or9case/sampling condition medians; no crossGPU pooling

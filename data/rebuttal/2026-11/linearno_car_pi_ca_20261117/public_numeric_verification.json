@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "native_records": 8200,
+  "primary_metric_views": 9200,
+  "training_runs": 1,
+  "sampling_seeds": 3,
+  "accuracy_statistics_recomputed": true,
+  "head_weights_hash_and_selection_verified": true,
+  "formal_conditions": 222,
+  "formal_repetitions": 22200,
+  "warmups": 4440,
+  "latency_statistics_recomputed": true,
+  "field_cd_policy_identity_preserved": true
+}
