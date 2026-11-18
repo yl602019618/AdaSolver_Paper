@@ -117,14 +117,12 @@ the DrivAerML drag area by $63.3\%$ and $67.3\%$, respectively.
 
 \input{tables/beta_ablation.tex}
 
-The non-unit optimal exponents provide an especially informative control.
-For example, on ShapeNet-Car drag prediction, CPG and CA attain their
-lowest areas around the policy value $\beta^\star=0.75$, rather than at
-$\beta=1$, while PI favors the smaller correction used by its policy.
-Thus, the observed improvement is not simply a consequence of applying
-stronger reweighting. Instead, inference is most accurate when the
-compensation strength is consistent with that used to construct the
-corresponding adaptive policy.
+Elasticity PI and all ShapeNet-Car policies use $\beta^\star=1$.
+Relative to $\beta=0$ on the same sampled points, full correction reduces
+mean rAUEC by $0.7\%$ for Elasticity PI. On ShapeNet-Car, it reduces field
+rAUEC by $19.3$--$21.0\%$ and drag rAUEC by $44.4$--$44.5\%$ across the
+three policies. These comparisons quantify the benefit of reference-measure
+compensation for each fixed adaptive sampling policy.
 
 Overall, this controlled experiment provides direct empirical evidence
 for the sampling-measure bias analyzed in

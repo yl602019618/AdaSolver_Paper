@@ -9,4 +9,5 @@ __pycache__/
 *.out
 *.synctex.gz
 /iclr2027_conference.pdf
+/iclr2027_conference_marked.pdf
 .DS_Store

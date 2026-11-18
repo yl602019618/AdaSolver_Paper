@@ -1,0 +1,9 @@
+\section{Full-Field Reconstruction}
+\label{app:full_field_reconstruction}
+
+For full-field evaluation, we use piecewise-linear interpolation for Airfoil,
+Pipe, Plasticity, SuperWing, Darcy, and Elasticity, with nearest-neighbor
+assignment outside the convex hull of the retained points. ShapeNet-Car
+uses four-neighbor inverse-distance interpolation, and DrivAerML uses
+nearest-neighbor assignment. These procedures require neither ground-truth
+fields nor an additional learned reconstruction model.

@@ -1,0 +1,31 @@
+\begin{table}[!htbp]
+    \centering
+    \small
+    \caption{Multi-seed 2-D Airfoil inverse design. Lower CFD $C_D/C_L$ is better.
+    Uniform and AdaSolver report mean $\pm$ standard deviation over three random
+    seeds. Parentheses give the percentage change from the corresponding
+    full-mesh result.}
+    \label{tab:airfoil_inverse_design_multiseed}
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cccc@{}}
+        \toprule
+        \shortstack{Initial CFD\\$C_D/C_L$}
+        & \shortstack{Full CFD\\$C_D/C_L$}
+        & \shortstack{Uniform CFD\\$C_D/C_L$}
+        & \shortstack{AdaSolver CFD\\$C_D/C_L$} \\
+        \midrule
+        $0.605367$ & $0.058752$
+        & $0.060725\pm0.001814$ & $0.058621\pm0.000074$ \\[1pt]
+        & & $(+3.36\%)$ & $(-0.22\%)$ \\
+        \addlinespace[4pt]
+        $0.246692$ & $0.058792$
+        & $0.061417\pm0.000614$ & $0.058696\pm0.000164$ \\[1pt]
+        & & $(+4.46\%)$ & $(-0.16\%)$ \\
+        \addlinespace[4pt]
+        $0.146587$ & $0.058748$
+        & $0.061688\pm0.000117$ & $0.058601\pm0.000034$ \\[1pt]
+        & & $(+5.00\%)$ & $(-0.25\%)$ \\
+        \bottomrule
+    \end{tabular*}
+\end{table}

@@ -42,11 +42,12 @@ Uniform.
     \centering
     \includegraphics[width=\linewidth]{figures/appendix/budget_error_curves.pdf}
     \caption{\textbf{Accuracy across point budgets.}
-    Panels (a)--(h) show field metrics and (i)--(l) show aerodynamic quantities.
-    Transolver is the full-mesh-trained reference; the horizontal line marks
-    full-mesh accuracy of AdaSolver's backbone. Airfoil uses 110 cases with
-    reference $C_L>0.02$ and a pressure-trained Transolver reference. Its $C_D/C_L$
-    axis is linear through five, then logarithmic. Insets enlarge mean curves.}
+Panels (a)--(h) show field metrics and (i)--(l) show aerodynamic quantities.
+Transolver is the full-mesh-trained reference; the horizontal line marks
+full-mesh accuracy of AdaSolver's backbone. Elasticity PI and the three
+ShapeNet-Car policies use $\beta=1$. Airfoil uses 110 cases with reference
+$C_L>0.02$ and a pressure-trained Transolver reference. Its $C_D/C_L$ axis
+is linear through five, then logarithmic. Insets enlarge mean curves.}
     \label{fig:appendix_budget_curves}
 \end{figure}
 
@@ -213,3 +214,6 @@ beyond the joint field metric.
     and skin-friction coefficients.}
     \label{fig:appendix_superwing}
 \end{figure}
+
+\clearpage
+\input{sections/refinement_score_visualization.tex}

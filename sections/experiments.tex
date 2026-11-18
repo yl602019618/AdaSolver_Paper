@@ -13,9 +13,9 @@ For industrial applications, we consider ShapeNet-Car~\citep{umetani2018learning
 \subsection{Implementation and Evaluation}
 \label{sec:experiment_implementation}
 
-As described in \eqref{eq:transolver_physics_state} and~\eqref{eq:transolver_state_attention}, Transolver approximates a continuous integral operator through point aggregation and attention over latent physical states. With the number of physical states fixed, varying the spatial sampling budget changes the number of point samples used to estimate the aggregation integrals. For Airfoil, Pipe, Elasticity, and Plasticity, we adopt geometry-amortized training from Transolver-3~\citep{zhou2026transolver3}. Given a full mesh of $N$ points, we draw a point count $N_t$ uniformly from $\{\operatorname{round}(0.4N),\ldots,N\}$ for each minibatch, then sample $N_t$ mesh points uniformly without replacement. Darcy uses the existing backbone trained on full meshes. The trained backbone is frozen when evaluating different sampling policies and inference budgets.
+As described in \eqref{eq:transolver_integral_token} and~\eqref{eq:transolver_integral_attention}, Transolver approximates a continuous integral operator through point aggregation and attention over latent physical states. With the number of physical states fixed, varying the spatial sampling budget changes the number of point samples used to estimate the aggregation integrals. For Airfoil, Pipe, Elasticity, and Plasticity, we adopt geometry-amortized training from Transolver-3~\citep{zhou2026transolver3}. Given a full mesh of $N$ points, we draw a point count $N_t$ uniformly from $\{\operatorname{round}(0.4N),\ldots,N\}$ for each minibatch, then sample $N_t$ mesh points uniformly without replacement. Darcy uses the existing backbone trained on full meshes. The trained backbone is frozen when evaluating different sampling policies and inference budgets.
 
-For a consistent comparison, we treat all input discretizations as unstructured meshes and evaluate sampling budgets of $37.5\%$, $50\%$, and $75\%$ of the full-mesh point count. Uniform subsampling of mesh points serves as the common baseline. We report relative $L_2$ errors for physical-field predictions and summarize performance across budgets using the relative area under the error--budget curve (rAUEC). Let $b_k$ denote the retained fraction of mesh points, with $(b_1,b_2,b_3)=(0.375,0.50,0.75)$, and let $E_{\mathrm{method}}(b)$ and $E_{\mathrm{uniform}}(b)$ denote mean test errors for a given sampling seed. Using trapezoidal integration, we compute
+For a consistent comparison, we treat all input discretizations as unstructured meshes and evaluate sampling budgets of $37.5\%$, $50\%$, and $75\%$ of the full-mesh point count. Uniform subsampling of mesh points serves as the common baseline. We report full-field relative $L_2$ errors (Appendix~\ref{app:full_field_reconstruction}) and summarize performance across budgets using the relative area under the error--budget curve (rAUEC). Let $b_k$ denote the retained fraction of mesh points, with $(b_1,b_2,b_3)=(0.375,0.50,0.75)$, and let $E_{\mathrm{method}}(b)$ and $E_{\mathrm{uniform}}(b)$ denote mean test errors for a given sampling seed. Using trapezoidal integration, we compute
 \begin{equation}
     \mathrm{rAUEC}
     :=
@@ -25,7 +25,7 @@ For a consistent comparison, we treat all input discretizations as unstructured 
           \bigl[E_{\mathrm{uniform}}(b_k)+E_{\mathrm{uniform}}(b_{k+1})\bigr]}.
     \label{eq:rauec}
 \end{equation}
-Lower rAUEC is better, with \textbf{uniform sampling normalized to $1$}. 
+Lower rAUEC is better, with \textbf{uniform sampling normalized to $1$}.
 % Airfoil uses the same 110 cases with reference $C_L>0.02$ for field and $C_D/C_L$ evaluation, with metric-specific sampling policies and absolute error for $C_D/C_L$. Elasticity uses 200 independent holdout cases.
 
 % For industrial benchmarks, ShapeNet-Car combines full-cloud velocity relative $L_2$ with half the surface-pressure relative $L_2$ error. DrivAerML uses surface-pressure relative $L_2$, and SuperWing uses joint relative $L_2$ on the dataset-scaled pressure and skin-friction channels. The aerodynamic metrics are relative errors in $C_D$ for the car datasets and $C_D/C_L$ for SuperWing, with sampling policies selected separately for each metric. ShapeNet-Car and DrivAerML use 100 and 50 test geometries, respectively. SuperWing uses 2,871 cases for field evaluation and a fixed 2,563-case subset for $C_D/C_L$, selected by a calibration-derived lift-magnitude cutoff of approximately $0.071$.
@@ -85,7 +85,8 @@ We follow the airfoil inverse-design setting of Geo-FNO~\citep{li2023geofno},
 parameterizing the geometry by spline-node displacements and performing
 gradient-based optimization through the differentiable surrogate.
 AdaSolver retains 2,113 of 11,271 points ($18.75\%$) and keeps the sampled
-indices fixed after initialization. It accelerates the complete design process by $2.18\times$ while
+indices fixed after initialization. It reduces online optimization time from
+$0.98$ to $0.44$\,s while
 reaching essentially the same CFD-validated aerodynamic performance as
 full-mesh optimization. It also yields a substantially more accurate surrogate
 estimate of the final design, demonstrating that adaptive test-time sampling

@@ -178,7 +178,7 @@ def main(full_only=False):
         draw(sa,pair,title,True);save(single,OUT/'panels'/f'{pair[0]}_{pair[1]}',dpi=500)
     handles=[handle(m) for m in CURVE_STYLE]
     handles.extend([Line2D([],[],color='#303840',lw=1.1,ls=(0,(2,2)),label=r'No correction ($\beta=0$)'),
-                    Line2D([],[],ls='none',marker='o',mfc='none',mec='#505860',ms=9,mew=.9,label=r'Sampling $\beta$')])
+                    Line2D([],[],ls='none',marker='o',mfc='none',mec='#505860',ms=9,mew=.9,label=r'Deployed $\beta$')])
     fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.53,.010),ncol=5,frameon=False,fontsize=FONT['legend'],columnspacing=1.45)
     fig.supxlabel(X_LABEL,y=.082,fontsize=FONT['axis']);fig.supylabel(Y_LABEL,x=.012,fontsize=FONT['axis'])
     save(fig,OUT/'Fig_beta_ablation_overview',dpi=600)

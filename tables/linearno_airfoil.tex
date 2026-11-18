@@ -1,0 +1,40 @@
+\begin{table}[!htbp]
+    \centering
+    \small
+    \caption{Airfoil2D and ShapeNet-Car results for two backbones. Entries
+    report mean $\pm$ standard deviation. Transolver results are taken from
+    Tables~\ref{tab:standard_benchmarks} and~\ref{tab:industrial_benchmarks}.
+    Uniform is normalized to $1$ for each backbone and metric. Lower is better.}
+    \label{tab:linearno_airfoil}
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc@{}}
+        \toprule
+        Backbone & PI & CPG & CA \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Airfoil2D: Field}} \\
+        \addlinespace[2pt]
+        Transolver & $0.6166\pm0.0197$
+        & $0.5831\pm0.0219$ & $0.5579\pm0.0139$ \\
+        \addlinespace[3pt]
+        LinearNO & $0.680622\pm0.030819$
+        & $0.559296\pm0.021060$ & $0.589981\pm0.025945$ \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{ShapeNet-Car: Field}} \\
+        \addlinespace[2pt]
+        Transolver & $0.49792\pm0.00163$
+        & $0.50064\pm0.00157$ & $0.50063\pm0.00159$ \\
+        \addlinespace[3pt]
+        LinearNO & $0.574891\pm0.002469$
+        & $0.531376\pm0.002579$ & $0.531345\pm0.002640$ \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{ShapeNet-Car: $C_D$}} \\
+        \addlinespace[2pt]
+        Transolver & $0.63346\pm0.00328$
+        & $0.63530\pm0.00396$ & $0.63540\pm0.00440$ \\
+        \addlinespace[3pt]
+        LinearNO & $0.596994\pm0.025766$
+        & $0.604585\pm0.025192$ & $0.603715\pm0.024437$ \\
+        \bottomrule
+    \end{tabular*}
+\end{table}

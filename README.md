@@ -1,16 +1,37 @@
 # AdaSolver paper
 
-[Compiled paper](paper.pdf) · [LaTeX source](iclr2027_conference.tex)
+[Clean paper](paper.pdf) · [Clean LaTeX source](iclr2027_conference.tex) ·
+[Marked paper](paper_marked.pdf) · [Marked LaTeX source](iclr2027_conference_marked.tex)
 
-Build with TeX Live (`latexmk`, `pdflatex`, BibTeX), Python 3, and Poppler
+Build with TeX Live (`latexmk`, `pdflatex`, BibTeX, `latexdiff`, and `ulem`), Python 3.12+, and Poppler
 (`pdfinfo`, `pdftotext`):
 
 ```sh
 python3 scripts/build_manuscript.py
 ```
 
-The build updates `paper.pdf` and keeps temporary files in `.build/`. It preserves
-the manuscript text, supplied figures, and result tables.
+The build updates both `paper.pdf` (clean) and `paper_marked.pdf` (review), and
+generates `iclr2027_conference_marked.tex`. Temporary files stay in `.build/`.
+Edit the clean sources; the marked version is generated automatically. The build
+uses the supplied figures and result tables without regenerating them.
+
+The marked version compares the current clean manuscript with the Git commit in
+[`docs/mark-baseline.txt`](docs/mark-baseline.txt), initially `d4021228`, the version
+before the Section 3.1 revision. Added text is blue and underlined; deleted text
+is red and struck through. Changed display equations are marked as whole blocks.
+New and replaced graphics have blue frames in the marked manuscript. For images
+replaced at the same path, the build saves the baseline assets in `review_assets/`
+and appends unnumbered Baseline/Current comparison pages to the marked PDF.
+Include `review_assets/` when sharing the marked TeX source.
+Changed numeric cells in the ablation table show the old value above the new
+value so both remain readable within the page width.
+This fixed baseline keeps later edits visible cumulatively. Both PDFs must compile
+successfully before the published pair is refreshed.
+
+To compare against another commit for one build, use
+`python3 scripts/build_manuscript.py --baseline <commit>`. To start a new review
+round permanently, update `docs/mark-baseline.txt` to the accepted commit. Run the
+default command again to return to the saved baseline after a one-off comparison.
 
 The `v1/` directory contains earlier paper material. Current editing starts from
 `iclr2027_conference.tex` and its included sections.

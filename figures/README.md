@@ -1,22 +1,55 @@
 # Main-text figures
 
-Figure 1 is exported from the first slide of the author-updated `总图1_density.pptx`. Figures 2–4 use their supplied author exports. Presentation content, typography, and layout are preserved. Each figure is cropped to visible content with a six-point margin. PNGs are rendered at 600 dpi; PDF text and lines remain vector graphics.
+Figures 1–4 use the author-provided exports from the
+`car_elasticity_revision_20261117/paper/review_figures_tables` bundle.
+The PDF and PNG files are copied without changing their content or layout.
+The manuscript includes the PDFs; captions follow the accompanying READMEs.
 
 | Figure | PNG | PDF | Pixels |
 | --- | --- | --- | --- |
-| 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5817 × 3806 |
+| 1 | [PNG](fig1_overview.png) | [PDF](fig1_overview.pdf) | 5804 × 3806 |
 | 2 | [PNG](fig2_field_comparison.png) | [PDF](fig2_field_comparison.pdf) | 10545 × 3373 |
-| 3 | [PNG](fig3_airfoil_optimization.png) | [PDF](fig3_airfoil_optimization.pdf) | 8679 × 2986 |
-| 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 8154 × 2927 |
+| 3 | [PNG](fig3_airfoil_optimization.png) | [PDF](fig3_airfoil_optimization.pdf) | 6350 × 2128 |
+| 4 | [PNG](fig4_superwing_optimization.png) | [PDF](fig4_superwing_optimization.pdf) | 6083 × 2328 |
 
-The ten native Office equations in Figure 1 are read from the current presentation and restored as LaTeX vectors where the Linux exporter omits them, preserving the current expressions, colors, and placement. The author's native layout and unrelated slide objects are preserved; Fig3/Fig4 density images and labels have been updated, with separately movable sampling overlays in the local source presentation.
+Figure 1 uses the final overview layout and aggregation formulas. Figure 2
+updates the Elasticity sample 1600 PI signed-error panel (8.75%) and describes
+the upper panels as refinement signals. Figures 3 and 4 use the author's final
+left/right optimization layouts. Figure 3 shows displacement amplified 3×.
 
-Latest Fig3/Fig4 refresh: 2026-09-25. Airfoil and SuperWing use the actual policy density normalized to uniform = 1, with recorded sampling points. The shared linear colorbar spans 0–5. Inverse-design settings for these two figures are in Appendix B.5 and [the configuration record](../data/inverse_design_settings.json).
+## Appendix updates
 
-Airfoil pressure-policy refresh: Figure 2 retains the author layout and sample 1095, with regenerated CPG/CA sampling and signed-error images. The corresponding L2 annotations are 0.52% and 0.98%. The updated policy parameters and population results are in `data/airfoil_pressure/`.
+| Supplied figure | Paper asset | Change |
+| --- | --- | --- |
+| Fig5 | [Measure-correction ablation](appendix/beta_ablation.pdf) | Seven policy curves and deployed exponents |
+| Fig6 | [Budget curves](appendix/budget_error_curves.pdf) | Seven policy curves at deployed β=1 |
+| Fig11 | [Elasticity showcase](appendix/elasticity_fields.pdf) | Sample 1701 PI prediction/error and 5.51% annotation |
+| RefinementScore | [Score overview](appendix/refinement_score_overview.pdf) | Eight-task score visualization |
+| RefinementScore | [Score-to-points example](appendix/refinement_score_example.pdf) | Airfoil inputs, scores, weights and selected points |
 
-## Additional design figures
+The RefinementScore text and editable table are in
+[`sections/refinement_score_visualization.tex`](../sections/refinement_score_visualization.tex).
+The source table previews for Table1, Table2 and Table6 are integrated as editable
+LaTeX in `tables/standard_benchmarks.tex`, `tables/industrial_benchmarks.tex` and
+`tables/beta_ablation.tex`.
 
-The completed 18.75% and 37.5% design comparisons, including the two-page PPT, PDFs, individual panels, legends, and numerical results, are in [supplementary/design_transfer](../supplementary/design_transfer/README.md).
+These author-provided PDF/PNG exports are the current figure sources. The full
+precision summaries in `data/beta_ablation` and the ablation-table generator are
+synchronized with the updated results. Existing SVG and independent-panel exports
+for the replaced appendix figures predate this refresh.
 
-The final twelve-panel beta ablation is in Appendix D.1: [PDF](appendix/beta_ablation.pdf), [PNG](appendix/beta_ablation.png), and [independent panels](appendix/beta_ablation_assets/panels/). Its data and normalization are documented in [data/beta_ablation](../data/beta_ablation/README.md).
+Appendix C describes the supplied new Elasticity and ShapeNet-Car strategies.
+Its compensation-exponent discussion has been removed; the ablation figures and
+table retain the experimental exponent comparisons.
+
+## Review versions
+
+Run `python3 scripts/build_manuscript.py` from the repository root to refresh
+both clean and marked PDFs. Changed graphics are framed in blue in the marked
+paper, with baseline/current comparisons appended at the end. Keep
+`review_assets/` with the marked TeX when sharing the review source.
+
+## Additional design files
+
+The existing design comparisons and individual panels remain documented in
+[supplementary/design_transfer](../supplementary/design_transfer/README.md).

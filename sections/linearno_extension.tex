@@ -1,0 +1,67 @@
+\section{Extending AdaSolver to LinearNO}
+\label{app:linearno_extension}
+
+We extend AdaSolver to LinearNO~\citep{hu2026transolverlinear} to evaluate
+adaptive sampling beyond the Transolver backbone.
+
+\paragraph{Spatial aggregation.}
+For point features $H_N=[h_1,\ldots,h_N]^\top$, LinearNO computes
+\begin{equation}
+    \operatorname{LinearNO}(H_N)
+    =\phi(Q)\bigl(\psi^\top(K)V_N\bigr),
+    \qquad V_N=\operatorname{Linear}^{(V)}(H_N).
+    \label{eq:linearno_original}
+\end{equation}
+The aggregation $\psi^\top(K)V_N$ uses a softmax over the spatial points.
+Writing $\ell_{ij}=[\operatorname{Linear}^{(K)}(h_i)]_j$ and $v_i$ for the
+value vector at point $i$, each aggregated representation is
+\begin{equation}
+    s_j=\frac{\sum_{i=1}^{N}\exp(\ell_{ij})v_i}
+             {\sum_{i=1}^{N}\exp(\ell_{ij})}.
+    \label{eq:linearno_aggregation}
+\end{equation}
+Changing the sampling measure from $\rho$ to $\widetilde\rho$ changes the
+measure underlying this weighted average, even when the physical input
+and model parameters remain fixed.
+
+\paragraph{Density correction.}
+Using $c_i=(\mathrm{d}\rho/\mathrm{d}\widetilde\rho)(x_i)$ and
+$\mathbf c=(c_1,\ldots,c_N)^\top$, we replace the aggregation by
+\begin{equation}
+    \widehat s_j
+    =\frac{\sum_{i=1}^{N}c_i\exp(\ell_{ij})v_i}
+           {\sum_{i=1}^{N}c_i\exp(\ell_{ij})}
+    =\sum_{i=1}^{N}\left[
+        \operatorname{Softmax}_{N}(\ell_{\cdot j}+\log\mathbf c)
+      \right]_i v_i.
+    \label{eq:linearno_corrected_aggregation}
+\end{equation}
+This correction adds $\log c_i$ to the key logits before the spatial
+softmax. The complete module becomes
+\begin{equation}
+    \boxed{
+    \operatorname{LinearNO}_{c}(H_N)
+    =\phi(Q)\!\left[
+      \operatorname{Softmax}_{N}\!\left(
+        \operatorname{Linear}^{(K)}(H_N)^\top
+        +\mathbf 1_M(\log\mathbf c)^\top
+      \right)V_N
+    \right].}
+    \label{eq:linearno_corrected_module}
+\end{equation}
+Here, $M$ is the number of aggregation channels, $\mathbf 1_M$ is the
+all-ones vector, and $\operatorname{Softmax}_{N}$ normalizes over the $N$
+spatial points. We apply the correction at each spatial aggregation layer,
+leaving the learned parameters and query-side normalization unchanged.
+Under the usual support, integrability, and positive-denominator assumptions,
+the corrected aggregation converges to its reference-measure counterpart.
+
+\paragraph{Airfoil and ShapeNet-Car results.}
+Table~\ref{tab:linearno_airfoil} compares the two backbones on Airfoil field
+prediction and on ShapeNet-Car field and drag-coefficient prediction.
+All three policies improve on Uniform for both backbones across these
+metrics, showing that the accuracy--point-budget benefits of adaptive
+sampling extend to LinearNO.
+
+\input{tables/linearno_airfoil.tex}
+\FloatBarrier

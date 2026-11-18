@@ -1,5 +1,12 @@
 # Appendix figures
 
+The current PDF/PNG versions of the measure-correction ablation, budget curves,
+and Elasticity showcase use the author-provided `review_figures_tables` exports.
+Their SVG and independent-panel versions below predate this refresh. The full
+precision ablation summaries and table generator have been updated to the new
+results. The new [score overview](refinement_score_overview.pdf) and
+[score-to-points example](refinement_score_example.pdf) appear in Appendix D.6.
+
 [Measure-correction ablation PDF](beta_ablation.pdf) · [PNG](beta_ablation.png) · [SVG](beta_ablation.svg) · [Independent panels and legend](beta_ablation_assets/) · [Data](../../data/beta_ablation/README.md). Appendix D.1 contains all eight benchmarks and twelve metrics. Its ordinate is the error-budget area relative to the same policy and seed at beta=0, averaged across seeds. This reference differs from the full-mesh reference used in the subsequent budget curves.
 
 [Density visualization PDF](density_visualization.pdf) · [PNG](density_visualization.png) · [SVG](density_visualization.svg). This overview uses the same eight cases at a 37.5% budget and seed zero. It shows actual local selected/native point fractions on a shared scale; the refinement-feature rows in the case pages retain their original definitions.

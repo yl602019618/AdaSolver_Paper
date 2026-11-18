@@ -5,8 +5,7 @@ This section details the sampling policies used in
 Tables~\ref{tab:standard_benchmarks} and~\ref{tab:industrial_benchmarks}.
 Although the refinement signals are task dependent, all policies follow the
 same pipeline: construct a refinement score, convert it into a target sampling
-density, sample the prescribed number of points, and estimate the effective
-density represented by the selected samples for measure correction.
+density, and sample the prescribed number of points.
 
 \paragraph{Target sampling density.}
 Let
@@ -19,8 +18,8 @@ a corresponding positive sampling weight $t_\psi(x)$. We normalize this weight
 with respect to the reference measure,
 \begin{equation}
     \lambda_{\mathrm{tar}}(x)
-    :=
-    \frac{t_\psi(x)}
+    :=\mathcal{N}[t_\psi](x)
+    =\frac{t_\psi(x)}
          {\int_\Omega t_\psi(y)\,\mathrm{d}\rho(y)},
     \qquad
     \mathrm{d}\widetilde{\rho}_{\mathrm{tar}}(x)
@@ -32,23 +31,6 @@ Thus, $\lambda_{\mathrm{tar}}$ directly specifies where the inference samples
 should be concentrated. The additive construction
 $t_\psi=b_0+a_0r_\psi$ is equivalent, after normalization, to the mixture
 formulation in \eqref{eq:unified_refinement_measure}.
-
-\paragraph{Coverage-based measure correction.}
-The target density specifies how points are sampled, while the selected samples
-may represent unequal portions of the reference discretization. We therefore
-estimate the effective coverage of each retained point and use its inverse
-density for the measure correction in Physics-Attention. If a selected point
-$x_i$ represents $m_i$ reference points, its correction weight is
-\begin{equation}
-    c_i
-    =
-    \frac{m_i}{N/n}.
-    \label{eq:app_coverage_correction}
-\end{equation}
-For region-based sampling, the same principle gives
-$c_i\propto N_k/n_k$, where $N_k$ and $n_k$ are the reference and retained
-point counts in region $P_k$. A common scale in $c_i$ cancels in the
-self-normalized aggregation. 
 
 \paragraph{Shared refinement features.}
 The three policies differ primarily in how they construct $r_\psi$.
@@ -195,8 +177,7 @@ maintains global coverage while increasing the sampling density near the
 boundary.
 
 \paragraph{Elasticity.}
-Stress concentrates around the internal cavity, so we increase sampling density
-near its boundary. Using the estimated cavity distance $d_{\mathrm{cav}}$, we set
+Using the estimated cavity distance $d_{\mathrm{cav}}$, we set
 \begin{equation}
     \lambda_{\mathrm{tar}}
     =\mathcal{N}\!\left[
@@ -204,7 +185,6 @@ near its boundary. Using the estimated cavity distance $d_{\mathrm{cav}}$, we se
     \right].
     \label{eq:app_pi_elasticity_density}
 \end{equation}
-The cavity distance is estimated from a $64\times64$ auxiliary grid.
 
 \paragraph{Plasticity.}
 Deformation is concentrated near die contact and beneath strongly curved parts
@@ -266,17 +246,25 @@ The target density decays away from these interfaces:
 \end{equation}
 
 \paragraph{ShapeNet-Car.}
-Surface pressure and near-wall velocity gradients make the vehicle surface and
-nearby flow particularly informative. We combine uniform coverage with
-near-wall refinement:
+Let $d_{\mathrm{body}}$ denote distance to the physical vehicle surface.
+The field and drag densities are
 \begin{equation}
     \lambda_{\mathrm{tar}}^{\mathrm{field}}
-    =0.5+0.5\frac{\mathbf{1}_{H_{0.1}}}{\rho(H_{0.1})},
+    =\mathcal{N}\!\left[1+32e^{-d_{\mathrm{body}}/0.1}\right],
     \qquad
     \lambda_{\mathrm{tar}}^{C_D}
-    =0.625+0.375\frac{\mathbf{1}_{H_{0.1}}}{\rho(H_{0.1})}.
+    =\mathcal{N}[1+256z_+].
     \label{eq:app_pi_car_density}
 \end{equation}
+For the native streamwise directional feature $n_z$, define
+\[
+    z_+(x)=\operatorname{clip}_{[0,8]}\!\left[
+        \frac{n_z(x)-\overline n_{z,V}}
+             {Q_{0.95,V}(|n_z-\overline n_{z,V}|)}
+    \right],
+\]
+where $V$ contains reference points without pressure tags and
+$\overline n_{z,V}$ is their mean $n_z$.
 
 \paragraph{DrivAerML.}
 Surface-normal variation identifies geometric detail relevant to pressure,
@@ -327,25 +315,6 @@ and use
     \label{eq:app_pi_superwing_density}
 \end{equation}
 
-\paragraph{Measure correction.}
-When a tempered correction is used, the measure-correction weight $c_i$ is
-replaced by $c_i^\beta$. Plasticity, Airfoil, DrivAerML, and SuperWing use
-coverage-based correction with $\beta=1$. Elasticity and Darcy use
-$c_i=\lambda_{\mathrm{tar}}(x_i)^{-1}$ with $\beta=0.5$.
-For Pipe and ShapeNet-Car, let $H_d^+$ include both the near-wall samples and
-any supplementary points. We use
-\[
-    \lambda_{\mathrm{eff}}
-    =\mathcal{N}\!\left[
-        (1-\gamma)
-        +\gamma\frac{\mathbf{1}_{H_d^+}}{\rho(H_d)}
-    \right],
-    \qquad
-    c_i=\lambda_{\mathrm{eff}}(x_i)^{-1},
-\]
-with $\beta=0.75$ for Pipe and $\beta=0.5$ for ShapeNet-Car.
-
-
 \subsection{Coarse-Prediction-Guided Density Refinement}
 \label{app:cpg_density_design}
 
@@ -353,8 +322,7 @@ CPG first evaluates the frozen operator on a small uniform coarse sample
 $S_0$, typically containing about $10\%$ of the reference points. The resulting
 draft prediction $\widehat u^{(0)}$ provides a solution-dependent refinement
 signal. Unless stated otherwise, $S_0$ is retained, the remaining budget is
-sampled according to the resulting target density, and coverage-based
-measure correction uses $\beta=1$.
+sampled according to the resulting target density.
 
 \paragraph{Elasticity.}
 Regions with rapidly varying stress require higher resolution. We estimate this
@@ -468,47 +436,59 @@ heterogeneous permeability. We combine the two signals as
 \end{equation}
 
 \paragraph{ShapeNet-Car.}
-Pressure variation guides field reconstruction, while pressure-force
-contributions identify regions relevant to drag. We construct
+From the coarse pressure $\widehat p^{(0)}$, define
 \begin{equation}
-    s_f
-    =\mathcal{E}_{0.1}
-       [D_4[\widehat p^{(0)}]],
-    \qquad
-    s_D
-    =\mathcal{E}_{0.1}
-       [(b_D(\widehat p_\Gamma^{(0)}
-       -\overline p_0))_+],
+    \begin{aligned}
+    s_f&=\mathcal{E}_{0.1}[D_4[\widehat p^{(0)}]],
+    \qquad s^\prime=\max(\mathcal{Q}_{0.95}[s_f],0.1),\\
+    z_s&=\operatorname{clip}_{[0,1]}\!\left(
+        \frac{s^\prime}{Q_{0.95}(s^\prime|_{\Gamma_p})}
+    \right).
+    \end{aligned}
     \label{eq:app_cpg_car_scores}
 \end{equation}
-where $\widehat p_\Gamma^{(0)}$ is the coarse pressure transferred to the full
-surface and $\overline p_0$ is the mean coarse surface pressure. For either
-score, define
-\[
-    s^\prime
-    =\max(\mathcal{Q}_{0.95}[s],0.1),
-    \qquad
-    z_s
-    =\operatorname{clip}_{[0,1]}
-      \left(
-      \frac{s^\prime}
-           {Q_{0.95}(s^\prime|_\Gamma)}
-      \right).
-\]
-The target density is
+Here $\Gamma_p$ is the native pressure support, also used by
+$\mathcal E_{0.1}$. The target densities are
 \begin{equation}
-    \lambda_{\mathrm{tar}}^q
-    =\mathcal{N}\!\left[
-        (1+A_qe^{-d_\Gamma/0.1})(1+2z_{s_q})
-    \right],
-    \qquad
-    (A_f,A_D)=(64,32),
-    \quad q\in\{f,D\}.
+    \begin{aligned}
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+        &=\mathcal{N}\!\left[
+            (1+32e^{-d_{\mathrm{body}}/0.1}+w_{\mathrm{wake}})(1+2z_s)
+          \right],\\
+    \lambda_{\mathrm{tar}}^{C_D}
+        &=\mathcal{N}[1+256z_+(1+\phi)].
+    \end{aligned}
     \label{eq:app_density_car}
 \end{equation}
-The vehicle surface is retained and the remaining volume samples are selected
-by stratified regional sampling. Regional coverage correction uses
-$\beta=1$ for field prediction and $\beta=0.75$ for drag.
+For body bounds $\prod_{k=1}^{3}[a_k,b_k]$, let $L_k=b_k-a_k$ and
+$\delta_k(x)=\max(a_k-x_k,0,x_k-b_k)$. With $x_3$ along the flow,
+\[
+    w_{\mathrm{wake}}(x)
+    =\mathbf 1_{\{x_3\geq b_3\}}
+      \exp\!\left[
+        -\frac{x_3-b_3}{0.25L_3}
+        -\frac12\sum_{k=1}^{2}
+          \left(\frac{\delta_k(x)}{0.25L_k}\right)^2
+      \right].
+\]
+Using coarse pressure interpolated onto physical body points $\Gamma_b$
+and the pressure-drag coefficients $b_{D,j}$, define
+\[
+    \ell_j=\left|b_{D,j}\bigl(\widehat p_j^{(0)}
+               -\overline p_{\Gamma_b}^{(0)}\bigr)\right|,
+    \qquad \Gamma_+=\{j\in\Gamma_b:\ell_j>0\}.
+\]
+With $D=\operatorname{diag}(0.5,0.5,2)$ and $j_+(x)$ the nearest point in
+$\Gamma_+$ under distance $\|D^{-1}(x-y)\|_2$, use
+\[
+    \phi(x)
+    =e^{-\|D^{-1}(x-x_{j_+(x)})\|_2}
+      \min\!\left\{
+        \frac{\ell_{j_+(x)}}{Q_{0.90}(\ell|_{\Gamma_+})},4
+      \right\}.
+\]
+Here $\overline p_{\Gamma_b}^{(0)}$ is the mean body pressure, and
+$\phi=0$ if $\Gamma_+$ is empty.
 
 \paragraph{DrivAerML.}
 Local pressure variation identifies regions important for field reconstruction,
@@ -589,7 +569,7 @@ in Table~\ref{tab:ca_head_architectures}.
 GELU activations between linear layers.}
 \label{tab:ca_head_architectures}
 \small
-\begin{tabular}{p{0.18\linewidth}p{0.47\linewidth}p{0.27\linewidth}}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.47\linewidth}p{0.27\linewidth}@{}}
 \toprule
 Task & Predicted refinement quantity & Head architecture \\
 \midrule
@@ -715,23 +695,20 @@ solution while preserving its refinement signal:
 \end{equation}
 
 \paragraph{ShapeNet-Car.}
-The learned pressure estimate provides the same local-variation and
-drag-sensitive signals used by CPG without requiring a complete coarse forward
-pass. Replacing $\widehat p^{(0)}$ with
-$\widehat p^{\mathrm{head}}$ in the CPG score gives
+Replacing $\widehat p^{(0)}$ with the pressure-head prediction
+$\widehat p^{\mathrm{head}}$ in the CPG signals gives
 \begin{equation}
-    \lambda_{\mathrm{tar}}^q
-    =\mathcal{N}\!\left[
-        (1+A_qe^{-d_\Gamma/0.1})
-        (1+2z_{s_q^{\mathrm{head}}})
-    \right],
-    \qquad
-    (A_f,A_D)=(64,32),
-    \quad q\in\{f,D\}.
+    \begin{aligned}
+    \lambda_{\mathrm{tar}}^{\mathrm{field}}
+        &=\mathcal{N}\!\left[
+            (1+32e^{-d_{\mathrm{body}}/0.1}+w_{\mathrm{wake}})
+            (1+2z_s^{\mathrm{head}})
+          \right],\\
+    \lambda_{\mathrm{tar}}^{C_D}
+        &=\mathcal{N}[1+256z_+(1+\phi^{\mathrm{head}})].
+    \end{aligned}
     \label{eq:app_ca_car_density}
 \end{equation}
-Surface retention, regional volume sampling, and measure correction follow the
-corresponding CPG policy.
 
 \paragraph{DrivAerML.}
 The refinement head learns the local pressure-variation signal used by CPG.

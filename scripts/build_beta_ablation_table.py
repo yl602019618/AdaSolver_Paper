@@ -17,7 +17,7 @@ def main():
     assert data['status']['complete']
     index = {(r['benchmark'],r['metric'],r['method'],r['beta']):r for r in data['results']}
     lines = [r'\begin{table}[!htbp]',r'\centering',r'\small',
-             r'\caption{Measure correction on fixed adaptive samples. Entries are mean rAUEC over three sampling seeds, with Uniform equal to one. Bold marks the lower value in each within-policy $\beta=0$/$\beta^{\star}$ pair. Parentheses give the percentage decrease in mean rAUEC from $\beta=0$, computed before rounding. The compensation exponents $\beta^{\star}$ are specified in Appendix~\ref{app:density_policy_design}.}',
+             r'\caption{Measure correction on fixed adaptive samples. Entries are mean rAUEC over three sampling seeds, with Uniform equal to one. Bold marks the lower value in each within-policy $\beta=0$/$\beta^{\star}$ pair. Parentheses give the percentage decrease in mean rAUEC from $\beta=0$, computed before rounding. Elasticity PI and the ShapeNet-Car policies use $\beta^{\star}=1$. Gray rings in Figure~\ref{fig:beta_ablation} identify the deployed exponents.}',
              r'\label{tab:beta_ablation}',r'\setlength{\tabcolsep}{3pt}',
              r'\begin{tabular}{@{}llrrrrrr@{}}',r'\toprule',
              r'Dataset & Metric & \multicolumn{2}{c}{PI} & \multicolumn{2}{c}{CPG} & \multicolumn{2}{c}{CA} \\',

@@ -1,0 +1,15 @@
+\section{2-D Airfoil Inverse-Design Experiment}
+\label{app:airfoil_inverse_design_multiseed}
+
+Table~\ref{tab:airfoil_inverse_design_multiseed} reports multi-seed results
+for the 2-D Airfoil inverse-design experiment from three initial geometries.
+We compare the CFD-evaluated $C_D/C_L$ of designs obtained using full-mesh
+inference, uniform sampling, and AdaSolver.
+
+\input{tables/airfoil_inverse_design_multiseed.tex}
+\FloatBarrier
+
+Across these initial geometries, AdaSolver achieves better aerodynamic
+performance on average and shorter optimization times than full-mesh
+inference, whereas uniform sampling yields designs with poorer aerodynamic
+performance.

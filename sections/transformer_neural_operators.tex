@@ -1,51 +1,91 @@
+\subsection{Transolver Preliminaries}
+\label{sec:transolver_preliminaries}
 
-\subsection{Transolver as an Integral Operator}
+\paragraph{Revisiting Transolver.}
+Transolver~\citep{wu2024transolver} is a Transformer with
+Physics-Attention. Given mesh coordinates $x_i\in\Omega$ and input
+conditions $a_i=a(x_i)$, it embeds $\{(x_i,a_i)\}_{i=1}^{N}$ into point
+features. These pass through $L$ Transformer blocks, each comprising
+Physics-Attention and a pointwise feed-forward network, with layer
+normalization and residual connections. A final pointwise projection
+produces the predicted physical field $\{\widehat u_i\}_{i=1}^{N}$.
 
-Transolver~\citep{wu2024transolver} approximates continuous integral operators through Physics-Attention. Let $\Omega$ denote the physical domain, and let $\rho$ denote the sampling measure induced by the chosen grid or mesh discretization policy. A discretized example consists of pointwise samples
-$\{(x_i,a_i)\}_{i=1}^{N}\mapsto\{u_i\}_{i=1}^{N}$, where $x_i\sim\rho$, $a_i=a(x_i)$ is the input field, and $u_i=u(x_i)$ is the output field. A neural operator learns an operator $\mathcal{G}:a\mapsto u$ with a parameterized network $\mathcal{G}_{\theta}$.
-
-Physics-Attention projects point features into $M$ slice weights, applies attention to the resulting latent physical states, and broadcasts the updated states back to the points. Let $h_i\in\mathbb{R}^{C}$ denote the $C$-dimensional feature embedding of $(x_i,a_i)$. The slice weights are
+Within one Physics-Attention head, let $h_i\in\mathbb{R}^{C}$ denote a
+point feature. The $N$ points are softly assigned to $M\ll N$ learned
+slices: $C$ is the feature dimension, whereas $M$ is the slice count.
+A slice is a learned soft group of points, with membership weights
 \begin{equation}
-    w_i
-    = \operatorname{Softmax}\!\left(\frac{\operatorname{Linear}(h_i)}{\tau_0}\right)
+    w_i=\operatorname{Softmax}\!\left(
+        \frac{\operatorname{Linear}(h_i)}{\tau_0}\right)
     \in\mathbb{R}^{M},
-    \qquad
-    \sum_{j=1}^{M}w_{i,j}=1,
+    \qquad \sum_{j=1}^{M}w_{i,j}=1.
     \label{eq:transolver_slice_weights}
 \end{equation}
-where $\tau_0$ is the temperature. The corresponding physics token is a normalized weighted average
+Here, $w_{i,j}$ assigns point $i$ to slice $j$, and $\tau_0>0$ is a
+temperature. Each slice is summarized by a $C$-dimensional token:
 \begin{equation}
     u_{s,j}^{(N)}
-    = \frac{\frac{1}{N}\sum_{i=1}^{N}w_{i,j}h_i}
-           {\frac{1}{N}\sum_{i=1}^{N}w_{i,j}}
-    \xrightarrow[N\to\infty]{}
-    u_{s,j}^{\rho}
-    = \frac{\int_{\Omega}w_j(x)h(x)\,\mathrm{d}\rho(x)}
-           {\int_{\Omega}w_j(x)\,\mathrm{d}\rho(x)}.
+    =\frac{\sum_{i=1}^{N}w_{i,j}h_i}{\sum_{i=1}^{N}w_{i,j}}
+    \in\mathbb{R}^{C},\qquad j=1,\ldots,M.
     \label{eq:transolver_physics_state}
 \end{equation}
+The tag $s$ denotes slice space, while $j$ indexes a slice. With learned
+query, key, and value projections $q_j=q(u_{s,j}^{(N)})$,
+$k_j=k(u_{s,j}^{(N)})$, and $v_j=v(u_{s,j}^{(N)})$, attention updates
+these tokens and deslicing broadcasts them back with the same weights:
+\begin{equation}
+    u_{s,j}'
+    =\sum_{t=1}^{M}
+      \frac{\exp(q_j^{\top}k_t/\tau)}
+           {\sum_{p=1}^{M}\exp(q_j^{\top}k_p/\tau)}v_t,
+    \qquad
+    h_i'=\sum_{j=1}^{M}w_{i,j}u_{s,j}',
+    \label{eq:transolver_state_attention}
+\end{equation}
+where $\tau>0$ is the attention temperature.
 
-Writing $u_s^{(N)}=[u_{s,1}^{(N)},\ldots,u_{s,M}^{(N)}]^{\top}\in\mathbb{R}^{M\times C}$ and $q,k,v=\operatorname{Linear}(u_s^{(N)})$, the discrete state attention and its continuous integral counterpart can be written together as
+\paragraph{Transolver as an Integral Operator.}
+We now interpret these discrete operations as integral approximations.
+Let $\rho$ be the reference spatial sampling measure, $\Omega_s$ a
+continuous domain indexing latent slices, and $\xi_s,\xi_s'\in\Omega_s$
+key and query slice coordinates. The assignment density $w(x,\xi_s)\geq0$
+is normalized over $\Omega_s$; discrete memberships represent its slice
+quadrature weights. Writing $w_j(x):=w(x,\xi_{s,j})$, the aggregation in
+\eqref{eq:transolver_physics_state} approximates
+\begin{equation}
+    u_{s,j}^{(N)}
+    \xrightarrow[N\to\infty]{}
+    u_{s,j}^{\rho}:=u_s^{\rho}(\xi_{s,j})
+    =\frac{\int_{\Omega}w_j(x)h(x)\,\mathrm{d}\rho(x)}
+           {\int_{\Omega}w_j(x)\,\mathrm{d}\rho(x)}.
+    \label{eq:transolver_integral_token}
+\end{equation}
+This spatial limit assumes independent samples from $\rho$, integrability,
+and positive denominators. Likewise, token attention in
+\eqref{eq:transolver_state_attention} approximates the normalized integral
 \begin{equation}
     \begin{aligned}
-    u_{s,j}'
-    &= \sum_{t=1}^{M}
-      \frac{\exp\!\left(q_j^{\top}k_t/\tau\right)}
-           {\sum_{p=1}^{M}\exp\!\left(q_j^{\top}k_p/\tau\right)}v_t
-      \xrightarrow[M\to\infty]{}
-      \mathcal{A}[u_s^{\rho}](\xi_s'), \\
+    u_{s,j}'&\xrightarrow[M\to\infty]{}
+        \mathcal{A}[u_s^{\rho}](\xi_s'),\qquad \xi_s'=\xi_{s,j},\\
     \mathcal{A}[u_s^{\rho}](\xi_s')
-    &:= \int_{\Omega_s}
+    &:=\int_{\Omega_s}
       \frac{\exp\!\left(q(u_s^{\rho}(\xi_s'))^{\top}k(u_s^{\rho}(\xi_s))/\tau\right)}
            {\int_{\Omega_s}\exp\!\left(q(u_s^{\rho}(\xi_s'))^{\top}k(u_s^{\rho}(\eta_s))/\tau\right)\,\mathrm{d}\eta_s}
       v(u_s^{\rho}(\xi_s))\,\mathrm{d}\xi_s .
     \end{aligned}
-    \label{eq:transolver_state_attention}
+    \label{eq:transolver_integral_attention}
 \end{equation}
-where $u_s^{\rho}(\xi_s)$ is the continuous physics-token field on the slice domain $\Omega_s$, $\xi_s'$ is a query location, and $\tau$ is the attention temperature. Finally, the updated tokens are mapped back to the point space through the slice weights,
+Here, $M\to\infty$ describes uniform quadrature of a fixed, bounded
+continuous token field on a compact slice domain; the implemented network
+uses fixed $M$. Deslicing in \eqref{eq:transolver_state_attention} then
+completes the operator, under the unit-Jacobian specialization:
 \begin{equation}
-    h_i' = \sum_{j=1}^{M}w_{i,j}u_{s,j}',
-    \qquad i=1,\ldots,N.
+    h_i'\;\approx\;\mathcal{T}[u_s^{\rho}](x_i)
+    :=\int_{\Omega_s}w(x_i,\xi_s')
+        \mathcal{A}[u_s^{\rho}](\xi_s')\,\mathrm{d}\xi_s'.
     \label{eq:transolver_deslice}
 \end{equation}
-Thus, Physics-Attention replaces the $N\times N$ point interaction with operations of complexity $\mathcal{O}(NMC+M^2C)$ for $M\ll N$. During training, the input samples used by $\mathcal{G}_{\theta}$ are typically generated according to the prescribed measure $\rho$.
+Thus, Physics-Attention approximates an integral operator through
+aggregation, token attention, and deslicing. Appendix~\ref{app:attention_bias}
+gives the general Jacobian-weighted form used in
+Section~\ref{sec:density_consistent_transolver}.
