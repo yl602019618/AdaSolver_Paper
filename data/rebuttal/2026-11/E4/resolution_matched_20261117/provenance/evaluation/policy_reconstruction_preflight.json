@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "scope": "CPU engineering validation on actual native reference grids; synthetic field values are not accuracy results",
+  "original_scalar_source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/rebuttal_20261112/experiments/E4_darcy_resolution/code/run_resolution.py",
+  "original_scalar_source_sha256": "7f911a2fc2c4981ff7ce5bcbc04ab52237efcf5e290df71d4fb41803e454e529",
+  "records": [
+    {
+      "resolution": 85,
+      "native_points": 7225,
+      "coarse_points": 722,
+      "retained_points": 2709,
+      "observation_tap_indices_identical": true,
+      "compensation_identical": true,
+      "target_allocation_counts_match": true,
+      "max_common_difference": 0.0,
+      "max_native_difference": 0.0,
+      "synthetic_field": true
+    },
+    {
+      "resolution": 141,
+      "native_points": 19881,
+      "coarse_points": 1988,
+      "retained_points": 7455,
+      "observation_tap_indices_identical": true,
+      "compensation_identical": true,
+      "target_allocation_counts_match": true,
+      "max_common_difference": 0.0,
+      "max_native_difference": 0.0,
+      "synthetic_field": true
+    },
+    {
+      "resolution": 211,
+      "native_points": 44521,
+      "coarse_points": 4452,
+      "retained_points": 16695,
+      "observation_tap_indices_identical": true,
+      "compensation_identical": true,
+      "target_allocation_counts_match": true,
+      "max_common_difference": 0.0,
+      "max_native_difference": 0.0,
+      "synthetic_field": true
+    }
+  ]
+}

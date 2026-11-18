@@ -1,5 +1,9 @@
 # 已完成结果与测试内容索引
 
+<!-- darcy-resolution-matched-training-20261117 -->
+**Completed Darcy resolution-matched training.** [data/rebuttal/2026-11/E4/resolution_matched_20261117](data/rebuttal/2026-11/E4/resolution_matched_20261117/README.md): three native-resolution Transolver3 backbones and three matching CA heads, all trained for 1000 epochs on the same contiguous 900/100 split with seed 0. Full/U/PI/CPG/CA cover the same 200 physical test cases; 22,200 requests, 44,400 common/native metric rows and sampling seeds 0/1/2. This supplements the earlier frozen-85 observation transfer; it does not replace that protocol or add three training seeds.
+<!-- /darcy-resolution-matched-training-20261117 -->
+
 <!-- linearno-car-pi-ca-20261117 -->
 **ShapeNet-Car LinearNO PI/CA complete (training seed0).** [Results and method scope](data/rebuttal/2026-11/linearno_car_pi_ca_20261117/README.md) · [Summary](LINEARNO_CAR_PI_CA.md). The native official backbone now has geometry-only PI and its own trained CA pressure head, separate Field/Cd policies,100-case accuracy and222 formal complete-CPU-field timing conditions. Error bars here measure sampling variability; independent training seeds1/2 are not included.
 <!-- /linearno-car-pi-ca-20261117 -->

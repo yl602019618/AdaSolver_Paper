@@ -1,0 +1,147 @@
+{
+  "passed": true,
+  "engineering_fixture_only": true,
+  "trained_weights": false,
+  "validation_case_ids": [
+    900
+  ],
+  "test_opened": false,
+  "figure_groups": 6,
+  "exported_files": 18,
+  "fixture_directory": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/evaluation/render_fixture",
+  "figures": [
+    {
+      "name": "A_rauec_resolution",
+      "caption": "Engineering fixture only. Controlled resolution trend for three models trained from scratch on the same physical split. Left: common 211\u00b2 output; right: native output. Each model/grid uses its own Uniform area. Error bars are sample SD across three sampling seeds for training seed 0. The historical paper 85\u00b2 is excluded.",
+      "files": {
+        "pdf": {
+          "path": "figures/A_rauec_resolution.pdf",
+          "sha256": "4b86a1cd63d43270f663134e9c2215a9365bcca33b243d35f985702a2ca5394c"
+        },
+        "svg": {
+          "path": "figures/A_rauec_resolution.svg",
+          "sha256": "89b43bed91c77f2e88db67fb561618905a15de9829f938ffcfb5636bc9c227f7"
+        },
+        "png": {
+          "path": "figures/A_rauec_resolution.png",
+          "sha256": "05c2ebbbddb0ea1a106418d9d41512228976be73f9efd844a6ff4f8279fcea30"
+        }
+      },
+      "source_files": {
+        "results/rauec_summary.csv": "1b1bdd23442120a395af3cefefa7c9edb62d56fffd8cc72d0459b0461e53e5b0"
+      }
+    },
+    {
+      "name": "B_absolute_error_budget",
+      "caption": "Engineering fixture only. Absolute full-field relative L2 on common (top) and native (bottom) output grids. Each row uses a common y axis across resolutions. The dashed black line is each checkpoint Full error; Full is evaluated once per case. Error bars show sampling SD across three seeds after averaging the same 200 cases.",
+      "files": {
+        "pdf": {
+          "path": "figures/B_absolute_error_budget.pdf",
+          "sha256": "63590a137ab7f78d58dc4166d96e791fa39675dff1250c66ce64a91465db792c"
+        },
+        "svg": {
+          "path": "figures/B_absolute_error_budget.svg",
+          "sha256": "4cdc1f6b4bae02e484b4cd4f73fabec5bd0cd57e2532a1759daf0a73dae2fe80"
+        },
+        "png": {
+          "path": "figures/B_absolute_error_budget.png",
+          "sha256": "a6e48aaf89d5194c5b345eeb5e619ede7d1bb5f56eea56d39d8e921338290f3e"
+        }
+      },
+      "source_files": {
+        "results/absolute_errors.csv": "de348005cc040b444b30a79089789dcdbe36b05862da63120c05e1dab7d80306"
+      }
+    },
+    {
+      "name": "C_regional_retention",
+      "caption": "Engineering fixture only. Actual regional retained fraction divided by the actual global retained fraction. Values above 1 indicate relative refinement; below 1 indicate lower sampling. Curves average physical-case regional rates before aggregating three seeds; error bars are sampling SD. Regions share the common 211\u00b2 coefficient map and width 0.02. These curves measure retained indices, not target densities.",
+      "files": {
+        "pdf": {
+          "path": "figures/C_regional_retention.pdf",
+          "sha256": "8f76166579d3ea3821461ae0d6002508f39d700069c2736a42e73456051a08ec"
+        },
+        "svg": {
+          "path": "figures/C_regional_retention.svg",
+          "sha256": "a22c5b4594be6d3002cc68ef77c03d80a206e015227fc9d722962e377c92be6e"
+        },
+        "png": {
+          "path": "figures/C_regional_retention.png",
+          "sha256": "07e223cf331b2f4430faf4a33824b8d14a02c8c701175ece6f222e9b563595de"
+        }
+      },
+      "source_files": {
+        "results/regional_summary.csv": "f4a7e5fb334027035a31ef67a33dbfd8ceac26d18bea8be91aee6081b67ac976"
+      }
+    },
+    {
+      "name": "D_sampling_case900_pi",
+      "caption": "Engineering fixture only. Fixed case 900, PI, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use the common 211\u00b2 definition. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the PI nominal proposal, not an exact inclusion probability. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case900_pi.pdf",
+          "sha256": "24562c785c3d3d4df3e928c0d60a72134ab4b3a8b6633da9cc60305482d6d2cf"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case900_pi.svg",
+          "sha256": "8ed9765baa5e267e202b5aace1dd36cfd2df531673203a19e628e0224d0db2c7"
+        },
+        "png": {
+          "path": "figures/D_sampling_case900_pi.png",
+          "sha256": "e414e700b172a27be784c110b164b41fb69444e8a03d6e938617ea2cf9f37b69"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "fc2007ae3c8bcd4ba0bb5b7690834c64b01aa35833a3d2b442e55b75ffcef324",
+        "figures/source_data/qualitative_bins.csv": "beea340911733da73f62b36e9d48a4aa8f2c3b1001bd87b273b15a42c5c990c3",
+        "figures/source_data/qualitative_sources.csv": "a80e61e298b6e34fb9d3877c8493a975f2da3eab55757afada194fdda3ba5700"
+      }
+    },
+    {
+      "name": "D_sampling_case900_cpg",
+      "caption": "Engineering fixture only. Fixed case 900, CPG, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use the common 211\u00b2 definition. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case900_cpg.pdf",
+          "sha256": "fac8b9424010571a8f6c1a902ee08eda953f4d3d9aa5e88ca6c1137176ac3087"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case900_cpg.svg",
+          "sha256": "cb265dcbf3bd0922815d926a27766483914fdd4a9c35212471230db886a864cb"
+        },
+        "png": {
+          "path": "figures/D_sampling_case900_cpg.png",
+          "sha256": "364bc3966a0d0262bedd67b57111fc8f79e125f35b87e23765a38d014a62f79b"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "fc2007ae3c8bcd4ba0bb5b7690834c64b01aa35833a3d2b442e55b75ffcef324",
+        "figures/source_data/qualitative_bins.csv": "beea340911733da73f62b36e9d48a4aa8f2c3b1001bd87b273b15a42c5c990c3",
+        "figures/source_data/qualitative_sources.csv": "a80e61e298b6e34fb9d3877c8493a975f2da3eab55757afada194fdda3ba5700"
+      }
+    },
+    {
+      "name": "D_sampling_case900_ca",
+      "caption": "Engineering fixture only. Fixed case 900, CA, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use the common 211\u00b2 definition. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case900_ca.pdf",
+          "sha256": "3b543507259970dcccc6d7cb2adc6fd49d0d7fb07144fb41bd698a37bd4df7dd"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case900_ca.svg",
+          "sha256": "8be9f8a4d11c76fe2ac8b37d8d8838b1c160093206862016da9429be66c7ec29"
+        },
+        "png": {
+          "path": "figures/D_sampling_case900_ca.png",
+          "sha256": "b859d2932b43f2c81a7a06927b6c908aed9e210b05feeb2dac8fa35dcd167162"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "fc2007ae3c8bcd4ba0bb5b7690834c64b01aa35833a3d2b442e55b75ffcef324",
+        "figures/source_data/qualitative_bins.csv": "beea340911733da73f62b36e9d48a4aa8f2c3b1001bd87b273b15a42c5c990c3",
+        "figures/source_data/qualitative_sources.csv": "a80e61e298b6e34fb9d3877c8493a975f2da3eab55757afada194fdda3ba5700"
+      }
+    }
+  ],
+  "visual_review": "passed for isolated A/B/C/D layout: PNGs inspected, no clipped labels, score/target/retention distinct, rAUEC offset disabled; actual final result PNGs pending"
+}

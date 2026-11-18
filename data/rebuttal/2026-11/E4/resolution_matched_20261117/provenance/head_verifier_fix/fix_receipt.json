@@ -1,0 +1,247 @@
+{
+  "status": "verified_fixed",
+  "detected_at_utc": "2026-11-18T17:06:16.965978+00:00",
+  "old_verifier_sha256": "50682a28a5ce5ccd9b7167a9c6b34bcad97a55d01142f9319e10dcf7bf15be2b",
+  "failure": "FP32 bank features generated in batches of 8 were compared to batch-1 recomputation",
+  "failed_logs": [
+    "logs/r85_head_validation.log",
+    "logs/r141_head_validation.log",
+    "logs/r211_head_validation.log"
+  ],
+  "original_tolerance": "abs(actual-expected) <= 1e-6 + 1e-5*abs(expected)",
+  "tolerance_unchanged": true,
+  "changes_to_weights_or_training_or_protocol": false,
+  "verified_at_utc": "2026-11-18T17:07:38.612747+00:00",
+  "new_verifier_sha256": "37f5ce5e257338542509d9994da751117a5542c204ae9e7cb00ddebde698b2ac",
+  "original_error_max_abs": {
+    "85": 2.288818359375e-05,
+    "141": 2.288818359375e-05,
+    "211": 5.340576171875e-05
+  },
+  "original_error_violations": {
+    "85": 346,
+    "141": 1179,
+    "211": 14289
+  },
+  "root_cause_confirmed": "Bank builder used batch8; old verifier used batch1, allowing different FP32 GEMM execution/reduction paths. Replaying bank8 gives exactly equal stored features/predictions at all three resolutions. Each actual batch1 feature tap and head is separately exactly equal to its own full-forward hook route.",
+  "bank_replay_case_groups": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    [
+      896,
+      897,
+      898,
+      899,
+      900,
+      901,
+      902,
+      903
+    ]
+  ],
+  "verification_runs": [
+    {
+      "resolution": 85,
+      "returncode": 0,
+      "elapsed_seconds": 6.194169402122498,
+      "passed": true,
+      "max_same_context_difference": 0.0,
+      "batch_size_sensitivity": [
+        {
+          "name": "case0_batch1_vs_bank8_block0",
+          "max_abs": 2.288818359375e-05,
+          "violations": 346,
+          "relative_norm": 1.6444710126961581e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 9.5367431640625e-07,
+            "0.9": 2.86102294921875e-06,
+            "0.99": 7.152557373046875e-06,
+            "1.0": 2.288818359375e-05
+          }
+        },
+        {
+          "name": "case0_batch1_vs_bank8_prediction",
+          "max_abs": 1.6689300537109375e-06,
+          "violations": 0,
+          "relative_norm": 2.3704157570136886e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 1.1920928955078125e-07,
+            "0.9": 3.5762786865234375e-07,
+            "0.99": 5.960464477539062e-07,
+            "1.0": 1.6689300537109375e-06
+          }
+        },
+        {
+          "name": "case900_batch1_vs_bank8_block0",
+          "max_abs": 2.288818359375e-05,
+          "violations": 411,
+          "relative_norm": 1.606100994422377e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 9.5367431640625e-07,
+            "0.9": 2.86102294921875e-06,
+            "0.99": 7.62939453125e-06,
+            "1.0": 2.288818359375e-05
+          }
+        },
+        {
+          "name": "case900_batch1_vs_bank8_prediction",
+          "max_abs": 9.5367431640625e-07,
+          "violations": 0,
+          "relative_norm": 2.1419560880531208e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 1.1920928955078125e-07,
+            "0.9": 3.5762786865234375e-07,
+            "0.99": 6.556510925292969e-07,
+            "1.0": 9.5367431640625e-07
+          }
+        }
+      ]
+    },
+    {
+      "resolution": 141,
+      "returncode": 0,
+      "elapsed_seconds": 6.168807163834572,
+      "passed": true,
+      "max_same_context_difference": 0.0,
+      "batch_size_sensitivity": [
+        {
+          "name": "case0_batch1_vs_bank8_block0",
+          "max_abs": 2.288818359375e-05,
+          "violations": 1179,
+          "relative_norm": 1.727566285580906e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 9.5367431640625e-07,
+            "0.9": 2.86102294921875e-06,
+            "0.99": 5.7220458984375e-06,
+            "1.0": 2.288818359375e-05
+          }
+        },
+        {
+          "name": "case0_batch1_vs_bank8_prediction",
+          "max_abs": 1.6689300537109375e-06,
+          "violations": 1,
+          "relative_norm": 2.640872764914093e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 1.1920928955078125e-07,
+            "0.9": 3.5762786865234375e-07,
+            "0.99": 7.787348295096308e-07,
+            "1.0": 1.6689300537109375e-06
+          }
+        },
+        {
+          "name": "case900_batch1_vs_bank8_block0",
+          "max_abs": 2.288818359375e-05,
+          "violations": 283,
+          "relative_norm": 1.22978647709715e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 7.152557373046875e-07,
+            "0.9": 1.9073486328125e-06,
+            "0.99": 3.814697265625e-06,
+            "1.0": 2.288818359375e-05
+          }
+        },
+        {
+          "name": "case900_batch1_vs_bank8_prediction",
+          "max_abs": 1.430511474609375e-06,
+          "violations": 0,
+          "relative_norm": 2.2695830637076142e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 1.1920928955078125e-07,
+            "0.9": 3.5762786865234375e-07,
+            "0.99": 7.152557373046875e-07,
+            "1.0": 1.430511474609375e-06
+          }
+        }
+      ]
+    },
+    {
+      "resolution": 211,
+      "returncode": 0,
+      "elapsed_seconds": 8.142971985042095,
+      "passed": true,
+      "max_same_context_difference": 0.0,
+      "batch_size_sensitivity": [
+        {
+          "name": "case0_batch1_vs_bank8_block0",
+          "max_abs": 5.340576171875e-05,
+          "violations": 14289,
+          "relative_norm": 3.4356693845438713e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 2.0265579223632812e-06,
+            "0.9": 7.152557373046875e-06,
+            "0.99": 1.33514404296875e-05,
+            "1.0": 5.340576171875e-05
+          }
+        },
+        {
+          "name": "case0_batch1_vs_bank8_prediction",
+          "max_abs": 2.562999725341797e-06,
+          "violations": 0,
+          "relative_norm": 4.089112053407007e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 2.384185791015625e-07,
+            "0.9": 6.556510925292969e-07,
+            "0.99": 1.1324882507324219e-06,
+            "1.0": 2.562999725341797e-06
+          }
+        },
+        {
+          "name": "case900_batch1_vs_bank8_block0",
+          "max_abs": 4.57763671875e-05,
+          "violations": 13232,
+          "relative_norm": 3.289398762262863e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 1.9073486328125e-06,
+            "0.9": 6.67572021484375e-06,
+            "0.99": 1.430511474609375e-05,
+            "1.0": 4.57763671875e-05
+          }
+        },
+        {
+          "name": "case900_batch1_vs_bank8_prediction",
+          "max_abs": 2.2649765014648438e-06,
+          "violations": 0,
+          "relative_norm": 3.926851377400453e-07,
+          "absolute_difference_quantiles": {
+            "0.0": 0.0,
+            "0.5": 2.384185791015625e-07,
+            "0.9": 7.152557373046875e-07,
+            "0.99": 1.0728836059570312e-06,
+            "1.0": 2.2649765014648438e-06
+          }
+        }
+      ]
+    }
+  ],
+  "receipt_paths": [
+    "results/head_r85_validation.json",
+    "results/head_r141_validation.json",
+    "results/head_r211_validation.json"
+  ],
+  "gpu": "NVIDIA H20 physical GPU0; shared flock and idle NVML admission; released",
+  "changes": [
+    "Replay original full forward at stored batch8 case groups for bank identity",
+    "Check batch1 frozen feature extractor and head against batch1 full-forward hook under unchanged tolerance",
+    "Report batch1-versus-bank8 differences as explicit separate numerical diagnostics",
+    "Match original bank cuDNN deterministic settings",
+    "Copy stored indices before Torch indexing to avoid non-writable NumPy warning"
+  ]
+}

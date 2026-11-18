@@ -1,0 +1,64 @@
+{
+  "status": "completed",
+  "pid": 4008630,
+  "resolution": 85,
+  "gpus": [
+    1,
+    2
+  ],
+  "planned_gpus": [
+    1,
+    2
+  ],
+  "resource_override": true,
+  "stages": {
+    "evaluation": {
+      "status": "completed",
+      "pid": 4008690,
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/evaluate_pair.py",
+        "--resolution",
+        "85"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r85_evaluation.log",
+      "started_at_utc": "2026-11-18T17:07:46.653400+00:00",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:19:42.734888+00:00"
+    }
+  },
+  "started_at_utc": "2026-11-18T17:07:45.162687+00:00",
+  "gpu_admission": [
+    {
+      "index": 1,
+      "gpu": {
+        "uuid": "GPU-5ac7260d-d956-20a6-1557-17ff0156a50f",
+        "name": "NVIDIA H20",
+        "memory.used": "0",
+        "utilization.gpu": "0",
+        "memory.driver_reserved": "503",
+        "clocks.sm": "345",
+        "power.draw": "73.564",
+        "temperature.gpu": "32"
+      },
+      "processes": []
+    },
+    {
+      "index": 2,
+      "gpu": {
+        "uuid": "GPU-2ea2008d-ecb3-f36c-f48c-b0288ee03dfb",
+        "name": "NVIDIA H20",
+        "memory.used": "0",
+        "utilization.gpu": "0",
+        "memory.driver_reserved": "503",
+        "clocks.sm": "345",
+        "power.draw": "74.736",
+        "temperature.gpu": "32"
+      },
+      "processes": []
+    }
+  ],
+  "stage": null,
+  "heartbeat_utc": "2026-11-18T17:19:32.631515+00:00",
+  "finished_at_utc": "2026-11-18T17:19:42.812361+00:00"
+}

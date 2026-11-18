@@ -1159,14 +1159,15 @@
     {
       "target_path": "figures/rebuttal/2026-11/FIGURE_MANIFEST.csv",
       "category": "release_index",
-      "size_bytes": 9236,
-      "sha256": "dbc13e0a116ce09e2ea56065a4a7939d34df8410fb5e4e28e642f3c9bed546ca",
+      "size_bytes": 16148,
+      "sha256": "1a148105647b46e969da8b1daef203abfa0be35c97a432fae486d4e9089a2856",
       "source_sha256": null,
       "evidence_scope": "verified within stated component scope",
       "publication_status": "approved",
       "previous_sha256_before_E4_20261117": "8b89b778c4fd863cd082dc6b735d63e6924802a3ea0573bf01f5259c7c030203",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
-      "previous_sha256_before_PI_beta_calibration_20261117": "b7abab13eb997051ba7947bd02467680deb833acd2d1693abdf462eb438bbd60"
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "b7abab13eb997051ba7947bd02467680deb833acd2d1693abdf462eb438bbd60",
+      "previous_sha256_before_resolution_matched_20261117": "dbc13e0a116ce09e2ea56065a4a7939d34df8410fb5e4e28e642f3c9bed546ca"
     },
     {
       "target_path": "data/rebuttal/2026-11/E0/README.md",
@@ -1207,14 +1208,15 @@
     {
       "target_path": "data/rebuttal/2026-11/E4/README.md",
       "category": "release_index",
-      "size_bytes": 5704,
-      "sha256": "1160c62cdbd963068284a33ae3f62f1bc3d78aec3a133d524986b8aadd0af3cc",
+      "size_bytes": 6399,
+      "sha256": "886ea555eee1cdfe793ca0a4e2342ff736300be8645f7881749b6f7e5d980791",
       "source_sha256": null,
       "evidence_scope": "verified within stated component scope",
       "publication_status": "approved",
       "previous_sha256_before_E4_20261117": "16b0217ed75e4816fc5dbbfaf0634de5148515dc2cfd386dc39dca1228a82769",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
-      "previous_sha256_before_PI_beta_calibration_20261117": "25fa59671ca709c9ae197e105877403810b2ba25b946cd11648ac587682d1752"
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "25fa59671ca709c9ae197e105877403810b2ba25b946cd11648ac587682d1752",
+      "previous_sha256_before_resolution_matched_20261117": "1160c62cdbd963068284a33ae3f62f1bc3d78aec3a133d524986b8aadd0af3cc"
     },
     {
       "target_path": "data/rebuttal/2026-11/E5/README.md",
@@ -1279,18 +1281,25 @@
     },
     {
       "target_path": "data/rebuttal/2026-11/E4/release_manifest.json",
-      "size_bytes": 12712,
-      "sha256": "9b2dc5d07cdff1d2078f52c66188fb2393dca33fecf763fd2ef0cc5ca5e22873",
+      "size_bytes": 14329,
+      "sha256": "7d7ef11307be27c0db3ad492f4fecb9f415bb358f8509379eccd23e200189b89",
       "category": "E4_derived_analysis_manifest",
       "previous_sha256_before_E4_20261117": "7d37ca523bc9112964c87026970d3c5b636dea0f3577808b628a4e8bfe4f9b03",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
-      "previous_sha256_before_PI_beta_calibration_20261117": "aa4af000259e42975f0e5736a13267436ca8c184002fc9c02ec162b8a6786414"
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "aa4af000259e42975f0e5736a13267436ca8c184002fc9c02ec162b8a6786414",
+      "previous_sha256_before_resolution_matched_20261117": "9b2dc5d07cdff1d2078f52c66188fb2393dca33fecf763fd2ef0cc5ca5e22873"
     },
     {
       "target_path": "data/rebuttal/2026-11/E4/pi_beta_calibration_20261117/release_manifest.json",
       "size_bytes": 40041,
       "sha256": "612848389d7cddae2f658338388b98cb56fadc2d1f0c184c04d7236803be5be1",
       "category": "PI_beta_calibration_release_manifest"
+    },
+    {
+      "target_path": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+      "size_bytes": 206846,
+      "sha256": "e107d7d732d19cf2dd5a8bf7e0fa21119a9c05cdfd75fb161128d86219be19ba",
+      "category": "Darcy_resolution_matched_training_release_manifest"
     }
   ],
   "self_manifest_excluded_from_its_own_hash_list": true,
@@ -1333,5 +1342,29 @@
     "new_backbone_training_runs": 0,
     "original_frozen_beta0p5_data_retained": true,
     "formal_latency": false
+  },
+  "darcy_resolution_matched_training_20261117": {
+    "experiment_type": "Darcy observation-density resolution-matched training",
+    "package": "data/rebuttal/2026-11/E4/resolution_matched_20261117",
+    "manifest": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+    "report": "data/rebuttal/2026-11/E4/resolution_matched_20261117/README.md",
+    "new_backbone_runs": 3,
+    "new_ca_head_runs": 3,
+    "physical_requests": 22200,
+    "common_native_metric_rows": 44400,
+    "regional_rows": 66600,
+    "legacy_regional_rows": 66600,
+    "training_seeds": [
+      0
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "original_E4_preserved": true,
+    "main_modified": false,
+    "base_commit": "81e055e33085ead622f2546dfe04661f1fb3655a",
+    "updated_at_utc": "2026-11-18T18:02:28.339897+00:00"
   }
 }

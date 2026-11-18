@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "engineering_fixture_only": true,
+  "seed_first_ratio_matches_scalar_calculation": true,
+  "distinguishes_ratio_of_average_curves": true,
+  "sample_sd_ddof1_verified": true,
+  "full_excluded": true,
+  "no_experiment_metric_written": true,
+  "source_sha256": "a24dc49182f5a9553742b8c09a0774429d0a8e3a2ad3733c3044c450f9c6d8f0"
+}

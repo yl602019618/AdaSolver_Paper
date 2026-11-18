@@ -1,0 +1,35 @@
+[
+  {
+    "resolution": 85,
+    "pid": 3782180,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+      "--resolution",
+      "85"
+    ]
+  },
+  {
+    "resolution": 141,
+    "pid": 3782181,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+      "--resolution",
+      "141"
+    ]
+  },
+  {
+    "resolution": 211,
+    "pid": 3782182,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+      "--resolution",
+      "211"
+    ]
+  }
+]

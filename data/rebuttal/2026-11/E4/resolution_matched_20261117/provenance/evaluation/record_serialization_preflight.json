@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "validation_ids": [
+    900
+  ],
+  "test_opened": false,
+  "engineering_fixture_only": true,
+  "trained_weights": false,
+  "records": [
+    {
+      "resolution": 85,
+      "requests": 13,
+      "json_serialization_passed": true,
+      "all_budgets_checked": true
+    },
+    {
+      "resolution": 141,
+      "requests": 13,
+      "json_serialization_passed": true,
+      "all_budgets_checked": true
+    },
+    {
+      "resolution": 211,
+      "requests": 13,
+      "json_serialization_passed": true,
+      "all_budgets_checked": true
+    }
+  ],
+  "fixture_directory": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/evaluation/engineering_record_fixture"
+}

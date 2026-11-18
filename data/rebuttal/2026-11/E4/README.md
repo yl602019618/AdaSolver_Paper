@@ -1,5 +1,13 @@
 # E4：Darcy 观测分辨率迁移（当前结果）
 
+<!-- darcy-resolution-matched-training-20261117 -->
+## 新增：各观测分辨率独立训练
+
+[完整 resolution-matched 结果](resolution_matched_20261117/README.md)已完成：85²、141²、211² 分别从头训练，采用同一 train900/validation100 划分、1000 epochs 和 training seed 0，并各自训练 CA head。全部 22,200 个预测请求和 44,400 行 common/native 指标已验收。
+
+该补充直接检验训练分辨率匹配后的表现。作者主表保留原文 85² 历史参考＋新 141²/211²；受控趋势使用新的 85²/141²/211²。下面的冻结模型迁移及 PI β 校准仍是各自独立协议。
+<!-- /darcy-resolution-matched-training-20261117 -->
+
 <!-- darcy-pi-beta-calibration-20261117 -->
 ## 最新补充：PI 的 β 校准
 

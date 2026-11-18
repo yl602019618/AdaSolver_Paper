@@ -1,0 +1,288 @@
+{
+  "passed": true,
+  "resolution": 211,
+  "world_size": 2,
+  "effective_batch_size": 4,
+  "local_batch_size": 2,
+  "microbatch_size": 2,
+  "gradient_accumulation_steps": 1,
+  "actual_full_grid_points": 44521,
+  "executed_optimizer_steps": 2,
+  "no_test_arrays_opened": true,
+  "test_used_for_checkpoint_selection": false,
+  "full_training_grid_verified": true,
+  "ddp_scaling": "local SUM objective multiplied by world_size before DDP average",
+  "protocol_sha256": "d1991623dcb94703074fb9076deaec3d129d40cf15c427489a06ba5f7d15794b",
+  "normalizer_sha256": "c80eedb6a6bbcf4744b8c6e2cfdd052c7eb8da0d42ab3d02e0005540ff1c9942",
+  "common_source_sha256": "6a5041f53808acb6031b681f1d18a6f8fcadf0244bf663e2e83cce8c6da551a3",
+  "trainer_source_sha256": "04fdb8632fe8192e708b572c81dec7ec8577192b2cf118c1a1758f1b3648cadf",
+  "rank_records": [
+    {
+      "rank": 0,
+      "local_rank": 0,
+      "pid": 3782279,
+      "resolution": 211,
+      "train_array_shape": [
+        900,
+        44521,
+        1
+      ],
+      "validation_array_shape": [
+        100,
+        44521,
+        1
+      ],
+      "position_shape": [
+        44521,
+        2
+      ],
+      "normalization_fit_checks": {
+        "x": {
+          "mean_absolute_difference": 4.76837158203125e-07,
+          "std_absolute_difference": 0.0,
+          "fit_cases": 900
+        },
+        "y": {
+          "mean_absolute_difference": 0.0,
+          "std_absolute_difference": 0.0,
+          "fit_cases": 900
+        }
+      },
+      "actual_training_capture": [
+        {
+          "input_shape": [
+            2,
+            44521,
+            3
+          ],
+          "output_shape": [
+            2,
+            44521,
+            128
+          ]
+        },
+        {
+          "input_shape": [
+            2,
+            44521,
+            3
+          ],
+          "output_shape": [
+            2,
+            44521,
+            128
+          ]
+        }
+      ],
+      "validation_probe_case_ids": [
+        900,
+        901
+      ],
+      "validation_prediction_shape": [
+        2,
+        44521,
+        1
+      ],
+      "steps": [
+        {
+          "global_step": 1,
+          "global_case_ids": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "rank_case_ids": [
+            0,
+            1
+          ],
+          "actual_prediction_shape": [
+            2,
+            44521,
+            1
+          ],
+          "global_loss_components": [
+            5.6430463790893555,
+            2.559669256210327,
+            30.83376693725586
+          ],
+          "global_gradient_norm": 327.68023681640625
+        },
+        {
+          "global_step": 2,
+          "global_case_ids": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "rank_case_ids": [
+            4,
+            5
+          ],
+          "actual_prediction_shape": [
+            2,
+            44521,
+            1
+          ],
+          "global_loss_components": [
+            4.291546821594238,
+            2.5975399017333984,
+            16.940067291259766
+          ],
+          "global_gradient_norm": 44.21369934082031
+        }
+      ],
+      "optimizer_parameter_steps": 2,
+      "initial_state_tensor_sha256": "8167cba0f23cf5a57aa609fbea4a9e4d3b854c67a95b8130c7e74a1abf22cc00",
+      "updated_state_tensor_sha256": "9e3d48191345d36f4428e599cf7376bb25daf5b96459c6b70c3615cddb41d983",
+      "parameter_count": 977089,
+      "peak_allocated_bytes": 9647700480,
+      "peak_reserved_bytes": 10190061568,
+      "observed_seconds": 2.9773966893553734,
+      "data_files_opened": [
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/normalizer.npz",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/positions.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/reference_coords.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/train_coeff.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/train_solution.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/validation_coeff.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/validation_solution.npy"
+      ]
+    },
+    {
+      "rank": 1,
+      "local_rank": 1,
+      "pid": 3782280,
+      "resolution": 211,
+      "train_array_shape": [
+        900,
+        44521,
+        1
+      ],
+      "validation_array_shape": [
+        100,
+        44521,
+        1
+      ],
+      "position_shape": [
+        44521,
+        2
+      ],
+      "normalization_fit_checks": {
+        "x": {
+          "mean_absolute_difference": 4.76837158203125e-07,
+          "std_absolute_difference": 0.0,
+          "fit_cases": 900
+        },
+        "y": {
+          "mean_absolute_difference": 0.0,
+          "std_absolute_difference": 0.0,
+          "fit_cases": 900
+        }
+      },
+      "actual_training_capture": [
+        {
+          "input_shape": [
+            2,
+            44521,
+            3
+          ],
+          "output_shape": [
+            2,
+            44521,
+            128
+          ]
+        },
+        {
+          "input_shape": [
+            2,
+            44521,
+            3
+          ],
+          "output_shape": [
+            2,
+            44521,
+            128
+          ]
+        }
+      ],
+      "validation_probe_case_ids": [
+        902,
+        903
+      ],
+      "validation_prediction_shape": [
+        2,
+        44521,
+        1
+      ],
+      "steps": [
+        {
+          "global_step": 1,
+          "global_case_ids": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "rank_case_ids": [
+            2,
+            3
+          ],
+          "actual_prediction_shape": [
+            2,
+            44521,
+            1
+          ],
+          "global_loss_components": [
+            5.6430463790893555,
+            2.559669256210327,
+            30.83376693725586
+          ],
+          "global_gradient_norm": 327.68023681640625
+        },
+        {
+          "global_step": 2,
+          "global_case_ids": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "rank_case_ids": [
+            6,
+            7
+          ],
+          "actual_prediction_shape": [
+            2,
+            44521,
+            1
+          ],
+          "global_loss_components": [
+            4.291546821594238,
+            2.5975399017333984,
+            16.940067291259766
+          ],
+          "global_gradient_norm": 44.21369934082031
+        }
+      ],
+      "optimizer_parameter_steps": 2,
+      "initial_state_tensor_sha256": "8167cba0f23cf5a57aa609fbea4a9e4d3b854c67a95b8130c7e74a1abf22cc00",
+      "updated_state_tensor_sha256": "9e3d48191345d36f4428e599cf7376bb25daf5b96459c6b70c3615cddb41d983",
+      "parameter_count": 977089,
+      "peak_allocated_bytes": 9647700480,
+      "peak_reserved_bytes": 10190061568,
+      "observed_seconds": 3.2828986570239067,
+      "data_files_opened": [
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/normalizer.npz",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/positions.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/reference_coords.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/train_coeff.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/train_solution.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/validation_coeff.npy",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r211/validation_solution.npy"
+      ]
+    }
+  ],
+  "scope": "real native full-grid dataflow and finite two-step training check; not trained-model accuracy"
+}

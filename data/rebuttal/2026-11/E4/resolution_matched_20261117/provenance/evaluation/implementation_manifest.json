@@ -1,0 +1,51 @@
+{
+  "frozen_at_utc": "2026-11-17T16:16:52.631449+00:00",
+  "scope": "evaluation/statistics/plotting implementation, before final checkpoints are ready",
+  "source_sha256": {
+    "evaluate.py": "c1bec8094adc197c9ed133a34b638d9ad9e76d60c2929d5f34e1e5dbc757f8d4",
+    "evaluate_pair.py": "9ae5a24a5011da3fff8b80758c48e2adcf99aed9d6e6beadebec1c845cb3fc71",
+    "verify_results.py": "d7e1706ad35639ad36fd84ff99d4d3ce3453cd9111e95a79904136477071302a",
+    "aggregate.py": "f6e3b83ded5440d4c337c5d1e2519d9262bb48490d55e5960e94531fadc8a405",
+    "verify_statistics.py": "a24dc49182f5a9553742b8c09a0774429d0a8e3a2ad3733c3044c450f9c6d8f0",
+    "plot_results.py": "d4229202ebc1fefdccf8ced0b207be64fc5c2a1f9b2de2d319d3b917c09733c7",
+    "preflight_inference.py": "e09ee72403baf1fe4beeacf5aecdda63744d9b2d06886128698cd8a2a6447884",
+    "preflight_records.py": "8aeb87771b23991a63f7aa7e9e4ddd44a83180b7c06a6a0e842ed59172bdee18",
+    "preflight_render.py": "3aa90bea0b647bcad347253b879e763c36eadb43255fbb6f4254bbb624952da5"
+  },
+  "engineering_checks": {
+    "policy_reconstruction_preflight.json": {
+      "passed": true,
+      "sha256": "c1fbd347a00ac2d64db4ebb487fa50ab96152e6427fb3000441dd293f217b43b"
+    },
+    "inference_shape_preflight.json": {
+      "passed": true,
+      "sha256": "7dce33fd0936974394461af0cb3a3e971c16de16ca5c326834e2f0e2a80e0fcb"
+    },
+    "record_serialization_preflight.json": {
+      "passed": true,
+      "sha256": "d9667cf88d23b9faa7bf07d5ad2782d6e8fcbbf82a1cd9fa74c59be0c48936af"
+    },
+    "statistics_self_check.json": {
+      "passed": true,
+      "sha256": "e655504fd89a45afec917fa4cada3ac7026744a57a6ff645802915a6c75b4cf9"
+    },
+    "render_preflight.json": {
+      "passed": true,
+      "sha256": "96e9849826dfb9960324325f1575dfddb005f90ae3d248260f139a4831309a6c"
+    }
+  },
+  "formal_accuracy_complete": false,
+  "formal_figures_complete": false,
+  "commands": [
+    "python3 code/evaluate_pair.py --resolution R",
+    "python3 code/aggregate.py",
+    "python3 code/verify_statistics.py",
+    "python3 code/plot_results.py"
+  ],
+  "pending": [
+    "actual model/head acceptance",
+    "three full evaluation matrices",
+    "actual final statistics/figures",
+    "visual inspection of final result PNGs"
+  ]
+}

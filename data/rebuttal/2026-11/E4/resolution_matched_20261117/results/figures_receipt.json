@@ -1,0 +1,308 @@
+{
+  "passed": true,
+  "complete": true,
+  "rendered_figure_groups": 13,
+  "exported_result_files": 39,
+  "formats": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "png_dpi": 300,
+  "figures": [
+    {
+      "name": "A_rauec_resolution",
+      "caption": "Controlled resolution trend for three models trained from scratch on the same physical split. Left: common 211\u00b2 output; right: native output. Each model/grid uses its own Uniform area. Error bars are sample SD across three sampling seeds for training seed 0. The historical paper 85\u00b2 is excluded.",
+      "files": {
+        "pdf": {
+          "path": "figures/A_rauec_resolution.pdf",
+          "sha256": "14b16a33bfeee95a9383dd286cd5321bd3309dea3bc14289f6ae0f7890458e0e"
+        },
+        "svg": {
+          "path": "figures/A_rauec_resolution.svg",
+          "sha256": "a3e66abc4b074297fbf47a5a2eee1e22d9273a77fe6a8d4845da3fea12507684"
+        },
+        "png": {
+          "path": "figures/A_rauec_resolution.png",
+          "sha256": "3137d723ca91c45bc20fac2f508bf59240d1f57893bb8f5b6fe112f91c7d6011"
+        }
+      },
+      "source_files": {
+        "results/rauec_summary.csv": "7e8bfdde49cd7991d01fa2a540e21a54f47539642b2f769b9d4ab8859afe600a"
+      }
+    },
+    {
+      "name": "B_absolute_error_budget",
+      "caption": "Absolute full-field relative L2 on common (top) and native (bottom) output grids. Each row uses a common y axis across resolutions. The dashed black line is each checkpoint Full error; Full is evaluated once per case. Error bars show sampling SD across three seeds after averaging the same 200 cases.",
+      "files": {
+        "pdf": {
+          "path": "figures/B_absolute_error_budget.pdf",
+          "sha256": "4dd6be51087592d5ba3cd8ef0b8dda726fd211c6715356c028c39d8dda57c177"
+        },
+        "svg": {
+          "path": "figures/B_absolute_error_budget.svg",
+          "sha256": "e50c36f6e6d41f98854832da0bc34c709ac37e6ae560c72abf74e934ad305952"
+        },
+        "png": {
+          "path": "figures/B_absolute_error_budget.png",
+          "sha256": "96c4d1cbb8060ff73ea1c92d88fb530dc00e7b18a26e0dd79d648bc3f0162af0"
+        }
+      },
+      "source_files": {
+        "results/absolute_errors.csv": "7fc4dd2383d9c7e2abddee6d5b9334b29b2dfa24cfaaaab2b3ba7e29dfe5162b"
+      }
+    },
+    {
+      "name": "C_regional_retention",
+      "caption": "Actual regional retained fraction divided by the actual global retained fraction. Values above 1 indicate relative refinement; below 1 indicate lower sampling. Curves average physical-case regional rates before aggregating three seeds; error bars are sampling SD. Boundary and interface distances are evaluated directly at native coordinates with width 0.02 and the same common211 coefficient-edge geometry. This corrects nearest-boolean region classification without changing any retained point. These curves measure retained indices, not target densities.",
+      "files": {
+        "pdf": {
+          "path": "figures/C_regional_retention.pdf",
+          "sha256": "db5e48881e87ed783c5c096b07968a8b21af29167e0677266828334e2a7437b6"
+        },
+        "svg": {
+          "path": "figures/C_regional_retention.svg",
+          "sha256": "c51dd026714aa337168b66f0bbae84fad2b0cd19d01cef0c3394a96d68aea5b7"
+        },
+        "png": {
+          "path": "figures/C_regional_retention.png",
+          "sha256": "2d1e1945dacbd27d53d0287cdffaaf3e25579f3c108453c0606c7f525bc389df"
+        }
+      },
+      "source_files": {
+        "results/regional_summary.csv": "f10ee22e02cb3f73cc6fc763f49a529ad6a34ad7d1a8d5efbc25e99cb05e2f22"
+      }
+    },
+    {
+      "name": "D_sampling_case1000_pi",
+      "caption": "Fixed case 1000, PI, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the PI nominal proposal, not an exact inclusion probability. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1000_pi.pdf",
+          "sha256": "92eef6a91aa7aee09962a721144f0f30c44bf01a1d209b440212b0f1e0f01365"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1000_pi.svg",
+          "sha256": "e93a24b2418a76647a99b6a4963ac1b4318ac334aac7c9f9d3436649c4f8c819"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1000_pi.png",
+          "sha256": "f1d054fd43523b1c780d2249b83e297c4c412897052c4546299d23958a9b3cca"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1000_cpg",
+      "caption": "Fixed case 1000, CPG, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1000_cpg.pdf",
+          "sha256": "9ca5cd0a08afc8648b57f79e183edf054e3f5a0e6c68eb1360a85a53c9a8a262"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1000_cpg.svg",
+          "sha256": "2f2a578ba56f7807ad07aea91e3ce509bf3c8db37e573addb83462c42e3f6d0d"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1000_cpg.png",
+          "sha256": "9d06fdc86b52e47536228294c51d69fc85c4956a856eade2a223ed4dc408da9b"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1000_ca",
+      "caption": "Fixed case 1000, CA, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1000_ca.pdf",
+          "sha256": "c027ff4cadaabd15d303feab66d90617362291ed77fd370cec2e1f903ea975ca"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1000_ca.svg",
+          "sha256": "54ee3c3c368df54fb38c604a585e2a9c6ce30286af886f97418dd12977c8bdbf"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1000_ca.png",
+          "sha256": "9e0c41e23a910a6219aabfb5d2dd9c0ee738843a770c6b926af759f2ad126537"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1099_pi",
+      "caption": "Fixed case 1099, PI, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the PI nominal proposal, not an exact inclusion probability. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1099_pi.pdf",
+          "sha256": "71f5afb1c8889956b829c285d4a941221146aa9f4208f1f8a820919e2f101236"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1099_pi.svg",
+          "sha256": "6587c0f0e6bd1b00ae8a644bf9b56d1cd60fb108635fa6fb755f1ebb5cc5de4e"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1099_pi.png",
+          "sha256": "03c11a2d8fb9f07c5294ee888bb447c544ffd001f78fbde012af3bfd02002f6f"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1099_cpg",
+      "caption": "Fixed case 1099, CPG, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1099_cpg.pdf",
+          "sha256": "ec0073990aa4b196638c8be2ecab7eb82368f4b1bba6e3e850581fb5ba70c2b0"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1099_cpg.svg",
+          "sha256": "0738d5e6f09a79720e81e9992afacb04f242c8b78c53346c44725d8efc8cc50e"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1099_cpg.png",
+          "sha256": "d8c793ad91394e91ad56ef04dc96f43ce9cbafcb8eb7e00546ff93c1d7f0dbff"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1099_ca",
+      "caption": "Fixed case 1099, CA, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1099_ca.pdf",
+          "sha256": "49d5d7e4e16ca5f65bd6d9cd9fa648c4ebde0b9dfcadf1c7844d5224a94e9a94"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1099_ca.svg",
+          "sha256": "c9d2a203fe7b466f6761f01ba8987299c40a6c05a10b2a835fbd5d5a3cbb5a35"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1099_ca.png",
+          "sha256": "259a01aa8c6994ac008352307e2818eb63547768b9cce42450461eec64938a6d"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1199_pi",
+      "caption": "Fixed case 1199, PI, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the PI nominal proposal, not an exact inclusion probability. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1199_pi.pdf",
+          "sha256": "f10d29e2bd5d07785b44b9613391b4b3c80ed1dfc0bbd79223fed40bae416c54"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1199_pi.svg",
+          "sha256": "bb5a97fce02f081cda989c84680cf986fd6f20b336a8daf25596a68fb3679b61"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1199_pi.png",
+          "sha256": "34426acfb08c08061dfc8dd3193ed382242b6bd3aa565fb69fba89dcda06a4a3"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1199_cpg",
+      "caption": "Fixed case 1199, CPG, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1199_cpg.pdf",
+          "sha256": "1ea714d65a94057959528923d23c58dec53d3f8150b0bc3ec29275552549efa6"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1199_cpg.svg",
+          "sha256": "5adcbc666315c1d498ad454bba29ffaa2fa050f16ce635c5cf72fea2052a1d20"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1199_cpg.png",
+          "sha256": "32e1368c7faaf0d8cc774e84314aed83f335c39c78143d4446f926f9dfa84962"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "D_sampling_case1199_ca",
+      "caption": "Fixed case 1199, CA, 50% budget and sampling seed 0, with each resolution own trained model/head. Physical regions use direct native-coordinate distances and the shared common211 coefficient-edge geometry, with width 0.02. The original nearest-boolean labels are retained only as legacy CSV columns. Score is a nearest-lifted display normalized by its coarse/native support mean and shown as log(1 + relative score); raw support scores and untransformed relative scores are in the CSV. This display transform does not change sampling. Target density is the pre-FPS final patch allocation divided by native available nodes and global budget. Actual bin retention and actual retained nodes are plotted separately. Color limits are shared across all resolutions and methods for this case without quantile clipping.",
+      "files": {
+        "pdf": {
+          "path": "figures/D_sampling_case1199_ca.pdf",
+          "sha256": "8b6e13339ffb162851fc0823bcc5c01904e8ecab641edd0df5b0f03f7ac60cf0"
+        },
+        "svg": {
+          "path": "figures/D_sampling_case1199_ca.svg",
+          "sha256": "942cc28ac5bb5a56ed44bd8482e83b2c2951d289f2adc752e9efde4c1b15ebf6"
+        },
+        "png": {
+          "path": "figures/D_sampling_case1199_ca.png",
+          "sha256": "958ad956d83bec9f3989ebb45f69abc08573481a3b8dad6ac236b4b99fc9348a"
+        }
+      },
+      "source_files": {
+        "figures/source_data/qualitative_values.csv.gz": "4d5ce023fb73aa4181a9c4d760b9303923fe63be22d16bbfd4e55f43a5e64574",
+        "figures/source_data/qualitative_bins.csv": "0d7b8ed016010410928900ddd5e77bb34747d5f8b53609bea259677dcf3aee42",
+        "figures/source_data/qualitative_sources.csv": "3250212d83c88d12c33305ae958f9fe96063c8ea59d21b5560379213255aff0b"
+      }
+    },
+    {
+      "name": "E_training_head_curves",
+      "caption": "Full 1000-epoch training curves. Backbone panels show physical field train and validation relative L2; head panels use separate labelled axes for validation vector norm and training Huber loss. Checkpoint selection uses validation only. Exact original epoch fields are retained in the source CSV.",
+      "files": {
+        "pdf": {
+          "path": "figures/E_training_head_curves.pdf",
+          "sha256": "078282adca844b5f5b8ebb03016ae985284f990b218d0cba9281e34f9c09d88a"
+        },
+        "svg": {
+          "path": "figures/E_training_head_curves.svg",
+          "sha256": "c183bfe6293850cec9b78c671248a93964243af4de331d5912d92519f9b2c687"
+        },
+        "png": {
+          "path": "figures/E_training_head_curves.png",
+          "sha256": "a9dd7d45ce5949cb187be86e598c44c9162187bceb6731014f9252a417156b59"
+        }
+      },
+      "source_files": {
+        "figures/source_data/training_head_curves.csv": "6eda742f08afaf8d3612cd7cdedc2ec0a51d473e29f3bb1340580e46f9e2162a"
+      }
+    }
+  ],
+  "plot_source_sha256": "a0b1a5111570aaa1b2cad5551915150df069547668ed9eaacaf2cafab2e25e33",
+  "statistics_acceptance_sha256": "f90d48e5dfdaeaa61ae6c4ebaf3b1f233ef4c63b9d496a196c2dc3fb1b29aaf2",
+  "render_visual_review": "pending inspection of actual generated PNGs; numeric/source acceptance has passed"
+}

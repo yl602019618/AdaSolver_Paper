@@ -1,0 +1,28 @@
+{
+  "source": "paper_git/tables/standard_benchmarks.tex",
+  "source_sha256": "958b6120665ccae4be860b8598aeb32a400753d5facb622f78719dfb2e7ff1ea",
+  "grid": 85,
+  "evaluation_grid": 85,
+  "historical_reference_only": true,
+  "PI_beta": 0.5,
+  "field_rauec": {
+    "uniform": {
+      "mean": 1.0,
+      "sampling_sd": 0.0
+    },
+    "pi": {
+      "mean": 0.9965,
+      "sampling_sd": 0.0177
+    },
+    "cpg": {
+      "mean": 0.6419,
+      "sampling_sd": 0.0049
+    },
+    "ca": {
+      "mean": 0.64,
+      "sampling_sd": 0.0062
+    }
+  },
+  "precision": "Literal published four-decimal values; do not invent additional digits",
+  "not_a_matched_resolution_trend": true
+}

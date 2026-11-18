@@ -1,0 +1,81 @@
+{
+  "audited_at_utc": "2026-11-18T17:44:04.379226+00:00",
+  "status": "final",
+  "passed": true,
+  "all_requested_training_complete": true,
+  "resolutions": [
+    {
+      "resolution": 85,
+      "execution_status": "completed",
+      "epochs_audited": 1000,
+      "optimizer_updates_audited": 225000,
+      "passed": true,
+      "failures": [],
+      "best_validation_relative_l2": 0.01854971665889025,
+      "best_epoch": 579,
+      "checkpoint_sha256": "1258de7444db0ada5911ee0fc3ee8b3a0d072dd4b62f9934ccfa91810c4e9ad9",
+      "initial_state_tensor_sha256": "8167cba0f23cf5a57aa609fbea4a9e4d3b854c67a95b8130c7e74a1abf22cc00",
+      "parameter_count": 977089,
+      "manifest_sha256": "f184c5ba3aec212f3747142e63f4d5767c2a024f54c2b1bf0acf5b0c8f3ffb15",
+      "normalizer_sha256": "15b9260c379cf937700fffbfe92991b83bf3ccc9d1656d793e9a49a6265fa7c3",
+      "source_sha256": {
+        "common.py": "6a5041f53808acb6031b681f1d18a6f8fcadf0244bf663e2e83cce8c6da551a3",
+        "train_ddp.py": "04fdb8632fe8192e708b572c81dec7ec8577192b2cf118c1a1758f1b3648cadf"
+      },
+      "training_wall_seconds": 7011.875856332481,
+      "selected_checkpoint_validation_passed": true,
+      "selected_checkpoint_validation_difference": 3.7718564036004487e-10
+    },
+    {
+      "resolution": 141,
+      "execution_status": "completed",
+      "epochs_audited": 1000,
+      "optimizer_updates_audited": 225000,
+      "passed": true,
+      "failures": [],
+      "best_validation_relative_l2": 0.01728334741201252,
+      "best_epoch": 692,
+      "checkpoint_sha256": "92c77b6fc8422d7f2f1b30b072d1966f78afb7d85f42817232609fa37c88c70d",
+      "initial_state_tensor_sha256": "8167cba0f23cf5a57aa609fbea4a9e4d3b854c67a95b8130c7e74a1abf22cc00",
+      "parameter_count": 977089,
+      "manifest_sha256": "c5776e8941acafe1e5eaeee2ce52f9026cb0d9c0eb4ff551d1af8b83f40e17b9",
+      "normalizer_sha256": "388a17b26e188e08529951306c760cdaab728684e99e4e48bee99415c96b74e0",
+      "source_sha256": {
+        "common.py": "6a5041f53808acb6031b681f1d18a6f8fcadf0244bf663e2e83cce8c6da551a3",
+        "train_ddp.py": "04fdb8632fe8192e708b572c81dec7ec8577192b2cf118c1a1758f1b3648cadf"
+      },
+      "training_wall_seconds": 14366.831501372159,
+      "selected_checkpoint_validation_passed": true,
+      "selected_checkpoint_validation_difference": 1.7695129042594182e-10
+    },
+    {
+      "resolution": 211,
+      "execution_status": "completed",
+      "epochs_audited": 1000,
+      "optimizer_updates_audited": 225000,
+      "passed": true,
+      "failures": [],
+      "best_validation_relative_l2": 0.014947625240311027,
+      "best_epoch": 660,
+      "checkpoint_sha256": "b85b7c4b9da77643fcf7bc860c7ec821f029ed56c41074afcf0110d804659441",
+      "initial_state_tensor_sha256": "8167cba0f23cf5a57aa609fbea4a9e4d3b854c67a95b8130c7e74a1abf22cc00",
+      "parameter_count": 977089,
+      "manifest_sha256": "2a7e7c035a74253ea8d3aea564cb1c5d9dbc381a35806cf61c43768bd1ec7a63",
+      "normalizer_sha256": "c80eedb6a6bbcf4744b8c6e2cfdd052c7eb8da0d42ab3d02e0005540ff1c9942",
+      "source_sha256": {
+        "common.py": "6a5041f53808acb6031b681f1d18a6f8fcadf0244bf663e2e83cce8c6da551a3",
+        "train_ddp.py": "04fdb8632fe8192e708b572c81dec7ec8577192b2cf118c1a1758f1b3648cadf"
+      },
+      "training_wall_seconds": 28301.35445640236,
+      "selected_checkpoint_validation_passed": true,
+      "selected_checkpoint_validation_difference": 1.5366822397888669e-10
+    }
+  ],
+  "cross_resolution_checks": {
+    "initial_tensor_identity": true,
+    "parameter_count_identity": true,
+    "training_source_identity": true
+  },
+  "scope": "saved histories, checkpoint states, native shapes, data access, fixed split, source and normalizer identity; selected checkpoint reload on validation only; no evaluation-population access or new selection",
+  "verifier_sha256": "ec56f6261d7521ffa63515c5c35bd019575cb871a358033b7d570e989a785254"
+}

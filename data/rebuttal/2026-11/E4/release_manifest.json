@@ -44,17 +44,19 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 7831,
-      "sha256": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5",
+      "bytes": 8414,
+      "sha256": "1965a5bd33ff28484364458e5c162f94fc309c580a192d6463c9208b71f70e5e",
       "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_resolution_matched_20261117": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5"
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 13652,
-      "sha256": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967",
+      "bytes": 14337,
+      "sha256": "99eb2350d9c3b75c6cea94a1cabf7ff2cff9e7a5dc95e31e943fe86fc7d60c2c",
       "previous_sha256_before_PI_beta_calibration_20261117": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_resolution_matched_20261117": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967"
     },
     {
       "path": "data/rebuttal/2026-11/E4/.gitattributes",
@@ -63,10 +65,11 @@
     },
     {
       "path": "data/rebuttal/2026-11/E4/README.md",
-      "bytes": 5704,
-      "sha256": "1160c62cdbd963068284a33ae3f62f1bc3d78aec3a133d524986b8aadd0af3cc",
+      "bytes": 6399,
+      "sha256": "886ea555eee1cdfe793ca0a4e2342ff736300be8645f7881749b6f7e5d980791",
       "previous_sha256_before_PI_beta_calibration_20261117": "25fa59671ca709c9ae197e105877403810b2ba25b946cd11648ac587682d1752",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_resolution_matched_20261117": "1160c62cdbd963068284a33ae3f62f1bc3d78aec3a133d524986b8aadd0af3cc"
     },
     {
       "path": "data/rebuttal/2026-11/E4/REPORT.md",
@@ -209,10 +212,11 @@
     },
     {
       "path": "figures/rebuttal/2026-11/FIGURE_MANIFEST.csv",
-      "bytes": 9236,
-      "sha256": "dbc13e0a116ce09e2ea56065a4a7939d34df8410fb5e4e28e642f3c9bed546ca",
+      "bytes": 16148,
+      "sha256": "1a148105647b46e969da8b1daef203abfa0be35c97a432fae486d4e9089a2856",
       "previous_sha256_before_PI_beta_calibration_20261117": "b7abab13eb997051ba7947bd02467680deb833acd2d1693abdf462eb438bbd60",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged."
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_resolution_matched_20261117": "dbc13e0a116ce09e2ea56065a4a7939d34df8410fb5e4e28e642f3c9bed546ca"
     },
     {
       "path": "rebuttal/2026-11/README.md",
@@ -268,6 +272,12 @@
       "bytes": 40041,
       "sha256": "612848389d7cddae2f658338388b98cb56fadc2d1f0c184c04d7236803be5be1",
       "category": "PI_beta_calibration_release_manifest"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+      "bytes": 206846,
+      "sha256": "e107d7d732d19cf2dd5a8bf7e0fa21119a9c05cdfd75fb161128d86219be19ba",
+      "category": "Darcy_resolution_matched_training_release_manifest"
     }
   ],
   "self_hash_excluded": true,
@@ -296,5 +306,29 @@
     "original_requests": 27000,
     "original_metric_rows": 54000
   },
-  "new_request_count_scope": "Completed unique calibration/test accuracy records in the separate PI study; excludes engineering checks and aborted/replayed work"
+  "new_request_count_scope": "Completed unique calibration/test accuracy records in the separate PI study; excludes engineering checks and aborted/replayed work",
+  "darcy_resolution_matched_training_20261117": {
+    "experiment_type": "Darcy observation-density resolution-matched training",
+    "package": "data/rebuttal/2026-11/E4/resolution_matched_20261117",
+    "manifest": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+    "report": "data/rebuttal/2026-11/E4/resolution_matched_20261117/README.md",
+    "new_backbone_runs": 3,
+    "new_ca_head_runs": 3,
+    "physical_requests": 22200,
+    "common_native_metric_rows": 44400,
+    "regional_rows": 66600,
+    "legacy_regional_rows": 66600,
+    "training_seeds": [
+      0
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "original_E4_preserved": true,
+    "main_modified": false,
+    "base_commit": "81e055e33085ead622f2546dfe04661f1fb3655a",
+    "updated_at_utc": "2026-11-18T18:02:28.339897+00:00"
+  }
 }

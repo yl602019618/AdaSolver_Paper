@@ -7,15 +7,16 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 7831,
-      "sha256": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5",
+      "bytes": 8414,
+      "sha256": "1965a5bd33ff28484364458e5c162f94fc309c580a192d6463c9208b71f70e5e",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
       "previous_sha256_before_E4_20261117": "ece0a118aec4e36fc2f9a6ec9c80440c2d4abb7b8e755a97af3f13eee372b75d",
-      "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40"
+      "previous_sha256_before_PI_beta_calibration_20261117": "23270045261ceae95c3c02ce0beed7b92194366a99c98253988266404e37ee40",
+      "previous_sha256_before_resolution_matched_20261117": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5"
     },
     {
       "path": "STANDARD_TRAINING_SEEDS.md",
@@ -28,15 +29,16 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 13652,
-      "sha256": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967",
+      "bytes": 14337,
+      "sha256": "99eb2350d9c3b75c6cea94a1cabf7ff2cff9e7a5dc95e31e943fe86fc7d60c2c",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
       "previous_sha256_before_E4_20261117": "511dce64102caae3345698631a8d58db14f4680415bac409749d14eab9b9696c",
-      "previous_sha256_before_PI_beta_calibration_20261117": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f"
+      "previous_sha256_before_PI_beta_calibration_20261117": "14e08114b3b4c081f1eeca7d74be019911d3d26e92c6d2308996c2be6f86238f",
+      "previous_sha256_before_resolution_matched_20261117": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967"
     },
     {
       "path": "data/rebuttal/2026-11/E5_standard/README.md",
@@ -1321,15 +1323,16 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
-      "bytes": 91127,
-      "sha256": "15706dc21aa3ba2ff2625f38e094c4ab31c28c41a393fffa559cdd8babb2f98f",
+      "bytes": 92097,
+      "sha256": "f5bcee08e7fce7827d1a8d9d98eedf045cefe7528f81ec2857c0760a6e7cd6de",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
       "previous_sha256_before_E4_20261117": "412020b8ae1cee946ec58e2054feae2c84d9f66b2519b3f5eb483c88deedd9a6",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
-      "previous_sha256_before_PI_beta_calibration_20261117": "8457f060bb4ccf63249458918e5a16c56fcfdaa375877202eae2ca476377432d"
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "8457f060bb4ccf63249458918e5a16c56fcfdaa375877202eae2ca476377432d",
+      "previous_sha256_before_resolution_matched_20261117": "15706dc21aa3ba2ff2625f38e094c4ab31c28c41a393fffa559cdd8babb2f98f"
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/reuse_audit.json",
@@ -3295,15 +3298,16 @@
     },
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
-      "bytes": 19753,
-      "sha256": "bebcad5c872946089b42a15616409c20a5ca0e47daf27e6625695f8491b9040e",
+      "bytes": 20723,
+      "sha256": "7b838233c202bd18e8dd129b660f1a8221225e03280824abce59721cedfe6c1e",
       "code_commit": "87902429e38a798be1cd0e4aa4a3203af7987562",
       "code_commit_scope": "Current published audit/render scripts; historical training-code provenance is recorded separately",
       "status": "VERIFIED_COMPLETE",
       "public": true,
       "previous_sha256_before_E4_20261117": "7628f6b3ddf7c643b071d2e3219b0251f0c3b9aee4c260d64d0315b59ab48760",
-      "documentation_annotation": "2026-11-17 PI calibration supplement; prior frozen observation values remain unchanged.",
-      "previous_sha256_before_PI_beta_calibration_20261117": "3df0ecdfab5e03f0a1e360740bda90714c2a38a81d997cec983984136de2af79"
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved.",
+      "previous_sha256_before_PI_beta_calibration_20261117": "3df0ecdfab5e03f0a1e360740bda90714c2a38a81d997cec983984136de2af79",
+      "previous_sha256_before_resolution_matched_20261117": "bebcad5c872946089b42a15616409c20a5ca0e47daf27e6625695f8491b9040e"
     },
     {
       "path": "reproducibility/rebuttal/2026-11/E5_standard/README.md",
@@ -3850,5 +3854,29 @@
     "new_backbone_training_runs": 0,
     "original_frozen_beta0p5_data_retained": true,
     "formal_latency": false
+  },
+  "darcy_resolution_matched_training_20261117": {
+    "experiment_type": "Darcy observation-density resolution-matched training",
+    "package": "data/rebuttal/2026-11/E4/resolution_matched_20261117",
+    "manifest": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+    "report": "data/rebuttal/2026-11/E4/resolution_matched_20261117/README.md",
+    "new_backbone_runs": 3,
+    "new_ca_head_runs": 3,
+    "physical_requests": 22200,
+    "common_native_metric_rows": 44400,
+    "regional_rows": 66600,
+    "legacy_regional_rows": 66600,
+    "training_seeds": [
+      0
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "original_E4_preserved": true,
+    "main_modified": false,
+    "base_commit": "81e055e33085ead622f2546dfe04661f1fb3655a",
+    "updated_at_utc": "2026-11-18T18:02:28.339897+00:00"
   }
 }

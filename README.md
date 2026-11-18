@@ -1,5 +1,11 @@
 # AdaSolver paper
 
+<!-- darcy-resolution-matched-training-20261117 -->
+**Darcy 分辨率匹配训练已完成。** [实验类型、结果与修改说明](DARCY_RESOLUTION_MATCHED.md) · [完整表图与原始 CSV](data/rebuttal/2026-11/E4/resolution_matched_20261117/README.md)
+
+85²/141²/211² 分别从头训练，使用同一 900/100 split、1000 epochs、training seed 0 和各自 CA head。已完成 22,200 个预测请求、44,400 行 common/native 指标；三个 sampling seeds 分开于 training seed。历史 E4 与其他补充保留。
+<!-- /darcy-resolution-matched-training-20261117 -->
+
 <!-- linearno-car-pi-ca-20261117 -->
 **ShapeNet-Car LinearNO PI/CA complete (training seed0).** [Results and method scope](data/rebuttal/2026-11/linearno_car_pi_ca_20261117/README.md) · [Summary](LINEARNO_CAR_PI_CA.md). The native official backbone now has geometry-only PI and its own trained CA pressure head, separate Field/Cd policies,100-case accuracy and222 formal complete-CPU-field timing conditions. Error bars here measure sampling variability; independent training seeds1/2 are not included.
 <!-- /linearno-car-pi-ca-20261117 -->

@@ -1,0 +1,6 @@
+{
+  "pid": 4030230,
+  "previous_waiting_pid": 4027212,
+  "reason": "Add independent physical-region oracle/count verification",
+  "started_at_utc": "2026-11-18T17:34:01.867428+00:00"
+}

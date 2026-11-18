@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "scope": "CPU engineering checks on real grid/coefficient input and full native initialized models; no trained accuracy or latency claim",
+  "production_weights_reused": false,
+  "debug_weights_discarded": true,
+  "checks": [
+    {
+      "resolution": 85,
+      "source_train_shape": [
+        900,
+        7225,
+        1
+      ],
+      "full_coordinate_shape": [
+        7225,
+        2
+      ],
+      "coarse_count": 722,
+      "actual_coarse_input_shape": [
+        4,
+        722,
+        2
+      ],
+      "coarse_coefficient_shape": [
+        4,
+        722,
+        1
+      ],
+      "normalized_operator_prediction_shape": [
+        4,
+        722,
+        1
+      ],
+      "feature_shape": [
+        4,
+        722,
+        128
+      ],
+      "teacher_grid_shape": [
+        85,
+        85
+      ],
+      "head_output_shape": [
+        4,
+        722,
+        1
+      ],
+      "feature_hook_matches_inference_helper": true,
+      "teacher_scalar_reference_max_difference": 0.0,
+      "normalized_teacher_matches_native_CPG": 0.0,
+      "head_train_steps": 2,
+      "head_losses": [
+        0.3308580815792084,
+        3.072753667831421
+      ],
+      "head_parameters": 236049,
+      "backbone_frozen": true,
+      "ddp_mean_loss_gradient_check": {
+        "global4_vs_average_two_local2": true,
+        "max_gradient_difference": 1.7881393432617188e-07,
+        "relative_gradient_difference": 1.7194975043821614e-07
+      },
+      "source_cases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "test_data_read": false
+    },
+    {
+      "resolution": 141,
+      "source_train_shape": [
+        900,
+        19881,
+        1
+      ],
+      "full_coordinate_shape": [
+        19881,
+        2
+      ],
+      "coarse_count": 1988,
+      "actual_coarse_input_shape": [
+        4,
+        1988,
+        2
+      ],
+      "coarse_coefficient_shape": [
+        4,
+        1988,
+        1
+      ],
+      "normalized_operator_prediction_shape": [
+        4,
+        1988,
+        1
+      ],
+      "feature_shape": [
+        4,
+        1988,
+        128
+      ],
+      "teacher_grid_shape": [
+        141,
+        141
+      ],
+      "head_output_shape": [
+        4,
+        1988,
+        1
+      ],
+      "feature_hook_matches_inference_helper": true,
+      "teacher_scalar_reference_max_difference": 0.0,
+      "normalized_teacher_matches_native_CPG": 0.0,
+      "head_train_steps": 2,
+      "head_losses": [
+        0.28300586342811584,
+        3.0596985816955566
+      ],
+      "head_parameters": 236049,
+      "backbone_frozen": true,
+      "ddp_mean_loss_gradient_check": null,
+      "source_cases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "test_data_read": false
+    },
+    {
+      "resolution": 211,
+      "source_train_shape": [
+        900,
+        44521,
+        1
+      ],
+      "full_coordinate_shape": [
+        44521,
+        2
+      ],
+      "coarse_count": 4452,
+      "actual_coarse_input_shape": [
+        4,
+        4452,
+        2
+      ],
+      "coarse_coefficient_shape": [
+        4,
+        4452,
+        1
+      ],
+      "normalized_operator_prediction_shape": [
+        4,
+        4452,
+        1
+      ],
+      "feature_shape": [
+        4,
+        4452,
+        128
+      ],
+      "teacher_grid_shape": [
+        211,
+        211
+      ],
+      "head_output_shape": [
+        4,
+        4452,
+        1
+      ],
+      "feature_hook_matches_inference_helper": true,
+      "teacher_scalar_reference_max_difference": 0.0,
+      "normalized_teacher_matches_native_CPG": 0.0,
+      "head_train_steps": 2,
+      "head_losses": [
+        0.24601146578788757,
+        3.05489182472229
+      ],
+      "head_parameters": 236049,
+      "backbone_frozen": true,
+      "ddp_mean_loss_gradient_check": null,
+      "source_cases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "test_data_read": false
+    }
+  ],
+  "head_source_sha256": {
+    "head_support.py": "4f2f6a3d7a1470c94fada7c9cb1afbd58123e4b8f27bfccfc6d2b048f18b46e9",
+    "prepare_head.py": "b753d429b1d05a9bfae3e90df78feb7b54d3be0d526c3c258e283cb4b739b923",
+    "train_head.py": "e813f62d54d726e46c5df8a7b8853917de2efce57a8c266ee38819564867fb22",
+    "verify_head.py": "50682a28a5ce5ccd9b7167a9c6b34bcad97a55d01142f9319e10dcf7bf15be2b",
+    "preflight_head.py": "c1e54e935af778c21f3fca904a000242b30dc5274acc0736d953195eaeb9440f"
+  }
+}

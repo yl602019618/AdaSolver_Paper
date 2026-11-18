@@ -1,0 +1,746 @@
+{
+  "passed": true,
+  "reviewer": "review_matched_figures",
+  "reviewed_at_utc": "2026-11-18T17:52:55.716978+00:00",
+  "scope": "Actual completed scientific artifacts, standalone/full-width exports; no engineering fixture substituted",
+  "figures_receipt_sha256": "775bf29d6a0e6bcf8d3ebc55a5898bde89b11f9c1df05cc083a15fdb3d0b7548",
+  "groups_reviewed": 13,
+  "files_verified": 39,
+  "visual_inspection": {
+    "all_nine_D_contact_sheet": "development/final_visual_qa/D_all_nine.png",
+    "other_four_contact_sheet": "development/final_visual_qa/A_B_C_E.png",
+    "expanded_actual_D_pngs": [
+      "D_sampling_case1000_pi",
+      "D_sampling_case1099_cpg",
+      "D_sampling_case1199_ca"
+    ],
+    "findings": [
+      "All nine D plates separate physical regions, log-displayed score, relative target density, actual binned retention, and actual retained nodes.",
+      "Expanded PI/CPG/CA plates covering all fixed cases have readable labels, separate titles and legends, complete colorbars and unclipped axes.",
+      "PI score variation uses the same scale as the other methods; it has not been amplified by a separate scale.",
+      "A preserves the PI 211-square mean above Uniform and its error bar.",
+      "C shows strict physical-band regional statistics; E preserves complete training curves including later head validation deterioration."
+    ]
+  },
+  "structural_checks": {
+    "png_dpi": 300,
+    "png_min_dimensions": [
+      2596,
+      1070
+    ],
+    "pdf_pages_each": 1,
+    "pdf_fonts_embedded": true,
+    "pdf_words_outside_page": 0,
+    "svg_live_text": true,
+    "svg_full_page_flattening": false,
+    "note": "D scientific heatmaps are expected raster layers in otherwise vector/text PDF and SVG; labels, axes and retained-node marks remain editable."
+  },
+  "semantic_display_checks": {
+    "fixed_cases": [
+      1000,
+      1099,
+      1199
+    ],
+    "sampling_seed": 0,
+    "budget": 0.5,
+    "strict_region_protocol": "physical_bands_0p02_direct_queries_v1_20261119",
+    "matched_retained_counts": [
+      {
+        "case_id": 1000,
+        "resolution": 85,
+        "method": "ca",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1000,
+        "resolution": 85,
+        "method": "cpg",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1000,
+        "resolution": 85,
+        "method": "pi",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1000,
+        "resolution": 141,
+        "method": "ca",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1000,
+        "resolution": 141,
+        "method": "cpg",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1000,
+        "resolution": 141,
+        "method": "pi",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1000,
+        "resolution": 211,
+        "method": "ca",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1000,
+        "resolution": 211,
+        "method": "cpg",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1000,
+        "resolution": 211,
+        "method": "pi",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1099,
+        "resolution": 85,
+        "method": "ca",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1099,
+        "resolution": 85,
+        "method": "cpg",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1099,
+        "resolution": 85,
+        "method": "pi",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1099,
+        "resolution": 141,
+        "method": "ca",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1099,
+        "resolution": 141,
+        "method": "cpg",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1099,
+        "resolution": 141,
+        "method": "pi",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1099,
+        "resolution": 211,
+        "method": "ca",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1099,
+        "resolution": 211,
+        "method": "cpg",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1099,
+        "resolution": 211,
+        "method": "pi",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1199,
+        "resolution": 85,
+        "method": "ca",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1199,
+        "resolution": 85,
+        "method": "cpg",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1199,
+        "resolution": 85,
+        "method": "pi",
+        "retained_nodes": 3612
+      },
+      {
+        "case_id": 1199,
+        "resolution": 141,
+        "method": "ca",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1199,
+        "resolution": 141,
+        "method": "cpg",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1199,
+        "resolution": 141,
+        "method": "pi",
+        "retained_nodes": 9940
+      },
+      {
+        "case_id": 1199,
+        "resolution": 211,
+        "method": "ca",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1199,
+        "resolution": 211,
+        "method": "cpg",
+        "retained_nodes": 22260
+      },
+      {
+        "case_id": 1199,
+        "resolution": 211,
+        "method": "pi",
+        "retained_nodes": 22260
+      }
+    ],
+    "color_limits_shared_across_resolutions_and_methods_per_case": true,
+    "quantile_clipping": false,
+    "displayed_score_transform": "log(1+score/support_mean)",
+    "actual_retention_color_limits": [
+      0,
+      1
+    ],
+    "color_limit_verification": "Maxima match the actual plotting CSV loader exactly. Round-trip versus default pandas decimal parsing differs at most 1.7763568394002505e-15 in two score maxima, without changing plotting inputs or outputs."
+  },
+  "file_checks_receipt": "development/final_visual_qa/file_checks.json",
+  "file_checks_sha256": "49de32b09dee382e3ddc1ff1764aad5e6640f72bfe01ca48dfa2d68877cd0462",
+  "files": [
+    {
+      "path": "figures/A_rauec_resolution.pdf",
+      "sha256": "14b16a33bfeee95a9383dd286cd5321bd3309dea3bc14289f6ae0f7890458e0e",
+      "bytes": 16792,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 36,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/A_rauec_resolution.svg",
+      "sha256": "a3e66abc4b074297fbf47a5a2eee1e22d9273a77fe6a8d4845da3fea12507684",
+      "bytes": 33098,
+      "live_text_elements": 22,
+      "vector_paths": 69,
+      "embedded_images": 0,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/A_rauec_resolution.png",
+      "sha256": "3137d723ca91c45bc20fac2f508bf59240d1f57893bb8f5b6fe112f91c7d6011",
+      "bytes": 150472,
+      "width": 2596,
+      "height": 1070,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        33,
+        2579,
+        1049
+      ]
+    },
+    {
+      "path": "figures/B_absolute_error_budget.pdf",
+      "sha256": "4dd6be51087592d5ba3cd8ef0b8dda726fd211c6715356c028c39d8dda57c177",
+      "bytes": 25401,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 97,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/B_absolute_error_budget.svg",
+      "sha256": "e50c36f6e6d41f98854832da0bc34c709ac37e6ae560c72abf74e934ad305952",
+      "bytes": 91843,
+      "live_text_elements": 67,
+      "vector_paths": 178,
+      "embedded_images": 0,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/B_absolute_error_budget.png",
+      "sha256": "96c4d1cbb8060ff73ea1c92d88fb530dc00e7b18a26e0dd79d648bc3f0162af0",
+      "bytes": 315201,
+      "width": 3346,
+      "height": 2000,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        32,
+        3329,
+        1976
+      ]
+    },
+    {
+      "path": "figures/C_regional_retention.pdf",
+      "sha256": "db5e48881e87ed783c5c096b07968a8b21af29167e0677266828334e2a7437b6",
+      "bytes": 30465,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 82,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/C_regional_retention.svg",
+      "sha256": "c51dd026714aa337168b66f0bbae84fad2b0cd19d01cef0c3394a96d68aea5b7",
+      "bytes": 120873,
+      "live_text_elements": 46,
+      "vector_paths": 249,
+      "embedded_images": 0,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/C_regional_retention.png",
+      "sha256": "2d1e1945dacbd27d53d0287cdffaaf3e25579f3c108453c0606c7f525bc389df",
+      "bytes": 408674,
+      "width": 3346,
+      "height": 2610,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        32,
+        3329,
+        2586
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1000_pi.pdf",
+      "sha256": "92eef6a91aa7aee09962a721144f0f30c44bf01a1d209b440212b0f1e0f01365",
+      "bytes": 112369,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 164,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1000_pi.svg",
+      "sha256": "e93a24b2418a76647a99b6a4963ac1b4318ac334aac7c9f9d3436649c4f8c819",
+      "bytes": 3393805,
+      "live_text_elements": 135,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1000_pi.png",
+      "sha256": "f1d054fd43523b1c780d2249b83e297c4c412897052c4546299d23958a9b3cca",
+      "bytes": 659125,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1000_cpg.pdf",
+      "sha256": "9ca5cd0a08afc8648b57f79e183edf054e3f5a0e6c68eb1360a85a53c9a8a262",
+      "bytes": 129484,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 164,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1000_cpg.svg",
+      "sha256": "2f2a578ba56f7807ad07aea91e3ce509bf3c8db37e573addb83462c42e3f6d0d",
+      "bytes": 3472444,
+      "live_text_elements": 135,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1000_cpg.png",
+      "sha256": "9d06fdc86b52e47536228294c51d69fc85c4956a856eade2a223ed4dc408da9b",
+      "bytes": 688928,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1000_ca.pdf",
+      "sha256": "c027ff4cadaabd15d303feab66d90617362291ed77fd370cec2e1f903ea975ca",
+      "bytes": 125594,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 164,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1000_ca.svg",
+      "sha256": "54ee3c3c368df54fb38c604a585e2a9c6ce30286af886f97418dd12977c8bdbf",
+      "bytes": 3449904,
+      "live_text_elements": 135,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1000_ca.png",
+      "sha256": "9e0c41e23a910a6219aabfb5d2dd9c0ee738843a770c6b926af759f2ad126537",
+      "bytes": 664168,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1099_pi.pdf",
+      "sha256": "71f5afb1c8889956b829c285d4a941221146aa9f4208f1f8a820919e2f101236",
+      "bytes": 101126,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 165,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1099_pi.svg",
+      "sha256": "6587c0f0e6bd1b00ae8a644bf9b56d1cd60fb108635fa6fb755f1ebb5cc5de4e",
+      "bytes": 3375086,
+      "live_text_elements": 136,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1099_pi.png",
+      "sha256": "03c11a2d8fb9f07c5294ee888bb447c544ffd001f78fbde012af3bfd02002f6f",
+      "bytes": 633062,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1099_cpg.pdf",
+      "sha256": "ec0073990aa4b196638c8be2ecab7eb82368f4b1bba6e3e850581fb5ba70c2b0",
+      "bytes": 127792,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 165,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1099_cpg.svg",
+      "sha256": "0738d5e6f09a79720e81e9992afacb04f242c8b78c53346c44725d8efc8cc50e",
+      "bytes": 3466948,
+      "live_text_elements": 136,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1099_cpg.png",
+      "sha256": "d8c793ad91394e91ad56ef04dc96f43ce9cbafcb8eb7e00546ff93c1d7f0dbff",
+      "bytes": 691542,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1099_ca.pdf",
+      "sha256": "49d5d7e4e16ca5f65bd6d9cd9fa648c4ebde0b9dfcadf1c7844d5224a94e9a94",
+      "bytes": 122957,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 165,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1099_ca.svg",
+      "sha256": "c9d2a203fe7b466f6761f01ba8987299c40a6c05a10b2a835fbd5d5a3cbb5a35",
+      "bytes": 3442520,
+      "live_text_elements": 136,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1099_ca.png",
+      "sha256": "259a01aa8c6994ac008352307e2818eb63547768b9cce42450461eec64938a6d",
+      "bytes": 663473,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1199_pi.pdf",
+      "sha256": "f10d29e2bd5d07785b44b9613391b4b3c80ed1dfc0bbd79223fed40bae416c54",
+      "bytes": 112634,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 168,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1199_pi.svg",
+      "sha256": "bb5a97fce02f081cda989c84680cf986fd6f20b336a8daf25596a68fb3679b61",
+      "bytes": 3397083,
+      "live_text_elements": 139,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1199_pi.png",
+      "sha256": "34426acfb08c08061dfc8dd3193ed382242b6bd3aa565fb69fba89dcda06a4a3",
+      "bytes": 695011,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1199_cpg.pdf",
+      "sha256": "1ea714d65a94057959528923d23c58dec53d3f8150b0bc3ec29275552549efa6",
+      "bytes": 131068,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 168,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1199_cpg.svg",
+      "sha256": "5adcbc666315c1d498ad454bba29ffaa2fa050f16ce635c5cf72fea2052a1d20",
+      "bytes": 3474011,
+      "live_text_elements": 139,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1199_cpg.png",
+      "sha256": "32e1368c7faaf0d8cc774e84314aed83f335c39c78143d4446f926f9dfa84962",
+      "bytes": 702709,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/D_sampling_case1199_ca.pdf",
+      "sha256": "8b6e13339ffb162851fc0823bcc5c01904e8ecab641edd0df5b0f03f7ac60cf0",
+      "bytes": 127354,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 168,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/D_sampling_case1199_ca.svg",
+      "sha256": "942cc28ac5bb5a56ed44bd8482e83b2c2951d289f2adc752e9efde4c1b15ebf6",
+      "bytes": 3452864,
+      "live_text_elements": 139,
+      "vector_paths": 59,
+      "embedded_images": 15,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/D_sampling_case1199_ca.png",
+      "sha256": "958ad956d83bec9f3989ebb45f69abc08573481a3b8dad6ac236b4b99fc9348a",
+      "bytes": 683730,
+      "width": 4156,
+      "height": 2408,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        28,
+        4133,
+        2379
+      ]
+    },
+    {
+      "path": "figures/E_training_head_curves.pdf",
+      "sha256": "078282adca844b5f5b8ebb03016ae985284f990b218d0cba9281e34f9c09d88a",
+      "bytes": 69847,
+      "pages": 1,
+      "fonts": [
+        {
+          "name": "BMQQDV+DejaVuSans",
+          "embedded": true
+        }
+      ],
+      "extracted_word_count": 162,
+      "words_outside_page": []
+    },
+    {
+      "path": "figures/E_training_head_curves.svg",
+      "sha256": "c183bfe6293850cec9b78c671248a93964243af4de331d5912d92519f9b2c687",
+      "bytes": 196966,
+      "live_text_elements": 114,
+      "vector_paths": 84,
+      "embedded_images": 0,
+      "whole_figure_flattened": false
+    },
+    {
+      "path": "figures/E_training_head_curves.png",
+      "sha256": "a9dd7d45ce5949cb187be86e598c44c9162187bceb6731014f9252a417156b59",
+      "bytes": 495242,
+      "width": 3046,
+      "height": 2416,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "nonwhite_bounds": [
+        20,
+        21,
+        3017,
+        2396
+      ]
+    }
+  ],
+  "numerical_values_or_plot_source_modified": false,
+  "unresolved_visual_issues": []
+}

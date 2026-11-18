@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "complete": true,
+  "raw_metric_rows": 44400,
+  "verified_budget_means": 216,
+  "verified_per_seed_area_ratios": 72,
+  "verified_rauec_summary_rows": 24,
+  "verified_absolute_error_rows": 78,
+  "max_absolute_difference": 5.551115123125783e-16,
+  "definition": "scalar case means -> 3-point trapezoid -> own Uniform ratio per sampling seed -> mean/sample SD",
+  "raw_source": "records/r{85,141,211}/metrics_records.csv",
+  "source_sha256": "a24dc49182f5a9553742b8c09a0774429d0a8e3a2ad3733c3044c450f9c6d8f0",
+  "aggregation_receipt_sha256": "4b9cfd193989d837730bde5125847a0f35fe958d613390c89b275df802306d42"
+}

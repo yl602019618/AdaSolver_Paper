@@ -1,0 +1,12 @@
+{
+  "status": "waiting_for_accuracy",
+  "pid": 3812596,
+  "stages": [],
+  "started_at_utc": "2026-11-17T16:11:44.866340+00:00",
+  "heartbeat_utc": "2026-11-18T17:08:39.004337+00:00",
+  "upstream_status": {
+    "85": "running",
+    "141": "running",
+    "211": "running"
+  }
+}

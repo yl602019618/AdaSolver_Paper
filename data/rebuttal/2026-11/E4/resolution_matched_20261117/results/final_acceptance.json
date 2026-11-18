@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "status": "complete_resolution_matched_experiment",
+  "experiment_id": "darcy_resolution_matched_20261117",
+  "completed_at_utc": "2026-11-18T17:54:31.543162+00:00",
+  "completed_at_beijing": "2026-11-19T01:54:31.543162+08:00",
+  "resolutions": [
+    85,
+    141,
+    211
+  ],
+  "backbones_completed": 3,
+  "own_ca_heads_completed": 3,
+  "epochs_per_model": 1000,
+  "optimizer_updates_per_model": 225000,
+  "training_seeds": [
+    0
+  ],
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "physical_requests": 22200,
+  "field_metric_rows": 44400,
+  "strict_regional_rows": 66600,
+  "figure_groups": 13,
+  "figure_files": 39,
+  "common_evaluation_grid": [
+    211,
+    211
+  ],
+  "native_results_separate": true,
+  "protocol_sha256": "d1991623dcb94703074fb9076deaec3d129d40cf15c427489a06ba5f7d15794b",
+  "region_protocol_id": "physical_bands_0p02_direct_queries_v1_20261119",
+  "accepted_receipts": {
+    "results/data_identity_acceptance.json": "060f22fe37176dfa6fe78a813224cea0081b77ab47d4f521d9d3467d475a5925",
+    "results/training_verification.json": "bb9ba765c56edfa5d73adc93692c0ffa6b54d504026bf62a06af72952342d772",
+    "results/design_acceptance.json": "ead66a3bbeadeafd5f7a0c6a0c7fe56241f2461dc7a3d0c915f8366b720ff9e1",
+    "results/physical_region_acceptance.json": "050dc9100e041ee0683f03c971b40994551aa7fc26797c4b9bd6cc3aca135d25",
+    "results/physical_region_independent_checks.json": "d68190f8e410b4dd8a904fbacc3bf30620d7ac2c215a0ae958ad999039ed3f78",
+    "results/statistics_acceptance.json": "f90d48e5dfdaeaa61ae6c4ebaf3b1f233ef4c63b9d496a196c2dc3fb1b29aaf2",
+    "results/independent_closeout_review.json": "515aa0596e2e815d4b87205888f8aeaeebc131eeadc7d63fc6cf496227099dce",
+    "results/figures_receipt.json": "775bf29d6a0e6bcf8d3ebc55a5898bde89b11f9c1df05cc083a15fdb3d0b7548",
+    "development/root_visual_review.json": "e9fef0ff82cbb104ad5cf8bc3beb3926c766bc312e629c8f494939f9a6f0e41d",
+    "development/final_visual_review.json": "a1000f0729e8f5d1fc0a2e46e9c48f8b23c57d804b2511f1cf4b13eb4561017c",
+    "results/head_r85_validation.json": "392eacb2c2c9d5d858880a411dcba5f93a4ae694f5e653360dae1169bbc458c3",
+    "results/r85_accuracy_acceptance.json": "c38695becc0e47d5b49b6c74b92160605ca5e3dc693d29e53524edb60d326a1b",
+    "results/head_r141_validation.json": "930599b709a3a4f09b611a6da43e3ef3f9ac74ced262b01d1ab517a3f19cb05c",
+    "results/r141_accuracy_acceptance.json": "cc5134109520c5d12453f368bfeee98414e92eb5a6164f7159e2f28ac1d3ed10",
+    "results/head_r211_validation.json": "88b8693a49c1dc6079f22288ee7bf1b189a3c346496038921410a58034391765",
+    "results/r211_accuracy_acceptance.json": "cbc0baa6a1423b24760737183ddb398ea7e55d950f5d3011ade1644cd0d638e8"
+  },
+  "unfavorable_results_preserved": true,
+  "full_excluded_from_rauec": true,
+  "formal_latency_claimed": false,
+  "main_table": "original paper85 historical reference plus new141/211",
+  "controlled_trend": "new matched85/141/211",
+  "corrective_changes": [
+    "Head bank verification now reproduces the original batch8 execution; same-context tolerance unchanged and batch1 differences preserved.",
+    "Regional classification enforces the locked physical0.02 bandwidth directly; legacy nearest-grid-label statistics retained."
+  ],
+  "training_weights_sampling_predictions_full_field_metrics_unchanged_by_corrections": true
+}

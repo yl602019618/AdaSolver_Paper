@@ -1,0 +1,540 @@
+{
+  "passed": true,
+  "resolution": 85,
+  "evaluated_at_utc": "2026-11-17T17:48:41.788420+00:00",
+  "checkpoint_sha256": "1258de7444db0ada5911ee0fc3ee8b3a0d072dd4b62f9934ccfa91810c4e9ad9",
+  "normalizer_sha256": "15b9260c379cf937700fffbfe92991b83bf3ccc9d1656d793e9a49a6265fa7c3",
+  "selected_epoch": 579,
+  "expected_validation_relative_l2": 0.01854971665889025,
+  "observed_validation_relative_l2": 0.01854971703607589,
+  "absolute_difference": 3.7718564036004487e-10,
+  "tolerance": 1.8559716658890248e-09,
+  "tolerance_rule": "1e-12 + 1e-7 * abs(recorded validation mean)",
+  "identical_float_value": false,
+  "validation_ids": [
+    900,
+    901,
+    902,
+    903,
+    904,
+    905,
+    906,
+    907,
+    908,
+    909,
+    910,
+    911,
+    912,
+    913,
+    914,
+    915,
+    916,
+    917,
+    918,
+    919,
+    920,
+    921,
+    922,
+    923,
+    924,
+    925,
+    926,
+    927,
+    928,
+    929,
+    930,
+    931,
+    932,
+    933,
+    934,
+    935,
+    936,
+    937,
+    938,
+    939,
+    940,
+    941,
+    942,
+    943,
+    944,
+    945,
+    946,
+    947,
+    948,
+    949,
+    950,
+    951,
+    952,
+    953,
+    954,
+    955,
+    956,
+    957,
+    958,
+    959,
+    960,
+    961,
+    962,
+    963,
+    964,
+    965,
+    966,
+    967,
+    968,
+    969,
+    970,
+    971,
+    972,
+    973,
+    974,
+    975,
+    976,
+    977,
+    978,
+    979,
+    980,
+    981,
+    982,
+    983,
+    984,
+    985,
+    986,
+    987,
+    988,
+    989,
+    990,
+    991,
+    992,
+    993,
+    994,
+    995,
+    996,
+    997,
+    998,
+    999
+  ],
+  "actual_prediction_shapes": [
+    [
+      2,
+      7225,
+      1
+    ],
+    [
+      4,
+      7225,
+      1
+    ]
+  ],
+  "data_access": [
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r85/normalizer.npz",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r85/positions.npy",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r85/reference_coords.npy",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r85/validation_coeff.npy",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/data/r85/validation_solution.npy"
+  ],
+  "device": "cuda:0",
+  "precision": "FP32; TF32 matmul/cuDNN disabled; same validation batch and shard layout",
+  "per_case": [
+    {
+      "case_id": 900,
+      "relative_l2": 0.011104756966233253
+    },
+    {
+      "case_id": 901,
+      "relative_l2": 0.02422032505273819
+    },
+    {
+      "case_id": 902,
+      "relative_l2": 0.008255597203969955
+    },
+    {
+      "case_id": 903,
+      "relative_l2": 0.022850241512060165
+    },
+    {
+      "case_id": 904,
+      "relative_l2": 0.02485354244709015
+    },
+    {
+      "case_id": 905,
+      "relative_l2": 0.015317855402827263
+    },
+    {
+      "case_id": 906,
+      "relative_l2": 0.029909702017903328
+    },
+    {
+      "case_id": 907,
+      "relative_l2": 0.015255868434906006
+    },
+    {
+      "case_id": 908,
+      "relative_l2": 0.03407958522439003
+    },
+    {
+      "case_id": 909,
+      "relative_l2": 0.03078414499759674
+    },
+    {
+      "case_id": 910,
+      "relative_l2": 0.027946222573518753
+    },
+    {
+      "case_id": 911,
+      "relative_l2": 0.010309461504220963
+    },
+    {
+      "case_id": 912,
+      "relative_l2": 0.03903552517294884
+    },
+    {
+      "case_id": 913,
+      "relative_l2": 0.015183008275926113
+    },
+    {
+      "case_id": 914,
+      "relative_l2": 0.012445774860680103
+    },
+    {
+      "case_id": 915,
+      "relative_l2": 0.025871723890304565
+    },
+    {
+      "case_id": 916,
+      "relative_l2": 0.013026370666921139
+    },
+    {
+      "case_id": 917,
+      "relative_l2": 0.010657262988388538
+    },
+    {
+      "case_id": 918,
+      "relative_l2": 0.009967507794499397
+    },
+    {
+      "case_id": 919,
+      "relative_l2": 0.029548346996307373
+    },
+    {
+      "case_id": 920,
+      "relative_l2": 0.013765293173491955
+    },
+    {
+      "case_id": 921,
+      "relative_l2": 0.02931879833340645
+    },
+    {
+      "case_id": 922,
+      "relative_l2": 0.022006165236234665
+    },
+    {
+      "case_id": 923,
+      "relative_l2": 0.008716910146176815
+    },
+    {
+      "case_id": 924,
+      "relative_l2": 0.0203469879925251
+    },
+    {
+      "case_id": 925,
+      "relative_l2": 0.018970869481563568
+    },
+    {
+      "case_id": 926,
+      "relative_l2": 0.018896959722042084
+    },
+    {
+      "case_id": 927,
+      "relative_l2": 0.011807555332779884
+    },
+    {
+      "case_id": 928,
+      "relative_l2": 0.011907261796295643
+    },
+    {
+      "case_id": 929,
+      "relative_l2": 0.016939455643296242
+    },
+    {
+      "case_id": 930,
+      "relative_l2": 0.006759690120816231
+    },
+    {
+      "case_id": 931,
+      "relative_l2": 0.014965126290917397
+    },
+    {
+      "case_id": 932,
+      "relative_l2": 0.016335230320692062
+    },
+    {
+      "case_id": 933,
+      "relative_l2": 0.015507032163441181
+    },
+    {
+      "case_id": 934,
+      "relative_l2": 0.01632765121757984
+    },
+    {
+      "case_id": 935,
+      "relative_l2": 0.02857811003923416
+    },
+    {
+      "case_id": 936,
+      "relative_l2": 0.030913278460502625
+    },
+    {
+      "case_id": 937,
+      "relative_l2": 0.018381750211119652
+    },
+    {
+      "case_id": 938,
+      "relative_l2": 0.024039190262556076
+    },
+    {
+      "case_id": 939,
+      "relative_l2": 0.0297384150326252
+    },
+    {
+      "case_id": 940,
+      "relative_l2": 0.017402658239006996
+    },
+    {
+      "case_id": 941,
+      "relative_l2": 0.01064224261790514
+    },
+    {
+      "case_id": 942,
+      "relative_l2": 0.02727580815553665
+    },
+    {
+      "case_id": 943,
+      "relative_l2": 0.010053778998553753
+    },
+    {
+      "case_id": 944,
+      "relative_l2": 0.028977511450648308
+    },
+    {
+      "case_id": 945,
+      "relative_l2": 0.014955148100852966
+    },
+    {
+      "case_id": 946,
+      "relative_l2": 0.02202356792986393
+    },
+    {
+      "case_id": 947,
+      "relative_l2": 0.029609335586428642
+    },
+    {
+      "case_id": 948,
+      "relative_l2": 0.01086536142975092
+    },
+    {
+      "case_id": 949,
+      "relative_l2": 0.009531792253255844
+    },
+    {
+      "case_id": 950,
+      "relative_l2": 0.021911678835749626
+    },
+    {
+      "case_id": 951,
+      "relative_l2": 0.015609216876327991
+    },
+    {
+      "case_id": 952,
+      "relative_l2": 0.02170134335756302
+    },
+    {
+      "case_id": 953,
+      "relative_l2": 0.028568647801876068
+    },
+    {
+      "case_id": 954,
+      "relative_l2": 0.02291961945593357
+    },
+    {
+      "case_id": 955,
+      "relative_l2": 0.022628916427493095
+    },
+    {
+      "case_id": 956,
+      "relative_l2": 0.010469954460859299
+    },
+    {
+      "case_id": 957,
+      "relative_l2": 0.013627914711833
+    },
+    {
+      "case_id": 958,
+      "relative_l2": 0.00669420650228858
+    },
+    {
+      "case_id": 959,
+      "relative_l2": 0.017969567328691483
+    },
+    {
+      "case_id": 960,
+      "relative_l2": 0.009306184947490692
+    },
+    {
+      "case_id": 961,
+      "relative_l2": 0.013748046942055225
+    },
+    {
+      "case_id": 962,
+      "relative_l2": 0.03027162328362465
+    },
+    {
+      "case_id": 963,
+      "relative_l2": 0.021403340622782707
+    },
+    {
+      "case_id": 964,
+      "relative_l2": 0.009299985133111477
+    },
+    {
+      "case_id": 965,
+      "relative_l2": 0.016071263700723648
+    },
+    {
+      "case_id": 966,
+      "relative_l2": 0.01105580199509859
+    },
+    {
+      "case_id": 967,
+      "relative_l2": 0.02309385873377323
+    },
+    {
+      "case_id": 968,
+      "relative_l2": 0.015631936490535736
+    },
+    {
+      "case_id": 969,
+      "relative_l2": 0.015335864387452602
+    },
+    {
+      "case_id": 970,
+      "relative_l2": 0.015751754865050316
+    },
+    {
+      "case_id": 971,
+      "relative_l2": 0.012859123758971691
+    },
+    {
+      "case_id": 972,
+      "relative_l2": 0.012713483534753323
+    },
+    {
+      "case_id": 973,
+      "relative_l2": 0.028527267277240753
+    },
+    {
+      "case_id": 974,
+      "relative_l2": 0.025805959478020668
+    },
+    {
+      "case_id": 975,
+      "relative_l2": 0.009693196043372154
+    },
+    {
+      "case_id": 976,
+      "relative_l2": 0.021492017433047295
+    },
+    {
+      "case_id": 977,
+      "relative_l2": 0.02495178021490574
+    },
+    {
+      "case_id": 978,
+      "relative_l2": 0.022271791473031044
+    },
+    {
+      "case_id": 979,
+      "relative_l2": 0.00920349545776844
+    },
+    {
+      "case_id": 980,
+      "relative_l2": 0.012239488773047924
+    },
+    {
+      "case_id": 981,
+      "relative_l2": 0.027626296505331993
+    },
+    {
+      "case_id": 982,
+      "relative_l2": 0.010605472140014172
+    },
+    {
+      "case_id": 983,
+      "relative_l2": 0.02280477248132229
+    },
+    {
+      "case_id": 984,
+      "relative_l2": 0.013076337985694408
+    },
+    {
+      "case_id": 985,
+      "relative_l2": 0.015805669128894806
+    },
+    {
+      "case_id": 986,
+      "relative_l2": 0.026210639625787735
+    },
+    {
+      "case_id": 987,
+      "relative_l2": 0.012219752185046673
+    },
+    {
+      "case_id": 988,
+      "relative_l2": 0.028443871065974236
+    },
+    {
+      "case_id": 989,
+      "relative_l2": 0.019495418295264244
+    },
+    {
+      "case_id": 990,
+      "relative_l2": 0.01446380466222763
+    },
+    {
+      "case_id": 991,
+      "relative_l2": 0.018810540437698364
+    },
+    {
+      "case_id": 992,
+      "relative_l2": 0.020353825762867928
+    },
+    {
+      "case_id": 993,
+      "relative_l2": 0.012088433839380741
+    },
+    {
+      "case_id": 994,
+      "relative_l2": 0.02525554783642292
+    },
+    {
+      "case_id": 995,
+      "relative_l2": 0.011038295924663544
+    },
+    {
+      "case_id": 996,
+      "relative_l2": 0.026083264499902725
+    },
+    {
+      "case_id": 997,
+      "relative_l2": 0.021895328536629677
+    },
+    {
+      "case_id": 998,
+      "relative_l2": 0.00812692940235138
+    },
+    {
+      "case_id": 999,
+      "relative_l2": 0.011557413265109062
+    }
+  ],
+  "verifier_sha256": "ec56f6261d7521ffa63515c5c35bd019575cb871a358033b7d570e989a785254"
+}

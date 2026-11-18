@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "complete": true,
+  "accepted_resolutions": [
+    85,
+    141,
+    211
+  ],
+  "expected_metric_rows": 44400,
+  "accepted_metric_rows": 44400,
+  "sampling_seeds": [
+    0,
+    1,
+    2
+  ],
+  "training_seeds": [
+    0
+  ],
+  "aggregation_source_sha256": "76024defe79623f6c1f0d628bb70fd97ad2af77236942c7bada263699de01f76",
+  "protocol_sha256": "d1991623dcb94703074fb9076deaec3d129d40cf15c427489a06ba5f7d15794b",
+  "region_protocol_id": "physical_bands_0p02_direct_queries_v1_20261119",
+  "regional_acceptance_sha256": {
+    "85": "a138a5b770e6843abd84a061ed6b587b95c4ca542c9f355e42eaa826f8456253",
+    "141": "8cd15f9b0cc2c25d62bc1af84684fa53b1ce3b2627ab425108d75efd82010071",
+    "211": "88ad291652b0a1224d338af396e7af9323cc2463b3ad054ccd47787ebe561bee"
+  },
+  "result_files": {
+    "results/absolute_errors.csv": "7fc4dd2383d9c7e2abddee6d5b9334b29b2dfa24cfaaaab2b3ba7e29dfe5162b",
+    "results/budget_metrics.csv": "2183cbd5cd2d01da144c207a9d0454998e05a4c275887efb76096698817d6f00",
+    "results/checkpoint_registry.csv": "9f2ab0b1dee6b1d4daff3391d4498251a2209661d0c73425cc912ee78785ae37",
+    "results/historical_original85.csv": "b4a0451fa83ac9ed675544c72b6fc6ae791aeccccc61dfa1519cfd56d3959272",
+    "results/matrix_completion.csv": "65e19497d1982a524bf59ea6c5078864ab6df7bcdb79110fdccfc871367b7fc4",
+    "results/physical_region_geometry_r141.csv": "a5c5d9efc2ce6da92f7ea32dd7f7f4b2191880ef97e9d1161f318e9d9ab6eff5",
+    "results/physical_region_geometry_r211.csv": "32a881e1f06e89896bd63c2fe4eed00e1b06f62e0ee68b2fc8aa85114a52f79a",
+    "results/physical_region_geometry_r85.csv": "d137a56454936d3091b05ced2bf5e9798c9f05476645d67f5b67aed672d1b3d7",
+    "results/physical_region_labels_r141.csv": "262d4c05c5b34d4e523d442776415c046f5879fa6ac8d4a3bda400ebc33fb7d4",
+    "results/physical_region_labels_r211.csv": "a21cd66538f08d104ddce8ccb4f1faa62a2b585397cc2a4f39b128e0e23908be",
+    "results/physical_region_labels_r85.csv": "db42491dc477639f2dd482259c6a9e07bdb4e0f46509c4d4ea18e40b82c74c4e",
+    "results/rauec_by_seed.csv": "5d6f6e215fa2f47f0610bd7ceab8c60d067574b62a180806de15be97c75adcb7",
+    "results/rauec_summary.csv": "7e8bfdde49cd7991d01fa2a540e21a54f47539642b2f769b9d4ab8859afe600a",
+    "results/regional_by_seed.csv": "bb496e41f3a8582b434260729bc62d33cce6d72a4f87b0812903248e07a7b971",
+    "results/regional_summary.csv": "f10ee22e02cb3f73cc6fc763f49a529ad6a34ad7d1a8d5efbc25e99cb05e2f22",
+    "results/table_source.csv": "b856bfb58dad6da858fc02c7614b0f2420a5a222d5c0a7e92532bc5ea78e0bf7"
+  }
+}

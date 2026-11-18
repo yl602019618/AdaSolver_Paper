@@ -1,0 +1,823 @@
+{
+  "passed": true,
+  "scope": "CPU engineering interface validation with random initialized actual architecture; no accuracy claims",
+  "trained_weights": false,
+  "test_opened": false,
+  "physical_validation_case_ids": [
+    900,
+    949
+  ],
+  "records": [
+    {
+      "resolution": 85,
+      "case_id": 900,
+      "method": "full",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "retained_prediction_shape": [
+        7225
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 900,
+      "method": "uniform",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 900,
+      "method": "pi",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 900,
+      "method": "cpg",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 722,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 900,
+      "method": "ca",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 722,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 949,
+      "method": "full",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "retained_prediction_shape": [
+        7225
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 949,
+      "method": "uniform",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 949,
+      "method": "pi",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 949,
+      "method": "cpg",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 722,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 85,
+      "case_id": 949,
+      "method": "ca",
+      "available_input_shape": [
+        1,
+        7225,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        2709,
+        3
+      ],
+      "retained_prediction_shape": [
+        2709
+      ],
+      "native_output_shape": [
+        7225
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 722,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 900,
+      "method": "full",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "retained_prediction_shape": [
+        19881
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 900,
+      "method": "uniform",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 900,
+      "method": "pi",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 900,
+      "method": "cpg",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 1988,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 900,
+      "method": "ca",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 1988,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 949,
+      "method": "full",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "retained_prediction_shape": [
+        19881
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 949,
+      "method": "uniform",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 949,
+      "method": "pi",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 949,
+      "method": "cpg",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 1988,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 141,
+      "case_id": 949,
+      "method": "ca",
+      "available_input_shape": [
+        1,
+        19881,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        7455,
+        3
+      ],
+      "retained_prediction_shape": [
+        7455
+      ],
+      "native_output_shape": [
+        19881
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 1988,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 900,
+      "method": "full",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "retained_prediction_shape": [
+        44521
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 900,
+      "method": "uniform",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 900,
+      "method": "pi",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 900,
+      "method": "cpg",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 4452,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 900,
+      "method": "ca",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 4452,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 949,
+      "method": "full",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "retained_prediction_shape": [
+        44521
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 949,
+      "method": "uniform",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 949,
+      "method": "pi",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 0,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 949,
+      "method": "cpg",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 4452,
+      "all_finite": true,
+      "validation_only": true
+    },
+    {
+      "resolution": 211,
+      "case_id": 949,
+      "method": "ca",
+      "available_input_shape": [
+        1,
+        44521,
+        3
+      ],
+      "model_input_shape": [
+        1,
+        16695,
+        3
+      ],
+      "retained_prediction_shape": [
+        16695
+      ],
+      "native_output_shape": [
+        44521
+      ],
+      "common_output_shape": [
+        44521
+      ],
+      "coarse_points": 4452,
+      "all_finite": true,
+      "validation_only": true
+    }
+  ],
+  "elapsed_seconds": 18.44999611377716
+}

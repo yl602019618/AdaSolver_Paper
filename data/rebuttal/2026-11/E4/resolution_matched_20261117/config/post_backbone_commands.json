@@ -1,0 +1,245 @@
+{
+  "85": [
+    {
+      "stage": "backbone_validation",
+      "command": [
+        "{python}",
+        "{out}/code/verify_training.py",
+        "--resolutions",
+        "85",
+        "--reload-validation",
+        "--device",
+        "cuda:0"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "results/training_verification_r85.json",
+      "completion_field": "passed",
+      "completion_value": true
+    },
+    {
+      "stage": "head_bank",
+      "command": [
+        "{python}",
+        "{out}/code/prepare_head.py",
+        "--resolution",
+        "85",
+        "--device",
+        "cuda:0",
+        "--resume"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "head_banks/r85/manifest.json",
+      "completion_field": "execution_status",
+      "completion_value": "completed"
+    },
+    {
+      "stage": "head",
+      "command": [
+        "{python}",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nnodes=1",
+        "--nproc_per_node=2",
+        "{out}/code/train_head.py",
+        "--resolution",
+        "85",
+        "--resume"
+      ],
+      "gpu_count": 2,
+      "completion_receipt": "checkpoints/r85/head/manifest.json",
+      "completion_field": "execution_status",
+      "completion_value": "completed"
+    },
+    {
+      "stage": "head_validation",
+      "command": [
+        "{python}",
+        "{out}/code/verify_head.py",
+        "--resolution",
+        "85",
+        "--device",
+        "cuda:0"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "results/head_r85_validation.json",
+      "completion_field": "passed",
+      "completion_value": true
+    },
+    {
+      "stage": "evaluation",
+      "command": [
+        "{python}",
+        "{out}/code/evaluate_pair.py",
+        "--resolution",
+        "85"
+      ],
+      "gpu_count": 2,
+      "completion_receipt": "results/r85_accuracy_acceptance.json",
+      "completion_field": "passed",
+      "completion_value": true
+    }
+  ],
+  "141": [
+    {
+      "stage": "backbone_validation",
+      "command": [
+        "{python}",
+        "{out}/code/verify_training.py",
+        "--resolutions",
+        "141",
+        "--reload-validation",
+        "--device",
+        "cuda:0"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "results/training_verification_r141.json",
+      "completion_field": "passed",
+      "completion_value": true
+    },
+    {
+      "stage": "head_bank",
+      "command": [
+        "{python}",
+        "{out}/code/prepare_head.py",
+        "--resolution",
+        "141",
+        "--device",
+        "cuda:0",
+        "--resume"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "head_banks/r141/manifest.json",
+      "completion_field": "execution_status",
+      "completion_value": "completed"
+    },
+    {
+      "stage": "head",
+      "command": [
+        "{python}",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nnodes=1",
+        "--nproc_per_node=2",
+        "{out}/code/train_head.py",
+        "--resolution",
+        "141",
+        "--resume"
+      ],
+      "gpu_count": 2,
+      "completion_receipt": "checkpoints/r141/head/manifest.json",
+      "completion_field": "execution_status",
+      "completion_value": "completed"
+    },
+    {
+      "stage": "head_validation",
+      "command": [
+        "{python}",
+        "{out}/code/verify_head.py",
+        "--resolution",
+        "141",
+        "--device",
+        "cuda:0"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "results/head_r141_validation.json",
+      "completion_field": "passed",
+      "completion_value": true
+    },
+    {
+      "stage": "evaluation",
+      "command": [
+        "{python}",
+        "{out}/code/evaluate_pair.py",
+        "--resolution",
+        "141"
+      ],
+      "gpu_count": 2,
+      "completion_receipt": "results/r141_accuracy_acceptance.json",
+      "completion_field": "passed",
+      "completion_value": true
+    }
+  ],
+  "211": [
+    {
+      "stage": "backbone_validation",
+      "command": [
+        "{python}",
+        "{out}/code/verify_training.py",
+        "--resolutions",
+        "211",
+        "--reload-validation",
+        "--device",
+        "cuda:0"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "results/training_verification_r211.json",
+      "completion_field": "passed",
+      "completion_value": true
+    },
+    {
+      "stage": "head_bank",
+      "command": [
+        "{python}",
+        "{out}/code/prepare_head.py",
+        "--resolution",
+        "211",
+        "--device",
+        "cuda:0",
+        "--resume"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "head_banks/r211/manifest.json",
+      "completion_field": "execution_status",
+      "completion_value": "completed"
+    },
+    {
+      "stage": "head",
+      "command": [
+        "{python}",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nnodes=1",
+        "--nproc_per_node=2",
+        "{out}/code/train_head.py",
+        "--resolution",
+        "211",
+        "--resume"
+      ],
+      "gpu_count": 2,
+      "completion_receipt": "checkpoints/r211/head/manifest.json",
+      "completion_field": "execution_status",
+      "completion_value": "completed"
+    },
+    {
+      "stage": "head_validation",
+      "command": [
+        "{python}",
+        "{out}/code/verify_head.py",
+        "--resolution",
+        "211",
+        "--device",
+        "cuda:0"
+      ],
+      "gpu_count": 1,
+      "completion_receipt": "results/head_r211_validation.json",
+      "completion_field": "passed",
+      "completion_value": true
+    },
+    {
+      "stage": "evaluation",
+      "command": [
+        "{python}",
+        "{out}/code/evaluate_pair.py",
+        "--resolution",
+        "211"
+      ],
+      "gpu_count": 2,
+      "completion_receipt": "results/r211_accuracy_acceptance.json",
+      "completion_field": "passed",
+      "completion_value": true
+    }
+  ]
+}

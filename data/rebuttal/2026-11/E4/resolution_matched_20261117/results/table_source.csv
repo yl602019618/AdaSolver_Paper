@@ -1,0 +1,37 @@
+table,column,method,resolution,evaluation_grid,rauec_mean,sampling_sd,status
+rebuttal_main,Original 85² (historical),uniform,85,historical,1,0,historical_reference
+rebuttal_main,New 141²,uniform,141,common,1,0,accepted_matched
+rebuttal_main,New 211²,uniform,211,common,1,0,accepted_matched
+rebuttal_main,Original 85² (historical),pi,85,historical,0.99650000000000005,0.0177,historical_reference
+rebuttal_main,New 141²,pi,141,common,0.99043753312257632,0.00497781958039396,accepted_matched
+rebuttal_main,New 211²,pi,211,common,1.0037691147032539,0.011800999684608579,accepted_matched
+rebuttal_main,Original 85² (historical),cpg,85,historical,0.64190000000000003,0.0048999999999999998,historical_reference
+rebuttal_main,New 141²,cpg,141,common,0.92623886365168684,0.002304961992848643,accepted_matched
+rebuttal_main,New 211²,cpg,211,common,0.95690506233869577,0.008050098336468501,accepted_matched
+rebuttal_main,Original 85² (historical),ca,85,historical,0.64000000000000001,0.0061999999999999998,historical_reference
+rebuttal_main,New 141²,ca,141,common,0.92583777168586101,0.0026224194714167494,accepted_matched
+rebuttal_main,New 211²,ca,211,common,0.95713142462587475,0.008071771318396535,accepted_matched
+controlled_common,Matched 85²,uniform,85,common,1,0,accepted_matched
+controlled_common,Matched 141²,uniform,141,common,1,0,accepted_matched
+controlled_common,Matched 211²,uniform,211,common,1,0,accepted_matched
+controlled_common,Matched 85²,pi,85,common,0.99766591372382685,0.0077547476214741059,accepted_matched
+controlled_common,Matched 141²,pi,141,common,0.99043753312257632,0.00497781958039396,accepted_matched
+controlled_common,Matched 211²,pi,211,common,1.0037691147032539,0.011800999684608579,accepted_matched
+controlled_common,Matched 85²,cpg,85,common,0.83975923820120901,0.003325814533419365,accepted_matched
+controlled_common,Matched 141²,cpg,141,common,0.92623886365168684,0.002304961992848643,accepted_matched
+controlled_common,Matched 211²,cpg,211,common,0.95690506233869577,0.008050098336468501,accepted_matched
+controlled_common,Matched 85²,ca,85,common,0.84004399163006438,0.0033763139165021638,accepted_matched
+controlled_common,Matched 141²,ca,141,common,0.92583777168586101,0.0026224194714167494,accepted_matched
+controlled_common,Matched 211²,ca,211,common,0.95713142462587475,0.008071771318396535,accepted_matched
+controlled_native,Matched 85²,uniform,85,native,1,0,accepted_matched
+controlled_native,Matched 141²,uniform,141,native,1,0,accepted_matched
+controlled_native,Matched 211²,uniform,211,native,1,0,accepted_matched
+controlled_native,Matched 85²,pi,85,native,0.99821876070373161,0.0076532796684114371,accepted_matched
+controlled_native,Matched 141²,pi,141,native,0.99072227695494008,0.0049700863626795586,accepted_matched
+controlled_native,Matched 211²,pi,211,native,1.0037691147032539,0.011800999684608579,accepted_matched
+controlled_native,Matched 85²,cpg,85,native,0.83990224822778836,0.003286160229157984,accepted_matched
+controlled_native,Matched 141²,cpg,141,native,0.92626658814167806,0.0022483725513217055,accepted_matched
+controlled_native,Matched 211²,cpg,211,native,0.95690506233869577,0.008050098336468501,accepted_matched
+controlled_native,Matched 85²,ca,85,native,0.84020002859480691,0.0033325522911642146,accepted_matched
+controlled_native,Matched 141²,ca,141,native,0.92586351644925846,0.0025538254863944226,accepted_matched
+controlled_native,Matched 211²,ca,211,native,0.95713142462587475,0.008071771318396535,accepted_matched

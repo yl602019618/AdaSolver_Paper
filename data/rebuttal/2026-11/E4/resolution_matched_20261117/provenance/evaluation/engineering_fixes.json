@@ -1,0 +1,23 @@
+{
+  "scope": "pre-experiment engineering failures only",
+  "fixes": [
+    {
+      "script": "evaluate.py",
+      "failure": "SamplingResult has sampling_density, not density",
+      "resolution": "corrected property and completed full 30-request/39-request CPU checks",
+      "sampling_rule_changed": false
+    },
+    {
+      "script": "verify_statistics.py",
+      "failure": "starred tuple indexing syntax is unavailable in Python 3.10",
+      "resolution": "use tuple concatenation; independent seed-first self-check passed",
+      "statistics_rule_changed": false
+    },
+    {
+      "script": "plot_results.py",
+      "failure": "Matplotlib offset display could show Uniform as 0 plus offset1",
+      "resolution": "disable rAUEC axis offset; values unchanged",
+      "statistics_rule_changed": false
+    }
+  ]
+}

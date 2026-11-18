@@ -1,0 +1,29 @@
+{
+  "region_protocol_id": "physical_bands_0p02_direct_queries_v1_20261119",
+  "boundary_width": 0.02,
+  "interface_width": 0.02,
+  "boundary": "Direct minimum distance of each physical query coordinate to x/y domain boundaries <=0.02",
+  "interface": "Exact Euclidean nearest distance to adjacent coefficient-change nodes on the same common211 grid <=0.02, excluding boundary",
+  "smooth": "Remaining query nodes",
+  "region_codes": {
+    "smooth": 0,
+    "interface": 1,
+    "boundary": 2
+  },
+  "coordinates": "Actual model FP32 coordinate values promoted unchanged to FP64",
+  "source_geometry": "Same common211 coefficient case for all three observation resolutions",
+  "correction": "Remove nearest-boolean-mask classification artifacts; 141 boundary includes301 out-of-band observations under the legacy mapping",
+  "unchanged": [
+    "backbone",
+    "head",
+    "prediction",
+    "retained_indices",
+    "refinement_score",
+    "target_density",
+    "full_field_metric",
+    "rAUEC"
+  ],
+  "legacy_records": "records/rN/region_records.csv remain unchanged",
+  "main_records": "records/rN/physical_region_records.csv",
+  "data_selection": "All200 declared test cases, all5 methods, all3 budgets and sampling seeds; no favorable-condition filtering"
+}

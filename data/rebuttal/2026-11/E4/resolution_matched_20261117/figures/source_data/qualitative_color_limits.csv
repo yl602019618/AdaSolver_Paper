@@ -1,0 +1,4 @@
+case_id,score_min,score_max,score_display_transform,transformed_score_min,transformed_score_max,density_min,density_max,retained_min,retained_max,sharing
+1000,0,8.5503780268276888,log1p,0,2.2565807376702289,0,1.2768799145521992,0,1,all three resolutions and PI/CPG/CA; no quantile clipping
+1099,0,10.122406530886373,log1p,0,2.4089616800562195,0,1.8010155590348054,0,1,all three resolutions and PI/CPG/CA; no quantile clipping
+1199,0,8.4407713919938434,log1p,0,2.245037692072485,0,1.2685643191620972,0,1,all three resolutions and PI/CPG/CA; no quantile clipping

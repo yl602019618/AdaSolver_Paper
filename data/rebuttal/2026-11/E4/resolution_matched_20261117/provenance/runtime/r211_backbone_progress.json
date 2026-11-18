@@ -1,0 +1,7 @@
+{
+  "execution_status": "completed",
+  "resolution": 211,
+  "epochs_completed": 1000,
+  "total_optimization_steps": 225000,
+  "manifest": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/checkpoints/r211/manifest.json"
+}

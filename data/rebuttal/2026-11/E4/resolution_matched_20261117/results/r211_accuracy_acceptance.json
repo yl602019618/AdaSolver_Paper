@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "status": "complete_matched_resolution_accuracy",
+  "resolution": 211,
+  "training_seed": 0,
+  "checkpoint_sha256": "b85b7c4b9da77643fcf7bc860c7ec821f029ed56c41074afcf0110d804659441",
+  "normalizer_sha256": "c80eedb6a6bbcf4744b8c6e2cfdd052c7eb8da0d42ab3d02e0005540ff1c9942",
+  "head_sha256": "bcbed956e98b325ed4f75e1ff978e8e4497e5a0cf0958eb65c182339ded9e638",
+  "test_cases": 200,
+  "physical_requests": 7400,
+  "metric_rows": 14800,
+  "source_arrays_checked": 7400,
+  "common_evaluation_resolution": 211,
+  "native_evaluation_resolution": 211,
+  "methods": [
+    "full",
+    "uniform",
+    "pi",
+    "cpg",
+    "ca"
+  ],
+  "validation_only_checkpoint_selection": true,
+  "coarse_prefix_included": true,
+  "pre_FPS_target_counts_preserved": true,
+  "region_masks_and_selected_counts_independently_recomputed": true,
+  "source_bundle_sha256": "0d1a4234ea5195188f0cf3967ab9ea7f2639c40d47659e9380ac47bad76fea27",
+  "independent_replay_case_ids": [
+    1000,
+    1099,
+    1199
+  ],
+  "replayed_scalar_metrics": 222,
+  "max_replayed_metric_difference": 0.0,
+  "raw_csv": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/records/r211/metrics_records.csv",
+  "raw_csv_sha256": "7300cfca999848e5745d0a5e84af916f8f8b7672c55f828571e870084789b888",
+  "region_csv_sha256": "78caa9780dd672ea4f0d0a29aef4db75d9c0f5c966b24213afc3c298b87e9e43",
+  "validator_sha256": "d7e1706ad35639ad36fd84ff99d4d3ce3453cd9111e95a79904136477071302a",
+  "formal_latency_verified": false
+}

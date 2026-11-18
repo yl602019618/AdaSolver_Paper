@@ -1,0 +1,4 @@
+resolution,expected_physical_requests,actual_exported_physical_requests,expected_metric_rows,accepted,status
+85,7400,7400,14800,True,complete
+141,7400,7400,14800,True,complete
+211,7400,7400,14800,True,complete

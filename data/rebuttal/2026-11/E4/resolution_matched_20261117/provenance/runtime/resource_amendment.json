@@ -1,0 +1,26 @@
+{
+  "time_utc": "2026-11-17T15:59:21.318011+00:00",
+  "resolution": 141,
+  "old_gpus": [
+    4,
+    5
+  ],
+  "new_gpus": [
+    0,
+    3
+  ],
+  "reason": "Original pair occupied by foreign jobs; new pair idle and subject to normal locks/NVML admission",
+  "scientific_protocol_unchanged": true,
+  "protocol_sha256": "d1991623dcb94703074fb9076deaec3d129d40cf15c427489a06ba5f7d15794b",
+  "old_waiting_pid": 3782181,
+  "new_pid": 3791877,
+  "command": [
+    "/usr/bin/python3",
+    "-u",
+    "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+    "--resolution",
+    "141",
+    "--gpus",
+    "0,3"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "status": "ready_for_visual_review",
+  "pid": 4030230,
+  "stages": [
+    {
+      "script": "verify_training.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:43:34.903089+00:00",
+      "pid": 4035641,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:44:05.374161+00:00"
+    },
+    {
+      "script": "verify_design.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:44:05.423599+00:00",
+      "pid": 4035828,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:44:40.949538+00:00"
+    },
+    {
+      "script": "recompute_physical_regions.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:44:41.041173+00:00",
+      "pid": 4036350,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:46:47.769588+00:00"
+    },
+    {
+      "script": "verify_physical_regions.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:46:47.869861+00:00",
+      "pid": 4037316,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:46:53.181533+00:00"
+    },
+    {
+      "script": "aggregate.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:46:53.241473+00:00",
+      "pid": 4037339,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:46:58.385517+00:00"
+    },
+    {
+      "script": "verify_statistics.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:46:58.472584+00:00",
+      "pid": 4037347,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:47:03.613532+00:00"
+    },
+    {
+      "script": "plot_results.py",
+      "status": "completed",
+      "started_at_utc": "2026-11-18T17:47:03.689890+00:00",
+      "pid": 4037413,
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T17:48:14.737559+00:00"
+    }
+  ],
+  "started_at_utc": "2026-11-18T17:34:01.917457+00:00",
+  "heartbeat_utc": "2026-11-18T17:48:09.669435+00:00",
+  "upstream_status": {
+    "85": "completed",
+    "141": "completed",
+    "211": "running"
+  },
+  "finished_at_utc": "2026-11-18T17:48:14.866451+00:00"
+}

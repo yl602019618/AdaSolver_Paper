@@ -1,0 +1,155 @@
+{
+  "status": "failed",
+  "pid": 3782182,
+  "resolution": 211,
+  "gpus": [
+    6,
+    7
+  ],
+  "stages": {
+    "training_preflight": {
+      "status": "completed",
+      "pid": 3782187,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/preflight_training.py",
+        "--resolution",
+        "211",
+        "--microbatch-size",
+        "2"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_training_preflight.log",
+      "started_at_utc": "2026-11-17T15:50:56.944717+00:00",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-17T15:51:17.398453+00:00"
+    },
+    "backbone": {
+      "status": "completed",
+      "pid": 3782622,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/train_ddp.py",
+        "--resolution",
+        "211",
+        "--microbatch-size",
+        "2"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_backbone.log",
+      "started_at_utc": "2026-11-17T15:51:17.504494+00:00",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-17T23:43:13.494017+00:00"
+    },
+    "backbone_validation": {
+      "status": "completed",
+      "pid": 3871207,
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/verify_training.py",
+        "--resolutions",
+        "211",
+        "--reload-validation",
+        "--device",
+        "cuda:0"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_backbone_validation.log",
+      "started_at_utc": "2026-11-17T23:43:13.631230+00:00",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-17T23:43:34.219719+00:00"
+    },
+    "head_bank": {
+      "status": "completed",
+      "pid": 3871248,
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/prepare_head.py",
+        "--resolution",
+        "211",
+        "--device",
+        "cuda:0",
+        "--resume"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_head_bank.log",
+      "started_at_utc": "2026-11-17T23:43:34.349858+00:00",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-17T23:45:06.752215+00:00"
+    },
+    "head": {
+      "status": "completed",
+      "pid": 3871398,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nnodes=1",
+        "--nproc_per_node=2",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/train_head.py",
+        "--resolution",
+        "211",
+        "--resume"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_head.log",
+      "started_at_utc": "2026-11-17T23:45:06.879346+00:00",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-18T00:15:33.173964+00:00"
+    },
+    "head_validation": {
+      "status": "failed",
+      "pid": 3874162,
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/verify_head.py",
+        "--resolution",
+        "211",
+        "--device",
+        "cuda:0"
+      ],
+      "log": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_head_validation.log",
+      "started_at_utc": "2026-11-18T00:15:33.321412+00:00",
+      "returncode": 1,
+      "finished_at_utc": "2026-11-18T00:15:43.643430+00:00"
+    }
+  },
+  "started_at_utc": "2026-11-17T15:50:55.536699+00:00",
+  "gpu_admission": [
+    {
+      "index": 6,
+      "gpu": {
+        "uuid": "GPU-e345280b-4c47-ce6b-9b00-f93c5abc008e",
+        "name": "NVIDIA H20",
+        "memory.used": "0",
+        "utilization.gpu": "0",
+        "memory.driver_reserved": "503",
+        "clocks.sm": "345",
+        "power.draw": "72.316",
+        "temperature.gpu": "32"
+      },
+      "processes": []
+    },
+    {
+      "index": 7,
+      "gpu": {
+        "uuid": "GPU-11eba984-86aa-73bd-421a-119c3b9c9477",
+        "name": "NVIDIA H20",
+        "memory.used": "0",
+        "utilization.gpu": "0",
+        "memory.driver_reserved": "503",
+        "clocks.sm": "345",
+        "power.draw": "72.623",
+        "temperature.gpu": "30"
+      },
+      "processes": []
+    }
+  ],
+  "stage": "head_validation",
+  "heartbeat_utc": "2026-11-18T00:15:33.568226+00:00",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py\", line 126, in main\n    command=[str(token).replace('{python}',sys.executable).replace('{out}',str(OUT)) for token in row['command']]\n  File \"/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py\", line 88, in run_stage\n    if process.returncode:raise RuntimeError(f'{name} failed with exit {process.returncode}; see {log}')\nRuntimeError: head_validation failed with exit 1; see /mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/logs/r211_head_validation.log\n"
+}

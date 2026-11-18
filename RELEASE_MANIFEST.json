@@ -22,8 +22,10 @@
     },
     {
       "path": "README.md",
-      "bytes": 7831,
-      "sha256": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5"
+      "bytes": 8414,
+      "sha256": "1965a5bd33ff28484364458e5c162f94fc309c580a192d6463c9208b71f70e5e",
+      "previous_sha256_before_resolution_matched_20261117": "94080767694f61ad430bb2f2a7d5983e23e1aa8c97a7610d7ed1bae0b10db2e5",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "RESULTS_DETAIL.md",
@@ -32,8 +34,10 @@
     },
     {
       "path": "TESTED_CONTENTS.md",
-      "bytes": 13652,
-      "sha256": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967"
+      "bytes": 14337,
+      "sha256": "99eb2350d9c3b75c6cea94a1cabf7ff2cff9e7a5dc95e31e943fe86fc7d60c2c",
+      "previous_sha256_before_resolution_matched_20261117": "b9e713669e96c163a96f209a33ccfa5ddf6d6e47721025da704b5d3c9688c967",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "data/rebuttal/2026-11/E3/README.md",
@@ -47,8 +51,10 @@
     },
     {
       "path": "data/rebuttal/2026-11/E4/release_manifest.json",
-      "bytes": 12712,
-      "sha256": "9b2dc5d07cdff1d2078f52c66188fb2393dca33fecf763fd2ef0cc5ca5e22873"
+      "bytes": 14329,
+      "sha256": "7d7ef11307be27c0db3ad492f4fecb9f415bb358f8509379eccd23e200189b89",
+      "previous_sha256_before_resolution_matched_20261117": "9b2dc5d07cdff1d2078f52c66188fb2393dca33fecf763fd2ef0cc5ca5e22873",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/provenance/release_manifest_before_original_cdcl_20261117.json",
@@ -57,8 +63,10 @@
     },
     {
       "path": "data/rebuttal/2026-11/current_results_20261115/release_manifest.json",
-      "bytes": 202750,
-      "sha256": "6c625fc3bd6e207631205754359efa565459673b8cd2bb0aa7f2394014e388a8"
+      "bytes": 204083,
+      "sha256": "9874fe5a8e8caaee95b3a5dbdcefd44f4f253674775d0404ba92e730d5efdb78",
+      "previous_sha256_before_resolution_matched_20261117": "6c625fc3bd6e207631205754359efa565459673b8cd2bb0aa7f2394014e388a8",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "data/rebuttal/2026-11/linearno_car_pi_ca_20261117/.gitattributes",
@@ -237,8 +245,10 @@
     },
     {
       "path": "data/rebuttal/2026-11/linearno_followup_20261114/release_manifest.json",
-      "bytes": 91127,
-      "sha256": "15706dc21aa3ba2ff2625f38e094c4ab31c28c41a393fffa559cdd8babb2f98f"
+      "bytes": 92097,
+      "sha256": "f5bcee08e7fce7827d1a8d9d98eedf045cefe7528f81ec2857c0760a6e7cd6de",
+      "previous_sha256_before_resolution_matched_20261117": "15706dc21aa3ba2ff2625f38e094c4ab31c28c41a393fffa559cdd8babb2f98f",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "data/rebuttal/2026-11/p0_airfoil_final_20261115/CLAIM_CARD.md",
@@ -612,13 +622,17 @@
     },
     {
       "path": "rebuttal/2026-11/E5_standard_RELEASE_MANIFEST.json",
-      "bytes": 19753,
-      "sha256": "bebcad5c872946089b42a15616409c20a5ca0e47daf27e6625695f8491b9040e"
+      "bytes": 20723,
+      "sha256": "7b838233c202bd18e8dd129b660f1a8221225e03280824abce59721cedfe6c1e",
+      "previous_sha256_before_resolution_matched_20261117": "bebcad5c872946089b42a15616409c20a5ca0e47daf27e6625695f8491b9040e",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "rebuttal/2026-11/RELEASE_MANIFEST.json",
-      "bytes": 64604,
-      "sha256": "5134442ffc3ce46e4d387c3fdf4b73e83d5f85b9f68f42c8a81b37184de19701"
+      "bytes": 66112,
+      "sha256": "ae44d48fda6241b9d2646f0fccce5358f046eb9b864a6b8583bcfa5aec402f02",
+      "previous_sha256_before_resolution_matched_20261117": "5134442ffc3ce46e4d387c3fdf4b73e83d5f85b9f68f42c8a81b37184de19701",
+      "documentation_annotation": "Separate resolution-matched Darcy supplement; prior experiment values preserved."
     },
     {
       "path": "rebuttal/2026-11/RESULTS_INDEX.md",
@@ -2699,6 +2713,12 @@
       "path": "reviews/revision-ledger.md",
       "bytes": 2003,
       "sha256": "fdc41b6d34b6153e8a77157aa63039dfdd84dd4025e6fcdcf5592d6d7b36f1ff"
+    },
+    {
+      "path": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+      "bytes": 206846,
+      "sha256": "e107d7d732d19cf2dd5a8bf7e0fa21119a9c05cdfd75fb161128d86219be19ba",
+      "category": "Darcy_resolution_matched_training_release_manifest"
     }
   ],
   "self_hash": "excluded",
@@ -2759,5 +2779,29 @@
     ],
     "formal_conditions": 222,
     "independent_training_seeds_1_2_included": false
+  },
+  "darcy_resolution_matched_training_20261117": {
+    "experiment_type": "Darcy observation-density resolution-matched training",
+    "package": "data/rebuttal/2026-11/E4/resolution_matched_20261117",
+    "manifest": "data/rebuttal/2026-11/E4/resolution_matched_20261117/release_manifest.json",
+    "report": "data/rebuttal/2026-11/E4/resolution_matched_20261117/README.md",
+    "new_backbone_runs": 3,
+    "new_ca_head_runs": 3,
+    "physical_requests": 22200,
+    "common_native_metric_rows": 44400,
+    "regional_rows": 66600,
+    "legacy_regional_rows": 66600,
+    "training_seeds": [
+      0
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2
+    ],
+    "original_E4_preserved": true,
+    "main_modified": false,
+    "base_commit": "81e055e33085ead622f2546dfe04661f1fb3655a",
+    "updated_at_utc": "2026-11-18T18:02:28.339897+00:00"
   }
 }

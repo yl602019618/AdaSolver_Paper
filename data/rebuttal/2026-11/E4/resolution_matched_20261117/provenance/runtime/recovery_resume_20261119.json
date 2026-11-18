@@ -1,0 +1,61 @@
+{
+  "resumed_at_utc": "2026-11-18T17:07:45.178168+00:00",
+  "reason": "Fixed head verification to replay original batch8; all three heads accepted without retraining or tolerance change",
+  "protocol_sha256": "d1991623dcb94703074fb9076deaec3d129d40cf15c427489a06ba5f7d15794b",
+  "workflows": [
+    {
+      "resolution": 85,
+      "pid": 4008630,
+      "gpus": [
+        1,
+        2
+      ],
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+        "--resolution",
+        "85",
+        "--gpus",
+        "1,2"
+      ],
+      "previous_failed_pid": 3782180
+    },
+    {
+      "resolution": 141,
+      "pid": 4008631,
+      "gpus": [
+        0,
+        3
+      ],
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+        "--resolution",
+        "141",
+        "--gpus",
+        "0,3"
+      ],
+      "previous_failed_pid": 3791877
+    },
+    {
+      "resolution": 211,
+      "pid": 4008632,
+      "gpus": [
+        6,
+        7
+      ],
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/mnt/ai-material-data/iclr2027_adatransolver/07_current/darcy_resolution_matched_20261117/code/run_resolution.py",
+        "--resolution",
+        "211",
+        "--gpus",
+        "6,7"
+      ],
+      "previous_failed_pid": 3782182
+    }
+  ]
+}

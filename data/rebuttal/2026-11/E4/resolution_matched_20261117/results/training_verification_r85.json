@@ -1,0 +1,37 @@
+{
+  "audited_at_utc": "2026-11-17T17:48:41.850794+00:00",
+  "status": "final",
+  "passed": true,
+  "all_requested_training_complete": true,
+  "resolutions": [
+    {
+      "resolution": 85,
+      "execution_status": "completed",
+      "epochs_audited": 1000,
+      "optimizer_updates_audited": 225000,
+      "passed": true,
+      "failures": [],
+      "best_validation_relative_l2": 0.01854971665889025,
+      "best_epoch": 579,
+      "checkpoint_sha256": "1258de7444db0ada5911ee0fc3ee8b3a0d072dd4b62f9934ccfa91810c4e9ad9",
+      "initial_state_tensor_sha256": "8167cba0f23cf5a57aa609fbea4a9e4d3b854c67a95b8130c7e74a1abf22cc00",
+      "parameter_count": 977089,
+      "manifest_sha256": "f184c5ba3aec212f3747142e63f4d5767c2a024f54c2b1bf0acf5b0c8f3ffb15",
+      "normalizer_sha256": "15b9260c379cf937700fffbfe92991b83bf3ccc9d1656d793e9a49a6265fa7c3",
+      "source_sha256": {
+        "common.py": "6a5041f53808acb6031b681f1d18a6f8fcadf0244bf663e2e83cce8c6da551a3",
+        "train_ddp.py": "04fdb8632fe8192e708b572c81dec7ec8577192b2cf118c1a1758f1b3648cadf"
+      },
+      "training_wall_seconds": 7011.875856332481,
+      "selected_checkpoint_validation_passed": true,
+      "selected_checkpoint_validation_difference": 3.7718564036004487e-10
+    }
+  ],
+  "cross_resolution_checks": {
+    "initial_tensor_identity": true,
+    "parameter_count_identity": true,
+    "training_source_identity": true
+  },
+  "scope": "saved histories, checkpoint states, native shapes, data access, fixed split, source and normalizer identity; selected checkpoint reload on validation only; no evaluation-population access or new selection",
+  "verifier_sha256": "ec56f6261d7521ffa63515c5c35bd019575cb871a358033b7d570e989a785254"
+}

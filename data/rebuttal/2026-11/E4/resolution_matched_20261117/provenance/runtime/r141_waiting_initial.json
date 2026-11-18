@@ -1,0 +1,54 @@
+{
+  "status": "waiting_for_idle_gpus",
+  "pid": 3782181,
+  "resolution": 141,
+  "gpus": [
+    4,
+    5
+  ],
+  "stages": {},
+  "started_at_utc": "2026-11-17T15:50:55.499605+00:00",
+  "reason": "[Errno 11] Resource temporarily unavailable",
+  "gpu_snapshot": [
+    {
+      "index": 4,
+      "gpu": {
+        "uuid": "GPU-13e0ae0b-d1d1-253d-0e00-81f379bbcf56",
+        "name": "NVIDIA H20",
+        "memory.used": "863",
+        "utilization.gpu": "5",
+        "memory.driver_reserved": "503",
+        "clocks.sm": "1980",
+        "power.draw": "138.458",
+        "temperature.gpu": "35"
+      },
+      "processes": [
+        {
+          "pid": 3763007,
+          "name": "compute_process",
+          "memory_mib": "854"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "gpu": {
+        "uuid": "GPU-e74df101-4757-0c9a-4ad3-68cfa976c6f4",
+        "name": "NVIDIA H20",
+        "memory.used": "863",
+        "utilization.gpu": "0",
+        "memory.driver_reserved": "503",
+        "clocks.sm": "1980",
+        "power.draw": "126.143",
+        "temperature.gpu": "38"
+      },
+      "processes": [
+        {
+          "pid": 3763008,
+          "name": "compute_process",
+          "memory_mib": "854"
+        }
+      ]
+    }
+  ]
+}

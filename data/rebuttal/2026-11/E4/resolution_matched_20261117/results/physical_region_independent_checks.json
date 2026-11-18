@@ -1,0 +1,124 @@
+{
+  "passed": true,
+  "complete": true,
+  "region_protocol_id": "physical_bands_0p02_direct_queries_v1_20261119",
+  "region_rows": 66600,
+  "physical_requests": 22200,
+  "resolutions": [
+    {
+      "resolution": 85,
+      "region_rows": 22200,
+      "physical_requests": 7400,
+      "boundary_points": 664,
+      "all_region_partitions_and_counts_passed": true,
+      "common_region_field_errors_unchanged": true,
+      "field_csv_unchanged": true
+    },
+    {
+      "resolution": 141,
+      "region_rows": 22200,
+      "physical_requests": 7400,
+      "boundary_points": 1656,
+      "all_region_partitions_and_counts_passed": true,
+      "common_region_field_errors_unchanged": true,
+      "field_csv_unchanged": true
+    },
+    {
+      "resolution": 211,
+      "region_rows": 22200,
+      "physical_requests": 7400,
+      "boundary_points": 4120,
+      "all_region_partitions_and_counts_passed": true,
+      "common_region_field_errors_unchanged": true,
+      "field_csv_unchanged": true
+    }
+  ],
+  "direct_distance_oracles": [
+    {
+      "resolution": 85,
+      "case_id": 1000,
+      "all_nodes": 7225,
+      "exact_label_match": true,
+      "boundary_points": 664,
+      "interface_points": 1743,
+      "edge_points": 2454
+    },
+    {
+      "resolution": 85,
+      "case_id": 1099,
+      "all_nodes": 7225,
+      "exact_label_match": true,
+      "boundary_points": 664,
+      "interface_points": 720,
+      "edge_points": 941
+    },
+    {
+      "resolution": 85,
+      "case_id": 1199,
+      "all_nodes": 7225,
+      "exact_label_match": true,
+      "boundary_points": 664,
+      "interface_points": 1467,
+      "edge_points": 2082
+    },
+    {
+      "resolution": 141,
+      "case_id": 1000,
+      "all_nodes": 19881,
+      "exact_label_match": true,
+      "boundary_points": 1656,
+      "interface_points": 4828,
+      "edge_points": 2454
+    },
+    {
+      "resolution": 141,
+      "case_id": 1099,
+      "all_nodes": 19881,
+      "exact_label_match": true,
+      "boundary_points": 1656,
+      "interface_points": 1998,
+      "edge_points": 941
+    },
+    {
+      "resolution": 141,
+      "case_id": 1199,
+      "all_nodes": 19881,
+      "exact_label_match": true,
+      "boundary_points": 1656,
+      "interface_points": 4071,
+      "edge_points": 2082
+    },
+    {
+      "resolution": 211,
+      "case_id": 1000,
+      "all_nodes": 44521,
+      "exact_label_match": true,
+      "boundary_points": 4120,
+      "interface_points": 10942,
+      "edge_points": 2454
+    },
+    {
+      "resolution": 211,
+      "case_id": 1099,
+      "all_nodes": 44521,
+      "exact_label_match": true,
+      "boundary_points": 4120,
+      "interface_points": 4516,
+      "edge_points": 941
+    },
+    {
+      "resolution": 211,
+      "case_id": 1199,
+      "all_nodes": 44521,
+      "exact_label_match": true,
+      "boundary_points": 4120,
+      "interface_points": 9117,
+      "edge_points": 2082
+    }
+  ],
+  "oracle_nodes": 214881,
+  "independent_oracle": "Explicit squared distances to all shared coefficient-edge nodes in bounded chunks, plus direct domain boundary distance",
+  "source_sha256": "bcddf80ad2ecefc54264ac9c8132afb0985c3433d964be8a15d21acf952a79e5",
+  "physical_region_acceptance_sha256": "050dc9100e041ee0683f03c971b40994551aa7fc26797c4b9bd6cc3aca135d25",
+  "verified_at_utc": "2026-11-18T17:46:52.068435+00:00"
+}

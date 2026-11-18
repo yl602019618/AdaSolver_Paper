@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "CPU objective and gradient equivalence atnative85 on two real smooth1 training cases; no trained accuracy claim",
+  "source_case_ids": [
+    0,
+    1
+  ],
+  "old_loss_components": [
+    0.08618789911270142,
+    0.06875476986169815,
+    0.17433126270771027
+  ],
+  "new_loss_components": [
+    0.08618789911270142,
+    0.06875476986169815,
+    0.17433126270771027
+  ],
+  "max_gradient_difference": 0.0,
+  "legacy_source": "/mnt/ai-material-data/iclr2027_adatransolver/07_current/linearno_followup_20261114/standard_benchmarks/darcy/code/common.py",
+  "legacy_source_sha256": "d893c29e27373f0e82563816245563e4a7c419a29d5c3f6f159b684f2a9b76ca",
+  "current_common_sha256": "6a5041f53808acb6031b681f1d18a6f8fcadf0244bf663e2e83cce8c6da551a3"
+}

@@ -1,0 +1,316 @@
+{
+  "passed": true,
+  "resolution": 211,
+  "head_sha256": "bcbed956e98b325ed4f75e1ff978e8e4497e5a0cf0958eb65c182339ded9e638",
+  "operator_sha256": "b85b7c4b9da77643fcf7bc860c7ec821f029ed56c41074afcf0110d804659441",
+  "normalizer_sha256": "c80eedb6a6bbcf4744b8c6e2cfdd052c7eb8da0d42ab3d02e0005540ff1c9942",
+  "epochs_completed": 1000,
+  "logical_optimizer_steps": 225000,
+  "history_rows": 1000,
+  "model_parameter_count": 236049,
+  "bank_records": 1000,
+  "training_cases": 900,
+  "validation_cases": 100,
+  "test_cases_used_for_training_or_selection": 0,
+  "all_coarse_indices_reproduced": true,
+  "all_standardized_targets_reproduced": true,
+  "teacher_spot_checks": [
+    {
+      "case_id": 0,
+      "coarse_count": 4452,
+      "native_grid": [
+        211,
+        211
+      ],
+      "maximum_difference": 0.0
+    },
+    {
+      "case_id": 449,
+      "coarse_count": 4452,
+      "native_grid": [
+        211,
+        211
+      ],
+      "maximum_difference": 0.0
+    },
+    {
+      "case_id": 899,
+      "coarse_count": 4452,
+      "native_grid": [
+        211,
+        211
+      ],
+      "maximum_difference": 0.0
+    },
+    {
+      "case_id": 900,
+      "coarse_count": 4452,
+      "native_grid": [
+        211,
+        211
+      ],
+      "maximum_difference": 0.0
+    },
+    {
+      "case_id": 999,
+      "coarse_count": 4452,
+      "native_grid": [
+        211,
+        211
+      ],
+      "maximum_difference": 0.0
+    }
+  ],
+  "feature_and_prediction_reproduction": [
+    {
+      "name": "bank_batch0:8_block0",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "bank_batch0:8_normalized_teacher_prediction",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "bank_batch0:8_extractor_vs_full_forward",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "case0_batch1_extractor_vs_full_forward",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "case0_batch1_head_vs_hook_features",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "bank_batch896:904_block0",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "bank_batch896:904_normalized_teacher_prediction",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "bank_batch896:904_extractor_vs_full_forward",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "case900_batch1_extractor_vs_full_forward",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    },
+    {
+      "name": "case900_batch1_head_vs_hook_features",
+      "max_abs": 0.0,
+      "violations": 0,
+      "relative_norm": 0.0,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 0.0,
+        "0.9": 0.0,
+        "0.99": 0.0,
+        "1.0": 0.0
+      }
+    }
+  ],
+  "bank_reproduction_batch_size": 8,
+  "bank_reproduction_case_groups": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    [
+      896,
+      897,
+      898,
+      899,
+      900,
+      901,
+      902,
+      903
+    ]
+  ],
+  "reproduction_tolerance": "abs(actual-expected) <= 1e-6 + 1e-5*abs(expected)",
+  "batch_size_sensitivity_diagnostics": [
+    {
+      "name": "case0_batch1_vs_bank8_block0",
+      "max_abs": 5.340576171875e-05,
+      "violations": 14289,
+      "relative_norm": 3.4356693845438713e-07,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 2.0265579223632812e-06,
+        "0.9": 7.152557373046875e-06,
+        "0.99": 1.33514404296875e-05,
+        "1.0": 5.340576171875e-05
+      }
+    },
+    {
+      "name": "case0_batch1_vs_bank8_prediction",
+      "max_abs": 2.562999725341797e-06,
+      "violations": 0,
+      "relative_norm": 4.089112053407007e-07,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 2.384185791015625e-07,
+        "0.9": 6.556510925292969e-07,
+        "0.99": 1.1324882507324219e-06,
+        "1.0": 2.562999725341797e-06
+      }
+    },
+    {
+      "name": "case900_batch1_vs_bank8_block0",
+      "max_abs": 4.57763671875e-05,
+      "violations": 13232,
+      "relative_norm": 3.289398762262863e-07,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 1.9073486328125e-06,
+        "0.9": 6.67572021484375e-06,
+        "0.99": 1.430511474609375e-05,
+        "1.0": 4.57763671875e-05
+      }
+    },
+    {
+      "name": "case900_batch1_vs_bank8_prediction",
+      "max_abs": 2.2649765014648438e-06,
+      "violations": 0,
+      "relative_norm": 3.926851377400453e-07,
+      "absolute_difference_quantiles": {
+        "0.0": 0.0,
+        "0.5": 2.384185791015625e-07,
+        "0.9": 7.152557373046875e-07,
+        "0.99": 1.0728836059570312e-06,
+        "1.0": 2.2649765014648438e-06
+      }
+    }
+  ],
+  "single_request_interface_checks": [
+    {
+      "case_id": 0,
+      "input_shape": [
+        1,
+        4452,
+        1
+      ],
+      "output_shape": [
+        1,
+        4452,
+        1
+      ],
+      "native_resolution": 211,
+      "finite_prediction_and_decoded_score": true
+    },
+    {
+      "case_id": 900,
+      "input_shape": [
+        1,
+        4452,
+        1
+      ],
+      "output_shape": [
+        1,
+        4452,
+        1
+      ],
+      "native_resolution": 211,
+      "finite_prediction_and_decoded_score": true
+    }
+  ],
+  "batch_size_diagnostic_scope": "Different FP32 batch shapes; bank identity and batch1 feature-tap identity are independently checked with the unchanged elementwise tolerance",
+  "verification_device": "cuda:0",
+  "full_native_grid": [
+    211,
+    211
+  ],
+  "coarse_count": 4452,
+  "bank_manifest_sha256": "be31d03decaa581cbbaa9241d829a8f32052808b92c47e3244c7cfc52b8c7828",
+  "verifier_sha256": "37f5ce5e257338542509d9994da751117a5542c204ae9e7cb00ddebde698b2ac",
+  "scope": "Completed own-resolution head identity, full training steps/history, train-only target normalization, all masks and native teacher/features; final test accuracy separate"
+}

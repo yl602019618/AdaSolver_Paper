@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "reviewed_at_utc": "2026-11-18T17:49:24.619773+00:00",
+  "reviewer": "root",
+  "figures": {
+    "A_rauec_resolution.png": "3137d723ca91c45bc20fac2f508bf59240d1f57893bb8f5b6fe112f91c7d6011",
+    "B_absolute_error_budget.png": "96c4d1cbb8060ff73ea1c92d88fb530dc00e7b18a26e0dd79d648bc3f0162af0",
+    "C_regional_retention.png": "2d1e1945dacbd27d53d0287cdffaaf3e25579f3c108453c0606c7f525bc389df",
+    "E_training_head_curves.png": "a9dd7d45ce5949cb187be86e598c44c9162187bceb6731014f9252a417156b59"
+  },
+  "scope": "Actual PNG inspection of axes, legend, common/native scope, full references, regional rates, and complete training/head curves",
+  "training_curve_preview_pixel_file_identity": true,
+  "findings": [
+    "Axis values and Uniform=1 reference are explicit",
+    "Common/native scopes and Full references are correctly separated",
+    "Boundary/interface/smooth panels use actual strict-region summaries",
+    "Training/head curves show all1000epochs including late head validation degradation; selected best epochs are in registry"
+  ],
+  "remaining": "D plates and all-format structural review handled independently"
+}

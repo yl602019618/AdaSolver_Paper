@@ -1,0 +1,29 @@
+Darcy resolution-matched training study
+Updated: 2026-11-19T01:55:41.361296+08:00
+Status: completed
+
+Resolution | Stage | Backbone epochs | Measured seconds/epoch | Remaining backbone hours | CA head epochs | Accuracy accepted
+--- | --- | --- | --- | --- | --- | ---
+85² | completed | 1000/1000 | 6.31 | 0.00 | 1000/1000 | True
+141² | completed | 1000/1000 | 13.68 | 0.00 | 1000/1000 | True
+211² | completed | 1000/1000 | 27.59 | 0.00 | 1000/1000 | True
+
+Time estimates above cover backbone training only; each backbone is followed by its own CA head and complete evaluation.
+True 421² source nodes, strides 5/3/2. Same smooth1 rows 0:900 training and 900:1000 validation; smooth2 rows 0:200 evaluation.
+The new 85² control is retrained because previous weights do not match the requested contiguous split.
+All backbones use seed 0, FP32, full native inputs, 1000 epochs, effective batch 4, and 225000 optimizer updates.
+PI uses the predeclared shared beta=1 with original E4 prior. CPG/CA preserve E4 settings and include coarse points in the final budget.
+Common211 and native-grid errors are separate. Error bars represent sampling seeds, not independent training runs.
+Original paper85 remains a labeled historical reference; only new85/141/211 form the controlled trend.
+Resource mapping change for 141² is recorded in runtime/resource_amendment.json without changing the scientific protocol.
+
+Paths: protocol.md, protocol.json, split_manifest.json, config/, checkpoints/, evaluation/, results/, logs/, runtime/.
+Progress: python3 code/monitor.py. Reproduction commands: config/post_backbone_commands.json and runtime/*_workflow.json.
+Final experiment acceptance has passed; all training, accuracy matrices, statistics and scientific figures are complete. See results/final_acceptance.json.
+
+Complete-case evaluation progress (37 requests per case):
+85²: 200/200 cases; 7400/7400 requests.
+141²: 200/200 cases; 7400/7400 requests.
+211²: 200/200 cases; 7400/7400 requests.
+
+The original head-verifier interruption and its fix are documented in development/head_acceptance_batch_context_20261119/README.md. Matching the original batch8 replay passed unchanged tolerances; all trained weights were preserved.
